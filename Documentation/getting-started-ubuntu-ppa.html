@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Ubuntu-PPA Install</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="Documentation/getting-started-ubuntu-ppa.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h2 id="getting-started-ubuntuppa-install">Getting Started: Ubuntu-PPA Install</h2>
+<h3 id="install-via-ppa-repository-ubuntu">Install via PPA repository (Ubuntu)</h3>
+<p>The nnstreamer releases are at a PPA repository. In order to install it, use:</p>
+<pre><code class="language-bash">$ sudo apt-add-repository ppa:nnstreamer
+$ sudo apt install nnstreamer
+</code></pre>
+<h3 id="additional-plugins-available">Additional plugins available</h3>
+<ul>
+<li>nnstreamer-caffe2 : Allows to use caffe2 models in a pipeline. (From pytorch 1.3.1 by default)</li>
+<li>nnstreamer-cpp : Allows to use C++ classes as filters of a pipeline.</li>
+<li>nnstreamer-cpp-dev : Required to build C++ class-filters.</li>
+<li>nnstreamer-dev : Required to build C function-filters and to build your own nnstreamer plugins.</li>
+<li>nnstreamer-edgetpu : Allows to use edge-TPU in a pipeline.</li>
+<li>nnstreamer-flatbuf : Allows to convert-from and decode-to flatbuf streams.</li>
+<li>nnstreamer-openvino : Allows to use OpenVINO (Intel), enabling Movidius-X.</li>
+<li>nnstreamer-protobuf : Allows to convert-from and decode-to protobuf streams.</li>
+<li>nnstreamer-python2 : Allows to use python2 classes as filters of a pipeline.</li>
+<li>nnstreamer-python3 : Allows to use python3 classes as filters of a pipeline.</li>
+<li>nnstreamer-pytorch : Allows to use Pytorch models in a pipeline. (From pytorch 1.3.1 by default)</li>
+<li>nnstreamer-tensorflow : Allows to use TensorFlow models in a pipeline. (From tensorflow 1.13.1 by default)</li>
+<li>nnstreamer-tensorflow-lite : Allows to use TensorFlow-lite models in a pipeline. (From tensorflow 1.13.1 by default)</li>
+</ul>
+<h3 id="if-you-want-to-use-different-versions-of-tensorflow-or-pytorch">If you want to use different versions of TensorFlow or PyTorch</h3>
+<h4 id="safe-method-need-rebuild">Safe method (need rebuild)</h4>
+<p>You need to rebuild nnstreamer's corresponding subplugins (e.g., nnstreamer-tensorflow) with the nerual network framework version you want to use.</p>
+<ul>
+<li>You may configure/update, build with pdebuild/debuild, and install its resulting .deb packages <a href="Documentation/getting-started-ubuntu-debuild.html">Ubuntu: Pbuilder / Pdebuild</a>.</li>
+<li>You may configure/update, build with meson/ninja, and install binraies with ninja <a href="Documentation/getting-started-meson-build.html">Linux generic: build with meson and ninja</a>: For advanced users with feature customization.</li>
+<li>Be careful on install paths and duplicated installation. You need to check the configuration (/etc/nnstreamer.ini and env-vars)</li>
+</ul>
+<h4 id="unsafe-method-no-need-for-rebuild">Unsafe method (no need for rebuild)</h4>
+<p>Try to let prebuilt nnstreamer binraies use another versions of tensorflow/pytorch installed. Theoretically, it should work by simply replacing tensorflow/pytorch with different versions. Unless symbols and their semantics are chnaged, it should work. (but that happens often with neural network frameworks, which are still not that stable.)</p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Early Exit Network</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="False" data-hotdoc-project="nnstreamer-example" data-hotdoc-ref="bash_script/example_early_exit/README.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamer-native-sample-application-early-exit-network">NNStreamer Native Sample Application - Early exit network</h1>
+<h2 id="introduction">Introduction</h2>
+<p>As networks become more larger and larger, this is limited in real-time processing and low power devices.<br>
+In order to alleviate these problems, If confidence reaches a certain level, just use the results without processing the data anymore.<br>
+The concept of pipeline to implement this is as follows:<br>
+<img src="nnstreamer-example/bash_script/example_early_exit/./Early_exit_pipeline.png" alt="pipeline-img" id="pipelineimg"><br>
+As depicted in Fig. 1, the simplest early exit network is configured.<br>
+Model 1 performs inference and model 2 evaluates the result of the model 1. Tensor_if determines whether to exit the network or proceed to the next path according to the confidence.<br>
+If confidence is high, exit the network immediately and if it is low, proceed to the next early exit module. As shown in Figure 2, multiple early exit modules can be connected.<br>
+When the network ends early or reaches the end of the network, a join element connects recently arrived buffer from N input streams to one output pad.</p>
+<h2 id="prerequisite">prerequisite</h2>
+<p>To obtain the model file used in the example, you must build NNStreamer.<br>
+How to build NNStreamer?: <a href="https://github.com/nnstreamer/nnstreamer/wiki/usage-examples-screenshots#build-examples-ubuntu-1604">link</a><br>
+When you build NNStreamer, you should change build options.</p>
+<pre><code>$ vi nnstreamer.git/meson_option.txt
+$ git diff
+
+diff --git a/meson_options.txt b/meson_options.txt
+index 73239b3..2969baf 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -21,7 +21,7 @@ option('grpc-support', type: 'feature', value: 'auto')
+
+ # booleans &amp; other options
+ option('enable-test', type: 'boolean', value: true)
+-option('install-test', type: 'boolean', value: false)
++option('install-test', type: 'boolean', value: true)
+ option('enable-pytorch-use-gpu', type: 'boolean', value: false) # default value, can be specified at run time
+ option('enable-mediapipe', type: 'boolean', value: false)
+ option('enable-env-var', type: 'boolean', value: true)
+
+</code></pre>
+<p>If you have successfully completed the build nnstreamer, you can find model files here:<br>
+<code>$ cd $NNST_ROOT/lib/nnstreamer/customfilters</code></p>
+<p>If you have successfully completed the build nnstreamer-example, you can find examples here:</p>
+<pre><code>$ cd $NNST_ROOT/bin
+$ ./gst-launch-early-exit-normal.sh
+$ ./gst-launch-early-exit-demo.sh
+</code></pre>
+<h3 id="gstlaunchearlyexitnormalsh">gst-launch-early-exit-normal.sh</h3>
+<p>This example is not the actual eraly exit network, but it shows how to construct pipeline.<br>
+You can change the input/output and model used in the example to the appropriate framework and model.</p>
+<h3 id="gstlaunchearlyexitdemosh">gst-launch-early-exit-demo.sh</h3>
+<p><code>gst-launch-early-exit-normal.sh</code> is difficult to check its operation.<br>
+This example is easy for the user to understand by adding labels according to the path.<br>
+If the brightness of the camera is bright, exit the network, and if it is dark, proceed to the next path (In this case, no further steps).</p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

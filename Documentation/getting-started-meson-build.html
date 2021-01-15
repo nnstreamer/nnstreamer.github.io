@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Meson/Ninja Build</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="Documentation/getting-started-meson-build.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h2 id="getting-started-mesonninja-build">Getting Started: Meson/Ninja Build</h2>
+<p>NNStreamer uses meson/ninja as its standard build environment; both Tizen(GBS-OBS/.rpm) and Ubuntu(pdebuild/.deb) builds uses meson/ninja.</p>
+<p>With meson/ninja, you may build in the git repo directory and install nnstreamer binaries to your designated directories.
+However, you should be careful on configuring nnstreamer; i.e., the paths of subplugins and .ini file locations. Please note that nnstreamer tries to load /etc/nnstreamer.ini by default.</p>
+<ul>
+<li>https://mesonbuild.com/Getting-meson.html</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>The following dependencies are needed to compile/build/run.</p>
+<ul>
+<li>gcc/g++ (C++14 if you want C++-class as filters)</li>
+<li>gstreamer 1.0 and its relatives</li>
+<li>glib 2.0</li>
+<li>meson &gt;= 0.50</li>
+<li>ninja-build</li>
+<li>Neural network frameworks or libraries for plugins (e.g., tensorflow) you want to use, including their pkgconfig files or mechanisms to support meson to discover the corresponding frameworks. If you use our packages for tensorflow/pytorch, you do not need to worry.
+<ul>
+<li>Possible frameworks for "extra" plugins: tensorflow, pytorch, protobuf, flatbuf, openvino, ncsdk2, Verisilicon-Vivante, SNPE, ...</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/myungjoo/SSAT">SSAT</a> (optional. required for unit testing)</li>
+<li>gtest (optional. required for unit testing)</li>
+</ul>
+<p>The minimal requirement to build nnstreamer with default configuration is</p>
+<pre><code class="language-bash">$ sudo apt install meson ninja-build gcc g++ libglib2.0-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+</code></pre>
+<p><em><strong>1. Clone the needed repositories</strong></em></p>
+<pre><code class="language-bash">$ git clone https://github.com/myungjoo/SSAT ssat
+$ git clone https://git.tizen.org/cgit/platform/upstream/tensorflow
+$ git clone https://github.com/nnstreamer/nnstreamer
+</code></pre>
+<p><em><strong>2. Fix tensorflow build errors</strong></em></p>
+<p>You may skip this if you have downloaded binary packages from PPA.</p>
+<p>A script, <code>tensorflow/contrib/lite/Makefile</code>, may fail, depending your shell.
+Replace the ARCH macro (HOST_ARCH in some versions):</p>
+<p>From:</p>
+<pre><code class="language-makefile">ARCH := $(shell if [[ $(shell uname -m) =~ i[345678]86 ]]; then echo x86_32; else echo $(shell uname -m); fi)
+</code></pre>
+<p>To:</p>
+<pre><code class="language-makefile">ARCH := $(shell uname -m | sed -e 's/i[3-8]86/x86_32/')
+</code></pre>
+<p><em><strong>3. Configure the build</strong></em></p>
+<p>Configure build in <code>./build</code> directory with default options.</p>
+<pre><code class="language-bash">$ meson build
+</code></pre>
+<p>For possible configurations, please refer to <a href="https://github.com/nnstreamer/nnstreamer/blob/main/meson_options.txt">meson_options.txt</a>.
+If you want to designate nnstreamer's binary locations, provide such with <code>--prefix</code>, <code>--sysconfdir</code>, <code>--libdir</code>, <code>--bindir</code>, and <code>--includedir</code>.
+For example, in order to install as general Linux system libraries you may configure:</p>
+<pre><code class="language-bash">$ meson build ${whateveroptionyouwant....} --prefix=/ --sysconfdir=/etc --libdir=/usr/lib --bindir=/usr/bin --includedir=/usr/include
+</code></pre>
+<p>Documentation for possible meson options: WIP</p>
+<p><em><strong>4. Build</strong></em></p>
+<p>Assuming you have configured meson at <code>./build</code>.</p>
+<pre><code class="language-bash">$ ninja -C build
+</code></pre>
+<p><em><strong>5. Install</strong></em></p>
+<p>Assuming you have configured meson at <code>./build</code>.</p>
+<pre><code class="language-bash">$ ninja -C build install
+</code></pre>
+<p>Then, it will install:</p>
+<ul>
+<li>nnstreamer plugins to <code>{libdir}/gstreamer-1.0/</code>
+</li>
+<li>libraries to <code>{libdir}/</code>
+</li>
+<li>subplugins to <code>{prefix}/lib/nnstreamer/PLUGIN-TYPE/</code>
+</li>
+<li>common header files to <code>{includedir}/</code>
+</li>
+</ul>
+<p><em><strong>6. Verifying installation</strong></em></p>
+<p>Unless you have given sysconfdir (<code>--sysconfdir</code> meson option), <code>/etc/nnstreamer.ini</code> is the default configuration file. If <code>--sysconfdir</code> was given at build time, the default configuration file is at {sysconfdir}/nnstreamer.ini.</p>
+<p>Unless overriden by envvars, the paths in the .ini file are used to search for subplugins. Therefore, if a subplugin (e.g., tensorflow-lite filter) does not work, check the subplugin locations and their configurations first.</p>
+<p>We will supply utility to verify such issues automatically soon: https://github.com/nnstreamer/nnstreamer/issues/2638 (nnstreamer-util's <code>nnstreamer-check</code>).</p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

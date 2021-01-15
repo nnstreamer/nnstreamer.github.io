@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>tensor_aggregator</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst/nnstreamer/tensor_aggregator/README.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamertensor_aggregator">NNStreamer::tensor_aggregator</h1>
+<h2 id="supported-features">Supported features</h2>
+<p>GstTensorAggregator is a plugin to aggregate the tensor using GstAdapter.</p>
+<p>This plugin handles the buffer with the unit <strong>frame</strong>.
+Each incoming or outgoing buffer is supposed a single tensor, which may contain one or multi frames.</p>
+<p>GstTensorAggregator gets the size of one frame with <code>frames-in</code>, aggregates the frames, and pushes a buffer with <code>frames-out</code> frames.
+After pushing an outgoing buffer, GstTensorAggregator flushes the <code>frames-flush</code> frames.</p>
+<p>For example, GstTensorAggregator with the properties <code>frames-in=3</code>, <code>frames-out=4</code>, <code>frames-flush=2</code></p>
+<pre><code>Incoming buffer
+--------------------------------------------------------------------
+|  1st buffer  |  2nd buffer  |  3rd buffer  |  4th buffer  |
+--------------------------------------------------------------------
+| 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 
+--------------------------------------------------------------------
+Outgoing buffer
+--------------------------------------------------------------------
+|  1st out-buffer   |
+--------------------------------------------------------------------
+ flushed  |  2nd out-buffer   |
+--------------------------------------------------------------------
+            flushed |  3rd out-buffer   |
+--------------------------------------------------------------------
+                      flushed |  4th out-buffer   |
+--------------------------------------------------------------------
+                                flushed |  5th out-buffer   |
+--------------------------------------------------------------------
+</code></pre>
+<p>Please be informed that, to ensure the tensor configuration, you have to change the dimension if input and output frames are different. (See the property <code>frames-dim</code>.)</p>
+<h3 id="disaggregation">Dis-aggregation</h3>
+<p>With larger <code>frames-in</code> values and smaller <code>frames-out</code> values, the output stream may have more frames than its input stream: <code>dis-aggregation</code>.
+For example, if a neural network model multiplies picture frames of a video stream, generating 120FPS from 30FPS video, aggregated in a single video (in tensor format) stream output, we can generate a 120FPS stream from a 30FPS (4 frames per buffer) stream. If the model generates 4 video (tensor format) streams with other/tensors, we may merge them first and apply aggregator for the same effect.</p>
+<h2 id="sink-pads">Sink Pads</h2>
+<p>One "Always" sink pad exists. The capability of sink pad is <code>other/tensor</code>.</p>
+<h2 id="source-pads">Source Pads</h2>
+<p>One "Always" source pad exists. The capability of source pad is <code>other/tensor</code>.
+It does not support <code>other/tensors</code> because each frame (or a set of frames consisting a buffer) is supposed to be represented by a <strong>single</strong> tensor instance.</p>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>
+<p>frames-in: The number of frames in incoming buffer. (Default 1)</p>
+<p>GstTensorAggregator itself cannot get the number of frames in buffer.
+This plugin calculates the size of one frame with this property.</p>
+</li>
+<li>
+<p>frames-out: The number of frames in outgoing buffer. (Default 1)</p>
+<p>GstTensorAggregator calculates the size of outgoing frames and pushes a buffer to source pad.</p>
+</li>
+<li>
+<p>frames-flush: The number of frames to flush. (Default 0)</p>
+<p>GstTensorAggregator flushes the bytes (<code>frames-flush</code> frames) in GstAdapter after pushing a buffer.
+If set 0 (default value), all outgoing frames will be flushed.</p>
+</li>
+<li>
+<p>frames-dim: The dimension index of frames in tensor. (Default value is (NNS_TENSOR_RANK_LIMIT - 1))</p>
+<p>If <code>frames-in</code> and <code>frames-out</code> are different, GstTensorAggregator has to change the dimension of tensor.
+With this property, GstTensorAggregator changes the out-caps.</p>
+<p>If set this value in 0 ~ (NNS_TENSOR_RANK_LIMIT - 2) and <code>concat</code> is true, GstTensorAggregator will concatenate the output buffer.</p>
+</li>
+<li>
+<p>concat: The flag to concatenate output buffer. (Default true)</p>
+<p>If <code>concat</code> is true and <code>frames-out</code> is larger than 1, GstTensorAggregator will concatenate the output buffer with the axis <code>frames-dim</code>.</p>
+</li>
+</ul>
+<h3 id="properties-for-debugging">Properties for debugging</h3>
+<ul>
+<li>silent: Enable/disable debugging messages.</li>
+</ul>
+<h2 id="usage-examples">Usage Examples</h2>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_aggregator frames-out=10 frames-flush=5 frames-dim=3 ! tensor_sink
+</code></pre>
+<p>GstTensorAggregator receives a buffer with 1 frame (dimension 3:640:480:1), pushes a buffer with 10 frames (dimension 3:640:480:10), and flushes 5 frames after pushing a buffer.</p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

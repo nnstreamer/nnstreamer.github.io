@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>tensor_converter</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst/nnstreamer/tensor_converter/README.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamertensor_converter">NNStreamer::tensor_converter</h1>
+<h2 id="supported-features">Supported features</h2>
+<ul>
+<li>Video: direct conversion of video/x-raw / non-interlace(progressive) to [height][width][#Colorspace] tensor. (#Colorspace:width:height:frames-per-tensor)
+<ul>
+<li>Supported colorspaces: RGB (3), BGRx (4), Gray8 (1)</li>
+<li>You may express <code>frames-per-tensor</code> to have multiple image frames in a tensor like audio and text as well.</li>
+<li>If <code>frames-per-tensor</code> is not configured, the default value is 1.</li>
+<li>Golden tests for such input</li>
+</ul>
+</li>
+<li>Audio: direct conversion of audio/x-raw with arbitrary numbers of channels and frames per tensor to [frames-per-tensor][channels] tensor. (channels:frames-per-tensor)
+<ul>
+<li>The number of frames per tensor is supposed to be configured manually by stream pipeline developer with the property of <code>frames-per-tensor</code>.</li>
+<li>If <code>frames-per-tensor</code> is not configured, the default value is 1.</li>
+</ul>
+</li>
+<li>Text: direct conversion of text/x-raw with UTF-8 to [frames-per-tensor][input-dim] tensor. (input-dim:frames-per-tensor)
+<ul>
+<li>The number of frames per tensor is supposed to be configured manually by stream pipeline developer with the property of <code>frames-per-tensor</code>.</li>
+<li>If <code>frames-per-tensor</code> is not configured, the default value is 1.</li>
+<li>The size of a text frame should be configured by developer with the property <code>input-dim</code>. Because the dimension of tensor is the key metadata of a tensor stream pipeline, we need to fix the value before actually looking at the actual stream data.</li>
+</ul>
+</li>
+</ul>
+<h2 id="planned-features">Planned features</h2>
+<p>From higher priority</p>
+<ul>
+<li>Support other color spaces (IUV, BGGR, ...)</li>
+</ul>
+<h2 id="sink-pads">Sink Pads</h2>
+<p>One "Always" sink pad exists. The capability of sink pad is <code>video/x-raw</code>, <code>audio/x-raw</code>, <code>text/x-raw</code> and <code>application/octet-stream</code>.</p>
+<h2 id="source-pads">Source Pads</h2>
+<p>One "Always" source pad exists. The capability of source pad is <code>other/tensor</code>. It does not support <code>other/tensors</code> because each frame (or a set of frames consisting a buffer) is supposed to be represented by a <strong>single</strong> tensor instance.</p>
+<p>For each outgoing frame (on the source pad), there always is a <strong>single</strong> instance of <code>other/tensor</code>. Not less and not more.</p>
+<h2 id="performance-characteristics">Performance Characteristics</h2>
+<ul>
+<li>Video
+<ul>
+<li>Unless it is RGB with <code>width % 4 &gt; 0</code> or Gray8 with <code>width % 4 &gt; 0</code>, there are no memcpy or data modification processes. It only converts meta data in such cases.</li>
+<li>Otherwise, there will be one memcpy for each frame.</li>
+</ul>
+</li>
+<li>Audio
+<ul>
+<li>TBD.</li>
+</ul>
+</li>
+<li>Text
+<ul>
+<li>TBD.</li>
+</ul>
+</li>
+</ul>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>frames-per-tensor: The number of incoming media frames that will be contained in a single instance of tensors. With the value &gt; 1, you can put multiple frames in a single tensor.</li>
+</ul>
+<h3 id="properties-for-debugging">Properties for debugging</h3>
+<ul>
+<li>silent: Enable/disable debugging messages.</li>
+</ul>
+<h2 id="usage-examples">Usage Examples</h2>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_sink
+</code></pre>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

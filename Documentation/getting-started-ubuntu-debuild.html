@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Ubuntu Debuild/Pdebuild</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/home.svg" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="http://nnsuite.mooo.com/nnstreamer/html/index.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="Documentation/getting-started-ubuntu-debuild.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h2 id="getting-started-ubuntu-debuildpdebuild">Getting Started: Ubuntu Debuild/Pdebuild</h2>
+<p>In order to control how pdebuild/debuild build, you need to edit files in <code>${nnstreamer-source}/debian/</code>.</p>
+<h3 id="pdebuild-a-sandboxed-build-environment-ubuntu-1604-1804">Pdebuild, a sandboxed build environment. (Ubuntu 16.04, 18.04)</h3>
+<p>This guide uses the nnstreamer PPA to resolve additional build-dependencies (e.g., tensorflow/tensorflow-lite 1.13).</p>
+<p>Install build tools for pdebuild:</p>
+<pre><code class="language-bash">$ sudo apt install pbuilder debootstrap devscripts
+</code></pre>
+<p>The following example configuration is for Ubuntu 16.04:</p>
+<pre><code class="language-bash">$ cat ~/.pbuilderrc
+DISTRIBUTION=xenial
+COMPONENTS="main restricted universe multiverse"
+OTHERMIRROR="deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse |\
+  deb http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse |\
+  deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse |\
+  deb [trusted=yes] http://ppa.launchpad.net/nnstreamer/ppa/ubuntu xenial main"
+$ sudo ln -s  ~/.pbuilderrc /root/.pbuilderrc
+$ sudo pbuilder create
+</code></pre>
+<p>Run pdebuild to build and get the package.</p>
+<pre><code class="language-bash">$ pdebuild
+$ ls -al /var/cache/pbuilder/result/*.deb
+</code></pre>
+<p>Then, you may install the resulting .deb files to your system.</p>
+<p>Refer to <a href="https://wiki.ubuntu.com/PbuilderHowto">PbuilderHowto</a> for more about pdebuild.</p>
+<h3 id="debuild-build-with-system-libraries-ubuntudebian">Debuild, build with system libraries. (Ubuntu/Debian)</h3>
+<p>After installing all the required packages to your system, you may run <code>debuild</code> to get .deb packages.</p>
+<p>In Ubuntu, you may prepare your system easily with the following commands, which installs prebuilt binaries from nnstreamer's PPA repository.</p>
+<pre><code class="language-bash">$ sudo apt-add-repository ppa:nnstreamer
+$ sudo apt install ssat tensorflow-dev tensorflow-lite-dev libprotobuf-dev # you may add pytorch and other libraries, too
+</code></pre>
+<p>Note that ssat is required for unit testing. You may download it at <a href="https://github.com/myungjoo/SSAT">Github SSAT</a>.</p>
+<p>Refer to <a href="https://www.debian.org/doc/manuals/maint-guide/build.en.html#debuild">debuild command</a> for how to use <code>debuild</code>.</p>
+<p><em><strong>1. Clone the needed repositories</strong></em></p>
+<p>You may skip this if you have downloaded and installed PPA packages of SSAT and tensorflow.</p>
+<pre><code class="language-bash">$ git clone https://github.com/myungjoo/SSAT ssat
+$ git clone https://git.tizen.org/cgit/platform/upstream/tensorflow
+$ git clone https://github.com/nnstreamer/nnstreamer
+</code></pre>
+<p><em><strong>2. Fix tensorflow build errors</strong></em></p>
+<p>You may skip this if you have downloaded and installed PPA packages of SSAT and tensorflow.</p>
+<p>A script, <code>tensorflow/contrib/lite/Makefile</code>, may fail, depending your shell.
+Replace the ARCH macro (HOST_ARCH in some versions):</p>
+<p>From:</p>
+<pre><code class="language-makefile">ARCH := $(shell if [[ $(shell uname -m) =~ i[345678]86 ]]; then echo x86_32; else echo $(shell uname -m); fi)
+</code></pre>
+<p>To:</p>
+<pre><code class="language-makefile">ARCH := $(shell uname -m | sed -e 's/i[3-8]86/x86_32/')
+</code></pre>
+<p><em><strong>3. Prepare for debuild (installing required dependencies).</strong></em></p>
+<p>Skip ssat and tensorflow if you have already installed them.</p>
+<pre><code class="language-bash">$ for i in ssat tensorflow nnstreamer; do \
+  (cd $i &amp;&amp; sudo mk-build-deps --install debian/control &amp;&amp; sudo dpkg -i *.deb || break); \
+  done
+</code></pre>
+<p><em><strong>4. Run debuild and get .deb packages.</strong></em></p>
+<p>Skip ssat and tensorflow if you have already installed them.</p>
+<pre><code class="language-bash">$ export DEB_BUILD_OPTIONS="parallel=$(($(cat /proc/cpuinfo |grep processor|wc -l) + 1))"
+$ for i in ssat tensorflow nnstreamer; do \
+  (cd $i &amp;&amp; time debuild -us -uc || break); \
+  done
+</code></pre>
+<p>If there is a missing package, debuild will tell you which package is missing.
+If you haven't configured debuild properly, yet, you will need to add <code>-uc -us</code> options to <code>debuild</code>.</p>
+<p><em><strong>5. Install the generated .deb files.</strong></em></p>
+<p>Skip ssat and tensorflow if you have already installed them.</p>
+<p>The files will be there at the parent dir. E. g. at nnbuilder/.. directory.</p>
+<p>In order to install them (should run as root):</p>
+<pre><code class="language-bash">$ sudo apt install ./ssat_*.deb ./tensorflow-lite-dev_*.deb ./tensorflow-dev_*.deb
+$ sudo apt install ./nnstreamer_0.1.0-1rc1_amd64.deb
+</code></pre>
+<p>If you need nnstreamer development package:</p>
+<pre><code class="language-bash">#apt install ./nnstreamer-dev_0.1.0-1rc1_amd64.deb
+</code></pre>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
