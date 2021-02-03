@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Debugging tools</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="Documentation/hotdoc/index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="Documentation/API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="Documentation/hotdoc/index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="Documentation/API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="tools/debugging/README.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h2 id="debugging">Debugging</h2>
+<p>GStreamer has a debugging feature that automatically generates pipeline graphs.</p>
+<ul>
+<li>
+<p>https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html</p>
+</li>
+<li>
+<p>Table of Contents</p>
+<ul>
+<li><a href="tools/debugging/README.html#displaying-debug-messages-with-gst_debug">Displaying debug messages with $GST_DEBUG</a></li>
+<li><a href="tools/debugging/README.html#generating-pipeline-graph-with-gst_debug_dump_dot_dir">Generating pipeline graph with $GST_DEBUG_DUMP_DOT_DIR</a></li>
+<li><a href="tools/debugging/README.html#debugging-remotely-with-gstdebugger">Debugging remotely with gst-debugger</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="displaying-debug-messages-with-gst_debug">Displaying debug messages with $GST_DEBUG</h3>
+<p>If GStreamer has been configured with --enable-gst-debug=yes, this variable can be set to a list of debug options, which cause GStreamer to print out different types of debugging information to stderr. The variable takes a comma-separated list of "category_name:level" pairs to set specific levels for the individual categories. The level value ranges from 0 (nothing) to 9 (MEMDUMP).
+For more details, refer to https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html</p>
+<ul>
+<li>1 (ERROR): Logs all fatal errors.</li>
+<li>2 (WARNING): Logs all warnings.</li>
+<li>3 (FIXME): Logs all fixme messages.</li>
+<li>4 (INFO): Logs all informational messages.</li>
+<li>5 (DEBUG): Logs all debug messages.</li>
+<li>6 (LOG): Logs all log messages.</li>
+<li>7 (TRACE): Logs all trace messages.</li>
+<li>9 (MEMDUMP): Log all memory dump messages.</li>
+</ul>
+<h4 id="how-to-use-debug-options">How to use debug options</h4>
+<p>The category_name can contain "<em>" as a wildcard. For example, setting GST_DEBUG to GST_AUTOPLUG:6,GST_ELEMENT_</em>:4, will cause the GST_AUTOPLUG category to be logged at full LOG level, while all categories starting with GST_ELEMENT_ will be logged at INFO level. To get all possible debug output, set GST_DEBUG to *:9. For debugging purposes a *:6 debug log is usually the most useful, as it contains all important information, but hides a lot of noise such as refs/unrefs. For bug reporting purposes, a *:6 log is also what will be requested usually. It's often also worth running with <em>:3 to see if there are any non-fatal errors or warnings that might be related to the problem at hand. Since GStreamer 1.2 it is also possible to specify debug levels by name, e.g. GST_DEBUG=</em>:WARNING,<em>audio</em>:LOG</p>
+<pre><code class="language-bash">$ export GST_DEBUG=[Level]
+</code></pre>
+<p>Use gst-launch-1.0 --gst-debug-help to obtain the list of all registered categories.</p>
+<pre><code class="language-bash">$ gst-launch-1.0 --gst-debug-help
+</code></pre>
+<h4 id="case-study-1-tracing-gstreamer-plugins-with-gst_debug">Case study 1: Tracing Gstreamer plugins with GST_DEBUG</h4>
+<p>Traces for buffer flow, events and messages in TRACE level.</p>
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7,GST_BUFFER*:7,GST_EVENT:7,GST_MESSAGE:7" \
+GST_TRACERS=log gst-launch-1.0 fakesrc num-buffers=10 ! fakesink -
+</code></pre>
+<p>Print some pipeline stats on exit.</p>
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS="stats;rusage" \
+GST_DEBUG_FILE=trace.log gst-launch-1.0 fakesrc num-buffers=10 \
+sizetype=fixed ! queue ! fakesink &amp;&amp; gst-stats-1.0 trace.log
+</code></pre>
+<p>Get ts, average-cpuload, current-cpuload, time, and plot.</p>
+<ul>
+<li>https://github.com/GStreamer/gstreamer/blob/master/scripts/gst-plot-traces.sh</li>
+</ul>
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS="stats;rusage" \
+GST_DEBUG_FILE=trace.log /usr/bin/gst-play-1.0 ./your_movie.mp4 &amp;&amp; \
+./scripts/gst-plot-traces.sh --format=png | gnuplot eog trace.log.*.png
+</code></pre>
+<p>Print processing latencies.</p>
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS=latency gst-launch-1.0  \
+audiotestsrc num-buffers=10 ! audioconvert ! volume volume=0.7 ! autoaudiosink
+</code></pre>
+<p>Raise a warning if a leak is detected.</p>
+<pre><code class="language-bash">$ GST_TRACERS="leaks" gst-launch-1.0 videotestsrc num-buffers=10 ! fakesink
+</code></pre>
+<p>Check if any GstEvent or GstMessage is leaked and raise a warning.</p>
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS="leaks(GstEvent,GstMessage)" \
+gst-launch-1.0 videotestsrc num-buffers=10 ! fakesink
+</code></pre>
+<h4 id="case-study-2-tracing-individual-nnstreamer-elements-with-gst_debug-and-silent-property">Case study 2: Tracing individual NNStreamer elements with GST_DEBUG and silent property</h4>
+<p>Each NNStreamer element has the <code>silent</code> property. An NNStreamer element can be traced in verbose mode by setting <code>FALSE</code> to the <code>silent</code> property.</p>
+<pre><code class="language-bash">$ GST_DEBUG="tensor_converter:7" \
+gst-launch-1.0 videotestsrc ! tensor_converter silent=FALSE ! tensor_sink
+</code></pre>
+<p>In each element's source code, there is <code>DEFAULT_SILENT</code> macro that allows you to change the default <code>silent</code> value. Setting <code>FALSE</code> to <code>DEFAULT_SILENT</code> and rebuilding the library will set verbose mode of the element by default without changing your application code.</p>
+<h3 id="generating-pipeline-graph-with-gst_debug_dump_dot_dir">Generating pipeline graph with $GST_DEBUG_DUMP_DOT_DIR</h3>
+<p>Regardless of whether you are using gst-launch-1.0 or a GStreamer application, you have to need to define the GST_DEBUG_DUMP_DOT_DIR environment variable.
+GStreamer uses this environment variable as the output location to generate pipeline graphs.</p>
+<p>To obtain .dot files, simply set the GST_DEBUG_DUMP_DOT_DIR environment variable to point to the folder where you want the files to be placed.</p>
+<ul>
+<li>https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html#getting-pipeline-graphs</li>
+</ul>
+<h4 id="prerequisite">Prerequisite</h4>
+<p>You must install the below packages to visualize the pipeline operations.</p>
+<pre><code class="language-bash">$ sudo apt -y install graphviz libgstreamer1.0-dev
+$ sudo apt -y install xdot gsteamer1.0-tools
+</code></pre>
+<h4 id="gstreamer-application-macros-for-custom-gsteamer-application">Gstreamer application macros for custom GSteamer application</h4>
+<p>If you're using a custom GStreamer application, you'll need to use GStreamer debug macros to trigger pipeline generation.
+For instance, to see a complete pipeline graph, add the following macro invocation at the point in your application where your pipeline elements have been created and linked:</p>
+<ul>
+<li><a href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstInfo.html#GST-DEBUG-BIN-TO-DOT-FILE:CAPS">GST_DEBUG_BIN_TO_DOT_FILE()</a></li>
+<li><a href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstInfo.html#GST-DEBUG-BIN-TO-DOT-FILE-WITH-TS:CAPS">GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS()</a></li>
+</ul>
+<pre><code class="language-bash">GST_DEBUG_BIN_TO_DOT_FILE(pipeline, GST_DEBUG_GRAPH_SHOW_ALL, "pipeline")
+</code></pre>
+<p>If you are using a custom GStreamer app, pipeline files will only be triggered based on your invocation of the GST_DEBUG_BIN_TO_DOT_FILE() macros.</p>
+<h4 id="how-to-run">How to run</h4>
+<pre><code class="language-bash">$ export GST_DEBUG_DUMP_DOT_DIR=./tracing/
+$ mkdir tracing
+$ GST_DEBUG="GST_TRACER:7" GST_TRACERS="framerate" gst-launch-1.0 videotestsrc ! videorate max-rate=15 ! fakesink sync=true
+$ ls -al ./tracing/
+  0.00.00.328088000-gst-launch.NULL_READY.dot
+  0.00.00.330350000-gst-launch.READY_PAUSED.dot
+  0.00.02.007860000-gst-launch.PAUSED_PLAYING.dot
+  0.00.05.095596000-gst-launch.PLAYING_PAUSED.dot
+  0.00.05.104625000-gst-launch.PAUSED_READY.dot
+</code></pre>
+<h4 id="how-to-convert-a-pipeling-dot-file-to-pdf">How to convert a pipeling dot file to pdf</h4>
+<p>XDot is an interactive viewer for graphs written in Graphviz's dot language. You can view the pipeline graph graphically with XDot.</p>
+<pre><code class="language-bash">$ sudo apt install xdot
+$ xdot 0.00.00.328088000-gst-launch.NULL_READY.dot
+</code></pre>
+<p><img src="tools/debugging/gst-debug-dump-dot-dir-xot.png" border="0"></p>
+<p>If you want to get a PDF format file from .dot file, You need to convert the to a graphical format with dot command.
+The below exampe shows how to render PAUSED_READY.dot pipeline.</p>
+<pre><code class="language-bash">* Case 1: Convert .dot to .pdf
+$ dot -Tpdf 0.00.05.104625000-gst-launch.PAUSED_READY.dot &gt; pipeline_PAUSED_READY.pdf
+$ evince pipeline_PaUSED_READY.pdf
+* Case 2: Convert .dot to .png
+$ dot -Tpng 0.00.05.104625000-gst-launch.PAUSED_READY.dot &gt; pipeline_PAUSED_READY.png
+$ eog pipeline_PaUSED_READY.png
+</code></pre>
+<h4 id="case-study-test-case-in-nnstreamer">Case study: Test case in NNstreamer</h4>
+<p>First of all, try to build NNStreamer source code with cmake in nnstreamer/build folder.</p>
+<pre><code class="language-bash">nnstreamer/test$ ./testAll.sh 1
+nnstreamer/test$ cd performance/debug/tensor_convertor
+$ eog ${number_of_test_case}.png
+</code></pre>
+<p>And then, you can see elements and caps graph in a pipeline.</p>
+<h3 id="debugging-remotely-with-gstdebugger">Debugging remotely with gst-debugger</h3>
+<p>gst-debugger (a.k.a Gstreamer Debugger) toolset allows to introspect gst-pipeline remotely. It provides graphical client, and GStreamer's plugin.
+This guide is written on Ubuntu 16.04 X86_64 distribution.</p>
+<h4 id="build-the-source-code">Build the source code</h4>
+<pre><code class="language-bash">$ git clone https://github.com/GNOME/gst-debugger.git
+$ cd gst-debugger
+$ git checkout 0.90.0
+$ ./autogen.sh
+$ vi ./src/gst-debugger/controller/controller.cpp
+---------------- patch: start --------------------
+@@ -16,6 +16,7 @@
+ #include "common/common.h"
+
+ #include &lt;gtkmm.h&gt;
++#include &lt;iostream&gt;
+
+ Controller::Controller(IMainView *view)
+  : view(view)
+---------------- patch: end ----------------------
+$ make -j`nproc`
+$ sudo make install
+$ ls -al /usr/local/lib/libgst-debugger-common*.so.*
+lrwxrwxrwx 1 root root      37 Nov 19 14:59 /usr/local/lib/libgst-debugger-common-c-0.1.so.0 -&gt; libgst-debugger-common-c-0.1.so.0.0.0
+-rwxr-xr-x 1 root root  250808 Nov 19 14:59 /usr/local/lib/libgst-debugger-common-c-0.1.so.0.0.0
+lrwxrwxrwx 1 root root      39 Nov 19 14:59 /usr/local/lib/libgst-debugger-common-cpp-0.1.so.0 -&gt; libgst-debugger-common-cpp-0.1.so.0.0.0
+-rwxr-xr-x 1 root root 1848904 Nov 19 14:59 /usr/local/lib/libgst-debugger-common-cpp-0.1.so.0.0.0
+
+</code></pre>
+<h4 id="run-gstdebugger">Run gst-debugger</h4>
+<p>The toolset consists of the rich client, and debugserver (Default port: 8080). debugserver is implemented as a tracer plugin, and has to be loaded with your pipeline as following:</p>
+<pre><code class="language-bash">Case1: Run videotestsrc plugin with gst-launch command.
+$ GST_TRACERS="debugserver(port=8080)" gst-launch-1.0 videotestsrc ! autovideosink
+
+Case2: Run a Totem movie player that is developed by GStreamer.
+$ wget http://www.html5videoplayer.net/videos/toystory.mp4
+$ GST_TRACERS="debugserver(port=8080)" totem  ./toystory.mp4
+</code></pre>
+<p>Now you can use a debugging client to connect to the debugger and inspect your pipeline as following:</p>
+<pre><code class="language-bash">$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+$ gst-debugger-1.0
+</code></pre>
+<p>Starting from now, enjoy a debugging with gst-debugger.
+<img src="tools/debugging/gstreamer-debugger-screen.png" border="0"></p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
