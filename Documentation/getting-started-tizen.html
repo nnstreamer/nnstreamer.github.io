@@ -149,19 +149,19 @@ $('body').removeClass('no-script');
 <p><a href="https://source.tizen.org/documentation/developer-guide/getting-started-guide/installing-development-tools">How to install GBS</a></p>
 <p><a href="https://source.tizen.org/documentation/reference/git-build-system/usage/gbs-build">How to build with GBS</a></p>
 <h3 id="build-without-options">Build without options</h3>
-<pre><code class="language-bash">$ gbs build
+<pre><code class="language-bash">$ gbs -c .TAOS-CI/.gbs.conf build
 </code></pre>
 <h3 id="build-with-options">Build with options</h3>
 <p><em><strong>Enable full unit testing</strong></em></p>
-<pre><code class="language-bash">$ gbs build --define "unit_test 1"
+<pre><code class="language-bash">$ gbs -c .TAOS-CI/.gbs.conf build --define "unit_test 1"
 </code></pre>
 <p><em><strong>Get unit-test coverage report with the unit test for aarch64</strong></em></p>
-<pre><code class="language-bash">$ gbs build -A aarch64 --define "unit_test 1" --define "testcoverage 1"
+<pre><code class="language-bash">$ gbs -c .TAOS-CI/.gbs.conf build -A aarch64 --define "unit_test 1" --define "testcoverage 1"
 </code></pre>
 <p><em><strong>Update Tizen-build options and build it without git commit</strong></em></p>
 <pre><code class="language-bash">$ vi packaging/nnstreamer.spec
 # Modify the default options described in the top lines
-$ gbs build --include-all
+$ gbs -c .TAOS-CI/.gbs.conf build --include-all
 # Build with changes not committed.
 </code></pre>
 <h3 id="install-gbsbuilt-packages-to-target-devices">Install GBS-built packages to target devices</h3>
