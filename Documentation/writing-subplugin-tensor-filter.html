@@ -174,6 +174,38 @@ $
 <h3 id="dependencies-libraries">Dependencies / Libraries</h3>
 <p>As you can see in packaging/*.spec and meson.build of the template, <code>nnstreamer-dev</code> is the only mandatory dependency. Anyway, of course, you need to add dependencies for your own library/hardware usages.</p>
 <p>In order to provide callbacks required by <code>tensor_filter</code>, you need to include <code>nnstreamer_plugin_api_filter.h</code>, which is supplied with <code>nnstreamer-dev</code> package (in Tizen or Ubuntu).</p>
+<h3 id="testing">Testing</h3>
+<p>There is a templated test suite provided inside <code>nnstreamer-test-dev</code> package for dpkg, <code>nnstreamer-test-devel</code> for tizen distro.
+You may install or <em>BuildRequire</em> this package to utilize predefined test templates.
+After installing the package, you can locate the package.</p>
+<pre><code class="language-sh">$ TEMPLATE_DIR=$(pkg-config nnstreamer --variable=test_templatedir)
+$ echo $TEMPLATE_DIR # result varies depending on the platform
+/usr/lib/nnstreamer/bin/unittest-nnstreamer
+$ ls $TEMPLATE_DIR
+nnstreamer-test.ini.in  subplugin_unittest_template.cc.in
+</code></pre>
+<p>There are two test template provided. One is conf file for the test enviornment, and the other is for the basic unittests (requires gtest).</p>
+<p>List of variables that needs to be provided are provided below...
+| File                              | Variables                                                                                                                            |</p>
+<table>
+<tr>
+<td> nnstreamer-test.ini.in</td>
+<td> SUBPLUGIN_INSTALL_PREFIX, ENABLE_ENV_VAR, ENABLE_SYMBOLIC_LINK, TORCH_USE_GPU, TFLITE_SUBPLUGIN_PRIORITY, ELEMENT_RESTRICTION_CONFIG</td>
+</tr>
+<tr>
+<td> subplugin_unittest_template.cc.in</td>
+<td> EXT_NAME, EXT_ABBRV, MODEL_FILE,</td>
+</tr>
+</table>
+<p>You can change the provided each variable on the go using a script, for example...</p>
+<pre><code class="language-sh">$ sed s/@EXT_ABBRV@/cutom_plugin/g subplugin_unittest_template.cc.in &gt; subplugin_unittest.cc
+</code></pre>
+<p>but preferably, using meson through <code>configure_data</code> and <code>configure_file</code></p>
+<p>and defining <code>NNSTREAMER_CONF_PATH</code> environment variable will locate the <code>nnstreamer-test.ini</code> to find your subplugin</p>
+<p>with generated <code>nnstreamer-test.ini</code></p>
+<p>You can run the test as below:</p>
+<pre><code class="language-sh">NNSTREMAER_CONF_PATH=your/conf/file.ini ./subplugin_unittest
+</code></pre>
 <h3 id="install-path">Install Path</h3>
 <p>The default <code>tensor_filter</code> subplugin path is <code>/usr/lib/nnstreamer/filters/</code>. It can be modified by configuring <code>/etc/nnstreamer.ini</code>.</p>
 <h3 id="flexibledynamic-inputoutput-tensor-dimension">Flexible/Dynamic Input/Output Tensor Dimension</h3>
