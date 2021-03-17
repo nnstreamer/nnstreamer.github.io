@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"readme.md","urls":[{"url":"Documentation/component-description.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"readme.md","urls":[{"url":"component-description.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});

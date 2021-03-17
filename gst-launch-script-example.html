@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href=".">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>gst-launch script examples</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst-launch-script-example.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h3 id="script-of-producerconsumer">Script of Producer/Consumer</h3>
+<h4 id="gstreamer-producer">GStreamer: producer</h4>
+<pre><code class="language-bash">$ ffmpeg -f x11grab -r 15 -s 1280x720 -i :0.0+0,0 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video0
+
+$ gst-launch-1.0 videotestsrc ! v4l2sink device=/dev/video0
+
+$ wget http://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_640_3MG.mp4
+$ gst-launch-1.0  filesrc location=./file_example_MP4_640_3MG.mp4 ! decodebin ! videoconvert ! v4l2sink device=/dev/video0
+</code></pre>
+<h4 id="gstreamer-consumer">GStreamer: consumer</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 v4l2src device=/dev/video0 ! xvimagesink
+(Tip: In case of remote connection such as VNC, run "gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! ximagesink")
+
+$ ./nnstreamer_example_filter
+</code></pre>
+<h3 id="script-of-nnstreamer_example_filter-using-tensorflow-lite-model-eg-mobilenet">Script of nnstreamer_example_filter using tensorflow lite model (e.g., Mobilenet)</h3>
+<ul>
+<li>ltrace -f -tt  -e gst_element_get_type -e memcpy  -o mytracing1.log  ...</li>
+<li>$ ./get-model.sh image-classification-tflite</li>
+</ul>
+<pre><code class="language-bash">gst-launch-1.0 -v -m --gst-debug=3 \
+v4l2src ! videoconvert ! videoscale ! video/x-raw,width=640,height=480,format=RGB ! tee name=t_raw \
+textoverlay name=overlay font-desc="Sans, 24" ! videoconvert ! ximagesink \
+t_raw. ! queue ! overlay.video_sink \
+t_raw. ! queue ! videoscale ! video/x-raw,width=224,height=224 ! tensor_converter ! \
+tensor_filter framework=tensorflow-lite model=./tflite_model_img/mobilenet_v1_1.0_224_quant.tflite ! \
+tensor_decoder mode=image_labeling option1=./tflite_model_img/labels.txt ! overlay.text_sink
+</code></pre>
+<h3 id="script-of-nnstreamer_example_filter-using-tensorflow-model-eg-mobilenet">Script of nnstreamer_example_filter using tensorflow model (e.g., Mobilenet)</h3>
+<ul>
+<li>ltrace -f -tt  -e gst_element_get_type -e memcpy  -o mytracing1.log  ...</li>
+<li>$ ./get-model.sh object-detection-tf</li>
+</ul>
+<h4 id="object-detection-using-tee">Object detection using tee</h4>
+<ul>
+<li>The video is the same as the original camera output and the labels and bounding boxes are updated after processing in the tensor filter.<br>
+(The video output rate is the same as the original video frame rate.)</li>
+</ul>
+<pre><code class="language-bash">gst-launch-1.0 -v -m --gst-debug=3 \
+v4l2src name=cam_src ! videoscale ! videoconvert ! video/x-raw,width=640,height=480,format=RGB,framerate=30/1 ! tee name=t \
+  t. ! queue leaky=2 max-size-buffers=2 ! videoscale ! tensor_converter ! \
+    tensor_filter framework=tensorflow model=tf_model/ssdlite_mobilenet_v2.pb \
+      input=3:640:480:1 inputname=image_tensor inputtype=uint8 \
+      output=1:1:1:1,100:1:1:1,100:1:1:1,4:100:1:1 \
+      outputname=num_detections,detection_classes,detection_scores,detection_boxes \
+      outputtype=float32,float32,float32,float32 ! \
+    tensor_decoder mode=bounding_boxes option1=tf-ssd option2=tf_model/coco_labels_list.txt option4=640:480 option5=640:480 ! \
+    compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink \
+  t. ! queue leaky=2 max-size-buffers=10 ! mix.
+</code></pre>
+<h4 id="object-detection-using-outputcombination-option-of-the-tensor-filter">Object detection using output-combination option of the tensor filter</h4>
+<ul>
+<li>Video, labels, and bounding boxes are updated after processing in the tensor filter.<br>
+(The video output rate is the same as the processing rate of the tensor filter.)</li>
+</ul>
+<pre><code class="language-bash">gst-launch-1.0 -v -m --gst-debug=3 \
+v4l2src name=cam_src ! videoscale ! videoconvert ! video/x-raw,width=640,height=480,format=RGB,framerate=30/1 ! \
+  tensor_converter ! tensor_filter framework=tensorflow model=tf_model/ssdlite_mobilenet_v2.pb \
+      input=3:640:480:1 inputname=image_tensor inputtype=uint8 \
+      output=1:1:1:1,100:1:1:1,100:1:1:1,4:100:1:1 \
+      outputname=num_detections,detection_classes,detection_scores,detection_boxes \
+      outputtype=float32,float32,float32,float32 output-combination=i0,o0,o1,o2,o3 ! \
+  tensor_demux name=demux tensorpick=0,1:2:3:4 demux.src_1 ! queue leaky=2 max-size-buffers=2 ! \
+    tensor_decoder mode=bounding_boxes option1=tf-ssd option2=tf_model/coco_labels_list.txt option4=640:480 option5=640:480 ! \
+    compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink \
+  demux.src_0 ! queue leaky=2 max-size-buffers=2 ! tensor_decoder mode=direct_video ! videoconvert ! mix.
+</code></pre>
+<h2 id="others">Others</h2>
+<pre><code>gst-launch-1.0 -v \
+videotestsrc pattern=1 ! video/x-raw,width=200,height=200,format=RGB \
+    ! tee name=t \
+videomixer name=mix \
+      sink_0::xpos=0   sink_0::ypos=0    sink_0::zorder=0\
+      sink_1::xpos=100 sink_1::ypos=0    sink_1::zorder=1\
+      sink_2::xpos=200 sink_2::ypos=200  sink_2::zorder=2\
+      sink_3::xpos=0   sink_3::ypos=200  sink_3::zorder=3\
+    ! videoconvert ! autovideosink \
+videotestsrc pattern="black" ! video/x-raw,width=200,height=200,format=RGB \
+    ! mix.sink_0 \
+t. ! queue ! mix.sink_1 \
+t. ! queue ! mix.sink_2 \
+t. ! queue ! mix.sink_3
+</code></pre>
+<pre><code>gst-launch-1.0 \
+v4l2src name=cam_src ! videoconvert ! videoscale ! \
+video/x-raw,width=640,height=480,format=RGB,framerate=30/1 ! tee name=t_raw \
+videomixer name=mix \
+sink_0::xpos=0 sink_0::ypos=0 sink_0::zorder=0 sink_0::alpha=0.7 \
+sink_1::xpos=50 sink_1::ypos=50 sink_1::zorder=1 sink_1::alpha=0.5 ! \
+videoconvert ! ximagesink \
+t_raw. ! queue ! tensor_converter ! tensor_decoder mode=direct_video ! videoconvert ! tee name=t_tensor \
+t_raw. ! queue ! mix.sink_0 \
+t_tensor. ! queue ! mix.sink_1 \
+t_tensor. ! queue ! videoconvert ! ximagesink
+</code></pre>
+<pre><code>gst-launch-1.0 \
+v4l2src name=cam_src ! videoconvert ! videoscale ! \
+video/x-raw,width=640,height=480,format=RGB,framerate=30/1 ! tee name=t_raw \
+videomixer name=mix \
+sink_0::xpos=0 sink_0::ypos=0 sink_0::zorder=0 sink_0::alpha=0.7 \
+sink_1::xpos=50 sink_1::ypos=50 sink_1::zorder=1 sink_1::alpha=0.5 ! \
+videoconvert ! ximagesink \
+t_raw. ! queue ! tensor_converter ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink \
+t_raw. ! queue ! mix.sink_0 \
+t_raw. ! queue ! tensor_converter ! tensor_decoder mode=direct_video ! videoconvert ! mix.sink_1
+</code></pre>
+<h2 id="with-cam-plugin">with CAM plugin</h2>
+<pre><code>gst-launch-1.0 \
+  v4l2src name=cam_src ! videoconvert ! videoscale ! \
+  video/x-raw,width=640,height=480,format=RGB,framerate=\(fraction\)15/1 ! \
+  videomixer name=mix sink_0::xpos=0 sink_0::ypos=0 sink_1::xpos=0 ! \
+  videoconvert ! xvimagesink \
+  videotestsrc ! \
+  video/x-raw,width=320,height=240,format=RGB,framerate=\(fraction\)15/1 ! mix.
+</code></pre>
+<pre><code>gst-launch-1.0 \
+  v4l2src name=cam_src ! videoconvert ! videoscale ! \
+  videoconvert ! video/x-raw,width=640,height=480,format=RGB,framerate=\(fraction\)30/1 ! \
+  videobox border-alpha=0 top=0 left=0 ! \
+  videomixer name=mix sink_0::alpha=0.7 sink_1::alpha=0.5 ! \
+  videoconvert ! xvimagesink \
+  videotestsrc ! \
+  video/x-raw,format=RGB,framerate=\(fraction\)5/1,width=320,height=240 ! mix.
+</code></pre>
+<pre><code>gst-launch-1.0 \
+v4l2src name=cam_src ! \
+videoconvert ! video/x-raw,width=640,height=480,format=RGB,framerate=\(fraction\)30/1 ! tee name=t ! \
+queue ! videoconvert ! videomixer name=mix ! ximagesink \
+t. ! queue ! tensor_converter ! tensor_decoder mode=direct_video ! videoconvert ! mix.
+</code></pre>
+<pre><code> gst-launch-1.0 -e videomixer name=mix ! videoconvert ! ximagesink \
+   videotestsrc pattern=1 ! video/x-raw, framerate=5/1, width=320, height=180, format=RGB ! videobox border-alpha=0 top=0 left=0 ! mix. \
+   videotestsrc pattern=15 ! video/x-raw, framerate=5/1, width=320, height=180, format=RGB ! videobox border-alpha=0 top=0 left=-320 ! mix. \
+   videotestsrc pattern=13 ! video/x-raw, framerate=5/1, width=320, height=180, format=RGB ! videobox border-alpha=0 top=-180 left=0 ! mix. \
+   videotestsrc pattern=0 ! video/x-raw, framerate=5/1, width=320, height=180, format=RGB ! videobox border-alpha=0 top=-180 left=-320 ! mix. \
+   videotestsrc pattern=3 ! video/x-raw, framerate=5/1, width=640, height=360, format=RGB ! mix.
+</code></pre>
+<pre><code>gst-launch-1.0 -v -m --gst-debug=3 \
+    videomixer name=mix sink_0::xpos=0 sink_0::ypos=0 sink_1::xpos=0 sink_1::ypos=0 !  videoconvert ! glvideosink sync=false \
+    filesrc location=bbb_sunflower_720p_24fps_equal.mp4 ! qtdemux name=demux \
+    demux.video_0 ! h264parse ! omxh264dec ! tee name=t \
+    t.src_0 ! queue ! mix.sink_0 \
+    t.src_1 ! queue ! mix.sink_1
+</code></pre>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"nnstreamer_plugin_api_filter.h","urls":[{"url":"Documentation/writing-subplugin-tensor-filter.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"nnstreamer_plugin_api_filter.h","urls":[{"url":"writing-subplugin-tensor-filter.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});

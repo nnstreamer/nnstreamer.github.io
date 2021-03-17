@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href=".">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>How to archive large files</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="how-to-archive-large-data.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="how-to-archive-large-files-with-gitlfs">How to archive large files with git-lfs</h1>
+<p>In order to archive a big data such as map, training, network model, and image data,
+We recommend that you use <code>git-lfs</code>command as a official process.
+Note that github does not support uploading big files more than +100MB by default.
+You do not need to operate your own development server to archive big files thanks to <code>git-lfs</code> facility.
+However, as github.com charges for lfs, we cannot use it in nnsuite/testcases.
+Please wait for AWS-nnsuite account activation for large files.</p>
+<p>Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics
+with text pointers inside Git, while storing the file contents on a remote server like GitHub.com
+or GitHub Enterprise. Note that Git LFS requires Git v1.8.5 or higher.</p>
+<h1 id="install-gitlfs-package">Install git-lfs package</h1>
+<p>Packagecloud (https://packagecloud.io) hosts <code>git-lfs</code> packages with apt/deb for popular Linux distribution such as Ubuntu.</p>
+<pre><code class="language-bash">$ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+$ sudo apt install git-lfs
+</code></pre>
+<p>If you are using another Linux distribution such as Fedora, Please refer to the below webpage.</p>
+<ul>
+<li>Installing git-lfs: https://github.com/git-lfs/git-lfs/blob/v2.4.0/INSTALLING.md#installing-on-linux-using-packagecloud</li>
+</ul>
+<h1 id="case-study-tfvision_evaluationset-repository">Case study: TF-Vision_EvaluationSet Repository</h1>
+<p>Note that default branch must be <code>tizen</code> instead of <code>master</code> in case of TAOS. We assume that you have to upload LibreOffice Installer
+(251MB) in a github repository.</p>
+<p>Clone the github repository with upstream and origin.</p>
+<pre><code class="language-bash">$ mkdir TF-Vision_EvaluationSet
+$ cd    TF-Vision_EvaluationSet
+$ git remote add upstream GITURL
+$ git remote add origin   GITURL
+$ git fetch upstream
+$ git pull upstream tizen
+</code></pre>
+<p>You need to setup the global Git hooks for Git LFS.</p>
+<pre><code class="language-bash">$ git lfs install
+$ wget http://mirrors.adams.edu/LibreOffice/win/LibreOffice_6.0.4_Win_x86.msi
+</code></pre>
+<p>Add all *.msi files through Git LFS.</p>
+<pre><code class="language-bash">$ git lfs track "*.msi"
+</code></pre>
+<p>Now you are ready to push some commits</p>
+<pre><code class="language-bash">$ git add LibreOffice_6.0.4_Win_x86.msi
+$ git commit -m "add msi file"
+</code></pre>
+<p>You can confirm that Git LFS is managing your *.msi file.</p>
+<pre><code class="language-bash">$ git lfs ls-files
+# Push your files to the Git remote 
+$ git push origin &lt;your-branch-name&gt;
+</code></pre>
+<h1 id="how-to-remove-large-file-from-commit-history">How to remove large file from commit history</h1>
+<ul>
+<li>Method 1:</li>
+</ul>
+<pre><code class="language-bash">$ firefox https://rtyley.github.io/bfg-repo-cleaner/
+$ java -jar bfg-x.x.x.jar --strip-blobs-bigger-than 100M
+$ git repack &amp;&amp; git gc
+</code></pre>
+<ul>
+<li>Method 2:</li>
+</ul>
+<pre><code class="language-bash">$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch *.data' -- --all
+$ rm -Rf .git/refs/original
+$ rm -Rf .git/logs/
+$ git gc --aggressive --prune=now
+$ git count-objects -v
+</code></pre>
+<h1 id="reference">Reference</h1>
+<ul>
+<li>Getting Started: https://github.com/git-lfs/git-lfs/tree/v2.4.0#getting-started</li>
+<li>Git extension for versioning large files: https://git-lfs.github.com</li>
+</ul>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

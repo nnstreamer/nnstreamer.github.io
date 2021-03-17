@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"lfs.github.com","urls":[{"url":"Documentation/how-to-archive-large-data.html#page-description","node_type":"ul","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"lfs.github.com","urls":[{"url":"how-to-archive-large-data.html#page-description","node_type":"ul","context":{"gi-language":["default"]}}]});

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href=".">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Doxygen documentation</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+" data-spy="scroll" data-target="#toc" data-offset="70">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="doxygen-documentation.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="doxygen-generate-documentation-from-source-code">Doxygen: Generate documentation from source code</h1>
+<p>Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.</p>
+<h1 id="install-doxygen-graphviz">Install doxygen &amp; graphviz</h1>
+<ul>
+<li>If you want to run <a href="http://www.doxygen.nl/">Doxygen</a> to
+produce documentation from your code comments, then in addition do the following:
+<ul>
+<li>Install <a href="http://www.doxygen.nl/">Doxygen</a> using the
+instructions on its web site. For reference, the LLVM web site is using Doxygen 1.7.6.1,
+however the 1.8 series added support for Markdown formatting. We would like
+to use Markdown in our comments ASAP, so use the latest version of Doxygen.
+<pre><code>$ sudo apt-get install doxygen
+</code></pre>
+</li>
+<li>Install <a href="http://graphviz.org/">Graphviz</a> using instructions on their
+site. The current version no longer modifies your path, so you should
+manually modify your path so that it includes "dot".
+<pre><code>$ sudo apt-get install graphviz
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="how-to-generate-documentation-from-source-code">How to generate documentation from source code</h1>
+<ul>
+<li>
+<p>If you want to automatically generate documentation from source code in Linux by using doxygen, proceed as follows:</p>
+<pre><code># for src app
+$ cd ./gst
+$ doxygen ../Doxyfile.prj # from https://github.com/nnstreamer/TAOS-CI/blob/main/ci/Doxyfile.prj
+
+# launch with the browser to view the results
+$ chromium-browser ./html/index.html
+</code></pre>
+</li>
+</ul>
+<h1 id="how-to-comment">How to comment</h1>
+<h3 id="comments-for-files">Comments for Files</h3>
+<p>Each file needs to begin with the <code>@file</code> command stating the name of the file. This should be followed by a brief description of the file using the <code>@brief</code> command. If necessary, you can follow this with a more detailed description. Next you should put your name and andrew id, along with your partners name and andrew id, using the <code>@author</code> tag. This needs to be followed with a bugs section with a list of known bugs using the <code>@bug</code> command. If there are no known bugs, explicitly state that using the <code>@bug</code> command.</p>
+<h3 id="comments-for-functions-and-data-structures">Comments for Functions and Data Structures</h3>
+<p>Before each function, data structure, and macro you should put a comment block giving at least a brief description using the <code>@brief</code> command. A brief description will suffice for your data structures but for your macros and functions you will need to use a few more commands. After your description, you should use the <code>@param</code> command to describe all of the parameters to your function. These descriptions should be followed by a description of the return value using the <code>@return</code> command.</p>
+<p>Note: When we say "each" function, that is not a strong statement. You can leave out simple helper functions, like a max() macro, so you do not waste time.</p>
+<h1 id="case-study">Case study</h1>
+<h3 id="case-study-cc">Case study: C/C++</h3>
+<ul>
+<li>http://www.doxygen.nl/manual/docblocks.html#cppblock</li>
+</ul>
+<p>You have to use comments starting with ** and then the special command.</p>
+<ul>
+<li>C/C++ file doxygen entries:</li>
+</ul>
+<pre><code class="language-bash">
+/**
+ * @file   taos_struct.c
+ * @author Gildong Hong &lt;gildong.hong@samsung.com&gt;
+ * @date   1/18/2018
+ * @brief  A taos driver.
+ *
+ * These empty function definitions are provided
+ * so that stdio will build without complaining.
+ * You will need to fill these functions in. This
+ * is the implementation of the TAOS device driver.
+ * Important details about its implementation
+ * should go in these comments.
+ *
+ * @bug     No know bugs.
+ * @todo    Make it do something.
+ */
+int main(void){
+   taos_base_initialize();
+   taos_frame_run();
+   return 0;
+}
+</code></pre>
+<ul>
+<li>C/C++ function doxygen entries:</li>
+</ul>
+<pre><code class="language-bash">/**
+ * @brief	Initialize ring buffer
+ * @param	RingBuff	: Pointer to ring buffer to initialize
+ * @param	buffer		: Pointer to buffer to associate with RingBuff
+ * @param	itemSize	: Size of each buffer item size
+ * @param	count		: Size of ring buffer
+ * @note	Memory pointed by a buffer must have correct alignment of
+ * 			a itemSize, and a count must be a power of 2 and must at
+ * 			least be 2 or greater.
+ * @return	Nothing
+ */
+int RingBuffer_Init(RINGBUFF_T *RingBuff, void *buffer, int itemSize, int count);
+</code></pre>
+<ul>
+<li>C/C++ struct/class doxygen entries:</li>
+</ul>
+<pre><code class="language-bash">/**
+ * @def		RB_VHEAD(rb)
+ * volatile typecasted head index
+ */
+#define RB_VHEAD(rb)              (*(volatile uint32_t *) &amp;(rb)-&gt;head)
+
+/**
+ * @brief ring buffer structure
+ */
+typedef struct {
+    void *memBuf; /**&lt;A void * pointing to memory of size bufSize.*/
+    size_t filePos; /**&lt;Current position inside the file.*/
+    size_t bufPos; /**&lt;Curent position inside the buffer.*/
+    size_t bufSize; /**&lt;The size of the buffer.*/
+    size_t bufLen; /**&lt;The actual size of the buffer used.*/
+    enum bigWigFile_type_enum type; /**&lt;The connection type*/
+    int isCompressed; /**&lt;1 if the file is compressed, otherwise 0*/
+    char *fname; /**&lt;Only needed for remote connections. The original URL/filename requested.*/
+} ring_buffer_t;
+
+/**
+ * @brief ring cache structure
+ */
+class ring_cache
+{
+  public:
+
+    /**
+     * An enum type. 
+     * The documentation block cannot be put after the enum! 
+     */
+    enum EnumType
+    {
+      int EVal1,     /**&lt; enum value 1 */
+      int EVal2      /**&lt; enum value 2 */
+    };
+
+    /**
+     * a member function.
+     */
+    void member();
+    
+  protected:
+    int value;       /**&lt; an integer value */
+};
+</code></pre>
+<h3 id="case-study-python">Case study: Python</h3>
+<ul>
+<li>http://www.doxygen.nl/manual/docblocks.html#pythonblocks</li>
+</ul>
+<p>You have to use comments starting with ## and then the special command.</p>
+<pre><code class="language-bash">$ vi ./taos.py
+
+## @package    taos
+# @brief   A taos driver.
+#
+# These empty function definitions are provided
+# so that stdio will build without complaining.
+# You will need to fill these functions in. This
+# is the implementation of the TAOS device driver.
+# Important details about its implementation
+# should go in these comments.
+#
+# @date    1 Dec 2017
+# @param   [in] repeat number of times to do nothing
+# @retval  TRUE Successfully did nothing.
+# @retval  FALSE Oops, did something.
+# @bug     No know bugs.
+# @todo    Make it do something.
+#
+# Example Usage:
+# @code
+#   example_core(3); // Do nothing 3 times.
+# @endcode
+#
+
+## @brief The constructor.
+#  @param self The object pointer.
+def __init__(self):
+    self.__value = 0
+
+## @brief Stores a value.
+#  @param value The value to be stored.
+def setValue(self, value):
+    self.__value = value
+
+## @brief Gets stored value.
+#  @return The stored value.
+    def getValue(self):
+    return self.__value
+</code></pre>
+<h3 id="case-study-bash">Case study: bash</h3>
+<p>You have to use comments starting with ## and then the special command.
+Then, add @file and @brief tag to the top of each script file as follows.</p>
+<pre><code class="language-bash">$ vi pr-worker.sh
+
+## @file pr-worker.sh
+#  @brief function for Continuous Integration (CI)
+function work_core(){
+    . . . . . .
+}
+function work_gen(){
+    . . . . . .
+}
+work_core
+work_gen
+
+</code></pre>
+<p>Please, refer to http://www.doxygen.nl/manual/commands.html for more details.</p>
+<h1 id="how-to-generate-the-index-page-in-html">How to generate the index page in HTML</h1>
+<p>If the Doxygen tag @mainpage is placed in a comment block, the block is used to
+customize the index page (in HTML) or the first chapter (in $@mbox{@LaTeX}$).
+The title argument is optional and replaces the default title that doxygen
+normally generates. If you do not want any title you can specify notitle
+as the argument of @mainpage.</p>
+<p>Below is a simple example of a mainpage you can create yourself.</p>
+<pre><code class="language-bash">/**
+ *  @mainpage   AutoDrive
+ *  @section intro Introduction
+ *  - Introduction      :   Application repository for autonomous solution
+ *  @section   Program  Program Name
+ *  - Program Name      :   AutoDrive
+ *  - Program Details   :   This includes a number of internal modules which
+ *  are sensing &amp; perception, planning &amp; control, global map generation, logging &amp; HMI.
+ *  This repository consists of TAOS-based applications as following:
+ *  1) creates perception information form sensor inputs,
+ *  2) handles map &amp; routing information,
+ *  3) controls the vehicle,
+ *  4) and provides developers with debugging tools.
+ *  @section  INOUTPUT    Input/output data
+ *  - INPUT             :   None
+ *  - OUTPUT            :   None
+ *  @section  CREATEINFO    Code information
+ *  - Initial date      :   2017/06/14
+ *  - Version           :   0.1
+ */
+</code></pre>
+<h1 id="how-to-generate-script-code">How to generate script code</h1>
+<p>Refer to https://github.com/Anvil/bash-doxygen
+Doxygen does not support bash script files by default.
+Edit below lines in a Doxyfile.ci to generate *.sh files.</p>
+<pre><code class="language-bash">$ vi ./Doxyfile.ci
+# Set your shell script file names pattern as Doxygen inputs
+FILE_PATTERNS = *.sh *.php *.taos
+ITAOST_FILTER = "sed -e 's|##|//!|'"
+FILTER_SOURCE_FILES = YES
+# Edit the Doxyfile to map shell files to C parser
+EXTENSION_MAPPING = sh=C
+</code></pre>
+<h1 id="references">References</h1>
+<ul>
+<li>Getting started: http://www.doxygen.nl/manual/starting.html</li>
+<li>Case study (Linux kernel): https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/sched/core.c?h=v4.13-rc1#n4454</li>
+</ul>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
