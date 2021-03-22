@@ -138,7 +138,8 @@ $('body').removeClass('no-script');
 	<div id="main">
 				    <div id="page-description" data-hotdoc-role="main">
         <h1 id="nnstreamer-api-library-for-android">NNStreamer API Library for Android</h1>
-<h2 id="note-the-api-will-be-separated-into-a-new-repository-soon">Note: The API will be separated into a new repository soon.</h2>
+<h2 id="note-the-api-is-separated-into-a-new-repository">Note: The API is separated into a <a href="https://github.com/nnstreamer/api">new repository</a>
+</h2>
 <h2 id="prerequisite">Prerequisite</h2>
 <p>We assume that you already have experienced Android application developments with Android Studio.</p>
 <ul>
@@ -171,6 +172,7 @@ export ANDROID_DEV_ROOT=$HOME/android               # Set your own path (default
 # $ANDROID_DEV_ROOT/tools/ndk/: Android NDK root directory (default location: $HOME/Android/Sdk/ndk/&lt;ndk-version&gt;)
 # $ANDROID_DEV_ROOT/gstreamer-1.0/: GStreamer binaries
 # $ANDROID_DEV_ROOT/workspace/nnstreamer/: The git repository of NNStreamer
+# $ANDROID_DEV_ROOT/workspace/api/: The git repository of ML API
 
 export ANDROID_SDK=$ANDROID_DEV_ROOT/tools/sdk
 export ANDROID_NDK=$ANDROID_DEV_ROOT/tools/ndk
@@ -178,6 +180,7 @@ export ANDROID_SDK_ROOT=$ANDROID_SDK
 export ANDROID_NDK_ROOT=$ANDROID_NDK
 export GSTREAMER_ROOT_ANDROID=$ANDROID_DEV_ROOT/gstreamer-1.0
 export NNSTREAMER_ROOT=$ANDROID_DEV_ROOT/workspace/nnstreamer
+export ML_API_ROT=$ANDROID_DEV_ROOT/workspace/api
 </code></pre>
 <h3 id="install-required-packages">Install required packages</h3>
 <p>Some required packages should be installed as below.</p>
@@ -271,9 +274,10 @@ copyjavasource_$(TARGET_ARCH_ABI):
      __android_log_print (ANDROID_LOG_ERROR, "GStreamer",
          "Could not register native methods for org.freedesktop.gstreamer.GStreamer");
 </code></pre>
-<h3 id="download-nnstreamer-source-code">Download NNStreamer source code</h3>
+<h3 id="download-nnstreamer-source-code-and-ml-api-source-code">Download NNStreamer source code and ML API source code</h3>
 <pre><code class="language-bash">$ cd $ANDROID_DEV_ROOT/workspace
 $ git clone https://github.com/nnstreamer/nnstreamer.git
+$ git clone https://github.com/nnstreamer/api.git
 </code></pre>
 <h3 id="build-android-api">Build Android API</h3>
 <p>Run the build script in NNStreamer.</p>
@@ -310,7 +314,9 @@ To enable each neural network frameworks, you should download and set-up proper 
 <li>
 <code>--nnstreamer_dir=&lt;path&gt;</code> path to NNStreamer root directory. Default <code>NNSTREAMER_ROOT</code> is used if this is not set.</li>
 <li>
-<code>--result_dir=&lt;path&gt;</code> path to build result. Default path is <code>NNSTREAMER_ROOT/android_lib</code>.</li>
+<code>--ml_api_dir=&lt;path&gt;</code> path to ML API root directory. <code>ML_API_ROOT</code> is used if this is not set.</li>
+<li>
+<code>--result_dir=&lt;path&gt;</code> path to build result. Default path is <code>ML_API_ROOT/android_lib</code>.</li>
 <li>
 <code>--gstreamer_dir=&lt;path&gt;</code> path to GStreamer binaries. Default path is <code>GSTREAMER_ROOT_ANDROID</code>.</li>
 <li>
@@ -322,10 +328,10 @@ To enable each neural network frameworks, you should download and set-up proper 
 </ol>
 </li>
 </ul>
-<pre><code class="language-bash">$ cd $NNSTREAMER_ROOT
-$ bash ./api/android/build-android-lib.sh
+<pre><code class="language-bash">$ cd $ML_API_ROOT
+$ bash ./java/android/build-nnstreamer-android-lib.sh
 </code></pre>
-<p>After building the Android API, you can find the library(.aar) in <code>$NNSTREAMER_ROOT/android_lib</code>.</p>
+<p>After building the Android API, you can find the library(.aar) in <code>$ML_API_ROOT/android_lib</code>.</p>
 <ul>
 <li>Build result
 <ol>
@@ -360,9 +366,9 @@ Before running the unit-test, you should download the test model and copy it int
 {INTERNAL_STORAGE}/nnstreamer/snpe_data/plastic_cup.raw
 </code></pre>
 <p>To check the testcases, run the build script with an option <code>--run_test=yes</code>.
-You can find the result in <code>$NNSTREAMER_ROOT/android_lib</code>.</p>
-<pre><code class="language-bash">$ cd $NNSTREAMER_ROOT
-$ bash ./api/android/build-android-lib.sh --run_test=yes
+You can find the result in <code>$ML_API_ROOT/android_lib</code>.</p>
+<pre><code class="language-bash">$ cd $ML_API_ROOT
+$ bash ./java/android/build-nnstreamer-android-lib.sh --run_test=yes
 </code></pre>
 <h3 id="using-model-file-with-scoped-storage">Using Model File with Scoped Storage</h3>
 <p>Android keeps trying to protect app and user data on external storage. As a result, "scoped storage" is introduced in Android 10 and enhanced in Android 11.
