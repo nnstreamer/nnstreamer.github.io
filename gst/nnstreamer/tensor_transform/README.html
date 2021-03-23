@@ -249,7 +249,17 @@ $('body').removeClass('no-script');
 <li>
 <p>(4): stand</p>
 <ul>
-<li>A Mode for statistical standardization of tensor, option=default</li>
+<li>
+<p>A mode for statistical standardization or normalization of tensor</p>
+</li>
+<li>
+<p>An option should be provided as option=(default|dc-average)[:TYPE] where <code>default</code> for statistical standardization and <code>dc-average</code> to remove DC offset (average value). <code>TYPE</code> denotes output data type.</p>
+</li>
+<li>
+<p>Example: Remove DC offset, output type to float32</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=stand option=dc-average:float32 ! ...
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
