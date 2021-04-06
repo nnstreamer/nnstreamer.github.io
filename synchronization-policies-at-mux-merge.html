@@ -159,7 +159,7 @@ For the case of merge/mux element which has three pads with different framerate 
    299999997       450000000      9000000000 
 </code></pre>
 <h1 id="slowest">Slowest</h1>
-<p>"Slowest" policy (sync_mode=slowest) synchronize tensors based on slowest timestamp among pads.<br>
+<p>"Slowest" policy (sync-mode=slowest) synchronize tensors based on slowest timestamp among pads.<br>
 Finding slowest timestamp among pads and used as base timestamp. It drops buffers which is earlier than this base timestamp. However if the difference with timestamp of previous buffer is smaller than with current buffer, then previous buffer is used.<br>
 For the case of three pad with different framerates, It merged/muxed</p>
 <pre><code>    srcpad0         srcpad1         *srcpad2
@@ -170,9 +170,9 @@ For the case of three pad with different framerates, It merged/muxed</p>
 </code></pre>
 <p>As you can see, second and third buffers of srcpad0 are dropped. Because it is smaller than slowest pts (100000000). For the case of 99999999 PTS of srcpad0, it is taken even if it is also smaller than slowest pts. That is because difference with slowest pts ( 100000000 - 99999999 ) is smaller than of next buffer (133333333 - 100000000).</p>
 <h1 id="basepad">BasePad</h1>
-<p>With "Base Pad", Base timestamp is decided with designated pad which is given by user with sync_option.<br>
-Sync_option consists of two variables and first denotes the base pad number and second is duration in nanoseconds ( as a GstClockTime ). In this policy, every buffer which has pts is within duration from base time stamp is merged/muxed. For the case of buffer with greater pts than base timestamp plus duration, previous buffer is going to used instead.<br>
-Test case with "sync_mode=basepad sync_option=0:33333333" is below,</p>
+<p>With "Base Pad", Base timestamp is decided with designated pad which is given by user with sync-option.<br>
+Sync option consists of two variables and first denotes the base pad number and second is duration in nanoseconds ( as a GstClockTime ). In this policy, every buffer which has pts is within duration from base time stamp is merged/muxed. For the case of buffer with greater pts than base timestamp plus duration, previous buffer is going to used instead.<br>
+Test case with "sync-mode=basepad sync-option=0:33333333" is below,</p>
 <pre><code>    *srcpad0        srcpad1         srcpad2
        0               0               0     
     33333333        50000000           0     
@@ -189,7 +189,7 @@ Test case with "sync_mode=basepad sync_option=0:33333333" is below,</p>
 <h1 id="refresh">Refresh</h1>
 <p>The other is "Refresh" policy. The Base timestamp is decided with the pad which receives a new buffer.<br>
 The above 3 policies require all pads are collected state. It means all of the sinkpads of <code>tensor_mux</code> have to be filled. However, with "Refresh", <code>tensor_mux</code> pushes the buffers to srcpad when each sinkpad receives a new buffer. For the sinkpads which not received the new buffer will use again the previous one.</p>
-<p>Test case with "sync_mode=refresh" is below,</p>
+<p>Test case with "sync-mode=refresh" is below,</p>
 <pre><code>    sinkpad0         sinkpad1         sinkpad2
        0                0                0        &lt;- At the first time, all of the sinkpads have to be filled.
        0                1                0        &lt;- sinkpad1 receives new data `1`
