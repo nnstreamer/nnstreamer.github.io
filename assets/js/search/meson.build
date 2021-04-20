@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"meson.build","urls":[{"url":"writing-subplugin-tensor-filter.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"meson.build","urls":[{"url":"writing-subplugin-tensor-filter.html#dependencies-libraries","node_type":"p","context":{"gi-language":["default"]}},{"url":"writing-subplugin-tensor-filter.html#quick-guide-on-writing-a-tensor_filter-subplugin-for-a-new-frameworkhardware","node_type":"p","context":{"gi-language":["default"]}}]});

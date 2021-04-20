@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"CONTRIBUTING.md","urls":[{"url":"CONTRIBUTING.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"CONTRIBUTING.md","urls":[{"url":"CONTRIBUTING.html#committers","node_type":"p","context":{"gi-language":["default"]}},{"url":"CONTRIBUTING.html#contributors","node_type":"p","context":{"gi-language":["default"]}}]});

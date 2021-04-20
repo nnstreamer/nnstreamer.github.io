@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"nnstreamer.h","urls":[{"url":"nnstreamer_capi.html#page-description","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"nnstreamer.h","urls":[{"url":"nnstreamer_capi.html#prerequisites","node_type":"p","context":{"gi-language":["default"]}}]});
