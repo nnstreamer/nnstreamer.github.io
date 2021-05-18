@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -150,6 +150,7 @@ $ sudo apt install nnstreamer
 <li>nnstreamer-dev : Required to build C function-filters and to build your own nnstreamer plugins.</li>
 <li>nnstreamer-edgetpu : Allows to use edge-TPU in a pipeline.</li>
 <li>nnstreamer-flatbuf : Allows to convert-from and decode-to flatbuf streams.</li>
+<li>nnstreamer-misc: Provides additional gstreamer plugins for nnstreamer pipelines. Included plugins: join.</li>
 <li>nnstreamer-openvino : Allows to use OpenVINO (Intel), enabling Movidius-X.</li>
 <li>nnstreamer-protobuf : Allows to convert-from and decode-to protobuf streams.</li>
 <li>nnstreamer-python2 : Allows to use python2 classes as filters of a pipeline.</li>
@@ -158,6 +159,9 @@ $ sudo apt install nnstreamer
 <li>nnstreamer-tensorflow : Allows to use TensorFlow models in a pipeline. (From tensorflow 1.13.1 by default)</li>
 <li>nnstreamer-tensorflow-lite : Allows to use TensorFlow-lite models in a pipeline. (From tensorflow 1.13.1 by default)</li>
 </ul>
+<p>For a full list of nnstreamer plugins run:</p>
+<pre><code class="language-bash">$ apt-cache search nnstreamer
+</code></pre>
 <h3 id="if-you-want-to-use-different-versions-of-tensorflow-or-pytorch">If you want to use different versions of TensorFlow or PyTorch</h3>
 <h4 id="safe-method-need-rebuild">Safe method (need rebuild)</h4>
 <p>You need to rebuild nnstreamer's corresponding subplugins (e.g., nnstreamer-tensorflow) with the neural network framework version you want to use.</p>
