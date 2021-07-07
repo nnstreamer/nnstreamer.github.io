@@ -214,6 +214,53 @@ $('body').removeClass('no-script');
 <pre><code>$ gst-launch somevideosrc_with_xraw ! tee name=t ! queue ! tensor_converter ! tensor_filter SOME_OPTION ! tensor_decoder output-type=image-label additional-file-1=/tmp/labels.txt ! txt. t. ! queue ! textoverlay name=txt ! autovideosink
 </code></pre>
 <p>Note: not tested. not sure if the syntax is correct with <code>txt. t. !</code>. Regard the above as pseudo code.</p>
+<h2 id="custom-decoder">Custom decoder</h2>
+<p>If you want to convert tensors to any media type, You can use custom mode of the tensor decoder.</p>
+<h3 id="code-mode">code mode</h3>
+<p>This is an example of a callback type custom mode.</p>
+<pre><code>// Define custom callback function
+int tensor_decoder_custom_cb (const GstTensorMemory *input,
+const GstTensorsConfig *config, void *data, GstBuffer *out_buf) {
+  // Write a code to convert tensors to any media type.
+}
+
+...
+// Register custom callback function
+nnstreamer_decoder_custom_register ("tdec", tensor_decoder_custom_cb, NULL);
+...
+// Use the custom tensor decoder in a pipeline.
+// E.g., Pipeline of " ... (tensors) ! tensor_decoder mode=custom-code option1=tdec ! (any media stream)... "
+...
+// After everything is done.
+nnstreamer_decoder_custom_unregister ("tdec");
+</code></pre>
+<h3 id="script-mode">script mode</h3>
+<ul>
+<li>Note: Currently only Python is supported.
+<ul>
+<li>If you want to use FlatBuffers Python in Tizen, install package <code>flatbuffers-python</code>. It also includes a Flexbuffers Python.</li>
+<li>If you want to use Flatbuffers Python in Ubuntu, install package using pip <code>pip install flatbuffers</code>. It also includes a Flexbuffers Python.</li>
+</ul>
+</li>
+</ul>
+<p>This is an example of a python script.</p>
+<pre><code># @file custom_decoder_example.py
+## @brief  User-defined custom decoder
+class CustomDecoder(object):
+## @breif  Python callback: getOutCaps
+  def getOutCaps (self):
+    # Write capability of the media type.
+    return bytes('@CAPS_STRING@', 'UTF-8')
+
+## @breif  Python callback: decode
+  def decode (self, raw_data, in_info, rate_n, rate_d):
+    # return decoded raw data as `bytes` type.
+    return data
+
+</code></pre>
+<p>Example pipeline</p>
+<pre><code>... (tensors) ! tensor_decoder mode=python3 option1=custom_decoder_example.py ! (any media stream) ...
+</code></pre>
 
     </div>
         

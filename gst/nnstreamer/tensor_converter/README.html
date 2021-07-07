@@ -160,6 +160,19 @@ $('body').removeClass('no-script');
 <li>The size of a text frame should be configured by developer with the property <code>input-dim</code>. Because the dimension of tensor is the key metadata of a tensor stream pipeline, we need to fix the value before actually looking at the actual stream data.</li>
 </ul>
 </li>
+<li>Octet stream: direct conversion of application/octet-stream with converter properties.
+<ul>
+<li>You should set <code>input-type</code> and <code>input-dim</code> to describe tensor(s) information of outgoing buffer.
+If setting multiple tensors, converter will divide incoming buffer and set multiple memory chunks in outgoing buffer.</li>
+<li>Only single frame. <code>frames-per-tensor</code> should be 1 (default value).</li>
+</ul>
+</li>
+<li>Flexible tensor: conversion to static tensor stream.
+<ul>
+<li>You can convert mime type (flexible to static) if incoming tensor has fixed data format and size.</li>
+<li>With <code>input-type</code> and <code>input-dim</code>, converter will set the output capability on src pad.</li>
+</ul>
+</li>
 </ul>
 <h2 id="planned-features">Planned features</h2>
 <p>From higher priority</p>
@@ -167,10 +180,12 @@ $('body').removeClass('no-script');
 <li>Support other color spaces (IUV, BGGR, ...)</li>
 </ul>
 <h2 id="sink-pads">Sink Pads</h2>
-<p>One "Always" sink pad exists. The capability of sink pad is <code>video/x-raw</code>, <code>audio/x-raw</code>, <code>text/x-raw</code> and <code>application/octet-stream</code>.</p>
+<p>One "Always" sink pad exists. The capability of sink pad is <code>video/x-raw</code>, <code>audio/x-raw</code>, <code>text/x-raw</code>, <code>application/octet-stream</code>, and <code>other/tensors-flexible</code>.</p>
+<p>If you require another pad caps to convert media stream to tensor(s), you can implement new sub-plugin or register custom converter.</p>
 <h2 id="source-pads">Source Pads</h2>
-<p>One "Always" source pad exists. The capability of source pad is <code>other/tensor</code>. It does not support <code>other/tensors</code> because each frame (or a set of frames consisting a buffer) is supposed to be represented by a <strong>single</strong> tensor instance.</p>
-<p>For each outgoing frame (on the source pad), there always is a <strong>single</strong> instance of <code>other/tensor</code>. Not less and not more.</p>
+<p>One "Always" source pad exists. The capability of source pad is <code>other/tensor</code>, <code>other/tensors</code>, and <code>other/tensors-flexible</code>.</p>
+<p>Note that, only octet-stream in the default capabilities of sink pad supports configuring multiple tensors in outgoing buffer.
+When incoming media type is video, audio, or text, each frame (or a set of frames consisting a buffer) is supposed to be represented by a <strong>single</strong> tensor instance and it will have <code>other/tensor</code> capability.</p>
 <h2 id="performance-characteristics">Performance Characteristics</h2>
 <ul>
 <li>Video
@@ -200,6 +215,46 @@ $('body').removeClass('no-script');
 </ul>
 <h2 id="usage-examples">Usage Examples</h2>
 <pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_sink
+</code></pre>
+<h2 id="custom-converter">Custom converter</h2>
+<p>If you want to convert any media type to tensors, you can use custom mode of the tensor converter.</p>
+<h3 id="code-mode">Code mode</h3>
+<p>This is an example of a callback type custom mode.</p>
+<pre><code>// Define custom callback function
+GstBuffer * tensor_converter_custom_cb (GstBuffer *in_buf, void *data, GstTensorsConfig *config) {
+  // Write a code to convert any media type to tensors.
+}
+...
+// Register custom callback function
+nnstreamer_converter_custom_register ("tconv", tensor_converter_custom_cb, NULL);
+...
+// Use the custom tensor converter in a pipeline.
+// E.g., Pipeline of " ... (any media stream) ! tensor_converter mode=custom-code:tconv ! (tensors)... "
+...
+// After everything is done.
+nnstreamer_converter_custom_unregister ("tconv");
+</code></pre>
+<h3 id="script-mode">Script mode</h3>
+<ul>
+<li>Note: Currently only Python is supported.
+<ul>
+<li>If you want to use FlatBuffers Python in Tizen, install package <code>flatbuffers-python</code>. It also includes a Flexbuffers Python.</li>
+<li>If you want to use Flatbuffers Python in Ubuntu, install package using pip <code>pip install flatbuffers</code>. It also includes a Flexbuffers Python.</li>
+</ul>
+</li>
+</ul>
+<p>This is an example of a python script.</p>
+<pre><code># @file custom_converter_example.py
+import numpy as np
+import nnstreamer_python as nns
+## @brief  User-defined custom converter
+class CustomConverter(object):
+  def convert (self, input_array):
+    ## Write a code to convert any media type to tensors.
+    return (tensors_info, out_array, rate_n, rate_d)
+</code></pre>
+<p>Example pipeline</p>
+<pre><code>... (any media stream) ! tensor_converter mode=custom-script:custom_converter_example.py ! (tensors) ...
 </code></pre>
 
     </div>

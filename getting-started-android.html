@@ -222,57 +222,6 @@ You can download older version from <a href="https://developer.android.com/ndk/d
 $ curl -O https://gstreamer.freedesktop.org/data/pkg/android/1.16.2/gstreamer-1.0-android-universal-1.16.2.tar.xz
 $ tar xJf gstreamer-1.0-android-universal-1.16.2.tar.xz
 </code></pre>
-<p>Modify <code>gstreamer-1.0.mk</code> and <code>gstreamer_android-1.0.c.in</code> files for NDK build to prevent error case.
-Supported target ABIs are <code>arm64</code> and <code>armv7</code>.</p>
-<pre><code>$GSTREAMER_ROOT_ANDROID/{Target-ABI}/share/gst-android/ndk-build/gstreamer-1.0.mk
-$GSTREAMER_ROOT_ANDROID/{Target-ABI}/share/gst-android/ndk-build/gstreamer_android-1.0.c.in
-</code></pre>
-<ul>
-<li>Add directory separator (gstreamer-1.0.mk)</li>
-</ul>
-<pre><code class="language-diff">@@ -127,2 +127,2 @@
-
-GSTREAMER_PLUGINS_CLASSES    := $(strip \
-            $(subst $(GSTREAMER_NDK_BUILD_PATH),, \
-            $(foreach plugin,$(GSTREAMER_PLUGINS), \
--           $(wildcard $(GSTREAMER_NDK_BUILD_PATH)$(plugin)/*.java))))
-+           $(wildcard $(GSTREAMER_NDK_BUILD_PATH)/$(plugin)/*.java))))
-
-GSTREAMER_PLUGINS_WITH_CLASSES := $(strip \
-            $(subst $(GSTREAMER_NDK_BUILD_PATH),, \
-            $(foreach plugin, $(GSTREAMER_PLUGINS), \
--           $(wildcard $(GSTREAMER_NDK_BUILD_PATH)$(plugin)))))
-+           $(wildcard $(GSTREAMER_NDK_BUILD_PATH)/$(plugin)))))
-
-@@ -257,1 +257,1 @@
-
-copyjavasource_$(TARGET_ARCH_ABI):
-  $(hide)$(call host-mkdir,$(GSTREAMER_JAVA_SRC_DIR)/org/freedesktop/gstreamer)
-    $(hide)$(foreach plugin,$(GSTREAMER_PLUGINS_WITH_CLASSES), \
-        $(call host-mkdir,$(GSTREAMER_JAVA_SRC_DIR)/org/freedesktop/gstreamer/$(plugin)) &amp;&amp; ) echo Done mkdir
-    $(hide)$(foreach file,$(GSTREAMER_PLUGINS_CLASSES), \
--       $(call host-cp,$(GSTREAMER_NDK_BUILD_PATH)$(file),$(GSTREAMER_JAVA_SRC_DIR)/org/freedesktop/gstreamer/$(file)) &amp;&amp; ) echo Done cp
-+       $(call host-cp,$(GSTREAMER_NDK_BUILD_PATH)/$(file),$(GSTREAMER_JAVA_SRC_DIR)/org/freedesktop/gstreamer/$(file)) &amp;&amp; ) echo Done cp
-</code></pre>
-<ul>
-<li>Clear exceptions for native developers (gstreamer_android-1.0.c.in)</li>
-</ul>
-<pre><code class="language-diff">@@ -592,9 +592,10 @@
-
-   if (!klass) {
-     __android_log_print (ANDROID_LOG_ERROR, "GStreamer",
-         "Could not retrieve class org.freedesktop.gstreamer.GStreamer");
--    return 0;
--  }
--  if ((*env)-&gt;RegisterNatives (env, klass, native_methods,
-+
-+    if ((*env)-&gt;ExceptionCheck (env))
-+      (*env)-&gt;ExceptionClear (env);
-+  } else if ((*env)-&gt;RegisterNatives (env, klass, native_methods,
-           G_N_ELEMENTS (native_methods))) {
-     __android_log_print (ANDROID_LOG_ERROR, "GStreamer",
-         "Could not register native methods for org.freedesktop.gstreamer.GStreamer");
-</code></pre>
 <h3 id="download-nnstreamer-source-code-and-ml-api-source-code">Download NNStreamer source code and ML API source code</h3>
 <pre><code class="language-bash">$ cd $ANDROID_DEV_ROOT/workspace
 $ git clone https://github.com/nnstreamer/nnstreamer.git
@@ -305,6 +254,12 @@ To enable each neural network frameworks, you should download and set-up proper 
 <code>--enable_nnfw=yes</code> to build with NNFW (Samsung on-device neural network inference framework).</li>
 <li>
 <code>--enable_snap=yes</code> to build with SNAP (Samsung Neural Acceleration Platform).</li>
+</ul>
+</li>
+<li>Enabling tracing: Default no.
+<ul>
+<li>
+<code>--enable_tracing=yes</code> to build with tracing and Gst-Shark.</li>
 </ul>
 </li>
 <li>Run test: Default no. <code>--run_test=yes</code> to run the instrumentation test.</li>

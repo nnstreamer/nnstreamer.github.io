@@ -215,6 +215,41 @@ Dimensions = (string) Dimension
 Dimension = (string) [1-65535]:[1-65535]:[1-65535]:[1-65535]
 </code></pre>
 <p>The buffer of <code>other/tensors</code> streams have multiple memory chunks. Each memory chunk represents one single tensor in the buffer format of <code>other/tensor</code>. With default configurations of Gstreamer 1.0, the maximum allowed number of memory chunks in a buffer is <strong>16</strong>. Thus, with such configurations of Gstreamer 1.0, <code>other/tensors</code> may include up to <strong>16</strong> <code>other/tensor</code>.</p>
+<h2 id="othertensorsflexible">other/tensors-flexible</h2>
+<p><code>other/tensors-flexible</code> handles non-static, flexible tensor stream without specifying the data type and shape of tensor in pad capability.
+This is useful when an element or a model requires non-determined, dynamic data shape to process the tensors. (e.g., cropping the raw data into multiple tensors)</p>
+<p>Unlike <code>other/tensor</code> and <code>other/tensors</code>, flexible tensor does not contain the data structure in pad capability.
+Instead, flexible tensor has its own data structure - <a href="https://github.com/nnstreamer/nnstreamer/blob/main/gst/nnstreamer/include/tensor_typedef.h">GstTensorMetaInfo</a> - in each tensor buffer, to prevent caps negotiation with fixed type of data stream.
+When processing a buffer with the capability <code>other/tensors-flexible</code>, developer should append or parse the tensor information in buffer using various <a href="https://github.com/nnstreamer/nnstreamer/blob/main/gst/nnstreamer/include/nnstreamer_plugin_api.h">utility functions</a>.</p>
+<p>The buffer of <code>other/tensors-flexible</code> may have single memory or multiple memory chunks.
+NNStreamer element with <code>other/tensors-flexible</code> capability gets the number of memories in a buffer and handles each memory as a tensor.
+Note that, it also has a limit, the maximum allowed number of memory chunks in a buffer is <strong>16</strong>.</p>
+<pre><code>Memory chunks with tensor-meta in a buffer (e.g., 3 memories)
+ - Header size is fixed.
+ - Tensor data size depends on the meta (data type and dimension).
+
+       ---------------------------------------------
+   1st | Header (meta) | Tensor (raw data)         |
+       ---------------------------------------------
+   2nd | Header (meta) | Tensor (raw data)         |
+       ---------------------------------------------
+   3rd | Header (meta) | Tensor (raw data)         |
+       ---------------------------------------------
+
+Header (meta)
+offset |       0       |       1       |       2       |       3       |
+       -----------------------------------------------------------------
+   0   |    version    |  tensor type  | dimension[0]  | dimension[1]  |
+       -----------------------------------------------------------------
+   4   | dimension[2]  | dimension[3]  | dimension[4]  | dimension[5]  |
+       -----------------------------------------------------------------
+   ~
+       -----------------------------------------------------------------
+  16   | dimension[14] | dimension[15] | tensor format |   media type  |
+       -----------------------------------------------------------------
+  20 ~ | extra options                                                 |
+       -----------------------------------------------------------------
+</code></pre>
 <h2 id="othertensorsave-tbu">other/tensorsave (TBU)</h2>
 <p><code>other/tensorsave</code>, along with its <code>typefind</code> definition, is defined to enable to save <code>other/tensors</code> streams as files and load such files are <code>other/tensors</code> stream. With the definitions of headers defined with <code>other/tensorsave</code>, GStreamer can decode the given file and determine that the file belongs to <code>other/tensorsave</code>.</p>
 <p>The detailed description of the file format is at <a href="https://github.com/nnstreamer/nnstreamer/wiki/Design-External-Save-Format-for-other-tensor-and-other-tensors-Stream-for-TypeFind">Design External Save Format for other/tensor and other/tensors Stream for TypeFind</a></p>

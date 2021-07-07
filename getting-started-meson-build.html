@@ -137,12 +137,14 @@ $('body').removeClass('no-script');
 	<div id="main">
 				    <div id="page-description" data-hotdoc-role="main">
         <h2 id="getting-started-mesonninja-build">Getting Started: Meson/Ninja Build</h2>
-<p>NNStreamer uses meson/ninja as its standard build environment; both Tizen(GBS-OBS/.rpm) and Ubuntu(pdebuild/.deb) builds uses meson/ninja.</p>
+<p>NNStreamer uses meson/ninja as its standard build environment; both Tizen(GBS-OBS/.rpm) and Ubuntu(pdebuild/.deb) use meson/ninja.</p>
 <p>With meson/ninja, you may build in the git repo directory and install nnstreamer binaries to your designated directories.
-However, you should be careful on configuring nnstreamer; i.e., the paths of subplugins and .ini file locations. Please note that nnstreamer tries to load /etc/nnstreamer.ini by default.</p>
+However, you should be careful on configuring nnstreamer; i.e., the paths of subplugins and .ini file locations.
+Please note that nnstreamer tries to load /etc/nnstreamer.ini by default.</p>
 <ul>
 <li>https://mesonbuild.com/Getting-meson.html</li>
 </ul>
+<p>This document assumes that you are using Ubuntu.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>The following dependencies are needed to compile/build/run.</p>
 <ul>
@@ -151,9 +153,9 @@ However, you should be careful on configuring nnstreamer; i.e., the paths of sub
 <li>glib 2.0</li>
 <li>meson &gt;= 0.50</li>
 <li>ninja-build</li>
-<li>Neural network frameworks or libraries for plugins (e.g., tensorflow) you want to use, including their pkgconfig files or mechanisms to support meson to discover the corresponding frameworks. If you use our packages for tensorflow/pytorch, you do not need to worry.
+<li>Neural network frameworks or libraries for plugins (e.g., tensorflow) you want to use, including their pkgconfig files or mechanisms to allow meson to discover its headers and libraries. If you use development packages packaged by us for tensorflow/pytorch/openvino/..., you do not need to worry.
 <ul>
-<li>Possible frameworks for "extra" plugins: tensorflow, pytorch, protobuf, flatbuf, openvino, ncsdk2, Verisilicon-Vivante, SNPE, ...</li>
+<li>Possible frameworks for "extra" plugins: tensorflow, tensorflow-lite, pytorch, protobuf, flatbuf, openvino, ncsdk2, Verisilicon-Vivante, SNPE, TensorRT, mqtt, ...</li>
 </ul>
 </li>
 <li>
@@ -161,23 +163,29 @@ However, you should be careful on configuring nnstreamer; i.e., the paths of sub
 <li>gtest (optional. required for unit testing)</li>
 </ul>
 <p>The minimal requirement to build nnstreamer with default configuration is</p>
-<pre><code class="language-bash">$ sudo apt install meson ninja-build gcc g++ libglib2.0-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+<pre><code class="language-bash">$ sudo apt-get install meson ninja-build gcc g++ libglib2.0-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 </code></pre>
-<p><em><strong>1. Clone the needed repositories</strong></em></p>
-<pre><code class="language-bash">$ git clone https://github.com/myungjoo/SSAT ssat
-$ git clone https://git.tizen.org/cgit/platform/upstream/tensorflow
-$ git clone https://github.com/nnstreamer/nnstreamer
+<p>Optional utilities:</p>
+<pre><code class="language-bash">$ sudo add-apt-repository ppa:nnstreamer/ppa
+$ sudo apt-get update
+$ sudo apt-get install libiniparser-dev=4.1 # if your iniparser is &lt; 4.1
+$ sudo apt-get install ssat # if you want to run unit tests
 </code></pre>
-<p><em><strong>2. Fix tensorflow build errors</strong></em></p>
-<p>You may skip this if you have downloaded binary packages from PPA.</p>
-<p>A script, <code>tensorflow/contrib/lite/Makefile</code>, may fail, depending your shell.
-Replace the ARCH macro (HOST_ARCH in some versions):</p>
-<p>From:</p>
-<pre><code class="language-makefile">ARCH := $(shell if [[ $(shell uname -m) =~ i[345678]86 ]]; then echo x86_32; else echo $(shell uname -m); fi)
+<p>You may build and install iniparser and ssat directly from their sources, too.</p>
+<p><em><strong>1. Clone nnstreamer</strong></em></p>
+<pre><code class="language-bash">$ git clone https://github.com/nnstreamer/nnstreamer
 </code></pre>
-<p>To:</p>
-<pre><code class="language-makefile">ARCH := $(shell uname -m | sed -e 's/i[3-8]86/x86_32/')
+<p><em><strong>2. Install related frameworks</strong></em></p>
+<p><em>Option A</em>: You may install optional developmental packages from nnstreamer PPA for more subplugins and extra plugins (choose what you need):</p>
+<pre><code>$ sudo add-apt-repository ppa:nnstreamer/ppa
+$ sudo apt-get update
+$ sudo apt-get install libedgetpu-dev libflatbuffers-dev libgrpc-dev openvino-dev libpaho-mqtt-dev libprotobuf-dev pytorch tensorflow-c-dev tensorflow-lite-dev tensorflow2-lite-dev tvm-runtime-dev
 </code></pre>
+<p><em>Option B</em>: Build &amp; install your own frameworks and provide corresponding pkg-config files.
+<a href="https://git.tizen.org/cgit/platform/upstream/tensorflow2/tree/packaging/tensorflow2-lite.pc.in?h=tizen">tensorflow2-lite pkgconfig file template</a> /
+<a href="https://git.tizen.org/cgit/platform/upstream/tensorflow/tree/packaging/tensorflow-lite.pc.in?h=tizen">tensorflow1-lite pkgconfig file template</a> /
+<a href="https://git.tizen.org/cgit/platform/upstream/tensorflow/tree/packaging/tensorflow-lite.pc.in?h=tizen">tensorflow1 pkgconfig file template</a></p>
+<p>Fill in paths of libdir and includedir of the frameworks and place the .pc files at /usr/lib/pkgconfig/</p>
 <p><em><strong>3. Configure the build</strong></em></p>
 <p>Configure build in <code>./build</code> directory with default options.</p>
 <pre><code class="language-bash">$ meson build
@@ -194,7 +202,10 @@ For example, in order to install as general Linux system libraries you may confi
 </code></pre>
 <p><em><strong>5. Install</strong></em></p>
 <p>Assuming you have configured meson at <code>./build</code>.</p>
-<pre><code class="language-bash">$ ninja -C build install
+<pre><code class="language-bash">$ sudo ninja -C build install  # if the destination is not user directory
+</code></pre>
+<p>Or if you want somewhere else:</p>
+<pre><code class="language-bash">$ DESTDIR=/home/me/somewhereelse/ ninja -C build install
 </code></pre>
 <p>Then, it will install:</p>
 <ul>
@@ -208,9 +219,14 @@ For example, in order to install as general Linux system libraries you may confi
 </li>
 </ul>
 <p><em><strong>6. Verifying installation</strong></em></p>
-<p>Unless you have given sysconfdir (<code>--sysconfdir</code> meson option), <code>/etc/nnstreamer.ini</code> is the default configuration file. If <code>--sysconfdir</code> was given at build time, the default configuration file is at {sysconfdir}/nnstreamer.ini.</p>
-<p>Unless overriden by envvars, the paths in the .ini file are used to search for subplugins. Therefore, if a subplugin (e.g., tensorflow-lite filter) does not work, check the subplugin locations and their configurations first.</p>
-<p>We will supply utility to verify such issues automatically soon: https://github.com/nnstreamer/nnstreamer/issues/2638 (nnstreamer-util's <code>nnstreamer-check</code>).</p>
+<p>Assuming you have configured meson at <code>./build</code>.</p>
+<pre><code class="language-bash">$ build/tools/development/confchk/nnstreamer-check
+
+...
+
+</code></pre>
+<p><code>nnstreamer-check</code> utility shows the status of your nnstreamer installation.
+It uses environmental-variables, nnstreamer.ini file, and hardcoded default values, with the respective order.</p>
 
     </div>
         
