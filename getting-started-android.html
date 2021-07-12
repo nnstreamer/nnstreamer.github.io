@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -147,7 +147,8 @@ $('body').removeClass('no-script');
 <li>OS: Ubuntu 16.04 / 18.04 x86_64 LTS</li>
 <li>Android Studio: Ubuntu version</li>
 <li>Android SDK: Min version 28 (Pie)</li>
-<li>Android NDK: Use default ndk-bundle in Android Studio</li>
+<li>Android NDK: Use default ndk-bundle in Android Studio <strong>( &lt; 22.0 )</strong>
+</li>
 <li>GStreamer: gstreamer-1.0-android-universal-1.16.2</li>
 </ul>
 </li>
@@ -179,11 +180,11 @@ export ANDROID_SDK_ROOT=$ANDROID_SDK
 export ANDROID_NDK_ROOT=$ANDROID_NDK
 export GSTREAMER_ROOT_ANDROID=$ANDROID_DEV_ROOT/gstreamer-1.0
 export NNSTREAMER_ROOT=$ANDROID_DEV_ROOT/workspace/nnstreamer
-export ML_API_ROT=$ANDROID_DEV_ROOT/workspace/api
+export ML_API_ROOT=$ANDROID_DEV_ROOT/workspace/api
 </code></pre>
 <h3 id="install-required-packages">Install required packages</h3>
 <p>Some required packages should be installed as below.</p>
-<pre><code class="language-bash">$ sudo apt install subversion curl pkg-config
+<pre><code class="language-bash">$ sudo apt install subversion curl pkg-config gradle
 </code></pre>
 <h3 id="download-android-studio">Download Android Studio</h3>
 <p>Download and install Android Studio to compile an Android source code.
@@ -283,7 +284,7 @@ To enable each neural network frameworks, you should download and set-up proper 
 </li>
 </ul>
 <pre><code class="language-bash">$ cd $ML_API_ROOT
-$ bash ./java/android/build-nnstreamer-android-lib.sh
+$ bash ./java/build-nnstreamer-android.sh
 </code></pre>
 <p>After building the Android API, you can find the library(.aar) in <code>$ML_API_ROOT/android_lib</code>.</p>
 <ul>
