@@ -173,6 +173,13 @@ If setting multiple tensors, converter will divide incoming buffer and set multi
 <li>With <code>input-type</code> and <code>input-dim</code>, converter will set the output capability on src pad.</li>
 </ul>
 </li>
+<li>Serialized data: conversion to static tensor stream.
+<ul>
+<li>Supported serialization format: Protocol Buffers, Flatbuffers and Flexbuffers.</li>
+<li>The converter gets input capability from the peer pad of the sink pad, or you can specify the capability.</li>
+<li>You don't need to specify the option because the sub-plugin is registered using the capability.</li>
+</ul>
+</li>
 </ul>
 <h2 id="planned-features">Planned features</h2>
 <p>From higher priority</p>
@@ -215,6 +222,18 @@ When incoming media type is video, audio, or text, each frame (or a set of frame
 </ul>
 <h2 id="usage-examples">Usage Examples</h2>
 <pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_sink
+</code></pre>
+<h3 id="flatbuffers-to-tensors-stream">flatbuffers to tensors stream</h3>
+<p>Convert to flatbuffers using tensor decoder and then convert back to tensors stream.</p>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=flatbuf ! tensor_converter ! tensor_sink
+</code></pre>
+<h3 id="protocol-buffers-to-tensors-stream">protocol buffers to tensors stream</h3>
+<p>Convert to protocol buffers using tensor decoder and then convert back to tensors stream.</p>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=protobuf ! tensor_converter ! tensor_sink
+</code></pre>
+<h3 id="flexbuffers-to-tensors-stream">flexbuffers to tensors stream</h3>
+<p>Convert to flexbuffers using tensor decoder and then convert back to tensors stream.</p>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=flexbuf ! tensor_converter ! tensor_sink
 </code></pre>
 <h2 id="custom-converter">Custom converter</h2>
 <p>If you want to convert any media type to tensors, you can use custom mode of the tensor converter.</p>

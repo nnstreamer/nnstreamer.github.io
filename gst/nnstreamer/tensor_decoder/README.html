@@ -138,16 +138,11 @@ $('body').removeClass('no-script');
 				    <div id="page-description" data-hotdoc-role="main">
         <h1 id="nnstreamertensor_decoder">NNStreamer::tensor_decoder</h1>
 <h2 id="supported-features">Supported features</h2>
-<ul>
-<li>Direct conversion of other/tensor with video/x-raw semantics back to video/x-raw stream.</li>
-</ul>
-<h2 id="planned-features">Planned features</h2>
-<ul>
-<li>With given properties from users or pipeline developers, support the following conversions. The list is not exclusive and we may need to implement more features later.</li>
-</ul>
+<p>With given properties from users or pipeline developers, support the following conversions. The list is not exclusive and we may need to implement more features later.</p>
 <table>
 <thead>
 <tr>
+<th> Mode</th>
 <th> Main property (input tensor semantics)</th>
 <th> Additional &amp; mandatory property</th>
 <th> Output</th>
@@ -155,21 +150,55 @@ $('body').removeClass('no-script');
 </thead>
 <tbody>
 <tr>
-<td> Bounding boxes (other/tensor)</td>
+<td> directvideo</td>
+<td> other/tensors</td>
 <td> N/A</td>
 <td> video/x-raw</td>
 </tr>
 <tr>
+<td> bounding_boxes</td>
+<td> Bounding boxes (other/tensor)</td>
+<td> File path to labels, decoding schems, out dim, in dim</td>
+<td> video/x-raw</td>
+</tr>
+<tr>
+<td> image_labeling</td>
 <td> Image label (other/tensor)</td>
 <td> File path to labels</td>
 <td> text/x-raw</td>
 </tr>
 <tr>
-<td> Bounding boxes + labels (other/tensors)</td>
-<td> File path to labels</td>
-<td> video/x-raw (textoverlay processed?)</td>
+<td> image_segment</td>
+<td> segmentaion info</td>
+<td> expected model</td>
+<td> video/x-raw</td>
 </tr>
 <tr>
+<td> pose_estimation</td>
+<td> pose info</td>
+<td> out dim, in dim,  File path to labels, mode</td>
+<td> video/x-raw</td>
+</tr>
+<tr>
+<td> flatbuf</td>
+<td> other/tensors</td>
+<td> N/A</td>
+<td> flatbuffers</td>
+</tr>
+<tr>
+<td> protobuf</td>
+<td> other/tensors</td>
+<td> N/A</td>
+<td> protocol buffers</td>
+</tr>
+<tr>
+<td> flexbuf</td>
+<td> other/tensors</td>
+<td> N/A</td>
+<td> flexbuffers</td>
+</tr>
+<tr>
+<td></td>
 <td> ... more features coming ...</td>
 <td></td>
 <td></td>
@@ -179,16 +208,17 @@ $('body').removeClass('no-script');
 <h2 id="sink-pads">Sink Pads</h2>
 <p>One always sink pad.</p>
 <ul>
-<li>other/tensor (current)</li>
-<li>Either other/tensor or other/tensors (future, planned)</li>
+<li>other/tensors (current)</li>
 </ul>
 <h2 id="source-pads">Source Pads</h2>
 <p>One always source pad.</p>
 <ul>
-<li>video/x-raw (current)</li>
-<li>Either video/x-raw or text/x-raw (future, planned)</li>
+<li>video/x-raw</li>
+<li>text/x-raw</li>
+<li>flatbuffers</li>
+<li>protocol buffers</li>
+<li>flexbuffers</li>
 </ul>
-<p>TBD: we may need to support multiple source pads (bounding boxes + labels?)</p>
 <h2 id="performance-characteristics">Performance Characteristics</h2>
 <p>TBD.</p>
 <h2 id="properties">Properties</h2>
@@ -214,6 +244,15 @@ $('body').removeClass('no-script');
 <pre><code>$ gst-launch somevideosrc_with_xraw ! tee name=t ! queue ! tensor_converter ! tensor_filter SOME_OPTION ! tensor_decoder output-type=image-label additional-file-1=/tmp/labels.txt ! txt. t. ! queue ! textoverlay name=txt ! autovideosink
 </code></pre>
 <p>Note: not tested. not sure if the syntax is correct with <code>txt. t. !</code>. Regard the above as pseudo code.</p>
+<h3 id="tensor-stream-to-flatbuffers">tensor stream to flatbuffers</h3>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=flatbuf ! fakesink
+</code></pre>
+<h3 id="tensor-stream-to-protocol-buffers">tensor stream to protocol buffers</h3>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=protobuf ! fakesink
+</code></pre>
+<h3 id="tensor-stream-to-flexbuffers">tensor stream to flexbuffers</h3>
+<pre><code>$ gst-launch videotestsrc ! video/x-raw,format=RGB,width=640,height=480 ! tensor_converter ! tensor_decoder mode=flexbuf ! fakesink
+</code></pre>
 <h2 id="custom-decoder">Custom decoder</h2>
 <p>If you want to convert tensors to any media type, You can use custom mode of the tensor decoder.</p>
 <h3 id="code-mode">code mode</h3>
