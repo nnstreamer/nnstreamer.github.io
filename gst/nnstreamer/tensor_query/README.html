@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>tensor_query</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="nnstreamer-example/index.html">Examples</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst/nnstreamer/tensor_query/README.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamertensor_query">NNStreamer::tensor_query</h1>
+<p>Tensor query allows devices which have weak AI computational power to to use resources from higher-performance devices.<br>
+Suppose you have a device at home with sufficient computing power (server) and a network of lightweight devices connected to it (clients).<br>
+The client asks the server to handle heavy tasks and receive results from the server.<br>
+Therefore, there is no need for cloud server by running AI on a local network.</p>
+<h2 id="elements">Elements</h2>
+<h3 id="tensor_query_client">tensor_query_client</h3>
+<ul>
+<li>Used for lightweight device.</li>
+<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+</ul>
+<h3 id="tensor_query_serversrc">tensor_query_serversrc</h3>
+<ul>
+<li>Used for heavyweight device.</li>
+<li>Receive requests and data from clients.</li>
+<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+</ul>
+<h3 id="tensor_query_serversrc1">tensor_query_serversrc</h3>
+<ul>
+<li>Used for heavyweight device.</li>
+<li>Send the results processed by the server to the clients.</li>
+<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+</ul>
+<h2 id="usage-example">Usage Example</h2>
+<h3 id="echo-server">echo server</h3>
+<p>As the simplest example, the server sends the data received from the client back to the client.</p>
+<ul>
+<li>If you dodn't install nnstreamer, see <a href="/Documentation/how-to-run-examples.md">here</a>.</li>
+</ul>
+<h4 id="server">server</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 tensor_query_serversrc ! other/tensors,num_tensors=1,dimensions=3:300:300:1,types=uint8,framerate=30/1 ! tensor_query_serversink
+</code></pre>
+<h4 id="client">client</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 v4l2src ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_converter ! tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink
+</code></pre>
+<h4 id="client-2-optional-to-test-multiple-clients">client 2 (Optional, To test multiple clients)</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 videotestsrc ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_converter ! tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink
+</code></pre>
+<h3 id="objectdetection">Object-detection</h3>
+<p>The client sends the video to the server, the server performs object detection(which requires high-performance work) and send the results to the client.</p>
+<h4 id="server1">server</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 \
+    tensor_query_serversrc ! tensor_filter framework=tensorflow-lite model=tflite_model/ssd_mobilenet_v2_coco.tflite ! \
+    tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=tflite_model/coco_labels_list.txt option3=tflite_model/box_priors.txt option4=640:480 option5=300:300 ! \
+    tensor_converter ! other/tensors,num_tensors=1,dimensions=4:640:480:1,types=uint8 ! tensor_query_serversink
+</code></pre>
+<h4 id="client1">client</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 \
+    compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink \
+        v4l2src ! videoconvert ! videoscale ! video/x-raw,width=640,height=480,format=RGB,framerate=10/1 ! tee name=t \
+            t. ! queue ! videoscale ! video/x-raw,width=300,height=300,format=RGB ! tensor_converter ! tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! queue leaky=2 max-size-buffers=2 ! \
+                tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! video/x-raw,width=640,height=480,format=RGBA ! mix.sink_0 \
+            t. ! queue ! mix.sink_1
+</code></pre>
+<ul>
+<li>How to get object detection model</li>
+</ul>
+<pre><code>$ git clone https://github.com/nnstreamer/nnstreamer-example.git
+$ cd nnstreamer-example/bash_script/example_models
+$ ./get-model.sh ./get-model.sh object-detection-tflite
+</code></pre>
+<h2 id="tensor-query-test">tensor query test</h2>
+<h3 id="to-check-the-results-without-running-the-test-daily-build-result">To check the results without running the test: <a href="http://nnstreamer.mooo.com/nnstreamer/ci/daily-build/build_result/latest/log/">Daily build result</a>.</h3>
+<ul>
+<li>GTest results</li>
+</ul>
+<pre><code>[  173s] ~/rpmbuild/BUILD/nnstreamer-1.7.2
+[  173s] ++ pwd
+[  173s] + bash /home/abuild/rpmbuild/BUILD/nnstreamer-1.7.2/packaging/run_unittests_binaries.sh ./tests
+[  173s] ~/rpmbuild/BUILD/nnstreamer-1.7.2/build ~/rpmbuild/BUILD/nnstreamer-1.7.2
+[  173s] [==========] Running 8 tests from 2 test suites.
+[  173s] [----------] Global test environment set-up.
+[  173s] [----------] 5 tests from tensorQuery
+[  173s] [ RUN      ] tensorQuery.serverProperties0
+...
+</code></pre>
+<ul>
+<li>SSAT results</li>
+</ul>
+<pre><code>[  407s] [Starting] nnstreamer_query
+[  408s] ==================================================
+[  408s]     Test Group nnstreamer_query Starts.
+[  408s] [PASSED] 1-2:gst-launch of case 1-2
+...
+[  408s] ==================================================
+[  408s] [PASSED] Test Group nnstreamer_query Passed
+[  408s]
+</code></pre>
+<h3 id="run-test-on-tizen">Run test on Tizen</h3>
+<pre><code class="language-bash">$ git clone https://github.com/nnstreamer/nnstreamer.git
+$ cd nnstreamer
+$ gbs build --define "unit_test 1"
+</code></pre>
+<ul>
+<li>About gbs build, refer <a href="/Documentation/getting-started-tizen.md">here</a>
+</li>
+</ul>
+<h3 id="run-test-on-ubuntu">Run test on Ubuntu</h3>
+<p>For gtest based test cases</p>
+<pre><code class="language-bash">$ cd nnstreamer
+$ meson build
+$ ninja -C build test
+# or if you want to run tensor_query only
+$ cd nnstreamer
+$ meson build
+$ ninja -C build install
+$ cd build
+$ ./tests/unittest_query
+</code></pre>
+<p>For SSAT based test cases</p>
+<pre><code class="language-bash">$ cd nnstreamer/tests/nnstreamer_query
+$ ssat # or $ bash runTest.sh
+</code></pre>
+<ul>
+<li>For more detailed installation methods, see <a href="/Documentation/how-to-run-examples.md">here</a>.</li>
+</ul>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
