@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -160,11 +160,30 @@ $('body').removeClass('no-script');
 <li>The size of a text frame should be configured by developer with the property <code>input-dim</code>. Because the dimension of tensor is the key metadata of a tensor stream pipeline, we need to fix the value before actually looking at the actual stream data.</li>
 </ul>
 </li>
-<li>Octet stream: direct conversion of application/octet-stream with converter properties.
+<li>Octet stream: direct conversion of application/octet-stream.
 <ul>
-<li>You should set <code>input-type</code> and <code>input-dim</code> to describe tensor(s) information of outgoing buffer.
-If setting multiple tensors, converter will divide incoming buffer and set multiple memory chunks in outgoing buffer.</li>
-<li>Only single frame. <code>frames-per-tensor</code> should be 1 (default value).</li>
+<li>
+<p>Octet stream to static tensor: You should set <code>input-type</code> and <code>input-dim</code> to describe tensor(s) information of outgoing buffer.
+If setting multiple tensors, converter will divide incoming buffer and set multiple memory chunks in outgoing buffer.</p>
+<p>e.g, converting 10 bytes of octet stream to 2 static tensors:</p>
+<p><code>... ! application/octet-stream ! tensor_converter input-dim=2:1:1:1,2:1:1:1 input-type=int32,int8 ! ...</code></p>
+</li>
+<li>
+<p>Octet stream to flexible tensor: With a caps filter (<code>other/tensors,format=flexible</code>), tensor-converter generates flexible tensor.
+In this case, you don't need to denote <code>input-type</code> and <code>input-dim</code> in pipeline description.
+Converter sets the dimension with buffer size (size:1:1:1) and type uint8, and appends this information (tensor-meta) in the memory of outgoing buffer.</p>
+<p>e.g, converting octet stream to flexible tensor:</p>
+<p><code>... ! application/octet-stream ! tensor_converter ! other/tensors,format=flexible ! ...</code></p>
+</li>
+<li>
+<p>Media to octet stream: If you need to convert media to octet stream, use <a href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-capssetter.html">capssetter</a>.
+This element can update the caps of incoming buffer using it's properties. After updating the mimetye of media stream, it can be converted to tensor stream with tensor_converter.</p>
+<p>e.g., converting jpeg to flexible tensor:</p>
+<p><code>... ! jpegenc ! capssetter caps="application/octet-stream" replace=true join=false ! tensor_converter ! other/tensors,format=flexible ! ...</code></p>
+</li>
+<li>
+<p>Only single frame. <code>frames-per-tensor</code> should be 1 (default value).</p>
+</li>
 </ul>
 </li>
 <li>Flexible tensor: conversion to static tensor stream.
