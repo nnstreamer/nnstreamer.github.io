@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>T5. GStreamer API</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/trie.js"></script>
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="tutorials.html">Tutorials</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="tutorials/tutorial5_gstreamer_api.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="tutorial-5-build-application-using-gstreamer-api">Tutorial 5. Build application using GStreamer API</h1>
+<p>The <code>gst-launch</code> tool is convenient, but it is recommended to use it simply to test pipeline description.<br>
+In this tutorial, let's learn how to create an application. (Full example source code can be found <a href="https://github.com/nnstreamer/nnstreamer-example/blob/main/native/example_object_detection_tensorflow_lite/nnstreamer_example_object_detection_tflite.cc">here</a>).<br>
+Creating a pipeline application is simple. You can use <code>gst_parse_launch ()</code> which is GStreamer API instead of <code>gst-launch</code> tool.<br>
+Refer to <a href="(Documentation/how-to-run-examples.md)">here</a> for building nnstreamer-example.</p>
+<p>This is a part of the code explanation. The code lines below are essential for operating a pipeline application. The omitted codes are error handling and additional.</p>
+<p>Part of <strong>nnstreamer_example_object_detection_tflite.cc</strong></p>
+<pre><code>int
+main (int argc, char ** argv)
+{
+  ...
+
+  /* Init gstreamer */
+  gst_init (&amp;argc, &amp;argv);
+
+  /* Same pipeline description as tutorial 2 */
+  str_pipeline =
+      g_strdup_printf
+      ("v4l2src name=src ! videoconvert ! videoscale ! video/x-raw,format=RGB,width=640,height=480,framerate=30/1 ! tee name=t "
+          "t. ! queue leaky=2 max-size-buffers=2 ! videoscale ! video/x-raw,format=RGB,width=300,height=300 ! tensor_converter ! "
+            "tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! "
+            "tensor_filter framework=tensorflow-lite model=%s ! "
+            "tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=%s option3=%s option4=640:480 option5=300:300 !"
+            "compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink "
+       "t. ! queue leaky=2 max-size-buffers=10 ! mix. ",
+      g_app.tflite_info.model_path, g_app.tflite_info.label_path, g_app.tflite_info.box_prior_path);
+
+  ...
+
+  /* Create a new pipeline */
+  g_app.pipeline = gst_parse_launch (str_pipeline, NULL);
+
+  ...
+
+  /* Start pipeline. Setting pipeline to the PLAYING state. */
+  gst_element_set_state (g_app.pipeline, GST_STATE_PLAYING);
+
+  ...
+  /* Pipeline is running */
+  ...
+
+  /* Stop and release the resources */
+  gst_element_set_state (g_app.pipeline, GST_STATE_NULL);
+  gst_object_unref (g_app.pipeline);
+
+  ...
+}
+</code></pre>
+<p>Then let's run the application.</p>
+<pre><code># If you built tutorial 5 yourself, go to the path you specified, and if you installed it using apt, go to /usr/lib/nnstreamer/bin.
+$ cd /usr/lib/nnstreamer/bin
+$ ./nnstreamer_example_object_detection_tflite
+</code></pre>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
