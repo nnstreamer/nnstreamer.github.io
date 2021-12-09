@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -195,7 +195,23 @@ If you want to designate nnstreamer's binary locations, provide such with <code>
 For example, in order to install as general Linux system libraries you may configure:</p>
 <pre><code class="language-bash">$ meson build ${whateveroptionyouwant....} --prefix=/ --sysconfdir=/etc --libdir=/usr/lib --bindir=/usr/bin --includedir=/usr/include
 </code></pre>
-<p>Documentation for possible meson options: WIP</p>
+<p>Or You can set your own path to install libraries and header files.</p>
+<pre><code class="language-bash"># Configure and build example.
+$ sudo vi ~/.bashrc
+
+export NNST_ROOT=$HOME/nnstreamer
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NNST_ROOT/lib
+export GST_PLUGIN_PATH=$GST_PLUGIN_PATH:$NNST_ROOT/lib/gstreamer-1.0
+# Include NNStreamer headers and libraries
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$NNST_ROOT/include
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$NNST_ROOT/include
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$NNST_ROOT/lib/pkgconfig
+
+$ source ~/.bashrc
+
+$ meson --prefix=${NNST_ROOT} --sysconfdir=${NNST_ROOT} --libdir=lib --bindir=bin --includedir=include build
+$ ninja -C build install
+</code></pre>
 <p><em><strong>4. Build</strong></em></p>
 <p>Assuming you have configured meson at <code>./build</code>.</p>
 <pre><code class="language-bash">$ ninja -C build
