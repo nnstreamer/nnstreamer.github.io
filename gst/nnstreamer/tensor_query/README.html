@@ -252,6 +252,10 @@ $ ssat # or $ bash runTest.sh
 <ul>
 <li>For more detailed installation methods, see <a href="/Documentation/how-to-run-examples.md">here</a>.</li>
 </ul>
+<h2 id="appendix">Appendix</h2>
+<h3 id="available-elements-on-query-server">Available elements on query server.</h3>
+<p>Multiple <code>tensor_query_client</code> can connect to the query server. The <code>query_serversrc</code> add a unique client ID (given by the query server) to the meta of the GstBuffer to distinguish clients. If there is an element that does not copy meta information, the <code>tensor_query_serversink</code> cannot send it to the client because it does not know which client receive the buffer.<br>
+Please check list <a href="https://github.com/nnstreamer/nnstreamer/wiki/Available-elements-on-query-server">here</a></p>
 
     </div>
         
