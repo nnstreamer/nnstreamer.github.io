@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -138,19 +138,20 @@ $('body').removeClass('no-script');
 				    <div id="page-description" data-hotdoc-role="main">
         <h2 id="getting-started-ubuntu-debuildpdebuild">Getting Started: Ubuntu Debuild/Pdebuild</h2>
 <p>In order to control how pdebuild/debuild build, you need to edit files in <code>${nnstreamer-source}/debian/</code>.</p>
-<h3 id="pdebuild-a-sandboxed-build-environment-ubuntu-1604-1804">Pdebuild, a sandboxed build environment. (Ubuntu 16.04, 18.04)</h3>
+<h3 id="pdebuild-a-sandboxed-build-environment-ubuntu-1804-2004">Pdebuild, a sandboxed build environment. (Ubuntu 18.04, 20.04)</h3>
 <p>This guide uses the nnstreamer PPA to resolve additional build-dependencies (e.g., tensorflow/tensorflow-lite 1.13).</p>
 <p>Install build tools for pdebuild:</p>
 <pre><code class="language-bash">$ sudo apt install pbuilder debootstrap devscripts
 </code></pre>
-<p>The following example configuration is for Ubuntu 16.04:</p>
+<p>The following example configuration is for Ubuntu 18.04:</p>
 <pre><code class="language-bash">$ cat ~/.pbuilderrc
-DISTRIBUTION=xenial
+DISTRIBUTION=bionic
 COMPONENTS="main restricted universe multiverse"
-OTHERMIRROR="deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse |\
-  deb http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse |\
-  deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse |\
-  deb [trusted=yes] http://ppa.launchpad.net/nnstreamer/ppa/ubuntu xenial main"
+OTHERMIRROR="deb http://archive.ubuntu.com/ubuntu bionic main restricted universe multiverse |\
+  deb http://archive.ubuntu.com/ubuntu bionic-security main restricted universe multiverse |\
+  deb http://archive.ubuntu.com/ubuntu bionic-updates main restricted universe multiverse |\
+  deb [trusted=yes] http://ppa.launchpad.net/nnstreamer/ppa/ubuntu bionic main |\
+  deb [trusted=yes] http://ppa.launchpad.net/one-runtime/ppa/ubuntu bionic main"
 $ sudo ln -s  ~/.pbuilderrc /root/.pbuilderrc
 $ sudo pbuilder create
 </code></pre>
@@ -163,8 +164,9 @@ $ ls -al /var/cache/pbuilder/result/*.deb
 <h3 id="debuild-build-with-system-libraries-ubuntudebian">Debuild, build with system libraries. (Ubuntu/Debian)</h3>
 <p>After installing all the required packages to your system, you may run <code>debuild</code> to get .deb packages.</p>
 <p>In Ubuntu, you may prepare your system easily with the following commands, which installs prebuilt binaries from nnstreamer's PPA repository.</p>
-<pre><code class="language-bash">$ sudo apt-add-repository ppa:nnstreamer
-$ sudo apt install ssat tensorflow-dev tensorflow-lite-dev libprotobuf-dev # you may add pytorch and other libraries, too
+<pre><code class="language-bash">$ sudo apt-add-repository ppa:nnstreamer/ppa
+$ sudo add-apt-repository ppa:one-runtime/ppa
+$ sudo apt install ssat tensorflow-dev tensorflow-lite-dev libprotobuf-dev nnfw-dev # you may add pytorch and other libraries, too
 </code></pre>
 <p>Note that ssat is required for unit testing. You may download it at <a href="https://github.com/myungjoo/SSAT">Github SSAT</a>.</p>
 <p>Refer to <a href="https://www.debian.org/doc/manuals/maint-guide/build.en.html#debuild">debuild command</a> for how to use <code>debuild</code>.</p>
