@@ -145,19 +145,21 @@ Therefore, there is no need for cloud server by running AI on a local network.</
 <h3 id="tensor_query_client">tensor_query_client</h3>
 <ul>
 <li>Used for lightweight device.</li>
-<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+<li>The capability of source and sink pad is <code>ANY</code>.</li>
+<li>The capability of the tensor_client sink must match the capability of the tensor_query_serversrc.</li>
+<li>The capability of the tensor_client source must match the capability of the tensor_query_serversink.</li>
 </ul>
 <h3 id="tensor_query_serversrc">tensor_query_serversrc</h3>
 <ul>
 <li>Used for heavyweight device.</li>
 <li>Receive requests and data from clients.</li>
-<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+<li>The capability of tensor_query_serversrc is <code>ANY</code>.</li>
 </ul>
 <h3 id="tensor_query_serversink">tensor_query_serversink</h3>
 <ul>
 <li>Used for heavyweight device.</li>
 <li>Send the results processed by the server to the clients.</li>
-<li>The capability of source and sink pad is <code>other/tensors</code>.</li>
+<li>The capability of tensor_query_serversink is <code>ANY</code>.</li>
 </ul>
 <h2 id="usage-example">Usage Example</h2>
 <h3 id="echo-server">echo server</h3>
@@ -166,28 +168,30 @@ Therefore, there is no need for cloud server by running AI on a local network.</
 <li>If you didn't install nnstreamer, see <a href="/Documentation/how-to-run-examples.md">here</a>.</li>
 </ul>
 <h4 id="server">server</h4>
-<pre><code class="language-bash">$ gst-launch-1.0 tensor_query_serversrc ! other/tensors,num_tensors=1,dimensions=3:300:300:1,types=uint8,framerate=30/1 ! tensor_query_serversink
+<pre><code class="language-bash">$ gst-launch-1.0 tensor_query_serversrc ! video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_query_serversink
 </code></pre>
 <h4 id="client">client</h4>
-<pre><code class="language-bash">$ gst-launch-1.0 v4l2src ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_converter ! tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink
+<pre><code class="language-bash">$ gst-launch-1.0 v4l2src ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_query_client ! videoconvert ! ximagesink
 </code></pre>
 <h4 id="client-2-optional-to-test-multiple-clients">client 2 (Optional, To test multiple clients)</h4>
-<pre><code class="language-bash">$ gst-launch-1.0 videotestsrc ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_converter ! tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink
+<pre><code class="language-bash">$ gst-launch-1.0 videotestsrc ! videoconvert ! videoscale !  video/x-raw,width=300,height=300,format=RGB,framerate=30/1 ! tensor_query_client ! videoconvert ! ximagesink
 </code></pre>
 <h3 id="objectdetection">Object-detection</h3>
 <p>The client sends the video to the server, the server performs object detection(which requires high-performance work) and send the results to the client.</p>
 <h4 id="server1">server</h4>
 <pre><code class="language-bash">$ gst-launch-1.0 \
-    tensor_query_serversrc ! tensor_filter framework=tensorflow-lite model=tflite_model/ssd_mobilenet_v2_coco.tflite ! \
-    tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=tflite_model/coco_labels_list.txt option3=tflite_model/box_priors.txt option4=640:480 option5=300:300 ! \
-    tensor_converter ! other/tensors,num_tensors=1,dimensions=4:640:480:1,types=uint8 ! tensor_query_serversink
+    tensor_query_serversrc ! video/x-raw,width=640,height=480,format=RGB,framerate=0/1 ! \
+        videoconvert ! videoscale ! video/x-raw,width=300,height=300,format=RGB ! tensor_converter ! \
+        tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! \
+        tensor_filter framework=tensorflow-lite model=tflite_model/ssd_mobilenet_v2_coco.tflite ! \
+        tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=tflite_model/coco_labels_list.txt option3=tflite_model/box_priors.txt option4=640:480 option5=300:300 ! \
+        videoconvert ! tensor_query_serversink
 </code></pre>
 <h4 id="client1">client</h4>
 <pre><code class="language-bash">$ gst-launch-1.0 \
     compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink \
         v4l2src ! videoconvert ! videoscale ! video/x-raw,width=640,height=480,format=RGB,framerate=10/1 ! tee name=t \
-            t. ! queue ! videoscale ! video/x-raw,width=300,height=300,format=RGB ! tensor_converter ! tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! queue leaky=2 max-size-buffers=2 ! \
-                tensor_query_client ! tensor_decoder mode=direct_video ! videoconvert ! video/x-raw,width=640,height=480,format=RGBA ! mix.sink_0 \
+            t. ! queue ! tensor_query_client ! videoconvert ! mix.sink_0 \
             t. ! queue ! mix.sink_1
 </code></pre>
 <ul>
@@ -197,6 +201,49 @@ Therefore, there is no need for cloud server by running AI on a local network.</
 $ cd nnstreamer-example/bash_script/example_models
 $ ./get-model.sh ./get-model.sh object-detection-tflite
 </code></pre>
+<h3 id="mqtthybrid">MQTT-hybrid</h3>
+<p>Above two examples, <code>echo sever</code> and <code>Object-detection</code>, use TCP direct connection. Tensor query provides two methods for connection: TCP direct connection and MQTT-hybrid.</p>
+<ol>
+<li>TCP direct connection:<br>
+The connection between the client and the server uses the IP and port given by the user or default values. Therefore, when the server stops working, the client cannot find another alternative server and stops. With TCP direct connections, flexibility and robustness cannot be provided.</li>
+<li>MQTT-hybrid:<br>
+MQTT-hybrid exchanges the connection information using MQTT. The server publishes connection information to the MQTT broker, the client subscribes them from the MQTT broker and creates TCP connections for data transmission using the information gotten by MQTT. So, MQTT broker transmits only small data such as connection information, and high-bandwidth data is transmitted through TCP direct connection. Because MQTT broker is not suitable for large amounts of data such as high resolution video. The reason for using MQTT is that it can manage connection information through MQTT, so if the connected server stops, the client can find an alternative server, create a new connection and start streaming again. Therefore, MQTT-hybrid has the advantage of flexibility and robustness of the connection by using MQTT and a high-bandwidth data transmission capability through TCP direct connection.</li>
+</ol>
+<h4 id="server-1">server 1</h4>
+<p>If server 1 is stopped, the client will connect to server 2. Run server 2 and stop server 1 during operation.</p>
+<pre><code class="language-bash">$ gst-launch-1.0 \
+    tensor_query_serversrc operation=passthrough port=3001 ! video/x-raw,width=640,height=480,format=RGB,framerate=0/1 ! \
+        videoconvert ! videoscale ! video/x-raw,width=300,height=300,format=RGB ! tensor_converter ! \
+        tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! \
+        tensor_filter framework=tensorflow-lite model=tflite_model/ssd_mobilenet_v2_coco.tflite ! \
+        tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=tflite_model/coco_labels_list.txt option3=tflite_model/box_priors.txt option4=640:480 option5=300:300 ! \
+        videoconvert ! tensor_query_serversink port=3000
+</code></pre>
+<h4 id="server-2">server 2</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 \
+    tensor_query_serversrc operation=passthrough port=3003 ! video/x-raw,width=640,height=480,format=RGB,framerate=0/1 ! \
+        videoconvert ! videoscale ! video/x-raw,width=300,height=300,format=RGB ! tensor_converter ! \
+        tensor_transform mode=arithmetic option=typecast:float32,add:-127.5,div:127.5 ! \
+        tensor_filter framework=tensorflow-lite model=tflite_model/ssd_mobilenet_v2_coco.tflite ! \
+        tensor_decoder mode=bounding_boxes option1=mobilenet-ssd option2=tflite_model/coco_labels_list.txt option3=tflite_model/box_priors.txt option4=640:480 option5=300:300 ! \
+        videoconvert ! tensor_query_serversink port=3002
+</code></pre>
+<h4 id="client2">client</h4>
+<pre><code class="language-bash">$ gst-launch-1.0 \
+    compositor name=mix sink_0::zorder=2 sink_1::zorder=1 ! videoconvert ! ximagesink \
+        v4l2src ! videoconvert ! videoscale ! video/x-raw,width=640,height=480,format=RGB,framerate=10/1 ! tee name=t \
+            t. ! queue ! tensor_query_client operation=passthrough ! videoconvert ! mix.sink_0 \
+            t. ! queue ! mix.sink_1
+</code></pre>
+<h4 id="prerequisite">Prerequisite</h4>
+<ul>
+<li>NNStreamer: <a href="https://github.com/nnstreamer/nnstreamer/wiki/usage-examples-screenshots">link</a>
+</li>
+<li>NNStreamer-edge (nnsquery): <a href="https://github.com/nnstreamer/nnstreamer-edge/tree/master/src/libsensor">link</a>
+</li>
+<li>Install mosquitto broker: <code>$ sudo apt install mosquitto mosquitto-clients</code>
+</li>
+</ul>
 <h2 id="tensor-query-test">tensor query test</h2>
 <h3 id="to-check-the-results-without-running-the-test-daily-build-result">To check the results without running the test: <a href="http://nnstreamer.mooo.com/nnstreamer/ci/daily-build/build_result/latest/log/">Daily build result</a>.</h3>
 <ul>
