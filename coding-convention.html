@@ -137,7 +137,7 @@ $('body').removeClass('no-script');
 	<div id="main">
 				    <div id="page-description" data-hotdoc-role="main">
         <h1 id="coding-convention">Coding Convention</h1>
-<p>In general, NNStreamer Application follows <a href="https://gstreamer.freedesktop.org/documentation/frequently-asked-questions/developing.html#what-is-the-coding-style-for-gstreamer-code">The Coding Style of GStreamer</a> for coding convention.</p>
+<p>In general, NNStreamer follows <a href="https://gstreamer.freedesktop.org/documentation/frequently-asked-questions/developing.html#what-is-the-coding-style-for-gstreamer-code">The Coding Style of GStreamer</a> for coding convention.</p>
 <h2 id="c-codes-c-sources">C codes (.c sources)</h2>
 <p>All C codes of NNStreamer are required to use K&amp;R with 2-space indenting. Just follow what's already there and you'll be fine. We only require .c files to be indented, headers may be indented differently for better readability. Please use spaces for indenting, not tabs, even in header files.</p>
 <p>When you push your commits, apply <code>gst-indent</code> to .c files before you submit a commit with style change.
@@ -153,8 +153,7 @@ If there is a change due to code style issues, make two separate commits: (Pleas
 <p>Except the two, you are required to follow the general coding styles mandated by gst-indent</p>
 <h2 id="c-files-cc">C++ files (.cc)</h2>
 <p>Do not use .cpp extensions, use .cc extensions for C++ sources. Use .h for headers.</p>
-<p>We do not have strict rules on C++ sources, yet, because all the cores are written in C.
-However, please try to stick with the same indentation rules (2 spaces) and common senses.</p>
+<p>Please try to stick with the same indentation rules (2 spaces) and refer to .clang-format, which mandates the coding styles via CI.</p>
 <h2 id="other-files">Other files</h2>
 <ul>
 <li>[Java] TBD</li>
@@ -164,16 +163,6 @@ However, please try to stick with the same indentation rules (2 spaces) and comm
 <h1 id="file-locations">File Locations</h1>
 <h2 id="directory-structure-of-nnstreamergit">Directory structure of nnstreamer.git</h2>
 <ul>
-<li>
-<strong>api</strong>: API definitions and implementations
-<ul>
-<li>
-<strong>android</strong>: Android APIs</li>
-<li>
-<strong>capi</strong>: C-APIs (Tizen and others)</li>
-<li>Note that .NET APIs are located at https://github.com/Samsung/TizenFX along with other Tizen .NET APIs</li>
-</ul>
-</li>
 <li>
 <strong>debian</strong>: Debian/Ubuntu packaging files</li>
 <li>
@@ -201,8 +190,6 @@ However, please try to stick with the same indentation rules (2 spaces) and comm
 <li>
 <strong>jni</strong>: Android/Java build scripts.</li>
 <li>
-<strong>nnstreamer_example</strong>: Example custom filters required by test cases. In the old days, we used to have all nnstreamer examples here. Most of such examples are moved to <a href="https://github.com/nnstreamer/nnstreamer-example">Example git</a> except for those who required by test cases.</li>
-<li>
 <strong>packaging</strong>: Tizen RPM build scripts. OpenSUSE/Redhat Linux may reuse this.</li>
 <li>
 <strong>tests</strong>: Unit test cases. We have SSAT test cases and GTEST test cases. There are a lot of subdirectories, which are groups of unit test cases.</li>
@@ -211,18 +198,19 @@ However, please try to stick with the same indentation rules (2 spaces) and comm
 </ul>
 <h2 id="related-git-repositories">Related git repositories</h2>
 <ul>
+<li><a href="https://github.com/nnstreamer/nntrainer">NNTrainer, the on-device AI training framework</a></li>
 <li><a href="https://github.com/nnstreamer/nnstreamer-example">NNStreamer Example Applications &amp; Documents</a></li>
 <li><a href="https://github.com/nnstreamer/TAOS-CI">TAOS-CI, CI Service for On-Device AI Systems</a></li>
+<li><a href="https://github.com/nnstreamer/api">Machine Learning APIs</a></li>
+<li><a href="https://github.com/nnstreamer/nnstreamer-edge">NNStreamer-Edge, among-device AI support</a></li>
+<li><a href="https://github.com/nnstreamer/aitt">AITT, an AI service oriented wrapper for MQTT</a></li>
 <li><a href="https://github.com/nnstreamer/nnstreamer-ros">NNStreamer ROS (Robot OS) Support</a></li>
 <li>
 <a href="https://github.com/nnstreamer/nnstreamer-android-resource">NNStreamer Android Build Resource</a>: additional files required by Android builds.</li>
 <li>
-<a href="https://github.com/nnsuite/orc">ORC, aarch64 support</a>: we are going to support aarch64-ORC to accelerate transform operations of nnstreamer in aarch64 devices.</li>
-<li>
-<a href="https://github.com/nnstreamer/nnstreamer-edge">NNStreamer-Edge</a>: WIP</li>
-<li>
 <a href="https://github.com/nnstreamer/meta-neural-network">NNStreamer Yocto/OpenEmbedded Layer</a>: refer to <a href="https://layers.openembedded.org/layerindex/branch/master/layer/meta-neural-network/">Openembedded layer page</a>
 </li>
+<li><a href="https://github.com/nnstreamer/homebrew-neural-network">NNStreamer Homebrew for MacOS</a></li>
 <li>
 <a href="https://github.com/nnstreamer/nnstreamer.github.io">NNStreamer Web Page</a>: WIP</li>
 <li>**tizenport-* **: Tizen-ROS support. Refer to <a href="https://build.tizen.org/project/show/devel:AIC:Tizen:5.0:nnsuite">build.tizen.org</a>
