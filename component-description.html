@@ -138,44 +138,46 @@ $('body').removeClass('no-script');
 				    <div id="page-description" data-hotdoc-role="main">
         <h1 id="gstreamer-stream-data-types">Gstreamer Stream Data Types</h1>
 <ul>
-<li>other/tensor</li>
+<li>other/tensor (obsolete! use <code>other/tensors,num_tensors=1</code> instead)</li>
 <li>other/tensors</li>
-<li>other/tensorsave (planned --&gt; canceled)</li>
 </ul>
-<p>The findtype specifics: refer to the wiki (<a href="https://github.com/nnstreamer/nnstreamer/wiki/Design-External-Save-Format-for-other-tensor-and-other-tensors-Stream-for-TypeFind">other/tensorsave (canceled)</a>)</p>
-<p>Each frame of an other/tensor or other/tensors stream should have only ONE instance of other/tensor or other/tensors.</p>
-<p>Except tensor_decoder, which accepts data semantics from pipeline developers, and tensor_converter, which accepts data semantics from sink pad caps, every NNStreamer tensor plugin and tensor stream should be agnostic to the data semantics. With data semantics, we know whether the corresponding tensor denotes for video, audio, text, or any other "meaningful data types". The NNStreamer elements and data-pipeline, being agnostic to such semantics, should treat every other/tensor and other/tensors as multi-dimensional arrays of general numbers.</p>
+<p>Each frame of an <code>other/tensor</code> or <code>other/tensors</code> stream should have only ONE instance of other/tensor or other/tensors.</p>
+<p>Except <code>tensor_decoder</code>, which accepts data semantics from pipeline developers, and <code>tensor_converter</code>, which accepts data semantics from sink pad caps, every NNStreamer tensor plugin and tensor stream should be agnostic to the data semantics. With data semantics, we know whether the corresponding tensor denotes for video, audio, text, or any other "meaningful data types". The NNStreamer elements and data-pipeline, being agnostic to such semantics, should treat every other/tensor and other/tensors as multi-dimensional arrays of general numbers. This allows inter-operability between different neural network models and frameworks. The semantics of tensors should be handled and encapsulated by their direct accessors: the pipeline writer (or the application) and the corresponding framework (and its subplugin).</p>
 <h1 id="gstreamer-elements-plugins">Gstreamer Elements (Plugins)</h1>
 <p>Note that "stable" does not mean that it is complete. It means that it has enough test cases and complies with the overall design; thus, "stable" features probably won't be modified extensively. Features marked "experimental" can be modified extensively due to its incomplete design and implementation or crudeness. "Planned" is still in the works so it will be released soon.</p>
-<p>In this page, we focus on the status of each elements. For requirements and designs of each element, please refer to the README.md of the element.</p>
+<p>In this page, we focus on the status of each elements. For requirements and designs of each element, please refer to the README.md of the element. Refer to the papers, <a href="https://arxiv.org/pdf/2101.06371">ICSE2021</a> and <a href="https://arxiv.org/abs/2201.06026">ICSE2022</a> for alternative descriptions on these elements along with some figures.</p>
 <ul>
 <li>
 <a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_converter">tensor_converter</a>
 <ul>
 <li>Video (stable)
 <ul>
-<li>video/x-raw. Colorspaces of RGB, BGRx, Gray8 are supported.</li>
+<li>'''video/x-raw'''. Colorspaces of RGB, BGRx, Gray8 are supported.</li>
 <li>Caution: if width is not divisible by 4, RGB/Gray8 video incurs memcpy.</li>
 </ul>
 </li>
 <li>Audio (stable)
 <ul>
-<li>audio/x-raw. Users should specify the number of frames in a single buffer, which denotes the number of frames in a single tensor frame with the property of <code>frames-per-buffer</code>. Needs more test cases.</li>
+<li>'''audio/x-raw'''. Users should specify the number of frames in a single buffer, which denotes the number of frames in a single tensor frame with the property of <code>frames-per-buffer</code>. Needs more test cases.</li>
 </ul>
 </li>
 <li>Text (stable)
 <ul>
-<li>text/x-raw. Users should specify the byte size of a single tensor frame with the property <code>input-dim</code>. Needs more test cases.</li>
+<li>'''text/x-raw'''. Users should specify the byte size of a single tensor frame with the property <code>input-dim</code>. Needs more test cases.</li>
 </ul>
 </li>
 <li>Binary (stable)
 <ul>
-<li>application/octet-stream. Stream pipeline developer MUST specify the corresponding type and dimensions via properties (input-dim, input-type)</li>
+<li>'''application/octet-stream'''. Stream pipeline developer MUST specify the corresponding type and dimensions via properties (input-dim, input-type)</li>
 </ul>
 </li>
-<li>You may add subplugins of converters. However, as of 2020-01-10, we do not have any converter subplugins released although we do support them. Users may add such subplugins in run-time.
+<li>Custom subplugins (stable)
 <ul>
-<li>WIP: flatbuffers, protobuf</li>
+<li>FlatBuf (stable): '''other/flatbuf-tensor''' --&gt; '''other/tensors'''</li>
+<li>ProtoBuf (stable): '''other/protobuf-tensor''' --&gt; '''other/tensors'''</li>
+<li>FlatBuf::FlatBuf (stable): '''other/flexbuf''' --&gt; '''other/tensors'''</li>
+<li>Python3 (stable): You may define your own conversion mechanism with python script.</li>
+<li>Developers may add their own custom converter subplugin with the APIs defined in <code>nnstreamer_plugin_api_converter.h</code>. Such subplugins may be added in run-time, which is supposed to be installed at the path designated by <code>decoders</code> path in <code>nnstreamer.ini</code>.</li>
 </ul>
 </li>
 </ul>
@@ -191,36 +193,47 @@ $('body').removeClass('no-script');
 <li>Flexible dimensions (output dimension determined by subplugin according to the input dimension determined by pipeline initialization)</li>
 <li>Invoke subplugin with pre-allocated buffers</li>
 <li>Invoke subplugin and let subplugin allocate output buffers.</li>
-<li>Accept other/tensors.</li>
-<li>Users can add plugins in run-time.</li>
+<li>Accept <code>other/tensors</code> with static and flexible format.</li>
+<li>Users can add subplugins in run-time.</li>
 </ul>
 </li>
 <li>TODO: Allow to manage synchronization policies.</li>
 </ul>
 </li>
 <li>Custom-C (stable)</li>
-<li>Custom-C++-Class (WIP)</li>
+<li>Custom-C++-Class (stable)</li>
 <li>Custom-C-Easy (stable) (single function ops. basis for lambda functions in the future)</li>
-<li>Custom-Python (stable) (2.7 and 3)</li>
+<li>Custom-Python (stable) (~~2.7 and~~ 3)</li>
+<li>Custom-LUA (stable)</li>
 <li>Custom Native Functions (stable) (Supply custom-filter in run-time)</li>
-<li>Tensorflow (stable) (1.09, 1.13 tested)</li>
-<li>Tensorflow-lite (stable) (1.09, 1.13 tested)</li>
+<li>Tensorflow (stable) (1.09, 1.13, 2.3, 2.7, 2.8 tested)</li>
+<li>Tensorflow-lite (stable) (1.09, 1.13, 2.3, 2.7, 2.8 tested)
+<ul>
+<li>For tensorflow-lite version 2.x, use <code>tensorflow2-lite</code> as the subplugin name, which allows to use both tensorflow-lite 1.x and 2.x simultaneously in a pipeline.</li>
+</ul>
+</li>
 <li>Caffe2 (stable)</li>
 <li>PyTorch (stable)</li>
-<li>Movidius-X NCS2 (stable)</li>
+<li>TVM (stable)</li>
+<li>NNTrainer (stable. <strong>maintained by its own community</strong>)</li>
+<li>TRIx NPU/Samsung (stable. <strong>maintained by the manufacturer</strong>)</li>
+<li>Movidius-X NCS2/Intel (stable)</li>
 <li>NNFW-Runtime/nnfw (stable)</li>
-<li>Edge-TPU (stable)</li>
-<li>openVINO (stable)</li>
+<li>Edge-TPU/Google (stable)</li>
+<li>openVINO/Intel (stable)</li>
 <li>ARMNN (stable)</li>
-<li>SNPE (stable)</li>
-<li>Vivante (stable)</li>
-<li>WIP: SNAP (Exynos-NPU &amp; Qualcomm-SNPE), ...</li>
+<li>SNPE/Qualcomm (stable)</li>
+<li>Vivante/Verisilicon (stable)</li>
+<li>TensorRT/NVidia (stable)</li>
+<li>SNAP (stable)</li>
+<li>Deepview-RT/NXP (stable. <strong>maintained by the manufacturer</strong>)</li>
+<li>MXNet (experimental)</li>
+<li>Mediapipe (experimental)</li>
+<li>WIP: NCNN</li>
 <li><a href="writing-subplugin-tensor-filter.html">Guide on writing a filter subplugin</a></li>
 <li><a href="https://github.com/nnstreamer/nnstreamer-example/tree/main/templates">Codegen and code template for tensor_filter subplugin</a></li>
 </ul>
 </li>
-<li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_sink">tensor_sink</a> (stable)</li>
 <li>
 <a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_transform">tensor_transform</a> (stable)
 <ul>
@@ -237,85 +250,209 @@ $('body').removeClass('no-script');
 </ul>
 </li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_merge">tensor_merge</a> (stable)</li>
-<li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_split">tensor_split</a> (stable)</li>
-<li>
 <a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_decoder">tensor_decoder</a> (stable, but with NYI WIP items)
 <ul>
 <li>Supported features
 <ul>
 <li>Direct video conversion (video/x-raw) (stable)</li>
 <li>Image classification labeling (text/x-raw) (stable)</li>
-<li>Bounding boxes (video/x-raw) (stable)</li>
+<li>Bounding boxes (video/x-raw) (stable)
+<ul>
+<li>This supports different standards, which can be configured at run-time.</li>
+</ul>
+</li>
 <li>Image segmentation (video/x-raw) (stable) and depth</li>
 <li>Body pose (video/x-raw) (stable)</li>
+<li>Flatbuf (stable)</li>
+<li>Flexbuf (stable)</li>
+<li>Protobuf (stable)</li>
+<li>binary/octet-stream (stable)</li>
+</ul>
+</li>
 <li>Users can add plugins in run-time.</li>
 </ul>
 </li>
-<li>WIP: flatbuffers, protobuf</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_sink">tensor_sink</a> (stable)
+<ul>
+<li>
+<code>appsink</code>-like element, which is specialized for <code>other/tensors</code>. You may use appsink with capsfilter instead.</li>
 </ul>
 </li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_mux">tensor_mux</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_merge">tensor_merge</a> (stable)
+<ul>
+<li>This combines muiltiple single-tensored (<code>other/tensors,num_tensors=1</code>) streams into a single-tensored stream by merging dimensions of incoming tensor streams. For example, it may merge two <code>dimensions=640:480</code> streams into <code>dimensons=1280:480</code>, <code>dimensions=640:960</code>, or <code>dimensions=640:480:2</code>, according to a given configuration.</li>
+<li>Users can adjust sync-mode and sync-option to change its behaviors of when to create output tensors and how to choose input tensors.</li>
+<li>Users can adjust how dimensions are merged (the rank merged, the order of merged streams).</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_demux">tensor_demux</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_split">tensor_split</a> (stable)
+<ul>
+<li>This is the opposite of <code>tensor_merge</code>. This splits a single-tensored (<code>other/tensors,num_tensors=1</code>) stream into multiple single-tensored streams. For example, a stream of <code>dimensions=1920:1080</code> may split into <code>dimensions=1080:1080</code> and <code>dimensions=840:1080</code>.</li>
+<li>Users can adjust how dimensions are split</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_source">tensor_source</a> (stable for IIO. More sources coming soon)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_mux">tensor_mux</a> (stable)
+<ul>
+<li>This combines multiple <code>other/tensor(s)</code> streams into a single <code>other/tensors</code> stream while keeping the input stream dimensions. Thus, the number of tensors (<code>num_tensors</code>) increase accordingly without changing dimensions of incoming tensors. For example, merging the two tensor streams, <code>num_tensors=1,dimensions=3:2</code> and <code>num_tensors=1,dimensions=4:4:4</code> becomes <code>num_tensors=2,dimensions=3:2,4:4:4</code>, combining frames from the two streams, enforcing synchronization.</li>
+<li>Both merge and mux combine multiple streams into a stream; however, merge combines multiple tensors into a tensor, updating the dimensions while mux keep the tensors and combine them into a single container.</li>
+<li>Users can adjust sync-mode and sync-option to change its behaviors of when to create output tensors and how to choose input tensors..</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_aggregator">tensor_aggregator</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_demux">tensor_demux</a> (stable)
+<ul>
+<li>This decomposes multi-tensor (<code>num_tensors &gt; 1</code>) tensor streams into multiple tensor streams without touching their dimensions. For example, we may split a tensor stream of <code>num_tensors=3,dimensions=5,4,3</code> into <code>num_tensors=2,dimensions=5,4</code> and <code>num_tensors=1,dimensions=3</code>. Users may configure how the tensors split into (e.g., from <code>num_tensors=6</code>, into 3:2:1, 4:2, 1:1:1:1:1:1, or so on, reordering as well).</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_repo">tensor_repo_sink</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_aggregator">tensor_aggregator</a> (stable)
+<ul>
+<li>This combines multiple frames of tensors into a frame in a single tensor stream. For example, it may aggregate two frames into a frame and reduce the framerate into half: <code>dimensions=300:300,framerate=30/1</code> --&gt; <code>dimensions=300:300:2,framerate=15/1</code>.</li>
+<li>Users can adjust how frames are aggregated including how many frames are aggregated, how many frames are skipped after each aggregation, which frames are aggregated, which dimension is merged, and so on.</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_repo">tensor_repo_src</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_repo">tensor_repo_sink</a> (stable)
+<ul>
+<li>This allows to create circular tensor streams by pairing up with <code>tensor_repo_src</code>. Although gstreamer does not allow circular streams, with a pair of <code>tensor_repo_sink/src</code> we can transmit tensor data without actually connecting gstreamer src/sink pads. It is called <code>tensor_repo_*</code> because the src/sink pair shares a tensor repository.</li>
+<li>In the pair, <code>tensor_repo_sink</code> is the entering point of the tensor frames. When you create a circular stream, sending back tensors from "behind" to the "front", this element is supposed to be located at the "behind".</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_repo">tensor_repo_src</a> (stable)
+<ul>
+<li>This allows to create circular tensor streams by pairing up with <code>tensor_repo_sink</code>. Although gstreamer does not allow circular streams, with a pair of <code>tensor_repo_sink/src</code> we can transmit tensor data without actually connecting gstreamer src/sink pads. It is called <code>tensor_repo_*</code> because the src/sink pair shares a tensor repository.</li>
+<li>In the pair, <code>tensor_repo_src</code> is the exit point of the tensor frames. When you create a circular stream, sending back tensors from "behind" to the "front", this element is supposed to be located at the "front".</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_if">tensor_if</a> (stable)
+<ul>
+<li>This element controls the flow or tensor data based on the given decision condition and the input tensor data. Unlike other similar gstreamer elements, including <code>valve</code>, <code>input-selector</code>, or <code>output-selector</code>, which decides based on the property value given by threads out of the pipeline, this element, <code>tensor_if</code>, decides based on the stream data in the pipeline. Thus, pipelines can switch between their sub-pipelines (e.g., input nodes, output nodes, and processing nodes) precisely (without losing a frame or two) if they should decide based on an inference result or sensor data.</li>
+<li>This element allows a lot of varying configurations and users can even provide a C function callback for conditions; please refer to its documentation.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_sparse">tensor_sparse_enc</a> (stable)
+<ul>
+<li>This transforms <code>other/tensors,format=static</code> to <code>other/tensors,format=sparse</code>, encoding tensor data frames that may compress data size of sparse tensors.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_sparse">tensor_sparse_dec</a> (stable)
+<ul>
+<li>This transforms <code>other/tensors,format=sparse</code> to <code>other/tensors,format=static</code>.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_query">tensor_query_client</a> (stable)
+<ul>
+<li>This element sends queries to and receives answers from <code>tensor_query_server{sink, src}</code> elements. This works as if this is a <code>tensor_filter</code> with a remote processing element. This is a basic among-device AI capability that is supposed to offload inference workloads to different devices.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_query">tensor_query_serversrc</a> (stable)
+<ul>
+<li>This element receives queries from remote (out of its pipeline) <code>tensor_query_client</code> or its compatible component of <code>nnstreamer-edge</code>.</li>
+<li>This element behaves as an entry point of a server or service element for remote clients, accepting offload requests.</li>
+<li>Users constructing a "server" pipeline are supposed to use this element as an entry point (input node).</li>
+<li>If you use service construct of ML-Service-API, you need a single pair of <code>tensor_query_server{src, sink}</code> in your registered pipeline.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_query">tensor_query_serversink</a> (stable)
+<ul>
+<li>This element sends back answers of given queries to remote (out of its pipeline) <code>tensor_query_client</code>, which is connected to the paired <code>tensor_query_serversrc</code>. The server elements are supposed to be paired-up so that the query-sending client gets the corresponding answers.</li>
+<li>Users constructing a "server" pipeline are supposed to use this element as an exit point (output node).</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_crop">tensor_crop</a> (stable)
+<ul>
+<li>This element crops a tensor stream based on the values of another tensor stream. Unlike the conventional gstreamer crop elements, which crop data frames based on the property values given outside from the pipeline, this element crop data frames based on the streamed values in the pipeline. Thus, users can crop tensors with the inference results or sensor data directly without involving external threads; e.g., cropping out detected objects from a video stream, to create a video stream focussing on a specific object. This element uses flexible tensors because the crop-size varies dynamically.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_rate">tensor_rate</a> (stable)
+<ul>
+<li>This element controls a frame rate of tensors streams. Users can also control QoS with throttle property.</li>
+</ul>
+</li>
 <li>
 <a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_source">tensor_src_iio</a> (stable)
 <ul>
 <li>Requires GStreamer 1.8 or above.</li>
+<li>Creates tensor streams from Linux iio (sensors) device nodes.</li>
 </ul>
 </li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/ext/nnstreamer/tensor_source">tensor_src_tizensensor</a> (stable)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/ext/nnstreamer/tensor_source">tensor_src_tizensensor</a> (stable)
+<ul>
+<li>This element imports data from Tizen sensor framework, which can provide sensor-fusion service, and generates tensor stream from it. Obviously, this works only in Tizen.</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer-ros">tensor_ros_sink</a> (stable for ROS1)</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/ext/nnstreamer/tensor_source">tensor_src_grpc</a> (stable)
+<ul>
+<li>This element generates tensor streams from data received via grpc connection.</li>
+</ul>
+</li>
 <li>
-<a href="https://github.com/nnstreamer/nnstreamer-ros">tensor_ros_src</a> (stable for ROS1)</li>
-<li><a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/nnstreamer/tensor_if">tensor_if</a></li>
-<li>tensor_save and tensor_load canceled.</li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/ext/nnstreamer/tensor_sink">tensor_sink_grpc</a> (stable)
+<ul>
+<li>This element sends data via grpc connection from tensor streams.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/ext/nnstreamer/android_source">android supports</a> (stable)
+<ul>
+<li>This element allows to accept data streams from Android's media framework.</li>
+</ul>
+</li>
+</ul>
+<p>Elements that do not deal with <code>other/tensors</code> streams, but are in this repo:</p>
+<ul>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/join">join</a> (stable)
+<ul>
+<li>This element combines multiple streams into a stream. This does not merge dimensions or data frames. This simply forwards every incoming frames from multiple sources into a single destination, combining the data stream paths only.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/mqtt">mqttsrc</a> (stable)
+<ul>
+<li>This element receives tensor stream data via MQTT protocol.</li>
+<li>With "mqtt-hybrid" mode, data streams (TCP/direct) can be separated from control streams (MQTT) to increase data throughput.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer/tree/main/gst/mqtt">mqttsink</a> (stable)
+<ul>
+<li>This element sends tensor stream data via MQTT protocol.</li>
+<li>With "mqtt-hybrid" mode, data streams (TCP/direct) can be separated from control streams (MQTT) to increase data throughput.</li>
+</ul>
+</li>
+</ul>
+<p>Elements dealing with <code>other/tensors</code> streams, but are in a different repo:</p>
+<ul>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer-ros">tensor_ros_sink</a> (stable for ROS1/ROS2)
+<ul>
+<li>You may send tensor streams via ROS pub/sub structure.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/nnstreamer/nnstreamer-ros">tensor_ros_src</a> (stable for ROS1/ROS2)
+<ul>
+<li>You may receive tensor streams via ROS pub/sub structure.</li>
+</ul>
+</li>
 </ul>
 <p>Note that test elements in /tests/ are not elements for applications. They exist as scaffoldings to test the above elements especially in the case where related elements are not yet implemented.</p>
-<h1 id="api-support">API Support</h1>
-<ul>
-<li>C-API
-<ul>
-<li>Main target is Tizen, but supports other OS as well.</li>
-<li>
-<a href="https://github.com/nnstreamer/nnstreamer/tree/main/api/capi">Implementation</a> (stable, since Tizen 5.5 M2)</li>
-</ul>
-</li>
-<li>C#-API (.NET)
-<ul>
-<li>Main target is Tizen, but supports other OS as well.</li>
-<li>
-<a href="https://github.com/Samsung/TizenFX/tree/master/src/Tizen.MachineLearning.Inference">Implementation</a>
-<ul>
-<li>Single API: Tizen 5.5 M2</li>
-<li>Pipeline API: Tizen 6.0 M1</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>JAVA-API (Android)
-<ul>
-<li>
-<a href="https://github.com/nnstreamer/nnstreamer-example/tree/master/android/example_app/api-sample">Android sample app</a> uses JAVA APIs to implement Android-NNStreamer apps.</li>
-<li><a href="https://bintray.com/beta/#/nnsuite/nnstreamer?tab=packages">Available at JCenter</a></li>
-<li>Note that the Android Sample Applications published via Google Play Store, <a href="https://github.com/nnstreamer/nnstreamer-example/tree/main/android/example_app">Source Code</a>, are developed before NNStreamer Java API. They use GStreamer functions.</li>
-</ul>
-</li>
-<li>Web API (HTML5) Planned (Tizen 7.0?)</li>
-<li>Python API Planned (Tizen 7.0?)</li>
-</ul>
 <h1 id="other-components">Other Components</h1>
 <ul>
 <li>CI (<a href="http://ci.nnstreamer.ai/nnstreamer/ci/taos">@AWS</a>) (stable): Up and Running.</li>
