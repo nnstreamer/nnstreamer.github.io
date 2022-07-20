@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>tensor_transform</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="tutorials.html">Tutorials</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst/nnstreamer/elements/gsttensor_transform.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamertensor_transform">NNStreamer::tensor_transform</h1>
+<h2 id="supported-features">Supported Features</h2>
+<ul>
+<li>Transformation the shape, data values (arithmetics or normalization), or data type of <code>other/tensor</code> stream.</li>
+<li>If possible, the tensor_transform element exploits <a href="https://gitlab.freedesktop.org/gstreamer/orc">ORC: Optimized inner Loop Runtime Compiler</a> to accelerate the supported operations.</li>
+<li>Aggregate multiple operators into a single transform instance for performance optimization.
+<ul>
+<li>E.g., <code>tensor_transform mode=typecast option=uint8 ! tensor_transform mode=arithmetic option=mul:4 ! tensor_transform mode=arithmetic option=add:25 can be optimized by tensor_transform mode=arithmetic option=typecast:uint8,mul:8,add:25</code>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="planned-features">Planned Features</h2>
+<ul>
+<li>TBD</li>
+</ul>
+<h2 id="pads">Pads</h2>
+<ul>
+<li>
+<p>SINK</p>
+<ul>
+<li>One always sink pad named 'sink'</li>
+<li>other/tensor</li>
+</ul>
+</li>
+<li>
+<p>SRC</p>
+<ul>
+<li>One always source pad named 'src'</li>
+<li>other/tensor</li>
+</ul>
+</li>
+</ul>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>
+<p>mode (readable, writable): Mode used for transforming tensor</p>
+<ul>
+<li>Enum "gtt_mode_type" Default: -1, "unknown"
+<ul>
+<li>
+<p>(0): dimchg</p>
+<ul>
+<li>
+<p>A mode for changing tensor dimensions</p>
+</li>
+<li>
+<p>An option should be provided as option=FROM_DIM:TO_DIM (with a regex, ^([0-3]):([0-3])$, where NNS_TENSOR_RANK_LIMIT is 4).</p>
+</li>
+<li>
+<p>Example: Move 1st dim to 2nd dim (i.e., [a][H][W][C] ==&gt; [a][C][H][W])</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=dimchg option=0:2 ! ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(1): typecast</p>
+<ul>
+<li>
+<p>A mode for casting data type of tensor</p>
+</li>
+<li>
+<p>An option should be provided as option=TARGET_TYPE (with a regex, ^[u]?int(8|16|32|64)$|^float(32|64)$)</p>
+</li>
+<li>
+<p>Example: Cast the data type of upstream tensor to uint8</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=typecast option=uint8 ! ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(2): arithmetic</p>
+<ul>
+<li>
+<p>A mode for arithmetic operations with tensor</p>
+</li>
+<li>
+<p>An option should be provided as option=[typecast:TYPE,][per-channel:(false|true@DIM),]add|mul|div:NUMBER[@CH_IDX]..., ...</p>
+</li>
+<li>
+<p>Example 1: Element-wise add 25 and multiply 4</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=arithmetic option=add:25,mul:4 ! ...
+</code></pre>
+</li>
+<li>
+<p>Example 2: Cast the data type of upstream tensor to float32 and element-wise subtract 25</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=arithmetic option=typecast:float32,add:-25 ! ...
+</code></pre>
+</li>
+<li>
+<p>For "per-channel", DIM means the dimension which should be viewed as channel and CH_IDX means the idx of channel the given operation should be applied to. When CH_IDX is not given, the operation is applied to all channels.</p>
+</li>
+<li>
+<p>Example 3: Add 255 only for 1-th channel when 0-th dim is channel (for RGB image, add 255 for G channel)</p>
+<pre><code class="language-bash">... ! video/x-raw,format=RGB ! tensor_converter ! tensor_transform mode=arithmetic option=per-channel:true@0,add:255@1 ! ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(3): transpose</p>
+<ul>
+<li>
+<p>A mode for transposing shape of tensor</p>
+</li>
+<li>
+<p>An option should be provided as D1':D2':D3':D4 (fixed to 3)</p>
+</li>
+<li>
+<p>Example: 640:480:3:1 ==&gt; 3:480:640:1</p>
+<pre><code class="language-bash">... ! tensor_converter input-dim=640:480:3:1 ! tensor_transform mode=transpose option=2:1:0:3 ! ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(4): stand</p>
+<ul>
+<li>
+<p>A mode for statistical standardization or normalization of tensor</p>
+</li>
+<li>
+<p>An option should be provided as option=(default|dc-average)[:TYPE] where <code>default</code> for statistical standardization and <code>dc-average</code> to remove DC offset (average value). <code>TYPE</code> denotes output data type.</p>
+</li>
+<li>
+<p>Example: Remove DC offset, output type to float32</p>
+<pre><code class="language-bash">... ! tensor_converter ! tensor_transform mode=stand option=dc-average:float32 ! ...
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>acceleration (readable, writable): A flat indicating whether to enable <code>orc</code> acceleration</p>
+</li>
+</ul>
+<h2 id="properties-for-debugging">Properties for debugging</h2>
+<ul>
+<li>silent: disable or enable debugging messages</li>
+</ul>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>

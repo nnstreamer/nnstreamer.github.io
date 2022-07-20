@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href="../../..">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>tensor_if</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="tutorials.html">Tutorials</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="gst/nnstreamer/elements/gsttensor_if.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="nnstreamertensor_if">NNStreamer::tensor_if</h1>
+<h2 id="supported-features">Supported features</h2>
+<p>The if (tensor_if) element allows creating conditional branches based on tensor values.<br>
+For example, you may skip frames if there is no object detected with high confidence.<br>
+The input and output stream data type is either <code>other/tensor</code> or <code>other/tensors</code>.</p>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>
+<p>compared-value: Specifies the compared value and is represented as operand 1 from input tensors.</p>
+<ul>
+<li>A_VALUE: Decided based on a single scalar value.</li>
+<li>TENSOR_AVERAGE_VALUE: Decided based on an average value of a specific tensor.</li>
+<li>CUSTOM: Decided based on a user-defined callback.</li>
+</ul>
+</li>
+<li>
+<p>compared-value-option: Specifies an element of the nth tensor or you can pick one from the tensors.</p>
+<ul>
+<li>[C][W][H][B],n: used for A_VALUE of the compared-value, for example 0:1:2:3,0 means [0][1][2][3] value of first tensor.</li>
+<li>nth tensor: used for TENSOR_AVERAGE_VALUE of the compared-value, and specifies which tensor is used.</li>
+</ul>
+</li>
+<li>
+<p>supplied-value: Specifies the supplied value (SV) from the user.</p>
+<ul>
+<li>SV</li>
+<li>SV1, SV2 (used for RANGE operators)</li>
+</ul>
+</li>
+<li>
+<p>operator: Comparison Operator</p>
+<ul>
+<li>EQ: Check if CV == SV</li>
+<li>NEQ: Check if CV != SV</li>
+<li>GT: Check if CV &gt; SV</li>
+<li>GE: Check if CV &gt;= SV</li>
+<li>LT: Check if CV &lt; SV</li>
+<li>LE: Check if CV &lt;= SV</li>
+<li>RANGE_INCLUSIVE: Check if SV1 &lt;= CV and CV &lt;= SV2</li>
+<li>RANGE_EXCLUSIVE: Check if SV1 &lt; CV and CV &lt; SV2</li>
+<li>NOT_IN_RANGE_INCLUSIVE: Check if CV &lt; SV1 or SV2 &lt; CV</li>
+<li>NOT_IN_RANGE_EXCLUSIVE: Check if CV &lt;= SV1 or SV2 &lt;= CV</li>
+</ul>
+</li>
+<li>
+<p>then: Action if it is TRUE</p>
+<ul>
+<li>PASSTHROUGH: Does not let you make changes to the buffers. Buffers are pushed straight through.</li>
+<li>SKIP: Does not let you generate the output frame (frame skip).</li>
+<li>TENSORPICK: Lets you choose the nth tensor among the input tensors.</li>
+</ul>
+</li>
+</ul>
+<pre><code>   [ tensor 0 ]
+   [ tensor 1 ]  -&gt;   tensor if    -&gt;    [ tensor 0 ]
+   [ tensor 2 ]    (tensorpick 0,2)      [ tensor 2 ]
+  input tensors                         output tensors
+</code></pre>
+<ul>
+<li>
+<p>then-option: Option for TRUE Action</p>
+<ul>
+<li>nth tensor: used for TENSORPICK option, for example, <code>then-option</code>=0,2 means tensor 0 and tensor 2 are selected as output tensors among the input tensors.</li>
+</ul>
+</li>
+<li>
+<p>else: Action if it is FALSE</p>
+<ul>
+<li>PASSTHROUGH: Does not let you make changes to the buffers. Buffers are pushed straight through.</li>
+<li>SKIP: Does not let you generate the output frame (frame skip).</li>
+<li>TENSORPICK: Lets you choose the nth tensor among the input tensors.</li>
+</ul>
+</li>
+<li>
+<p>else-option: Option for FALSE Action</p>
+<ul>
+<li>nth tensor: used for TENSORPICK option, for example, <code>else-option</code>=0,2 means tensor 0 and tensor 2 are selected as output tensors among the input tensors.</li>
+</ul>
+</li>
+</ul>
+<h2 id="usage-examples">Usage Examples</h2>
+<p>The format of statement with tensor-if is:
+If (Compared_Value OPERATOR Supplied_Value(s))) then THEN else ELSE</p>
+<ul>
+<li>Compared_Value and Supplied_Value are the operands.</li>
+<li>Compared_Value is a value from input tensor(s).</li>
+<li>Supplied_Value is a value from tensor-if properties.</li>
+</ul>
+<p>If the given if-condition is simple enough (e.g., if a specific element is between a given range in a tensor frame), it can be expressed as:</p>
+<h4 id="example-launch-line-with-simple-if-condition">Example launch line with simple if condition</h4>
+<pre><code>gst-launch ... (some tensor stream) !
+      tensor_if name=tif \
+                compared-value=A_VALUE compared-value_option=3:4:2:5,0 \
+                operator=RANGE_INCLUSIVE \
+                supplied-value=10,100 \
+                then=PASSTHROUGH \
+                else=TENSORPICK \
+                else-option=0 \
+    ! tif.src_0 ! (tensor(s) stream for TRUE action) ...
+    ! tif.src_1 ! (tensor(s) stream for FALSE action) ...
+</code></pre>
+<p>However, if the if-condition is complex and cannot be expressed with tensor-if expressions, you may create a corresponding custom filter with tensor-filter, whose output is other/tensors with an additional tensor that is "1:1:1:1, uint8", which is 1 (true) or 0 (false) as the first tensor of other/tensors and the input tensor/tensors.</p>
+<p>Then, you can create a pipeline as follows:</p>
+<h4 id="example-launch-line-with-complex-if-condition">Example launch line with complex if condition</h4>
+<pre><code>gst-launch ... (some tensor stream)
+       ! tensor_filter framework=custom name=your_code.so
+       ! tensor_if name=tif \
+           compared-value=A_VALUE \
+           compared-value-option=0:0:0:0,0 \# 1st tensor's [0][0][0][0].
+           operator=EQ \
+           supplied-value=1 \
+           then=PASSTHROUGH \# or whatsoever you want
+           else=SKIP \# or whatsoever you want
+       ! tif.src_0 ! tensor_demux name=d \ #for TRUE action
+          d.src_0 ! queue ! fakesink # throw away the 1/0 value.
+          d.src_1 ! queue ! do whatever you want here...
+       ! tif.src_1 ! (tensor(s) stream for FALSE action) ...
+</code></pre>
+<h4 id="example-launch-line-with-custom-operation">Example launch line with custom operation</h4>
+<pre><code>gst-launch ... (some tensor stream) !
+       ! tensor_if name=custom_if
+       ! (tensor_stream)
+       ...
+register call back function for custom_if
+int TensorIfCallback(const GstBuffer * in_buf, GstBuffer * out_buf) {
+  /* Define condition and handle buffer */
+}
+</code></pre>
+<h4 id="test-pipeline">Test pipeline</h4>
+<pre><code>gst-launch-1.0 v4l2src ! videoconvert ! videoscale ! video/x-raw, format=RGB, width=640, height=480, framerate=30/1 ! tensor_converter ! mux.sink_0 \
+               videotestsrc ! videoconvert ! videoscale ! video/x-raw, format=RGB, width=640, height=480, framerate=30/1 ! tensor_converter ! mux.sink_1 \
+               tensor_mux name=mux ! tensor_if name=tif \
+                                               compared_value=A_VALUE \
+                                               compared-value-option=0:0:0:0,0 \
+                                               supplied-value=70,150 \
+                                               operator=RANGE_INCLUSIVE \
+                                               then = PASSTHROUGH\
+                                               else = TENSORPICK \
+                                               else-option= 1 \
+                tif.src_0 ! tensor_demux name=demux \
+                    demux.src_0 ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink async=false sync=false \
+                    demux.src_1 ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink async=false sync=false \
+                tif.src_1 ! tensor_decoder mode=direct_video ! videoconvert ! ximagesink async=false sync=false
+</code></pre>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
