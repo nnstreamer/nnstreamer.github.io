@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
+<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
-<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -143,27 +143,38 @@ $('body').removeClass('no-script');
 <ul>
 <li>Create subdirectory in nnstreamer.git/tests/</li>
 </ul>
-<pre><code>$ cd tests
+<pre><code class="language-bash">$ cd tests
 $ mkdir new_test_group
 </code></pre>
 <ul>
 <li>Create the shell script for the group. It should be named as <code>runTest.sh</code>.</li>
-<li>Use the test API scripts located at <code>tests/testAPI.sh</code>.</li>
+<li>Use the test API scripts located at <code>ssat-api.sh</code>.</li>
 <li>The following is a template:</li>
 </ul>
-<pre><code>#!/usr/bin/env bash
-source ../testAPI.sh
+<pre><code class="language-bash">#!/usr/bin/env bash
+##
+## SPDX-License-Identifier: LGPL-2.1-only
+##
+## @file runTest.sh
+## @author Your Name &lt;your.email@example.com&gt;
+## @date dd MMM yyyy
+## @brief SSAT Test Cases for NNStreamer
+##
+if [[ "$SSATAPILOADED" != "1" ]]; then
+    SILENT=0
+    INDEPENDENT=1
+    search="ssat-api.sh"
+    source $search
+    printf "${Blue}Independent Mode${NC}"
+fi
 
-CASENUMBER1=1
-CASENUMBER2=2
+# This is compatible with SSAT (https://github.com/myungjoo/SSAT)
+testInit $1
+
+# NNStreamer and plugins path for test
+PATH_TO_PLUGIN="../../build"
   
-gstTest "your gstreamer pipeline" $CASENUMBER1
-# generating "$CASE1GOLDEN" and "$CASE1RESULT"
-gstTest "your another pipeline" $CASENUMBER2
-# generating "$CASE2GOLDEN" and "$CASE2RESULT"
-
-compareAll $CASE1GOLDEN $CASE1RESULT $CASENUMBER1
-compareAll $CASE2GOLDEN $CASE2RESULT $CASENUMBER2
+gstTest "your gst-launch-1.0 Arguments" "test case ID" "set 1 if this is not critical" "set 1 if this passes if gstLaunch fails" "set 1 to enable PERFORMANCE test" "set a positive value (seconds) to enable timeout mode"
 
 report
 </code></pre>
