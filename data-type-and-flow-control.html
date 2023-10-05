@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -158,8 +158,8 @@ The major changes since 1.x include:</p>
 <pre><code>other/tensor
     framerate: (fraction) [ 0/1, 2147483647/1 ]
         # We are still unsure how to handle framerate w/ filters.
-    dimension: (string with int:int:int:int) [1, 65535]:[1, 65535]:[1, 65535]:[1, 65535]
-        # We support up to 4th dimensions only. Supporting higher arbitrary dimension is TBD item.
+    dimension: (string with [int:]{15}int) [[1, 65535]:]{15}[1, 65535]
+        # We support up to 16th dimensions only. Supporting higher arbitrary dimension is TBD item.
     type: (string) { uint8, int8, uint16, int16, uint32, int32, uint64, int64, float32, float64 }
 </code></pre>
 <p>The buffer with offset 0 looks like the following with <code>dim1=2, dim2=2, dim3=2, dim4=2</code>:</p>
@@ -303,12 +303,12 @@ The major changes since 1.x include:</p>
 </tbody>
 </table>
 <p>Therefore, array in C corresponding to the buffer of a <code>other/tensor</code> becomes:</p>
-<pre><code>type buffer[dim4][dim3][dim2][dim1];
+<pre><code>type buffer[dim16][dim15]..[dim2][dim1];
 </code></pre>
 <p>Note that in some context (such as properties of <code>tensor_*</code> plugins), dimensions are described in a colon-separated string that allows omitting unused dimensions:</p>
 <pre><code>dim1:dim2:dim3:dim4
 </code></pre>
-<p>If rank = 2 (dim3 = 1 and dim4 = 1), then, it can be expressed as well as:</p>
+<p>If rank = 2 (dim3 = 0 and dim4 = 0), then, it can be expressed as well as:</p>
 <pre><code>dim1:dim2
 </code></pre>
 <p>Be careful! Colon-separated tensor dimension expression has the opposite order to the C-array type expression.</p>
@@ -332,11 +332,11 @@ Typestrings = (string) Typestring
 Typestring = (string) { float32, float64, int64, uint64, int32, uint32, int16, uint16, int8, uint8 }
 Dimensions = (string) Dimension
            | (string) Dimension, Dimensions
-Dimension = (string) [1-65535]:[1-65535]:[1-65535]:[1-65535]
+Dimension = (string) [[1-65535]:]{15}[1-65535]
 </code></pre>
 <p>Note that dimension related values are only effective with static or sparse formats.
 With <code>format=flexible</code>, types and dimensions are not effective.</p>
-<p>The buffer of <code>other/tensors</code> streams have multiple memory chunks. Each memory chunk represents one single tensor in the buffer format of <code>other/tensor</code>. With default configurations of Gstreamer 1.0, the maximum allowed number of memory chunks in a buffer is <strong>16</strong>. Thus, with such configurations of Gstreamer 1.0, <code>other/tensors</code> may include up to <strong>16</strong> <code>other/tensor</code>.</p>
+<p>The buffer of <code>other/tensors</code> streams has multiple memory chunks. Each memory chunk represents one single tensor in the buffer format of <code>other/tensor</code>. With the default configuration of GStreamer 1.0, a GstBuffer can hold <strong>16</strong> memory chunks at most. Thus,  <code>other/tensors</code> may include up to <strong>16</strong> static <code>other/tensor</code> and <strong>240</strong> extra <code>other/tensor</code>.</p>
 <p><code>other/tensors</code> is defined to have multiple instances of tensors in a buffer of a single stream path.
 Compared to having multiple streams (thus, multiple pads) with a single tensor that goes or</p>
 <h2 id="othertensorsformatstatic-default">other/tensors,format=static (default)</h2>
@@ -352,7 +352,7 @@ An <code>other/tensors,format=flexible</code> tensor has its meta data - <a href
 When processing a buffer with the capability <code>other/tensors,format=flexible</code>, NNStreamer engine developer (not pipeline or application developers) should append or parse the tensor information in buffer using various <a href="https://github.com/nnstreamer/nnstreamer/blob/main/gst/nnstreamer/include/nnstreamer_plugin_api_util.h">utility functions</a>. Note that there are a few <a href="https://github.com/nnstreamer/nnstreamer/blob/main/gst/nnstreamer/include/nnstreamer_plugin_api.h">other functions defined in another header</a>: appending and parsing headers of GstMemory objects.</p>
 <p>The buffer of <code>other/tensors,format=flexible</code> may have single memory or multiple memory chunks.
 NNStreamer element with <code>other/tensors,format=flexible</code> capability gets the number of memories in a buffer and handles each memory as a tensor.
-Note that, it also has a limit, the maximum allowed number of memory chunks in a buffer is <strong>16</strong>.</p>
+Note that, it also has a limit, the maximum allowed number of memory chunks in a buffer is <strong>256</strong>.</p>
 <pre><code>Memory chunks with tensor-meta in a buffer (e.g., 3 memories)
  - Header size is fixed.
  - Tensor data size depends on the meta (data type and dimension).
@@ -386,7 +386,7 @@ Sparse tensors exist for efficient transmission and data storing.</p>
 <p>If your source data streams or sink data streams are to be in sparse tensors, you may apply tensor_sparse_[enc|dec] to convert them from/to static tensors.</p>
 <h1 id="flow-control">Flow control</h1>
 <h2 id="timestamps">Timestamps</h2>
-<p>In general, tensor_* chooses the most recent timestamp when there are multiple candidates. For example, if we are merging/muxing/aggregating two frames from sinkpads, <code>T</code> and <code>T+a</code>, where <code>a &gt; 0</code>, the source pads are supposed to have <code>T+a</code>.<br>
+<p>In general, tensor_* chooses the most recent timestamp when there are multiple candidates. For example, if we are merging/muxing/aggregating two frames from sinkpads, <code>T</code> and <code>T+a</code>, where <code>a &gt; 0</code>, the source pads are supposed to have <code>T+a</code>.
 We have the following principles for timestamp policies. Timestamping policies of <code>tensor_*</code> filters should follow the given principles.</p>
 <ul>
 <li>Timestamp from the input source (sensors) should be preserved to sink elements.</li>
@@ -399,7 +399,7 @@ We have the following principles for timestamp policies. Timestamping policies o
 </li>
 </ul>
 <h2 id="synchronization-of-frames-in-sink-pads-with-mux-and-merge">Synchronization of frames in sink pads with Mux and Merge</h2>
-<p>Besides timestamping, we have additional synchronization issues when there are merging streams. We need to determine which frames are going to be merged (or muxed) when we have multiple available and unused frames in an incoming sink pad. In general, we might say that the synchronization of frames determines which frames to be used for mux/merge and timestamping rule determines which timestamp to be used among the chosen frames for mux/merge.<br>
+<p>Besides timestamping, we have additional synchronization issues when there are merging streams. We need to determine which frames are going to be merged (or muxed) when we have multiple available and unused frames in an incoming sink pad. In general, we might say that the synchronization of frames determines which frames to be used for mux/merge and timestamping rule determines which timestamp to be used among the chosen frames for mux/merge.
 In principle and by default,</p>
 <ul>
 <li>If there are multiple unused and available frames in a sink pad, unlike most media filters, we take a buffer that arrived most recently.</li>
@@ -416,8 +416,8 @@ In principle and by default,</p>
 <h2 id="synchronization-of-frames-in-source-pads-with-demux-and-split">Synchronization of frames in source pads with Demux and Split</h2>
 <p>This is an obvious case. The timestamp is copied to all source pads from the sink pads. We do not preserve original timestamps in Merge or Mux; thus, the processed timestamp after Mux or Merge will only be applied.</p>
 <h2 id="synchronization-with-aggregator">Synchronization with Aggregator</h2>
-<p>Unlike mux and merge, aggregator merges tensors chronologically, not spatially.<br>
-Moreover, unlike mux and merge, which merges entries into one entry, aggregator, depending on the properties, may divide or even simultaneously merge and divide entries. Thus, timestamping and synchronization may become much more complicated.<br>
+<p>Unlike mux and merge, aggregator merges tensors chronologically, not spatially.
+Moreover, unlike mux and merge, which merges entries into one entry, aggregator, depending on the properties, may divide or even simultaneously merge and divide entries. Thus, timestamping and synchronization may become much more complicated.
 The timestamp of the outgoing buffer is timestamp of the oldest frame from the aggregated frames.</p>
 
     </div>

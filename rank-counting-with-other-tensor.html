@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -139,19 +139,19 @@ $('body').removeClass('no-script');
         <h3 id="rank-counting-with-othertensor-type">Rank counting with other/tensor type</h3>
 <ol>
 <li>We do NOT declare RANK values in stream capabilities (GST-CAP).</li>
-<li>Users may omit later parts of dimension expressions if the later parts of dimensions are 1; however, this does NOT imply that the later parts are not counted for RANK values.
+<li>Users may omit later parts of dimension expressions if the later parts of dimensions are 0; The later parts are not counted for RANK values.
 <ul>
-<li>"10:20:1:1" == "10:20:1" == "10:20"</li>
-<li>Rank value of the above dimensions may be 2, 3, or 4.</li>
+<li>"10:20:0:0" == "10:20:0" == "10:20"</li>
+<li>Rank value of the above dimensions may be 2.</li>
 </ul>
 </li>
 <li>If rank values are required by a tensor-filter or tensor-decoder, users may explicitly declare the corresponding rank values with properties (This function is WIP as of 2020-10-06)
 <ul>
 <li>If not declared explicitly, but the corresponding sub-plugin requires rank value, an internal rank-counting function will count the rank assuming that:
 <ul>
-<li>rank("10:10:1:1") == rank("10:10") == rank("10:10:1") == 2</li>
-<li>rank("1:1:1:1") == rank("1") == 1</li>
-<li>rank("10:10:10:10") == 4</li>
+<li>rank("10:10:1:1") == 4</li>
+<li>rank("1:1:1:1") == 4</li>
+<li>rank("1:1:1") == 3</li>
 </ul>
 </li>
 </ul>

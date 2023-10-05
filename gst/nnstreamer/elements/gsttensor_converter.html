@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -141,7 +141,7 @@ $('body').removeClass('no-script');
 <ul>
 <li>Video: direct conversion of video/x-raw / non-interlace(progressive) to [height][width][#Colorspace] tensor. (#Colorspace:width:height:frames-per-tensor)
 <ul>
-<li>Supported colorspaces: RGB (3), BGRx (4), Gray8 (1)</li>
+<li>Supported colorspaces: RGB (3), BGRx (4), Gray8 and Gray16 (1)</li>
 <li>You may express <code>frames-per-tensor</code> to have multiple image frames in a tensor like audio and text as well.</li>
 <li>If <code>frames-per-tensor</code> is not configured, the default value is 1.</li>
 <li>Golden tests for such input</li>
@@ -166,7 +166,7 @@ $('body').removeClass('no-script');
 <p>Octet stream to static tensor: You should set <code>input-type</code> and <code>input-dim</code> to describe tensor(s) information of outgoing buffer.
 If setting multiple tensors, converter will divide incoming buffer and set multiple memory chunks in outgoing buffer.</p>
 <p>e.g, converting 10 bytes of octet stream to 2 static tensors:</p>
-<p><code>... ! application/octet-stream ! tensor_converter input-dim=2:1:1:1,2:1:1:1 input-type=int32,int8 ! ...</code></p>
+<p><code>... ! application/octet-stream ! tensor_converter input-dim=2,2 input-type=int32,int8 ! ...</code></p>
 </li>
 <li>
 <p>Octet stream to flexible tensor: With a caps filter (<code>other/tensors,format=flexible</code>), tensor-converter generates flexible tensor.
