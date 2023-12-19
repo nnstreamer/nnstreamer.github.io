@@ -247,8 +247,8 @@ $('body').removeClass('no-script');
 <p>An option should be provided as D1':D2':D3':D4 (fixed to 3)</p>
 </li>
 <li>
-<p>Example: 640:480:3:1 ==&gt; 3:480:640:1</p>
-<pre><code class="language-bash">... ! tensor_converter input-dim=640:480:3:1 ! tensor_transform mode=transpose option=2:1:0:3 ! ...
+<p>Example: 3:640:480:1 (NHWC) ==&gt; 640:480:3:1 (NCHW)</p>
+<pre><code class="language-bash">... ! tensor_converter input-dim=3:640:480:1 ! tensor_transform mode=transpose option=1:2:0:3 ! ...
 </code></pre>
 </li>
 </ul>
