@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
+<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
-<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -158,7 +158,7 @@ $('body').removeClass('no-script');
 <tr>
 <td> bounding_boxes</td>
 <td> Bounding boxes (other/tensor)</td>
-<td> File path to labels, decoding schems, out dim, in dim</td>
+<td> File path to labels, decoding schemes, out dim, in dim</td>
 <td> video/x-raw</td>
 </tr>
 <tr>
@@ -169,7 +169,7 @@ $('body').removeClass('no-script');
 </tr>
 <tr>
 <td> image_segment</td>
-<td> segmentaion info</td>
+<td> segmentation info</td>
 <td> expected model</td>
 <td> video/x-raw</td>
 </tr>
@@ -286,12 +286,12 @@ nnstreamer_decoder_custom_unregister ("tdec");
 <pre><code># @file custom_decoder_example.py
 ## @brief  User-defined custom decoder
 class CustomDecoder(object):
-## @breif  Python callback: getOutCaps
+## @brief  Python callback: getOutCaps
   def getOutCaps (self):
     # Write capability of the media type.
     return bytes('@CAPS_STRING@', 'UTF-8')
 
-## @breif  Python callback: decode
+## @brief  Python callback: decode
   def decode (self, raw_data, in_info, rate_n, rate_d):
     # return decoded raw data as `bytes` type.
     return data

@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
+<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
-<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -230,7 +230,7 @@ v4l2src name=cam_src ! videoscale ! videoconvert ! video/x-raw,width=640,height=
 </li>
 </ul>
 <h4 id="object-detection-using-output-combination-option">Object detection using output combination option</h4>
-<p>The orignal video frame is passed to output of tensor-filter using the property output-combination.</p>
+<p>The original video frame is passed to output of tensor-filter using the property output-combination.</p>
 <ul>
 <li>launch script</li>
 </ul>
@@ -254,17 +254,17 @@ v4l2src name=cam_src ! videoscale ! videoconvert ! video/x-raw,width=640,height=
 <h2 id="subcomponents">Sub-Components</h2>
 <h3 id="main-tensor_filterc">Main <code>tensor_filter.c</code>
 </h3>
-<p>This is the main placeholder for all different subcomponents. With the property, <code>FRAMEWORK</code>, this main component loads the proper subcomponent (e.g., tensorflow-lite support, custom support, or other addtional NNFW supports).<br>
+<p>This is the main placeholder for all different subcomponents. With the property, <code>FRAMEWORK</code>, this main component loads the proper subcomponent (e.g., tensorflow-lite support, custom support, or other additional NNFW supports).<br>
 The main component is supposed process the standard properties for subcomponents as well as processing the input/output dimensions.<br>
 The subcomponents as supposed to fill in <code>GstTensor_Filter_Framework</code> struct and register it with <code>supported</code> array in <code>tensor_filter.h</code>.<br>
-Note that the registering sturcture may be updated later. (We may follow what <code>Linux.kernel/drivers/devfreq/devfreq.c</code> does)</p>
+Note that the registering structure may be updated later. (We may follow what <code>Linux.kernel/drivers/devfreq/devfreq.c</code> does)</p>
 <h3 id="tensorflowlite-support-tensor_filter_tensorflow_litecc">Tensorflow-lite support, <code>tensor_filter_tensorflow_lite.cc</code>
 </h3>
 <p>This should fill in <code>GstTensor_Filter_Framework</code> supporting tensorflow_lite.</p>
 <h3 id="custom-function-support-tensor_filter_customc">Custom function support, <code>tensor_filter_custom.c</code>
 </h3>
 <p>Neural network and streameline developers may define their own tensor postprocessing operations with tensor_filter_custom.<br>
-With <code>nnstreamer-devel</code> package installed at build time (e.g., <code>BuildRequires: pkgconfig(nnstreamer)</code> in .spec file), develerops can implement their own functions and expose their functions via <code>NNStreamer_custom_class</code> defined in <code>tensor_fitler_custom.h</code>.<br>
+With <code>nnstreamer-devel</code> package installed at build time (e.g., <code>BuildRequires: pkgconfig(nnstreamer)</code> in .spec file), develerops can implement their own functions and expose their functions via <code>NNStreamer_custom_class</code> defined in <code>tensor_filter_custom.h</code>.<br>
 The resulting custom developer plugin should exist as a shared library (.so) with the symbol NNStreamer_custom exposed with all the func defined in NNStreamer_custom_class.</p>
 
     </div>
