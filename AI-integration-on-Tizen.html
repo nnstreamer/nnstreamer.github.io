@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<base href=".">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>AI-Integration-on-Tizen</title>
+
+<link rel="stylesheet" href="assets/css/custom_bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/css/bootstrap-toc.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="assets/js/search/enable_search.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/extra_frontend.css" type="text/css">
+<link rel="stylesheet" href="assets/css/prism-tomorrow.css" type="text/css">
+
+<script src="assets/js/mustache.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/scrollspy.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/compare-versions.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/bootstrap-toc.min.js"></script>
+<script src="assets/js/jquery.touchSwipe.min.js"></script>
+<script src="assets/js/anchor.min.js"></script>
+<script src="assets/js/tag_filtering.js"></script>
+<script src="assets/js/language_switching.js"></script>
+
+<script src="assets/js/lines_around_headings.js"></script>
+
+<script src="assets/js/prism-core.js"></script>
+<script src="assets/js/prism-autoloader.js"></script>
+<script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
+
+<link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
+
+</head>
+
+<body class="no-script
+">
+
+<script>
+$('body').removeClass('no-script');
+</script>
+
+<nav class="navbar navbar-fixed-top navbar-default" id="topnav">
+	<div class="container-fluid">
+		<div class="navbar-right">
+			<a id="toc-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrapper" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<form class="navbar-form pull-right" id="navbar-search-form">
+                               <div class="form-group has-feedback">
+                                       <input type="text" class="form-control input-sm" name="search" id="sidenav-lookup-field" placeholder="search" disabled>
+				       <span class="glyphicon glyphicon-search form-control-feedback" id="search-mgn-glass"></span>
+                               </div>
+                        </form>
+		</div>
+		<div class="navbar-header">
+			<a id="sidenav-toggle">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				<span class="glyphicon glyphicon-menu-left"></span>
+			</a>
+			<a id="home-link" href="index.html" class="hotdoc-navbar-brand">
+				<img src="assets/images/nnstreamer_logo.png" alt="Home">
+			</a>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-wrapper">
+			<ul class="nav navbar-nav" id="menu">
+				
+<li class="dropdown">
+    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        API References<span class="caret"></span>
+    </a>
+	<ul class="dropdown-menu" id="modules-menu">
+					<li>
+				<a href="doc-index.html">NNStreamer doc</a>
+			</li>
+					<li>
+				<a href="gst/nnstreamer/README.html">NNStreamer Elements</a>
+			</li>
+					<li>
+				<a href="nnstreamer-example/index.html">NNStreamer Examples</a>
+			</li>
+					<li>
+				<a href="API-reference.html">API reference</a>
+			</li>
+		</ul>
+</li>
+
+<li>
+	<a href="doc-index.html">Documents</a>
+</li>
+<li>
+	<a href="gst/nnstreamer/README.html">Elements</a>
+</li>
+<li>
+	<a href="tutorials.html">Tutorials</a>
+</li>
+<li>
+	<a href="API-reference.html">API reference</a>
+</li>
+
+			</ul>
+			<div class="hidden-xs hidden-sm navbar-text navbar-center">
+							</div>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div data-extension="core" data-hotdoc-in-toplevel="True" data-hotdoc-project="NNStreamer" data-hotdoc-ref="AI-integration-on-Tizen.html" class="page_container" id="page-wrapper">
+<script src="assets/js/utils.js"></script>
+
+<div class="panel panel-collapse oc-collapsed" id="sidenav" data-hotdoc-role="navigation">
+	<script src="assets/js/navigation.js"></script>
+	<script src="assets/js/sitemap.js"></script>
+</div>
+
+<div id="body">
+	<div id="main">
+				    <div id="page-description" data-hotdoc-role="main">
+        <h1 id="use-ai-on-tizen">Use AI on Tizen</h1>
+<h2 id="briefing">Briefing</h2>
+<p>This guide is for Tizen developers who want to use AI in their application. First, we introduce <a href="https://github.com/google-ai-edge/ai-edge-torch"><code>ai-edge-torch</code></a>, a python package tool converting <a href="https://pytorch.org/">PyTorch</a> model to <a href="https://ai.google.dev/edge/lite">TensorFlow Lite (TFLite)</a> model. Then, we will introduce how to use TFLite model in Tizen using <a href="https://docs.tizen.org/application/native/guides/machine-learning/machine-learning-service/">Machine Learning Service APIs</a>.</p>
+<p>PyTorch is great for training and developing AI models. However, it's not so easy to deploy and use it in on-device. TFLite has great on-device Tizen performance and it's easy to use GPU, DSP, or NPU by its delegate feature. Thus we recommend using TFLite in Tizen, at least for PoC stage (after engineering you may find better solution).</p>
+<h2 id="prepare-your-model">Prepare your model</h2>
+<p>First, you should obtain your model. There are several ways:</p>
+<ol>
+<li>
+<p>Check <a href="https://github.com/nnstreamer/nnstreamer-example/">NNStreamer/ML-API Tizen Examples</a></p>
+<ul>
+<li>There are many real examples you may find it useful.</li>
+</ul>
+</li>
+<li>
+<p>Find web. There are many open models in the web.</p>
+<ul>
+<li><a href="https://ai.google.dev/edge/lite#1_generate_a_tensorflow_lite_model">Official TFLite examples</a></li>
+<li>
+<a href="https://docs.ultralytics.com/models/">ultralytics</a> offers many YOLO based vision models.</li>
+<li>
+<a href="https://huggingface.co/">huggingface</a> or <a href="https://pytorch.org/vision/stable/models.html">torchvision models</a>
+</li>
+</ul>
+</li>
+<li>
+<p>Make your own model (PyTorch)</p>
+<p>In many cases, you need to use your own model. This model might be written from scratch or trained with your custom dataset. If your model is made with PyTorch, you can use <a href="https://github.com/google-ai-edge/ai-edge-torch">ai-edge-torch</a> to convert your model into TFLite format, so it can be used in Tizen.</p>
+</li>
+</ol>
+<h3 id="make-pytorch-model">Make PyTorch model</h3>
+<p>For brevity, this article use a pretrained <a href="https://pytorch.org/vision/main/models/mobilenetv3.html">MobileNet V3 small</a> model from torchvision.</p>
+<pre><code class="language-python">import torch
+import torchvision
+
+# Here we use mobilenet_v3_small with pre-trained weights.
+torch_model = torchvision.models.mobilenet_v3_small(torchvision.models.MobileNet_V3_Small_Weights.IMAGENET1K_V1).eval()
+
+# Finetune with your own data if you want.
+
+sample_input = torch.randn(1, 3, 224, 224) # All pytorch CONV layer has NCHW format
+sample_input.shape # torch.Size([1, 3, 224, 224])
+
+sample_output = torch_model(sample_input)
+saample_output.shape # torch.Size([1, 1000])
+</code></pre>
+<p>Obviously, you could/should finetune the model with your own data!</p>
+<h3 id="convert-pytorch-into-tflite-with-aiedgetorch">Convert PyTorch into TFLite with <a href="https://github.com/google-ai-edge/ai-edge-torch">ai-edge-torch</a>
+</h3>
+<p><a href="https://github.com/google-ai-edge/ai-edge-torch">ai-edge-torch</a> is Google's open source project to convert PyTorch model into TFLite model. Check <a href="https://github.com/google-ai-edge/ai-edge-torch/blob/main/docs/pytorch_converter/README.md">official guide</a> for more details.</p>
+<ol>
+<li>
+<p><a href="https://github.com/google-ai-edge/ai-edge-torch?tab=readme-ov-file#installation">Install ai-edge-torch</a></p>
+<pre><code class="language-bash">pip install -r https://raw.githubusercontent.com/google-ai-edge/ai-edge-torch/main/requirements.txt
+pip install ai-edge-torch-nightly
+</code></pre>
+</li>
+<li>
+<p>Export PyTorch model to TFLite model file.</p>
+<pre><code class="language-python">import ai_edge_torch
+
+edge_model = ai_edge_torch.convert(torch_model, (sample_input,)) # convert the model
+edge_model_output = edge_model(sample_input) # run the model
+edge_model_output.shape # (1, 1000)
+edge_model.export("mobilenet_v3_small.tflite") # save as tflite model file
+</code></pre>
+</li>
+<li>
+<p>Validate the TFLite model.</p>
+<pre><code class="language-python">import numpy as np
+import tensorflow as tf
+
+# Load the TFLite model and allocate tensors.
+interpreter = tf.lite.Interpreter(model_path="mobilenet_v3_small.tflite")
+interpreter.allocate_tensors()
+
+# Get input and output tensors.
+input_details = interpreter.get_input_details()
+#  'name': 'serving_default_args_0:0',
+#  'index': 0,
+#  'shape': array([  1,   3, 224, 224], dtype=int32),
+#  'shape_signature': array([  1,   3, 224, 224], dtype=int32),
+#  'dtype': numpy.float32,
+#  'quantization': (0.0, 0),
+#  'quantization_parameters': {'scales': array([], dtype=float32),
+#    'zero_points': array([], dtype=int32),
+#    'quantized_dimension': 0},
+#   'sparsity_parameters': {}}
+
+
+output_details = interpreter.get_output_details()
+#  'name': 'StatefulPartitionedCall:0',
+#  'index': 254,
+#  'shape': array([   1, 1000], dtype=int32),
+#  'shape_signature': array([   1, 1000], dtype=int32),
+#  'dtype': numpy.float32,
+#  'quantization': (0.0, 0),
+#  'quantization_parameters': {'scales': array([], dtype=float32),
+#    'zero_points': array([], dtype=int32),
+#    'quantized_dimension': 0},
+#  'sparsity_parameters': {}
+
+# Test the model on random input data.
+input_data = np.array(np.random.random_sample(input_shape), dtype=np.float32)
+interpreter.set_tensor(input_details[0]['index'], input_data)
+interpreter.invoke()
+output_data = interpreter.get_tensor(output_details[0]['index'])
+print(output_data)
+</code></pre>
+</li>
+</ol>
+<p>Now you have tflite model file <code>mobilenet_v3_small.tflite</code>. You can use it in your Tizen app with ML Service APIs.</p>
+<h2 id="use-ml-service-api-on-tizen">Use <a href="https://docs.tizen.org/application/native/guides/machine-learning/machine-learning-service/">ML Service API</a> on Tizen</h2>
+<p>Tizen ML API provides a set of APIs for AI applications to use its model in a convenient conf-file-based passion.</p>
+<h3 id="the-conf-file">The conf file</h3>
+<p>A conf file <code>mobilenet.conf</code> should be something like this:</p>
+<pre><code class="language-json">{
+  "single" : {
+    "model" : "mobilenet_v3_small.tflite",
+    "framework" : "tensorflow-lite",
+    "custom" : "Delegate:XNNPACK,NumThreads:2",
+    "input_info" : [
+      {
+        "type" : "float32",
+        "dimension" : "224:224:3:1"
+      }
+    ],
+    "output_info" : [
+      {
+        "type" : "float32",
+        "dimension" : "1000:1"
+      }
+    ]
+  },
+  "information" :
+  {
+    "label_file" : "mobilenet_label.txt"
+  }
+}
+</code></pre>
+<ul>
+<li>
+<code>"model" : "mobilenet_v3_small.tflite"</code> means this conf file uses the specified model.</li>
+<li>
+<code>"framework" : "tensorflow-lite"</code> means this model should be invoked by TFLite.</li>
+<li>
+<code>"custom" : "Delegate:XNNPACK,NumThreads:2"</code> sets custom options to the model.</li>
+<li>
+<code>"input_info"</code> and <code>"output_info"</code> are used to specify input and output tensor information. This can be omitted.</li>
+<li>
+<code>"information"</code> defines other information using this ml-service. Here label file path is specified.</li>
+</ul>
+<h3 id="usage-of-ml-service-api">Usage of ML Service API</h3>
+<p>A ml_service handle is created by API <code>ml_service_new</code></p>
+<pre><code class="language-C">ml_service_h mls;
+char *conf_file_path = "path/to/mobilenet.conf";
+ml_service_new (conf_file_path, &amp;mls);
+</code></pre>
+<p>Check input and output of <code>mls</code></p>
+<pre><code class="language-C">ml_tensors_info_h input_info;
+ml_service_get_input_information (mls, NULL, &amp;input_info);
+/*
+- tensor count: 1
+- tensor[0]
+  - name: serving_default_args_0:0
+  - type: 7
+  - dimension[0]: 224
+  - dimension[1]: 224
+  - dimension[2]: 3
+  - dimension[3]: 1
+  - size: 150528 byte
+*/
+
+ml_tensors_info_h output_info;
+ml_service_get_output_information (mls, NULL, &amp;output_info);
+/*
+- tensor count: 1
+- tensor[0]
+  - name: StatefulPartitionedCall:0
+  - type: 7
+  - dimension[0]: 1000
+  - dimension[1]: 1
+  - dimension[2]: 0
+  - dimension[3]: 0
+  - size: 4000 byte
+*/
+</code></pre>
+<p>Set callback. ML Service API provides async method for getting result value of <code>mls</code>.</p>
+<pre><code class="language-C">void
+_new_data_cb (ml_service_event_e event, ml_information_h event_data, void *user_data)
+{
+  ml_tensors_data_h new_data = NULL;
+
+  if (event != ML_SERVICE_EVENT_NEW_DATA)
+    return;
+
+  // get tensors-data from event data.
+  ml_information_get (event_data, "data", &amp;new_data);
+
+  // get the float result
+  float *result;
+  size_t result_size;
+  ml_tensors_data_get_tensor_data (new_data, 0U, (void *) &amp;result, &amp;result_size);
+
+  // result : float[1000]
+  // result_size : 4000 byte
+  // do something useful with the result.
+}
+...
+
+// set event callback
+ml_service_set_event_cb (mls, _new_data_cb, user_data);
+</code></pre>
+<p>All setup is done. Let's invoke <code>mls</code> with proper input data with API <code>ml_service_request</code></p>
+<pre><code class="language-C">ml_tensors_data_h input_data = NULL;
+ml_tensors_data_create (input_info, &amp;input_data); /* create input data layout of input_info */
+
+// set data_buf as you want.
+// It should be float value image data float[224][224][3][1].
+uint8_t *data_buf = NULL;
+size_t data_buf_size;
+
+// set 0-th tensor data with user given buffer
+ml_tensors_data_set_tensor_data (input_data, 0U, data_buf, data_buf_size);
+
+// now request mls to invoke the model with given input_data
+ml_service_request (mls, NULL, input_data);
+
+// When mls get the result of model inference, `_new_data_cb` will be called.
+</code></pre>
+<h3 id="package-your-mls-into-rpk">Package your <code>mls</code> into <a href="https://docs.tizen.org/application/tizen-studio/native-tools/rpk-package">RPK</a>
+</h3>
+<p><a href="https://docs.tizen.org/application/tizen-studio/native-tools/rpk-package">Tizen Resource Package (RPK)</a> is a package type dedicated to resources. Tizen ML Service API utilizes RPK to let app developers easily decouple their ML from their application, and upgrade their model without re-packaging/deploying their application. Please check <a href="https://github.com/nnstreamer/nnstreamer-example/tree/main/Tizen.native/ml-service-example">this real example</a> for details.</p>
+
+    </div>
+        
+
+
+
+
+		
+	</div>
+	<div id="search_results">
+		<p>The results of the search are</p>
+	</div>
+	<div id="footer">
+		    
+
+	</div>
+</div>
+
+<div id="toc-column">
+	
+		<div class="edit-button">
+		
+
+	</div>
+		<div id="toc-wrapper">
+		<nav id="toc"></nav>
+	</div>
+</div>
+</div>
+</main>
+
+
+<script src="assets/js/navbar_offset_scroller.js"></script>
+</body>
+</html>
