@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
-<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
+<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -157,7 +157,7 @@ This guide is experimented on Ubuntu 16.04 x86_64 distribution.</p>
 <h4 id="how-to-build-source-code">How to build source code</h4>
 <pre><code class="language-bash">$ git clone https://github.com/kirushyk/gst-instruments.git
 $ cd gst-instruments
-$ git checkout -v 0.2.3 0.2.3
+$ git checkout -b 0.2.3 0.2.3
 $ vi ./autogen.sh
 --------------- patch: start ----------------------------------
 @@ -19,7 +19,7 @@ which "aclocal" 2&gt;/dev/null || {
@@ -170,10 +170,10 @@ $ vi ./autogen.sh
    exit 1
  }
 --------------- patch: end   ----------------------------------
-$ ./autodgen.sh
+$ ./autogen.sh
 $ ./configure
 $ make -j`nproc`
-$ sudo make install 
+$ sudo make install
 $ ls /usr/local/lib/libgstintercept.* -al
 -rw-r--r-- 1 root root 232492 Nov 21 11:49 /usr/local/lib/libgstintercept.a
 -rwxr-xr-x 1 root root   1039 Nov 21 11:49 /usr/local/lib/libgstintercept.la
@@ -218,7 +218,7 @@ audiotestsrc0    0.0    0.0      0 ns
 </code></pre>
 <h5 id="how-to-generate-an-instrumentation-graph">How to generate an instrumentation graph</h5>
 <pre><code class="language-bash">$ gst-report-1.0  --dot pipeline0.gsttrace | dot -Tpng &gt; perf.png
-$ eog ./perf.png 
+$ eog ./perf.png
 </code></pre>
 <p><img src="tools/profiling/gst-instruments-perf.png" border="0"></p>
 <h4 id="case-study-unit-test-in-nnstreamer">Case study: Unit test in NNStreamer</h4>
@@ -289,7 +289,7 @@ HawkTracer library provides pkg-config file which can be used to find required l
   ht_timeline_register_listener(timeline, ht_file_dump_listener_callback, listener); // register listener to a timeline
 
   // your code goes here...
-  
+
   ht_timeline_flush(timeline); // flush all remaining events from timeline
   ht_timeline_unregister_all_listeners(timeline); // unregister listeners from timeline
   ht_file_dump_listener_destroy(listener); // deinitialize listener
