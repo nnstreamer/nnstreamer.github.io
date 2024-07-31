@@ -36,10 +36,10 @@
 
 <script src="assets/js/lines_around_headings.js"></script>
 
+<script src="assets/js/trie.js"></script>
 <script src="assets/js/prism-core.js"></script>
 <script src="assets/js/prism-autoloader.js"></script>
 <script src="assets/js/prism_autoloader_path_override.js"></script>
-<script src="assets/js/trie.js"></script>
 
 <link rel="icon" type="image/png" href="assets/images/nnstreamer_logo.png">
 
@@ -171,7 +171,7 @@ For more details, refer to https://gstreamer.freedesktop.org/documentation/tutor
 <p>Use gst-launch-1.0 --gst-debug-help to obtain the list of all registered categories.</p>
 <pre><code class="language-bash">$ gst-launch-1.0 --gst-debug-help
 </code></pre>
-<h4 id="case-study-1-tracing-gstreamer-plugins-with-gst_debug">Case study 1: Tracing Gstreamer plugins with GST_DEBUG</h4>
+<h4 id="case-study-1-tracing-gstreamer-plugins-with-gst_debug">Case study 1: Tracing GStreamer plugins with GST_DEBUG</h4>
 <p>Traces for buffer flow, events and messages in TRACE level.</p>
 <pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7,GST_BUFFER*:7,GST_EVENT:7,GST_MESSAGE:7" \
 GST_TRACERS=log gst-launch-1.0 fakesrc num-buffers=10 ! fakesink -
@@ -190,7 +190,7 @@ GST_DEBUG_FILE=trace.log /usr/bin/gst-play-1.0 ./your_movie.mp4 &amp;&amp; \
 ./scripts/gst-plot-traces.sh --format=png | gnuplot eog trace.log.*.png
 </code></pre>
 <p>Print processing latencies.</p>
-<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS=latency gst-launch-1.0  \
+<pre><code class="language-bash">$ GST_DEBUG="GST_TRACER:7" GST_TRACERS=latency gst-launch-1.0 \
 audiotestsrc num-buffers=10 ! audioconvert ! volume volume=0.7 ! autoaudiosink
 </code></pre>
 <p>Raise a warning if a leak is detected.</p>
@@ -218,7 +218,7 @@ GStreamer uses this environment variable as the output location to generate pipe
 <pre><code class="language-bash">$ sudo apt -y install graphviz libgstreamer1.0-dev
 $ sudo apt -y install xdot gsteamer1.0-tools
 </code></pre>
-<h4 id="gstreamer-application-macros-for-custom-gsteamer-application">Gstreamer application macros for custom GSteamer application</h4>
+<h4 id="gstreamer-application-macros-for-custom-gsteamer-application">GStreamer application macros for custom GSteamer application</h4>
 <p>If you're using a custom GStreamer application, you'll need to use GStreamer debug macros to trigger pipeline generation.
 For instance, to see a complete pipeline graph, add the following macro invocation at the point in your application where your pipeline elements have been created and linked:</p>
 <ul>
@@ -239,14 +239,14 @@ $ ls -al ./tracing/
   0.00.05.095596000-gst-launch.PLAYING_PAUSED.dot
   0.00.05.104625000-gst-launch.PAUSED_READY.dot
 </code></pre>
-<h4 id="how-to-convert-a-pipeling-dot-file-to-pdf">How to convert a pipeling dot file to pdf</h4>
+<h4 id="how-to-convert-a-pipeline-dot-file-to-pdf">How to convert a pipeline dot file to pdf</h4>
 <p>XDot is an interactive viewer for graphs written in Graphviz's dot language. You can view the pipeline graph graphically with XDot.</p>
 <pre><code class="language-bash">$ sudo apt install xdot
 $ xdot 0.00.00.328088000-gst-launch.NULL_READY.dot
 </code></pre>
 <p><img src="tools/debugging/gst-debug-dump-dot-dir-xot.png" border="0"></p>
-<p>If you want to get a PDF format file from .dot file, You need to convert the to a graphical format with dot command.
-The below exampe shows how to render PAUSED_READY.dot pipeline.</p>
+<p>If you want to get a PDF format file from .dot file, you need to convert the to a graphical format with dot command.
+The below example shows how to render PAUSED_READY.dot pipeline.</p>
 <pre><code class="language-bash">* Case 1: Convert .dot to .pdf
 $ dot -Tpdf 0.00.05.104625000-gst-launch.PAUSED_READY.dot &gt; pipeline_PAUSED_READY.pdf
 $ evince pipeline_PaUSED_READY.pdf
@@ -254,15 +254,15 @@ $ evince pipeline_PaUSED_READY.pdf
 $ dot -Tpng 0.00.05.104625000-gst-launch.PAUSED_READY.dot &gt; pipeline_PAUSED_READY.png
 $ eog pipeline_PaUSED_READY.png
 </code></pre>
-<h4 id="case-study-test-case-in-nnstreamer">Case study: Test case in NNstreamer</h4>
+<h4 id="case-study-test-case-in-nnstreamer">Case study: Test case in NNStreamer</h4>
 <p>First of all, try to build NNStreamer source code with cmake in nnstreamer/build folder.</p>
 <pre><code class="language-bash">nnstreamer/test$ ./testAll.sh 1
-nnstreamer/test$ cd performance/debug/tensor_convertor
+nnstreamer/test$ cd performance/debug/tensor_converter
 $ eog ${number_of_test_case}.png
 </code></pre>
 <p>And then, you can see elements and caps graph in a pipeline.</p>
 <h3 id="debugging-remotely-with-gstdebugger">Debugging remotely with gst-debugger</h3>
-<p>gst-debugger (a.k.a Gstreamer Debugger) toolset allows to introspect gst-pipeline remotely. It provides graphical client, and GStreamer's plugin.
+<p>gst-debugger (a.k.a GStreamer Debugger) toolset allows to introspect gst-pipeline remotely. It provides graphical client, and GStreamer's plugin.
 This guide is written on Ubuntu 16.04 X86_64 distribution.</p>
 <h4 id="build-the-source-code">Build the source code</h4>
 <pre><code class="language-bash">$ git clone https://github.com/GNOME/gst-debugger.git
