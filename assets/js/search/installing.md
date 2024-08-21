@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"installing.md","urls":[{"url":"how-to-archive-large-data.html#install-gitlfs-package","node_type":"ul","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"installing.md","urls":[{"url":"how-to-archive-large-data.html#install-gitlfs-package","node_type":"ul","page":"How to archive large files","sections":["Install git-lfs package"],"context":{"gi-language":["default"]}}]});

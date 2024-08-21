@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"readme.md","urls":[{"url":"component-description.html#gstreamer-elements-plugins","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"readme.md","urls":[{"url":"component-description.html#gstreamer-elements-plugins","node_type":"p","page":"Component description","sections":["Gstreamer Elements (Plugins)"],"context":{"gi-language":["default"]}}]});

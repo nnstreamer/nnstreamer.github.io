@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"nnstreamer_example_object_detection_tflite.cc","urls":[{"url":"tutorial5_gstreamer_api.html#tutorial-5-build-application-using-gstreamer-api","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"nnstreamer_example_object_detection_tflite.cc","urls":[{"url":"tutorial5_gstreamer_api.html#tutorial-5-build-application-using-gstreamer-api","node_type":"p","page":"T5. GStreamer API","sections":["Tutorial 5. Build application using GStreamer API"],"context":{"gi-language":["default"]}}]});

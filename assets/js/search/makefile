@@ -1,1 +1,1 @@
-urls_downloaded_cb({"token":"makefile","urls":[{"url":"getting-started-ubuntu-debuild.html#debuild-build-with-system-libraries-ubuntudebian","node_type":"p","context":{"gi-language":["default"]}}]});
+urls_downloaded_cb({"token":"makefile","urls":[{"url":"getting-started-ubuntu-debuild.html#debuild-build-with-system-libraries-ubuntudebian","node_type":"p","page":"Ubuntu Debuild/Pdebuild","sections":["Getting Started: Ubuntu Debuild/Pdebuild","Debuild, build with system libraries. (Ubuntu/Debian)"],"context":{"gi-language":["default"]}}]});
