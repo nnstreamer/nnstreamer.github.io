@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#aafd6bc26c313982dd003a87b0ddf4b26d02f970 - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_plugin_api_util_impl.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7 - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_plugin_api_util_impl.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#aafd6bc26c313982dd003a87b0ddf4b26d02f970</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">95.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-05 13:56:04</td>
+            <td class="headerValue">2024-11-06 05:34:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">98.2&nbsp;%</td>
@@ -126,42 +126,42 @@
 <span id="L64"><span class="lineNum">      64</span>              :  * @brief Internal function, copied from gst_util_greatest_common_divisor() to remove dependency of gstreamer.</span>
 <span id="L65"><span class="lineNum">      65</span>              :  */</span>
 <span id="L66"><span class="lineNum">      66</span>              : static gint</span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC tlaBgGNC">        1596 : _gcd (gint a, gint b)</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC tlaBgGNC">        1600 : _gcd (gint a, gint b)</span></span>
 <span id="L68"><span class="lineNum">      68</span>              : {</span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">        3202 :   while (b != 0) {</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        1606 :     int temp = a;</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">        3210 :   while (b != 0) {</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        1610 :     int temp = a;</span></span>
 <span id="L71"><span class="lineNum">      71</span>              : </span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        1606 :     a = b;</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        1606 :     b = temp % b;</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        1610 :     a = b;</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        1610 :     b = temp % b;</span></span>
 <span id="L74"><span class="lineNum">      74</span>              :   }</span>
 <span id="L75"><span class="lineNum">      75</span>              : </span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        1596 :   return ABS (a);</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        1600 :   return ABS (a);</span></span>
 <span id="L77"><span class="lineNum">      77</span>              : }</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
 <span id="L79"><span class="lineNum">      79</span>              : /**</span>
 <span id="L80"><span class="lineNum">      80</span>              :  * @brief Internal function, copied from gst_util_fraction_compare() to remove dependency of gstreamer.</span>
 <span id="L81"><span class="lineNum">      81</span>              :  */</span>
 <span id="L82"><span class="lineNum">      82</span>              : static gint</span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         798 : _compare_rate (gint a_n, gint a_d, gint b_n, gint b_d)</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         800 : _compare_rate (gint a_n, gint a_d, gint b_n, gint b_d)</span></span>
 <span id="L84"><span class="lineNum">      84</span>              : {</span>
 <span id="L85"><span class="lineNum">      85</span>              :   gint64 new_num_1;</span>
 <span id="L86"><span class="lineNum">      86</span>              :   gint64 new_num_2;</span>
 <span id="L87"><span class="lineNum">      87</span>              :   gint gcd;</span>
 <span id="L88"><span class="lineNum">      88</span>              : </span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         798 :   g_return_val_if_fail (a_d != 0 &amp;&amp; b_d != 0, 0);</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         800 :   g_return_val_if_fail (a_d != 0 &amp;&amp; b_d != 0, 0);</span></span>
 <span id="L90"><span class="lineNum">      90</span>              : </span>
 <span id="L91"><span class="lineNum">      91</span>              :   /* Simplify */</span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         798 :   gcd = _gcd (a_n, a_d);</span></span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         798 :   a_n /= gcd;</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         798 :   a_d /= gcd;</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         800 :   gcd = _gcd (a_n, a_d);</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         800 :   a_n /= gcd;</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         800 :   a_d /= gcd;</span></span>
 <span id="L95"><span class="lineNum">      95</span>              : </span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         798 :   gcd = _gcd (b_n, b_d);</span></span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">         798 :   b_n /= gcd;</span></span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         798 :   b_d /= gcd;</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         800 :   gcd = _gcd (b_n, b_d);</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">         800 :   b_n /= gcd;</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         800 :   b_d /= gcd;</span></span>
 <span id="L99"><span class="lineNum">      99</span>              : </span>
 <span id="L100"><span class="lineNum">     100</span>              :   /* fractions are reduced when set, so we can quickly see if they're equal */</span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">         798 :   if (a_n == b_n &amp;&amp; a_d == b_d)</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         794 :     return 0;</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">         800 :   if (a_n == b_n &amp;&amp; a_d == b_d)</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         796 :     return 0;</span></span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span>              :   /* extend to 64 bits */</span>
 <span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">           4 :   new_num_1 = ((gint64) a_n) * b_d;</span></span>
@@ -180,17 +180,17 @@
 <span id="L118"><span class="lineNum">     118</span>              :  * @param info tensor info structure to be initialized</span>
 <span id="L119"><span class="lineNum">     119</span>              :  */</span>
 <span id="L120"><span class="lineNum">     120</span>              : void</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">     5691820 : gst_tensor_info_init (GstTensorInfo * info)</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">     5699620 : gst_tensor_info_init (GstTensorInfo * info)</span></span>
 <span id="L122"><span class="lineNum">     122</span>              : {</span>
 <span id="L123"><span class="lineNum">     123</span>              :   guint i;</span>
 <span id="L124"><span class="lineNum">     124</span>              : </span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">     5691820 :   g_return_if_fail (info != NULL);</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">     5699620 :   g_return_if_fail (info != NULL);</span></span>
 <span id="L126"><span class="lineNum">     126</span>              : </span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">     5691820 :   info-&gt;name = NULL;</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">     5691820 :   info-&gt;type = _NNS_END;</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">     5699620 :   info-&gt;name = NULL;</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">     5699620 :   info-&gt;type = _NNS_END;</span></span>
 <span id="L129"><span class="lineNum">     129</span>              : </span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">    96760900 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">    91069100 :     info-&gt;dimension[i] = 0;</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">    96893600 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">    91194000 :     info-&gt;dimension[i] = 0;</span></span>
 <span id="L132"><span class="lineNum">     132</span>              :   }</span>
 <span id="L133"><span class="lineNum">     133</span>              : }</span>
 <span id="L134"><span class="lineNum">     134</span>              : </span>
@@ -199,14 +199,14 @@
 <span id="L137"><span class="lineNum">     137</span>              :  * @param info tensor info structure</span>
 <span id="L138"><span class="lineNum">     138</span>              :  */</span>
 <span id="L139"><span class="lineNum">     139</span>              : void</span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">     1652850 : gst_tensor_info_free (GstTensorInfo * info)</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">     1655330 : gst_tensor_info_free (GstTensorInfo * info)</span></span>
 <span id="L141"><span class="lineNum">     141</span>              : {</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">     1652850 :   g_return_if_fail (info != NULL);</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">     1655330 :   g_return_if_fail (info != NULL);</span></span>
 <span id="L143"><span class="lineNum">     143</span>              : </span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">     1652850 :   g_free (info-&gt;name);</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">     1655330 :   g_free (info-&gt;name);</span></span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
 <span id="L146"><span class="lineNum">     146</span>              :   /* Init default */</span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">     1652850 :   gst_tensor_info_init (info);</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">     1655330 :   gst_tensor_info_init (info);</span></span>
 <span id="L148"><span class="lineNum">     148</span>              : }</span>
 <span id="L149"><span class="lineNum">     149</span>              : </span>
 <span id="L150"><span class="lineNum">     150</span>              : /**</span>
@@ -215,16 +215,16 @@
 <span id="L153"><span class="lineNum">     153</span>              :  * @return data size</span>
 <span id="L154"><span class="lineNum">     154</span>              :  */</span>
 <span id="L155"><span class="lineNum">     155</span>              : gsize</span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">       59901 : gst_tensor_info_get_size (const GstTensorInfo * info)</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">       59995 : gst_tensor_info_get_size (const GstTensorInfo * info)</span></span>
 <span id="L157"><span class="lineNum">     157</span>              : {</span>
 <span id="L158"><span class="lineNum">     158</span>              :   gsize data_size;</span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">       59901 :   g_return_val_if_fail (info != NULL, 0);</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">       59995 :   g_return_val_if_fail (info != NULL, 0);</span></span>
 <span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">       59900 :   data_size = gst_tensor_get_element_count (info-&gt;dimension) *</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">       59900 :       gst_tensor_get_element_size (info-&gt;type);</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">       59994 :   data_size = gst_tensor_get_element_count (info-&gt;dimension) *</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">       59994 :       gst_tensor_get_element_size (info-&gt;type);</span></span>
 <span id="L164"><span class="lineNum">     164</span>              : </span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">       59900 :   return data_size;</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">       59994 :   return data_size;</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : }</span>
 <span id="L167"><span class="lineNum">     167</span>              : </span>
 <span id="L168"><span class="lineNum">     168</span>              : /**</span>
@@ -233,11 +233,11 @@
 <span id="L171"><span class="lineNum">     171</span>              :  * @return TRUE if info is valid</span>
 <span id="L172"><span class="lineNum">     172</span>              :  */</span>
 <span id="L173"><span class="lineNum">     173</span>              : gboolean</span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">       93412 : gst_tensor_info_validate (const GstTensorInfo * info)</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">       93491 : gst_tensor_info_validate (const GstTensorInfo * info)</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : {</span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">       93412 :   g_return_val_if_fail (info != NULL, FALSE);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">       93491 :   g_return_val_if_fail (info != NULL, FALSE);</span></span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">       93409 :   if (info-&gt;type == _NNS_END) {</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">       93488 :   if (info-&gt;type == _NNS_END) {</span></span>
 <span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">        2059 :     nns_logd</span></span>
 <span id="L180"><span class="lineNum">     180</span>              :         (&quot;Failed to validate tensor info. type: %s. Please specify tensor type. e.g., type=uint8 &quot;,</span>
 <span id="L181"><span class="lineNum">     181</span>              :         _STR_NULL (gst_tensor_get_type_string (info-&gt;type)));</span>
@@ -248,7 +248,7 @@
 <span id="L186"><span class="lineNum">     186</span>              :   }</span>
 <span id="L187"><span class="lineNum">     187</span>              : </span>
 <span id="L188"><span class="lineNum">     188</span>              :   /* validate tensor dimension */</span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">       91350 :   return gst_tensor_dimension_is_valid (info-&gt;dimension);</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">       91429 :   return gst_tensor_dimension_is_valid (info-&gt;dimension);</span></span>
 <span id="L190"><span class="lineNum">     190</span>              : }</span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
 <span id="L192"><span class="lineNum">     192</span>              : /**</span>
@@ -256,20 +256,20 @@
 <span id="L194"><span class="lineNum">     194</span>              :  * @return TRUE if equal, FALSE if given tensor infos are invalid or not equal.</span>
 <span id="L195"><span class="lineNum">     195</span>              :  */</span>
 <span id="L196"><span class="lineNum">     196</span>              : gboolean</span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">        1506 : gst_tensor_info_is_equal (const GstTensorInfo * i1, const GstTensorInfo * i2)</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">        1510 : gst_tensor_info_is_equal (const GstTensorInfo * i1, const GstTensorInfo * i2)</span></span>
 <span id="L198"><span class="lineNum">     198</span>              : {</span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        1506 :   if (!gst_tensor_info_validate (i1) || !gst_tensor_info_validate (i2)) {</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        1510 :   if (!gst_tensor_info_validate (i1) || !gst_tensor_info_validate (i2)) {</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           2 :     return FALSE;</span></span>
 <span id="L201"><span class="lineNum">     201</span>              :   }</span>
 <span id="L202"><span class="lineNum">     202</span>              : </span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        1504 :   if (i1-&gt;type != i2-&gt;type) {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        1508 :   if (i1-&gt;type != i2-&gt;type) {</span></span>
 <span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         153 :     nns_logd (&quot;Tensor info is not equal. Given tensor types %s vs %s&quot;,</span></span>
 <span id="L205"><span class="lineNum">     205</span>              :         _STR_NULL (gst_tensor_get_type_string (i1-&gt;type)),</span>
 <span id="L206"><span class="lineNum">     206</span>              :         _STR_NULL (gst_tensor_get_type_string (i2-&gt;type)));</span>
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         153 :     return FALSE;</span></span>
 <span id="L208"><span class="lineNum">     208</span>              :   }</span>
 <span id="L209"><span class="lineNum">     209</span>              : </span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        1351 :   if (!gst_tensor_dimension_is_equal (i1-&gt;dimension, i2-&gt;dimension)) {</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        1355 :   if (!gst_tensor_dimension_is_equal (i1-&gt;dimension, i2-&gt;dimension)) {</span></span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          94 :     g_autofree gchar *_dim1 = gst_tensor_get_dimension_string (i1-&gt;dimension);</span></span>
 <span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          94 :     g_autofree gchar *_dim2 = gst_tensor_get_dimension_string (i2-&gt;dimension);</span></span>
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          47 :     nns_logd (&quot;Tensor info is not equal. Given tensor dimensions %s vs %s&quot;,</span></span>
@@ -278,7 +278,7 @@
 <span id="L216"><span class="lineNum">     216</span>              :   }</span>
 <span id="L217"><span class="lineNum">     217</span>              : </span>
 <span id="L218"><span class="lineNum">     218</span>              :   /* matched all */</span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">        1304 :   return TRUE;</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">        1308 :   return TRUE;</span></span>
 <span id="L220"><span class="lineNum">     220</span>              : }</span>
 <span id="L221"><span class="lineNum">     221</span>              : </span>
 <span id="L222"><span class="lineNum">     222</span>              : /**</span>
@@ -286,19 +286,19 @@
 <span id="L224"><span class="lineNum">     224</span>              :  * @note Copied info should be freed with gst_tensor_info_free()</span>
 <span id="L225"><span class="lineNum">     225</span>              :  */</span>
 <span id="L226"><span class="lineNum">     226</span>              : void</span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">       22969 : gst_tensor_info_copy_n (GstTensorInfo * dest, const GstTensorInfo * src,</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">       22970 : gst_tensor_info_copy_n (GstTensorInfo * dest, const GstTensorInfo * src,</span></span>
 <span id="L228"><span class="lineNum">     228</span>              :     const guint n)</span>
 <span id="L229"><span class="lineNum">     229</span>              : {</span>
 <span id="L230"><span class="lineNum">     230</span>              :   guint i;</span>
 <span id="L231"><span class="lineNum">     231</span>              : </span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">       22969 :   g_return_if_fail (dest != NULL);</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">       22969 :   g_return_if_fail (src != NULL);</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">       22970 :   g_return_if_fail (dest != NULL);</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">       22970 :   g_return_if_fail (src != NULL);</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">       22969 :   dest-&gt;name = g_strdup (src-&gt;name);</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">       22969 :   dest-&gt;type = src-&gt;type;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">       22970 :   dest-&gt;name = g_strdup (src-&gt;name);</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">       22970 :   dest-&gt;type = src-&gt;type;</span></span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">      390473 :   for (i = 0; i &lt; n; i++) {</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">      367504 :     dest-&gt;dimension[i] = src-&gt;dimension[i];</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">      390490 :   for (i = 0; i &lt; n; i++) {</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">      367520 :     dest-&gt;dimension[i] = src-&gt;dimension[i];</span></span>
 <span id="L240"><span class="lineNum">     240</span>              :   }</span>
 <span id="L241"><span class="lineNum">     241</span>              : }</span>
 <span id="L242"><span class="lineNum">     242</span>              : </span>
@@ -307,10 +307,10 @@
 <span id="L245"><span class="lineNum">     245</span>              :  * @note Copied info should be freed with gst_tensor_info_free()</span>
 <span id="L246"><span class="lineNum">     246</span>              :  */</span>
 <span id="L247"><span class="lineNum">     247</span>              : void</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">       22969 : gst_tensor_info_copy (GstTensorInfo * dest, const GstTensorInfo * src)</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">       22970 : gst_tensor_info_copy (GstTensorInfo * dest, const GstTensorInfo * src)</span></span>
 <span id="L249"><span class="lineNum">     249</span>              : {</span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">       22969 :   gst_tensor_info_copy_n (dest, src, NNS_TENSOR_RANK_LIMIT);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">       22969 : }</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">       22970 :   gst_tensor_info_copy_n (dest, src, NNS_TENSOR_RANK_LIMIT);</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">       22970 : }</span></span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
 <span id="L253"><span class="lineNum">     253</span>              : /**</span>
 <span id="L254"><span class="lineNum">     254</span>              :  * @brief Convert GstTensorInfo structure to GstTensorMetaInfo.</span>
@@ -319,23 +319,23 @@
 <span id="L257"><span class="lineNum">     257</span>              :  * @return TRUE if successfully set the meta</span>
 <span id="L258"><span class="lineNum">     258</span>              :  */</span>
 <span id="L259"><span class="lineNum">     259</span>              : gboolean</span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">         388 : gst_tensor_info_convert_to_meta (GstTensorInfo * info, GstTensorMetaInfo * meta)</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">         387 : gst_tensor_info_convert_to_meta (GstTensorInfo * info, GstTensorMetaInfo * meta)</span></span>
 <span id="L261"><span class="lineNum">     261</span>              : {</span>
 <span id="L262"><span class="lineNum">     262</span>              :   guint i;</span>
 <span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">         388 :   g_return_val_if_fail (gst_tensor_info_validate (info), FALSE);</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">         386 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">         387 :   g_return_val_if_fail (gst_tensor_info_validate (info), FALSE);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">         385 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         385 :   gst_tensor_meta_info_init (meta);</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         384 :   gst_tensor_meta_info_init (meta);</span></span>
 <span id="L268"><span class="lineNum">     268</span>              : </span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">         385 :   meta-&gt;type = info-&gt;type;</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">         384 :   meta-&gt;type = info-&gt;type;</span></span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6545 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6528 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
 <span id="L272"><span class="lineNum">     272</span>              :     /** @todo handle rank from info.dimension */</span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        6160 :     meta-&gt;dimension[i] = info-&gt;dimension[i];</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        6144 :     meta-&gt;dimension[i] = info-&gt;dimension[i];</span></span>
 <span id="L274"><span class="lineNum">     274</span>              :   }</span>
 <span id="L275"><span class="lineNum">     275</span>              : </span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         385 :   return TRUE;</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         384 :   return TRUE;</span></span>
 <span id="L277"><span class="lineNum">     277</span>              : }</span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
 <span id="L279"><span class="lineNum">     279</span>              : /**</span>
@@ -355,24 +355,24 @@
 <span id="L293"><span class="lineNum">     293</span>              :  * @brief Get the pointer of nth tensor information.</span>
 <span id="L294"><span class="lineNum">     294</span>              :  */</span>
 <span id="L295"><span class="lineNum">     295</span>              : GstTensorInfo *</span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">      288587 : gst_tensors_info_get_nth_info (GstTensorsInfo * info, guint index)</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">      289287 : gst_tensors_info_get_nth_info (GstTensorsInfo * info, guint index)</span></span>
 <span id="L297"><span class="lineNum">     297</span>              : {</span>
 <span id="L298"><span class="lineNum">     298</span>              :   guint i;</span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">      288587 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">      289287 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
 <span id="L301"><span class="lineNum">     301</span>              : </span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">      288587 :   if (index &lt; NNS_TENSOR_MEMORY_MAX)</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">      232483 :     return &amp;info-&gt;info[index];</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">      289287 :   if (index &lt; NNS_TENSOR_MEMORY_MAX)</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">      232703 :     return &amp;info-&gt;info[index];</span></span>
 <span id="L304"><span class="lineNum">     304</span>              : </span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">       56104 :   if (!info-&gt;extra) {</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         204 :     info-&gt;extra = g_new0 (GstTensorInfo, NNS_TENSOR_SIZE_EXTRA_LIMIT);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">       56584 :   if (!info-&gt;extra) {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         205 :     info-&gt;extra = g_new0 (GstTensorInfo, NNS_TENSOR_SIZE_EXTRA_LIMIT);</span></span>
 <span id="L307"><span class="lineNum">     307</span>              : </span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">       49164 :     for (i = 0; i &lt; NNS_TENSOR_SIZE_EXTRA_LIMIT; ++i)</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">       48960 :       gst_tensor_info_init (&amp;info-&gt;extra[i]);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">       49405 :     for (i = 0; i &lt; NNS_TENSOR_SIZE_EXTRA_LIMIT; ++i)</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">       49200 :       gst_tensor_info_init (&amp;info-&gt;extra[i]);</span></span>
 <span id="L310"><span class="lineNum">     310</span>              :   }</span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">       56104 :   if (index &lt; NNS_TENSOR_SIZE_LIMIT)</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">       56104 :     return &amp;info-&gt;extra[index - NNS_TENSOR_MEMORY_MAX];</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">       56584 :   if (index &lt; NNS_TENSOR_SIZE_LIMIT)</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">       56584 :     return &amp;info-&gt;extra[index - NNS_TENSOR_MEMORY_MAX];</span></span>
 <span id="L314"><span class="lineNum">     314</span>              : </span>
 <span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC tlaBgUNC">           0 :   nns_loge (&quot;Failed to get the information, invalid index %u (max %d).&quot;,</span></span>
 <span id="L316"><span class="lineNum">     316</span>              :       index, NNS_TENSOR_SIZE_LIMIT);</span>
@@ -384,20 +384,20 @@
 <span id="L322"><span class="lineNum">     322</span>              :  * @param info tensors info structure to be initialized</span>
 <span id="L323"><span class="lineNum">     323</span>              :  */</span>
 <span id="L324"><span class="lineNum">     324</span>              : void</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC tlaBgGNC">      248924 : gst_tensors_info_init (GstTensorsInfo * info)</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC tlaBgGNC">      249242 : gst_tensors_info_init (GstTensorsInfo * info)</span></span>
 <span id="L326"><span class="lineNum">     326</span>              : {</span>
 <span id="L327"><span class="lineNum">     327</span>              :   guint i;</span>
 <span id="L328"><span class="lineNum">     328</span>              : </span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">      248924 :   g_return_if_fail (info != NULL);</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">      249242 :   g_return_if_fail (info != NULL);</span></span>
 <span id="L330"><span class="lineNum">     330</span>              : </span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">      248924 :   info-&gt;num_tensors = 0;</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">      248924 :   info-&gt;extra = NULL;</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">      249242 :   info-&gt;num_tensors = 0;</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">      249242 :   info-&gt;extra = NULL;</span></span>
 <span id="L333"><span class="lineNum">     333</span>              : </span>
 <span id="L334"><span class="lineNum">     334</span>              :   /** @note default format is static */</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">      248924 :   info-&gt;format = _NNS_TENSOR_FORMAT_STATIC;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">      249242 :   info-&gt;format = _NNS_TENSOR_FORMAT_STATIC;</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">     4231710 :   for (i = 0; i &lt; NNS_TENSOR_MEMORY_MAX; i++) {</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">     3982780 :     gst_tensor_info_init (&amp;info-&gt;info[i]);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">     4237110 :   for (i = 0; i &lt; NNS_TENSOR_MEMORY_MAX; i++) {</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">     3987870 :     gst_tensor_info_init (&amp;info-&gt;info[i]);</span></span>
 <span id="L339"><span class="lineNum">     339</span>              :   }</span>
 <span id="L340"><span class="lineNum">     340</span>              : }</span>
 <span id="L341"><span class="lineNum">     341</span>              : </span>
@@ -406,26 +406,26 @@
 <span id="L344"><span class="lineNum">     344</span>              :  * @param info tensors info structure</span>
 <span id="L345"><span class="lineNum">     345</span>              :  */</span>
 <span id="L346"><span class="lineNum">     346</span>              : void</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">      100279 : gst_tensors_info_free (GstTensorsInfo * info)</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">      100419 : gst_tensors_info_free (GstTensorsInfo * info)</span></span>
 <span id="L348"><span class="lineNum">     348</span>              : {</span>
 <span id="L349"><span class="lineNum">     349</span>              :   guint i;</span>
 <span id="L350"><span class="lineNum">     350</span>              : </span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">      100279 :   g_return_if_fail (info != NULL);</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">      100419 :   g_return_if_fail (info != NULL);</span></span>
 <span id="L352"><span class="lineNum">     352</span>              : </span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">     1704740 :   for (i = 0; i &lt; NNS_TENSOR_MEMORY_MAX; i++) {</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">     1604460 :     gst_tensor_info_free (&amp;info-&gt;info[i]);</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">     1707120 :   for (i = 0; i &lt; NNS_TENSOR_MEMORY_MAX; i++) {</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">     1606700 :     gst_tensor_info_free (&amp;info-&gt;info[i]);</span></span>
 <span id="L355"><span class="lineNum">     355</span>              :   }</span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">      100279 :   if (info-&gt;extra) {</span></span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">       48441 :     for (i = 0; i &lt; NNS_TENSOR_SIZE_EXTRA_LIMIT; ++i)</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">       48240 :       gst_tensor_info_free (&amp;info-&gt;extra[i]);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">      100419 :   if (info-&gt;extra) {</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">       48682 :     for (i = 0; i &lt; NNS_TENSOR_SIZE_EXTRA_LIMIT; ++i)</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">       48480 :       gst_tensor_info_free (&amp;info-&gt;extra[i]);</span></span>
 <span id="L360"><span class="lineNum">     360</span>              : </span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         201 :     g_free (info-&gt;extra);</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         201 :     info-&gt;extra = NULL;</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         202 :     g_free (info-&gt;extra);</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         202 :     info-&gt;extra = NULL;</span></span>
 <span id="L363"><span class="lineNum">     363</span>              :   }</span>
 <span id="L364"><span class="lineNum">     364</span>              : </span>
 <span id="L365"><span class="lineNum">     365</span>              :   /* Init default */</span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">      100279 :   gst_tensors_info_init (info);</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">      100419 :   gst_tensors_info_init (info);</span></span>
 <span id="L367"><span class="lineNum">     367</span>              : }</span>
 <span id="L368"><span class="lineNum">     368</span>              : </span>
 <span id="L369"><span class="lineNum">     369</span>              : /**</span>
@@ -435,26 +435,26 @@
 <span id="L373"><span class="lineNum">     373</span>              :  * @return data size</span>
 <span id="L374"><span class="lineNum">     374</span>              :  */</span>
 <span id="L375"><span class="lineNum">     375</span>              : gsize</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         485 : gst_tensors_info_get_size (const GstTensorsInfo * info, gint index)</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         487 : gst_tensors_info_get_size (const GstTensorsInfo * info, gint index)</span></span>
 <span id="L377"><span class="lineNum">     377</span>              : {</span>
 <span id="L378"><span class="lineNum">     378</span>              :   GstTensorInfo *_info;</span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         485 :   gsize data_size = 0;</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         487 :   gsize data_size = 0;</span></span>
 <span id="L380"><span class="lineNum">     380</span>              :   guint i;</span>
 <span id="L381"><span class="lineNum">     381</span>              : </span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         485 :   g_return_val_if_fail (info != NULL, 0);</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         484 :   g_return_val_if_fail (index &lt; (gint) info-&gt;num_tensors, 0);</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         487 :   g_return_val_if_fail (info != NULL, 0);</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         486 :   g_return_val_if_fail (index &lt; (gint) info-&gt;num_tensors, 0);</span></span>
 <span id="L384"><span class="lineNum">     384</span>              : </span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         483 :   if (index &lt; 0) {</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         243 :     for (i = 0; i &lt; info-&gt;num_tensors; ++i) {</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         136 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         136 :       data_size += gst_tensor_info_get_size (_info);</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         485 :   if (index &lt; 0) {</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         245 :     for (i = 0; i &lt; info-&gt;num_tensors; ++i) {</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         137 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         137 :       data_size += gst_tensor_info_get_size (_info);</span></span>
 <span id="L389"><span class="lineNum">     389</span>              :     }</span>
 <span id="L390"><span class="lineNum">     390</span>              :   } else {</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         376 :     _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, index);</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         376 :     data_size = gst_tensor_info_get_size (_info);</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         377 :     _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, index);</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         377 :     data_size = gst_tensor_info_get_size (_info);</span></span>
 <span id="L393"><span class="lineNum">     393</span>              :   }</span>
 <span id="L394"><span class="lineNum">     394</span>              : </span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         483 :   return data_size;</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         485 :   return data_size;</span></span>
 <span id="L396"><span class="lineNum">     396</span>              : }</span>
 <span id="L397"><span class="lineNum">     397</span>              : </span>
 <span id="L398"><span class="lineNum">     398</span>              : /**</span>
@@ -463,15 +463,15 @@
 <span id="L401"><span class="lineNum">     401</span>              :  * @return TRUE if info is valid</span>
 <span id="L402"><span class="lineNum">     402</span>              :  */</span>
 <span id="L403"><span class="lineNum">     403</span>              : gboolean</span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">       58846 : gst_tensors_info_validate (const GstTensorsInfo * info)</span></span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">       58876 : gst_tensors_info_validate (const GstTensorsInfo * info)</span></span>
 <span id="L405"><span class="lineNum">     405</span>              : {</span>
 <span id="L406"><span class="lineNum">     406</span>              :   guint i;</span>
 <span id="L407"><span class="lineNum">     407</span>              :   GstTensorInfo *_info;</span>
 <span id="L408"><span class="lineNum">     408</span>              : </span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">       58846 :   g_return_val_if_fail (info != NULL, FALSE);</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">       58876 :   g_return_val_if_fail (info != NULL, FALSE);</span></span>
 <span id="L410"><span class="lineNum">     410</span>              : </span>
 <span id="L411"><span class="lineNum">     411</span>              :   /* tensor stream format */</span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">       58845 :   if (info-&gt;format &gt;= _NNS_TENSOR_FORMAT_END) {</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">       58875 :   if (info-&gt;format &gt;= _NNS_TENSOR_FORMAT_END) {</span></span>
 <span id="L413"><span class="lineNum">     413</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_logd</span></span>
 <span id="L414"><span class="lineNum">     414</span>              :         (&quot;Failed to validate tensors info, format: %s. format should be one of %s.&quot;,</span>
 <span id="L415"><span class="lineNum">     415</span>              :         _STR_NULL (gst_tensor_get_format_string (info-&gt;format)),</span>
@@ -484,28 +484,28 @@
 <span id="L422"><span class="lineNum">     422</span>              :   }</span>
 <span id="L423"><span class="lineNum">     423</span>              : </span>
 <span id="L424"><span class="lineNum">     424</span>              :   /* cannot check tensor info when tensor is not static */</span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC tlaBgGNC">       58845 :   if (info-&gt;format != _NNS_TENSOR_FORMAT_STATIC) {</span></span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">         282 :     return TRUE;</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC tlaBgGNC">       58875 :   if (info-&gt;format != _NNS_TENSOR_FORMAT_STATIC) {</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">         280 :     return TRUE;</span></span>
 <span id="L427"><span class="lineNum">     427</span>              :   }</span>
 <span id="L428"><span class="lineNum">     428</span>              : </span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">       58563 :   if (info-&gt;num_tensors &lt; 1) {</span></span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">        3153 :     nns_logd</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">       58595 :   if (info-&gt;num_tensors &lt; 1) {</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">        3156 :     nns_logd</span></span>
 <span id="L431"><span class="lineNum">     431</span>              :         (&quot;Failed to validate tensors info. the number of tensors: %d. the number of tensors should be greater than 0.&quot;,</span>
 <span id="L432"><span class="lineNum">     432</span>              :         info-&gt;num_tensors);</span>
-<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">        3153 :     _nnstreamer_error_write</span></span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">        3156 :     _nnstreamer_error_write</span></span>
 <span id="L434"><span class="lineNum">     434</span>              :         (&quot;Failed to validate tensors info. the number of tensors: %d. the number of tensors should be greater than 0.&quot;,</span>
 <span id="L435"><span class="lineNum">     435</span>              :         info-&gt;num_tensors);</span>
-<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">        3153 :     return FALSE;</span></span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">        3156 :     return FALSE;</span></span>
 <span id="L437"><span class="lineNum">     437</span>              :   }</span>
 <span id="L438"><span class="lineNum">     438</span>              : </span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">      112862 :   for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
-<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">       60146 :     _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
+<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">      112920 :   for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">       60175 :     _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
 <span id="L441"><span class="lineNum">     441</span>              : </span>
-<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">       60146 :     if (!gst_tensor_info_validate (_info))</span></span>
+<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">       60175 :     if (!gst_tensor_info_validate (_info))</span></span>
 <span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">        2694 :       return FALSE;</span></span>
 <span id="L444"><span class="lineNum">     444</span>              :   }</span>
 <span id="L445"><span class="lineNum">     445</span>              : </span>
-<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">       52716 :   return TRUE;</span></span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">       52745 :   return TRUE;</span></span>
 <span id="L447"><span class="lineNum">     447</span>              : }</span>
 <span id="L448"><span class="lineNum">     448</span>              : </span>
 <span id="L449"><span class="lineNum">     449</span>              : /**</span>
@@ -513,15 +513,15 @@
 <span id="L451"><span class="lineNum">     451</span>              :  * @return TRUE if equal, FALSE if given tensor infos are invalid or not equal.</span>
 <span id="L452"><span class="lineNum">     452</span>              :  */</span>
 <span id="L453"><span class="lineNum">     453</span>              : gboolean</span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">        1290 : gst_tensors_info_is_equal (const GstTensorsInfo * i1, const GstTensorsInfo * i2)</span></span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">        1294 : gst_tensors_info_is_equal (const GstTensorsInfo * i1, const GstTensorsInfo * i2)</span></span>
 <span id="L455"><span class="lineNum">     455</span>              : {</span>
 <span id="L456"><span class="lineNum">     456</span>              :   guint i;</span>
 <span id="L457"><span class="lineNum">     457</span>              :   GstTensorInfo *_info1, *_info2;</span>
 <span id="L458"><span class="lineNum">     458</span>              : </span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">        1290 :   g_return_val_if_fail (i1 != NULL, FALSE);</span></span>
-<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">        1289 :   g_return_val_if_fail (i2 != NULL, FALSE);</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">        1294 :   g_return_val_if_fail (i1 != NULL, FALSE);</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">        1293 :   g_return_val_if_fail (i2 != NULL, FALSE);</span></span>
 <span id="L461"><span class="lineNum">     461</span>              : </span>
-<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">        1288 :   if (i1-&gt;format != i2-&gt;format || i1-&gt;format == _NNS_TENSOR_FORMAT_END) {</span></span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">        1292 :   if (i1-&gt;format != i2-&gt;format || i1-&gt;format == _NNS_TENSOR_FORMAT_END) {</span></span>
 <span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">           7 :     nns_logd (&quot;Tensors info is not equal. format: %s vs %s &quot;,</span></span>
 <span id="L464"><span class="lineNum">     464</span>              :         _STR_NULL (gst_tensor_get_format_string (i1-&gt;format)),</span>
 <span id="L465"><span class="lineNum">     465</span>              :         _STR_NULL (gst_tensor_get_format_string (i2-&gt;format)));</span>
@@ -529,31 +529,31 @@
 <span id="L467"><span class="lineNum">     467</span>              :   }</span>
 <span id="L468"><span class="lineNum">     468</span>              : </span>
 <span id="L469"><span class="lineNum">     469</span>              :   /* cannot compare tensor info when tensor is not static */</span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">        1281 :   if (i1-&gt;format != _NNS_TENSOR_FORMAT_STATIC) {</span></span>
+<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">        1285 :   if (i1-&gt;format != _NNS_TENSOR_FORMAT_STATIC) {</span></span>
 <span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">          26 :     return TRUE;</span></span>
 <span id="L472"><span class="lineNum">     472</span>              :   }</span>
 <span id="L473"><span class="lineNum">     473</span>              : </span>
-<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">        1255 :   if (!gst_tensors_info_validate (i1) || !gst_tensors_info_validate (i2)) {</span></span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">        1259 :   if (!gst_tensors_info_validate (i1) || !gst_tensors_info_validate (i2)) {</span></span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">         107 :     return FALSE;</span></span>
 <span id="L476"><span class="lineNum">     476</span>              :   }</span>
 <span id="L477"><span class="lineNum">     477</span>              : </span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">        1148 :   if (i1-&gt;num_tensors != i2-&gt;num_tensors) {</span></span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">        1152 :   if (i1-&gt;num_tensors != i2-&gt;num_tensors) {</span></span>
 <span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">           8 :     nns_logd (&quot;Tensors info is not equal. the number of tensors: %d vs %d. &quot;,</span></span>
 <span id="L480"><span class="lineNum">     480</span>              :         i1-&gt;num_tensors, i2-&gt;num_tensors);</span>
 <span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">           8 :     return FALSE;</span></span>
 <span id="L482"><span class="lineNum">     482</span>              :   }</span>
 <span id="L483"><span class="lineNum">     483</span>              : </span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">        2366 :   for (i = 0; i &lt; i1-&gt;num_tensors; i++) {</span></span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">        1426 :     _info1 = gst_tensors_info_get_nth_info ((GstTensorsInfo *) i1, i);</span></span>
-<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">        1426 :     _info2 = gst_tensors_info_get_nth_info ((GstTensorsInfo *) i2, i);</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">        2374 :   for (i = 0; i &lt; i1-&gt;num_tensors; i++) {</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">        1430 :     _info1 = gst_tensors_info_get_nth_info ((GstTensorsInfo *) i1, i);</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">        1430 :     _info2 = gst_tensors_info_get_nth_info ((GstTensorsInfo *) i2, i);</span></span>
 <span id="L487"><span class="lineNum">     487</span>              : </span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">        1426 :     if (!gst_tensor_info_is_equal (_info1, _info2)) {</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">        1430 :     if (!gst_tensor_info_is_equal (_info1, _info2)) {</span></span>
 <span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">         200 :       return FALSE;</span></span>
 <span id="L490"><span class="lineNum">     490</span>              :     }</span>
 <span id="L491"><span class="lineNum">     491</span>              :   }</span>
 <span id="L492"><span class="lineNum">     492</span>              : </span>
 <span id="L493"><span class="lineNum">     493</span>              :   /* matched all */</span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">         940 :   return TRUE;</span></span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">         944 :   return TRUE;</span></span>
 <span id="L495"><span class="lineNum">     495</span>              : }</span>
 <span id="L496"><span class="lineNum">     496</span>              : </span>
 <span id="L497"><span class="lineNum">     497</span>              : /**</span>
@@ -561,23 +561,23 @@
 <span id="L499"><span class="lineNum">     499</span>              :  * @note Copied info should be freed with gst_tensors_info_free()</span>
 <span id="L500"><span class="lineNum">     500</span>              :  */</span>
 <span id="L501"><span class="lineNum">     501</span>              : void</span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">        4511 : gst_tensors_info_copy (GstTensorsInfo * dest, const GstTensorsInfo * src)</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">        4529 : gst_tensors_info_copy (GstTensorsInfo * dest, const GstTensorsInfo * src)</span></span>
 <span id="L503"><span class="lineNum">     503</span>              : {</span>
 <span id="L504"><span class="lineNum">     504</span>              :   guint i, num;</span>
 <span id="L505"><span class="lineNum">     505</span>              :   GstTensorInfo *_dest, *_src;</span>
 <span id="L506"><span class="lineNum">     506</span>              : </span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">        4511 :   g_return_if_fail (dest != NULL);</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">        4511 :   g_return_if_fail (src != NULL);</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">        4529 :   g_return_if_fail (dest != NULL);</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">        4529 :   g_return_if_fail (src != NULL);</span></span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">        4511 :   gst_tensors_info_init (dest);</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">        4511 :   num = dest-&gt;num_tensors = src-&gt;num_tensors;</span></span>
-<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">        4511 :   dest-&gt;format = src-&gt;format;</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">        4529 :   gst_tensors_info_init (dest);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">        4529 :   num = dest-&gt;num_tensors = src-&gt;num_tensors;</span></span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">        4529 :   dest-&gt;format = src-&gt;format;</span></span>
 <span id="L513"><span class="lineNum">     513</span>              : </span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">       10417 :   for (i = 0; i &lt; num; i++) {</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">        5906 :     _dest = gst_tensors_info_get_nth_info (dest, i);</span></span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">        5906 :     _src = gst_tensors_info_get_nth_info ((GstTensorsInfo *) src, i);</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">       10449 :   for (i = 0; i &lt; num; i++) {</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">        5920 :     _dest = gst_tensors_info_get_nth_info (dest, i);</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">        5920 :     _src = gst_tensors_info_get_nth_info ((GstTensorsInfo *) src, i);</span></span>
 <span id="L517"><span class="lineNum">     517</span>              : </span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">        5906 :     gst_tensor_info_copy (_dest, _src);</span></span>
+<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">        5920 :     gst_tensor_info_copy (_dest, _src);</span></span>
 <span id="L519"><span class="lineNum">     519</span>              :   }</span>
 <span id="L520"><span class="lineNum">     520</span>              : }</span>
 <span id="L521"><span class="lineNum">     521</span>              : </span>
@@ -588,37 +588,37 @@
 <span id="L526"><span class="lineNum">     526</span>              :  * @return number of parsed dimensions</span>
 <span id="L527"><span class="lineNum">     527</span>              :  */</span>
 <span id="L528"><span class="lineNum">     528</span>              : guint</span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">        7800 : gst_tensors_info_parse_dimensions_string (GstTensorsInfo * info,</span></span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">        7794 : gst_tensors_info_parse_dimensions_string (GstTensorsInfo * info,</span></span>
 <span id="L530"><span class="lineNum">     530</span>              :     const gchar * dim_string)</span>
 <span id="L531"><span class="lineNum">     531</span>              : {</span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">        7800 :   guint num_dims = 0;</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">        7794 :   guint num_dims = 0;</span></span>
 <span id="L533"><span class="lineNum">     533</span>              :   GstTensorInfo *_info;</span>
 <span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">        7800 :   g_return_val_if_fail (info != NULL, 0);</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">        7794 :   g_return_val_if_fail (info != NULL, 0);</span></span>
 <span id="L536"><span class="lineNum">     536</span>              : </span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">        7799 :   if (dim_string) {</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">        7793 :   if (dim_string) {</span></span>
 <span id="L538"><span class="lineNum">     538</span>              :     guint i;</span>
 <span id="L539"><span class="lineNum">     539</span>              :     gchar **str_dims;</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">        7798 :     str_dims = g_strsplit_set (dim_string, &quot;,.&quot;, -1);</span></span>
-<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">        7798 :     num_dims = g_strv_length (str_dims);</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">        7792 :     str_dims = g_strsplit_set (dim_string, &quot;,.&quot;, -1);</span></span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">        7792 :     num_dims = g_strv_length (str_dims);</span></span>
 <span id="L543"><span class="lineNum">     543</span>              : </span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">        7798 :     if (num_dims &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">        7792 :     if (num_dims &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
 <span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">           1 :       nns_logw (&quot;Invalid param, dimensions (%d) max (%d)\n&quot;,</span></span>
 <span id="L546"><span class="lineNum">     546</span>              :           num_dims, NNS_TENSOR_SIZE_LIMIT);</span>
 <span id="L547"><span class="lineNum">     547</span>              : </span>
 <span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">           1 :       num_dims = NNS_TENSOR_SIZE_LIMIT;</span></span>
 <span id="L549"><span class="lineNum">     549</span>              :     }</span>
 <span id="L550"><span class="lineNum">     550</span>              : </span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">       24387 :     for (i = 0; i &lt; num_dims; i++) {</span></span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">       16589 :       _info = gst_tensors_info_get_nth_info (info, i);</span></span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">       16589 :       gst_tensor_parse_dimension (str_dims[i], _info-&gt;dimension);</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">       24368 :     for (i = 0; i &lt; num_dims; i++) {</span></span>
+<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">       16576 :       _info = gst_tensors_info_get_nth_info (info, i);</span></span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">       16576 :       gst_tensor_parse_dimension (str_dims[i], _info-&gt;dimension);</span></span>
 <span id="L554"><span class="lineNum">     554</span>              :     }</span>
 <span id="L555"><span class="lineNum">     555</span>              : </span>
-<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">        7798 :     g_strfreev (str_dims);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">        7792 :     g_strfreev (str_dims);</span></span>
 <span id="L557"><span class="lineNum">     557</span>              :   }</span>
 <span id="L558"><span class="lineNum">     558</span>              : </span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">        7799 :   return num_dims;</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">        7793 :   return num_dims;</span></span>
 <span id="L560"><span class="lineNum">     560</span>              : }</span>
 <span id="L561"><span class="lineNum">     561</span>              : </span>
 <span id="L562"><span class="lineNum">     562</span>              : /**</span>
@@ -628,37 +628,37 @@
 <span id="L566"><span class="lineNum">     566</span>              :  * @return number of parsed types</span>
 <span id="L567"><span class="lineNum">     567</span>              :  */</span>
 <span id="L568"><span class="lineNum">     568</span>              : guint</span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">        7775 : gst_tensors_info_parse_types_string (GstTensorsInfo * info,</span></span>
+<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">        7769 : gst_tensors_info_parse_types_string (GstTensorsInfo * info,</span></span>
 <span id="L570"><span class="lineNum">     570</span>              :     const gchar * type_string)</span>
 <span id="L571"><span class="lineNum">     571</span>              : {</span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">        7775 :   guint num_types = 0;</span></span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">        7769 :   guint num_types = 0;</span></span>
 <span id="L573"><span class="lineNum">     573</span>              :   GstTensorInfo *_info;</span>
 <span id="L574"><span class="lineNum">     574</span>              : </span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">        7775 :   g_return_val_if_fail (info != NULL, 0);</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">        7769 :   g_return_val_if_fail (info != NULL, 0);</span></span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">        7774 :   if (type_string) {</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">        7768 :   if (type_string) {</span></span>
 <span id="L578"><span class="lineNum">     578</span>              :     guint i;</span>
 <span id="L579"><span class="lineNum">     579</span>              :     gchar **str_types;</span>
 <span id="L580"><span class="lineNum">     580</span>              : </span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">        7773 :     str_types = g_strsplit_set (type_string, &quot;,.&quot;, -1);</span></span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">        7773 :     num_types = g_strv_length (str_types);</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">        7767 :     str_types = g_strsplit_set (type_string, &quot;,.&quot;, -1);</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">        7767 :     num_types = g_strv_length (str_types);</span></span>
 <span id="L583"><span class="lineNum">     583</span>              : </span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">        7773 :     if (num_types &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">        7767 :     if (num_types &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
 <span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">           1 :       nns_logw (&quot;Invalid param, types (%d) max (%d)\n&quot;,</span></span>
 <span id="L586"><span class="lineNum">     586</span>              :           num_types, NNS_TENSOR_SIZE_LIMIT);</span>
 <span id="L587"><span class="lineNum">     587</span>              : </span>
 <span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">           1 :       num_types = NNS_TENSOR_SIZE_LIMIT;</span></span>
 <span id="L589"><span class="lineNum">     589</span>              :     }</span>
 <span id="L590"><span class="lineNum">     590</span>              : </span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">       24350 :     for (i = 0; i &lt; num_types; i++) {</span></span>
-<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">       16577 :       _info = gst_tensors_info_get_nth_info (info, i);</span></span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">       16577 :       _info-&gt;type = gst_tensor_get_type (str_types[i]);</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">       24331 :     for (i = 0; i &lt; num_types; i++) {</span></span>
+<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">       16564 :       _info = gst_tensors_info_get_nth_info (info, i);</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">       16564 :       _info-&gt;type = gst_tensor_get_type (str_types[i]);</span></span>
 <span id="L594"><span class="lineNum">     594</span>              :     }</span>
 <span id="L595"><span class="lineNum">     595</span>              : </span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">        7773 :     g_strfreev (str_types);</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">        7767 :     g_strfreev (str_types);</span></span>
 <span id="L597"><span class="lineNum">     597</span>              :   }</span>
 <span id="L598"><span class="lineNum">     598</span>              : </span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">        7774 :   return num_types;</span></span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">        7768 :   return num_types;</span></span>
 <span id="L600"><span class="lineNum">     600</span>              : }</span>
 <span id="L601"><span class="lineNum">     601</span>              : </span>
 <span id="L602"><span class="lineNum">     602</span>              : /**</span>
@@ -717,9 +717,9 @@
 <span id="L655"><span class="lineNum">     655</span>              :  * @note The returned value should be freed with g_free()</span>
 <span id="L656"><span class="lineNum">     656</span>              :  */</span>
 <span id="L657"><span class="lineNum">     657</span>              : gchar *</span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">        2708 : gst_tensors_info_get_dimensions_string (const GstTensorsInfo * info)</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">        2717 : gst_tensors_info_get_dimensions_string (const GstTensorsInfo * info)</span></span>
 <span id="L659"><span class="lineNum">     659</span>              : {</span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">        2708 :   return gst_tensors_info_get_rank_dimensions_string (info,</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">        2717 :   return gst_tensors_info_get_rank_dimensions_string (info,</span></span>
 <span id="L661"><span class="lineNum">     661</span>              :       NNS_TENSOR_RANK_LIMIT);</span>
 <span id="L662"><span class="lineNum">     662</span>              : }</span>
 <span id="L663"><span class="lineNum">     663</span>              : </span>
@@ -732,35 +732,35 @@
 <span id="L670"><span class="lineNum">     670</span>              :  * The returned value should be freed with g_free()</span>
 <span id="L671"><span class="lineNum">     671</span>              :  */</span>
 <span id="L672"><span class="lineNum">     672</span>              : gchar *</span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        2777 : gst_tensors_info_get_rank_dimensions_string (const GstTensorsInfo * info,</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        2786 : gst_tensors_info_get_rank_dimensions_string (const GstTensorsInfo * info,</span></span>
 <span id="L674"><span class="lineNum">     674</span>              :     const unsigned int rank)</span>
 <span id="L675"><span class="lineNum">     675</span>              : {</span>
-<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">        2777 :   gchar *dim_str = NULL;</span></span>
+<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">        2786 :   gchar *dim_str = NULL;</span></span>
 <span id="L677"><span class="lineNum">     677</span>              :   GstTensorInfo *_info;</span>
 <span id="L678"><span class="lineNum">     678</span>              : </span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">        2777 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">        2786 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
 <span id="L680"><span class="lineNum">     680</span>              : </span>
-<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">        2776 :   if (info-&gt;num_tensors &gt; 0) {</span></span>
+<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">        2785 :   if (info-&gt;num_tensors &gt; 0) {</span></span>
 <span id="L682"><span class="lineNum">     682</span>              :     guint i;</span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">        2775 :     GString *dimensions = g_string_new (NULL);</span></span>
+<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">        2784 :     GString *dimensions = g_string_new (NULL);</span></span>
 <span id="L684"><span class="lineNum">     684</span>              : </span>
-<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">        6666 :     for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">        3891 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">        3891 :       dim_str = gst_tensor_get_rank_dimension_string (_info-&gt;dimension, rank);</span></span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">        6684 :     for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">        3900 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
+<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">        3900 :       dim_str = gst_tensor_get_rank_dimension_string (_info-&gt;dimension, rank);</span></span>
 <span id="L688"><span class="lineNum">     688</span>              : </span>
 <span id="L689"><span class="lineNum">     689</span>              :       g_string_append (dimensions, dim_str);</span>
 <span id="L690"><span class="lineNum">     690</span>              : </span>
-<span id="L691"><span class="lineNum">     691</span> <span class="tlaGNC">        3891 :       if (i &lt; info-&gt;num_tensors - 1) {</span></span>
+<span id="L691"><span class="lineNum">     691</span> <span class="tlaGNC">        3900 :       if (i &lt; info-&gt;num_tensors - 1) {</span></span>
 <span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">        2232 :         g_string_append (dimensions, &quot;,&quot;);</span></span>
 <span id="L693"><span class="lineNum">     693</span>              :       }</span>
 <span id="L694"><span class="lineNum">     694</span>              : </span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">        3891 :       g_free (dim_str);</span></span>
+<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">        3900 :       g_free (dim_str);</span></span>
 <span id="L696"><span class="lineNum">     696</span>              :     }</span>
 <span id="L697"><span class="lineNum">     697</span>              : </span>
-<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">        2775 :     dim_str = g_string_free (dimensions, FALSE);</span></span>
+<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">        2784 :     dim_str = g_string_free (dimensions, FALSE);</span></span>
 <span id="L699"><span class="lineNum">     699</span>              :   }</span>
 <span id="L700"><span class="lineNum">     700</span>              : </span>
-<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">        2776 :   return dim_str;</span></span>
+<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">        2785 :   return dim_str;</span></span>
 <span id="L702"><span class="lineNum">     702</span>              : }</span>
 <span id="L703"><span class="lineNum">     703</span>              : </span>
 <span id="L704"><span class="lineNum">     704</span>              : /**</span>
@@ -770,32 +770,32 @@
 <span id="L708"><span class="lineNum">     708</span>              :  * @note The returned value should be freed with g_free()</span>
 <span id="L709"><span class="lineNum">     709</span>              :  */</span>
 <span id="L710"><span class="lineNum">     710</span>              : gchar *</span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">        2716 : gst_tensors_info_get_types_string (const GstTensorsInfo * info)</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">        2725 : gst_tensors_info_get_types_string (const GstTensorsInfo * info)</span></span>
 <span id="L712"><span class="lineNum">     712</span>              : {</span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">        2716 :   gchar *type_str = NULL;</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">        2725 :   gchar *type_str = NULL;</span></span>
 <span id="L714"><span class="lineNum">     714</span>              :   GstTensorInfo *_info;</span>
 <span id="L715"><span class="lineNum">     715</span>              : </span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        2716 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        2725 :   g_return_val_if_fail (info != NULL, NULL);</span></span>
 <span id="L717"><span class="lineNum">     717</span>              : </span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">        2715 :   if (info-&gt;num_tensors &gt; 0) {</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">        2724 :   if (info-&gt;num_tensors &gt; 0) {</span></span>
 <span id="L719"><span class="lineNum">     719</span>              :     guint i;</span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">        2714 :     GString *types = g_string_new (NULL);</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">        2723 :     GString *types = g_string_new (NULL);</span></span>
 <span id="L721"><span class="lineNum">     721</span>              : </span>
-<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">        6555 :     for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">        3841 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">        6573 :     for (i = 0; i &lt; info-&gt;num_tensors; i++) {</span></span>
+<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">        3850 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) info, i);</span></span>
 <span id="L724"><span class="lineNum">     724</span>              : </span>
-<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">        3841 :       if (_info-&gt;type != _NNS_END)</span></span>
-<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">        3696 :         g_string_append (types, gst_tensor_get_type_string (_info-&gt;type));</span></span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">        3850 :       if (_info-&gt;type != _NNS_END)</span></span>
+<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">        3705 :         g_string_append (types, gst_tensor_get_type_string (_info-&gt;type));</span></span>
 <span id="L727"><span class="lineNum">     727</span>              : </span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">        3841 :       if (i &lt; info-&gt;num_tensors - 1) {</span></span>
+<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">        3850 :       if (i &lt; info-&gt;num_tensors - 1) {</span></span>
 <span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">        2254 :         g_string_append (types, &quot;,&quot;);</span></span>
 <span id="L730"><span class="lineNum">     730</span>              :       }</span>
 <span id="L731"><span class="lineNum">     731</span>              :     }</span>
 <span id="L732"><span class="lineNum">     732</span>              : </span>
-<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">        2714 :     type_str = g_string_free (types, FALSE);</span></span>
+<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">        2723 :     type_str = g_string_free (types, FALSE);</span></span>
 <span id="L734"><span class="lineNum">     734</span>              :   }</span>
 <span id="L735"><span class="lineNum">     735</span>              : </span>
-<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">        2715 :   return type_str;</span></span>
+<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">        2724 :   return type_str;</span></span>
 <span id="L737"><span class="lineNum">     737</span>              : }</span>
 <span id="L738"><span class="lineNum">     738</span>              : </span>
 <span id="L739"><span class="lineNum">     739</span>              : /**</span>
@@ -880,14 +880,14 @@
 <span id="L818"><span class="lineNum">     818</span>              :  * @param config tensors config structure to be initialized</span>
 <span id="L819"><span class="lineNum">     819</span>              :  */</span>
 <span id="L820"><span class="lineNum">     820</span>              : void</span>
-<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">      128610 : gst_tensors_config_init (GstTensorsConfig * config)</span></span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">      128748 : gst_tensors_config_init (GstTensorsConfig * config)</span></span>
 <span id="L822"><span class="lineNum">     822</span>              : {</span>
-<span id="L823"><span class="lineNum">     823</span> <span class="tlaGNC">      128610 :   g_return_if_fail (config != NULL);</span></span>
+<span id="L823"><span class="lineNum">     823</span> <span class="tlaGNC">      128748 :   g_return_if_fail (config != NULL);</span></span>
 <span id="L824"><span class="lineNum">     824</span>              : </span>
-<span id="L825"><span class="lineNum">     825</span> <span class="tlaGNC">      128610 :   gst_tensors_info_init (&amp;config-&gt;info);</span></span>
+<span id="L825"><span class="lineNum">     825</span> <span class="tlaGNC">      128748 :   gst_tensors_info_init (&amp;config-&gt;info);</span></span>
 <span id="L826"><span class="lineNum">     826</span>              : </span>
-<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">      128610 :   config-&gt;rate_n = -1;</span></span>
-<span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">      128610 :   config-&gt;rate_d = -1;</span></span>
+<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">      128748 :   config-&gt;rate_n = -1;</span></span>
+<span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">      128748 :   config-&gt;rate_d = -1;</span></span>
 <span id="L829"><span class="lineNum">     829</span>              : }</span>
 <span id="L830"><span class="lineNum">     830</span>              : </span>
 <span id="L831"><span class="lineNum">     831</span>              : /**</span>
@@ -895,11 +895,11 @@
 <span id="L833"><span class="lineNum">     833</span>              :  * @param config tensors config structure</span>
 <span id="L834"><span class="lineNum">     834</span>              :  */</span>
 <span id="L835"><span class="lineNum">     835</span>              : void</span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">       90244 : gst_tensors_config_free (GstTensorsConfig * config)</span></span>
+<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">       90362 : gst_tensors_config_free (GstTensorsConfig * config)</span></span>
 <span id="L837"><span class="lineNum">     837</span>              : {</span>
-<span id="L838"><span class="lineNum">     838</span> <span class="tlaGNC">       90244 :   g_return_if_fail (config != NULL);</span></span>
+<span id="L838"><span class="lineNum">     838</span> <span class="tlaGNC">       90362 :   g_return_if_fail (config != NULL);</span></span>
 <span id="L839"><span class="lineNum">     839</span>              : </span>
-<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">       90244 :   gst_tensors_info_free (&amp;config-&gt;info);</span></span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">       90362 :   gst_tensors_info_free (&amp;config-&gt;info);</span></span>
 <span id="L841"><span class="lineNum">     841</span>              : }</span>
 <span id="L842"><span class="lineNum">     842</span>              : </span>
 <span id="L843"><span class="lineNum">     843</span>              : /**</span>
@@ -908,22 +908,22 @@
 <span id="L846"><span class="lineNum">     846</span>              :  * @return TRUE if configured</span>
 <span id="L847"><span class="lineNum">     847</span>              :  */</span>
 <span id="L848"><span class="lineNum">     848</span>              : gboolean</span>
-<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">       50349 : gst_tensors_config_validate (const GstTensorsConfig * config)</span></span>
+<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">       50343 : gst_tensors_config_validate (const GstTensorsConfig * config)</span></span>
 <span id="L850"><span class="lineNum">     850</span>              : {</span>
-<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">       50349 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
+<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">       50343 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
 <span id="L852"><span class="lineNum">     852</span>              : </span>
 <span id="L853"><span class="lineNum">     853</span>              :   /* framerate (numerator &gt;= 0 and denominator &gt; 0) */</span>
-<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC">       50345 :   if (config-&gt;rate_n &lt; 0 || config-&gt;rate_d &lt;= 0) {</span></span>
-<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">        5968 :     nns_logd</span></span>
+<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC">       50339 :   if (config-&gt;rate_n &lt; 0 || config-&gt;rate_d &lt;= 0) {</span></span>
+<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">        5961 :     nns_logd</span></span>
 <span id="L856"><span class="lineNum">     856</span>              :         (&quot;Failed to validate tensors config. framerate: %d/%d. framerate should be numerator &gt;= 0 and denominator &gt; 0.&quot;,</span>
 <span id="L857"><span class="lineNum">     857</span>              :         config-&gt;rate_n, config-&gt;rate_d);</span>
-<span id="L858"><span class="lineNum">     858</span> <span class="tlaGNC">        5968 :     _nnstreamer_error_write</span></span>
+<span id="L858"><span class="lineNum">     858</span> <span class="tlaGNC">        5961 :     _nnstreamer_error_write</span></span>
 <span id="L859"><span class="lineNum">     859</span>              :         (&quot;Failed to validate tensors config. framerate: %d/%d. framerate should be numerator &gt;= 0 and denominator &gt; 0.&quot;,</span>
 <span id="L860"><span class="lineNum">     860</span>              :         config-&gt;rate_n, config-&gt;rate_d);</span>
-<span id="L861"><span class="lineNum">     861</span> <span class="tlaGNC">        5968 :     return FALSE;</span></span>
+<span id="L861"><span class="lineNum">     861</span> <span class="tlaGNC">        5961 :     return FALSE;</span></span>
 <span id="L862"><span class="lineNum">     862</span>              :   }</span>
 <span id="L863"><span class="lineNum">     863</span>              : </span>
-<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">       44377 :   return gst_tensors_info_validate (&amp;config-&gt;info);</span></span>
+<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">       44378 :   return gst_tensors_info_validate (&amp;config-&gt;info);</span></span>
 <span id="L865"><span class="lineNum">     865</span>              : }</span>
 <span id="L866"><span class="lineNum">     866</span>              : </span>
 <span id="L867"><span class="lineNum">     867</span>              : /**</span>
@@ -931,37 +931,37 @@
 <span id="L869"><span class="lineNum">     869</span>              :  * @param TRUE if equal</span>
 <span id="L870"><span class="lineNum">     870</span>              :  */</span>
 <span id="L871"><span class="lineNum">     871</span>              : gboolean</span>
-<span id="L872"><span class="lineNum">     872</span> <span class="tlaGNC">         802 : gst_tensors_config_is_equal (const GstTensorsConfig * c1,</span></span>
+<span id="L872"><span class="lineNum">     872</span> <span class="tlaGNC">         804 : gst_tensors_config_is_equal (const GstTensorsConfig * c1,</span></span>
 <span id="L873"><span class="lineNum">     873</span>              :     const GstTensorsConfig * c2)</span>
 <span id="L874"><span class="lineNum">     874</span>              : {</span>
-<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC">         802 :   g_return_val_if_fail (c1 != NULL, FALSE);</span></span>
-<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">         801 :   g_return_val_if_fail (c2 != NULL, FALSE);</span></span>
+<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC">         804 :   g_return_val_if_fail (c1 != NULL, FALSE);</span></span>
+<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">         803 :   g_return_val_if_fail (c2 != NULL, FALSE);</span></span>
 <span id="L877"><span class="lineNum">     877</span>              : </span>
-<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">         800 :   if (!gst_tensors_config_validate (c1) || !gst_tensors_config_validate (c2)) {</span></span>
+<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">         802 :   if (!gst_tensors_config_validate (c1) || !gst_tensors_config_validate (c2)) {</span></span>
 <span id="L879"><span class="lineNum">     879</span> <span class="tlaGNC">           2 :     return FALSE;</span></span>
 <span id="L880"><span class="lineNum">     880</span>              :   }</span>
 <span id="L881"><span class="lineNum">     881</span>              : </span>
-<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">         798 :   if (_compare_rate (c1-&gt;rate_n, c1-&gt;rate_d, c2-&gt;rate_n, c2-&gt;rate_d)) {</span></span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">         800 :   if (_compare_rate (c1-&gt;rate_n, c1-&gt;rate_d, c2-&gt;rate_n, c2-&gt;rate_d)) {</span></span>
 <span id="L883"><span class="lineNum">     883</span> <span class="tlaGNC">           4 :     nns_logd (&quot;Tensors config is not equal. framerate: %d/%d vs %d/%d.&quot;,</span></span>
 <span id="L884"><span class="lineNum">     884</span>              :         c1-&gt;rate_n, c1-&gt;rate_d, c2-&gt;rate_n, c2-&gt;rate_d);</span>
 <span id="L885"><span class="lineNum">     885</span> <span class="tlaGNC">           4 :     return FALSE;</span></span>
 <span id="L886"><span class="lineNum">     886</span>              :   }</span>
 <span id="L887"><span class="lineNum">     887</span>              : </span>
-<span id="L888"><span class="lineNum">     888</span> <span class="tlaGNC">         794 :   return gst_tensors_info_is_equal (&amp;c1-&gt;info, &amp;c2-&gt;info);</span></span>
+<span id="L888"><span class="lineNum">     888</span> <span class="tlaGNC">         796 :   return gst_tensors_info_is_equal (&amp;c1-&gt;info, &amp;c2-&gt;info);</span></span>
 <span id="L889"><span class="lineNum">     889</span>              : }</span>
 <span id="L890"><span class="lineNum">     890</span>              : </span>
 <span id="L891"><span class="lineNum">     891</span>              : /**</span>
 <span id="L892"><span class="lineNum">     892</span>              :  * @brief Copy tensors config</span>
 <span id="L893"><span class="lineNum">     893</span>              :  */</span>
 <span id="L894"><span class="lineNum">     894</span>              : void</span>
-<span id="L895"><span class="lineNum">     895</span> <span class="tlaGNC">         292 : gst_tensors_config_copy (GstTensorsConfig * dest, const GstTensorsConfig * src)</span></span>
+<span id="L895"><span class="lineNum">     895</span> <span class="tlaGNC">         294 : gst_tensors_config_copy (GstTensorsConfig * dest, const GstTensorsConfig * src)</span></span>
 <span id="L896"><span class="lineNum">     896</span>              : {</span>
-<span id="L897"><span class="lineNum">     897</span> <span class="tlaGNC">         292 :   g_return_if_fail (dest != NULL);</span></span>
-<span id="L898"><span class="lineNum">     898</span> <span class="tlaGNC">         292 :   g_return_if_fail (src != NULL);</span></span>
+<span id="L897"><span class="lineNum">     897</span> <span class="tlaGNC">         294 :   g_return_if_fail (dest != NULL);</span></span>
+<span id="L898"><span class="lineNum">     898</span> <span class="tlaGNC">         294 :   g_return_if_fail (src != NULL);</span></span>
 <span id="L899"><span class="lineNum">     899</span>              : </span>
-<span id="L900"><span class="lineNum">     900</span> <span class="tlaGNC">         292 :   gst_tensors_info_copy (&amp;dest-&gt;info, &amp;src-&gt;info);</span></span>
-<span id="L901"><span class="lineNum">     901</span> <span class="tlaGNC">         292 :   dest-&gt;rate_n = src-&gt;rate_n;</span></span>
-<span id="L902"><span class="lineNum">     902</span> <span class="tlaGNC">         292 :   dest-&gt;rate_d = src-&gt;rate_d;</span></span>
+<span id="L900"><span class="lineNum">     900</span> <span class="tlaGNC">         294 :   gst_tensors_info_copy (&amp;dest-&gt;info, &amp;src-&gt;info);</span></span>
+<span id="L901"><span class="lineNum">     901</span> <span class="tlaGNC">         294 :   dest-&gt;rate_n = src-&gt;rate_n;</span></span>
+<span id="L902"><span class="lineNum">     902</span> <span class="tlaGNC">         294 :   dest-&gt;rate_d = src-&gt;rate_d;</span></span>
 <span id="L903"><span class="lineNum">     903</span>              : }</span>
 <span id="L904"><span class="lineNum">     904</span>              : </span>
 <span id="L905"><span class="lineNum">     905</span>              : /**</span>
@@ -990,31 +990,31 @@
 <span id="L928"><span class="lineNum">     928</span>              :  * @return TRUE if dimension is valid</span>
 <span id="L929"><span class="lineNum">     929</span>              :  */</span>
 <span id="L930"><span class="lineNum">     930</span>              : gboolean</span>
-<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC tlaBgGNC">      102054 : gst_tensor_dimension_is_valid (const tensor_dim dim)</span></span>
+<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC tlaBgGNC">      102152 : gst_tensor_dimension_is_valid (const tensor_dim dim)</span></span>
 <span id="L932"><span class="lineNum">     932</span>              : {</span>
 <span id="L933"><span class="lineNum">     933</span>              :   guint i;</span>
-<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC">      102054 :   gboolean is_valid = FALSE;</span></span>
+<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC">      102152 :   gboolean is_valid = FALSE;</span></span>
 <span id="L935"><span class="lineNum">     935</span>              : </span>
-<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">      102054 :   i = gst_tensor_dimension_get_rank (dim);</span></span>
-<span id="L937"><span class="lineNum">     937</span> <span class="tlaGNC">      102054 :   if (i == 0)</span></span>
-<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">        2837 :     goto done;</span></span>
+<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">      102152 :   i = gst_tensor_dimension_get_rank (dim);</span></span>
+<span id="L937"><span class="lineNum">     937</span> <span class="tlaGNC">      102152 :   if (i == 0)</span></span>
+<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">        2839 :     goto done;</span></span>
 <span id="L939"><span class="lineNum">     939</span>              : </span>
-<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">     1278560 :   for (; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">     1179350 :     if (dim[i] &gt; 0)</span></span>
+<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">     1279840 :   for (; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">     1180530 :     if (dim[i] &gt; 0)</span></span>
 <span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">           6 :       goto done;</span></span>
 <span id="L943"><span class="lineNum">     943</span>              :   }</span>
 <span id="L944"><span class="lineNum">     944</span>              : </span>
-<span id="L945"><span class="lineNum">     945</span> <span class="tlaGNC">       99211 :   is_valid = TRUE;</span></span>
+<span id="L945"><span class="lineNum">     945</span> <span class="tlaGNC">       99307 :   is_valid = TRUE;</span></span>
 <span id="L946"><span class="lineNum">     946</span>              : </span>
-<span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC">      102054 : done:</span></span>
-<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">      102054 :   if (!is_valid) {</span></span>
-<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">        2843 :     nns_logd</span></span>
+<span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC">      102152 : done:</span></span>
+<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">      102152 :   if (!is_valid) {</span></span>
+<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">        2845 :     nns_logd</span></span>
 <span id="L950"><span class="lineNum">     950</span>              :         (&quot;Failed to validate tensor dimension. The dimension string should be in the form of d1:...:d8, d1:d2:d3:d4, d1:d2:d3, d1:d2, or d1. Here, dN is a positive integer.&quot;);</span>
-<span id="L951"><span class="lineNum">     951</span> <span class="tlaGNC">        2843 :     _nnstreamer_error_write</span></span>
+<span id="L951"><span class="lineNum">     951</span> <span class="tlaGNC">        2845 :     _nnstreamer_error_write</span></span>
 <span id="L952"><span class="lineNum">     952</span>              :         (&quot;Failed to validate tensor dimension. The dimension string should be in the form of d1:...:d8, d1:d2:d3:d4, d1:d2:d3, d1:d2, or d1. Here, dN is a positive integer.&quot;);</span>
 <span id="L953"><span class="lineNum">     953</span>              :   }</span>
 <span id="L954"><span class="lineNum">     954</span>              : </span>
-<span id="L955"><span class="lineNum">     955</span> <span class="tlaGNC">      102054 :   return is_valid;</span></span>
+<span id="L955"><span class="lineNum">     955</span> <span class="tlaGNC">      102152 :   return is_valid;</span></span>
 <span id="L956"><span class="lineNum">     956</span>              : }</span>
 <span id="L957"><span class="lineNum">     957</span>              : </span>
 <span id="L958"><span class="lineNum">     958</span>              : /**</span>
@@ -1022,24 +1022,24 @@
 <span id="L960"><span class="lineNum">     960</span>              :  * @return TRUE if given tensors have same dimension.</span>
 <span id="L961"><span class="lineNum">     961</span>              :  */</span>
 <span id="L962"><span class="lineNum">     962</span>              : gboolean</span>
-<span id="L963"><span class="lineNum">     963</span> <span class="tlaGNC">        1647 : gst_tensor_dimension_is_equal (const tensor_dim dim1, const tensor_dim dim2)</span></span>
+<span id="L963"><span class="lineNum">     963</span> <span class="tlaGNC">        1652 : gst_tensor_dimension_is_equal (const tensor_dim dim1, const tensor_dim dim2)</span></span>
 <span id="L964"><span class="lineNum">     964</span>              : {</span>
 <span id="L965"><span class="lineNum">     965</span>              :   guint i;</span>
 <span id="L966"><span class="lineNum">     966</span>              : </span>
 <span id="L967"><span class="lineNum">     967</span>              :   /* Do not compare invalid dimensions. */</span>
-<span id="L968"><span class="lineNum">     968</span> <span class="tlaGNC">        1647 :   if (!gst_tensor_dimension_is_valid (dim1) ||</span></span>
-<span id="L969"><span class="lineNum">     969</span> <span class="tlaGNC">        1646 :       !gst_tensor_dimension_is_valid (dim2))</span></span>
+<span id="L968"><span class="lineNum">     968</span> <span class="tlaGNC">        1652 :   if (!gst_tensor_dimension_is_valid (dim1) ||</span></span>
+<span id="L969"><span class="lineNum">     969</span> <span class="tlaGNC">        1651 :       !gst_tensor_dimension_is_valid (dim2))</span></span>
 <span id="L970"><span class="lineNum">     970</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L971"><span class="lineNum">     971</span>              : </span>
-<span id="L972"><span class="lineNum">     972</span> <span class="tlaGNC">       27204 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L973"><span class="lineNum">     973</span> <span class="tlaGNC">       25608 :     if (dim1[i] != dim2[i]) {</span></span>
+<span id="L972"><span class="lineNum">     972</span> <span class="tlaGNC">       27289 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L973"><span class="lineNum">     973</span> <span class="tlaGNC">       25688 :     if (dim1[i] != dim2[i]) {</span></span>
 <span id="L974"><span class="lineNum">     974</span>              :       /* Supposed dimension is same if remained dimension is 1. */</span>
-<span id="L975"><span class="lineNum">     975</span> <span class="tlaGNC">         241 :       if (dim1[i] &gt; 1 || dim2[i] &gt; 1)</span></span>
+<span id="L975"><span class="lineNum">     975</span> <span class="tlaGNC">         242 :       if (dim1[i] &gt; 1 || dim2[i] &gt; 1)</span></span>
 <span id="L976"><span class="lineNum">     976</span> <span class="tlaGNC">          50 :         return FALSE;</span></span>
 <span id="L977"><span class="lineNum">     977</span>              :     }</span>
 <span id="L978"><span class="lineNum">     978</span>              :   }</span>
 <span id="L979"><span class="lineNum">     979</span>              : </span>
-<span id="L980"><span class="lineNum">     980</span> <span class="tlaGNC">        1596 :   return TRUE;</span></span>
+<span id="L980"><span class="lineNum">     980</span> <span class="tlaGNC">        1601 :   return TRUE;</span></span>
 <span id="L981"><span class="lineNum">     981</span>              : }</span>
 <span id="L982"><span class="lineNum">     982</span>              : </span>
 <span id="L983"><span class="lineNum">     983</span>              : /**</span>
@@ -1048,16 +1048,16 @@
 <span id="L986"><span class="lineNum">     986</span>              :  * @return tensor rank (Minimum rank is 1 if given dimension is valid)</span>
 <span id="L987"><span class="lineNum">     987</span>              :  */</span>
 <span id="L988"><span class="lineNum">     988</span>              : guint</span>
-<span id="L989"><span class="lineNum">     989</span> <span class="tlaGNC">      113501 : gst_tensor_dimension_get_rank (const tensor_dim dim)</span></span>
+<span id="L989"><span class="lineNum">     989</span> <span class="tlaGNC">      113635 : gst_tensor_dimension_get_rank (const tensor_dim dim)</span></span>
 <span id="L990"><span class="lineNum">     990</span>              : {</span>
 <span id="L991"><span class="lineNum">     991</span>              :   guint i;</span>
 <span id="L992"><span class="lineNum">     992</span>              : </span>
-<span id="L993"><span class="lineNum">     993</span> <span class="tlaGNC">      563815 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L994"><span class="lineNum">     994</span> <span class="tlaGNC">      560702 :     if (dim[i] == 0)</span></span>
-<span id="L995"><span class="lineNum">     995</span> <span class="tlaGNC">      110388 :       break;</span></span>
+<span id="L993"><span class="lineNum">     993</span> <span class="tlaGNC">      564409 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L994"><span class="lineNum">     994</span> <span class="tlaGNC">      561296 :     if (dim[i] == 0)</span></span>
+<span id="L995"><span class="lineNum">     995</span> <span class="tlaGNC">      110522 :       break;</span></span>
 <span id="L996"><span class="lineNum">     996</span>              :   }</span>
 <span id="L997"><span class="lineNum">     997</span>              : </span>
-<span id="L998"><span class="lineNum">     998</span> <span class="tlaGNC">      113501 :   return i;</span></span>
+<span id="L998"><span class="lineNum">     998</span> <span class="tlaGNC">      113635 :   return i;</span></span>
 <span id="L999"><span class="lineNum">     999</span>              : }</span>
 <span id="L1000"><span class="lineNum">    1000</span>              : </span>
 <span id="L1001"><span class="lineNum">    1001</span>              : /**</span>
@@ -1067,20 +1067,20 @@
 <span id="L1005"><span class="lineNum">    1005</span>              :  * @return tensor rank (Minimum rank is 1 if given dimension is valid)</span>
 <span id="L1006"><span class="lineNum">    1006</span>              :  */</span>
 <span id="L1007"><span class="lineNum">    1007</span>              : guint</span>
-<span id="L1008"><span class="lineNum">    1008</span> <span class="tlaGNC">        5637 : gst_tensor_dimension_get_min_rank (const tensor_dim dim)</span></span>
+<span id="L1008"><span class="lineNum">    1008</span> <span class="tlaGNC">        5655 : gst_tensor_dimension_get_min_rank (const tensor_dim dim)</span></span>
 <span id="L1009"><span class="lineNum">    1009</span>              : {</span>
 <span id="L1010"><span class="lineNum">    1010</span>              :   guint i, rank;</span>
 <span id="L1011"><span class="lineNum">    1011</span>              : </span>
-<span id="L1012"><span class="lineNum">    1012</span> <span class="tlaGNC">        5637 :   rank = gst_tensor_dimension_get_rank (dim);</span></span>
-<span id="L1013"><span class="lineNum">    1013</span> <span class="tlaGNC">        5637 :   if (rank == 0)</span></span>
+<span id="L1012"><span class="lineNum">    1012</span> <span class="tlaGNC">        5655 :   rank = gst_tensor_dimension_get_rank (dim);</span></span>
+<span id="L1013"><span class="lineNum">    1013</span> <span class="tlaGNC">        5655 :   if (rank == 0)</span></span>
 <span id="L1014"><span class="lineNum">    1014</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
 <span id="L1015"><span class="lineNum">    1015</span>              : </span>
-<span id="L1016"><span class="lineNum">    1016</span> <span class="tlaGNC tlaBgGNC">       13109 :   for (i = rank - 1; i &gt; 0; i--) {</span></span>
-<span id="L1017"><span class="lineNum">    1017</span> <span class="tlaGNC">       11395 :     if (dim[i] &gt; 1)</span></span>
-<span id="L1018"><span class="lineNum">    1018</span> <span class="tlaGNC">        3923 :       break;</span></span>
+<span id="L1016"><span class="lineNum">    1016</span> <span class="tlaGNC tlaBgGNC">       13144 :   for (i = rank - 1; i &gt; 0; i--) {</span></span>
+<span id="L1017"><span class="lineNum">    1017</span> <span class="tlaGNC">       11420 :     if (dim[i] &gt; 1)</span></span>
+<span id="L1018"><span class="lineNum">    1018</span> <span class="tlaGNC">        3931 :       break;</span></span>
 <span id="L1019"><span class="lineNum">    1019</span>              :   }</span>
 <span id="L1020"><span class="lineNum">    1020</span>              : </span>
-<span id="L1021"><span class="lineNum">    1021</span> <span class="tlaGNC">        5637 :   return (i + 1);</span></span>
+<span id="L1021"><span class="lineNum">    1021</span> <span class="tlaGNC">        5655 :   return (i + 1);</span></span>
 <span id="L1022"><span class="lineNum">    1022</span>              : }</span>
 <span id="L1023"><span class="lineNum">    1023</span>              : </span>
 <span id="L1024"><span class="lineNum">    1024</span>              : /**</span>
@@ -1090,40 +1090,40 @@
 <span id="L1028"><span class="lineNum">    1028</span>              :  * @param dim dimension to be filled.</span>
 <span id="L1029"><span class="lineNum">    1029</span>              :  */</span>
 <span id="L1030"><span class="lineNum">    1030</span>              : guint</span>
-<span id="L1031"><span class="lineNum">    1031</span> <span class="tlaGNC">       83093 : gst_tensor_parse_dimension (const gchar * dimstr, tensor_dim dim)</span></span>
+<span id="L1031"><span class="lineNum">    1031</span> <span class="tlaGNC">       83203 : gst_tensor_parse_dimension (const gchar * dimstr, tensor_dim dim)</span></span>
 <span id="L1032"><span class="lineNum">    1032</span>              : {</span>
-<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">       83093 :   guint rank = 0;</span></span>
+<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">       83203 :   guint rank = 0;</span></span>
 <span id="L1034"><span class="lineNum">    1034</span>              :   guint64 val;</span>
 <span id="L1035"><span class="lineNum">    1035</span>              :   gchar **strv;</span>
 <span id="L1036"><span class="lineNum">    1036</span>              :   gchar *dim_string;</span>
 <span id="L1037"><span class="lineNum">    1037</span>              :   guint i, num_dims;</span>
 <span id="L1038"><span class="lineNum">    1038</span>              : </span>
 <span id="L1039"><span class="lineNum">    1039</span>              :   /* 0-init */</span>
-<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">     1412580 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
-<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaGNC">     1329490 :     dim[i] = 0;</span></span>
+<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">     1414450 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
+<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaGNC">     1331250 :     dim[i] = 0;</span></span>
 <span id="L1042"><span class="lineNum">    1042</span>              : </span>
-<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">       83093 :   if (dimstr == NULL)</span></span>
+<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">       83203 :   if (dimstr == NULL)</span></span>
 <span id="L1044"><span class="lineNum">    1044</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
 <span id="L1045"><span class="lineNum">    1045</span>              : </span>
 <span id="L1046"><span class="lineNum">    1046</span>              :   /* remove spaces */</span>
-<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC tlaBgGNC">       83093 :   dim_string = g_strstrip (g_strdup (dimstr));</span></span>
+<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC tlaBgGNC">       83203 :   dim_string = g_strstrip (g_strdup (dimstr));</span></span>
 <span id="L1048"><span class="lineNum">    1048</span>              : </span>
-<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaGNC">       83093 :   strv = g_strsplit (dim_string, &quot;:&quot;, NNS_TENSOR_RANK_LIMIT);</span></span>
-<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaGNC">       83093 :   num_dims = g_strv_length (strv);</span></span>
+<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaGNC">       83203 :   strv = g_strsplit (dim_string, &quot;:&quot;, NNS_TENSOR_RANK_LIMIT);</span></span>
+<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaGNC">       83203 :   num_dims = g_strv_length (strv);</span></span>
 <span id="L1051"><span class="lineNum">    1051</span>              : </span>
-<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaGNC">      424936 :   for (i = 0; i &lt; num_dims; i++) {</span></span>
-<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaGNC">      341843 :     g_strstrip (strv[i]);</span></span>
-<span id="L1054"><span class="lineNum">    1054</span> <span class="tlaGNC">      341843 :     if (strv[i] == NULL || strlen (strv[i]) == 0)</span></span>
+<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaGNC">      425522 :   for (i = 0; i &lt; num_dims; i++) {</span></span>
+<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaGNC">      342319 :     g_strstrip (strv[i]);</span></span>
+<span id="L1054"><span class="lineNum">    1054</span> <span class="tlaGNC">      342319 :     if (strv[i] == NULL || strlen (strv[i]) == 0)</span></span>
 <span id="L1055"><span class="lineNum">    1055</span>              :       break;</span>
 <span id="L1056"><span class="lineNum">    1056</span>              : </span>
-<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">      341843 :     val = g_ascii_strtoull (strv[i], NULL, 10);</span></span>
-<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaGNC">      341843 :     dim[i] = (uint32_t) val;</span></span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">      341843 :     rank = i + 1;</span></span>
+<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">      342319 :     val = g_ascii_strtoull (strv[i], NULL, 10);</span></span>
+<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaGNC">      342319 :     dim[i] = (uint32_t) val;</span></span>
+<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">      342319 :     rank = i + 1;</span></span>
 <span id="L1060"><span class="lineNum">    1060</span>              :   }</span>
 <span id="L1061"><span class="lineNum">    1061</span>              : </span>
-<span id="L1062"><span class="lineNum">    1062</span> <span class="tlaGNC">       83093 :   g_strfreev (strv);</span></span>
-<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">       83093 :   g_free (dim_string);</span></span>
-<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">       83093 :   return rank;</span></span>
+<span id="L1062"><span class="lineNum">    1062</span> <span class="tlaGNC">       83203 :   g_strfreev (strv);</span></span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">       83203 :   g_free (dim_string);</span></span>
+<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">       83203 :   return rank;</span></span>
 <span id="L1065"><span class="lineNum">    1065</span>              : }</span>
 <span id="L1066"><span class="lineNum">    1066</span>              : </span>
 <span id="L1067"><span class="lineNum">    1067</span>              : /**</span>
@@ -1133,19 +1133,19 @@
 <span id="L1071"><span class="lineNum">    1071</span>              :  * @note The returned value should be freed with g_free()</span>
 <span id="L1072"><span class="lineNum">    1072</span>              :  */</span>
 <span id="L1073"><span class="lineNum">    1073</span>              : gchar *</span>
-<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">        3892 : gst_tensor_get_dimension_string (const tensor_dim dim)</span></span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">        3901 : gst_tensor_get_dimension_string (const tensor_dim dim)</span></span>
 <span id="L1075"><span class="lineNum">    1075</span>              : {</span>
 <span id="L1076"><span class="lineNum">    1076</span>              :   gchar *res =</span>
-<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaGNC">        3892 :       gst_tensor_get_rank_dimension_string (dim, NNS_TENSOR_RANK_LIMIT);</span></span>
+<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaGNC">        3901 :       gst_tensor_get_rank_dimension_string (dim, NNS_TENSOR_RANK_LIMIT);</span></span>
 <span id="L1078"><span class="lineNum">    1078</span>              : </span>
-<span id="L1079"><span class="lineNum">    1079</span> <span class="tlaGNC">        3892 :   if (!res)</span></span>
+<span id="L1079"><span class="lineNum">    1079</span> <span class="tlaGNC">        3901 :   if (!res)</span></span>
 <span id="L1080"><span class="lineNum">    1080</span> <span class="tlaUNC tlaBgUNC">           0 :     return NULL;</span></span>
-<span id="L1081"><span class="lineNum">    1081</span> <span class="tlaGNC tlaBgGNC">        3892 :   if (*res == '\0') {</span></span>
+<span id="L1081"><span class="lineNum">    1081</span> <span class="tlaGNC tlaBgGNC">        3901 :   if (*res == '\0') {</span></span>
 <span id="L1082"><span class="lineNum">    1082</span> <span class="tlaGNC">          57 :     g_free (res);</span></span>
 <span id="L1083"><span class="lineNum">    1083</span> <span class="tlaGNC">          57 :     return NULL;</span></span>
 <span id="L1084"><span class="lineNum">    1084</span>              :   }</span>
 <span id="L1085"><span class="lineNum">    1085</span>              : </span>
-<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaGNC">        3835 :   return res;</span></span>
+<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaGNC">        3844 :   return res;</span></span>
 <span id="L1087"><span class="lineNum">    1087</span>              : }</span>
 <span id="L1088"><span class="lineNum">    1088</span>              : </span>
 <span id="L1089"><span class="lineNum">    1089</span>              : /**</span>
@@ -1157,32 +1157,32 @@
 <span id="L1095"><span class="lineNum">    1095</span>              :  * The returned value should be freed with g_free().</span>
 <span id="L1096"><span class="lineNum">    1096</span>              :  */</span>
 <span id="L1097"><span class="lineNum">    1097</span>              : gchar *</span>
-<span id="L1098"><span class="lineNum">    1098</span> <span class="tlaGNC">        7872 : gst_tensor_get_rank_dimension_string (const tensor_dim dim,</span></span>
+<span id="L1098"><span class="lineNum">    1098</span> <span class="tlaGNC">        7890 : gst_tensor_get_rank_dimension_string (const tensor_dim dim,</span></span>
 <span id="L1099"><span class="lineNum">    1099</span>              :     const unsigned int rank)</span>
 <span id="L1100"><span class="lineNum">    1100</span>              : {</span>
 <span id="L1101"><span class="lineNum">    1101</span>              :   guint i;</span>
 <span id="L1102"><span class="lineNum">    1102</span>              :   GString *dim_str;</span>
 <span id="L1103"><span class="lineNum">    1103</span>              :   guint actual_rank;</span>
 <span id="L1104"><span class="lineNum">    1104</span>              : </span>
-<span id="L1105"><span class="lineNum">    1105</span> <span class="tlaGNC">        7872 :   dim_str = g_string_new (NULL);</span></span>
+<span id="L1105"><span class="lineNum">    1105</span> <span class="tlaGNC">        7890 :   dim_str = g_string_new (NULL);</span></span>
 <span id="L1106"><span class="lineNum">    1106</span>              : </span>
-<span id="L1107"><span class="lineNum">    1107</span> <span class="tlaGNC">        7872 :   if (rank == 0 || rank &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
+<span id="L1107"><span class="lineNum">    1107</span> <span class="tlaGNC">        7890 :   if (rank == 0 || rank &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
 <span id="L1108"><span class="lineNum">    1108</span> <span class="tlaGNC">          10 :     actual_rank = NNS_TENSOR_RANK_LIMIT;</span></span>
 <span id="L1109"><span class="lineNum">    1109</span>              :   else</span>
-<span id="L1110"><span class="lineNum">    1110</span> <span class="tlaGNC">        7862 :     actual_rank = rank;</span></span>
+<span id="L1110"><span class="lineNum">    1110</span> <span class="tlaGNC">        7880 :     actual_rank = rank;</span></span>
 <span id="L1111"><span class="lineNum">    1111</span>              : </span>
-<span id="L1112"><span class="lineNum">    1112</span> <span class="tlaGNC">       35504 :   for (i = 0; i &lt; actual_rank; i++) {</span></span>
-<span id="L1113"><span class="lineNum">    1113</span> <span class="tlaGNC">       35224 :     if (dim[i] == 0)</span></span>
-<span id="L1114"><span class="lineNum">    1114</span> <span class="tlaGNC">        7592 :       break;</span></span>
+<span id="L1112"><span class="lineNum">    1112</span> <span class="tlaGNC">       35573 :   for (i = 0; i &lt; actual_rank; i++) {</span></span>
+<span id="L1113"><span class="lineNum">    1113</span> <span class="tlaGNC">       35293 :     if (dim[i] == 0)</span></span>
+<span id="L1114"><span class="lineNum">    1114</span> <span class="tlaGNC">        7610 :       break;</span></span>
 <span id="L1115"><span class="lineNum">    1115</span>              : </span>
-<span id="L1116"><span class="lineNum">    1116</span> <span class="tlaGNC">       27632 :     g_string_append_printf (dim_str, &quot;%u&quot;, dim[i]);</span></span>
+<span id="L1116"><span class="lineNum">    1116</span> <span class="tlaGNC">       27683 :     g_string_append_printf (dim_str, &quot;%u&quot;, dim[i]);</span></span>
 <span id="L1117"><span class="lineNum">    1117</span>              : </span>
-<span id="L1118"><span class="lineNum">    1118</span> <span class="tlaGNC">       27632 :     if (i &lt; actual_rank - 1 &amp;&amp; dim[i + 1] &gt; 0) {</span></span>
-<span id="L1119"><span class="lineNum">    1119</span> <span class="tlaGNC">       39678 :       g_string_append (dim_str, &quot;:&quot;);</span></span>
+<span id="L1118"><span class="lineNum">    1118</span> <span class="tlaGNC">       27683 :     if (i &lt; actual_rank - 1 &amp;&amp; dim[i + 1] &gt; 0) {</span></span>
+<span id="L1119"><span class="lineNum">    1119</span> <span class="tlaGNC">       39744 :       g_string_append (dim_str, &quot;:&quot;);</span></span>
 <span id="L1120"><span class="lineNum">    1120</span>              :     }</span>
 <span id="L1121"><span class="lineNum">    1121</span>              :   }</span>
 <span id="L1122"><span class="lineNum">    1122</span>              : </span>
-<span id="L1123"><span class="lineNum">    1123</span> <span class="tlaGNC">        7872 :   return g_string_free (dim_str, FALSE);</span></span>
+<span id="L1123"><span class="lineNum">    1123</span> <span class="tlaGNC">        7890 :   return g_string_free (dim_str, FALSE);</span></span>
 <span id="L1124"><span class="lineNum">    1124</span>              : }</span>
 <span id="L1125"><span class="lineNum">    1125</span>              : </span>
 <span id="L1126"><span class="lineNum">    1126</span>              : /**</span>
@@ -1190,44 +1190,44 @@
 <span id="L1128"><span class="lineNum">    1128</span>              :  * @return TRUE if equal, FALSE if given dimension strings are invalid or not equal.</span>
 <span id="L1129"><span class="lineNum">    1129</span>              :  */</span>
 <span id="L1130"><span class="lineNum">    1130</span>              : gboolean</span>
-<span id="L1131"><span class="lineNum">    1131</span> <span class="tlaGNC">         230 : gst_tensor_dimension_string_is_equal (const gchar * dimstr1,</span></span>
+<span id="L1131"><span class="lineNum">    1131</span> <span class="tlaGNC">         231 : gst_tensor_dimension_string_is_equal (const gchar * dimstr1,</span></span>
 <span id="L1132"><span class="lineNum">    1132</span>              :     const gchar * dimstr2)</span>
 <span id="L1133"><span class="lineNum">    1133</span>              : {</span>
 <span id="L1134"><span class="lineNum">    1134</span>              :   tensor_dim dim1, dim2;</span>
 <span id="L1135"><span class="lineNum">    1135</span>              :   guint rank1, rank2, i, j, num_tensors1, num_tensors2;</span>
 <span id="L1136"><span class="lineNum">    1136</span>              :   gchar **strv1;</span>
 <span id="L1137"><span class="lineNum">    1137</span>              :   gchar **strv2;</span>
-<span id="L1138"><span class="lineNum">    1138</span> <span class="tlaGNC">         230 :   gboolean is_equal = FALSE;</span></span>
+<span id="L1138"><span class="lineNum">    1138</span> <span class="tlaGNC">         231 :   gboolean is_equal = FALSE;</span></span>
 <span id="L1139"><span class="lineNum">    1139</span>              : </span>
-<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaGNC">         230 :   strv1 = g_strsplit_set (dimstr1, &quot;,.&quot;, -1);</span></span>
-<span id="L1141"><span class="lineNum">    1141</span> <span class="tlaGNC">         230 :   strv2 = g_strsplit_set (dimstr2, &quot;,.&quot;, -1);</span></span>
+<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaGNC">         231 :   strv1 = g_strsplit_set (dimstr1, &quot;,.&quot;, -1);</span></span>
+<span id="L1141"><span class="lineNum">    1141</span> <span class="tlaGNC">         231 :   strv2 = g_strsplit_set (dimstr2, &quot;,.&quot;, -1);</span></span>
 <span id="L1142"><span class="lineNum">    1142</span>              : </span>
-<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaGNC">         230 :   num_tensors1 = g_strv_length (strv1);</span></span>
-<span id="L1144"><span class="lineNum">    1144</span> <span class="tlaGNC">         230 :   num_tensors2 = g_strv_length (strv2);</span></span>
+<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaGNC">         231 :   num_tensors1 = g_strv_length (strv1);</span></span>
+<span id="L1144"><span class="lineNum">    1144</span> <span class="tlaGNC">         231 :   num_tensors2 = g_strv_length (strv2);</span></span>
 <span id="L1145"><span class="lineNum">    1145</span>              : </span>
-<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaGNC">         230 :   if (num_tensors1 != num_tensors2)</span></span>
+<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaGNC">         231 :   if (num_tensors1 != num_tensors2)</span></span>
 <span id="L1147"><span class="lineNum">    1147</span> <span class="tlaGNC">           8 :     goto done;</span></span>
 <span id="L1148"><span class="lineNum">    1148</span>              : </span>
-<span id="L1149"><span class="lineNum">    1149</span> <span class="tlaGNC">         511 :   for (i = 0; i &lt; num_tensors1; i++) {</span></span>
-<span id="L1150"><span class="lineNum">    1150</span> <span class="tlaGNC">        4947 :     for (j = 0; j &lt; NNS_TENSOR_RANK_LIMIT; j++)</span></span>
-<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaGNC">        4656 :       dim1[j] = dim2[j] = 0;</span></span>
+<span id="L1149"><span class="lineNum">    1149</span> <span class="tlaGNC">         513 :   for (i = 0; i &lt; num_tensors1; i++) {</span></span>
+<span id="L1150"><span class="lineNum">    1150</span> <span class="tlaGNC">        4964 :     for (j = 0; j &lt; NNS_TENSOR_RANK_LIMIT; j++)</span></span>
+<span id="L1151"><span class="lineNum">    1151</span> <span class="tlaGNC">        4672 :       dim1[j] = dim2[j] = 0;</span></span>
 <span id="L1152"><span class="lineNum">    1152</span>              : </span>
-<span id="L1153"><span class="lineNum">    1153</span> <span class="tlaGNC">         291 :     rank1 = gst_tensor_parse_dimension (strv1[i], dim1);</span></span>
-<span id="L1154"><span class="lineNum">    1154</span> <span class="tlaGNC">         291 :     rank2 = gst_tensor_parse_dimension (strv2[i], dim2);</span></span>
+<span id="L1153"><span class="lineNum">    1153</span> <span class="tlaGNC">         292 :     rank1 = gst_tensor_parse_dimension (strv1[i], dim1);</span></span>
+<span id="L1154"><span class="lineNum">    1154</span> <span class="tlaGNC">         292 :     rank2 = gst_tensor_parse_dimension (strv2[i], dim2);</span></span>
 <span id="L1155"><span class="lineNum">    1155</span>              : </span>
 <span id="L1156"><span class="lineNum">    1156</span>              :     /* 'rank 0' means invalid dimension */</span>
-<span id="L1157"><span class="lineNum">    1157</span> <span class="tlaGNC">         291 :     if (!rank1 || !rank2 || !gst_tensor_dimension_is_equal (dim1, dim2))</span></span>
+<span id="L1157"><span class="lineNum">    1157</span> <span class="tlaGNC">         292 :     if (!rank1 || !rank2 || !gst_tensor_dimension_is_equal (dim1, dim2))</span></span>
 <span id="L1158"><span class="lineNum">    1158</span> <span class="tlaGNC">           2 :       goto done;</span></span>
 <span id="L1159"><span class="lineNum">    1159</span>              :   }</span>
 <span id="L1160"><span class="lineNum">    1160</span>              : </span>
 <span id="L1161"><span class="lineNum">    1161</span>              :   /* Compared all tensor dimensions from input string. */</span>
-<span id="L1162"><span class="lineNum">    1162</span> <span class="tlaGNC">         220 :   is_equal = TRUE;</span></span>
+<span id="L1162"><span class="lineNum">    1162</span> <span class="tlaGNC">         221 :   is_equal = TRUE;</span></span>
 <span id="L1163"><span class="lineNum">    1163</span>              : </span>
-<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaGNC">         230 : done:</span></span>
-<span id="L1165"><span class="lineNum">    1165</span> <span class="tlaGNC">         230 :   g_strfreev (strv1);</span></span>
-<span id="L1166"><span class="lineNum">    1166</span> <span class="tlaGNC">         230 :   g_strfreev (strv2);</span></span>
+<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaGNC">         231 : done:</span></span>
+<span id="L1165"><span class="lineNum">    1165</span> <span class="tlaGNC">         231 :   g_strfreev (strv1);</span></span>
+<span id="L1166"><span class="lineNum">    1166</span> <span class="tlaGNC">         231 :   g_strfreev (strv2);</span></span>
 <span id="L1167"><span class="lineNum">    1167</span>              : </span>
-<span id="L1168"><span class="lineNum">    1168</span> <span class="tlaGNC">         230 :   return is_equal;</span></span>
+<span id="L1168"><span class="lineNum">    1168</span> <span class="tlaGNC">         231 :   return is_equal;</span></span>
 <span id="L1169"><span class="lineNum">    1169</span>              : }</span>
 <span id="L1170"><span class="lineNum">    1170</span>              : </span>
 <span id="L1171"><span class="lineNum">    1171</span>              : /**</span>
@@ -1236,30 +1236,30 @@
 <span id="L1174"><span class="lineNum">    1174</span>              :  * @param dim The tensor dimension</span>
 <span id="L1175"><span class="lineNum">    1175</span>              :  */</span>
 <span id="L1176"><span class="lineNum">    1176</span>              : gulong</span>
-<span id="L1177"><span class="lineNum">    1177</span> <span class="tlaGNC">       68397 : gst_tensor_get_element_count (const tensor_dim dim)</span></span>
+<span id="L1177"><span class="lineNum">    1177</span> <span class="tlaGNC">       68518 : gst_tensor_get_element_count (const tensor_dim dim)</span></span>
 <span id="L1178"><span class="lineNum">    1178</span>              : {</span>
-<span id="L1179"><span class="lineNum">    1179</span> <span class="tlaGNC">       68397 :   gulong count = 1;</span></span>
+<span id="L1179"><span class="lineNum">    1179</span> <span class="tlaGNC">       68518 :   gulong count = 1;</span></span>
 <span id="L1180"><span class="lineNum">    1180</span>              :   guint i;</span>
 <span id="L1181"><span class="lineNum">    1181</span>              : </span>
-<span id="L1182"><span class="lineNum">    1182</span> <span class="tlaGNC">      284000 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">      283123 :     if (dim[i] == 0)</span></span>
-<span id="L1184"><span class="lineNum">    1184</span> <span class="tlaGNC">       67520 :       break;</span></span>
+<span id="L1182"><span class="lineNum">    1182</span> <span class="tlaGNC">      284634 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">      283757 :     if (dim[i] == 0)</span></span>
+<span id="L1184"><span class="lineNum">    1184</span> <span class="tlaGNC">       67641 :       break;</span></span>
 <span id="L1185"><span class="lineNum">    1185</span>              : </span>
-<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">      215603 :     count *= dim[i];</span></span>
+<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">      216116 :     count *= dim[i];</span></span>
 <span id="L1187"><span class="lineNum">    1187</span>              :   }</span>
 <span id="L1188"><span class="lineNum">    1188</span>              : </span>
-<span id="L1189"><span class="lineNum">    1189</span> <span class="tlaGNC">       68397 :   return (i &gt; 0) ? count : 0;</span></span>
+<span id="L1189"><span class="lineNum">    1189</span> <span class="tlaGNC">       68518 :   return (i &gt; 0) ? count : 0;</span></span>
 <span id="L1190"><span class="lineNum">    1190</span>              : }</span>
 <span id="L1191"><span class="lineNum">    1191</span>              : </span>
 <span id="L1192"><span class="lineNum">    1192</span>              : /**</span>
 <span id="L1193"><span class="lineNum">    1193</span>              :  * @brief Get element size of tensor type (byte per element)</span>
 <span id="L1194"><span class="lineNum">    1194</span>              :  */</span>
 <span id="L1195"><span class="lineNum">    1195</span>              : gsize</span>
-<span id="L1196"><span class="lineNum">    1196</span> <span class="tlaGNC">    10253500 : gst_tensor_get_element_size (tensor_type type)</span></span>
+<span id="L1196"><span class="lineNum">    1196</span> <span class="tlaGNC">    10253600 : gst_tensor_get_element_size (tensor_type type)</span></span>
 <span id="L1197"><span class="lineNum">    1197</span>              : {</span>
-<span id="L1198"><span class="lineNum">    1198</span> <span class="tlaGNC">    10253500 :   g_return_val_if_fail (type &gt;= 0 &amp;&amp; type &lt;= _NNS_END, 0);</span></span>
+<span id="L1198"><span class="lineNum">    1198</span> <span class="tlaGNC">    10253600 :   g_return_val_if_fail (type &gt;= 0 &amp;&amp; type &lt;= _NNS_END, 0);</span></span>
 <span id="L1199"><span class="lineNum">    1199</span>              : </span>
-<span id="L1200"><span class="lineNum">    1200</span> <span class="tlaGNC">    10253500 :   return tensor_element_size[type];</span></span>
+<span id="L1200"><span class="lineNum">    1200</span> <span class="tlaGNC">    10253600 :   return tensor_element_size[type];</span></span>
 <span id="L1201"><span class="lineNum">    1201</span>              : }</span>
 <span id="L1202"><span class="lineNum">    1202</span>              : </span>
 <span id="L1203"><span class="lineNum">    1203</span>              : /**</span>
@@ -1268,34 +1268,34 @@
 <span id="L1206"><span class="lineNum">    1206</span>              :  * @param typestr The string type name, supposed to be one of tensor_element_typename[]</span>
 <span id="L1207"><span class="lineNum">    1207</span>              :  */</span>
 <span id="L1208"><span class="lineNum">    1208</span>              : tensor_type</span>
-<span id="L1209"><span class="lineNum">    1209</span> <span class="tlaGNC">       82526 : gst_tensor_get_type (const gchar * typestr)</span></span>
+<span id="L1209"><span class="lineNum">    1209</span> <span class="tlaGNC">       82634 : gst_tensor_get_type (const gchar * typestr)</span></span>
 <span id="L1210"><span class="lineNum">    1210</span>              : {</span>
 <span id="L1211"><span class="lineNum">    1211</span>              :   gsize size, len;</span>
 <span id="L1212"><span class="lineNum">    1212</span>              :   gchar *type_string;</span>
-<span id="L1213"><span class="lineNum">    1213</span> <span class="tlaGNC">       82526 :   tensor_type type = _NNS_END;</span></span>
+<span id="L1213"><span class="lineNum">    1213</span> <span class="tlaGNC">       82634 :   tensor_type type = _NNS_END;</span></span>
 <span id="L1214"><span class="lineNum">    1214</span>              : </span>
-<span id="L1215"><span class="lineNum">    1215</span> <span class="tlaGNC">       82526 :   if (typestr == NULL)</span></span>
+<span id="L1215"><span class="lineNum">    1215</span> <span class="tlaGNC">       82634 :   if (typestr == NULL)</span></span>
 <span id="L1216"><span class="lineNum">    1216</span> <span class="tlaGNC">           7 :     return _NNS_END;</span></span>
 <span id="L1217"><span class="lineNum">    1217</span>              : </span>
 <span id="L1218"><span class="lineNum">    1218</span>              :   /* remove spaces */</span>
-<span id="L1219"><span class="lineNum">    1219</span> <span class="tlaGNC">       82519 :   type_string = g_strdup (typestr);</span></span>
-<span id="L1220"><span class="lineNum">    1220</span> <span class="tlaGNC">       82519 :   g_strstrip (type_string);</span></span>
+<span id="L1219"><span class="lineNum">    1219</span> <span class="tlaGNC">       82627 :   type_string = g_strdup (typestr);</span></span>
+<span id="L1220"><span class="lineNum">    1220</span> <span class="tlaGNC">       82627 :   g_strstrip (type_string);</span></span>
 <span id="L1221"><span class="lineNum">    1221</span>              : </span>
-<span id="L1222"><span class="lineNum">    1222</span> <span class="tlaGNC">       82519 :   len = strlen (type_string);</span></span>
+<span id="L1222"><span class="lineNum">    1222</span> <span class="tlaGNC">       82627 :   len = strlen (type_string);</span></span>
 <span id="L1223"><span class="lineNum">    1223</span>              : </span>
-<span id="L1224"><span class="lineNum">    1224</span> <span class="tlaGNC">       82519 :   if (len == 0) {</span></span>
+<span id="L1224"><span class="lineNum">    1224</span> <span class="tlaGNC">       82627 :   if (len == 0) {</span></span>
 <span id="L1225"><span class="lineNum">    1225</span> <span class="tlaGNC">           1 :     g_free (type_string);</span></span>
 <span id="L1226"><span class="lineNum">    1226</span> <span class="tlaGNC">           1 :     return _NNS_END;</span></span>
 <span id="L1227"><span class="lineNum">    1227</span>              :   }</span>
 <span id="L1228"><span class="lineNum">    1228</span>              : </span>
-<span id="L1229"><span class="lineNum">    1229</span> <span class="tlaGNC">       82518 :   if (g_regex_match_simple (&quot;^uint(8|16|32|64)$&quot;,</span></span>
+<span id="L1229"><span class="lineNum">    1229</span> <span class="tlaGNC">       82626 :   if (g_regex_match_simple (&quot;^uint(8|16|32|64)$&quot;,</span></span>
 <span id="L1230"><span class="lineNum">    1230</span>              :           type_string, G_REGEX_CASELESS, 0)) {</span>
-<span id="L1231"><span class="lineNum">    1231</span> <span class="tlaGNC">       55976 :     size = (gsize) g_ascii_strtoull (&amp;type_string[4], NULL, 10);</span></span>
+<span id="L1231"><span class="lineNum">    1231</span> <span class="tlaGNC">       56004 :     size = (gsize) g_ascii_strtoull (&amp;type_string[4], NULL, 10);</span></span>
 <span id="L1232"><span class="lineNum">    1232</span>              : </span>
-<span id="L1233"><span class="lineNum">    1233</span> <span class="tlaGNC">       55976 :     switch (size) {</span></span>
-<span id="L1234"><span class="lineNum">    1234</span> <span class="tlaGNC">       53749 :       case 8:</span></span>
-<span id="L1235"><span class="lineNum">    1235</span> <span class="tlaGNC">       53749 :         type = _NNS_UINT8;</span></span>
-<span id="L1236"><span class="lineNum">    1236</span> <span class="tlaGNC">       53749 :         break;</span></span>
+<span id="L1233"><span class="lineNum">    1233</span> <span class="tlaGNC">       56004 :     switch (size) {</span></span>
+<span id="L1234"><span class="lineNum">    1234</span> <span class="tlaGNC">       53777 :       case 8:</span></span>
+<span id="L1235"><span class="lineNum">    1235</span> <span class="tlaGNC">       53777 :         type = _NNS_UINT8;</span></span>
+<span id="L1236"><span class="lineNum">    1236</span> <span class="tlaGNC">       53777 :         break;</span></span>
 <span id="L1237"><span class="lineNum">    1237</span> <span class="tlaGNC">         195 :       case 16:</span></span>
 <span id="L1238"><span class="lineNum">    1238</span> <span class="tlaGNC">         195 :         type = _NNS_UINT16;</span></span>
 <span id="L1239"><span class="lineNum">    1239</span> <span class="tlaGNC">         195 :         break;</span></span>
@@ -1305,7 +1305,7 @@
 <span id="L1243"><span class="lineNum">    1243</span> <span class="tlaGNC">          75 :       case 64:</span></span>
 <span id="L1244"><span class="lineNum">    1244</span> <span class="tlaGNC">          75 :         type = _NNS_UINT64;</span></span>
 <span id="L1245"><span class="lineNum">    1245</span>              :     }</span>
-<span id="L1246"><span class="lineNum">    1246</span> <span class="tlaGNC">       82518 :   } else if (g_regex_match_simple (&quot;^int(8|16|32|64)$&quot;,</span></span>
+<span id="L1246"><span class="lineNum">    1246</span> <span class="tlaGNC">       82626 :   } else if (g_regex_match_simple (&quot;^int(8|16|32|64)$&quot;,</span></span>
 <span id="L1247"><span class="lineNum">    1247</span>              :           type_string, G_REGEX_CASELESS, 0)) {</span>
 <span id="L1248"><span class="lineNum">    1248</span> <span class="tlaGNC">         900 :     size = (gsize) g_ascii_strtoull (&amp;type_string[3], NULL, 10);</span></span>
 <span id="L1249"><span class="lineNum">    1249</span>              : </span>
@@ -1322,35 +1322,35 @@
 <span id="L1260"><span class="lineNum">    1260</span> <span class="tlaGNC">          91 :       case 64:</span></span>
 <span id="L1261"><span class="lineNum">    1261</span> <span class="tlaGNC">          91 :         type = _NNS_INT64;</span></span>
 <span id="L1262"><span class="lineNum">    1262</span>              :     }</span>
-<span id="L1263"><span class="lineNum">    1263</span> <span class="tlaGNC">       26542 :   } else if (g_regex_match_simple (&quot;^float(16|32|64)$&quot;,</span></span>
+<span id="L1263"><span class="lineNum">    1263</span> <span class="tlaGNC">       26622 :   } else if (g_regex_match_simple (&quot;^float(16|32|64)$&quot;,</span></span>
 <span id="L1264"><span class="lineNum">    1264</span>              :           type_string, G_REGEX_CASELESS, 0)) {</span>
-<span id="L1265"><span class="lineNum">    1265</span> <span class="tlaGNC">       25620 :     size = (gsize) g_ascii_strtoull (&amp;type_string[5], NULL, 10);</span></span>
+<span id="L1265"><span class="lineNum">    1265</span> <span class="tlaGNC">       25700 :     size = (gsize) g_ascii_strtoull (&amp;type_string[5], NULL, 10);</span></span>
 <span id="L1266"><span class="lineNum">    1266</span>              : </span>
-<span id="L1267"><span class="lineNum">    1267</span> <span class="tlaGNC">       25620 :     switch (size) {</span></span>
+<span id="L1267"><span class="lineNum">    1267</span> <span class="tlaGNC">       25700 :     switch (size) {</span></span>
 <span id="L1268"><span class="lineNum">    1268</span> <span class="tlaGNC">          63 :       case 16:</span></span>
 <span id="L1269"><span class="lineNum">    1269</span> <span class="tlaGNC">          63 :         type = _NNS_FLOAT16;</span></span>
 <span id="L1270"><span class="lineNum">    1270</span> <span class="tlaGNC">          63 :         break;</span></span>
-<span id="L1271"><span class="lineNum">    1271</span> <span class="tlaGNC">       25203 :       case 32:</span></span>
-<span id="L1272"><span class="lineNum">    1272</span> <span class="tlaGNC">       25203 :         type = _NNS_FLOAT32;</span></span>
-<span id="L1273"><span class="lineNum">    1273</span> <span class="tlaGNC">       25203 :         break;</span></span>
+<span id="L1271"><span class="lineNum">    1271</span> <span class="tlaGNC">       25283 :       case 32:</span></span>
+<span id="L1272"><span class="lineNum">    1272</span> <span class="tlaGNC">       25283 :         type = _NNS_FLOAT32;</span></span>
+<span id="L1273"><span class="lineNum">    1273</span> <span class="tlaGNC">       25283 :         break;</span></span>
 <span id="L1274"><span class="lineNum">    1274</span> <span class="tlaGNC">         354 :       case 64:</span></span>
 <span id="L1275"><span class="lineNum">    1275</span> <span class="tlaGNC">         354 :         type = _NNS_FLOAT64;</span></span>
 <span id="L1276"><span class="lineNum">    1276</span>              :     }</span>
 <span id="L1277"><span class="lineNum">    1277</span> <span class="tlaGNC">          22 :   }</span></span>
 <span id="L1278"><span class="lineNum">    1278</span>              : </span>
-<span id="L1279"><span class="lineNum">    1279</span> <span class="tlaGNC">       82518 :   g_free (type_string);</span></span>
-<span id="L1280"><span class="lineNum">    1280</span> <span class="tlaGNC">       82518 :   return type;</span></span>
+<span id="L1279"><span class="lineNum">    1279</span> <span class="tlaGNC">       82626 :   g_free (type_string);</span></span>
+<span id="L1280"><span class="lineNum">    1280</span> <span class="tlaGNC">       82626 :   return type;</span></span>
 <span id="L1281"><span class="lineNum">    1281</span>              : }</span>
 <span id="L1282"><span class="lineNum">    1282</span>              : </span>
 <span id="L1283"><span class="lineNum">    1283</span>              : /**</span>
 <span id="L1284"><span class="lineNum">    1284</span>              :  * @brief Get type string of tensor type.</span>
 <span id="L1285"><span class="lineNum">    1285</span>              :  */</span>
 <span id="L1286"><span class="lineNum">    1286</span>              : const gchar *</span>
-<span id="L1287"><span class="lineNum">    1287</span> <span class="tlaGNC">       12662 : gst_tensor_get_type_string (tensor_type type)</span></span>
+<span id="L1287"><span class="lineNum">    1287</span> <span class="tlaGNC">       12680 : gst_tensor_get_type_string (tensor_type type)</span></span>
 <span id="L1288"><span class="lineNum">    1288</span>              : {</span>
-<span id="L1289"><span class="lineNum">    1289</span> <span class="tlaGNC">       12662 :   g_return_val_if_fail (type &gt;= 0 &amp;&amp; type &lt;= _NNS_END, NULL);</span></span>
+<span id="L1289"><span class="lineNum">    1289</span> <span class="tlaGNC">       12680 :   g_return_val_if_fail (type &gt;= 0 &amp;&amp; type &lt;= _NNS_END, NULL);</span></span>
 <span id="L1290"><span class="lineNum">    1290</span>              : </span>
-<span id="L1291"><span class="lineNum">    1291</span> <span class="tlaGNC">       12662 :   return tensor_element_typename[type];</span></span>
+<span id="L1291"><span class="lineNum">    1291</span> <span class="tlaGNC">       12680 :   return tensor_element_typename[type];</span></span>
 <span id="L1292"><span class="lineNum">    1292</span>              : }</span>
 <span id="L1293"><span class="lineNum">    1293</span>              : </span>
 <span id="L1294"><span class="lineNum">    1294</span>              : /**</span>
@@ -1359,16 +1359,16 @@
 <span id="L1297"><span class="lineNum">    1297</span>              :  * @return Corresponding tensor_format. _NNS_TENSOR_FORMAT_END if unrecognized value is there.</span>
 <span id="L1298"><span class="lineNum">    1298</span>              :  */</span>
 <span id="L1299"><span class="lineNum">    1299</span>              : tensor_format</span>
-<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaGNC">       12006 : gst_tensor_get_format (const gchar * format_str)</span></span>
+<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaGNC">       11996 : gst_tensor_get_format (const gchar * format_str)</span></span>
 <span id="L1301"><span class="lineNum">    1301</span>              : {</span>
 <span id="L1302"><span class="lineNum">    1302</span>              :   gint idx;</span>
-<span id="L1303"><span class="lineNum">    1303</span> <span class="tlaGNC">       12006 :   tensor_format format = _NNS_TENSOR_FORMAT_END;</span></span>
+<span id="L1303"><span class="lineNum">    1303</span> <span class="tlaGNC">       11996 :   tensor_format format = _NNS_TENSOR_FORMAT_END;</span></span>
 <span id="L1304"><span class="lineNum">    1304</span>              : </span>
-<span id="L1305"><span class="lineNum">    1305</span> <span class="tlaGNC">       12006 :   idx = find_key_strv (tensor_format_name, format_str);</span></span>
-<span id="L1306"><span class="lineNum">    1306</span> <span class="tlaGNC">       12006 :   if (idx &gt;= 0)</span></span>
-<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaGNC">       10517 :     format = (tensor_format) idx;</span></span>
+<span id="L1305"><span class="lineNum">    1305</span> <span class="tlaGNC">       11996 :   idx = find_key_strv (tensor_format_name, format_str);</span></span>
+<span id="L1306"><span class="lineNum">    1306</span> <span class="tlaGNC">       11996 :   if (idx &gt;= 0)</span></span>
+<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaGNC">       10507 :     format = (tensor_format) idx;</span></span>
 <span id="L1308"><span class="lineNum">    1308</span>              : </span>
-<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaGNC">       12006 :   return format;</span></span>
+<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaGNC">       11996 :   return format;</span></span>
 <span id="L1310"><span class="lineNum">    1310</span>              : }</span>
 <span id="L1311"><span class="lineNum">    1311</span>              : </span>
 <span id="L1312"><span class="lineNum">    1312</span>              : /**</span>
@@ -1422,18 +1422,18 @@
 <span id="L1360"><span class="lineNum">    1360</span>              :  * @param[in,out] meta tensor meta structure to be initialized</span>
 <span id="L1361"><span class="lineNum">    1361</span>              :  */</span>
 <span id="L1362"><span class="lineNum">    1362</span>              : void</span>
-<span id="L1363"><span class="lineNum">    1363</span> <span class="tlaGNC">       81515 : gst_tensor_meta_info_init (GstTensorMetaInfo * meta)</span></span>
+<span id="L1363"><span class="lineNum">    1363</span> <span class="tlaGNC">       81605 : gst_tensor_meta_info_init (GstTensorMetaInfo * meta)</span></span>
 <span id="L1364"><span class="lineNum">    1364</span>              : {</span>
-<span id="L1365"><span class="lineNum">    1365</span> <span class="tlaGNC">       81515 :   g_return_if_fail (meta != NULL);</span></span>
+<span id="L1365"><span class="lineNum">    1365</span> <span class="tlaGNC">       81605 :   g_return_if_fail (meta != NULL);</span></span>
 <span id="L1366"><span class="lineNum">    1366</span>              : </span>
 <span id="L1367"><span class="lineNum">    1367</span>              :   /* zero-init */</span>
-<span id="L1368"><span class="lineNum">    1368</span> <span class="tlaGNC">       81515 :   memset (meta, 0, sizeof (GstTensorMetaInfo));</span></span>
+<span id="L1368"><span class="lineNum">    1368</span> <span class="tlaGNC">       81605 :   memset (meta, 0, sizeof (GstTensorMetaInfo));</span></span>
 <span id="L1369"><span class="lineNum">    1369</span>              : </span>
-<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaGNC">       81515 :   meta-&gt;magic = GST_TENSOR_META_MAGIC;</span></span>
-<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">       81515 :   meta-&gt;version = GST_TENSOR_META_VERSION;</span></span>
-<span id="L1372"><span class="lineNum">    1372</span> <span class="tlaGNC">       81515 :   meta-&gt;type = _NNS_END;</span></span>
-<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">       81515 :   meta-&gt;format = _NNS_TENSOR_FORMAT_STATIC;</span></span>
-<span id="L1374"><span class="lineNum">    1374</span> <span class="tlaGNC">       81515 :   meta-&gt;media_type = _NNS_TENSOR;</span></span>
+<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaGNC">       81605 :   meta-&gt;magic = GST_TENSOR_META_MAGIC;</span></span>
+<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">       81605 :   meta-&gt;version = GST_TENSOR_META_VERSION;</span></span>
+<span id="L1372"><span class="lineNum">    1372</span> <span class="tlaGNC">       81605 :   meta-&gt;type = _NNS_END;</span></span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">       81605 :   meta-&gt;format = _NNS_TENSOR_FORMAT_STATIC;</span></span>
+<span id="L1374"><span class="lineNum">    1374</span> <span class="tlaGNC">       81605 :   meta-&gt;media_type = _NNS_TENSOR;</span></span>
 <span id="L1375"><span class="lineNum">    1375</span>              : }</span>
 <span id="L1376"><span class="lineNum">    1376</span>              : </span>
 <span id="L1377"><span class="lineNum">    1377</span>              : /**</span>
@@ -1464,20 +1464,20 @@
 <span id="L1402"><span class="lineNum">    1402</span>              :  * @return TRUE if given meta is valid</span>
 <span id="L1403"><span class="lineNum">    1403</span>              :  */</span>
 <span id="L1404"><span class="lineNum">    1404</span>              : gboolean</span>
-<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">       24684 : gst_tensor_meta_info_validate (GstTensorMetaInfo * meta)</span></span>
+<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">       24731 : gst_tensor_meta_info_validate (GstTensorMetaInfo * meta)</span></span>
 <span id="L1406"><span class="lineNum">    1406</span>              : {</span>
-<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaGNC">       24684 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
+<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaGNC">       24731 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
 <span id="L1408"><span class="lineNum">    1408</span>              : </span>
-<span id="L1409"><span class="lineNum">    1409</span> <span class="tlaGNC">       24680 :   if (!GST_TENSOR_META_IS_VALID (meta))</span></span>
-<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaGNC">       22680 :     return FALSE;</span></span>
+<span id="L1409"><span class="lineNum">    1409</span> <span class="tlaGNC">       24727 :   if (!GST_TENSOR_META_IS_VALID (meta))</span></span>
+<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaGNC">       22729 :     return FALSE;</span></span>
 <span id="L1411"><span class="lineNum">    1411</span>              : </span>
-<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaGNC">        2000 :   if (meta-&gt;type &gt;= _NNS_END) {</span></span>
+<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaGNC">        1998 :   if (meta-&gt;type &gt;= _NNS_END) {</span></span>
 <span id="L1413"><span class="lineNum">    1413</span> <span class="tlaGNC">           1 :     nns_logd (&quot;Failed to validate tensor meta info. type: %s. &quot;,</span></span>
 <span id="L1414"><span class="lineNum">    1414</span>              :         _STR_NULL (gst_tensor_get_type_string (meta-&gt;type)));</span>
 <span id="L1415"><span class="lineNum">    1415</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L1416"><span class="lineNum">    1416</span>              :   }</span>
 <span id="L1417"><span class="lineNum">    1417</span>              : </span>
-<span id="L1418"><span class="lineNum">    1418</span> <span class="tlaGNC">        1999 :   if (!gst_tensor_dimension_is_valid (meta-&gt;dimension)) {</span></span>
+<span id="L1418"><span class="lineNum">    1418</span> <span class="tlaGNC">        1997 :   if (!gst_tensor_dimension_is_valid (meta-&gt;dimension)) {</span></span>
 <span id="L1419"><span class="lineNum">    1419</span> <span class="tlaGNC">           1 :     gchar *dim_str = gst_tensor_get_dimension_string (meta-&gt;dimension);</span></span>
 <span id="L1420"><span class="lineNum">    1420</span> <span class="tlaGNC">           1 :     nns_logd (&quot;Failed to validate tensor meta info. Given dimension: %s&quot;,</span></span>
 <span id="L1421"><span class="lineNum">    1421</span>              :         dim_str);</span>
@@ -1485,19 +1485,19 @@
 <span id="L1423"><span class="lineNum">    1423</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L1424"><span class="lineNum">    1424</span>              :   }</span>
 <span id="L1425"><span class="lineNum">    1425</span>              : </span>
-<span id="L1426"><span class="lineNum">    1426</span> <span class="tlaGNC">        1998 :   if (meta-&gt;format &gt;= _NNS_TENSOR_FORMAT_END) {</span></span>
+<span id="L1426"><span class="lineNum">    1426</span> <span class="tlaGNC">        1996 :   if (meta-&gt;format &gt;= _NNS_TENSOR_FORMAT_END) {</span></span>
 <span id="L1427"><span class="lineNum">    1427</span> <span class="tlaGNC">           1 :     nns_logd (&quot;Failed to validate tensors meta info. format: %s. &quot;,</span></span>
 <span id="L1428"><span class="lineNum">    1428</span>              :         _STR_NULL (gst_tensor_get_format_string (meta-&gt;format)));</span>
 <span id="L1429"><span class="lineNum">    1429</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L1430"><span class="lineNum">    1430</span>              :   }</span>
 <span id="L1431"><span class="lineNum">    1431</span>              : </span>
-<span id="L1432"><span class="lineNum">    1432</span> <span class="tlaGNC">        1997 :   if (meta-&gt;media_type &gt; _NNS_TENSOR) {</span></span>
+<span id="L1432"><span class="lineNum">    1432</span> <span class="tlaGNC">        1995 :   if (meta-&gt;media_type &gt; _NNS_TENSOR) {</span></span>
 <span id="L1433"><span class="lineNum">    1433</span> <span class="tlaGNC">           1 :     nns_logd (&quot;Failed to validate tensor meta info. invalid media type: %d.&quot;,</span></span>
 <span id="L1434"><span class="lineNum">    1434</span>              :         meta-&gt;media_type);</span>
 <span id="L1435"><span class="lineNum">    1435</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L1436"><span class="lineNum">    1436</span>              :   }</span>
 <span id="L1437"><span class="lineNum">    1437</span>              : </span>
-<span id="L1438"><span class="lineNum">    1438</span> <span class="tlaGNC">        1996 :   return TRUE;</span></span>
+<span id="L1438"><span class="lineNum">    1438</span> <span class="tlaGNC">        1994 :   return TRUE;</span></span>
 <span id="L1439"><span class="lineNum">    1439</span>              : }</span>
 <span id="L1440"><span class="lineNum">    1440</span>              : </span>
 <span id="L1441"><span class="lineNum">    1441</span>              : /**</span>
@@ -1506,16 +1506,16 @@
 <span id="L1444"><span class="lineNum">    1444</span>              :  * @return Header size for meta info (0 if meta is invalid)</span>
 <span id="L1445"><span class="lineNum">    1445</span>              :  */</span>
 <span id="L1446"><span class="lineNum">    1446</span>              : gsize</span>
-<span id="L1447"><span class="lineNum">    1447</span> <span class="tlaGNC">       31466 : gst_tensor_meta_info_get_header_size (GstTensorMetaInfo * meta)</span></span>
+<span id="L1447"><span class="lineNum">    1447</span> <span class="tlaGNC">       31506 : gst_tensor_meta_info_get_header_size (GstTensorMetaInfo * meta)</span></span>
 <span id="L1448"><span class="lineNum">    1448</span>              : {</span>
-<span id="L1449"><span class="lineNum">    1449</span> <span class="tlaGNC">       31466 :   g_return_val_if_fail (meta != NULL, 0);</span></span>
+<span id="L1449"><span class="lineNum">    1449</span> <span class="tlaGNC">       31506 :   g_return_val_if_fail (meta != NULL, 0);</span></span>
 <span id="L1450"><span class="lineNum">    1450</span>              : </span>
-<span id="L1451"><span class="lineNum">    1451</span> <span class="tlaGNC">       31465 :   if (!GST_TENSOR_META_IS_VALID (meta))</span></span>
+<span id="L1451"><span class="lineNum">    1451</span> <span class="tlaGNC">       31505 :   if (!GST_TENSOR_META_IS_VALID (meta))</span></span>
 <span id="L1452"><span class="lineNum">    1452</span> <span class="tlaGNC">           2 :     return 0;</span></span>
 <span id="L1453"><span class="lineNum">    1453</span>              : </span>
 <span id="L1454"><span class="lineNum">    1454</span>              :   /* return fixed size for meta version */</span>
-<span id="L1455"><span class="lineNum">    1455</span> <span class="tlaGNC">       31463 :   if (GST_TENSOR_META_IS_V1 (meta-&gt;version)) {</span></span>
-<span id="L1456"><span class="lineNum">    1456</span> <span class="tlaGNC">       31463 :     return 128;</span></span>
+<span id="L1455"><span class="lineNum">    1455</span> <span class="tlaGNC">       31503 :   if (GST_TENSOR_META_IS_V1 (meta-&gt;version)) {</span></span>
+<span id="L1456"><span class="lineNum">    1456</span> <span class="tlaGNC">       31503 :     return 128;</span></span>
 <span id="L1457"><span class="lineNum">    1457</span>              :   }</span>
 <span id="L1458"><span class="lineNum">    1458</span>              : </span>
 <span id="L1459"><span class="lineNum">    1459</span> <span class="tlaUNC tlaBgUNC">           0 :   return 0;</span></span>
@@ -1555,19 +1555,19 @@
 <span id="L1493"><span class="lineNum">    1493</span>              :  * @note User should allocate enough memory for header (see gst_tensor_meta_info_get_header_size()).</span>
 <span id="L1494"><span class="lineNum">    1494</span>              :  */</span>
 <span id="L1495"><span class="lineNum">    1495</span>              : gboolean</span>
-<span id="L1496"><span class="lineNum">    1496</span> <span class="tlaGNC">         401 : gst_tensor_meta_info_update_header (GstTensorMetaInfo * meta, gpointer header)</span></span>
+<span id="L1496"><span class="lineNum">    1496</span> <span class="tlaGNC">         400 : gst_tensor_meta_info_update_header (GstTensorMetaInfo * meta, gpointer header)</span></span>
 <span id="L1497"><span class="lineNum">    1497</span>              : {</span>
 <span id="L1498"><span class="lineNum">    1498</span>              :   gsize hsize;</span>
 <span id="L1499"><span class="lineNum">    1499</span>              : </span>
-<span id="L1500"><span class="lineNum">    1500</span> <span class="tlaGNC">         401 :   g_return_val_if_fail (header != NULL, FALSE);</span></span>
-<span id="L1501"><span class="lineNum">    1501</span> <span class="tlaGNC">         400 :   g_return_val_if_fail (gst_tensor_meta_info_validate (meta), FALSE);</span></span>
+<span id="L1500"><span class="lineNum">    1500</span> <span class="tlaGNC">         400 :   g_return_val_if_fail (header != NULL, FALSE);</span></span>
+<span id="L1501"><span class="lineNum">    1501</span> <span class="tlaGNC">         399 :   g_return_val_if_fail (gst_tensor_meta_info_validate (meta), FALSE);</span></span>
 <span id="L1502"><span class="lineNum">    1502</span>              : </span>
-<span id="L1503"><span class="lineNum">    1503</span> <span class="tlaGNC">         399 :   hsize = gst_tensor_meta_info_get_header_size (meta);</span></span>
+<span id="L1503"><span class="lineNum">    1503</span> <span class="tlaGNC">         398 :   hsize = gst_tensor_meta_info_get_header_size (meta);</span></span>
 <span id="L1504"><span class="lineNum">    1504</span>              : </span>
-<span id="L1505"><span class="lineNum">    1505</span> <span class="tlaGNC">         399 :   memset (header, 0, hsize);</span></span>
+<span id="L1505"><span class="lineNum">    1505</span> <span class="tlaGNC">         398 :   memset (header, 0, hsize);</span></span>
 <span id="L1506"><span class="lineNum">    1506</span>              : </span>
-<span id="L1507"><span class="lineNum">    1507</span> <span class="tlaGNC">         399 :   memcpy (header, meta, sizeof (GstTensorMetaInfo));</span></span>
-<span id="L1508"><span class="lineNum">    1508</span> <span class="tlaGNC">         399 :   return TRUE;</span></span>
+<span id="L1507"><span class="lineNum">    1507</span> <span class="tlaGNC">         398 :   memcpy (header, meta, sizeof (GstTensorMetaInfo));</span></span>
+<span id="L1508"><span class="lineNum">    1508</span> <span class="tlaGNC">         398 :   return TRUE;</span></span>
 <span id="L1509"><span class="lineNum">    1509</span>              : }</span>
 <span id="L1510"><span class="lineNum">    1510</span>              : </span>
 <span id="L1511"><span class="lineNum">    1511</span>              : /**</span>
@@ -1577,32 +1577,32 @@
 <span id="L1515"><span class="lineNum">    1515</span>              :  * @return TRUE if successfully set the meta</span>
 <span id="L1516"><span class="lineNum">    1516</span>              :  */</span>
 <span id="L1517"><span class="lineNum">    1517</span>              : gboolean</span>
-<span id="L1518"><span class="lineNum">    1518</span> <span class="tlaGNC">       23773 : gst_tensor_meta_info_parse_header (GstTensorMetaInfo * meta, gpointer header)</span></span>
+<span id="L1518"><span class="lineNum">    1518</span> <span class="tlaGNC">       23822 : gst_tensor_meta_info_parse_header (GstTensorMetaInfo * meta, gpointer header)</span></span>
 <span id="L1519"><span class="lineNum">    1519</span>              : {</span>
-<span id="L1520"><span class="lineNum">    1520</span> <span class="tlaGNC">       23773 :   uint32_t *val = (uint32_t *) header;</span></span>
+<span id="L1520"><span class="lineNum">    1520</span> <span class="tlaGNC">       23822 :   uint32_t *val = (uint32_t *) header;</span></span>
 <span id="L1521"><span class="lineNum">    1521</span>              : </span>
-<span id="L1522"><span class="lineNum">    1522</span> <span class="tlaGNC">       23773 :   g_return_val_if_fail (header != NULL, FALSE);</span></span>
-<span id="L1523"><span class="lineNum">    1523</span> <span class="tlaGNC">       23772 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
+<span id="L1522"><span class="lineNum">    1522</span> <span class="tlaGNC">       23822 :   g_return_val_if_fail (header != NULL, FALSE);</span></span>
+<span id="L1523"><span class="lineNum">    1523</span> <span class="tlaGNC">       23821 :   g_return_val_if_fail (meta != NULL, FALSE);</span></span>
 <span id="L1524"><span class="lineNum">    1524</span>              : </span>
-<span id="L1525"><span class="lineNum">    1525</span> <span class="tlaGNC">       23771 :   gst_tensor_meta_info_init (meta);</span></span>
+<span id="L1525"><span class="lineNum">    1525</span> <span class="tlaGNC">       23820 :   gst_tensor_meta_info_init (meta);</span></span>
 <span id="L1526"><span class="lineNum">    1526</span>              : </span>
-<span id="L1527"><span class="lineNum">    1527</span> <span class="tlaGNC">       23771 :   meta-&gt;magic = val[0];</span></span>
-<span id="L1528"><span class="lineNum">    1528</span> <span class="tlaGNC">       23771 :   meta-&gt;version = val[1];</span></span>
-<span id="L1529"><span class="lineNum">    1529</span> <span class="tlaGNC">       23771 :   meta-&gt;type = val[2];</span></span>
-<span id="L1530"><span class="lineNum">    1530</span> <span class="tlaGNC">       23771 :   memcpy (meta-&gt;dimension, &amp;val[3], sizeof (uint32_t) * NNS_TENSOR_RANK_LIMIT);</span></span>
-<span id="L1531"><span class="lineNum">    1531</span> <span class="tlaGNC">       23771 :   meta-&gt;format = val[19];</span></span>
-<span id="L1532"><span class="lineNum">    1532</span> <span class="tlaGNC">       23771 :   meta-&gt;media_type = val[20];</span></span>
+<span id="L1527"><span class="lineNum">    1527</span> <span class="tlaGNC">       23820 :   meta-&gt;magic = val[0];</span></span>
+<span id="L1528"><span class="lineNum">    1528</span> <span class="tlaGNC">       23820 :   meta-&gt;version = val[1];</span></span>
+<span id="L1529"><span class="lineNum">    1529</span> <span class="tlaGNC">       23820 :   meta-&gt;type = val[2];</span></span>
+<span id="L1530"><span class="lineNum">    1530</span> <span class="tlaGNC">       23820 :   memcpy (meta-&gt;dimension, &amp;val[3], sizeof (uint32_t) * NNS_TENSOR_RANK_LIMIT);</span></span>
+<span id="L1531"><span class="lineNum">    1531</span> <span class="tlaGNC">       23820 :   meta-&gt;format = val[19];</span></span>
+<span id="L1532"><span class="lineNum">    1532</span> <span class="tlaGNC">       23820 :   meta-&gt;media_type = val[20];</span></span>
 <span id="L1533"><span class="lineNum">    1533</span>              : </span>
-<span id="L1534"><span class="lineNum">    1534</span> <span class="tlaGNC">       23771 :   switch ((tensor_format) meta-&gt;format) {</span></span>
+<span id="L1534"><span class="lineNum">    1534</span> <span class="tlaGNC">       23820 :   switch ((tensor_format) meta-&gt;format) {</span></span>
 <span id="L1535"><span class="lineNum">    1535</span> <span class="tlaGNC">         204 :     case _NNS_TENSOR_FORMAT_SPARSE:</span></span>
 <span id="L1536"><span class="lineNum">    1536</span> <span class="tlaGNC">         204 :       meta-&gt;sparse_info.nnz = val[21];</span></span>
 <span id="L1537"><span class="lineNum">    1537</span> <span class="tlaGNC">         204 :       break;</span></span>
-<span id="L1538"><span class="lineNum">    1538</span> <span class="tlaGNC">       23567 :     default:</span></span>
-<span id="L1539"><span class="lineNum">    1539</span> <span class="tlaGNC">       23567 :       break;</span></span>
+<span id="L1538"><span class="lineNum">    1538</span> <span class="tlaGNC">       23616 :     default:</span></span>
+<span id="L1539"><span class="lineNum">    1539</span> <span class="tlaGNC">       23616 :       break;</span></span>
 <span id="L1540"><span class="lineNum">    1540</span>              :   }</span>
 <span id="L1541"><span class="lineNum">    1541</span>              : </span>
 <span id="L1542"><span class="lineNum">    1542</span>              :   /** @todo update meta info for each version */</span>
-<span id="L1543"><span class="lineNum">    1543</span> <span class="tlaGNC">       23771 :   return gst_tensor_meta_info_validate (meta);</span></span>
+<span id="L1543"><span class="lineNum">    1543</span> <span class="tlaGNC">       23820 :   return gst_tensor_meta_info_validate (meta);</span></span>
 <span id="L1544"><span class="lineNum">    1544</span>              : }</span>
 <span id="L1545"><span class="lineNum">    1545</span>              : </span>
 <span id="L1546"><span class="lineNum">    1546</span>              : /**</span>
@@ -1636,19 +1636,19 @@
 <span id="L1574"><span class="lineNum">    1574</span>              :  * @param key The key string value</span>
 <span id="L1575"><span class="lineNum">    1575</span>              :  */</span>
 <span id="L1576"><span class="lineNum">    1576</span>              : gint</span>
-<span id="L1577"><span class="lineNum">    1577</span> <span class="tlaGNC">       12308 : find_key_strv (const gchar ** strv, const gchar * key)</span></span>
+<span id="L1577"><span class="lineNum">    1577</span> <span class="tlaGNC">       12298 : find_key_strv (const gchar ** strv, const gchar * key)</span></span>
 <span id="L1578"><span class="lineNum">    1578</span>              : {</span>
-<span id="L1579"><span class="lineNum">    1579</span> <span class="tlaGNC">       12308 :   gint cursor = 0;</span></span>
+<span id="L1579"><span class="lineNum">    1579</span> <span class="tlaGNC">       12298 :   gint cursor = 0;</span></span>
 <span id="L1580"><span class="lineNum">    1580</span>              : </span>
-<span id="L1581"><span class="lineNum">    1581</span> <span class="tlaGNC">       12308 :   if (strv == NULL) {</span></span>
+<span id="L1581"><span class="lineNum">    1581</span> <span class="tlaGNC">       12298 :   if (strv == NULL) {</span></span>
 <span id="L1582"><span class="lineNum">    1582</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_logf_stacktrace</span></span>
 <span id="L1583"><span class="lineNum">    1583</span>              :         (&quot;find_key_strv is called with a null pointer. Possible internal logic errors.\n&quot;);</span>
 <span id="L1584"><span class="lineNum">    1584</span> <span class="tlaUNC">           0 :     return -1;</span></span>
 <span id="L1585"><span class="lineNum">    1585</span>              :   }</span>
-<span id="L1586"><span class="lineNum">    1586</span> <span class="tlaGNC tlaBgGNC">       14834 :   while (strv[cursor] &amp;&amp; key) {</span></span>
-<span id="L1587"><span class="lineNum">    1587</span> <span class="tlaGNC">       13341 :     if (g_ascii_strcasecmp (strv[cursor], key) == 0)</span></span>
-<span id="L1588"><span class="lineNum">    1588</span> <span class="tlaGNC">       10815 :       return cursor;</span></span>
-<span id="L1589"><span class="lineNum">    1589</span> <span class="tlaGNC">        2526 :     cursor++;</span></span>
+<span id="L1586"><span class="lineNum">    1586</span> <span class="tlaGNC tlaBgGNC">       14821 :   while (strv[cursor] &amp;&amp; key) {</span></span>
+<span id="L1587"><span class="lineNum">    1587</span> <span class="tlaGNC">       13328 :     if (g_ascii_strcasecmp (strv[cursor], key) == 0)</span></span>
+<span id="L1588"><span class="lineNum">    1588</span> <span class="tlaGNC">       10805 :       return cursor;</span></span>
+<span id="L1589"><span class="lineNum">    1589</span> <span class="tlaGNC">        2523 :     cursor++;</span></span>
 <span id="L1590"><span class="lineNum">    1590</span>              :   }</span>
 <span id="L1591"><span class="lineNum">    1591</span>              : </span>
 <span id="L1592"><span class="lineNum">    1592</span> <span class="tlaGNC">        1493 :   return -1;                    /* Not Found */</span></span>

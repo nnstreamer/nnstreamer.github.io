@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#aafd6bc26c313982dd003a87b0ddf4b26d02f970 - nnstreamer-2.4.2/gst/nnstreamer/ml_agent.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7 - nnstreamer-2.4.2/gst/nnstreamer/ml_agent.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#aafd6bc26c313982dd003a87b0ddf4b26d02f970</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">75.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-05 13:56:04</td>
+            <td class="headerValue">2024-11-06 05:34:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -92,21 +92,21 @@
 <span id="L30"><span class="lineNum">      30</span>              :  * @note The caller should free the return c-string after using it.</span>
 <span id="L31"><span class="lineNum">      31</span>              :  */</span>
 <span id="L32"><span class="lineNum">      32</span>              : gchar *</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">         288 : mlagent_get_model_path_from (const GValue * val)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">         289 : mlagent_get_model_path_from (const GValue * val)</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : {</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         288 :   g_autofree gchar *scheme = NULL;</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         576 :   g_autofree gchar *uri = g_value_dup_string (val);</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         288 :   GError *err = NULL;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         289 :   g_autofree gchar *scheme = NULL;</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         578 :   g_autofree gchar *uri = g_value_dup_string (val);</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         289 :   GError *err = NULL;</span></span>
 <span id="L38"><span class="lineNum">      38</span>              :   gchar *uri_hier_part;</span>
 <span id="L39"><span class="lineNum">      39</span>              :   gchar **parts;</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         288 :   if (!uri)</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         289 :   if (!uri)</span></span>
 <span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC tlaBgUNC">           0 :     return NULL;</span></span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
 <span id="L44"><span class="lineNum">      44</span>              :   /** Common checker for the given URI */</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC tlaBgGNC">         288 :   scheme = g_uri_parse_scheme (uri);</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         288 :   if (!scheme || g_strcmp0 (URI_SCHEME, scheme)) {</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         279 :     return g_steal_pointer (&amp;uri);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC tlaBgGNC">         289 :   scheme = g_uri_parse_scheme (uri);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         289 :   if (!scheme || g_strcmp0 (URI_SCHEME, scheme)) {</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         280 :     return g_steal_pointer (&amp;uri);</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :   }</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           9 :   uri_hier_part = g_strstr_len (uri, -1, &quot;:&quot;);</span></span>
