@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#8989c906adeae0fd05d5b7de434baf783f4b9a55 - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#feddb3fbc93f39c3ebf74aea492720fad02d4ade - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#8989c906adeae0fd05d5b7de434baf783f4b9a55</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#feddb3fbc93f39c3ebf74aea492720fad02d4ade</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">80.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-06 20:14:36</td>
+            <td class="headerValue">2024-11-06 20:57:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -139,7 +139,7 @@
 <span id="L77"><span class="lineNum">      77</span>              :     GST_STATIC_CAPS_ANY);</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
 <span id="L79"><span class="lineNum">      79</span>              : #define gst_tensor_query_client_parent_class parent_class</span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1283 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1281 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              : static void gst_tensor_query_client_finalize (GObject * object);</span>
 <span id="L83"><span class="lineNum">      83</span>              : static void gst_tensor_query_client_set_property (GObject * object,</span>
@@ -580,14 +580,14 @@
 <span id="L518"><span class="lineNum">     518</span>              :  * @brief Internal function to create edge handle.</span>
 <span id="L519"><span class="lineNum">     519</span>              :  */</span>
 <span id="L520"><span class="lineNum">     520</span>              : static gboolean</span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          16 : gst_tensor_query_client_create_edge_handle (GstTensorQueryClient * self)</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          15 : gst_tensor_query_client_create_edge_handle (GstTensorQueryClient * self)</span></span>
 <span id="L522"><span class="lineNum">     522</span>              : {</span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">          16 :   gboolean started = FALSE;</span></span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">          16 :   gchar *prev_caps = NULL;</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">          15 :   gboolean started = FALSE;</span></span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">          15 :   gchar *prev_caps = NULL;</span></span>
 <span id="L525"><span class="lineNum">     525</span>              :   int ret;</span>
 <span id="L526"><span class="lineNum">     526</span>              : </span>
 <span id="L527"><span class="lineNum">     527</span>              :   /* Already created, compare caps string. */</span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">          16 :   if (self-&gt;edge_h) {</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">          15 :   if (self-&gt;edge_h) {</span></span>
 <span id="L529"><span class="lineNum">     529</span> <span class="tlaUNC tlaBgUNC">           0 :     ret = nns_edge_get_info (self-&gt;edge_h, &quot;CAPS&quot;, &amp;prev_caps);</span></span>
 <span id="L530"><span class="lineNum">     530</span>              : </span>
 <span id="L531"><span class="lineNum">     531</span> <span class="tlaUNC">           0 :     if (ret != NNS_EDGE_ERROR_NONE || !prev_caps ||</span></span>
@@ -596,36 +596,36 @@
 <span id="L534"><span class="lineNum">     534</span> <span class="tlaUNC">           0 :       nns_edge_release_handle (self-&gt;edge_h);</span></span>
 <span id="L535"><span class="lineNum">     535</span> <span class="tlaUNC">           0 :       self-&gt;edge_h = NULL;</span></span>
 <span id="L536"><span class="lineNum">     536</span>              :     } else {</span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC tlaBgGNC">          15 :       return TRUE;</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC tlaBgGNC">          14 :       return TRUE;</span></span>
 <span id="L538"><span class="lineNum">     538</span>              :     }</span>
 <span id="L539"><span class="lineNum">     539</span>              :   }</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">          16 :   ret = nns_edge_create_handle (&quot;TEMP_ID&quot;, self-&gt;connect_type,</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">          15 :   ret = nns_edge_create_handle (&quot;TEMP_ID&quot;, self-&gt;connect_type,</span></span>
 <span id="L542"><span class="lineNum">     542</span>              :       NNS_EDGE_NODE_TYPE_QUERY_CLIENT, &amp;self-&gt;edge_h);</span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE)</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE)</span></span>
 <span id="L544"><span class="lineNum">     544</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L545"><span class="lineNum">     545</span>              : </span>
-<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC tlaBgGNC">          16 :   nns_edge_set_event_callback (self-&gt;edge_h, _nns_edge_event_cb, self);</span></span>
+<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC tlaBgGNC">          15 :   nns_edge_set_event_callback (self-&gt;edge_h, _nns_edge_event_cb, self);</span></span>
 <span id="L547"><span class="lineNum">     547</span>              : </span>
-<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">          16 :   if (self-&gt;topic)</span></span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">          15 :   if (self-&gt;topic)</span></span>
 <span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">           1 :     nns_edge_set_info (self-&gt;edge_h, &quot;TOPIC&quot;, self-&gt;topic);</span></span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">          16 :   if (self-&gt;host)</span></span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">          16 :     nns_edge_set_info (self-&gt;edge_h, &quot;HOST&quot;, self-&gt;host);</span></span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">          16 :   if (self-&gt;port &gt; 0) {</span></span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           9 :     gchar *port = g_strdup_printf (&quot;%u&quot;, self-&gt;port);</span></span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           9 :     nns_edge_set_info (self-&gt;edge_h, &quot;PORT&quot;, port);</span></span>
-<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           9 :     g_free (port);</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">          15 :   if (self-&gt;host)</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">          15 :     nns_edge_set_info (self-&gt;edge_h, &quot;HOST&quot;, self-&gt;host);</span></span>
+<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">          15 :   if (self-&gt;port &gt; 0) {</span></span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           8 :     gchar *port = g_strdup_printf (&quot;%u&quot;, self-&gt;port);</span></span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           8 :     nns_edge_set_info (self-&gt;edge_h, &quot;PORT&quot;, port);</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           8 :     g_free (port);</span></span>
 <span id="L556"><span class="lineNum">     556</span>              :   }</span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          16 :   nns_edge_set_info (self-&gt;edge_h, &quot;CAPS&quot;, self-&gt;in_caps_str);</span></span>
+<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          15 :   nns_edge_set_info (self-&gt;edge_h, &quot;CAPS&quot;, self-&gt;in_caps_str);</span></span>
 <span id="L558"><span class="lineNum">     558</span>              : </span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">          16 :   ret = nns_edge_start (self-&gt;edge_h);</span></span>
-<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">          15 :   ret = nns_edge_start (self-&gt;edge_h);</span></span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
 <span id="L561"><span class="lineNum">     561</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge</span></span>
 <span id="L562"><span class="lineNum">     562</span>              :         (&quot;Failed to start NNStreamer-edge. Please check server IP and port.&quot;);</span>
 <span id="L563"><span class="lineNum">     563</span> <span class="tlaUNC">           0 :     goto done;</span></span>
 <span id="L564"><span class="lineNum">     564</span>              :   }</span>
 <span id="L565"><span class="lineNum">     565</span>              : </span>
-<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC tlaBgGNC">          16 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
+<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC tlaBgGNC">          15 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
 <span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
 <span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           4 :     nns_loge (&quot;Failed to connect to edge server!&quot;);</span></span>
 <span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">           4 :     goto done;</span></span>
@@ -636,40 +636,40 @@
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          15 : done:</span></span>
 <span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          15 :   if (!started) {</span></span>
 <span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           4 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           4 :     self-&gt;edge_h = NULL;</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           3 :     self-&gt;edge_h = NULL;</span></span>
 <span id="L578"><span class="lineNum">     578</span>              :   }</span>
 <span id="L579"><span class="lineNum">     579</span>              : </span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          15 :   return started;</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          14 :   return started;</span></span>
 <span id="L581"><span class="lineNum">     581</span>              : }</span>
 <span id="L582"><span class="lineNum">     582</span>              : </span>
 <span id="L583"><span class="lineNum">     583</span>              : /**</span>
 <span id="L584"><span class="lineNum">     584</span>              :  * @brief This function handles sink event.</span>
 <span id="L585"><span class="lineNum">     585</span>              :  */</span>
 <span id="L586"><span class="lineNum">     586</span>              : static gboolean</span>
-<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">          50 : gst_tensor_query_client_sink_event (GstPad * pad,</span></span>
+<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">          49 : gst_tensor_query_client_sink_event (GstPad * pad,</span></span>
 <span id="L588"><span class="lineNum">     588</span>              :     GstObject * parent, GstEvent * event)</span>
 <span id="L589"><span class="lineNum">     589</span>              : {</span>
-<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          50 :   GstTensorQueryClient *self = GST_TENSOR_QUERY_CLIENT (parent);</span></span>
+<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          49 :   GstTensorQueryClient *self = GST_TENSOR_QUERY_CLIENT (parent);</span></span>
 <span id="L591"><span class="lineNum">     591</span>              : </span>
-<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">          50 :   GST_DEBUG_OBJECT (self, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">          49 :   GST_DEBUG_OBJECT (self, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L593"><span class="lineNum">     593</span>              :       GST_EVENT_TYPE_NAME (event), event);</span>
 <span id="L594"><span class="lineNum">     594</span>              : </span>
-<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          50 :   switch (GST_EVENT_TYPE (event)) {</span></span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          16 :     case GST_EVENT_CAPS:</span></span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          49 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          15 :     case GST_EVENT_CAPS:</span></span>
 <span id="L597"><span class="lineNum">     597</span>              :     {</span>
 <span id="L598"><span class="lineNum">     598</span>              :       GstCaps *caps;</span>
 <span id="L599"><span class="lineNum">     599</span>              :       gboolean ret;</span>
 <span id="L600"><span class="lineNum">     600</span>              : </span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">          16 :       gst_event_parse_caps (event, &amp;caps);</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          16 :       g_free (self-&gt;in_caps_str);</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          16 :       self-&gt;in_caps_str = gst_caps_to_string (caps);</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">          15 :       gst_event_parse_caps (event, &amp;caps);</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          15 :       g_free (self-&gt;in_caps_str);</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          15 :       self-&gt;in_caps_str = gst_caps_to_string (caps);</span></span>
 <span id="L604"><span class="lineNum">     604</span>              : </span>
-<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">          16 :       ret = gst_tensor_query_client_create_edge_handle (self);</span></span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          15 :       if (!ret)</span></span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           4 :         nns_loge (&quot;Failed to create edge handle, cannot start query client.&quot;);</span></span>
+<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">          15 :       ret = gst_tensor_query_client_create_edge_handle (self);</span></span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          14 :       if (!ret)</span></span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           3 :         nns_loge (&quot;Failed to create edge handle, cannot start query client.&quot;);</span></span>
 <span id="L608"><span class="lineNum">     608</span>              : </span>
-<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">          15 :       gst_event_unref (event);</span></span>
-<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">          15 :       return ret;</span></span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">          14 :       gst_event_unref (event);</span></span>
+<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">          14 :       return ret;</span></span>
 <span id="L611"><span class="lineNum">     611</span>              :     }</span>
 <span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">          34 :     default:</span></span>
 <span id="L613"><span class="lineNum">     613</span> <span class="tlaGNC">          34 :       break;</span></span>
@@ -682,15 +682,15 @@
 <span id="L620"><span class="lineNum">     620</span>              :  * @brief This function handles sink pad query.</span>
 <span id="L621"><span class="lineNum">     621</span>              :  */</span>
 <span id="L622"><span class="lineNum">     622</span>              : static gboolean</span>
-<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">         114 : gst_tensor_query_client_sink_query (GstPad * pad,</span></span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">         113 : gst_tensor_query_client_sink_query (GstPad * pad,</span></span>
 <span id="L624"><span class="lineNum">     624</span>              :     GstObject * parent, GstQuery * query)</span>
 <span id="L625"><span class="lineNum">     625</span>              : {</span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">         114 :   GstTensorQueryClient *self = GST_TENSOR_QUERY_CLIENT (parent);</span></span>
+<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">         113 :   GstTensorQueryClient *self = GST_TENSOR_QUERY_CLIENT (parent);</span></span>
 <span id="L627"><span class="lineNum">     627</span>              : </span>
-<span id="L628"><span class="lineNum">     628</span> <span class="tlaGNC">         114 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L628"><span class="lineNum">     628</span> <span class="tlaGNC">         113 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L629"><span class="lineNum">     629</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L630"><span class="lineNum">     630</span>              : </span>
-<span id="L631"><span class="lineNum">     631</span> <span class="tlaGNC">         114 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L631"><span class="lineNum">     631</span> <span class="tlaGNC">         113 :   switch (GST_QUERY_TYPE (query)) {</span></span>
 <span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">          70 :     case GST_QUERY_CAPS:</span></span>
 <span id="L633"><span class="lineNum">     633</span>              :     {</span>
 <span id="L634"><span class="lineNum">     634</span>              :       GstCaps *caps;</span>
@@ -703,24 +703,24 @@
 <span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">          70 :       gst_caps_unref (caps);</span></span>
 <span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">          70 :       return TRUE;</span></span>
 <span id="L643"><span class="lineNum">     643</span>              :     }</span>
-<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">          44 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">          43 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
 <span id="L645"><span class="lineNum">     645</span>              :     {</span>
 <span id="L646"><span class="lineNum">     646</span>              :       GstCaps *caps;</span>
 <span id="L647"><span class="lineNum">     647</span>              :       GstCaps *template_caps;</span>
-<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">          44 :       gboolean res = FALSE;</span></span>
+<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">          43 :       gboolean res = FALSE;</span></span>
 <span id="L649"><span class="lineNum">     649</span>              : </span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          44 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
-<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">          44 :       silent_debug_caps (self, caps, &quot;accept-caps&quot;);</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          43 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
+<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">          43 :       silent_debug_caps (self, caps, &quot;accept-caps&quot;);</span></span>
 <span id="L652"><span class="lineNum">     652</span>              : </span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">          44 :       if (gst_caps_is_fixed (caps)) {</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">          44 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">          43 :       if (gst_caps_is_fixed (caps)) {</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">          43 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
 <span id="L655"><span class="lineNum">     655</span>              : </span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          44 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">          44 :         gst_caps_unref (template_caps);</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          43 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">          43 :         gst_caps_unref (template_caps);</span></span>
 <span id="L658"><span class="lineNum">     658</span>              :       }</span>
 <span id="L659"><span class="lineNum">     659</span>              : </span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">          44 :       gst_query_set_accept_caps_result (query, res);</span></span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">          44 :       return TRUE;</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">          43 :       gst_query_set_accept_caps_result (query, res);</span></span>
+<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">          43 :       return TRUE;</span></span>
 <span id="L662"><span class="lineNum">     662</span>              :     }</span>
 <span id="L663"><span class="lineNum">     663</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
 <span id="L664"><span class="lineNum">     664</span> <span class="tlaUNC">           0 :       break;</span></span>
@@ -789,45 +789,45 @@
 <span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">         300 :   data_h = g_async_queue_timeout_pop (self-&gt;msg_queue,</span></span>
 <span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">         150 :       self-&gt;timeout * G_TIME_SPAN_MILLISECOND);</span></span>
 <span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         150 :   if (data_h) {</span></span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          81 :     if (self-&gt;requested_num &gt; 0)</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          81 :       self-&gt;requested_num--;</span></span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          81 :     ret = nns_edge_data_get_count (data_h, &amp;num_data);</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          80 :     if (self-&gt;requested_num &gt; 0)</span></span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          80 :       self-&gt;requested_num--;</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          80 :     ret = nns_edge_data_get_count (data_h, &amp;num_data);</span></span>
 <span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          81 :     if (ret == NNS_EDGE_ERROR_NONE &amp;&amp; num_data &gt; 0) {</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          80 :     if (ret == NNS_EDGE_ERROR_NONE &amp;&amp; num_data &gt; 0) {</span></span>
 <span id="L735"><span class="lineNum">     735</span>              :       GstMemory *new_mem;</span>
 <span id="L736"><span class="lineNum">     736</span>              :       GstTensorInfo *_info;</span>
 <span id="L737"><span class="lineNum">     737</span>              : </span>
-<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          81 :       out_buf = gst_buffer_new ();</span></span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          80 :       out_buf = gst_buffer_new ();</span></span>
 <span id="L739"><span class="lineNum">     739</span>              : </span>
-<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">         162 :       for (i = 0; i &lt; num_data; i++) {</span></span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">          81 :         void *data = NULL;</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">         160 :       for (i = 0; i &lt; num_data; i++) {</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">          80 :         void *data = NULL;</span></span>
 <span id="L742"><span class="lineNum">     742</span>              :         nns_size_t data_len;</span>
 <span id="L743"><span class="lineNum">     743</span>              :         gpointer new_data;</span>
 <span id="L744"><span class="lineNum">     744</span>              : </span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          81 :         nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          81 :         new_data = _g_memdup (data, data_len);</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          80 :         nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          80 :         new_data = _g_memdup (data, data_len);</span></span>
 <span id="L747"><span class="lineNum">     747</span>              : </span>
-<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">          81 :         new_mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
+<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">          80 :         new_mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
 <span id="L749"><span class="lineNum">     749</span>              :             new_data, g_free);</span>
 <span id="L750"><span class="lineNum">     750</span>              : </span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          81 :         if (self-&gt;is_tensor) {</span></span>
-<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          72 :           _info = gst_tensors_info_get_nth_info (&amp;self-&gt;config.info, i);</span></span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">          72 :           gst_tensor_buffer_append_memory (out_buf, new_mem, _info);</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          80 :         if (self-&gt;is_tensor) {</span></span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          71 :           _info = gst_tensors_info_get_nth_info (&amp;self-&gt;config.info, i);</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">          71 :           gst_tensor_buffer_append_memory (out_buf, new_mem, _info);</span></span>
 <span id="L754"><span class="lineNum">     754</span>              :         } else {</span>
 <span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">           9 :           gst_buffer_append_memory (out_buf, new_mem);</span></span>
 <span id="L756"><span class="lineNum">     756</span>              :         }</span>
 <span id="L757"><span class="lineNum">     757</span>              :       }</span>
 <span id="L758"><span class="lineNum">     758</span>              : </span>
 <span id="L759"><span class="lineNum">     759</span>              :       /* metadata from incoming buffer */</span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">          81 :       gst_buffer_copy_into (out_buf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">          80 :       gst_buffer_copy_into (out_buf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
 <span id="L761"><span class="lineNum">     761</span>              : </span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          81 :       res = gst_pad_push (self-&gt;srcpad, out_buf);</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          80 :       res = gst_pad_push (self-&gt;srcpad, out_buf);</span></span>
 <span id="L763"><span class="lineNum">     763</span>              :     } else {</span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Failed to get the number of memories of the edge data.&quot;);</span></span>
 <span id="L765"><span class="lineNum">     765</span> <span class="tlaUNC">           0 :       res = GST_FLOW_ERROR;</span></span>
 <span id="L766"><span class="lineNum">     766</span>              :     }</span>
 <span id="L767"><span class="lineNum">     767</span>              : </span>
-<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC tlaBgGNC">          81 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC tlaBgGNC">          80 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L769"><span class="lineNum">     769</span>              :   }</span>
 <span id="L770"><span class="lineNum">     770</span>              : </span>
 <span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">         263 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
