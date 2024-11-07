@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7 - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_grpc_flatbuf.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_grpc_flatbuf.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">87.1&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-07 05:33:35</td>
+            <td class="headerValue">2024-11-08 05:30:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -565,18 +565,18 @@
 <span id="L503"><span class="lineNum">     503</span>              : </span>
 <span id="L504"><span class="lineNum">     504</span>              :     /* 10 msec deadline to wait the next event */</span>
 <span id="L505"><span class="lineNum">     505</span>              :     gpr_timespec deadline = gpr_time_add (</span>
-<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         553 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         552 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
 <span id="L507"><span class="lineNum">     507</span>              : </span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">         553 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">         552 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
 <span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          23 :       case CompletionQueue::GOT_EVENT:</span></span>
 <span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          23 :         static_cast&lt;AsyncCallDataServer *&gt; (tag)-&gt;RunState (ok);</span></span>
 <span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">          23 :         break;</span></span>
 <span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">           2 :       case CompletionQueue::SHUTDOWN:</span></span>
 <span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">           2 :         return;</span></span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         528 :       default:</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         528 :         break;</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         527 :       default:</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         527 :         break;</span></span>
 <span id="L516"><span class="lineNum">     516</span>              :     }</span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">         551 :   }</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">         550 :   }</span></span>
 <span id="L518"><span class="lineNum">     518</span>              : }</span>
 <span id="L519"><span class="lineNum">     519</span>              : </span>
 <span id="L520"><span class="lineNum">     520</span>              : /** @brief gRPC client thread */</span>
@@ -589,22 +589,22 @@
 <span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           4 :   new AsyncCallDataClient (this, client_stub_.get (), &amp;cq);</span></span>
 <span id="L528"><span class="lineNum">     528</span>              : </span>
 <span id="L529"><span class="lineNum">     529</span>              :   /* until the stop is called */</span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">         160 :   while (!stop_) {</span></span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">         162 :   while (!stop_) {</span></span>
 <span id="L531"><span class="lineNum">     531</span>              :     void *tag;</span>
 <span id="L532"><span class="lineNum">     532</span>              :     bool ok;</span>
 <span id="L533"><span class="lineNum">     533</span>              : </span>
 <span id="L534"><span class="lineNum">     534</span>              :     /* 10 msec deadline to wait the next event */</span>
 <span id="L535"><span class="lineNum">     535</span>              :     gpr_timespec deadline = gpr_time_add (</span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         156 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         158 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
 <span id="L537"><span class="lineNum">     537</span>              : </span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         156 :     switch (cq.AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         158 :     switch (cq.AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
 <span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">          34 :       case CompletionQueue::GOT_EVENT:</span></span>
 <span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">          34 :         static_cast&lt;AsyncCallDataClient *&gt; (tag)-&gt;RunState (ok);</span></span>
 <span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">          34 :         if (ok == false)</span></span>
 <span id="L542"><span class="lineNum">     542</span> <span class="tlaUNC tlaBgUNC">           0 :           return;</span></span>
 <span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC tlaBgGNC">          34 :         break;</span></span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">         122 :       default:</span></span>
-<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">         122 :         break;</span></span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">         124 :       default:</span></span>
+<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">         124 :         break;</span></span>
 <span id="L546"><span class="lineNum">     546</span>              :     }</span>
 <span id="L547"><span class="lineNum">     547</span>              :   }</span>
 <span id="L548"><span class="lineNum">     548</span>              : }</span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7 - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#178e7a0fe10ae0f5b46c40f5250c9637cfb100c7</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">80.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-07 05:33:35</td>
+            <td class="headerValue">2024-11-08 05:30:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -286,8 +286,8 @@
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          11 :   g_free (self-&gt;in_caps_str);</span></span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          11 :   self-&gt;in_caps_str = NULL;</span></span>
 <span id="L226"><span class="lineNum">     226</span>              : </span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          17 :   while ((data_h = g_async_queue_try_pop (self-&gt;msg_queue))) {</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           6 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          16 :   while ((data_h = g_async_queue_try_pop (self-&gt;msg_queue))) {</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           5 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L229"><span class="lineNum">     229</span>              :   }</span>
 <span id="L230"><span class="lineNum">     230</span>              : </span>
 <span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          11 :   if (self-&gt;msg_queue) {</span></span>
@@ -596,7 +596,7 @@
 <span id="L534"><span class="lineNum">     534</span> <span class="tlaUNC">           0 :       nns_edge_release_handle (self-&gt;edge_h);</span></span>
 <span id="L535"><span class="lineNum">     535</span> <span class="tlaUNC">           0 :       self-&gt;edge_h = NULL;</span></span>
 <span id="L536"><span class="lineNum">     536</span>              :     } else {</span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC tlaBgGNC">          14 :       return TRUE;</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC tlaBgGNC">          15 :       return TRUE;</span></span>
 <span id="L538"><span class="lineNum">     538</span>              :     }</span>
 <span id="L539"><span class="lineNum">     539</span>              :   }</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
@@ -636,10 +636,10 @@
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          15 : done:</span></span>
 <span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          15 :   if (!started) {</span></span>
 <span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           4 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           3 :     self-&gt;edge_h = NULL;</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           4 :     self-&gt;edge_h = NULL;</span></span>
 <span id="L578"><span class="lineNum">     578</span>              :   }</span>
 <span id="L579"><span class="lineNum">     579</span>              : </span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          14 :   return started;</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          15 :   return started;</span></span>
 <span id="L581"><span class="lineNum">     581</span>              : }</span>
 <span id="L582"><span class="lineNum">     582</span>              : </span>
 <span id="L583"><span class="lineNum">     583</span>              : /**</span>
@@ -665,8 +665,8 @@
 <span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          15 :       self-&gt;in_caps_str = gst_caps_to_string (caps);</span></span>
 <span id="L604"><span class="lineNum">     604</span>              : </span>
 <span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">          15 :       ret = gst_tensor_query_client_create_edge_handle (self);</span></span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          14 :       if (!ret)</span></span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           3 :         nns_loge (&quot;Failed to create edge handle, cannot start query client.&quot;);</span></span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          15 :       if (!ret)</span></span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           4 :         nns_loge (&quot;Failed to create edge handle, cannot start query client.&quot;);</span></span>
 <span id="L608"><span class="lineNum">     608</span>              : </span>
 <span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">          14 :       gst_event_unref (event);</span></span>
 <span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">          14 :       return ret;</span></span>
