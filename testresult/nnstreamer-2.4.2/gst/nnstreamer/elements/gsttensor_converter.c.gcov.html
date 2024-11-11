@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#9060a15e89650722e613cb4302a667f894dc4dcb - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_converter.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_converter.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#9060a15e89650722e613cb4302a667f894dc4dcb</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#a8d58cb324dc1085c7e4ad327688552149bb86cb</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-11 13:54:35</td>
+            <td class="headerValue">2024-11-12 05:30:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">97.6&nbsp;%</td>
@@ -204,7 +204,7 @@
 <span id="L142"><span class="lineNum">     142</span>              : #define DEFAULT_FRAMES_PER_TENSOR 1</span>
 <span id="L143"><span class="lineNum">     143</span>              : </span>
 <span id="L144"><span class="lineNum">     144</span>              : #define gst_tensor_converter_parent_class parent_class</span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC tlaBgGNC">       42098 : G_DEFINE_TYPE (GstTensorConverter, gst_tensor_converter, GST_TYPE_ELEMENT);</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC tlaBgGNC">       42184 : G_DEFINE_TYPE (GstTensorConverter, gst_tensor_converter, GST_TYPE_ELEMENT);</span></span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
 <span id="L147"><span class="lineNum">     147</span>              : static void gst_tensor_converter_finalize (GObject * object);</span>
 <span id="L148"><span class="lineNum">     148</span>              : static void gst_tensor_converter_set_property (GObject * object,</span>
@@ -645,17 +645,17 @@
 <span id="L583"><span class="lineNum">     583</span>              :  * @brief This function handles sink event.</span>
 <span id="L584"><span class="lineNum">     584</span>              :  */</span>
 <span id="L585"><span class="lineNum">     585</span>              : static gboolean</span>
-<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">        3384 : gst_tensor_converter_sink_event (GstPad * pad, GstObject * parent,</span></span>
+<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">        3390 : gst_tensor_converter_sink_event (GstPad * pad, GstObject * parent,</span></span>
 <span id="L587"><span class="lineNum">     587</span>              :     GstEvent * event)</span>
 <span id="L588"><span class="lineNum">     588</span>              : {</span>
 <span id="L589"><span class="lineNum">     589</span>              :   GstTensorConverter *self;</span>
 <span id="L590"><span class="lineNum">     590</span>              : </span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">        3384 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">        3390 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
 <span id="L592"><span class="lineNum">     592</span>              : </span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">        3384 :   GST_DEBUG_OBJECT (self, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">        3390 :   GST_DEBUG_OBJECT (self, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L594"><span class="lineNum">     594</span>              :       GST_EVENT_TYPE_NAME (event), event);</span>
 <span id="L595"><span class="lineNum">     595</span>              : </span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">        3384 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">        3390 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">         866 :     case GST_EVENT_CAPS:</span></span>
 <span id="L598"><span class="lineNum">     598</span>              :     {</span>
 <span id="L599"><span class="lineNum">     599</span>              :       GstCaps *in_caps;</span>
@@ -702,63 +702,63 @@
 <span id="L640"><span class="lineNum">     640</span> <span class="tlaUNC">           0 :       gst_event_unref (event);</span></span>
 <span id="L641"><span class="lineNum">     641</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
 <span id="L642"><span class="lineNum">     642</span>              :     }</span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC tlaBgGNC">        1687 :     default:</span></span>
-<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">        1687 :       break;</span></span>
+<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC tlaBgGNC">        1693 :     default:</span></span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">        1693 :       break;</span></span>
 <span id="L645"><span class="lineNum">     645</span>              :   }</span>
 <span id="L646"><span class="lineNum">     646</span>              : </span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">        1687 :   return gst_pad_event_default (pad, parent, event);</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">        1693 :   return gst_pad_event_default (pad, parent, event);</span></span>
 <span id="L648"><span class="lineNum">     648</span>              : }</span>
 <span id="L649"><span class="lineNum">     649</span>              : </span>
 <span id="L650"><span class="lineNum">     650</span>              : /**</span>
 <span id="L651"><span class="lineNum">     651</span>              :  * @brief This function handles sink pad query.</span>
 <span id="L652"><span class="lineNum">     652</span>              :  */</span>
 <span id="L653"><span class="lineNum">     653</span>              : static gboolean</span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">        6860 : gst_tensor_converter_sink_query (GstPad * pad, GstObject * parent,</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">        6843 : gst_tensor_converter_sink_query (GstPad * pad, GstObject * parent,</span></span>
 <span id="L655"><span class="lineNum">     655</span>              :     GstQuery * query)</span>
 <span id="L656"><span class="lineNum">     656</span>              : {</span>
 <span id="L657"><span class="lineNum">     657</span>              :   GstTensorConverter *self;</span>
 <span id="L658"><span class="lineNum">     658</span>              : </span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">        6860 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">        6860 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">        6843 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">        6843 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L661"><span class="lineNum">     661</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L662"><span class="lineNum">     662</span>              : </span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        6860 :   switch (GST_QUERY_TYPE (query)) {</span></span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">        4201 :     case GST_QUERY_CAPS:</span></span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        6843 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">        4188 :     case GST_QUERY_CAPS:</span></span>
 <span id="L665"><span class="lineNum">     665</span>              :     {</span>
 <span id="L666"><span class="lineNum">     666</span>              :       GstCaps *caps;</span>
 <span id="L667"><span class="lineNum">     667</span>              :       GstCaps *filter;</span>
 <span id="L668"><span class="lineNum">     668</span>              : </span>
-<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">        4201 :       gst_query_parse_caps (query, &amp;filter);</span></span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">        4201 :       caps = gst_tensor_converter_query_caps (self, pad, filter);</span></span>
+<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">        4188 :       gst_query_parse_caps (query, &amp;filter);</span></span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">        4188 :       caps = gst_tensor_converter_query_caps (self, pad, filter);</span></span>
 <span id="L671"><span class="lineNum">     671</span>              : </span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4201 :       gst_query_set_caps_result (query, caps);</span></span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4201 :       gst_caps_unref (caps);</span></span>
-<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">        4201 :       return TRUE;</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4188 :       gst_query_set_caps_result (query, caps);</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4188 :       gst_caps_unref (caps);</span></span>
+<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">        4188 :       return TRUE;</span></span>
 <span id="L675"><span class="lineNum">     675</span>              :     }</span>
-<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">        1680 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
+<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">        1677 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
 <span id="L677"><span class="lineNum">     677</span>              :     {</span>
 <span id="L678"><span class="lineNum">     678</span>              :       GstCaps *caps;</span>
 <span id="L679"><span class="lineNum">     679</span>              :       GstCaps *template_caps;</span>
-<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">        1680 :       gboolean res = FALSE;</span></span>
+<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">        1677 :       gboolean res = FALSE;</span></span>
 <span id="L681"><span class="lineNum">     681</span>              : </span>
-<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">        1680 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">        1680 :       silent_debug_caps (self, caps, &quot;accept-caps&quot;);</span></span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">        1677 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
+<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">        1677 :       silent_debug_caps (self, caps, &quot;accept-caps&quot;);</span></span>
 <span id="L684"><span class="lineNum">     684</span>              : </span>
-<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">        1680 :       if (gst_caps_is_fixed (caps)) {</span></span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">        1680 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">        1677 :       if (gst_caps_is_fixed (caps)) {</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">        1677 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
 <span id="L687"><span class="lineNum">     687</span>              : </span>
-<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">        1680 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">        1680 :         gst_caps_unref (template_caps);</span></span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">        1677 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">        1677 :         gst_caps_unref (template_caps);</span></span>
 <span id="L690"><span class="lineNum">     690</span>              :       }</span>
 <span id="L691"><span class="lineNum">     691</span>              : </span>
-<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">        1680 :       gst_query_set_accept_caps_result (query, res);</span></span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">        1680 :       return TRUE;</span></span>
+<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">        1677 :       gst_query_set_accept_caps_result (query, res);</span></span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">        1677 :       return TRUE;</span></span>
 <span id="L694"><span class="lineNum">     694</span>              :     }</span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">         979 :     default:</span></span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">         979 :       break;</span></span>
+<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">         978 :     default:</span></span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">         978 :       break;</span></span>
 <span id="L697"><span class="lineNum">     697</span>              :   }</span>
 <span id="L698"><span class="lineNum">     698</span>              : </span>
-<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC">         979 :   return gst_pad_query_default (pad, parent, query);</span></span>
+<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC">         978 :   return gst_pad_query_default (pad, parent, query);</span></span>
 <span id="L700"><span class="lineNum">     700</span>              : }</span>
 <span id="L701"><span class="lineNum">     701</span>              : </span>
 <span id="L702"><span class="lineNum">     702</span>              : /**</span>
@@ -781,17 +781,17 @@
 <span id="L719"><span class="lineNum">     719</span>              :  * @brief This function handles src pad query.</span>
 <span id="L720"><span class="lineNum">     720</span>              :  */</span>
 <span id="L721"><span class="lineNum">     721</span>              : static gboolean</span>
-<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">        5924 : gst_tensor_converter_src_query (GstPad * pad, GstObject * parent,</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">        5912 : gst_tensor_converter_src_query (GstPad * pad, GstObject * parent,</span></span>
 <span id="L723"><span class="lineNum">     723</span>              :     GstQuery * query)</span>
 <span id="L724"><span class="lineNum">     724</span>              : {</span>
 <span id="L725"><span class="lineNum">     725</span>              :   GstTensorConverter *self;</span>
 <span id="L726"><span class="lineNum">     726</span>              : </span>
-<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">        5924 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">        5912 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
 <span id="L728"><span class="lineNum">     728</span>              : </span>
-<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">        5924 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">        5912 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L730"><span class="lineNum">     730</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L731"><span class="lineNum">     731</span>              : </span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">        5924 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">        5912 :   switch (GST_QUERY_TYPE (query)) {</span></span>
 <span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">        3416 :     case GST_QUERY_CAPS:</span></span>
 <span id="L734"><span class="lineNum">     734</span>              :     {</span>
 <span id="L735"><span class="lineNum">     735</span>              :       GstCaps *caps;</span>
@@ -804,19 +804,19 @@
 <span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">        3416 :       gst_caps_unref (caps);</span></span>
 <span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">        3416 :       return TRUE;</span></span>
 <span id="L744"><span class="lineNum">     744</span>              :     }</span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">        2508 :     default:</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">        2508 :       break;</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">        2496 :     default:</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">        2496 :       break;</span></span>
 <span id="L747"><span class="lineNum">     747</span>              :   }</span>
 <span id="L748"><span class="lineNum">     748</span>              : </span>
-<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">        2508 :   return gst_pad_query_default (pad, parent, query);</span></span>
+<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">        2496 :   return gst_pad_query_default (pad, parent, query);</span></span>
 <span id="L750"><span class="lineNum">     750</span>              : }</span>
 <span id="L751"><span class="lineNum">     751</span>              : </span>
 <span id="L752"><span class="lineNum">     752</span>              : /** @brief Chain function's private routine */</span>
 <span id="L753"><span class="lineNum">     753</span>              : static void</span>
-<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">       18453 : _gst_tensor_converter_chain_segment (GstTensorConverter * self,</span></span>
+<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">       18562 : _gst_tensor_converter_chain_segment (GstTensorConverter * self,</span></span>
 <span id="L755"><span class="lineNum">     755</span>              :     gsize frame_size)</span>
 <span id="L756"><span class="lineNum">     756</span>              : {</span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">       18453 :   if (self-&gt;need_segment) {</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">       18562 :   if (self-&gt;need_segment) {</span></span>
 <span id="L758"><span class="lineNum">     758</span>              :     GstTensorsConfig *config;</span>
 <span id="L759"><span class="lineNum">     759</span>              :     GstSegment seg;</span>
 <span id="L760"><span class="lineNum">     760</span>              :     guint64 start;</span>
@@ -842,25 +842,25 @@
 <span id="L780"><span class="lineNum">     780</span>              : </span>
 <span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">         100 :     gst_pad_push_event (self-&gt;srcpad, gst_event_new_segment (&amp;seg));</span></span>
 <span id="L782"><span class="lineNum">     782</span>              :   }</span>
-<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">       18453 : }</span></span>
+<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">       18562 : }</span></span>
 <span id="L784"><span class="lineNum">     784</span>              : </span>
 <span id="L785"><span class="lineNum">     785</span>              : /** @brief Chain function's private routine */</span>
 <span id="L786"><span class="lineNum">     786</span>              : static void</span>
-<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">       18453 : _gst_tensor_converter_chain_timestamp (GstTensorConverter * self,</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">       18562 : _gst_tensor_converter_chain_timestamp (GstTensorConverter * self,</span></span>
 <span id="L788"><span class="lineNum">     788</span>              :     GstBuffer * inbuf, guint frames_in)</span>
 <span id="L789"><span class="lineNum">     789</span>              : {</span>
-<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">       18453 :   if (self-&gt;set_timestamp) {</span></span>
+<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">       18562 :   if (self-&gt;set_timestamp) {</span></span>
 <span id="L791"><span class="lineNum">     791</span>              :     GstTensorsConfig *config;</span>
 <span id="L792"><span class="lineNum">     792</span>              :     GstClockTime pts, duration;</span>
 <span id="L793"><span class="lineNum">     793</span>              :     gboolean have_framerate;</span>
 <span id="L794"><span class="lineNum">     794</span>              : </span>
-<span id="L795"><span class="lineNum">     795</span> <span class="tlaGNC">       18433 :     config = &amp;self-&gt;tensors_config;</span></span>
-<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">       18433 :     have_framerate = (config-&gt;rate_n &gt; 0 &amp;&amp; config-&gt;rate_d &gt; 0);</span></span>
+<span id="L795"><span class="lineNum">     795</span> <span class="tlaGNC">       18542 :     config = &amp;self-&gt;tensors_config;</span></span>
+<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">       18542 :     have_framerate = (config-&gt;rate_n &gt; 0 &amp;&amp; config-&gt;rate_d &gt; 0);</span></span>
 <span id="L797"><span class="lineNum">     797</span>              : </span>
 <span id="L798"><span class="lineNum">     798</span>              :     /* set duration */</span>
-<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">       18433 :     duration = GST_BUFFER_DURATION (inbuf);</span></span>
+<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">       18542 :     duration = GST_BUFFER_DURATION (inbuf);</span></span>
 <span id="L800"><span class="lineNum">     800</span>              : </span>
-<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">       18433 :     if (!GST_CLOCK_TIME_IS_VALID (duration)) {</span></span>
+<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">       18542 :     if (!GST_CLOCK_TIME_IS_VALID (duration)) {</span></span>
 <span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">         371 :       if (have_framerate) {</span></span>
 <span id="L803"><span class="lineNum">     803</span>              :         duration =</span>
 <span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">          78 :             gst_util_uint64_scale_int ((guint64) frames_in * config-&gt;rate_d,</span></span>
@@ -871,9 +871,9 @@
 <span id="L809"><span class="lineNum">     809</span>              :     }</span>
 <span id="L810"><span class="lineNum">     810</span>              : </span>
 <span id="L811"><span class="lineNum">     811</span>              :     /* set timestamp if buffer has invalid timestamp */</span>
-<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">       18433 :     pts = GST_BUFFER_TIMESTAMP (inbuf);</span></span>
+<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">       18542 :     pts = GST_BUFFER_TIMESTAMP (inbuf);</span></span>
 <span id="L813"><span class="lineNum">     813</span>              : </span>
-<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">       18433 :     if (!GST_CLOCK_TIME_IS_VALID (pts)) {</span></span>
+<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">       18542 :     if (!GST_CLOCK_TIME_IS_VALID (pts)) {</span></span>
 <span id="L815"><span class="lineNum">     815</span> <span class="tlaGNC">         194 :       pts = self-&gt;segment.start;</span></span>
 <span id="L816"><span class="lineNum">     816</span>              : </span>
 <span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC">         194 :       if (have_framerate) {</span></span>
@@ -901,8 +901,8 @@
 <span id="L839"><span class="lineNum">     839</span>              :   }</span>
 <span id="L840"><span class="lineNum">     840</span>              : </span>
 <span id="L841"><span class="lineNum">     841</span>              :   /* update old timestamp */</span>
-<span id="L842"><span class="lineNum">     842</span> <span class="tlaGNC">       18453 :   self-&gt;old_timestamp = GST_BUFFER_TIMESTAMP (inbuf);</span></span>
-<span id="L843"><span class="lineNum">     843</span> <span class="tlaGNC">       18453 : }</span></span>
+<span id="L842"><span class="lineNum">     842</span> <span class="tlaGNC">       18562 :   self-&gt;old_timestamp = GST_BUFFER_TIMESTAMP (inbuf);</span></span>
+<span id="L843"><span class="lineNum">     843</span> <span class="tlaGNC">       18562 : }</span></span>
 <span id="L844"><span class="lineNum">     844</span>              : </span>
 <span id="L845"><span class="lineNum">     845</span>              : /** @brief Chain function's private routine to process octet stream */</span>
 <span id="L846"><span class="lineNum">     846</span>              : static GstBuffer *</span>
@@ -997,23 +997,23 @@
 <span id="L935"><span class="lineNum">     935</span>              : </span>
 <span id="L936"><span class="lineNum">     936</span>              : /** @brief Chain function's private routine to push buffer into src pad */</span>
 <span id="L937"><span class="lineNum">     937</span>              : static GstFlowReturn</span>
-<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">       18444 : _gst_tensor_converter_chain_push (GstTensorConverter * self, GstBuffer * buf)</span></span>
+<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">       18553 : _gst_tensor_converter_chain_push (GstTensorConverter * self, GstBuffer * buf)</span></span>
 <span id="L939"><span class="lineNum">     939</span>              : {</span>
-<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">       18444 :   GstBuffer *buffer = buf;</span></span>
+<span id="L940"><span class="lineNum">     940</span> <span class="tlaGNC">       18553 :   GstBuffer *buffer = buf;</span></span>
 <span id="L941"><span class="lineNum">     941</span>              : </span>
-<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">       18444 :   if (self-&gt;in_media_type == _NNS_OCTET) {</span></span>
+<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">       18553 :   if (self-&gt;in_media_type == _NNS_OCTET) {</span></span>
 <span id="L943"><span class="lineNum">     943</span>              :     /* configure multi tensors */</span>
 <span id="L944"><span class="lineNum">     944</span> <span class="tlaGNC">         234 :     buffer = _gst_tensor_converter_chain_octet (self, buffer);</span></span>
 <span id="L945"><span class="lineNum">     945</span>              :   }</span>
 <span id="L946"><span class="lineNum">     946</span>              : </span>
 <span id="L947"><span class="lineNum">     947</span>              :   /* if output is flexible, add header. */</span>
-<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">       18444 :   if (!self-&gt;do_not_append_header</span></span>
-<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">       18426 :       &amp;&amp; gst_tensor_pad_caps_is_flexible (self-&gt;srcpad)) {</span></span>
+<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">       18553 :   if (!self-&gt;do_not_append_header</span></span>
+<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">       18535 :       &amp;&amp; gst_tensor_pad_caps_is_flexible (self-&gt;srcpad)) {</span></span>
 <span id="L950"><span class="lineNum">     950</span> <span class="tlaGNC">         220 :     buffer = _gst_tensor_converter_chain_flex_tensor (self, buffer);</span></span>
 <span id="L951"><span class="lineNum">     951</span>              :   }</span>
 <span id="L952"><span class="lineNum">     952</span>              : </span>
-<span id="L953"><span class="lineNum">     953</span> <span class="tlaGNC">       18444 :   silent_debug_timestamp (self, buffer);</span></span>
-<span id="L954"><span class="lineNum">     954</span> <span class="tlaGNC">       18444 :   return gst_pad_push (self-&gt;srcpad, buffer);</span></span>
+<span id="L953"><span class="lineNum">     953</span> <span class="tlaGNC">       18553 :   silent_debug_timestamp (self, buffer);</span></span>
+<span id="L954"><span class="lineNum">     954</span> <span class="tlaGNC">       18553 :   return gst_pad_push (self-&gt;srcpad, buffer);</span></span>
 <span id="L955"><span class="lineNum">     955</span>              : }</span>
 <span id="L956"><span class="lineNum">     956</span>              : </span>
 <span id="L957"><span class="lineNum">     957</span>              : /** @brief Chain function's private routine to push multiple buffers */</span>
@@ -1087,7 +1087,7 @@
 <span id="L1025"><span class="lineNum">    1025</span>              :  * @brief Chain function, this function does the actual processing.</span>
 <span id="L1026"><span class="lineNum">    1026</span>              :  */</span>
 <span id="L1027"><span class="lineNum">    1027</span>              : static GstFlowReturn</span>
-<span id="L1028"><span class="lineNum">    1028</span> <span class="tlaGNC">       18455 : gst_tensor_converter_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
+<span id="L1028"><span class="lineNum">    1028</span> <span class="tlaGNC">       18564 : gst_tensor_converter_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
 <span id="L1029"><span class="lineNum">    1029</span>              : {</span>
 <span id="L1030"><span class="lineNum">    1030</span>              :   GstTensorConverter *self;</span>
 <span id="L1031"><span class="lineNum">    1031</span>              :   GstTensorsConfig *config;</span>
@@ -1098,44 +1098,44 @@
 <span id="L1036"><span class="lineNum">    1036</span>              :   guint frames_in, frames_out;</span>
 <span id="L1037"><span class="lineNum">    1037</span>              :   UNUSED (pad);</span>
 <span id="L1038"><span class="lineNum">    1038</span>              : </span>
-<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaGNC">       18455 :   buf_size = gst_buffer_get_size (buf);</span></span>
-<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">       36908 :   g_return_val_if_fail (buf_size &gt; 0, GST_FLOW_ERROR);</span></span>
+<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaGNC">       18564 :   buf_size = gst_buffer_get_size (buf);</span></span>
+<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">       37127 :   g_return_val_if_fail (buf_size &gt; 0, GST_FLOW_ERROR);</span></span>
 <span id="L1041"><span class="lineNum">    1041</span>              : </span>
-<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">       18455 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
+<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">       18564 :   self = GST_TENSOR_CONVERTER (parent);</span></span>
 <span id="L1043"><span class="lineNum">    1043</span>              : </span>
 <span id="L1044"><span class="lineNum">    1044</span>              :   /** This is an internal logic error. */</span>
-<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">       18455 :   g_assert (self-&gt;tensors_configured);</span></span>
-<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">       18455 :   config = &amp;self-&gt;tensors_config;</span></span>
-<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC">       18455 :   gst_tensors_config_init (&amp;new_config);</span></span>
+<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">       18564 :   g_assert (self-&gt;tensors_configured);</span></span>
+<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">       18564 :   config = &amp;self-&gt;tensors_config;</span></span>
+<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC">       18564 :   gst_tensors_config_init (&amp;new_config);</span></span>
 <span id="L1048"><span class="lineNum">    1048</span>              : </span>
-<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaGNC">       18455 :   frames_out = self-&gt;frames_per_tensor;</span></span>
-<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaGNC">       18455 :   inbuf = buf;</span></span>
+<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaGNC">       18564 :   frames_out = self-&gt;frames_per_tensor;</span></span>
+<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaGNC">       18564 :   inbuf = buf;</span></span>
 <span id="L1051"><span class="lineNum">    1051</span>              : </span>
 <span id="L1052"><span class="lineNum">    1052</span>              :   /**</span>
 <span id="L1053"><span class="lineNum">    1053</span>              :    * Supposed 1 frame in buffer (default).</span>
 <span id="L1054"><span class="lineNum">    1054</span>              :    * Update frame size for each media type.</span>
 <span id="L1055"><span class="lineNum">    1055</span>              :    */</span>
-<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaGNC">       18455 :   frame_size = self-&gt;frame_size;</span></span>
-<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">       18455 :   frames_in = 1;</span></span>
+<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaGNC">       18564 :   frame_size = self-&gt;frame_size;</span></span>
+<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">       18564 :   frames_in = 1;</span></span>
 <span id="L1058"><span class="lineNum">    1058</span>              : </span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">       18455 :   switch (self-&gt;in_media_type) {</span></span>
-<span id="L1060"><span class="lineNum">    1060</span> <span class="tlaGNC">       17837 :     case _NNS_VIDEO:</span></span>
+<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">       18564 :   switch (self-&gt;in_media_type) {</span></span>
+<span id="L1060"><span class="lineNum">    1060</span> <span class="tlaGNC">       17946 :     case _NNS_VIDEO:</span></span>
 <span id="L1061"><span class="lineNum">    1061</span>              :     {</span>
 <span id="L1062"><span class="lineNum">    1062</span>              :       guint color, width, height;</span>
 <span id="L1063"><span class="lineNum">    1063</span>              :       gsize type;</span>
 <span id="L1064"><span class="lineNum">    1064</span>              : </span>
-<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaGNC">       17837 :       color = config-&gt;info.info[0].dimension[0];</span></span>
-<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaGNC">       17837 :       width = config-&gt;info.info[0].dimension[1];</span></span>
-<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">       17837 :       height = config-&gt;info.info[0].dimension[2];</span></span>
-<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaGNC">       17837 :       type = gst_tensor_get_element_size (config-&gt;info.info[0].type);</span></span>
+<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaGNC">       17946 :       color = config-&gt;info.info[0].dimension[0];</span></span>
+<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaGNC">       17946 :       width = config-&gt;info.info[0].dimension[1];</span></span>
+<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">       17946 :       height = config-&gt;info.info[0].dimension[2];</span></span>
+<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaGNC">       17946 :       type = gst_tensor_get_element_size (config-&gt;info.info[0].type);</span></span>
 <span id="L1069"><span class="lineNum">    1069</span>              : </span>
 <span id="L1070"><span class="lineNum">    1070</span>              :       /** type * colorspace * width * height */</span>
-<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaGNC">       17837 :       frame_size = type * color * width * height;</span></span>
+<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaGNC">       17946 :       frame_size = type * color * width * height;</span></span>
 <span id="L1072"><span class="lineNum">    1072</span>              : </span>
 <span id="L1073"><span class="lineNum">    1073</span>              :       /** supposed 1 frame in buffer */</span>
-<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">       17837 :       g_assert ((buf_size / self-&gt;frame_size) == 1);</span></span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">       17946 :       g_assert ((buf_size / self-&gt;frame_size) == 1);</span></span>
 <span id="L1075"><span class="lineNum">    1075</span>              : </span>
-<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">       17837 :       if (self-&gt;remove_padding) {</span></span>
+<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">       17946 :       if (self-&gt;remove_padding) {</span></span>
 <span id="L1077"><span class="lineNum">    1077</span>              :         GstMapInfo src_info, dest_info;</span>
 <span id="L1078"><span class="lineNum">    1078</span>              :         guint d0, d1;</span>
 <span id="L1079"><span class="lineNum">    1079</span> <span class="tlaGNC">         110 :         unsigned int src_idx = 0, dest_idx = 0;</span></span>
@@ -1181,7 +1181,7 @@
 <span id="L1119"><span class="lineNum">    1119</span>              :         /** copy timestamps */</span>
 <span id="L1120"><span class="lineNum">    1120</span> <span class="tlaGNC">         110 :         gst_buffer_copy_into (inbuf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
 <span id="L1121"><span class="lineNum">    1121</span>              :       }</span>
-<span id="L1122"><span class="lineNum">    1122</span> <span class="tlaGNC">       17837 :       break;</span></span>
+<span id="L1122"><span class="lineNum">    1122</span> <span class="tlaGNC">       17946 :       break;</span></span>
 <span id="L1123"><span class="lineNum">    1123</span>              :     }</span>
 <span id="L1124"><span class="lineNum">    1124</span> <span class="tlaGNC">         134 :     case _NNS_AUDIO:</span></span>
 <span id="L1125"><span class="lineNum">    1125</span>              :       /* number of bytes for one frame */</span>
@@ -1366,19 +1366,19 @@
 <span id="L1304"><span class="lineNum">    1304</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L1305"><span class="lineNum">    1305</span>              :   }</span>
 <span id="L1306"><span class="lineNum">    1306</span>              : </span>
-<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaGNC tlaBgGNC">       18453 :   if (inbuf != buf)</span></span>
+<span id="L1307"><span class="lineNum">    1307</span> <span class="tlaGNC tlaBgGNC">       18562 :   if (inbuf != buf)</span></span>
 <span id="L1308"><span class="lineNum">    1308</span> <span class="tlaGNC">         370 :     gst_buffer_unref (buf);</span></span>
 <span id="L1309"><span class="lineNum">    1309</span>              : </span>
 <span id="L1310"><span class="lineNum">    1310</span>              :   /** convert format (bytes &gt; time) and push segment event.</span>
 <span id="L1311"><span class="lineNum">    1311</span>              :     * It will push event if needed (self-&gt;need_segment is true). */</span>
-<span id="L1312"><span class="lineNum">    1312</span> <span class="tlaGNC">       18453 :   _gst_tensor_converter_chain_segment (self, frame_size);</span></span>
+<span id="L1312"><span class="lineNum">    1312</span> <span class="tlaGNC">       18562 :   _gst_tensor_converter_chain_segment (self, frame_size);</span></span>
 <span id="L1313"><span class="lineNum">    1313</span>              : </span>
 <span id="L1314"><span class="lineNum">    1314</span>              :   /** configures timestamp if required (self-&gt;set_timestamp is true) */</span>
-<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaGNC">       18453 :   _gst_tensor_converter_chain_timestamp (self, inbuf, frames_in);</span></span>
+<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaGNC">       18562 :   _gst_tensor_converter_chain_timestamp (self, inbuf, frames_in);</span></span>
 <span id="L1316"><span class="lineNum">    1316</span>              : </span>
-<span id="L1317"><span class="lineNum">    1317</span> <span class="tlaGNC">       18453 :   if (frames_in == frames_out) {</span></span>
+<span id="L1317"><span class="lineNum">    1317</span> <span class="tlaGNC">       18562 :   if (frames_in == frames_out) {</span></span>
 <span id="L1318"><span class="lineNum">    1318</span>              :     /** do nothing, push the incoming buffer */</span>
-<span id="L1319"><span class="lineNum">    1319</span> <span class="tlaGNC">       18332 :     return _gst_tensor_converter_chain_push (self, inbuf);</span></span>
+<span id="L1319"><span class="lineNum">    1319</span> <span class="tlaGNC">       18441 :     return _gst_tensor_converter_chain_push (self, inbuf);</span></span>
 <span id="L1320"><span class="lineNum">    1320</span>              :   }</span>
 <span id="L1321"><span class="lineNum">    1321</span>              : </span>
 <span id="L1322"><span class="lineNum">    1322</span>              :   /* push multiple buffers */</span>
@@ -2031,37 +2031,37 @@
 <span id="L1969"><span class="lineNum">    1969</span>              :  * @brief Get possible media-caps from downstream element.</span>
 <span id="L1970"><span class="lineNum">    1970</span>              :  */</span>
 <span id="L1971"><span class="lineNum">    1971</span>              : static GstCaps *</span>
-<span id="L1972"><span class="lineNum">    1972</span> <span class="tlaGNC">        4201 : gst_tensor_converter_get_possible_media_caps (GstTensorConverter * self)</span></span>
+<span id="L1972"><span class="lineNum">    1972</span> <span class="tlaGNC">        4188 : gst_tensor_converter_get_possible_media_caps (GstTensorConverter * self)</span></span>
 <span id="L1973"><span class="lineNum">    1973</span>              : {</span>
-<span id="L1974"><span class="lineNum">    1974</span> <span class="tlaGNC">        4201 :   GstCaps *media_caps = NULL;</span></span>
+<span id="L1974"><span class="lineNum">    1974</span> <span class="tlaGNC">        4188 :   GstCaps *media_caps = NULL;</span></span>
 <span id="L1975"><span class="lineNum">    1975</span>              :   GstTensorsConfig config;</span>
 <span id="L1976"><span class="lineNum">    1976</span>              : </span>
 <span id="L1977"><span class="lineNum">    1977</span>              :   /* get possible caps from downstream element */</span>
-<span id="L1978"><span class="lineNum">    1978</span> <span class="tlaGNC">        4201 :   if (gst_tensors_config_from_peer (self-&gt;srcpad, &amp;config, NULL)) {</span></span>
+<span id="L1978"><span class="lineNum">    1978</span> <span class="tlaGNC">        4188 :   if (gst_tensors_config_from_peer (self-&gt;srcpad, &amp;config, NULL)) {</span></span>
 <span id="L1979"><span class="lineNum">    1979</span>              :     GstStructure *st;</span>
 <span id="L1980"><span class="lineNum">    1980</span>              :     guint i, caps_len;</span>
 <span id="L1981"><span class="lineNum">    1981</span>              :     media_type type;</span>
 <span id="L1982"><span class="lineNum">    1982</span>              : </span>
 <span id="L1983"><span class="lineNum">    1983</span>              :     /* convert peer caps to possible media caps */</span>
-<span id="L1984"><span class="lineNum">    1984</span> <span class="tlaGNC">        2160 :     media_caps = gst_pad_get_pad_template_caps (self-&gt;sinkpad);</span></span>
-<span id="L1985"><span class="lineNum">    1985</span> <span class="tlaGNC">        2160 :     media_caps = gst_caps_make_writable (media_caps);</span></span>
+<span id="L1984"><span class="lineNum">    1984</span> <span class="tlaGNC">        2147 :     media_caps = gst_pad_get_pad_template_caps (self-&gt;sinkpad);</span></span>
+<span id="L1985"><span class="lineNum">    1985</span> <span class="tlaGNC">        2147 :     media_caps = gst_caps_make_writable (media_caps);</span></span>
 <span id="L1986"><span class="lineNum">    1986</span>              : </span>
-<span id="L1987"><span class="lineNum">    1987</span> <span class="tlaGNC">        2160 :     caps_len = gst_caps_get_size (media_caps);</span></span>
+<span id="L1987"><span class="lineNum">    1987</span> <span class="tlaGNC">        2147 :     caps_len = gst_caps_get_size (media_caps);</span></span>
 <span id="L1988"><span class="lineNum">    1988</span>              : </span>
-<span id="L1989"><span class="lineNum">    1989</span> <span class="tlaGNC">       21600 :     for (i = 0; i &lt; caps_len; ++i) {</span></span>
-<span id="L1990"><span class="lineNum">    1990</span> <span class="tlaGNC">       19440 :       st = gst_caps_get_structure (media_caps, i);</span></span>
-<span id="L1991"><span class="lineNum">    1991</span> <span class="tlaGNC">       19440 :       type = gst_structure_get_media_type (st);</span></span>
+<span id="L1989"><span class="lineNum">    1989</span> <span class="tlaGNC">       21470 :     for (i = 0; i &lt; caps_len; ++i) {</span></span>
+<span id="L1990"><span class="lineNum">    1990</span> <span class="tlaGNC">       19323 :       st = gst_caps_get_structure (media_caps, i);</span></span>
+<span id="L1991"><span class="lineNum">    1991</span> <span class="tlaGNC">       19323 :       type = gst_structure_get_media_type (st);</span></span>
 <span id="L1992"><span class="lineNum">    1992</span>              : </span>
-<span id="L1993"><span class="lineNum">    1993</span> <span class="tlaGNC">       19440 :       switch (type) {</span></span>
-<span id="L1994"><span class="lineNum">    1994</span> <span class="tlaGNC">        2160 :         case _NNS_VIDEO:</span></span>
+<span id="L1993"><span class="lineNum">    1993</span> <span class="tlaGNC">       19323 :       switch (type) {</span></span>
+<span id="L1994"><span class="lineNum">    1994</span> <span class="tlaGNC">        2147 :         case _NNS_VIDEO:</span></span>
 <span id="L1995"><span class="lineNum">    1995</span>              :           /* video caps from tensor info */</span>
 <span id="L1996"><span class="lineNum">    1996</span>              :           if (is_video_supported (self)) {</span>
-<span id="L1997"><span class="lineNum">    1997</span> <span class="tlaGNC">        2160 :             GValue supported_formats = G_VALUE_INIT;</span></span>
+<span id="L1997"><span class="lineNum">    1997</span> <span class="tlaGNC">        2147 :             GValue supported_formats = G_VALUE_INIT;</span></span>
 <span id="L1998"><span class="lineNum">    1998</span>              :             gint colorspace, width, height;</span>
 <span id="L1999"><span class="lineNum">    1999</span>              : </span>
-<span id="L2000"><span class="lineNum">    2000</span> <span class="tlaGNC">        2160 :             colorspace = config.info.info[0].dimension[0];</span></span>
-<span id="L2001"><span class="lineNum">    2001</span> <span class="tlaGNC">        2160 :             width = config.info.info[0].dimension[1];</span></span>
-<span id="L2002"><span class="lineNum">    2002</span> <span class="tlaGNC">        2160 :             height = config.info.info[0].dimension[2];</span></span>
+<span id="L2000"><span class="lineNum">    2000</span> <span class="tlaGNC">        2147 :             colorspace = config.info.info[0].dimension[0];</span></span>
+<span id="L2001"><span class="lineNum">    2001</span> <span class="tlaGNC">        2147 :             width = config.info.info[0].dimension[1];</span></span>
+<span id="L2002"><span class="lineNum">    2002</span> <span class="tlaGNC">        2147 :             height = config.info.info[0].dimension[2];</span></span>
 <span id="L2003"><span class="lineNum">    2003</span>              : </span>
 <span id="L2004"><span class="lineNum">    2004</span>              :             switch (colorspace) {</span>
 <span id="L2005"><span class="lineNum">    2005</span> <span class="tlaGNC">           9 :               case 1:</span></span>
@@ -2077,37 +2077,37 @@
 <span id="L2015"><span class="lineNum">    2015</span>              :                     &quot;RGBx&quot;, &quot;BGRx&quot;, &quot;xRGB&quot;, &quot;xBGR&quot;, &quot;RGBA&quot;, &quot;BGRA&quot;, &quot;ARGB&quot;,</span>
 <span id="L2016"><span class="lineNum">    2016</span>              :                     &quot;ABGR&quot;, NULL);</span>
 <span id="L2017"><span class="lineNum">    2017</span> <span class="tlaUNC">           0 :                 break;</span></span>
-<span id="L2018"><span class="lineNum">    2018</span> <span class="tlaGNC tlaBgGNC">        1848 :               default:</span></span>
+<span id="L2018"><span class="lineNum">    2018</span> <span class="tlaGNC tlaBgGNC">        1835 :               default:</span></span>
 <span id="L2019"><span class="lineNum">    2019</span>              :                 /* unsupported format, set default video formats */</span>
-<span id="L2020"><span class="lineNum">    2020</span> <span class="tlaGNC">        1848 :                 break;</span></span>
+<span id="L2020"><span class="lineNum">    2020</span> <span class="tlaGNC">        1835 :                 break;</span></span>
 <span id="L2021"><span class="lineNum">    2021</span>              :             }</span>
 <span id="L2022"><span class="lineNum">    2022</span>              : </span>
-<span id="L2023"><span class="lineNum">    2023</span> <span class="tlaGNC">        2160 :             if (G_VALUE_TYPE (&amp;supported_formats) == GST_TYPE_LIST &amp;&amp;</span></span>
+<span id="L2023"><span class="lineNum">    2023</span> <span class="tlaGNC">        2147 :             if (G_VALUE_TYPE (&amp;supported_formats) == GST_TYPE_LIST &amp;&amp;</span></span>
 <span id="L2024"><span class="lineNum">    2024</span> <span class="tlaGNC">         312 :                 gst_value_list_get_size (&amp;supported_formats) &gt; 0) {</span></span>
 <span id="L2025"><span class="lineNum">    2025</span> <span class="tlaGNC">         312 :               gst_structure_set_value (st, &quot;format&quot;, &amp;supported_formats);</span></span>
 <span id="L2026"><span class="lineNum">    2026</span>              :             }</span>
-<span id="L2027"><span class="lineNum">    2027</span> <span class="tlaGNC">        2160 :             g_value_unset (&amp;supported_formats);</span></span>
+<span id="L2027"><span class="lineNum">    2027</span> <span class="tlaGNC">        2147 :             g_value_unset (&amp;supported_formats);</span></span>
 <span id="L2028"><span class="lineNum">    2028</span>              : </span>
-<span id="L2029"><span class="lineNum">    2029</span> <span class="tlaGNC">        2160 :             if (width &gt; 0) {</span></span>
+<span id="L2029"><span class="lineNum">    2029</span> <span class="tlaGNC">        2147 :             if (width &gt; 0) {</span></span>
 <span id="L2030"><span class="lineNum">    2030</span> <span class="tlaGNC">         317 :               gst_structure_set (st, &quot;width&quot;, G_TYPE_INT, width, NULL);</span></span>
 <span id="L2031"><span class="lineNum">    2031</span>              :             }</span>
 <span id="L2032"><span class="lineNum">    2032</span>              : </span>
-<span id="L2033"><span class="lineNum">    2033</span> <span class="tlaGNC">        2160 :             if (height &gt; 0) {</span></span>
+<span id="L2033"><span class="lineNum">    2033</span> <span class="tlaGNC">        2147 :             if (height &gt; 0) {</span></span>
 <span id="L2034"><span class="lineNum">    2034</span> <span class="tlaGNC">         308 :               gst_structure_set (st, &quot;height&quot;, G_TYPE_INT, height, NULL);</span></span>
 <span id="L2035"><span class="lineNum">    2035</span>              :             }</span>
 <span id="L2036"><span class="lineNum">    2036</span>              : </span>
-<span id="L2037"><span class="lineNum">    2037</span> <span class="tlaGNC">        2160 :             if (config.rate_n &gt;= 0 &amp;&amp; config.rate_d &gt; 0) {</span></span>
-<span id="L2038"><span class="lineNum">    2038</span> <span class="tlaGNC">         329 :               gst_structure_set (st, &quot;framerate&quot;, GST_TYPE_FRACTION,</span></span>
+<span id="L2037"><span class="lineNum">    2037</span> <span class="tlaGNC">        2147 :             if (config.rate_n &gt;= 0 &amp;&amp; config.rate_d &gt; 0) {</span></span>
+<span id="L2038"><span class="lineNum">    2038</span> <span class="tlaGNC">         310 :               gst_structure_set (st, &quot;framerate&quot;, GST_TYPE_FRACTION,</span></span>
 <span id="L2039"><span class="lineNum">    2039</span>              :                   config.rate_n, config.rate_d, NULL);</span>
 <span id="L2040"><span class="lineNum">    2040</span>              :             }</span>
 <span id="L2041"><span class="lineNum">    2041</span>              : </span>
 <span id="L2042"><span class="lineNum">    2042</span>              :             /* add new structure for NCHW formats */</span>
 <span id="L2043"><span class="lineNum">    2043</span>              : #if GST_CHECK_VERSION(1, 20, 0)</span>
-<span id="L2044"><span class="lineNum">    2044</span> <span class="tlaGNC">        2160 :             width = config.info.info[0].dimension[0];</span></span>
-<span id="L2045"><span class="lineNum">    2045</span> <span class="tlaGNC">        2160 :             height = config.info.info[0].dimension[1];</span></span>
-<span id="L2046"><span class="lineNum">    2046</span> <span class="tlaGNC">        2160 :             colorspace = config.info.info[0].dimension[2];</span></span>
+<span id="L2044"><span class="lineNum">    2044</span> <span class="tlaGNC">        2147 :             width = config.info.info[0].dimension[0];</span></span>
+<span id="L2045"><span class="lineNum">    2045</span> <span class="tlaGNC">        2147 :             height = config.info.info[0].dimension[1];</span></span>
+<span id="L2046"><span class="lineNum">    2046</span> <span class="tlaGNC">        2147 :             colorspace = config.info.info[0].dimension[2];</span></span>
 <span id="L2047"><span class="lineNum">    2047</span>              : </span>
-<span id="L2048"><span class="lineNum">    2048</span> <span class="tlaGNC">        2160 :             if (colorspace == 3) {</span></span>
+<span id="L2048"><span class="lineNum">    2048</span> <span class="tlaGNC">        2147 :             if (colorspace == 3) {</span></span>
 <span id="L2049"><span class="lineNum">    2049</span> <span class="tlaGNC">           5 :               GValue nchw_format = G_VALUE_INIT;</span></span>
 <span id="L2050"><span class="lineNum">    2050</span> <span class="tlaGNC">           5 :               GstStructure *nchw_st = gst_structure_copy (st);</span></span>
 <span id="L2051"><span class="lineNum">    2051</span>              : </span>
@@ -2131,11 +2131,11 @@
 <span id="L2069"><span class="lineNum">    2069</span>              :             }</span>
 <span id="L2070"><span class="lineNum">    2070</span>              : #endif</span>
 <span id="L2071"><span class="lineNum">    2071</span>              :           }</span>
-<span id="L2072"><span class="lineNum">    2072</span> <span class="tlaGNC">        2160 :           break;</span></span>
-<span id="L2073"><span class="lineNum">    2073</span> <span class="tlaGNC">        2160 :         case _NNS_AUDIO:</span></span>
+<span id="L2072"><span class="lineNum">    2072</span> <span class="tlaGNC">        2147 :           break;</span></span>
+<span id="L2073"><span class="lineNum">    2073</span> <span class="tlaGNC">        2147 :         case _NNS_AUDIO:</span></span>
 <span id="L2074"><span class="lineNum">    2074</span>              :           /* audio caps from tensor info */</span>
-<span id="L2075"><span class="lineNum">    2075</span> <span class="tlaGNC">        2160 :           if (is_audio_supported (self)</span></span>
-<span id="L2076"><span class="lineNum">    2076</span> <span class="tlaGNC">        2160 :               &amp;&amp; config.info.info[0].type != _NNS_END) {</span></span>
+<span id="L2075"><span class="lineNum">    2075</span> <span class="tlaGNC">        2147 :           if (is_audio_supported (self)</span></span>
+<span id="L2076"><span class="lineNum">    2076</span> <span class="tlaGNC">        2147 :               &amp;&amp; config.info.info[0].type != _NNS_END) {</span></span>
 <span id="L2077"><span class="lineNum">    2077</span>              :             gint ch, rate;</span>
 <span id="L2078"><span class="lineNum">    2078</span>              :             GstAudioFormat aformat;</span>
 <span id="L2079"><span class="lineNum">    2079</span>              : </span>
@@ -2188,61 +2188,61 @@
 <span id="L2126"><span class="lineNum">    2126</span>              :               }</span>
 <span id="L2127"><span class="lineNum">    2127</span>              :             }</span>
 <span id="L2128"><span class="lineNum">    2128</span>              :           }</span>
-<span id="L2129"><span class="lineNum">    2129</span> <span class="tlaGNC">        2160 :           break;</span></span>
-<span id="L2130"><span class="lineNum">    2130</span> <span class="tlaGNC">       15120 :         default:</span></span>
+<span id="L2129"><span class="lineNum">    2129</span> <span class="tlaGNC">        2147 :           break;</span></span>
+<span id="L2130"><span class="lineNum">    2130</span> <span class="tlaGNC">       15029 :         default:</span></span>
 <span id="L2131"><span class="lineNum">    2131</span>              :           /* do nothing for text and octet stream */</span>
-<span id="L2132"><span class="lineNum">    2132</span> <span class="tlaGNC">       15120 :           break;</span></span>
+<span id="L2132"><span class="lineNum">    2132</span> <span class="tlaGNC">       15029 :           break;</span></span>
 <span id="L2133"><span class="lineNum">    2133</span>              :       }</span>
 <span id="L2134"><span class="lineNum">    2134</span>              :     }</span>
 <span id="L2135"><span class="lineNum">    2135</span>              :   }</span>
 <span id="L2136"><span class="lineNum">    2136</span>              : </span>
-<span id="L2137"><span class="lineNum">    2137</span> <span class="tlaGNC">        4201 :   return media_caps;</span></span>
+<span id="L2137"><span class="lineNum">    2137</span> <span class="tlaGNC">        4188 :   return media_caps;</span></span>
 <span id="L2138"><span class="lineNum">    2138</span>              : }</span>
 <span id="L2139"><span class="lineNum">    2139</span>              : </span>
 <span id="L2140"><span class="lineNum">    2140</span>              : /**</span>
 <span id="L2141"><span class="lineNum">    2141</span>              :  * @brief Get pad caps for caps negotiation.</span>
 <span id="L2142"><span class="lineNum">    2142</span>              :  */</span>
 <span id="L2143"><span class="lineNum">    2143</span>              : static GstCaps *</span>
-<span id="L2144"><span class="lineNum">    2144</span> <span class="tlaGNC">        7617 : gst_tensor_converter_query_caps (GstTensorConverter * self, GstPad * pad,</span></span>
+<span id="L2144"><span class="lineNum">    2144</span> <span class="tlaGNC">        7604 : gst_tensor_converter_query_caps (GstTensorConverter * self, GstPad * pad,</span></span>
 <span id="L2145"><span class="lineNum">    2145</span>              :     GstCaps * filter)</span>
 <span id="L2146"><span class="lineNum">    2146</span>              : {</span>
 <span id="L2147"><span class="lineNum">    2147</span>              :   GstCaps *caps;</span>
 <span id="L2148"><span class="lineNum">    2148</span>              : </span>
-<span id="L2149"><span class="lineNum">    2149</span> <span class="tlaGNC">        7617 :   caps = gst_pad_get_current_caps (pad);</span></span>
-<span id="L2150"><span class="lineNum">    2150</span> <span class="tlaGNC">        7617 :   if (!caps) {</span></span>
+<span id="L2149"><span class="lineNum">    2149</span> <span class="tlaGNC">        7604 :   caps = gst_pad_get_current_caps (pad);</span></span>
+<span id="L2150"><span class="lineNum">    2150</span> <span class="tlaGNC">        7604 :   if (!caps) {</span></span>
 <span id="L2151"><span class="lineNum">    2151</span> <span class="tlaGNC">        7073 :     caps = gst_pad_get_pad_template_caps (pad);</span></span>
 <span id="L2152"><span class="lineNum">    2152</span>              :   }</span>
 <span id="L2153"><span class="lineNum">    2153</span>              : </span>
-<span id="L2154"><span class="lineNum">    2154</span> <span class="tlaGNC">        7617 :   if (pad == self-&gt;sinkpad) {</span></span>
+<span id="L2154"><span class="lineNum">    2154</span> <span class="tlaGNC">        7604 :   if (pad == self-&gt;sinkpad) {</span></span>
 <span id="L2155"><span class="lineNum">    2155</span>              :     GstCaps *media_caps;</span>
 <span id="L2156"><span class="lineNum">    2156</span>              : </span>
-<span id="L2157"><span class="lineNum">    2157</span> <span class="tlaGNC">        4201 :     media_caps = gst_tensor_converter_get_possible_media_caps (self);</span></span>
-<span id="L2158"><span class="lineNum">    2158</span> <span class="tlaGNC">        4201 :     if (media_caps) {</span></span>
+<span id="L2157"><span class="lineNum">    2157</span> <span class="tlaGNC">        4188 :     media_caps = gst_tensor_converter_get_possible_media_caps (self);</span></span>
+<span id="L2158"><span class="lineNum">    2158</span> <span class="tlaGNC">        4188 :     if (media_caps) {</span></span>
 <span id="L2159"><span class="lineNum">    2159</span>              :       /* intersect with pad caps */</span>
-<span id="L2160"><span class="lineNum">    2160</span> <span class="tlaGNC">        2160 :       GstCaps *tmp = gst_caps_intersect_full (media_caps, caps,</span></span>
+<span id="L2160"><span class="lineNum">    2160</span> <span class="tlaGNC">        2147 :       GstCaps *tmp = gst_caps_intersect_full (media_caps, caps,</span></span>
 <span id="L2161"><span class="lineNum">    2161</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
-<span id="L2162"><span class="lineNum">    2162</span> <span class="tlaGNC">        2160 :       gst_caps_unref (caps);</span></span>
-<span id="L2163"><span class="lineNum">    2163</span> <span class="tlaGNC">        2160 :       caps = tmp;</span></span>
+<span id="L2162"><span class="lineNum">    2162</span> <span class="tlaGNC">        2147 :       gst_caps_unref (caps);</span></span>
+<span id="L2163"><span class="lineNum">    2163</span> <span class="tlaGNC">        2147 :       caps = tmp;</span></span>
 <span id="L2164"><span class="lineNum">    2164</span>              : </span>
-<span id="L2165"><span class="lineNum">    2165</span> <span class="tlaGNC">        2160 :       gst_caps_unref (media_caps);</span></span>
+<span id="L2165"><span class="lineNum">    2165</span> <span class="tlaGNC">        2147 :       gst_caps_unref (media_caps);</span></span>
 <span id="L2166"><span class="lineNum">    2166</span>              :     }</span>
 <span id="L2167"><span class="lineNum">    2167</span>              :   }</span>
 <span id="L2168"><span class="lineNum">    2168</span>              : </span>
-<span id="L2169"><span class="lineNum">    2169</span> <span class="tlaGNC">        7617 :   silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
-<span id="L2170"><span class="lineNum">    2170</span> <span class="tlaGNC">        7617 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
+<span id="L2169"><span class="lineNum">    2169</span> <span class="tlaGNC">        7604 :   silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
+<span id="L2170"><span class="lineNum">    2170</span> <span class="tlaGNC">        7604 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
 <span id="L2171"><span class="lineNum">    2171</span>              : </span>
-<span id="L2172"><span class="lineNum">    2172</span> <span class="tlaGNC">        7617 :   if (filter) {</span></span>
+<span id="L2172"><span class="lineNum">    2172</span> <span class="tlaGNC">        7604 :   if (filter) {</span></span>
 <span id="L2173"><span class="lineNum">    2173</span>              :     GstCaps *intersection;</span>
 <span id="L2174"><span class="lineNum">    2174</span>              : </span>
 <span id="L2175"><span class="lineNum">    2175</span>              :     intersection =</span>
-<span id="L2176"><span class="lineNum">    2176</span> <span class="tlaGNC">        2196 :         gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
+<span id="L2176"><span class="lineNum">    2176</span> <span class="tlaGNC">        2183 :         gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
 <span id="L2177"><span class="lineNum">    2177</span>              : </span>
-<span id="L2178"><span class="lineNum">    2178</span> <span class="tlaGNC">        2196 :     gst_caps_unref (caps);</span></span>
-<span id="L2179"><span class="lineNum">    2179</span> <span class="tlaGNC">        2196 :     caps = intersection;</span></span>
+<span id="L2178"><span class="lineNum">    2178</span> <span class="tlaGNC">        2183 :     gst_caps_unref (caps);</span></span>
+<span id="L2179"><span class="lineNum">    2179</span> <span class="tlaGNC">        2183 :     caps = intersection;</span></span>
 <span id="L2180"><span class="lineNum">    2180</span>              :   }</span>
 <span id="L2181"><span class="lineNum">    2181</span>              : </span>
-<span id="L2182"><span class="lineNum">    2182</span> <span class="tlaGNC">        7617 :   silent_debug_caps (self, caps, &quot;result&quot;);</span></span>
-<span id="L2183"><span class="lineNum">    2183</span> <span class="tlaGNC">        7617 :   return caps;</span></span>
+<span id="L2182"><span class="lineNum">    2182</span> <span class="tlaGNC">        7604 :   silent_debug_caps (self, caps, &quot;result&quot;);</span></span>
+<span id="L2183"><span class="lineNum">    2183</span> <span class="tlaGNC">        7604 :   return caps;</span></span>
 <span id="L2184"><span class="lineNum">    2184</span>              : }</span>
 <span id="L2185"><span class="lineNum">    2185</span>              : </span>
 <span id="L2186"><span class="lineNum">    2186</span>              : /**</span>
