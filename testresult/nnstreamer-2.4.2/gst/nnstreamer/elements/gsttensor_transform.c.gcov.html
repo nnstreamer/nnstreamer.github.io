@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#8ffa9117c124e0f0a45b3dc1150acf985a495cc4 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_transform.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#7dc1bb795204987e22ae0d85766eb6776eaad9eb - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_transform.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#8ffa9117c124e0f0a45b3dc1150acf985a495cc4</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#7dc1bb795204987e22ae0d85766eb6776eaad9eb</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">87.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-13 05:33:30</td>
+            <td class="headerValue">2024-11-13 11:51:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -1389,7 +1389,7 @@
 <span id="L1327"><span class="lineNum">    1327</span>              :  * @return Gst flow status</span>
 <span id="L1328"><span class="lineNum">    1328</span>              :  */</span>
 <span id="L1329"><span class="lineNum">    1329</span>              : static GstFlowReturn</span>
-<span id="L1330"><span class="lineNum">    1330</span> <span class="tlaGNC">        7181 : gst_tensor_transform_arithmetic (GstTensorTransform * filter,</span></span>
+<span id="L1330"><span class="lineNum">    1330</span> <span class="tlaGNC">        7351 : gst_tensor_transform_arithmetic (GstTensorTransform * filter,</span></span>
 <span id="L1331"><span class="lineNum">    1331</span>              :     GstTensorInfo * in_info, GstTensorInfo * out_info,</span>
 <span id="L1332"><span class="lineNum">    1332</span>              :     const uint8_t * inptr, uint8_t * outptr)</span>
 <span id="L1333"><span class="lineNum">    1333</span>              : {</span>
@@ -1400,27 +1400,27 @@
 <span id="L1338"><span class="lineNum">    1338</span>              :   tensor_transform_operator_s *op_s;</span>
 <span id="L1339"><span class="lineNum">    1339</span>              :   tensor_data_s value;</span>
 <span id="L1340"><span class="lineNum">    1340</span>              : </span>
-<span id="L1341"><span class="lineNum">    1341</span> <span class="tlaGNC">        7181 :   num = gst_tensor_get_element_count (in_info-&gt;dimension);</span></span>
+<span id="L1341"><span class="lineNum">    1341</span> <span class="tlaGNC">        7351 :   num = gst_tensor_get_element_count (in_info-&gt;dimension);</span></span>
 <span id="L1342"><span class="lineNum">    1342</span>              : </span>
 <span id="L1343"><span class="lineNum">    1343</span>              : #ifdef HAVE_ORC</span>
-<span id="L1344"><span class="lineNum">    1344</span> <span class="tlaGNC">        7181 :   if (orc_supported (filter, in_info-&gt;type, out_info-&gt;type)) {</span></span>
-<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaGNC">        7081 :     walk = filter-&gt;operators;</span></span>
+<span id="L1344"><span class="lineNum">    1344</span> <span class="tlaGNC">        7351 :   if (orc_supported (filter, in_info-&gt;type, out_info-&gt;type)) {</span></span>
+<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaGNC">        7251 :     walk = filter-&gt;operators;</span></span>
 <span id="L1346"><span class="lineNum">    1346</span>              :     /**</span>
 <span id="L1347"><span class="lineNum">    1347</span>              :      * Typecast should be called at the first.</span>
 <span id="L1348"><span class="lineNum">    1348</span>              :      * Do the typecast. If in/out type is same, this will copy the input array to output.</span>
 <span id="L1349"><span class="lineNum">    1349</span>              :      */</span>
-<span id="L1350"><span class="lineNum">    1350</span> <span class="tlaGNC">        7081 :     orc_typecast (inptr, outptr, num, in_info-&gt;type, out_info-&gt;type);</span></span>
+<span id="L1350"><span class="lineNum">    1350</span> <span class="tlaGNC">        7251 :     orc_typecast (inptr, outptr, num, in_info-&gt;type, out_info-&gt;type);</span></span>
 <span id="L1351"><span class="lineNum">    1351</span>              : </span>
-<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaGNC">        7081 :     if (!filter-&gt;data_arithmetic.per_channel_arith) {</span></span>
-<span id="L1353"><span class="lineNum">    1353</span> <span class="tlaGNC">       22023 :       while (walk) {</span></span>
-<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaGNC">       14943 :         op_s = (tensor_transform_operator_s *) walk-&gt;data;</span></span>
+<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaGNC">        7251 :     if (!filter-&gt;data_arithmetic.per_channel_arith) {</span></span>
+<span id="L1353"><span class="lineNum">    1353</span> <span class="tlaGNC">       22562 :       while (walk) {</span></span>
+<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaGNC">       15312 :         op_s = (tensor_transform_operator_s *) walk-&gt;data;</span></span>
 <span id="L1355"><span class="lineNum">    1355</span>              : </span>
-<span id="L1356"><span class="lineNum">    1356</span> <span class="tlaGNC">       14943 :         if (op_s-&gt;op != GTT_OP_TYPECAST) {</span></span>
-<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaGNC">        7941 :           gst_tensor_data_typecast (&amp;op_s-&gt;value, out_info-&gt;type);</span></span>
-<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaGNC">       15971 :           orc_operator (outptr, num, &amp;op_s-&gt;value, op_s-&gt;op);</span></span>
+<span id="L1356"><span class="lineNum">    1356</span> <span class="tlaGNC">       15312 :         if (op_s-&gt;op != GTT_OP_TYPECAST) {</span></span>
+<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaGNC">        8140 :           gst_tensor_data_typecast (&amp;op_s-&gt;value, out_info-&gt;type);</span></span>
+<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaGNC">       16340 :           orc_operator (outptr, num, &amp;op_s-&gt;value, op_s-&gt;op);</span></span>
 <span id="L1359"><span class="lineNum">    1359</span>              :         }</span>
 <span id="L1360"><span class="lineNum">    1360</span>              : </span>
-<span id="L1361"><span class="lineNum">    1361</span> <span class="tlaGNC">       14943 :         walk = g_slist_next (walk);</span></span>
+<span id="L1361"><span class="lineNum">    1361</span> <span class="tlaGNC">       15312 :         walk = g_slist_next (walk);</span></span>
 <span id="L1362"><span class="lineNum">    1362</span>              :       }</span>
 <span id="L1363"><span class="lineNum">    1363</span>              :     } else {</span>
 <span id="L1364"><span class="lineNum">    1364</span> <span class="tlaGNC">           1 :       gsize typesize = 0;</span></span>
@@ -1456,7 +1456,7 @@
 <span id="L1394"><span class="lineNum">    1394</span> <span class="tlaGNC">           1 :         walk = g_slist_next (walk);</span></span>
 <span id="L1395"><span class="lineNum">    1395</span>              :       }</span>
 <span id="L1396"><span class="lineNum">    1396</span>              :     }</span>
-<span id="L1397"><span class="lineNum">    1397</span> <span class="tlaGNC">        7181 :     return GST_FLOW_OK;</span></span>
+<span id="L1397"><span class="lineNum">    1397</span> <span class="tlaGNC">        7351 :     return GST_FLOW_OK;</span></span>
 <span id="L1398"><span class="lineNum">    1398</span>              :   }</span>
 <span id="L1399"><span class="lineNum">    1399</span>              : #endif</span>
 <span id="L1400"><span class="lineNum">    1400</span>              : </span>
@@ -1874,14 +1874,14 @@
 <span id="L1812"><span class="lineNum">    1812</span>              :  * @return Gst Flow Status</span>
 <span id="L1813"><span class="lineNum">    1813</span>              :  */</span>
 <span id="L1814"><span class="lineNum">    1814</span>              : static GstFlowReturn</span>
-<span id="L1815"><span class="lineNum">    1815</span> <span class="tlaGNC">        7841 : gst_tensor_transform_transform (GstBaseTransform * trans,</span></span>
+<span id="L1815"><span class="lineNum">    1815</span> <span class="tlaGNC">        8011 : gst_tensor_transform_transform (GstBaseTransform * trans,</span></span>
 <span id="L1816"><span class="lineNum">    1816</span>              :     GstBuffer * inbuf, GstBuffer * outbuf)</span>
 <span id="L1817"><span class="lineNum">    1817</span>              : {</span>
 <span id="L1818"><span class="lineNum">    1818</span>              :   GstTensorTransform *filter;</span>
 <span id="L1819"><span class="lineNum">    1819</span>              :   GstTensorInfo *in_info, *out_info;</span>
-<span id="L1820"><span class="lineNum">    1820</span> <span class="tlaGNC">        7841 :   GstFlowReturn res = GST_FLOW_ERROR;</span></span>
-<span id="L1821"><span class="lineNum">    1821</span> <span class="tlaGNC">        7841 :   GstMemory *in_mem[NNS_TENSOR_SIZE_LIMIT] = { 0, };</span></span>
-<span id="L1822"><span class="lineNum">    1822</span> <span class="tlaGNC">        7841 :   GstMemory *out_mem[NNS_TENSOR_SIZE_LIMIT] = { 0, };</span></span>
+<span id="L1820"><span class="lineNum">    1820</span> <span class="tlaGNC">        8011 :   GstFlowReturn res = GST_FLOW_ERROR;</span></span>
+<span id="L1821"><span class="lineNum">    1821</span> <span class="tlaGNC">        8011 :   GstMemory *in_mem[NNS_TENSOR_SIZE_LIMIT] = { 0, };</span></span>
+<span id="L1822"><span class="lineNum">    1822</span> <span class="tlaGNC">        8011 :   GstMemory *out_mem[NNS_TENSOR_SIZE_LIMIT] = { 0, };</span></span>
 <span id="L1823"><span class="lineNum">    1823</span>              :   GstMapInfo in_map[NNS_TENSOR_SIZE_LIMIT];</span>
 <span id="L1824"><span class="lineNum">    1824</span>              :   GstMapInfo out_map[NNS_TENSOR_SIZE_LIMIT];</span>
 <span id="L1825"><span class="lineNum">    1825</span>              :   uint8_t *inptr, *outptr;</span>
@@ -1891,30 +1891,30 @@
 <span id="L1829"><span class="lineNum">    1829</span>              :   GstTensorInfo in_flex_info, out_flex_info;</span>
 <span id="L1830"><span class="lineNum">    1830</span>              :   gboolean in_flexible, out_flexible;</span>
 <span id="L1831"><span class="lineNum">    1831</span>              : </span>
-<span id="L1832"><span class="lineNum">    1832</span> <span class="tlaGNC">        7841 :   filter = GST_TENSOR_TRANSFORM_CAST (trans);</span></span>
+<span id="L1832"><span class="lineNum">    1832</span> <span class="tlaGNC">        8011 :   filter = GST_TENSOR_TRANSFORM_CAST (trans);</span></span>
 <span id="L1833"><span class="lineNum">    1833</span>              : </span>
-<span id="L1834"><span class="lineNum">    1834</span> <span class="tlaGNC">       15678 :   g_return_val_if_fail (filter-&gt;loaded, GST_FLOW_ERROR);</span></span>
-<span id="L1835"><span class="lineNum">    1835</span> <span class="tlaGNC">        7837 :   inbuf = gst_tensor_buffer_from_config (inbuf, &amp;filter-&gt;in_config);</span></span>
+<span id="L1834"><span class="lineNum">    1834</span> <span class="tlaGNC">       16018 :   g_return_val_if_fail (filter-&gt;loaded, GST_FLOW_ERROR);</span></span>
+<span id="L1835"><span class="lineNum">    1835</span> <span class="tlaGNC">        8007 :   inbuf = gst_tensor_buffer_from_config (inbuf, &amp;filter-&gt;in_config);</span></span>
 <span id="L1836"><span class="lineNum">    1836</span>              : </span>
-<span id="L1837"><span class="lineNum">    1837</span> <span class="tlaGNC">        7837 :   in_flexible =</span></span>
-<span id="L1838"><span class="lineNum">    1838</span> <span class="tlaGNC">        7837 :       gst_tensor_pad_caps_is_flexible (GST_BASE_TRANSFORM_SINK_PAD (trans));</span></span>
-<span id="L1839"><span class="lineNum">    1839</span> <span class="tlaGNC">        7837 :   out_flexible =</span></span>
-<span id="L1840"><span class="lineNum">    1840</span> <span class="tlaGNC">        7837 :       gst_tensor_pad_caps_is_flexible (GST_BASE_TRANSFORM_SRC_PAD (trans));</span></span>
+<span id="L1837"><span class="lineNum">    1837</span> <span class="tlaGNC">        8007 :   in_flexible =</span></span>
+<span id="L1838"><span class="lineNum">    1838</span> <span class="tlaGNC">        8007 :       gst_tensor_pad_caps_is_flexible (GST_BASE_TRANSFORM_SINK_PAD (trans));</span></span>
+<span id="L1839"><span class="lineNum">    1839</span> <span class="tlaGNC">        8007 :   out_flexible =</span></span>
+<span id="L1840"><span class="lineNum">    1840</span> <span class="tlaGNC">        8007 :       gst_tensor_pad_caps_is_flexible (GST_BASE_TRANSFORM_SRC_PAD (trans));</span></span>
 <span id="L1841"><span class="lineNum">    1841</span>              : </span>
-<span id="L1842"><span class="lineNum">    1842</span> <span class="tlaGNC">        7837 :   num_mems = gst_tensor_buffer_get_count (inbuf);</span></span>
-<span id="L1843"><span class="lineNum">    1843</span> <span class="tlaGNC">        7837 :   if (in_flexible) {</span></span>
-<span id="L1844"><span class="lineNum">    1844</span> <span class="tlaGNC">           9 :     num_tensors = num_mems;</span></span>
-<span id="L1845"><span class="lineNum">    1845</span> <span class="tlaGNC">           9 :     g_return_val_if_fail (out_flexible, GST_FLOW_ERROR);</span></span>
+<span id="L1842"><span class="lineNum">    1842</span> <span class="tlaGNC">        8007 :   num_mems = gst_tensor_buffer_get_count (inbuf);</span></span>
+<span id="L1843"><span class="lineNum">    1843</span> <span class="tlaGNC">        8007 :   if (in_flexible) {</span></span>
+<span id="L1844"><span class="lineNum">    1844</span> <span class="tlaGNC">           8 :     num_tensors = num_mems;</span></span>
+<span id="L1845"><span class="lineNum">    1845</span> <span class="tlaGNC">           8 :     g_return_val_if_fail (out_flexible, GST_FLOW_ERROR);</span></span>
 <span id="L1846"><span class="lineNum">    1846</span>              :   } else {</span>
-<span id="L1847"><span class="lineNum">    1847</span> <span class="tlaGNC">        7828 :     num_tensors = filter-&gt;in_config.info.num_tensors;</span></span>
-<span id="L1848"><span class="lineNum">    1848</span> <span class="tlaGNC">        7828 :     g_return_val_if_fail (num_mems == num_tensors, GST_FLOW_ERROR);</span></span>
+<span id="L1847"><span class="lineNum">    1847</span> <span class="tlaGNC">        7999 :     num_tensors = filter-&gt;in_config.info.num_tensors;</span></span>
+<span id="L1848"><span class="lineNum">    1848</span> <span class="tlaGNC">        7999 :     g_return_val_if_fail (num_mems == num_tensors, GST_FLOW_ERROR);</span></span>
 <span id="L1849"><span class="lineNum">    1849</span>              :   }</span>
 <span id="L1850"><span class="lineNum">    1850</span>              : </span>
-<span id="L1851"><span class="lineNum">    1851</span> <span class="tlaGNC">       15760 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L1852"><span class="lineNum">    1852</span> <span class="tlaGNC">        7923 :     in_info = gst_tensors_info_get_nth_info (&amp;filter-&gt;in_config.info, i);</span></span>
-<span id="L1853"><span class="lineNum">    1853</span> <span class="tlaGNC">        7923 :     out_info = gst_tensors_info_get_nth_info (&amp;filter-&gt;out_config.info, i);</span></span>
+<span id="L1851"><span class="lineNum">    1851</span> <span class="tlaGNC">       16100 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L1852"><span class="lineNum">    1852</span> <span class="tlaGNC">        8093 :     in_info = gst_tensors_info_get_nth_info (&amp;filter-&gt;in_config.info, i);</span></span>
+<span id="L1853"><span class="lineNum">    1853</span> <span class="tlaGNC">        8093 :     out_info = gst_tensors_info_get_nth_info (&amp;filter-&gt;out_config.info, i);</span></span>
 <span id="L1854"><span class="lineNum">    1854</span>              : </span>
-<span id="L1855"><span class="lineNum">    1855</span> <span class="tlaGNC">        7923 :     if (filter-&gt;apply &amp;&amp; !g_list_find (filter-&gt;apply, GINT_TO_POINTER (i))) {</span></span>
+<span id="L1855"><span class="lineNum">    1855</span> <span class="tlaGNC">        8093 :     if (filter-&gt;apply &amp;&amp; !g_list_find (filter-&gt;apply, GINT_TO_POINTER (i))) {</span></span>
 <span id="L1856"><span class="lineNum">    1856</span> <span class="tlaGNC">          15 :       GstMemory *mem = gst_tensor_buffer_get_nth_memory (inbuf, i);</span></span>
 <span id="L1857"><span class="lineNum">    1857</span>              : </span>
 <span id="L1858"><span class="lineNum">    1858</span> <span class="tlaGNC">          15 :       if (!in_flexible &amp;&amp; out_flexible) {</span></span>
@@ -1931,56 +1931,56 @@
 <span id="L1869"><span class="lineNum">    1869</span>              :     }</span>
 <span id="L1870"><span class="lineNum">    1870</span>              : </span>
 <span id="L1871"><span class="lineNum">    1871</span>              :     /* parse input buffer */</span>
-<span id="L1872"><span class="lineNum">    1872</span> <span class="tlaGNC">        7908 :     in_mem[i] = gst_tensor_buffer_get_nth_memory (inbuf, i);</span></span>
-<span id="L1873"><span class="lineNum">    1873</span> <span class="tlaGNC">        7908 :     if (!gst_memory_map (in_mem[i], &amp;in_map[i], GST_MAP_READ)) {</span></span>
+<span id="L1872"><span class="lineNum">    1872</span> <span class="tlaGNC">        8078 :     in_mem[i] = gst_tensor_buffer_get_nth_memory (inbuf, i);</span></span>
+<span id="L1873"><span class="lineNum">    1873</span> <span class="tlaGNC">        8078 :     if (!gst_memory_map (in_mem[i], &amp;in_map[i], GST_MAP_READ)) {</span></span>
 <span id="L1874"><span class="lineNum">    1874</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_loge (&quot;Cannot map input buffer to gst-buf at tensor-transform.\n&quot;);</span></span>
 <span id="L1875"><span class="lineNum">    1875</span> <span class="tlaUNC">           0 :       res = GST_FLOW_ERROR;</span></span>
 <span id="L1876"><span class="lineNum">    1876</span> <span class="tlaUNC">           0 :       goto done;</span></span>
 <span id="L1877"><span class="lineNum">    1877</span>              :     }</span>
-<span id="L1878"><span class="lineNum">    1878</span> <span class="tlaGNC tlaBgGNC">        7908 :     inptr = in_map[i].data;</span></span>
+<span id="L1878"><span class="lineNum">    1878</span> <span class="tlaGNC tlaBgGNC">        8078 :     inptr = in_map[i].data;</span></span>
 <span id="L1879"><span class="lineNum">    1879</span>              : </span>
-<span id="L1880"><span class="lineNum">    1880</span> <span class="tlaGNC">        7908 :     if (in_flexible) {</span></span>
-<span id="L1881"><span class="lineNum">    1881</span> <span class="tlaGNC">           9 :       in_info = &amp;in_flex_info;</span></span>
-<span id="L1882"><span class="lineNum">    1882</span> <span class="tlaGNC">           9 :       out_info = &amp;out_flex_info;</span></span>
+<span id="L1880"><span class="lineNum">    1880</span> <span class="tlaGNC">        8078 :     if (in_flexible) {</span></span>
+<span id="L1881"><span class="lineNum">    1881</span> <span class="tlaGNC">           8 :       in_info = &amp;in_flex_info;</span></span>
+<span id="L1882"><span class="lineNum">    1882</span> <span class="tlaGNC">           8 :       out_info = &amp;out_flex_info;</span></span>
 <span id="L1883"><span class="lineNum">    1883</span>              : </span>
-<span id="L1884"><span class="lineNum">    1884</span> <span class="tlaGNC">           9 :       gst_tensor_meta_info_parse_header (&amp;meta, inptr);</span></span>
+<span id="L1884"><span class="lineNum">    1884</span> <span class="tlaGNC">           8 :       gst_tensor_meta_info_parse_header (&amp;meta, inptr);</span></span>
 <span id="L1885"><span class="lineNum">    1885</span>              :       /** @todo max rank supported in tensor-transform is 4 */</span>
-<span id="L1886"><span class="lineNum">    1886</span> <span class="tlaGNC">           9 :       if (!gst_tensor_meta_info_convert (&amp;meta, in_info)) {</span></span>
+<span id="L1886"><span class="lineNum">    1886</span> <span class="tlaGNC">           8 :       if (!gst_tensor_meta_info_convert (&amp;meta, in_info)) {</span></span>
 <span id="L1887"><span class="lineNum">    1887</span> <span class="tlaUNC tlaBgUNC">           0 :         res = GST_FLOW_ERROR;</span></span>
 <span id="L1888"><span class="lineNum">    1888</span> <span class="tlaUNC">           0 :         goto done;</span></span>
 <span id="L1889"><span class="lineNum">    1889</span>              :       }</span>
 <span id="L1890"><span class="lineNum">    1890</span>              : </span>
-<span id="L1891"><span class="lineNum">    1891</span> <span class="tlaGNC tlaBgGNC">           9 :       gst_tensor_transform_convert_dimension (filter, GST_PAD_SINK,</span></span>
+<span id="L1891"><span class="lineNum">    1891</span> <span class="tlaGNC tlaBgGNC">           8 :       gst_tensor_transform_convert_dimension (filter, GST_PAD_SINK,</span></span>
 <span id="L1892"><span class="lineNum">    1892</span>              :           i, in_info, out_info);</span>
 <span id="L1893"><span class="lineNum">    1893</span>              : </span>
-<span id="L1894"><span class="lineNum">    1894</span> <span class="tlaGNC">           9 :       hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
-<span id="L1895"><span class="lineNum">    1895</span> <span class="tlaGNC">           9 :       inptr += hsize;</span></span>
+<span id="L1894"><span class="lineNum">    1894</span> <span class="tlaGNC">           8 :       hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
+<span id="L1895"><span class="lineNum">    1895</span> <span class="tlaGNC">           8 :       inptr += hsize;</span></span>
 <span id="L1896"><span class="lineNum">    1896</span>              :     }</span>
 <span id="L1897"><span class="lineNum">    1897</span>              : </span>
 <span id="L1898"><span class="lineNum">    1898</span>              :     /* prepare output buffer */</span>
-<span id="L1899"><span class="lineNum">    1899</span> <span class="tlaGNC">        7908 :     buf_size = gst_tensor_info_get_size (out_info);</span></span>
-<span id="L1900"><span class="lineNum">    1900</span> <span class="tlaGNC">        7908 :     if (out_flexible) {</span></span>
-<span id="L1901"><span class="lineNum">    1901</span> <span class="tlaGNC">           9 :       gst_tensor_info_convert_to_meta (out_info, &amp;meta);</span></span>
-<span id="L1902"><span class="lineNum">    1902</span> <span class="tlaGNC">           9 :       hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
-<span id="L1903"><span class="lineNum">    1903</span> <span class="tlaGNC">           9 :       buf_size += hsize;</span></span>
+<span id="L1899"><span class="lineNum">    1899</span> <span class="tlaGNC">        8078 :     buf_size = gst_tensor_info_get_size (out_info);</span></span>
+<span id="L1900"><span class="lineNum">    1900</span> <span class="tlaGNC">        8078 :     if (out_flexible) {</span></span>
+<span id="L1901"><span class="lineNum">    1901</span> <span class="tlaGNC">           8 :       gst_tensor_info_convert_to_meta (out_info, &amp;meta);</span></span>
+<span id="L1902"><span class="lineNum">    1902</span> <span class="tlaGNC">           8 :       hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
+<span id="L1903"><span class="lineNum">    1903</span> <span class="tlaGNC">           8 :       buf_size += hsize;</span></span>
 <span id="L1904"><span class="lineNum">    1904</span>              :     }</span>
 <span id="L1905"><span class="lineNum">    1905</span>              : </span>
-<span id="L1906"><span class="lineNum">    1906</span> <span class="tlaGNC">        7908 :     out_mem[i] = gst_allocator_alloc (NULL, buf_size, NULL);</span></span>
-<span id="L1907"><span class="lineNum">    1907</span> <span class="tlaGNC">        7908 :     gst_tensor_buffer_append_memory (outbuf, out_mem[i], out_info);</span></span>
+<span id="L1906"><span class="lineNum">    1906</span> <span class="tlaGNC">        8078 :     out_mem[i] = gst_allocator_alloc (NULL, buf_size, NULL);</span></span>
+<span id="L1907"><span class="lineNum">    1907</span> <span class="tlaGNC">        8078 :     gst_tensor_buffer_append_memory (outbuf, out_mem[i], out_info);</span></span>
 <span id="L1908"><span class="lineNum">    1908</span>              : </span>
-<span id="L1909"><span class="lineNum">    1909</span> <span class="tlaGNC">        7908 :     if (!gst_memory_map (out_mem[i], &amp;out_map[i], GST_MAP_WRITE)) {</span></span>
+<span id="L1909"><span class="lineNum">    1909</span> <span class="tlaGNC">        8078 :     if (!gst_memory_map (out_mem[i], &amp;out_map[i], GST_MAP_WRITE)) {</span></span>
 <span id="L1910"><span class="lineNum">    1910</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_loge (&quot;Cannot map output buffer to gst-buf at tensor-transform.\n&quot;);</span></span>
 <span id="L1911"><span class="lineNum">    1911</span> <span class="tlaUNC">           0 :       res = GST_FLOW_ERROR;</span></span>
 <span id="L1912"><span class="lineNum">    1912</span> <span class="tlaUNC">           0 :       goto done;</span></span>
 <span id="L1913"><span class="lineNum">    1913</span>              :     }</span>
-<span id="L1914"><span class="lineNum">    1914</span> <span class="tlaGNC tlaBgGNC">        7908 :     outptr = out_map[i].data;</span></span>
+<span id="L1914"><span class="lineNum">    1914</span> <span class="tlaGNC tlaBgGNC">        8078 :     outptr = out_map[i].data;</span></span>
 <span id="L1915"><span class="lineNum">    1915</span>              : </span>
-<span id="L1916"><span class="lineNum">    1916</span> <span class="tlaGNC">        7908 :     if (out_flexible) {</span></span>
-<span id="L1917"><span class="lineNum">    1917</span> <span class="tlaGNC">           9 :       gst_tensor_meta_info_update_header (&amp;meta, outptr);</span></span>
-<span id="L1918"><span class="lineNum">    1918</span> <span class="tlaGNC">           9 :       outptr += hsize;</span></span>
+<span id="L1916"><span class="lineNum">    1916</span> <span class="tlaGNC">        8078 :     if (out_flexible) {</span></span>
+<span id="L1917"><span class="lineNum">    1917</span> <span class="tlaGNC">           8 :       gst_tensor_meta_info_update_header (&amp;meta, outptr);</span></span>
+<span id="L1918"><span class="lineNum">    1918</span> <span class="tlaGNC">           8 :       outptr += hsize;</span></span>
 <span id="L1919"><span class="lineNum">    1919</span>              :     }</span>
 <span id="L1920"><span class="lineNum">    1920</span>              : </span>
-<span id="L1921"><span class="lineNum">    1921</span> <span class="tlaGNC">        7908 :     switch (filter-&gt;mode) {</span></span>
+<span id="L1921"><span class="lineNum">    1921</span> <span class="tlaGNC">        8078 :     switch (filter-&gt;mode) {</span></span>
 <span id="L1922"><span class="lineNum">    1922</span> <span class="tlaGNC">          52 :       case GTT_DIMCHG:</span></span>
 <span id="L1923"><span class="lineNum">    1923</span> <span class="tlaGNC">          52 :         res = gst_tensor_transform_dimchg (filter, in_info, out_info,</span></span>
 <span id="L1924"><span class="lineNum">    1924</span>              :             inptr, outptr);</span>
@@ -1989,10 +1989,10 @@
 <span id="L1927"><span class="lineNum">    1927</span> <span class="tlaGNC">         579 :         res = gst_tensor_transform_typecast (filter, in_info, out_info,</span></span>
 <span id="L1928"><span class="lineNum">    1928</span>              :             inptr, outptr);</span>
 <span id="L1929"><span class="lineNum">    1929</span> <span class="tlaGNC">         579 :         break;</span></span>
-<span id="L1930"><span class="lineNum">    1930</span> <span class="tlaGNC">        7181 :       case GTT_ARITHMETIC:</span></span>
-<span id="L1931"><span class="lineNum">    1931</span> <span class="tlaGNC">        7181 :         res = gst_tensor_transform_arithmetic (filter, in_info, out_info,</span></span>
+<span id="L1930"><span class="lineNum">    1930</span> <span class="tlaGNC">        7351 :       case GTT_ARITHMETIC:</span></span>
+<span id="L1931"><span class="lineNum">    1931</span> <span class="tlaGNC">        7351 :         res = gst_tensor_transform_arithmetic (filter, in_info, out_info,</span></span>
 <span id="L1932"><span class="lineNum">    1932</span>              :             inptr, outptr);</span>
-<span id="L1933"><span class="lineNum">    1933</span> <span class="tlaGNC">        7181 :         break;</span></span>
+<span id="L1933"><span class="lineNum">    1933</span> <span class="tlaGNC">        7351 :         break;</span></span>
 <span id="L1934"><span class="lineNum">    1934</span> <span class="tlaGNC">          58 :       case GTT_TRANSPOSE:</span></span>
 <span id="L1935"><span class="lineNum">    1935</span> <span class="tlaGNC">          58 :         res = gst_tensor_transform_transpose (filter, in_info, out_info,</span></span>
 <span id="L1936"><span class="lineNum">    1936</span>              :             inptr, outptr);</span>
@@ -2016,17 +2016,17 @@
 <span id="L1954"><span class="lineNum">    1954</span>              :     }</span>
 <span id="L1955"><span class="lineNum">    1955</span>              :   }</span>
 <span id="L1956"><span class="lineNum">    1956</span>              : </span>
-<span id="L1957"><span class="lineNum">    1957</span> <span class="tlaGNC tlaBgGNC">        7837 : done:</span></span>
-<span id="L1958"><span class="lineNum">    1958</span> <span class="tlaGNC">       15760 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L1959"><span class="lineNum">    1959</span> <span class="tlaGNC">        7923 :     if (in_mem[i]) {</span></span>
-<span id="L1960"><span class="lineNum">    1960</span> <span class="tlaGNC">        7908 :       gst_memory_unmap (in_mem[i], &amp;in_map[i]);</span></span>
-<span id="L1961"><span class="lineNum">    1961</span> <span class="tlaGNC">        7908 :       gst_memory_unref (in_mem[i]);</span></span>
+<span id="L1957"><span class="lineNum">    1957</span> <span class="tlaGNC tlaBgGNC">        8007 : done:</span></span>
+<span id="L1958"><span class="lineNum">    1958</span> <span class="tlaGNC">       16100 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L1959"><span class="lineNum">    1959</span> <span class="tlaGNC">        8093 :     if (in_mem[i]) {</span></span>
+<span id="L1960"><span class="lineNum">    1960</span> <span class="tlaGNC">        8078 :       gst_memory_unmap (in_mem[i], &amp;in_map[i]);</span></span>
+<span id="L1961"><span class="lineNum">    1961</span> <span class="tlaGNC">        8078 :       gst_memory_unref (in_mem[i]);</span></span>
 <span id="L1962"><span class="lineNum">    1962</span>              :     }</span>
-<span id="L1963"><span class="lineNum">    1963</span> <span class="tlaGNC">        7923 :     if (out_mem[i])</span></span>
-<span id="L1964"><span class="lineNum">    1964</span> <span class="tlaGNC">        7908 :       gst_memory_unmap (out_mem[i], &amp;out_map[i]);</span></span>
+<span id="L1963"><span class="lineNum">    1963</span> <span class="tlaGNC">        8093 :     if (out_mem[i])</span></span>
+<span id="L1964"><span class="lineNum">    1964</span> <span class="tlaGNC">        8078 :       gst_memory_unmap (out_mem[i], &amp;out_map[i]);</span></span>
 <span id="L1965"><span class="lineNum">    1965</span>              :   }</span>
 <span id="L1966"><span class="lineNum">    1966</span>              : </span>
-<span id="L1967"><span class="lineNum">    1967</span> <span class="tlaGNC">        7837 :   return res;</span></span>
+<span id="L1967"><span class="lineNum">    1967</span> <span class="tlaGNC">        8007 :   return res;</span></span>
 <span id="L1968"><span class="lineNum">    1968</span>              : }</span>
 <span id="L1969"><span class="lineNum">    1969</span>              : </span>
 <span id="L1970"><span class="lineNum">    1970</span>              : /**</span>
@@ -2064,19 +2064,19 @@
 <span id="L2002"><span class="lineNum">    2002</span>              :  * @return TRUE if success</span>
 <span id="L2003"><span class="lineNum">    2003</span>              :  */</span>
 <span id="L2004"><span class="lineNum">    2004</span>              : static gboolean</span>
-<span id="L2005"><span class="lineNum">    2005</span> <span class="tlaGNC">        3651 : gst_tensor_transform_convert_dimension (GstTensorTransform * filter,</span></span>
+<span id="L2005"><span class="lineNum">    2005</span> <span class="tlaGNC">        3650 : gst_tensor_transform_convert_dimension (GstTensorTransform * filter,</span></span>
 <span id="L2006"><span class="lineNum">    2006</span>              :     GstPadDirection direction, guint idx, const GstTensorInfo * in_info,</span>
 <span id="L2007"><span class="lineNum">    2007</span>              :     GstTensorInfo * out_info)</span>
 <span id="L2008"><span class="lineNum">    2008</span>              : {</span>
 <span id="L2009"><span class="lineNum">    2009</span>              :   guint i;</span>
 <span id="L2010"><span class="lineNum">    2010</span>              : </span>
 <span id="L2011"><span class="lineNum">    2011</span>              :   /* copy input info first, then update output info */</span>
-<span id="L2012"><span class="lineNum">    2012</span> <span class="tlaGNC">        3651 :   gst_tensor_info_copy (out_info, in_info);</span></span>
+<span id="L2012"><span class="lineNum">    2012</span> <span class="tlaGNC">        3650 :   gst_tensor_info_copy (out_info, in_info);</span></span>
 <span id="L2013"><span class="lineNum">    2013</span>              : </span>
-<span id="L2014"><span class="lineNum">    2014</span> <span class="tlaGNC">        3651 :   if (filter-&gt;apply &amp;&amp; !g_list_find (filter-&gt;apply, GINT_TO_POINTER (idx)))</span></span>
+<span id="L2014"><span class="lineNum">    2014</span> <span class="tlaGNC">        3650 :   if (filter-&gt;apply &amp;&amp; !g_list_find (filter-&gt;apply, GINT_TO_POINTER (idx)))</span></span>
 <span id="L2015"><span class="lineNum">    2015</span> <span class="tlaGNC">          10 :     return TRUE;</span></span>
 <span id="L2016"><span class="lineNum">    2016</span>              : </span>
-<span id="L2017"><span class="lineNum">    2017</span> <span class="tlaGNC">        3641 :   switch (filter-&gt;mode) {</span></span>
+<span id="L2017"><span class="lineNum">    2017</span> <span class="tlaGNC">        3640 :   switch (filter-&gt;mode) {</span></span>
 <span id="L2018"><span class="lineNum">    2018</span> <span class="tlaGNC">          70 :     case GTT_DIMCHG:</span></span>
 <span id="L2019"><span class="lineNum">    2019</span>              :     {</span>
 <span id="L2020"><span class="lineNum">    2020</span> <span class="tlaGNC">          70 :       unsigned int from = filter-&gt;data_dimchg.from;</span></span>
@@ -2124,17 +2124,17 @@
 <span id="L2062"><span class="lineNum">    2062</span>              :       }</span>
 <span id="L2063"><span class="lineNum">    2063</span> <span class="tlaGNC">        1896 :       break;</span></span>
 <span id="L2064"><span class="lineNum">    2064</span>              : </span>
-<span id="L2065"><span class="lineNum">    2065</span> <span class="tlaGNC">        1022 :     case GTT_ARITHMETIC:</span></span>
+<span id="L2065"><span class="lineNum">    2065</span> <span class="tlaGNC">        1021 :     case GTT_ARITHMETIC:</span></span>
 <span id="L2066"><span class="lineNum">    2066</span>              :       /* check arith mode option has typecast operator */</span>
-<span id="L2067"><span class="lineNum">    2067</span> <span class="tlaGNC">        1022 :       if (filter-&gt;data_arithmetic.out_type != _NNS_END) {</span></span>
-<span id="L2068"><span class="lineNum">    2068</span> <span class="tlaGNC">         796 :         if (direction == GST_PAD_SINK) {</span></span>
-<span id="L2069"><span class="lineNum">    2069</span> <span class="tlaGNC">         423 :           out_info-&gt;type = filter-&gt;data_arithmetic.out_type;</span></span>
+<span id="L2067"><span class="lineNum">    2067</span> <span class="tlaGNC">        1021 :       if (filter-&gt;data_arithmetic.out_type != _NNS_END) {</span></span>
+<span id="L2068"><span class="lineNum">    2068</span> <span class="tlaGNC">         795 :         if (direction == GST_PAD_SINK) {</span></span>
+<span id="L2069"><span class="lineNum">    2069</span> <span class="tlaGNC">         422 :           out_info-&gt;type = filter-&gt;data_arithmetic.out_type;</span></span>
 <span id="L2070"><span class="lineNum">    2070</span>              :         } else {</span>
 <span id="L2071"><span class="lineNum">    2071</span>              :           /* cannot get the incoming data type on sink pad */</span>
 <span id="L2072"><span class="lineNum">    2072</span> <span class="tlaGNC">         373 :           out_info-&gt;type = _NNS_END;</span></span>
 <span id="L2073"><span class="lineNum">    2073</span>              :         }</span>
 <span id="L2074"><span class="lineNum">    2074</span>              :       }</span>
-<span id="L2075"><span class="lineNum">    2075</span> <span class="tlaGNC">        1022 :       break;</span></span>
+<span id="L2075"><span class="lineNum">    2075</span> <span class="tlaGNC">        1021 :       break;</span></span>
 <span id="L2076"><span class="lineNum">    2076</span>              : </span>
 <span id="L2077"><span class="lineNum">    2077</span> <span class="tlaGNC">         281 :     case GTT_TRANSPOSE:</span></span>
 <span id="L2078"><span class="lineNum">    2078</span> <span class="tlaGNC">         281 :       if (direction == GST_PAD_SINK) {</span></span>
@@ -2184,7 +2184,7 @@
 <span id="L2122"><span class="lineNum">    2122</span> <span class="tlaGNC">         152 :       return FALSE;</span></span>
 <span id="L2123"><span class="lineNum">    2123</span>              :   }</span>
 <span id="L2124"><span class="lineNum">    2124</span>              : </span>
-<span id="L2125"><span class="lineNum">    2125</span> <span class="tlaGNC">        3489 :   return TRUE;</span></span>
+<span id="L2125"><span class="lineNum">    2125</span> <span class="tlaGNC">        3488 :   return TRUE;</span></span>
 <span id="L2126"><span class="lineNum">    2126</span>              : }</span>
 <span id="L2127"><span class="lineNum">    2127</span>              : </span>
 <span id="L2128"><span class="lineNum">    2128</span>              : /**</span>
@@ -2388,7 +2388,7 @@
 <span id="L2326"><span class="lineNum">    2326</span>              :  * @brief Tell the framework the required size of buffer based on the info of the other side pad. Note that this is always the same with the input. optional vmethod of BaseTransform</span>
 <span id="L2327"><span class="lineNum">    2327</span>              :  */</span>
 <span id="L2328"><span class="lineNum">    2328</span>              : static gboolean</span>
-<span id="L2329"><span class="lineNum">    2329</span> <span class="tlaGNC">        7841 : gst_tensor_transform_transform_size (GstBaseTransform * trans,</span></span>
+<span id="L2329"><span class="lineNum">    2329</span> <span class="tlaGNC">        8011 : gst_tensor_transform_transform_size (GstBaseTransform * trans,</span></span>
 <span id="L2330"><span class="lineNum">    2330</span>              :     GstPadDirection direction, GstCaps * caps, gsize size, GstCaps * othercaps,</span>
 <span id="L2331"><span class="lineNum">    2331</span>              :     gsize * othersize)</span>
 <span id="L2332"><span class="lineNum">    2332</span>              : {</span>
@@ -2401,9 +2401,9 @@
 <span id="L2339"><span class="lineNum">    2339</span>              :    * Consider multi-tensors.</span>
 <span id="L2340"><span class="lineNum">    2340</span>              :    * Set each memory block in transform()</span>
 <span id="L2341"><span class="lineNum">    2341</span>              :    */</span>
-<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">        7841 :   *othersize = 0;</span></span>
+<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">        8011 :   *othersize = 0;</span></span>
 <span id="L2343"><span class="lineNum">    2343</span>              : </span>
-<span id="L2344"><span class="lineNum">    2344</span> <span class="tlaGNC">        7841 :   return TRUE;</span></span>
+<span id="L2344"><span class="lineNum">    2344</span> <span class="tlaGNC">        8011 :   return TRUE;</span></span>
 <span id="L2345"><span class="lineNum">    2345</span>              : }</span>
         </pre>
               </td>

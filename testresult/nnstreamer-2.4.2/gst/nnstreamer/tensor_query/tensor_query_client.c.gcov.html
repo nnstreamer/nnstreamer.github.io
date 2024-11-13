@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#8ffa9117c124e0f0a45b3dc1150acf985a495cc4 - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#7dc1bb795204987e22ae0d85766eb6776eaad9eb - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#8ffa9117c124e0f0a45b3dc1150acf985a495cc4</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#7dc1bb795204987e22ae0d85766eb6776eaad9eb</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">80.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-13 05:33:30</td>
+            <td class="headerValue">2024-11-13 11:51:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -789,45 +789,45 @@
 <span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">         300 :   data_h = g_async_queue_timeout_pop (self-&gt;msg_queue,</span></span>
 <span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">         150 :       self-&gt;timeout * G_TIME_SPAN_MILLISECOND);</span></span>
 <span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         150 :   if (data_h) {</span></span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          80 :     if (self-&gt;requested_num &gt; 0)</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          80 :       self-&gt;requested_num--;</span></span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          80 :     ret = nns_edge_data_get_count (data_h, &amp;num_data);</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          81 :     if (self-&gt;requested_num &gt; 0)</span></span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          81 :       self-&gt;requested_num--;</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          81 :     ret = nns_edge_data_get_count (data_h, &amp;num_data);</span></span>
 <span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          80 :     if (ret == NNS_EDGE_ERROR_NONE &amp;&amp; num_data &gt; 0) {</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          81 :     if (ret == NNS_EDGE_ERROR_NONE &amp;&amp; num_data &gt; 0) {</span></span>
 <span id="L735"><span class="lineNum">     735</span>              :       GstMemory *new_mem;</span>
 <span id="L736"><span class="lineNum">     736</span>              :       GstTensorInfo *_info;</span>
 <span id="L737"><span class="lineNum">     737</span>              : </span>
-<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          80 :       out_buf = gst_buffer_new ();</span></span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          81 :       out_buf = gst_buffer_new ();</span></span>
 <span id="L739"><span class="lineNum">     739</span>              : </span>
-<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">         160 :       for (i = 0; i &lt; num_data; i++) {</span></span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">          80 :         void *data = NULL;</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">         162 :       for (i = 0; i &lt; num_data; i++) {</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">          81 :         void *data = NULL;</span></span>
 <span id="L742"><span class="lineNum">     742</span>              :         nns_size_t data_len;</span>
 <span id="L743"><span class="lineNum">     743</span>              :         gpointer new_data;</span>
 <span id="L744"><span class="lineNum">     744</span>              : </span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          80 :         nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          80 :         new_data = _g_memdup (data, data_len);</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          81 :         nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          81 :         new_data = _g_memdup (data, data_len);</span></span>
 <span id="L747"><span class="lineNum">     747</span>              : </span>
-<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">          80 :         new_mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
+<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">          81 :         new_mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
 <span id="L749"><span class="lineNum">     749</span>              :             new_data, g_free);</span>
 <span id="L750"><span class="lineNum">     750</span>              : </span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          80 :         if (self-&gt;is_tensor) {</span></span>
-<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          71 :           _info = gst_tensors_info_get_nth_info (&amp;self-&gt;config.info, i);</span></span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">          71 :           gst_tensor_buffer_append_memory (out_buf, new_mem, _info);</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          81 :         if (self-&gt;is_tensor) {</span></span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          72 :           _info = gst_tensors_info_get_nth_info (&amp;self-&gt;config.info, i);</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">          72 :           gst_tensor_buffer_append_memory (out_buf, new_mem, _info);</span></span>
 <span id="L754"><span class="lineNum">     754</span>              :         } else {</span>
 <span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">           9 :           gst_buffer_append_memory (out_buf, new_mem);</span></span>
 <span id="L756"><span class="lineNum">     756</span>              :         }</span>
 <span id="L757"><span class="lineNum">     757</span>              :       }</span>
 <span id="L758"><span class="lineNum">     758</span>              : </span>
 <span id="L759"><span class="lineNum">     759</span>              :       /* metadata from incoming buffer */</span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">          80 :       gst_buffer_copy_into (out_buf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">          81 :       gst_buffer_copy_into (out_buf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
 <span id="L761"><span class="lineNum">     761</span>              : </span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          80 :       res = gst_pad_push (self-&gt;srcpad, out_buf);</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          81 :       res = gst_pad_push (self-&gt;srcpad, out_buf);</span></span>
 <span id="L763"><span class="lineNum">     763</span>              :     } else {</span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Failed to get the number of memories of the edge data.&quot;);</span></span>
 <span id="L765"><span class="lineNum">     765</span> <span class="tlaUNC">           0 :       res = GST_FLOW_ERROR;</span></span>
 <span id="L766"><span class="lineNum">     766</span>              :     }</span>
 <span id="L767"><span class="lineNum">     767</span>              : </span>
-<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC tlaBgGNC">          80 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC tlaBgGNC">          81 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L769"><span class="lineNum">     769</span>              :   }</span>
 <span id="L770"><span class="lineNum">     770</span>              : </span>
 <span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">         263 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
