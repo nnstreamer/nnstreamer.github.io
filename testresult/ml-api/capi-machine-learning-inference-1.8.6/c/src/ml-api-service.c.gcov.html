@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#288166d6ad66ea0224e7a7aeb1ba571252ded49d - capi-machine-learning-inference-1.8.6/c/src/ml-api-service.c</title>
+  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#0524d46ca741983e1ec4a9cf7e4975bcc7dc6238 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#288166d6ad66ea0224e7a7aeb1ba571252ded49d</td>
+            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#0524d46ca741983e1ec4a9cf7e4975bcc7dc6238</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">86.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-14 13:46:17</td>
+            <td class="headerValue">2024-11-14 14:01:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -85,28 +85,28 @@
 <span id="L23"><span class="lineNum">      23</span>              :  * @brief Internal function to validate ml-service handle.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
 <span id="L25"><span class="lineNum">      25</span>              : gboolean</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">         468 : _ml_service_handle_is_valid (ml_service_s * mls)</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">         466 : _ml_service_handle_is_valid (ml_service_s * mls)</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : {</span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         468 :   if (!mls)</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         466 :   if (!mls)</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">          28 :     return FALSE;</span></span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         440 :   if (mls-&gt;magic != ML_SERVICE_MAGIC)</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         438 :   if (mls-&gt;magic != ML_SERVICE_MAGIC)</span></span>
 <span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          18 :     return FALSE;</span></span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         422 :   switch (mls-&gt;type) {</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         421 :     case ML_SERVICE_TYPE_SERVER_PIPELINE:</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         420 :   switch (mls-&gt;type) {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         419 :     case ML_SERVICE_TYPE_SERVER_PIPELINE:</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :     case ML_SERVICE_TYPE_CLIENT_QUERY:</span>
 <span id="L37"><span class="lineNum">      37</span>              :     case ML_SERVICE_TYPE_OFFLOADING:</span>
 <span id="L38"><span class="lineNum">      38</span>              :     case ML_SERVICE_TYPE_EXTENSION:</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         421 :       if (mls-&gt;priv == NULL)</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         419 :       if (mls-&gt;priv == NULL)</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC tlaBgUNC">           0 :         return FALSE;</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">         421 :       break;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">         419 :       break;</span></span>
 <span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           1 :     default:</span></span>
 <span id="L43"><span class="lineNum">      43</span>              :       /* Invalid handle type. */</span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           1 :       return FALSE;</span></span>
 <span id="L45"><span class="lineNum">      45</span>              :   }</span>
 <span id="L46"><span class="lineNum">      46</span>              : </span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         421 :   return TRUE;</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         419 :   return TRUE;</span></span>
 <span id="L48"><span class="lineNum">      48</span>              : }</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span>              : /**</span>
@@ -228,15 +228,15 @@
 <span id="L166"><span class="lineNum">     166</span>              :  * @brief Internal function to get ml-service event callback.</span>
 <span id="L167"><span class="lineNum">     167</span>              :  */</span>
 <span id="L168"><span class="lineNum">     168</span>              : void</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          62 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          60 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
 <span id="L170"><span class="lineNum">     170</span>              :     ml_service_event_cb_info_s * cb_info)</span>
 <span id="L171"><span class="lineNum">     171</span>              : {</span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          62 :   if (!mls || !cb_info)</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          60 :   if (!mls || !cb_info)</span></span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L174"><span class="lineNum">     174</span>              : </span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC tlaBgGNC">          62 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          62 :   *cb_info = mls-&gt;cb_info;</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          62 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC tlaBgGNC">          60 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          60 :   *cb_info = mls-&gt;cb_info;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          60 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : }</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              : /**</span>
@@ -753,28 +753,28 @@
 <span id="L691"><span class="lineNum">     691</span>              :  * @brief Adds an input data to process the model in ml-service extension handle.</span>
 <span id="L692"><span class="lineNum">     692</span>              :  */</span>
 <span id="L693"><span class="lineNum">     693</span>              : int</span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">          94 : ml_service_request (ml_service_h handle, const char *name,</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">          92 : ml_service_request (ml_service_h handle, const char *name,</span></span>
 <span id="L695"><span class="lineNum">     695</span>              :     const ml_tensors_data_h data)</span>
 <span id="L696"><span class="lineNum">     696</span>              : {</span>
-<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">          94 :   ml_service_s *mls = (ml_service_s *) handle;</span></span>
+<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">          92 :   ml_service_s *mls = (ml_service_s *) handle;</span></span>
 <span id="L698"><span class="lineNum">     698</span>              :   int status;</span>
 <span id="L699"><span class="lineNum">     699</span>              : </span>
-<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">          94 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">          92 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
 <span id="L701"><span class="lineNum">     701</span>              : </span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          94 :   if (!_ml_service_handle_is_valid (mls)) {</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          92 :   if (!_ml_service_handle_is_valid (mls)) {</span></span>
 <span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">           4 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L704"><span class="lineNum">     704</span>              :         &quot;The parameter, 'handle' (ml_service_h), is invalid. It should be a valid ml_service_h instance, which is usually created by ml_service_new().&quot;);</span>
 <span id="L705"><span class="lineNum">     705</span>              :   }</span>
 <span id="L706"><span class="lineNum">     706</span>              : </span>
-<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">          90 :   if (!data) {</span></span>
+<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">          88 :   if (!data) {</span></span>
 <span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">           2 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L709"><span class="lineNum">     709</span>              :         &quot;The parameter, data (ml_tensors_data_h), is NULL. It should be a valid ml_tensor_data_h instance, which is usually created by ml_tensors_data_create().&quot;);</span>
 <span id="L710"><span class="lineNum">     710</span>              :   }</span>
 <span id="L711"><span class="lineNum">     711</span>              : </span>
-<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">          88 :   switch (mls-&gt;type) {</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">          74 :     case ML_SERVICE_TYPE_EXTENSION:</span></span>
-<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">          74 :       status = _ml_service_extension_request (mls, name, data);</span></span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          74 :       break;</span></span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">          86 :   switch (mls-&gt;type) {</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">          72 :     case ML_SERVICE_TYPE_EXTENSION:</span></span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">          72 :       status = _ml_service_extension_request (mls, name, data);</span></span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          72 :       break;</span></span>
 <span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">          14 :     case ML_SERVICE_TYPE_OFFLOADING:</span></span>
 <span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">          14 :       status = _ml_service_offloading_request (mls, name, data);</span></span>
 <span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">          14 :       break;</span></span>
@@ -784,7 +784,7 @@
 <span id="L722"><span class="lineNum">     722</span> <span class="tlaUNC">           0 :       break;</span></span>
 <span id="L723"><span class="lineNum">     723</span>              :   }</span>
 <span id="L724"><span class="lineNum">     724</span>              : </span>
-<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC tlaBgGNC">          88 :   return status;</span></span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC tlaBgGNC">          86 :   return status;</span></span>
 <span id="L726"><span class="lineNum">     726</span>              : }</span>
 <span id="L727"><span class="lineNum">     727</span>              : </span>
 <span id="L728"><span class="lineNum">     728</span>              : /**</span>
@@ -836,21 +836,21 @@
 <span id="L774"><span class="lineNum">     774</span>              :  * a registered callback function.</span>
 <span id="L775"><span class="lineNum">     775</span>              :  */</span>
 <span id="L776"><span class="lineNum">     776</span>              : int</span>
-<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">          45 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
+<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">          43 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
 <span id="L778"><span class="lineNum">     778</span>              :     const ml_tensors_data_h data)</span>
 <span id="L779"><span class="lineNum">     779</span>              : {</span>
-<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">          45 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
-<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          45 :   ml_information_h ml_information = NULL;</span></span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          45 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">          43 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
+<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          43 :   ml_information_h ml_information = NULL;</span></span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          43 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L783"><span class="lineNum">     783</span>              : </span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          45 :   if (!mls || !data) {</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">          45 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          43 :   if (!mls || !data) {</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">          43 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L786"><span class="lineNum">     786</span>              :         &quot;Failed to create ml-service event data, invalid parameter.&quot;);</span>
 <span id="L787"><span class="lineNum">     787</span>              :   }</span>
 <span id="L788"><span class="lineNum">     788</span>              : </span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          45 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          43 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
 <span id="L790"><span class="lineNum">     790</span>              : </span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          45 :   if (cb_info.cb) {</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          43 :   if (cb_info.cb) {</span></span>
 <span id="L792"><span class="lineNum">     792</span>              :     /* Create information handle for ml-service event. */</span>
 <span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC">          36 :     status = _ml_information_create (&amp;ml_information);</span></span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">          36 :     if (status != ML_ERROR_NONE)</span></span>
@@ -868,15 +868,15 @@
 <span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">          36 :       cb_info.cb (ML_SERVICE_EVENT_NEW_DATA, ml_information, cb_info.pdata);</span></span>
 <span id="L807"><span class="lineNum">     807</span>              :   }</span>
 <span id="L808"><span class="lineNum">     808</span>              : </span>
-<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">           9 : done:</span></span>
-<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">          45 :   if (ml_information)</span></span>
+<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">           7 : done:</span></span>
+<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">          43 :   if (ml_information)</span></span>
 <span id="L811"><span class="lineNum">     811</span> <span class="tlaGNC">          36 :     ml_information_destroy (ml_information);</span></span>
 <span id="L812"><span class="lineNum">     812</span>              : </span>
-<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          45 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          43 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L814"><span class="lineNum">     814</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke 'new data' event.&quot;);</span></span>
 <span id="L815"><span class="lineNum">     815</span>              :   }</span>
 <span id="L816"><span class="lineNum">     816</span>              : </span>
-<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC tlaBgGNC">          45 :   return status;</span></span>
+<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC tlaBgGNC">          43 :   return status;</span></span>
 <span id="L818"><span class="lineNum">     818</span>              : }</span>
 <span id="L819"><span class="lineNum">     819</span>              : </span>
 <span id="L820"><span class="lineNum">     820</span>              : /**</span>
