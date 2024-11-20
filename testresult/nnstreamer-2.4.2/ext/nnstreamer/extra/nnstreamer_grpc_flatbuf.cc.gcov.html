@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d239d901aefa5197327fc8bded15a314929183b1 - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_grpc_flatbuf.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 gichan-jang/nnstreamer#d239d901aefa5197327fc8bded15a314929183b1 - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_grpc_flatbuf.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d239d901aefa5197327fc8bded15a314929183b1</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 gichan-jang/nnstreamer#d239d901aefa5197327fc8bded15a314929183b1</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">87.1&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-20 05:35:51</td>
+            <td class="headerValue">2024-11-21 05:30:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -565,18 +565,18 @@
 <span id="L503"><span class="lineNum">     503</span>              : </span>
 <span id="L504"><span class="lineNum">     504</span>              :     /* 10 msec deadline to wait the next event */</span>
 <span id="L505"><span class="lineNum">     505</span>              :     gpr_timespec deadline = gpr_time_add (</span>
-<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         555 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         553 :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span></span>
 <span id="L507"><span class="lineNum">     507</span>              : </span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">         555 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">         553 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
 <span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          23 :       case CompletionQueue::GOT_EVENT:</span></span>
 <span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          23 :         static_cast&lt;AsyncCallDataServer *&gt; (tag)-&gt;RunState (ok);</span></span>
 <span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">          23 :         break;</span></span>
 <span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">           2 :       case CompletionQueue::SHUTDOWN:</span></span>
 <span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">           2 :         return;</span></span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         530 :       default:</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         530 :         break;</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">         528 :       default:</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">         528 :         break;</span></span>
 <span id="L516"><span class="lineNum">     516</span>              :     }</span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">         553 :   }</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">         551 :   }</span></span>
 <span id="L518"><span class="lineNum">     518</span>              : }</span>
 <span id="L519"><span class="lineNum">     519</span>              : </span>
 <span id="L520"><span class="lineNum">     520</span>              : /** @brief gRPC client thread */</span>
