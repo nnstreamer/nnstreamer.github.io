@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:17</td>
+            <td class="headerValue">2024-11-22 05:36:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -228,15 +228,15 @@
 <span id="L166"><span class="lineNum">     166</span>              :  * @brief Internal function to get ml-service event callback.</span>
 <span id="L167"><span class="lineNum">     167</span>              :  */</span>
 <span id="L168"><span class="lineNum">     168</span>              : void</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          62 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          65 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
 <span id="L170"><span class="lineNum">     170</span>              :     ml_service_event_cb_info_s * cb_info)</span>
 <span id="L171"><span class="lineNum">     171</span>              : {</span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          62 :   if (!mls || !cb_info)</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          65 :   if (!mls || !cb_info)</span></span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L174"><span class="lineNum">     174</span>              : </span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC tlaBgGNC">          62 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          62 :   *cb_info = mls-&gt;cb_info;</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          62 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC tlaBgGNC">          65 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          65 :   *cb_info = mls-&gt;cb_info;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          65 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : }</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              : /**</span>
@@ -446,7 +446,7 @@
 <span id="L384"><span class="lineNum">     384</span>              :   /* Parse information. */</span>
 <span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          77 :   if (json_object_has_member (object, &quot;information&quot;)) {</span></span>
 <span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          15 :     JsonObject *info = json_object_get_object_member (object, &quot;information&quot;);</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          30 :     g_autoptr (GList) members = json_object_get_members (info);</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          15 :     g_autoptr (GList) members = json_object_get_members (info);</span></span>
 <span id="L388"><span class="lineNum">     388</span>              :     GList *iter;</span>
 <span id="L389"><span class="lineNum">     389</span>              : </span>
 <span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          47 :     for (iter = members; iter; iter = g_list_next (iter)) {</span></span>
@@ -836,21 +836,21 @@
 <span id="L774"><span class="lineNum">     774</span>              :  * a registered callback function.</span>
 <span id="L775"><span class="lineNum">     775</span>              :  */</span>
 <span id="L776"><span class="lineNum">     776</span>              : int</span>
-<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">          45 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
+<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">          48 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
 <span id="L778"><span class="lineNum">     778</span>              :     const ml_tensors_data_h data)</span>
 <span id="L779"><span class="lineNum">     779</span>              : {</span>
-<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">          45 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
-<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          45 :   ml_information_h ml_information = NULL;</span></span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          45 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">          48 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
+<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          48 :   ml_information_h ml_information = NULL;</span></span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          48 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L783"><span class="lineNum">     783</span>              : </span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          45 :   if (!mls || !data) {</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">          45 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          48 :   if (!mls || !data) {</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">          48 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L786"><span class="lineNum">     786</span>              :         &quot;Failed to create ml-service event data, invalid parameter.&quot;);</span>
 <span id="L787"><span class="lineNum">     787</span>              :   }</span>
 <span id="L788"><span class="lineNum">     788</span>              : </span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          45 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          48 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
 <span id="L790"><span class="lineNum">     790</span>              : </span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          45 :   if (cb_info.cb) {</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          48 :   if (cb_info.cb) {</span></span>
 <span id="L792"><span class="lineNum">     792</span>              :     /* Create information handle for ml-service event. */</span>
 <span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC">          36 :     status = _ml_information_create (&amp;ml_information);</span></span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">          36 :     if (status != ML_ERROR_NONE)</span></span>
@@ -868,15 +868,15 @@
 <span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">          36 :       cb_info.cb (ML_SERVICE_EVENT_NEW_DATA, ml_information, cb_info.pdata);</span></span>
 <span id="L807"><span class="lineNum">     807</span>              :   }</span>
 <span id="L808"><span class="lineNum">     808</span>              : </span>
-<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">           9 : done:</span></span>
-<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">          45 :   if (ml_information)</span></span>
+<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">          12 : done:</span></span>
+<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">          48 :   if (ml_information)</span></span>
 <span id="L811"><span class="lineNum">     811</span> <span class="tlaGNC">          36 :     ml_information_destroy (ml_information);</span></span>
 <span id="L812"><span class="lineNum">     812</span>              : </span>
-<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          45 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          48 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L814"><span class="lineNum">     814</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke 'new data' event.&quot;);</span></span>
 <span id="L815"><span class="lineNum">     815</span>              :   }</span>
 <span id="L816"><span class="lineNum">     816</span>              : </span>
-<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC tlaBgGNC">          45 :   return status;</span></span>
+<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC tlaBgGNC">          48 :   return status;</span></span>
 <span id="L818"><span class="lineNum">     818</span>              : }</span>
 <span id="L819"><span class="lineNum">     819</span>              : </span>
 <span id="L820"><span class="lineNum">     820</span>              : /**</span>
@@ -885,18 +885,18 @@
 <span id="L823"><span class="lineNum">     823</span>              :  * _ml_service_invoke_event_new_data().</span>
 <span id="L824"><span class="lineNum">     824</span>              :  */</span>
 <span id="L825"><span class="lineNum">     825</span>              : void</span>
-<span id="L826"><span class="lineNum">     826</span> <span class="tlaGNC">          11 : _ml_service_pipeline_sink_cb (const ml_tensors_data_h data,</span></span>
+<span id="L826"><span class="lineNum">     826</span> <span class="tlaGNC">          14 : _ml_service_pipeline_sink_cb (const ml_tensors_data_h data,</span></span>
 <span id="L827"><span class="lineNum">     827</span>              :     const ml_tensors_info_h info, void *user_data)</span>
 <span id="L828"><span class="lineNum">     828</span>              : {</span>
-<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">          11 :   ml_service_s *mls = NULL;</span></span>
-<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">          11 :   ml_service_node_info_s *node_info = NULL;</span></span>
+<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">          14 :   ml_service_s *mls = NULL;</span></span>
+<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">          14 :   ml_service_node_info_s *node_info = NULL;</span></span>
 <span id="L831"><span class="lineNum">     831</span>              : </span>
-<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">          11 :   node_info = (ml_service_node_info_s *) user_data;</span></span>
-<span id="L833"><span class="lineNum">     833</span> <span class="tlaGNC">          11 :   g_return_if_fail (node_info != NULL);</span></span>
-<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">          11 :   mls = (ml_service_s *) node_info-&gt;mls;</span></span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">          11 :   g_return_if_fail (mls != NULL);</span></span>
+<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">          14 :   node_info = (ml_service_node_info_s *) user_data;</span></span>
+<span id="L833"><span class="lineNum">     833</span> <span class="tlaGNC">          14 :   g_return_if_fail (node_info != NULL);</span></span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">          14 :   mls = (ml_service_s *) node_info-&gt;mls;</span></span>
+<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">          14 :   g_return_if_fail (mls != NULL);</span></span>
 <span id="L836"><span class="lineNum">     836</span>              : </span>
-<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">          11 :   _ml_service_invoke_event_new_data (mls, node_info-&gt;name, data);</span></span>
+<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">          14 :   _ml_service_invoke_event_new_data (mls, node_info-&gt;name, data);</span></span>
 <span id="L838"><span class="lineNum">     838</span>              : }</span>
         </pre>
               </td>

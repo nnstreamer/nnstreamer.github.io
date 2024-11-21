@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:17</td>
+            <td class="headerValue">2024-11-22 05:36:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -229,7 +229,7 @@
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          48 :   g_cond_signal (&amp;mls-&gt;cond);</span></span>
 <span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          48 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
 <span id="L169"><span class="lineNum">     169</span>              : </span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         138 :   while (ext-&gt;running) {</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         186 :   while (ext-&gt;running) {</span></span>
 <span id="L171"><span class="lineNum">     171</span>              :     ml_extension_msg_s *msg;</span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         180 :     msg = g_async_queue_timeout_pop (ext-&gt;msg_queue,</span></span>
@@ -597,7 +597,7 @@
 <span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">          60 : _ml_service_extension_create (ml_service_s * mls, JsonObject * object)</span></span>
 <span id="L536"><span class="lineNum">     536</span>              : {</span>
 <span id="L537"><span class="lineNum">     537</span>              :   ml_extension_s *ext;</span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         120 :   g_autofree gchar *thread_name = g_strdup_printf (&quot;ml-ext-msg-%d&quot;, getpid ());</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">          60 :   g_autofree gchar *thread_name = g_strdup_printf (&quot;ml-ext-msg-%d&quot;, getpid ());</span></span>
 <span id="L539"><span class="lineNum">     539</span>              :   int status;</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
 <span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">          60 :   mls-&gt;priv = ext = g_try_new0 (ml_extension_s, 1);</span></span>
