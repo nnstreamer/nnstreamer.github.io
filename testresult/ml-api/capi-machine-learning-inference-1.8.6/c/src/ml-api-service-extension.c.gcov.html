@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#5c9eb479845ba5c405e5e3b857837751ef77da8a - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-extension.c</title>
+  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#41bedd28b7576306af1c69817e35fe462de61705 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-extension.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#5c9eb479845ba5c405e5e3b857837751ef77da8a</td>
+            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#41bedd28b7576306af1c69817e35fe462de61705</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">84.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-27 05:26:17</td>
+            <td class="headerValue">2024-11-27 05:34:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -208,7 +208,7 @@
 <span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC tlaBgGNC">          64 :   if (msg-&gt;input)</span></span>
 <span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          49 :     ml_tensors_data_destroy (msg-&gt;input);</span></span>
 <span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          64 :   if (msg-&gt;output)</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          39 :     ml_tensors_data_destroy (msg-&gt;output);</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          34 :     ml_tensors_data_destroy (msg-&gt;output);</span></span>
 <span id="L150"><span class="lineNum">     150</span>              : </span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          64 :   g_free (msg-&gt;name);</span></span>
 <span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          64 :   g_free (msg);</span></span>
@@ -229,25 +229,25 @@
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          48 :   g_cond_signal (&amp;mls-&gt;cond);</span></span>
 <span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          48 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
 <span id="L169"><span class="lineNum">     169</span>              : </span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         199 :   while (ext-&gt;running) {</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         186 :   while (ext-&gt;running) {</span></span>
 <span id="L171"><span class="lineNum">     171</span>              :     ml_extension_msg_s *msg;</span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         206 :     msg = g_async_queue_timeout_pop (ext-&gt;msg_queue,</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">         103 :         ext-&gt;timeout * G_TIME_SPAN_MILLISECOND);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         180 :     msg = g_async_queue_timeout_pop (ext-&gt;msg_queue,</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          90 :         ext-&gt;timeout * G_TIME_SPAN_MILLISECOND);</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">         103 :     if (msg) {</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          54 :       switch (ext-&gt;type) {</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          39 :         case ML_EXTENSION_TYPE_SINGLE:</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          90 :     if (msg) {</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          49 :       switch (ext-&gt;type) {</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          34 :         case ML_EXTENSION_TYPE_SINGLE:</span></span>
 <span id="L179"><span class="lineNum">     179</span>              :         {</span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          39 :           status = ml_single_invoke (ext-&gt;single, msg-&gt;input, &amp;msg-&gt;output);</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          34 :           status = ml_single_invoke (ext-&gt;single, msg-&gt;input, &amp;msg-&gt;output);</span></span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          39 :           if (status == ML_ERROR_NONE) {</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          39 :             _ml_service_invoke_event_new_data (mls, NULL, msg-&gt;output);</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          34 :           if (status == ML_ERROR_NONE) {</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          34 :             _ml_service_invoke_event_new_data (mls, NULL, msg-&gt;output);</span></span>
 <span id="L184"><span class="lineNum">     184</span>              :           } else {</span>
 <span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC tlaBgUNC">           0 :             _ml_error_report</span></span>
 <span id="L186"><span class="lineNum">     186</span>              :                 (&quot;Failed to invoke the model in ml-service extension thread.&quot;);</span>
 <span id="L187"><span class="lineNum">     187</span>              :           }</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">          39 :           break;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">          34 :           break;</span></span>
 <span id="L189"><span class="lineNum">     189</span>              :         }</span>
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          15 :         case ML_EXTENSION_TYPE_PIPELINE:</span></span>
 <span id="L191"><span class="lineNum">     191</span>              :         {</span>
@@ -277,7 +277,7 @@
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC">           0 :           break;</span></span>
 <span id="L216"><span class="lineNum">     216</span>              :       }</span>
 <span id="L217"><span class="lineNum">     217</span>              : </span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC tlaBgGNC">          54 :       _ml_extension_msg_free (msg);</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC tlaBgGNC">          49 :       _ml_extension_msg_free (msg);</span></span>
 <span id="L219"><span class="lineNum">     219</span>              :     }</span>
 <span id="L220"><span class="lineNum">     220</span>              :   }</span>
 <span id="L221"><span class="lineNum">     221</span>              : </span>
