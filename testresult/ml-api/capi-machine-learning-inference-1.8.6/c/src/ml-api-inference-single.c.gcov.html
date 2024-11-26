@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#0524d46ca741983e1ec4a9cf7e4975bcc7dc6238 - capi-machine-learning-inference-1.8.6/c/src/ml-api-inference-single.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#41bedd28b7576306af1c69817e35fe462de61705 - capi-machine-learning-inference-1.8.6/c/src/ml-api-inference-single.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#0524d46ca741983e1ec4a9cf7e4975bcc7dc6238</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#41bedd28b7576306af1c69817e35fe462de61705</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">75.1&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-26 05:35:33</td>
+            <td class="headerValue">2024-11-26 13:14:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">92.3&nbsp;%</td>
@@ -563,9 +563,9 @@
 <span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">         102 :     int status = ML_ERROR_NONE;</span></span>
 <span id="L502"><span class="lineNum">     502</span>              : </span>
 <span id="L503"><span class="lineNum">     503</span>              :     /** wait for data */</span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         126 :     while (single_h-&gt;state != RUNNING) {</span></span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         102 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
-<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         100 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         124 :     while (single_h-&gt;state != RUNNING) {</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         100 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">          98 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
 <span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          76 :         goto exit;</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :     }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
@@ -1298,10 +1298,10 @@
 <span id="L1236"><span class="lineNum">    1236</span> <span class="tlaGNC">          80 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
 <span id="L1237"><span class="lineNum">    1237</span>              : </span>
 <span id="L1238"><span class="lineNum">    1238</span>              :   /** Wait until invoke process is finished */</span>
-<span id="L1239"><span class="lineNum">    1239</span> <span class="tlaGNC">        1195 :   while (invoking) {</span></span>
-<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaGNC">        1115 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
-<span id="L1241"><span class="lineNum">    1241</span> <span class="tlaGNC">        1115 :     g_usleep (1000);</span></span>
-<span id="L1242"><span class="lineNum">    1242</span> <span class="tlaGNC">        1115 :     invoking = single_h-&gt;invoking;</span></span>
+<span id="L1239"><span class="lineNum">    1239</span> <span class="tlaGNC">        1302 :   while (invoking) {</span></span>
+<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaGNC">        1222 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
+<span id="L1241"><span class="lineNum">    1241</span> <span class="tlaGNC">        1222 :     g_usleep (1000);</span></span>
+<span id="L1242"><span class="lineNum">    1242</span> <span class="tlaGNC">        1222 :     invoking = single_h-&gt;invoking;</span></span>
 <span id="L1243"><span class="lineNum">    1243</span>              :     /**</span>
 <span id="L1244"><span class="lineNum">    1244</span>              :      * single_h-&gt;invoking is the only protected value here and we are</span>
 <span id="L1245"><span class="lineNum">    1245</span>              :      * doing a read-only operation and do not need to project its value</span>
