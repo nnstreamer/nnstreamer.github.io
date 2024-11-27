@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#41bedd28b7576306af1c69817e35fe462de61705 - capi-machine-learning-inference-1.8.6/c/src/ml-api-inference-single.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#7086bbf328485a9b2665a948904748a952e9e962 - capi-machine-learning-inference-1.8.6/c/src/ml-api-inference-single.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#41bedd28b7576306af1c69817e35fe462de61705</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#7086bbf328485a9b2665a948904748a952e9e962</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">75.9&nbsp;%</td>
+            <td class="headerCovTableEntryMed">76.0&nbsp;%</td>
             <td class="headerCovTableEntry">855</td>
-            <td class="headerCovTableEntry">649</td>
+            <td class="headerCovTableEntry">650</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-27 05:34:39</td>
+            <td class="headerValue">2024-11-28 05:26:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.9&nbsp;%</td>
@@ -397,23 +397,23 @@
 <span id="L335"><span class="lineNum">     335</span>              :  * @brief To call the framework to destroy the allocated output data</span>
 <span id="L336"><span class="lineNum">     336</span>              :  */</span>
 <span id="L337"><span class="lineNum">     337</span>              : static inline void</span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           1 : __destroy_notify (gpointer data_h, gpointer single_data)</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           2 : __destroy_notify (gpointer data_h, gpointer single_data)</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : {</span>
 <span id="L340"><span class="lineNum">     340</span>              :   ml_single *single_h;</span>
 <span id="L341"><span class="lineNum">     341</span>              :   ml_tensors_data_s *data;</span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           1 :   data = (ml_tensors_data_s *) data_h;</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           1 :   single_h = (ml_single *) single_data;</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           2 :   data = (ml_tensors_data_s *) data_h;</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           2 :   single_h = (ml_single *) single_data;</span></span>
 <span id="L345"><span class="lineNum">     345</span>              : </span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           1 :   if (G_LIKELY (single_h-&gt;filter)) {</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           1 :     if (single_h-&gt;klass-&gt;allocate_in_invoke (single_h-&gt;filter)) {</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           2 :   if (G_LIKELY (single_h-&gt;filter)) {</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           2 :     if (single_h-&gt;klass-&gt;allocate_in_invoke (single_h-&gt;filter)) {</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC tlaBgUNC">           0 :       single_h-&gt;klass-&gt;destroy_notify (single_h-&gt;filter, data-&gt;tensors);</span></span>
 <span id="L349"><span class="lineNum">     349</span>              :     }</span>
 <span id="L350"><span class="lineNum">     350</span>              :   }</span>
 <span id="L351"><span class="lineNum">     351</span>              : </span>
 <span id="L352"><span class="lineNum">     352</span>              :   /* reset callback function */</span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC tlaBgGNC">           1 :   data-&gt;destroy = NULL;</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">           1 : }</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC tlaBgGNC">           2 :   data-&gt;destroy = NULL;</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">           2 : }</span></span>
 <span id="L355"><span class="lineNum">     355</span>              : </span>
 <span id="L356"><span class="lineNum">     356</span>              : /**</span>
 <span id="L357"><span class="lineNum">     357</span>              :  * @brief Wrapper function for __destroy_notify</span>
@@ -459,43 +459,43 @@
 <span id="L397"><span class="lineNum">     397</span>              :  * the framework but by tensor filter element.</span>
 <span id="L398"><span class="lineNum">     398</span>              :  */</span>
 <span id="L399"><span class="lineNum">     399</span>              : static void</span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC tlaBgGNC">          81 : set_destroy_notify (ml_single * single_h, ml_tensors_data_s * data,</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC tlaBgGNC">          86 : set_destroy_notify (ml_single * single_h, ml_tensors_data_s * data,</span></span>
 <span id="L401"><span class="lineNum">     401</span>              :     gboolean add)</span>
 <span id="L402"><span class="lineNum">     402</span>              : {</span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          81 :   if (single_h-&gt;klass-&gt;allocate_in_invoke (single_h-&gt;filter)) {</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          86 :   if (single_h-&gt;klass-&gt;allocate_in_invoke (single_h-&gt;filter)) {</span></span>
 <span id="L404"><span class="lineNum">     404</span> <span class="tlaUNC tlaBgUNC">           0 :     data-&gt;destroy = ml_single_destroy_notify_cb;</span></span>
 <span id="L405"><span class="lineNum">     405</span> <span class="tlaUNC">           0 :     data-&gt;user_data = single_h;</span></span>
 <span id="L406"><span class="lineNum">     406</span> <span class="tlaUNC">           0 :     add = TRUE;</span></span>
 <span id="L407"><span class="lineNum">     407</span>              :   }</span>
 <span id="L408"><span class="lineNum">     408</span>              : </span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC tlaBgGNC">          81 :   if (add) {</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC tlaBgGNC">          86 :   if (add) {</span></span>
 <span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">           4 :     single_h-&gt;destroy_data_list = g_list_append (single_h-&gt;destroy_data_list,</span></span>
 <span id="L411"><span class="lineNum">     411</span>              :         (gpointer) data);</span>
 <span id="L412"><span class="lineNum">     412</span>              :   }</span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          81 : }</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          86 : }</span></span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
 <span id="L415"><span class="lineNum">     415</span>              : /**</span>
 <span id="L416"><span class="lineNum">     416</span>              :  * @brief Internal function to call subplugin's invoke</span>
 <span id="L417"><span class="lineNum">     417</span>              :  */</span>
 <span id="L418"><span class="lineNum">     418</span>              : static inline int</span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          82 : __invoke (ml_single * single_h, ml_tensors_data_h in, ml_tensors_data_h out,</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          86 : __invoke (ml_single * single_h, ml_tensors_data_h in, ml_tensors_data_h out,</span></span>
 <span id="L420"><span class="lineNum">     420</span>              :     gboolean alloc_output)</span>
 <span id="L421"><span class="lineNum">     421</span>              : {</span>
 <span id="L422"><span class="lineNum">     422</span>              :   ml_tensors_data_s *in_data, *out_data;</span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          82 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          86 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L424"><span class="lineNum">     424</span>              : </span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          82 :   in_data = (ml_tensors_data_s *) in;</span></span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          82 :   out_data = (ml_tensors_data_s *) out;</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          86 :   in_data = (ml_tensors_data_s *) in;</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          86 :   out_data = (ml_tensors_data_s *) out;</span></span>
 <span id="L427"><span class="lineNum">     427</span>              : </span>
 <span id="L428"><span class="lineNum">     428</span>              :   /* Prevent error case when input or output is null in invoke thread. */</span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          82 :   if (!in_data || !out_data) {</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          86 :   if (!in_data || !out_data) {</span></span>
 <span id="L430"><span class="lineNum">     430</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke a model, invalid data handle.&quot;);</span></span>
 <span id="L431"><span class="lineNum">     431</span> <span class="tlaUNC">           0 :     return ML_ERROR_STREAMS_PIPE;</span></span>
 <span id="L432"><span class="lineNum">     432</span>              :   }</span>
 <span id="L433"><span class="lineNum">     433</span>              : </span>
 <span id="L434"><span class="lineNum">     434</span>              :   /* Invoke the thread. */</span>
-<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC tlaBgGNC">          82 :   if (!single_h-&gt;klass-&gt;invoke (single_h-&gt;filter, in_data-&gt;tensors,</span></span>
-<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">          82 :           out_data-&gt;tensors, alloc_output)) {</span></span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC tlaBgGNC">          86 :   if (!single_h-&gt;klass-&gt;invoke (single_h-&gt;filter, in_data-&gt;tensors,</span></span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">          86 :           out_data-&gt;tensors, alloc_output)) {</span></span>
 <span id="L437"><span class="lineNum">     437</span> <span class="tlaUNC tlaBgUNC">           0 :     const char *fw_name = _ml_get_nnfw_subplugin_name (single_h-&gt;nnfw);</span></span>
 <span id="L438"><span class="lineNum">     438</span> <span class="tlaUNC">           0 :     _ml_error_report</span></span>
 <span id="L439"><span class="lineNum">     439</span>              :         (&quot;Failed to invoke the tensors. The invoke callback of the tensor-filter subplugin '%s' has failed. Please contact the author of tensor-filter-%s (nnstreamer-%s) or review its source code. Note that this usually happens when the designated framework does not support the given model (e.g., trying to run tf-lite 2.6 model with tf-lite 1.13).&quot;,</span>
@@ -503,7 +503,7 @@
 <span id="L441"><span class="lineNum">     441</span> <span class="tlaUNC">           0 :     status = ML_ERROR_STREAMS_PIPE;</span></span>
 <span id="L442"><span class="lineNum">     442</span>              :   }</span>
 <span id="L443"><span class="lineNum">     443</span>              : </span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC tlaBgGNC">          82 :   return status;</span></span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC tlaBgGNC">          86 :   return status;</span></span>
 <span id="L445"><span class="lineNum">     445</span>              : }</span>
 <span id="L446"><span class="lineNum">     446</span>              : </span>
 <span id="L447"><span class="lineNum">     447</span>              : /**</span>
@@ -511,11 +511,11 @@
 <span id="L449"><span class="lineNum">     449</span>              :  * @note Do not call this if single_h-&gt;free_output is false (output data is not allocated in single-shot).</span>
 <span id="L450"><span class="lineNum">     450</span>              :  */</span>
 <span id="L451"><span class="lineNum">     451</span>              : static inline void</span>
-<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">          78 : __process_output (ml_single * single_h, ml_tensors_data_h output)</span></span>
+<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">          83 : __process_output (ml_single * single_h, ml_tensors_data_h output)</span></span>
 <span id="L453"><span class="lineNum">     453</span>              : {</span>
 <span id="L454"><span class="lineNum">     454</span>              :   ml_tensors_data_s *out_data;</span>
 <span id="L455"><span class="lineNum">     455</span>              : </span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">          78 :   if (g_list_find (single_h-&gt;destroy_data_list, output)) {</span></span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">          83 :   if (g_list_find (single_h-&gt;destroy_data_list, output)) {</span></span>
 <span id="L457"><span class="lineNum">     457</span>              :     /**</span>
 <span id="L458"><span class="lineNum">     458</span>              :      * Caller of the invoke thread has returned back with timeout.</span>
 <span id="L459"><span class="lineNum">     459</span>              :      * So, free the memory allocated by the invoke as their is no receiver.</span>
@@ -524,10 +524,10 @@
 <span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">           1 :         g_list_remove (single_h-&gt;destroy_data_list, output);</span></span>
 <span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">           1 :     ml_tensors_data_destroy (output);</span></span>
 <span id="L464"><span class="lineNum">     464</span>              :   } else {</span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          77 :     out_data = (ml_tensors_data_s *) output;</span></span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          77 :     set_destroy_notify (single_h, out_data, FALSE);</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          82 :     out_data = (ml_tensors_data_s *) output;</span></span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          82 :     set_destroy_notify (single_h, out_data, FALSE);</span></span>
 <span id="L467"><span class="lineNum">     467</span>              :   }</span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          78 : }</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          83 : }</span></span>
 <span id="L469"><span class="lineNum">     469</span>              : </span>
 <span id="L470"><span class="lineNum">     470</span>              : /**</span>
 <span id="L471"><span class="lineNum">     471</span>              :  * @brief thread to execute calls to invoke</span>
@@ -560,38 +560,38 @@
 <span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">          82 :   g_mutex_lock (&amp;single_h-&gt;mutex);</span></span>
 <span id="L499"><span class="lineNum">     499</span>              : </span>
 <span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         102 :   while (single_h-&gt;state &lt;= RUNNING) {</span></span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">         102 :     int status = ML_ERROR_NONE;</span></span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">         101 :     int status = ML_ERROR_NONE;</span></span>
 <span id="L502"><span class="lineNum">     502</span>              : </span>
 <span id="L503"><span class="lineNum">     503</span>              :     /** wait for data */</span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         125 :     while (single_h-&gt;state != RUNNING) {</span></span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         102 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
-<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">         100 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         122 :     while (single_h-&gt;state != RUNNING) {</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         100 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">          98 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
 <span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          77 :         goto exit;</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :     }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          23 :     input = single_h-&gt;input;</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">          23 :     output = single_h-&gt;output;</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          22 :     input = single_h-&gt;input;</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">          22 :     output = single_h-&gt;output;</span></span>
 <span id="L512"><span class="lineNum">     512</span>              :     /* Set null to prevent double-free. */</span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          23 :     single_h-&gt;input = single_h-&gt;output = NULL;</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          22 :     single_h-&gt;input = single_h-&gt;output = NULL;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          23 :     single_h-&gt;invoking = TRUE;</span></span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          23 :     alloc_output = single_h-&gt;free_output;</span></span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">          23 :     g_mutex_unlock (&amp;single_h-&gt;mutex);</span></span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">          23 :     status = __invoke (single_h, input, output, alloc_output);</span></span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">          23 :     g_mutex_lock (&amp;single_h-&gt;mutex);</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          22 :     single_h-&gt;invoking = TRUE;</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          22 :     alloc_output = single_h-&gt;free_output;</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">          22 :     g_mutex_unlock (&amp;single_h-&gt;mutex);</span></span>
+<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">          22 :     status = __invoke (single_h, input, output, alloc_output);</span></span>
+<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">          22 :     g_mutex_lock (&amp;single_h-&gt;mutex);</span></span>
 <span id="L520"><span class="lineNum">     520</span>              :     /* Clear input data after invoke is done. */</span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          23 :     ml_tensors_data_destroy (input);</span></span>
-<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">          23 :     single_h-&gt;invoking = FALSE;</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          22 :     ml_tensors_data_destroy (input);</span></span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">          22 :     single_h-&gt;invoking = FALSE;</span></span>
 <span id="L523"><span class="lineNum">     523</span>              : </span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">          23 :     if (status != ML_ERROR_NONE || single_h-&gt;state == JOIN_REQUESTED) {</span></span>
-<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">           3 :       if (alloc_output) {</span></span>
-<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">           3 :         single_h-&gt;destroy_data_list =</span></span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           3 :             g_list_remove (single_h-&gt;destroy_data_list, output);</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           3 :         ml_tensors_data_destroy (output);</span></span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">          22 :     if (status != ML_ERROR_NONE || single_h-&gt;state == JOIN_REQUESTED) {</span></span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">           2 :       if (alloc_output) {</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">           2 :         single_h-&gt;destroy_data_list =</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           2 :             g_list_remove (single_h-&gt;destroy_data_list, output);</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           2 :         ml_tensors_data_destroy (output);</span></span>
 <span id="L529"><span class="lineNum">     529</span>              :       }</span>
 <span id="L530"><span class="lineNum">     530</span>              : </span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">           3 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           3 :         goto exit;</span></span>
+<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">           2 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           2 :         goto exit;</span></span>
 <span id="L533"><span class="lineNum">     533</span> <span class="tlaUNC tlaBgUNC">           0 :       goto wait_for_next;</span></span>
 <span id="L534"><span class="lineNum">     534</span>              :     }</span>
 <span id="L535"><span class="lineNum">     535</span>              : </span>
@@ -606,9 +606,9 @@
 <span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">          20 :     g_cond_broadcast (&amp;single_h-&gt;cond);</span></span>
 <span id="L545"><span class="lineNum">     545</span>              :   }</span>
 <span id="L546"><span class="lineNum">     546</span>              : </span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC tlaBgUNC">           0 : exit:</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">           1 : exit:</span></span>
 <span id="L548"><span class="lineNum">     548</span>              :   /* Do not set IDLE if JOIN_REQUESTED */</span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC tlaBgGNC">          80 :   if (single_h-&gt;state == JOIN_REQUESTED) {</span></span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">          80 :   if (single_h-&gt;state == JOIN_REQUESTED) {</span></span>
 <span id="L550"><span class="lineNum">     550</span>              :     /* Release input and output data */</span>
 <span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">          80 :     if (single_h-&gt;input)</span></span>
 <span id="L552"><span class="lineNum">     552</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_tensors_data_destroy (single_h-&gt;input);</span></span>
@@ -1298,10 +1298,10 @@
 <span id="L1236"><span class="lineNum">    1236</span> <span class="tlaGNC">          80 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
 <span id="L1237"><span class="lineNum">    1237</span>              : </span>
 <span id="L1238"><span class="lineNum">    1238</span>              :   /** Wait until invoke process is finished */</span>
-<span id="L1239"><span class="lineNum">    1239</span> <span class="tlaGNC">         815 :   while (invoking) {</span></span>
-<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaGNC">         735 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
-<span id="L1241"><span class="lineNum">    1241</span> <span class="tlaGNC">         735 :     g_usleep (1000);</span></span>
-<span id="L1242"><span class="lineNum">    1242</span> <span class="tlaGNC">         735 :     invoking = single_h-&gt;invoking;</span></span>
+<span id="L1239"><span class="lineNum">    1239</span> <span class="tlaGNC">         460 :   while (invoking) {</span></span>
+<span id="L1240"><span class="lineNum">    1240</span> <span class="tlaGNC">         380 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
+<span id="L1241"><span class="lineNum">    1241</span> <span class="tlaGNC">         380 :     g_usleep (1000);</span></span>
+<span id="L1242"><span class="lineNum">    1242</span> <span class="tlaGNC">         380 :     invoking = single_h-&gt;invoking;</span></span>
 <span id="L1243"><span class="lineNum">    1243</span>              :     /**</span>
 <span id="L1244"><span class="lineNum">    1244</span>              :      * single_h-&gt;invoking is the only protected value here and we are</span>
 <span id="L1245"><span class="lineNum">    1245</span>              :      * doing a read-only operation and do not need to project its value</span>
@@ -1347,7 +1347,7 @@
 <span id="L1285"><span class="lineNum">    1285</span>              :  * @brief Internal function to validate input/output data.</span>
 <span id="L1286"><span class="lineNum">    1286</span>              :  */</span>
 <span id="L1287"><span class="lineNum">    1287</span>              : static int</span>
-<span id="L1288"><span class="lineNum">    1288</span> <span class="tlaGNC">          95 : _ml_single_invoke_validate_data (ml_single_h single,</span></span>
+<span id="L1288"><span class="lineNum">    1288</span> <span class="tlaGNC">         100 : _ml_single_invoke_validate_data (ml_single_h single,</span></span>
 <span id="L1289"><span class="lineNum">    1289</span>              :     const ml_tensors_data_h data, const gboolean is_input)</span>
 <span id="L1290"><span class="lineNum">    1290</span>              : {</span>
 <span id="L1291"><span class="lineNum">    1291</span>              :   ml_single *single_h;</span>
@@ -1356,38 +1356,38 @@
 <span id="L1294"><span class="lineNum">    1294</span>              :   guint i;</span>
 <span id="L1295"><span class="lineNum">    1295</span>              :   size_t raw_size;</span>
 <span id="L1296"><span class="lineNum">    1296</span>              : </span>
-<span id="L1297"><span class="lineNum">    1297</span> <span class="tlaGNC">          95 :   single_h = (ml_single *) single;</span></span>
-<span id="L1298"><span class="lineNum">    1298</span> <span class="tlaGNC">          95 :   _data = (ml_tensors_data_s *) data;</span></span>
+<span id="L1297"><span class="lineNum">    1297</span> <span class="tlaGNC">         100 :   single_h = (ml_single *) single;</span></span>
+<span id="L1298"><span class="lineNum">    1298</span> <span class="tlaGNC">         100 :   _data = (ml_tensors_data_s *) data;</span></span>
 <span id="L1299"><span class="lineNum">    1299</span>              : </span>
-<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaGNC">          95 :   if (G_UNLIKELY (!_data))</span></span>
+<span id="L1300"><span class="lineNum">    1300</span> <span class="tlaGNC">         100 :   if (G_UNLIKELY (!_data))</span></span>
 <span id="L1301"><span class="lineNum">    1301</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1302"><span class="lineNum">    1302</span>              :         &quot;(internal function) The parameter, 'data' (const ml_tensors_data_h), is NULL. It should be a valid instance of ml_tensors_data_h.&quot;);</span>
 <span id="L1303"><span class="lineNum">    1303</span>              : </span>
-<span id="L1304"><span class="lineNum">    1304</span> <span class="tlaGNC tlaBgGNC">          95 :   if (is_input)</span></span>
-<span id="L1305"><span class="lineNum">    1305</span> <span class="tlaGNC">          94 :     _model = (ml_tensors_data_s *) single_h-&gt;in_tensors;</span></span>
+<span id="L1304"><span class="lineNum">    1304</span> <span class="tlaGNC tlaBgGNC">         100 :   if (is_input)</span></span>
+<span id="L1305"><span class="lineNum">    1305</span> <span class="tlaGNC">          99 :     _model = (ml_tensors_data_s *) single_h-&gt;in_tensors;</span></span>
 <span id="L1306"><span class="lineNum">    1306</span>              :   else</span>
 <span id="L1307"><span class="lineNum">    1307</span> <span class="tlaGNC">           1 :     _model = (ml_tensors_data_s *) single_h-&gt;out_tensors;</span></span>
 <span id="L1308"><span class="lineNum">    1308</span>              : </span>
-<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaGNC">          95 :   if (G_UNLIKELY (_data-&gt;num_tensors != _model-&gt;num_tensors))</span></span>
+<span id="L1309"><span class="lineNum">    1309</span> <span class="tlaGNC">         100 :   if (G_UNLIKELY (_data-&gt;num_tensors != _model-&gt;num_tensors))</span></span>
 <span id="L1310"><span class="lineNum">    1310</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1311"><span class="lineNum">    1311</span>              :         &quot;(internal function) The number of %s tensors is not compatible with model. Given: %u, Expected: %u.&quot;,</span>
 <span id="L1312"><span class="lineNum">    1312</span>              :         (is_input) ? &quot;input&quot; : &quot;output&quot;, _data-&gt;num_tensors,</span>
 <span id="L1313"><span class="lineNum">    1313</span>              :         _model-&gt;num_tensors);</span>
 <span id="L1314"><span class="lineNum">    1314</span>              : </span>
-<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaGNC">         341 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
-<span id="L1316"><span class="lineNum">    1316</span> <span class="tlaGNC">         250 :     if (G_UNLIKELY (!_data-&gt;tensors[i].data))</span></span>
+<span id="L1315"><span class="lineNum">    1315</span> <span class="tlaGNC">         351 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
+<span id="L1316"><span class="lineNum">    1316</span> <span class="tlaGNC">         255 :     if (G_UNLIKELY (!_data-&gt;tensors[i].data))</span></span>
 <span id="L1317"><span class="lineNum">    1317</span> <span class="tlaGNC">           1 :       _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1318"><span class="lineNum">    1318</span>              :           &quot;The %d-th input tensor is not valid. There is no valid dimension metadata for this tensor.&quot;,</span>
 <span id="L1319"><span class="lineNum">    1319</span>              :           i);</span>
 <span id="L1320"><span class="lineNum">    1320</span>              : </span>
-<span id="L1321"><span class="lineNum">    1321</span> <span class="tlaGNC">         249 :     raw_size = _model-&gt;tensors[i].size;</span></span>
-<span id="L1322"><span class="lineNum">    1322</span> <span class="tlaGNC">         249 :     if (G_UNLIKELY (_data-&gt;tensors[i].size != raw_size))</span></span>
+<span id="L1321"><span class="lineNum">    1321</span> <span class="tlaGNC">         254 :     raw_size = _model-&gt;tensors[i].size;</span></span>
+<span id="L1322"><span class="lineNum">    1322</span> <span class="tlaGNC">         254 :     if (G_UNLIKELY (_data-&gt;tensors[i].size != raw_size))</span></span>
 <span id="L1323"><span class="lineNum">    1323</span> <span class="tlaGNC">           2 :       _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1324"><span class="lineNum">    1324</span>              :           &quot;The size of %d-th %s tensor is not compatible with model. Given: %zu, Expected: %zu.&quot;,</span>
 <span id="L1325"><span class="lineNum">    1325</span>              :           i, (is_input) ? &quot;input&quot; : &quot;output&quot;, _data-&gt;tensors[i].size, raw_size);</span>
 <span id="L1326"><span class="lineNum">    1326</span>              :   }</span>
 <span id="L1327"><span class="lineNum">    1327</span>              : </span>
-<span id="L1328"><span class="lineNum">    1328</span> <span class="tlaGNC">          91 :   return ML_ERROR_NONE;</span></span>
+<span id="L1328"><span class="lineNum">    1328</span> <span class="tlaGNC">          96 :   return ML_ERROR_NONE;</span></span>
 <span id="L1329"><span class="lineNum">    1329</span>              : }</span>
 <span id="L1330"><span class="lineNum">    1330</span>              : </span>
 <span id="L1331"><span class="lineNum">    1331</span>              : /**</span>
@@ -1404,32 +1404,32 @@
 <span id="L1342"><span class="lineNum">    1342</span>              :  * @note IDLE is the valid thread state before and after this function call.</span>
 <span id="L1343"><span class="lineNum">    1343</span>              :  */</span>
 <span id="L1344"><span class="lineNum">    1344</span>              : static int</span>
-<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaGNC">         106 : _ml_single_invoke_internal (ml_single_h single,</span></span>
+<span id="L1345"><span class="lineNum">    1345</span> <span class="tlaGNC">         111 : _ml_single_invoke_internal (ml_single_h single,</span></span>
 <span id="L1346"><span class="lineNum">    1346</span>              :     const ml_tensors_data_h input, ml_tensors_data_h * output,</span>
 <span id="L1347"><span class="lineNum">    1347</span>              :     const gboolean need_alloc)</span>
 <span id="L1348"><span class="lineNum">    1348</span>              : {</span>
 <span id="L1349"><span class="lineNum">    1349</span>              :   ml_single *single_h;</span>
 <span id="L1350"><span class="lineNum">    1350</span>              :   ml_tensors_data_h _in, _out;</span>
 <span id="L1351"><span class="lineNum">    1351</span>              :   gint64 end_time;</span>
-<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaGNC">         106 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L1352"><span class="lineNum">    1352</span> <span class="tlaGNC">         111 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L1353"><span class="lineNum">    1353</span>              : </span>
-<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaGNC">         212 :   check_feature_state (ML_FEATURE_INFERENCE);</span></span>
+<span id="L1354"><span class="lineNum">    1354</span> <span class="tlaGNC">         222 :   check_feature_state (ML_FEATURE_INFERENCE);</span></span>
 <span id="L1355"><span class="lineNum">    1355</span>              : </span>
-<span id="L1356"><span class="lineNum">    1356</span> <span class="tlaGNC">         106 :   if (G_UNLIKELY (!single))</span></span>
+<span id="L1356"><span class="lineNum">    1356</span> <span class="tlaGNC">         111 :   if (G_UNLIKELY (!single))</span></span>
 <span id="L1357"><span class="lineNum">    1357</span> <span class="tlaGNC">           2 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1358"><span class="lineNum">    1358</span>              :         &quot;(internal function) The parameter, single (ml_single_h), is NULL. It should be a valid instance of ml_single_h, usually created by ml_single_open().&quot;);</span>
 <span id="L1359"><span class="lineNum">    1359</span>              : </span>
-<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaGNC">         104 :   if (G_UNLIKELY (!input))</span></span>
+<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaGNC">         109 :   if (G_UNLIKELY (!input))</span></span>
 <span id="L1361"><span class="lineNum">    1361</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1362"><span class="lineNum">    1362</span>              :         &quot;(internal function) The parameter, input (ml_tensors_data_h), is NULL. It should be a valid instance of ml_tensors_data_h.&quot;);</span>
 <span id="L1363"><span class="lineNum">    1363</span>              : </span>
-<span id="L1364"><span class="lineNum">    1364</span> <span class="tlaGNC">         103 :   if (G_UNLIKELY (!output))</span></span>
+<span id="L1364"><span class="lineNum">    1364</span> <span class="tlaGNC">         108 :   if (G_UNLIKELY (!output))</span></span>
 <span id="L1365"><span class="lineNum">    1365</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1366"><span class="lineNum">    1366</span>              :         &quot;(internal function) The parameter, output (ml_tensors_data_h *), is NULL. It should be a valid pointer to an instance of ml_tensors_data_h to store the inference results.&quot;);</span>
 <span id="L1367"><span class="lineNum">    1367</span>              : </span>
-<span id="L1368"><span class="lineNum">    1368</span> <span class="tlaGNC">         102 :   ML_SINGLE_GET_VALID_HANDLE_LOCKED (single_h, single, 0);</span></span>
+<span id="L1368"><span class="lineNum">    1368</span> <span class="tlaGNC">         107 :   ML_SINGLE_GET_VALID_HANDLE_LOCKED (single_h, single, 0);</span></span>
 <span id="L1369"><span class="lineNum">    1369</span>              : </span>
-<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaGNC">          94 :   if (G_UNLIKELY (!single_h-&gt;filter)) {</span></span>
+<span id="L1370"><span class="lineNum">    1370</span> <span class="tlaGNC">          99 :   if (G_UNLIKELY (!single_h-&gt;filter)) {</span></span>
 <span id="L1371"><span class="lineNum">    1371</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report</span></span>
 <span id="L1372"><span class="lineNum">    1372</span>              :         (&quot;The tensor_filter element of this single handle (single_h) is not valid. It appears that the handle (ml_single_h single) is not appropriately created by ml_single_open(), user thread has touched its internal data, or the handle is already closed or freed by user.&quot;);</span>
 <span id="L1373"><span class="lineNum">    1373</span> <span class="tlaUNC">           0 :     status = ML_ERROR_INVALID_PARAMETER;</span></span>
@@ -1437,15 +1437,15 @@
 <span id="L1375"><span class="lineNum">    1375</span>              :   }</span>
 <span id="L1376"><span class="lineNum">    1376</span>              : </span>
 <span id="L1377"><span class="lineNum">    1377</span>              :   /* Validate input/output data */</span>
-<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC tlaBgGNC">          94 :   status = _ml_single_invoke_validate_data (single, input, TRUE);</span></span>
-<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaGNC">          94 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC tlaBgGNC">          99 :   status = _ml_single_invoke_validate_data (single, input, TRUE);</span></span>
+<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaGNC">          99 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L1380"><span class="lineNum">    1380</span> <span class="tlaGNC">           4 :     _ml_error_report_continue</span></span>
 <span id="L1381"><span class="lineNum">    1381</span>              :         (&quot;The input data for the inference is not valid: error code %d. Please check the dimensions, type, number-of-tensors, and size information of the input data.&quot;,</span>
 <span id="L1382"><span class="lineNum">    1382</span>              :         status);</span>
 <span id="L1383"><span class="lineNum">    1383</span> <span class="tlaGNC">           4 :     goto exit;</span></span>
 <span id="L1384"><span class="lineNum">    1384</span>              :   }</span>
 <span id="L1385"><span class="lineNum">    1385</span>              : </span>
-<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC">          90 :   if (!need_alloc) {</span></span>
+<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC">          95 :   if (!need_alloc) {</span></span>
 <span id="L1387"><span class="lineNum">    1387</span> <span class="tlaGNC">           1 :     status = _ml_single_invoke_validate_data (single, *output, FALSE);</span></span>
 <span id="L1388"><span class="lineNum">    1388</span> <span class="tlaGNC">           1 :     if (status != ML_ERROR_NONE) {</span></span>
 <span id="L1389"><span class="lineNum">    1389</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report_continue</span></span>
@@ -1455,7 +1455,7 @@
 <span id="L1393"><span class="lineNum">    1393</span>              :     }</span>
 <span id="L1394"><span class="lineNum">    1394</span>              :   }</span>
 <span id="L1395"><span class="lineNum">    1395</span>              : </span>
-<span id="L1396"><span class="lineNum">    1396</span> <span class="tlaGNC tlaBgGNC">          90 :   if (single_h-&gt;state != IDLE) {</span></span>
+<span id="L1396"><span class="lineNum">    1396</span> <span class="tlaGNC tlaBgGNC">          95 :   if (single_h-&gt;state != IDLE) {</span></span>
 <span id="L1397"><span class="lineNum">    1397</span> <span class="tlaGNC">           7 :     if (G_UNLIKELY (single_h-&gt;state == JOIN_REQUESTED)) {</span></span>
 <span id="L1398"><span class="lineNum">    1398</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report</span></span>
 <span id="L1399"><span class="lineNum">    1399</span>              :           (&quot;The handle (single_h single) is closed or being closed awaiting for the last ongoing invocation. Invoking with such a handle is not allowed. Please open another single_h handle to invoke.&quot;);</span>
@@ -1469,11 +1469,11 @@
 <span id="L1407"><span class="lineNum">    1407</span>              :   }</span>
 <span id="L1408"><span class="lineNum">    1408</span>              : </span>
 <span id="L1409"><span class="lineNum">    1409</span>              :   /* prepare output data */</span>
-<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaGNC">          83 :   if (need_alloc) {</span></span>
-<span id="L1411"><span class="lineNum">    1411</span> <span class="tlaGNC">          82 :     *output = NULL;</span></span>
+<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaGNC">          88 :   if (need_alloc) {</span></span>
+<span id="L1411"><span class="lineNum">    1411</span> <span class="tlaGNC">          87 :     *output = NULL;</span></span>
 <span id="L1412"><span class="lineNum">    1412</span>              : </span>
-<span id="L1413"><span class="lineNum">    1413</span> <span class="tlaGNC">          82 :     status = _ml_tensors_data_clone_no_alloc (single_h-&gt;out_tensors, &amp;_out);</span></span>
-<span id="L1414"><span class="lineNum">    1414</span> <span class="tlaGNC">          82 :     if (status != ML_ERROR_NONE)</span></span>
+<span id="L1413"><span class="lineNum">    1413</span> <span class="tlaGNC">          87 :     status = _ml_tensors_data_clone_no_alloc (single_h-&gt;out_tensors, &amp;_out);</span></span>
+<span id="L1414"><span class="lineNum">    1414</span> <span class="tlaGNC">          87 :     if (status != ML_ERROR_NONE)</span></span>
 <span id="L1415"><span class="lineNum">    1415</span> <span class="tlaUNC tlaBgUNC">           0 :       goto exit;</span></span>
 <span id="L1416"><span class="lineNum">    1416</span>              :   } else {</span>
 <span id="L1417"><span class="lineNum">    1417</span> <span class="tlaGNC tlaBgGNC">           1 :     _out = *output;</span></span>
@@ -1483,16 +1483,16 @@
 <span id="L1421"><span class="lineNum">    1421</span>              :    * Clone input data here to prevent use-after-free case.</span>
 <span id="L1422"><span class="lineNum">    1422</span>              :    * We should release single_h-&gt;input after calling __invoke() function.</span>
 <span id="L1423"><span class="lineNum">    1423</span>              :    */</span>
-<span id="L1424"><span class="lineNum">    1424</span> <span class="tlaGNC">          83 :   status = ml_tensors_data_clone (input, &amp;_in);</span></span>
-<span id="L1425"><span class="lineNum">    1425</span> <span class="tlaGNC">          83 :   if (status != ML_ERROR_NONE)</span></span>
+<span id="L1424"><span class="lineNum">    1424</span> <span class="tlaGNC">          88 :   status = ml_tensors_data_clone (input, &amp;_in);</span></span>
+<span id="L1425"><span class="lineNum">    1425</span> <span class="tlaGNC">          88 :   if (status != ML_ERROR_NONE)</span></span>
 <span id="L1426"><span class="lineNum">    1426</span> <span class="tlaUNC tlaBgUNC">           0 :     goto exit;</span></span>
 <span id="L1427"><span class="lineNum">    1427</span>              : </span>
-<span id="L1428"><span class="lineNum">    1428</span> <span class="tlaGNC tlaBgGNC">          83 :   single_h-&gt;state = RUNNING;</span></span>
-<span id="L1429"><span class="lineNum">    1429</span> <span class="tlaGNC">          83 :   single_h-&gt;free_output = need_alloc;</span></span>
-<span id="L1430"><span class="lineNum">    1430</span> <span class="tlaGNC">          83 :   single_h-&gt;input = _in;</span></span>
-<span id="L1431"><span class="lineNum">    1431</span> <span class="tlaGNC">          83 :   single_h-&gt;output = _out;</span></span>
+<span id="L1428"><span class="lineNum">    1428</span> <span class="tlaGNC tlaBgGNC">          88 :   single_h-&gt;state = RUNNING;</span></span>
+<span id="L1429"><span class="lineNum">    1429</span> <span class="tlaGNC">          88 :   single_h-&gt;free_output = need_alloc;</span></span>
+<span id="L1430"><span class="lineNum">    1430</span> <span class="tlaGNC">          88 :   single_h-&gt;input = _in;</span></span>
+<span id="L1431"><span class="lineNum">    1431</span> <span class="tlaGNC">          88 :   single_h-&gt;output = _out;</span></span>
 <span id="L1432"><span class="lineNum">    1432</span>              : </span>
-<span id="L1433"><span class="lineNum">    1433</span> <span class="tlaGNC">          83 :   if (single_h-&gt;timeout &gt; 0) {</span></span>
+<span id="L1433"><span class="lineNum">    1433</span> <span class="tlaGNC">          88 :   if (single_h-&gt;timeout &gt; 0) {</span></span>
 <span id="L1434"><span class="lineNum">    1434</span>              :     /* Wake up &quot;invoke_thread&quot; */</span>
 <span id="L1435"><span class="lineNum">    1435</span> <span class="tlaGNC">          24 :     g_cond_broadcast (&amp;single_h-&gt;cond);</span></span>
 <span id="L1436"><span class="lineNum">    1436</span>              : </span>
@@ -1518,41 +1518,41 @@
 <span id="L1456"><span class="lineNum">    1456</span>              :      * with the same handle. Thus we can call __invoke without</span>
 <span id="L1457"><span class="lineNum">    1457</span>              :      * having yet another mutex for __invoke.</span>
 <span id="L1458"><span class="lineNum">    1458</span>              :      */</span>
-<span id="L1459"><span class="lineNum">    1459</span> <span class="tlaGNC">          59 :     single_h-&gt;invoking = TRUE;</span></span>
-<span id="L1460"><span class="lineNum">    1460</span> <span class="tlaGNC">          59 :     status = __invoke (single_h, _in, _out, need_alloc);</span></span>
-<span id="L1461"><span class="lineNum">    1461</span> <span class="tlaGNC">          59 :     ml_tensors_data_destroy (_in);</span></span>
-<span id="L1462"><span class="lineNum">    1462</span> <span class="tlaGNC">          59 :     single_h-&gt;invoking = FALSE;</span></span>
-<span id="L1463"><span class="lineNum">    1463</span> <span class="tlaGNC">          59 :     single_h-&gt;state = IDLE;</span></span>
+<span id="L1459"><span class="lineNum">    1459</span> <span class="tlaGNC">          64 :     single_h-&gt;invoking = TRUE;</span></span>
+<span id="L1460"><span class="lineNum">    1460</span> <span class="tlaGNC">          64 :     status = __invoke (single_h, _in, _out, need_alloc);</span></span>
+<span id="L1461"><span class="lineNum">    1461</span> <span class="tlaGNC">          64 :     ml_tensors_data_destroy (_in);</span></span>
+<span id="L1462"><span class="lineNum">    1462</span> <span class="tlaGNC">          64 :     single_h-&gt;invoking = FALSE;</span></span>
+<span id="L1463"><span class="lineNum">    1463</span> <span class="tlaGNC">          64 :     single_h-&gt;state = IDLE;</span></span>
 <span id="L1464"><span class="lineNum">    1464</span>              : </span>
-<span id="L1465"><span class="lineNum">    1465</span> <span class="tlaGNC">          59 :     if (status != ML_ERROR_NONE) {</span></span>
+<span id="L1465"><span class="lineNum">    1465</span> <span class="tlaGNC">          64 :     if (status != ML_ERROR_NONE) {</span></span>
 <span id="L1466"><span class="lineNum">    1466</span> <span class="tlaUNC tlaBgUNC">           0 :       if (need_alloc)</span></span>
 <span id="L1467"><span class="lineNum">    1467</span> <span class="tlaUNC">           0 :         ml_tensors_data_destroy (_out);</span></span>
 <span id="L1468"><span class="lineNum">    1468</span> <span class="tlaUNC">           0 :       goto exit;</span></span>
 <span id="L1469"><span class="lineNum">    1469</span>              :     }</span>
 <span id="L1470"><span class="lineNum">    1470</span>              : </span>
-<span id="L1471"><span class="lineNum">    1471</span> <span class="tlaGNC tlaBgGNC">          59 :     if (need_alloc)</span></span>
-<span id="L1472"><span class="lineNum">    1472</span> <span class="tlaGNC">          58 :       __process_output (single_h, _out);</span></span>
+<span id="L1471"><span class="lineNum">    1471</span> <span class="tlaGNC tlaBgGNC">          64 :     if (need_alloc)</span></span>
+<span id="L1472"><span class="lineNum">    1472</span> <span class="tlaGNC">          63 :       __process_output (single_h, _out);</span></span>
 <span id="L1473"><span class="lineNum">    1473</span>              :   }</span>
 <span id="L1474"><span class="lineNum">    1474</span>              : </span>
 <span id="L1475"><span class="lineNum">    1475</span> <span class="tlaGNC">           1 : exit:</span></span>
-<span id="L1476"><span class="lineNum">    1476</span> <span class="tlaGNC">          94 :   if (status == ML_ERROR_NONE) {</span></span>
-<span id="L1477"><span class="lineNum">    1477</span> <span class="tlaGNC">          79 :     if (need_alloc)</span></span>
-<span id="L1478"><span class="lineNum">    1478</span> <span class="tlaGNC">          78 :       *output = _out;</span></span>
+<span id="L1476"><span class="lineNum">    1476</span> <span class="tlaGNC">          99 :   if (status == ML_ERROR_NONE) {</span></span>
+<span id="L1477"><span class="lineNum">    1477</span> <span class="tlaGNC">          84 :     if (need_alloc)</span></span>
+<span id="L1478"><span class="lineNum">    1478</span> <span class="tlaGNC">          83 :       *output = _out;</span></span>
 <span id="L1479"><span class="lineNum">    1479</span>              :   }</span>
 <span id="L1480"><span class="lineNum">    1480</span>              : </span>
-<span id="L1481"><span class="lineNum">    1481</span> <span class="tlaGNC">          94 :   single_h-&gt;input = single_h-&gt;output = NULL;</span></span>
-<span id="L1482"><span class="lineNum">    1482</span> <span class="tlaGNC">          94 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
-<span id="L1483"><span class="lineNum">    1483</span> <span class="tlaGNC">          94 :   return status;</span></span>
+<span id="L1481"><span class="lineNum">    1481</span> <span class="tlaGNC">          99 :   single_h-&gt;input = single_h-&gt;output = NULL;</span></span>
+<span id="L1482"><span class="lineNum">    1482</span> <span class="tlaGNC">          99 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
+<span id="L1483"><span class="lineNum">    1483</span> <span class="tlaGNC">          99 :   return status;</span></span>
 <span id="L1484"><span class="lineNum">    1484</span>              : }</span>
 <span id="L1485"><span class="lineNum">    1485</span>              : </span>
 <span id="L1486"><span class="lineNum">    1486</span>              : /**</span>
 <span id="L1487"><span class="lineNum">    1487</span>              :  * @brief Invokes the model with the given input data.</span>
 <span id="L1488"><span class="lineNum">    1488</span>              :  */</span>
 <span id="L1489"><span class="lineNum">    1489</span>              : int</span>
-<span id="L1490"><span class="lineNum">    1490</span> <span class="tlaGNC">         105 : ml_single_invoke (ml_single_h single,</span></span>
+<span id="L1490"><span class="lineNum">    1490</span> <span class="tlaGNC">         110 : ml_single_invoke (ml_single_h single,</span></span>
 <span id="L1491"><span class="lineNum">    1491</span>              :     const ml_tensors_data_h input, ml_tensors_data_h * output)</span>
 <span id="L1492"><span class="lineNum">    1492</span>              : {</span>
-<span id="L1493"><span class="lineNum">    1493</span> <span class="tlaGNC">         105 :   return _ml_single_invoke_internal (single, input, output, TRUE);</span></span>
+<span id="L1493"><span class="lineNum">    1493</span> <span class="tlaGNC">         110 :   return _ml_single_invoke_internal (single, input, output, TRUE);</span></span>
 <span id="L1494"><span class="lineNum">    1494</span>              : }</span>
 <span id="L1495"><span class="lineNum">    1495</span>              : </span>
 <span id="L1496"><span class="lineNum">    1496</span>              : /**</span>
