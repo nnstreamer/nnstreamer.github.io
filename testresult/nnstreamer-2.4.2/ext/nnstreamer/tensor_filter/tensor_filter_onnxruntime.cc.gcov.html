@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_onnxruntime.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_onnxruntime.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">73.0&nbsp;%</td>
-            <td class="headerCovTableEntry">189</td>
-            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntryLo">73.1&nbsp;%</td>
+            <td class="headerCovTableEntry">193</td>
+            <td class="headerCovTableEntry">141</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:33</td>
+            <td class="headerValue">2024-12-02 05:34:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.4&nbsp;%</td>
@@ -154,7 +154,7 @@
 <span id="L92"><span class="lineNum">      92</span>              :  * @brief Constructor for onnxruntime_subplugin.</span>
 <span id="L93"><span class="lineNum">      93</span>              :  */</span>
 <span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC tlaBgGNC">          66 : onnxruntime_subplugin::onnxruntime_subplugin ()</span></span>
-<span id="L95"><span class="lineNum">      95</span>              :     : configured{ false }, model_path{ nullptr }, session{ nullptr },</span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">          66 :     : configured{ false }, model_path{ nullptr }, session{ nullptr },</span></span>
 <span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          66 :       sessionOptions{ nullptr }, env{ nullptr }, memInfo{ nullptr }</span></span>
 <span id="L97"><span class="lineNum">      97</span>              : {</span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">          66 : }</span></span>
@@ -333,10 +333,10 @@
 <span id="L271"><span class="lineNum">     271</span>              : </span>
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC tlaBgGNC">          41 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_IS_REGULAR)) {</span></span>
 <span id="L273"><span class="lineNum">     273</span>              :     const std::string err_msg</span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          66 :         = &quot;Given file &quot; + (std::string) prop-&gt;model_files[0] + &quot; is not valid&quot;;</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          22 :         = &quot;Given file &quot; + (std::string) prop-&gt;model_files[0] + &quot; is not valid&quot;;</span></span>
 <span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          22 :     cleanup ();</span></span>
 <span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          22 :     throw std::runtime_error (err_msg);</span></span>
-<span id="L277"><span class="lineNum">     277</span>              :   }</span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">          22 :   }</span></span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
 <span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          19 :   model_path = g_strdup (prop-&gt;model_files[0]);</span></span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
@@ -367,7 +367,7 @@
 <span id="L305"><span class="lineNum">     305</span>              : </span>
 <span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          24 :   for (i = 0; i &lt; num_inputs; i++) {</span></span>
 <span id="L307"><span class="lineNum">     307</span>              :     /* Get input name */</span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          24 :     auto input_name = session.GetInputNameAllocated (i, allocator);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          12 :     auto input_name = session.GetInputNameAllocated (i, allocator);</span></span>
 <span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          12 :     inputNode.names_allocated_strings.push_back (std::move (input_name));</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          12 :     inputNode.names.push_back (inputNode.names_allocated_strings.back ().get ());</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
@@ -383,7 +383,7 @@
 <span id="L321"><span class="lineNum">     321</span>              : </span>
 <span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          24 :   for (i = 0; i &lt; num_outputs; i++) {</span></span>
 <span id="L323"><span class="lineNum">     323</span>              :     /* Get output name */</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          24 :     auto output_name = session.GetOutputNameAllocated (i, allocator);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          12 :     auto output_name = session.GetOutputNameAllocated (i, allocator);</span></span>
 <span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">          12 :     outputNode.names_allocated_strings.push_back (std::move (output_name));</span></span>
 <span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          12 :     outputNode.names.push_back (outputNode.names_allocated_strings.back ().get ());</span></span>
 <span id="L327"><span class="lineNum">     327</span>              : </span>
@@ -420,16 +420,16 @@
 <span id="L358"><span class="lineNum">     358</span>              : </span>
 <span id="L359"><span class="lineNum">     359</span>              :   /* Set input to tensor */</span>
 <span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           6 :   for (i = 0; i &lt; inputNode.count; ++i) {</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           9 :     inputNode.tensors.emplace_back (Ort::Value::CreateTensor (memInfo,</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           6 :     inputNode.tensors.emplace_back (Ort::Value::CreateTensor (memInfo,</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           3 :         input[i].data, input[i].size, inputNode.shapes[i].data (),</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           9 :         inputNode.shapes[i].size (), inputNode.types[i]));</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           3 :         inputNode.shapes[i].size (), inputNode.types[i]));</span></span>
 <span id="L364"><span class="lineNum">     364</span>              :   }</span>
 <span id="L365"><span class="lineNum">     365</span>              : </span>
 <span id="L366"><span class="lineNum">     366</span>              :   /* Set output to tensor */</span>
 <span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">           6 :   for (i = 0; i &lt; outputNode.count; ++i) {</span></span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           9 :     outputNode.tensors.emplace_back (Ort::Value::CreateTensor (memInfo,</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           6 :     outputNode.tensors.emplace_back (Ort::Value::CreateTensor (memInfo,</span></span>
 <span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">           3 :         output[i].data, output[i].size, outputNode.shapes[i].data (),</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           9 :         outputNode.shapes[i].size (), outputNode.types[i]));</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           3 :         outputNode.shapes[i].size (), outputNode.types[i]));</span></span>
 <span id="L371"><span class="lineNum">     371</span>              :   }</span>
 <span id="L372"><span class="lineNum">     372</span>              : </span>
 <span id="L373"><span class="lineNum">     373</span>              :   try {</span>
@@ -441,7 +441,7 @@
 <span id="L379"><span class="lineNum">     379</span>              :     const std::string err_msg</span>
 <span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :         = &quot;ERROR running model inference: &quot; + (std::string) exception.what ();</span></span>
 <span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     throw std::runtime_error (err_msg);</span></span>
-<span id="L382"><span class="lineNum">     382</span>              :   }</span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :   }</span></span>
 <span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC tlaBgGNC">           3 : }</span></span>
 <span id="L384"><span class="lineNum">     384</span>              : </span>
 <span id="L385"><span class="lineNum">     385</span>              : /**</span>
@@ -469,13 +469,13 @@
 <span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          41 :     convertTensorInfo (outputNode, out_info);</span></span>
 <span id="L408"><span class="lineNum">     408</span>              : </span>
 <span id="L409"><span class="lineNum">     409</span>              :     /* For debug, print input and output tensor information. */</span>
-<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          82 :     g_autofree gchar *instr = gst_tensors_info_to_string (std::addressof (in_info));</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          41 :     g_autofree gchar *instr = gst_tensors_info_to_string (std::addressof (in_info));</span></span>
 <span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          41 :     g_autofree gchar *outstr = gst_tensors_info_to_string (std::addressof (out_info));</span></span>
 <span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          41 :     nns_logd (&quot;Input info: %s&quot;, instr);</span></span>
 <span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          41 :     nns_logd (&quot;Output info: %s&quot;, outstr);</span></span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
 <span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          41 :     return 0;</span></span>
-<span id="L416"><span class="lineNum">     416</span>              :   }</span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          41 :   }</span></span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
 <span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">           9 :   return -ENOENT;</span></span>
 <span id="L419"><span class="lineNum">     419</span>              : }</span>

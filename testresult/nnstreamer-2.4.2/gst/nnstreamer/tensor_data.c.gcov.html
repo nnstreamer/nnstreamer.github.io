@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486 - nnstreamer-2.4.2/gst/nnstreamer/tensor_data.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900 - nnstreamer-2.4.2/gst/nnstreamer/tensor_data.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">88.6&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:33</td>
+            <td class="headerValue">2024-12-02 05:34:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -138,15 +138,15 @@
 <span id="L76"><span class="lineNum">      76</span>              :  * @return TRUE if no error</span>
 <span id="L77"><span class="lineNum">      77</span>              :  */</span>
 <span id="L78"><span class="lineNum">      78</span>              : gboolean</span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC tlaBgGNC">     3922830 : gst_tensor_data_set (tensor_data_s * td, tensor_type type, gpointer value)</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC tlaBgGNC">     3922831 : gst_tensor_data_set (tensor_data_s * td, tensor_type type, gpointer value)</span></span>
 <span id="L80"><span class="lineNum">      80</span>              : {</span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">     3922830 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">     3922830 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">     3922831 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">     3922831 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
 <span id="L83"><span class="lineNum">      83</span>              : </span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">     3922830 :   td-&gt;data._int64_t = 0;</span></span>
-<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">     3922830 :   td-&gt;type = _NNS_END;</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">     3922831 :   td-&gt;data._int64_t = 0;</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">     3922831 :   td-&gt;type = _NNS_END;</span></span>
 <span id="L86"><span class="lineNum">      86</span>              : </span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">     3922830 :   switch (type) {</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">     3922831 :   switch (type) {</span></span>
 <span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         114 :     case _NNS_INT32:</span></span>
 <span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         114 :       td_set_data (td, value, int32_t);</span></span>
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         114 :       break;</span></span>
@@ -162,9 +162,9 @@
 <span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">        5016 :     case _NNS_INT8:</span></span>
 <span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        5016 :       td_set_data (td, value, int8_t);</span></span>
 <span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">        5016 :       break;</span></span>
-<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">     2985850 :     case _NNS_UINT8:</span></span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">     2985850 :       td_set_data (td, value, uint8_t);</span></span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">     2985850 :       break;</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">     2985848 :     case _NNS_UINT8:</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">     2985848 :       td_set_data (td, value, uint8_t);</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">     2985848 :       break;</span></span>
 <span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">      696398 :     case _NNS_FLOAT64:</span></span>
 <span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">      696398 :       td_set_data (td, value, double);</span></span>
 <span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">      696398 :       break;</span></span>
@@ -191,8 +191,8 @@
 <span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
 <span id="L130"><span class="lineNum">     130</span>              :   }</span>
 <span id="L131"><span class="lineNum">     131</span>              : </span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC tlaBgGNC">     3922830 :   td-&gt;type = type;</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">     3922830 :   return TRUE;</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC tlaBgGNC">     3922831 :   td-&gt;type = type;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">     3922831 :   return TRUE;</span></span>
 <span id="L134"><span class="lineNum">     134</span>              : }</span>
 <span id="L135"><span class="lineNum">     135</span>              : </span>
 <span id="L136"><span class="lineNum">     136</span>              : /**</span>
@@ -202,12 +202,12 @@
 <span id="L140"><span class="lineNum">     140</span>              :  * @return TRUE if no error</span>
 <span id="L141"><span class="lineNum">     141</span>              :  */</span>
 <span id="L142"><span class="lineNum">     142</span>              : gboolean</span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">     3922680 : gst_tensor_data_get (tensor_data_s * td, gpointer value)</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">     3922682 : gst_tensor_data_get (tensor_data_s * td, gpointer value)</span></span>
 <span id="L144"><span class="lineNum">     144</span>              : {</span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">     3922680 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">     3922680 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">     3922682 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">     3922682 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : </span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">     3922680 :   switch (td-&gt;type) {</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">     3922682 :   switch (td-&gt;type) {</span></span>
 <span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">       15390 :     case _NNS_INT32:</span></span>
 <span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       15390 :       td_get_data (td, value, int32_t);</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">       15390 :       break;</span></span>
@@ -226,9 +226,9 @@
 <span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">      601615 :     case _NNS_UINT8:</span></span>
 <span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">      601615 :       td_get_data (td, value, uint8_t);</span></span>
 <span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">      601615 :       break;</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">     2975740 :     case _NNS_FLOAT64:</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">     2975740 :       td_get_data (td, value, double);</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">     2975740 :       break;</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">     2975741 :     case _NNS_FLOAT64:</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">     2975741 :       td_get_data (td, value, double);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">     2975741 :       break;</span></span>
 <span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">      100115 :     case _NNS_FLOAT32:</span></span>
 <span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">      100115 :       td_get_data (td, value, float);</span></span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">      100115 :       break;</span></span>
@@ -252,7 +252,7 @@
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
 <span id="L191"><span class="lineNum">     191</span>              :   }</span>
 <span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC tlaBgGNC">     3922680 :   return TRUE;</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC tlaBgGNC">     3922682 :   return TRUE;</span></span>
 <span id="L194"><span class="lineNum">     194</span>              : }</span>
 <span id="L195"><span class="lineNum">     195</span>              : </span>
 <span id="L196"><span class="lineNum">     196</span>              : /**</span>
@@ -262,18 +262,18 @@
 <span id="L200"><span class="lineNum">     200</span>              :  * @return TRUE if no error</span>
 <span id="L201"><span class="lineNum">     201</span>              :  */</span>
 <span id="L202"><span class="lineNum">     202</span>              : gboolean</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">     3992590 : gst_tensor_data_typecast (tensor_data_s * td, tensor_type type)</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">     3993092 : gst_tensor_data_typecast (tensor_data_s * td, tensor_type type)</span></span>
 <span id="L204"><span class="lineNum">     204</span>              : {</span>
 <span id="L205"><span class="lineNum">     205</span>              :   gboolean is_float;</span>
 <span id="L206"><span class="lineNum">     206</span>              : </span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">     3992590 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">     3993092 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
 <span id="L209"><span class="lineNum">     209</span>              :   /* do nothing when transform to same type */</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">     3992590 :   if (td-&gt;type != type) {</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">     3687400 :     is_float = (td-&gt;type == _NNS_FLOAT32 || td-&gt;type == _NNS_FLOAT64</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">     7594830 :         || td-&gt;type == _NNS_FLOAT16);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">     3993092 :   if (td-&gt;type != type) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">     3687402 :     is_float = (td-&gt;type == _NNS_FLOAT32 || td-&gt;type == _NNS_FLOAT64</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">     7594834 :         || td-&gt;type == _NNS_FLOAT16);</span></span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">     3907430 :     switch (type) {</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">     3907432 :     switch (type) {</span></span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">       15419 :       case _NNS_INT32:</span></span>
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">       15419 :         td_typecast (td, int32_t);</span></span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">       15419 :         break;</span></span>
@@ -304,12 +304,12 @@
 <span id="L242"><span class="lineNum">     242</span>              :         }</span>
 <span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">      586318 :         td_typecast (td, uint8_t);</span></span>
 <span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">      586318 :         break;</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">     2975730 :       case _NNS_FLOAT64:</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">     2975730 :         td_typecast (td, double);</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">     2975730 :         break;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">      100147 :       case _NNS_FLOAT32:</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">      100147 :         td_typecast (td, float);</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">      100147 :         break;</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">     2975728 :       case _NNS_FLOAT64:</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">     2975728 :         td_typecast (td, double);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">     2975728 :         break;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">      100150 :       case _NNS_FLOAT32:</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">      100150 :         td_typecast (td, float);</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">      100150 :         break;</span></span>
 <span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC tlaBgUNC">           0 :       case _NNS_FLOAT16:</span></span>
 <span id="L252"><span class="lineNum">     252</span>              : #ifdef FLOAT16_SUPPORT</span>
 <span id="L253"><span class="lineNum">     253</span>              :         td_typecast (td, float16);</span>
@@ -334,10 +334,10 @@
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaUNC">           0 :         return FALSE;</span></span>
 <span id="L273"><span class="lineNum">     273</span>              :     }</span>
 <span id="L274"><span class="lineNum">     274</span>              : </span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC tlaBgGNC">     3907430 :     td-&gt;type = type;</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC tlaBgGNC">     3907432 :     td-&gt;type = type;</span></span>
 <span id="L276"><span class="lineNum">     276</span>              :   }</span>
 <span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">     3992590 :   return TRUE;</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">     3993092 :   return TRUE;</span></span>
 <span id="L279"><span class="lineNum">     279</span>              : }</span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
 <span id="L281"><span class="lineNum">     281</span>              : /**</span>
@@ -349,20 +349,20 @@
 <span id="L287"><span class="lineNum">     287</span>              :  * @return TRUE if no error</span>
 <span id="L288"><span class="lineNum">     288</span>              :  */</span>
 <span id="L289"><span class="lineNum">     289</span>              : gboolean</span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">     3861140 : gst_tensor_data_raw_typecast (gpointer input, tensor_type in_type,</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">     3861142 : gst_tensor_data_raw_typecast (gpointer input, tensor_type in_type,</span></span>
 <span id="L291"><span class="lineNum">     291</span>              :     gpointer output, tensor_type out_type)</span>
 <span id="L292"><span class="lineNum">     292</span>              : {</span>
 <span id="L293"><span class="lineNum">     293</span>              :   tensor_data_s td;</span>
 <span id="L294"><span class="lineNum">     294</span>              : </span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">     7722280 :   g_return_val_if_fail (input != NULL, FALSE);</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">     3861140 :   g_return_val_if_fail (output != NULL, FALSE);</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">     3861140 :   g_return_val_if_fail (in_type != _NNS_END, FALSE);</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">     3861140 :   g_return_val_if_fail (out_type != _NNS_END, FALSE);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">     7722284 :   g_return_val_if_fail (input != NULL, FALSE);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">     3861142 :   g_return_val_if_fail (output != NULL, FALSE);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">     3861142 :   g_return_val_if_fail (in_type != _NNS_END, FALSE);</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">     3861142 :   g_return_val_if_fail (out_type != _NNS_END, FALSE);</span></span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">     3861140 :   gst_tensor_data_set (&amp;td, in_type, input);</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">     3861140 :   gst_tensor_data_typecast (&amp;td, out_type);</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">     3861140 :   gst_tensor_data_get (&amp;td, output);</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">     3861140 :   return TRUE;</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">     3861142 :   gst_tensor_data_set (&amp;td, in_type, input);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">     3861142 :   gst_tensor_data_typecast (&amp;td, out_type);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">     3861142 :   gst_tensor_data_get (&amp;td, output);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">     3861142 :   return TRUE;</span></span>
 <span id="L304"><span class="lineNum">     304</span>              : }</span>
 <span id="L305"><span class="lineNum">     305</span>              : </span>
 <span id="L306"><span class="lineNum">     306</span>              : /**</span>
@@ -396,12 +396,12 @@
 <span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L335"><span class="lineNum">     335</span>              :   }</span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC tlaBgGNC">     2209720 :   for (i = 0; i &lt; num; ++i) {</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC tlaBgGNC">     2209722 :   for (i = 0; i &lt; num; ++i) {</span></span>
 <span id="L338"><span class="lineNum">     338</span>              :     /* extract value and typecast to double */</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">     2209700 :     data = (guint8 *) raw + element_size * i;</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">     2209700 :     gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">     2209696 :     data = (guint8 *) raw + element_size * i;</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">     2209696 :     gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
 <span id="L341"><span class="lineNum">     341</span>              : </span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">     2209700 :     average = (value - average) / (i + 1) + average;</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">     2209696 :     average = (value - average) / (i + 1) + average;</span></span>
 <span id="L343"><span class="lineNum">     343</span>              :   }</span>
 <span id="L344"><span class="lineNum">     344</span>              : </span>
 <span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          26 :   **result = average;</span></span>

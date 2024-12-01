@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_lua.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_lua.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.7&nbsp;%</td>
-            <td class="headerCovTableEntry">266</td>
-            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntryMed">88.8&nbsp;%</td>
+            <td class="headerCovTableEntry">267</td>
+            <td class="headerCovTableEntry">237</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:33</td>
+            <td class="headerValue">2024-12-02 05:34:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.0&nbsp;%</td>
@@ -171,17 +171,17 @@
 <span id="L109"><span class="lineNum">     109</span>              : </span>
 <span id="L110"><span class="lineNum">     110</span>              : /** @brief For getting value in Lua */</span>
 <span id="L111"><span class="lineNum">     111</span>              : static int</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">     5071860 : tensor_index (lua_State *L)</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">     5071862 : tensor_index (lua_State *L)</span></span>
 <span id="L113"><span class="lineNum">     113</span>              : {</span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">     5071860 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">     5071860 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">     5071862 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">     5071862 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
 <span id="L116"><span class="lineNum">     116</span>              : </span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">     5071860 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">     5071860 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">     5071862 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">     5071862 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">           1 :     throw std::runtime_error (&quot;Invalid index for tensor&quot;);</span></span>
 <span id="L120"><span class="lineNum">     120</span>              : </span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">     5071860 :   double value = 0.0;</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">     5071860 :   switch (lt-&gt;type) {</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">     5071861 :   double value = 0.0;</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">     5071861 :   switch (lt-&gt;type) {</span></span>
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           4 :     case _NNS_INT32:</span></span>
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">           4 :       value = (double) ((int32_t *) lt-&gt;data)[tidx];</span></span>
 <span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">           4 :       break;</span></span>
@@ -197,9 +197,9 @@
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">           4 :     case _NNS_INT8:</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">           4 :       value = (double) ((int8_t *) lt-&gt;data)[tidx];</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">           4 :       break;</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">     4803620 :     case _NNS_UINT8:</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">     4803620 :       value = (double) ((uint8_t *) lt-&gt;data)[tidx];</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">     4803620 :       break;</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">     4803622 :     case _NNS_UINT8:</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">     4803622 :       value = (double) ((uint8_t *) lt-&gt;data)[tidx];</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">     4803622 :       break;</span></span>
 <span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">           4 :     case _NNS_FLOAT64:</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           4 :       value = (double) ((double *) lt-&gt;data)[tidx];</span></span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">           4 :       break;</span></span>
@@ -225,24 +225,24 @@
 <span id="L163"><span class="lineNum">     163</span>              :       break;</span>
 <span id="L164"><span class="lineNum">     164</span>              :   }</span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC tlaBgGNC">     5071860 :   lua_pushnumber (L, value);</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC tlaBgGNC">     5071861 :   lua_pushnumber (L, value);</span></span>
 <span id="L167"><span class="lineNum">     167</span>              : </span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">     5071860 :   return 1;</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">     5071861 :   return 1;</span></span>
 <span id="L169"><span class="lineNum">     169</span>              : }</span>
 <span id="L170"><span class="lineNum">     170</span>              : </span>
 <span id="L171"><span class="lineNum">     171</span>              : /** @brief For assigning new value in Lua */</span>
 <span id="L172"><span class="lineNum">     172</span>              : static int</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">     5101870 : tensor_newindex (lua_State *L)</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">     5101871 : tensor_newindex (lua_State *L)</span></span>
 <span id="L174"><span class="lineNum">     174</span>              : {</span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">     5101870 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">     5101870 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">     5101870 :   double value = luaL_checknumber (L, 3);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">     5101871 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">     5101871 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">     5101871 :   double value = luaL_checknumber (L, 3);</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : </span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">     5101870 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">     5101870 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">     5101871 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">     5101871 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaUNC tlaBgUNC">           0 :     throw std::runtime_error (&quot;Invalid index for tensor&quot;);</span></span>
 <span id="L182"><span class="lineNum">     182</span>              : </span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC tlaBgGNC">     5101870 :   switch (lt-&gt;type) {</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC tlaBgGNC">     5101871 :   switch (lt-&gt;type) {</span></span>
 <span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           4 :     case _NNS_INT32:</span></span>
 <span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">           4 :       ((int32_t *) lt-&gt;data)[tidx] = (int32_t) value;</span></span>
 <span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">           4 :       break;</span></span>
@@ -264,11 +264,11 @@
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           4 :     case _NNS_INT8:</span></span>
 <span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           4 :       ((int8_t *) lt-&gt;data)[tidx] = (int8_t) value;</span></span>
 <span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           4 :       break;</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">     4833630 :     case _NNS_UINT8:</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">     4833628 :     case _NNS_UINT8:</span></span>
 <span id="L206"><span class="lineNum">     206</span>              :       {</span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">     4833630 :         int8_t temp = (int8_t) value;</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">     4833630 :         ((uint8_t *) lt-&gt;data)[tidx] = (uint8_t) temp;</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">     4833630 :         break;</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">     4833628 :         int8_t temp = (int8_t) value;</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">     4833628 :         ((uint8_t *) lt-&gt;data)[tidx] = (uint8_t) temp;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">     4833628 :         break;</span></span>
 <span id="L210"><span class="lineNum">     210</span>              :       }</span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           4 :     case _NNS_FLOAT64:</span></span>
 <span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           4 :       ((double *) lt-&gt;data)[tidx] = (uint8_t) value;</span></span>
@@ -298,7 +298,7 @@
 <span id="L236"><span class="lineNum">     236</span>              :       break;</span>
 <span id="L237"><span class="lineNum">     237</span>              :   }</span>
 <span id="L238"><span class="lineNum">     238</span>              : </span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC tlaBgGNC">     5101870 :   return 0;</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC tlaBgGNC">     5101871 :   return 0;</span></span>
 <span id="L240"><span class="lineNum">     240</span>              : }</span>
 <span id="L241"><span class="lineNum">     241</span>              : </span>
 <span id="L242"><span class="lineNum">     242</span>              : /** @brief Expose C array to Lua */</span>
@@ -525,13 +525,13 @@
 <span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          56 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_EXISTS)) {</span></span>
 <span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          45 :     nns_logi (&quot;Given model file does not exist. Do script mode.&quot;);</span></span>
 <span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          45 :     gchar *script = g_strjoinv (&quot;,&quot;, (gchar **) prop-&gt;model_files);</span></span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          90 :     std::unique_ptr&lt;gchar, decltype (&amp;g_free)&gt; script_ptr (script, g_free);</span></span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          45 :     std::unique_ptr&lt;gchar, decltype (&amp;g_free)&gt; script_ptr (script, g_free);</span></span>
 <span id="L467"><span class="lineNum">     467</span>              : </span>
 <span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          45 :     if (luaL_dostring (L, script_ptr.get ()) != 0) {</span></span>
 <span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">          16 :       throw std::invalid_argument (std::string (&quot;Failed to run given Lua script. Error message: &quot;)</span></span>
 <span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">          24 :                                    + lua_tostring (L, -1));</span></span>
 <span id="L471"><span class="lineNum">     471</span>              :     }</span>
-<span id="L472"><span class="lineNum">     472</span>              :   } else {</span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">          45 :   } else {</span></span>
 <span id="L473"><span class="lineNum">     473</span>              :     /** Do File mode */</span>
 <span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">          11 :     if (luaL_dofile (L, prop-&gt;model_files[0]) != 0) {</span></span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::invalid_argument (std::string (&quot;Failed to run given Lua script file. Error message: &quot;)</span></span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-flatbuf.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-flatbuf.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#203b880a0fa6df708aa2206191b5fd80f101e486</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#15b4999d2f1bc70ebad334c23ca3c3edb6fea900</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">86.2&nbsp;%</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntryMed">86.4&nbsp;%</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntry">57</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 05:35:33</td>
+            <td class="headerValue">2024-12-02 05:34:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
@@ -152,8 +152,8 @@
 <span id="L90"><span class="lineNum">      90</span>              :   GstMemory *out_mem;</span>
 <span id="L91"><span class="lineNum">      91</span>              :   guint i, num_tensors;</span>
 <span id="L92"><span class="lineNum">      92</span>              :   flatbuffers::uoffset_t fb_size;</span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         168 :   flatbuffers::FlatBufferBuilder builder;</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         168 :   std::vector&lt;flatbuffers::Offset&lt;Tensor&gt;&gt; tensor_vector;</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">          84 :   flatbuffers::FlatBufferBuilder builder;</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">          84 :   std::vector&lt;flatbuffers::Offset&lt;Tensor&gt;&gt; tensor_vector;</span></span>
 <span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">          84 :   flatbuffers::Offset&lt;flatbuffers::Vector&lt;uint32_t&gt;&gt; dim;</span></span>
 <span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          84 :   flatbuffers::Offset&lt;flatbuffers::String&gt; tensor_name;</span></span>
 <span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">          84 :   flatbuffers::Offset&lt;flatbuffers::Vector&lt;unsigned char&gt;&gt; input_vector;</span></span>
@@ -205,8 +205,8 @@
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">         106 :     tensor_vector.push_back (tensor);</span></span>
 <span id="L144"><span class="lineNum">     144</span>              :   }</span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span>              :   tensors = CreateTensors (</span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          81 :       builder, num_tensors, &amp;fr, builder.CreateVector (tensor_vector), format);</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          81 :   tensors = CreateTensors (</span></span>
+<span id="L147"><span class="lineNum">     147</span>              :       builder, num_tensors, &amp;fr, builder.CreateVector (tensor_vector), format);</span>
 <span id="L148"><span class="lineNum">     148</span>              : </span>
 <span id="L149"><span class="lineNum">     149</span>              :   /* Serialize the data.*/</span>
 <span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          81 :   builder.Finish (tensors);</span></span>
@@ -237,7 +237,7 @@
 <span id="L175"><span class="lineNum">     175</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_replace_all_memory (outbuf, out_mem);</span></span>
 <span id="L176"><span class="lineNum">     176</span>              : </span>
 <span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC tlaBgGNC">          81 :   return GST_FLOW_OK;</span></span>
-<span id="L178"><span class="lineNum">     178</span>              : }</span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          84 : }</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              : static gchar decoder_subplugin_flatbuf[] = &quot;flatbuf&quot;;</span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
