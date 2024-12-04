@@ -146,7 +146,31 @@ $('body').removeClass('no-script');
         <h1 id="writing-a-subplugin-for-nnstreamers-tensor_filter">Writing a subplugin for NNStreamer's tensor_filter</h1>
 <p>You can support a new neural-network framework (e.g., Tensorflow and Caffe) or a new neural-network hardware accelerator with its own software interface (e.g., openVINO for NCS and some python library for edge-TPU) by writing a tensor_filter subplugin.</p>
 <p>It is called "<strong>subplugin</strong>" because it is a plugin for a GStreamer plugin, <code>tensor_filter</code>.</p>
-<h2 id="quick-guide-on-writing-a-tensor_filter-subplugin-for-a-new-frameworkhardware">Quick guide on writing a tensor_filter subplugin for a new framework/hardware.</h2>
+<p><strong>A subplugin should NEVER require properties of input/output dimensions or types.</strong> You should use such properties for pipeline debugging and validation and the subplugin should fetch such information directly from model files via framework APIs and GSTCAPS negotiations.</p>
+<h1 id="quick-guide-on-writing-a-tensor_filter-subplugin-for-a-new-frameworkhardware">Quick guide on writing a tensor_filter subplugin for a new framework/hardware.</h1>
+<p>The most recommended method is to write a C++ tensor_filter subplugin as a derived class of <code>tensor_filter_subplugin</code> class [/gst/nnstreamer/include/nnstreamer_cppplugin_api_filter.hh].
+Then, you can register the derived class, usually by calling <code>tensor_filter_subplugin::register_subplugin()</code> in the init function so that subplugin infrastructure recognizes your subplugin when the shared library is loaded.</p>
+<h2 id="a-tensor_filter-subplugin-c-class">A tensor_filter subplugin C++ class</h2>
+<p>Interface: [/gst/nnstreamer/include/nnstreamer_cppplugin_api_filter.hh]
+Reference (example): [/ext/nnstreamer/tensor_filter/tensor_filter_snap.cc]</p>
+<p>You may also find other subplugins inheriting the <code>tensor_filter_subplugin</code> class in [/ext/nnstreamer/tensor_filter] that can be used as examples.</p>
+<p>If the framework or backend/runtime library has C++ APIs or you want to write the subplugin in C++, use <code>#include &lt;nnstreamer_cppplugin_api_filter.hh&gt;</code> and inherit the base class, <code>nnstreamer::tensor_filter_subplugin</code>.
+With this interface, subplugin writers are supposed to write their own concrete class based on <code>nnstreamer::tensor_filter_subplugin</code> by filling up virtual methods (methods marked <code>These should be filled/implemented by subplugin authores</code>).
+Mandatory methods to be filled are declared as pure virtual function and optional methods are declared as regular virtual function (<code>eventHandler</code>).</p>
+<p>As in C subplugin, the derived (concrete) class should be registered at init and unregistered at exit.
+Subplugin writers are supposed to use the static methods of the base class, <code>register_subplugin()</code> and <code>unregister_subplugin()</code>; refer to the function <code>init_filter_snap()</code> and <code>fini_filter_snap()</code> in the reference example.</p>
+<p>Note that C++ subplugin is simpler and easy-to-maintain compared to C subplugin. Unless you really need to write your subplugin in C, we recommend to use the <code>nnstreamer::tensor_filter_subplugin</code> base class.</p>
+<h2 id="a-tensor_filter-subplugin-in-c">A tensor_filter subplugin in C</h2>
+<p>Interface: [/gst/nnstreamer/include/nnstreamer_plugin_api_filter.h]
+Reference (example): [/ext/nnstreamer/tensor_filter/tensor_filter_nnfw.c]</p>
+<p>If the framework or backend/runtime library has C APIs and you want to write the subplugin in C, use <code>#include &lt;nnstreamer_plugin_api_filter.h&gt;</code>.
+Your C subplugin is supposed to fill in <code>GstTensorFilterFramework</code> struct and register the struct with <code>nnstreamer_filter_probe (GstTensorFilterFrameworkEventData *)</code> function, which is supposed to be called with <code>((constructor))</code> initializer (<code>init_filter_nnfw (void)</code> function in the reference).
+If your subplugin has custom properties to be supplied by users, describe their usages with <code>nnstreamer_filter_set_custom_property_desc ()</code> function.
+Then, call <code>nnstreamer_filter_exit ()</code> function with <code>((destructor))</code> terminator (<code>fini_filter_nnfw (void)</code> function in the reference).</p>
+<p>In <code>GstTensorFilterFramework</code>, there are two different ways, <code>v0 (version == GST_TENSOR_FILTER_FRAMEWORK_V0)</code> and <code>v1 (version == GST_TENSOR_FILTER_FRAMEWORK_V1)</code>. In the struct, there is a <code>union</code> of <code>v0</code> and <code>v1</code>, and it is recommended to use <code>v1</code> and <code>set version = GST_TENSOR_FILTER_FRAMEWORK_V1</code> (v1). <code>v0</code> is supposed to be used by old subplugins for backward compatibility and any new subplugins should use <code>v1</code>, which is simpler and richer in features.</p>
+<p>However, note that if you are going to use framework/library with C++ APIs, please do not use <code>nnstreamer_plugin_api_filter.h</code>, but use the base tensor-filter-subplugin C++ class as in the next section.</p>
+<h2 id="code-generator-for-tensor_filter-subplugin-in-c">Code generator for tensor_filter subplugin in C</h2>
+<p><strong>This generator has not been maintained recently.</strong></p>
 <p>You can start writing a <code>tensor_filter</code> subplugin easily by using code-template/generator from nnstreamer-example.git. It is in <code>/templates/tensor_filter_subplugin</code> of <code>nnstreamer-example.git</code>. The following is how to start writing a subplugin with the template for Tizen devices (5.5 M2 +). In this example, the target subplugin name is <code>example</code>.</p>
 <pre><code>$ git clone https://github.com/nnstreamer/nnstreamer-example.git
 ...
@@ -173,14 +197,14 @@ $
 ...
 </code></pre>
 <p>Although we supply a packaging script for Tizen only, the code and build script (meson.build) supports other software platforms as well; you may build it with meson and install to appropriate paths.</p>
-<h2 id="more-about-the-template-subplugin-code">More about the template subplugin code</h2>
+<h1 id="more-about-the-template-subplugin-code">More about the template subplugin code</h1>
 <p>In case you are interested in the internals, here goes a few more details.</p>
-<h3 id="license">License</h3>
+<h2 id="license">License</h2>
 <p>NNStreamer plugins and libraries are licensed as LGPL. Thus subplugins and applications based on NNStreamer may be licensed with any licenses including proprietary licenses (non-open source) as long as NNStreamer is used as shared libraries assuming that other LGPL conditions are met. Besides, we allow to write subplugins with the given template codes without any licensing condition. Thus, do not worry about licensing for subplugins.</p>
-<h3 id="dependencies-libraries">Dependencies / Libraries</h3>
+<h2 id="dependencies-libraries">Dependencies / Libraries</h2>
 <p>As you can see in packaging/*.spec and meson.build of the template, <code>nnstreamer-dev</code> is the only mandatory dependency. Anyway, of course, you need to add dependencies for your own library/hardware usages.</p>
 <p>In order to provide callbacks required by <code>tensor_filter</code>, you need to include <code>nnstreamer_plugin_api_filter.h</code>, which is supplied with <code>nnstreamer-dev</code> package (in Tizen or Ubuntu).</p>
-<h3 id="testing">Testing</h3>
+<h2 id="testing">Testing</h2>
 <p>There is a templated test suite provided inside <code>nnstreamer-test-dev</code> package for dpkg, <code>nnstreamer-test-devel</code> for tizen distro.
 You may install or <em>BuildRequire</em> this package to utilize predefined test templates.
 After installing the package, you can locate the package.</p>
@@ -212,12 +236,12 @@ nnstreamer-test.ini.in  subplugin_unittest_template.cc.in
 <p>You can run the test as below:</p>
 <pre><code class="language-sh">NNSTREMAER_CONF_PATH=your/conf/file.ini ./subplugin_unittest
 </code></pre>
-<h3 id="install-path">Install Path</h3>
+<h2 id="install-path">Install Path</h2>
 <p>The default <code>tensor_filter</code> subplugin path is <code>/usr/lib/nnstreamer/filters/</code>. It can be modified by configuring <code>/etc/nnstreamer.ini</code>.</p>
-<h3 id="flexibledynamic-inputoutput-tensor-dimension">Flexible/Dynamic Input/Output Tensor Dimension</h3>
+<h2 id="flexibledynamic-inputoutput-tensor-dimension">Flexible/Dynamic Input/Output Tensor Dimension</h2>
 <p>Although the given template code supports static input/output tensor dimension (a single neural network model is supposed to have a single set of input/output tensor/tensors dimensions), NNStreamer's <code>tensor_filter</code> itself supports dynamic input/output tensor/tensors dimensions; output dimensions may be determined by input dimensions, which is determined at run-time.</p>
 <p>In order to support this, you need to supply an additional callback, <code>setInputDimension</code> defined in <code>GstTensorFilterFramework</code> of <code>nnstreamer_plugin_api_filter.h</code>.</p>
-<h3 id="writing-one-from-scratch">Writing one from scratch</h3>
+<h2 id="writing-one-from-scratch">Writing one from scratch</h2>
 <p>In normal usage cases, a subplugin exists as a shared library loaded dynamically (dlopen) by yet another shared library, <code>tensor_filter</code>. By registering a <code>tensor_filter</code> object (a struct instance of GstTensorFilterFramework) with an init function, NNStreamer recognizes it with the given name. In the template code, it is registered with a function <code>init_filter_${name}()</code>. For more information, refer to the doxygen entries of GstTensorFilterFramework in the header file.</p>
 <p>For more information about the struct, refer to <a href="http://ci.nnstreamer.ai/nnstreamer/html/struct__GstTensorFilterFramework.html">Doxygen Doc on GstTensorFilterFramework</a>.</p>
 
