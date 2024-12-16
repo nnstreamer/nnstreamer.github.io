@@ -31,13 +31,13 @@
             <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c57c288250578cad598f065b6fda6c0ff720cf9</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">79.1&nbsp;%</td>
+            <td class="headerCovTableEntryMed">79.4&nbsp;%</td>
             <td class="headerCovTableEntry">867</td>
-            <td class="headerCovTableEntry">686</td>
+            <td class="headerCovTableEntry">688</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-12-16 05:36:54</td>
+            <td class="headerValue">2024-12-17 05:37:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -171,7 +171,7 @@
 <span id="L109"><span class="lineNum">     109</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_src_debug, &quot;datareposrc&quot;, 0, &quot;datareposrc element&quot;);</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              : #define gst_data_repo_src_parent_class parent_class</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         922 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         920 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
 <span id="L113"><span class="lineNum">     113</span>              :     _do_init);</span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
 <span id="L115"><span class="lineNum">     115</span>              : /**</span>
@@ -890,13 +890,13 @@
 <span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">         112 :     byte_read = 0;</span></span>
 <span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">         112 :     to_read = tensor_size;</span></span>
 <span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">         224 :     while (to_read &gt; 0) {</span></span>
-<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         112 :       GST_LOG_OBJECT (src,</span></span>
+<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         113 :       GST_LOG_OBJECT (src,</span></span>
 <span id="L832"><span class="lineNum">     832</span>              :           &quot;Reading %zd bytes at offset 0x%&quot; G_GINT64_MODIFIER &quot;x (%lld size)&quot;,</span>
 <span id="L833"><span class="lineNum">     833</span>              :           to_read, src-&gt;fd_offset + byte_read, (long long) src-&gt;fd_offset);</span>
-<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">         112 :       errno = 0;</span></span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">         112 :       read_size = read (src-&gt;fd, data + byte_read, to_read);</span></span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">         112 :       GST_LOG_OBJECT (src, &quot;Read: %zd&quot;, read_size);</span></span>
-<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">         112 :       if (read_size &lt; 0) {</span></span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">         113 :       errno = 0;</span></span>
+<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">         113 :       read_size = read (src-&gt;fd, data + byte_read, to_read);</span></span>
+<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">         113 :       GST_LOG_OBJECT (src, &quot;Read: %zd&quot;, read_size);</span></span>
+<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">         113 :       if (read_size &lt; 0) {</span></span>
 <span id="L838"><span class="lineNum">     838</span> <span class="tlaUNC tlaBgUNC">           0 :         if (errno == EAGAIN || errno == EINTR)</span></span>
 <span id="L839"><span class="lineNum">     839</span> <span class="tlaUNC">           0 :           continue;</span></span>
 <span id="L840"><span class="lineNum">     840</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (src, RESOURCE, READ, (NULL), GST_ERROR_SYSTEM);</span></span>
@@ -904,11 +904,11 @@
 <span id="L842"><span class="lineNum">     842</span> <span class="tlaUNC">           0 :         goto error;</span></span>
 <span id="L843"><span class="lineNum">     843</span>              :       }</span>
 <span id="L844"><span class="lineNum">     844</span>              :       /* files should eos if they read 0 and more was requested */</span>
-<span id="L845"><span class="lineNum">     845</span> <span class="tlaGNC tlaBgGNC">         112 :       if (read_size == 0) {</span></span>
+<span id="L845"><span class="lineNum">     845</span> <span class="tlaGNC tlaBgGNC">         113 :       if (read_size == 0) {</span></span>
 <span id="L846"><span class="lineNum">     846</span>              :         /* .. but first we should return any remaining data */</span>
-<span id="L847"><span class="lineNum">     847</span> <span class="tlaUNC tlaBgUNC">           0 :         if (byte_read &gt; 0)</span></span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaUNC">           0 :           break;</span></span>
-<span id="L849"><span class="lineNum">     849</span> <span class="tlaUNC">           0 :         GST_DEBUG_OBJECT (src, &quot;EOS&quot;);</span></span>
+<span id="L847"><span class="lineNum">     847</span> <span class="tlaGNC">           1 :         if (byte_read &gt; 0)</span></span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">           1 :           break;</span></span>
+<span id="L849"><span class="lineNum">     849</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_DEBUG_OBJECT (src, &quot;EOS&quot;);</span></span>
 <span id="L850"><span class="lineNum">     850</span> <span class="tlaUNC">           0 :         ret = GST_FLOW_EOS;</span></span>
 <span id="L851"><span class="lineNum">     851</span> <span class="tlaUNC">           0 :         goto error;</span></span>
 <span id="L852"><span class="lineNum">     852</span>              :       }</span>
@@ -1430,24 +1430,24 @@
 <span id="L1368"><span class="lineNum">    1368</span>              :  * @brief Get caps for caps negotiation</span>
 <span id="L1369"><span class="lineNum">    1369</span>              :  */</span>
 <span id="L1370"><span class="lineNum">    1370</span>              : static GstCaps *</span>
-<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         113 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
+<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         112 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
 <span id="L1372"><span class="lineNum">    1372</span>              : {</span>
-<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         113 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         112 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1374"><span class="lineNum">    1374</span>              : </span>
-<span id="L1375"><span class="lineNum">    1375</span> <span class="tlaGNC">         113 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
+<span id="L1375"><span class="lineNum">    1375</span> <span class="tlaGNC">         112 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
 <span id="L1376"><span class="lineNum">    1376</span> <span class="tlaGNC">          17 :     gst_data_repo_get_caps_by_tensors_sequence (src);</span></span>
 <span id="L1377"><span class="lineNum">    1377</span> <span class="tlaGNC">          17 :     src-&gt;need_changed_caps = FALSE;</span></span>
 <span id="L1378"><span class="lineNum">    1378</span>              :   }</span>
 <span id="L1379"><span class="lineNum">    1379</span>              : </span>
-<span id="L1380"><span class="lineNum">    1380</span> <span class="tlaGNC">         113 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L1380"><span class="lineNum">    1380</span> <span class="tlaGNC">         112 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L1381"><span class="lineNum">    1381</span>              :       src-&gt;caps);</span>
 <span id="L1382"><span class="lineNum">    1382</span>              : </span>
-<span id="L1383"><span class="lineNum">    1383</span> <span class="tlaGNC">         113 :   if (src-&gt;caps) {</span></span>
-<span id="L1384"><span class="lineNum">    1384</span> <span class="tlaGNC">          99 :     if (filter)</span></span>
+<span id="L1383"><span class="lineNum">    1383</span> <span class="tlaGNC">         112 :   if (src-&gt;caps) {</span></span>
+<span id="L1384"><span class="lineNum">    1384</span> <span class="tlaGNC">          98 :     if (filter)</span></span>
 <span id="L1385"><span class="lineNum">    1385</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_intersect_full (filter, src-&gt;caps,</span></span>
 <span id="L1386"><span class="lineNum">    1386</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
 <span id="L1387"><span class="lineNum">    1387</span>              :     else</span>
-<span id="L1388"><span class="lineNum">    1388</span> <span class="tlaGNC tlaBgGNC">          99 :       return gst_caps_ref (src-&gt;caps);</span></span>
+<span id="L1388"><span class="lineNum">    1388</span> <span class="tlaGNC tlaBgGNC">          98 :       return gst_caps_ref (src-&gt;caps);</span></span>
 <span id="L1389"><span class="lineNum">    1389</span>              :   } else {</span>
 <span id="L1390"><span class="lineNum">    1390</span> <span class="tlaGNC">          14 :     if (filter)</span></span>
 <span id="L1391"><span class="lineNum">    1391</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_ref (filter);</span></span>
@@ -1460,13 +1460,13 @@
 <span id="L1398"><span class="lineNum">    1398</span>              :  * @brief caps after caps negotiation</span>
 <span id="L1399"><span class="lineNum">    1399</span>              :  */</span>
 <span id="L1400"><span class="lineNum">    1400</span>              : static gboolean</span>
-<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          19 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
+<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          18 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
 <span id="L1402"><span class="lineNum">    1402</span>              : {</span>
-<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          19 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          18 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1404"><span class="lineNum">    1404</span>              : </span>
-<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          19 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          18 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
 <span id="L1406"><span class="lineNum">    1406</span>              : </span>
-<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaGNC">          19 :   return TRUE;</span></span>
+<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaGNC">          18 :   return TRUE;</span></span>
 <span id="L1408"><span class="lineNum">    1408</span>              : }</span>
 <span id="L1409"><span class="lineNum">    1409</span>              : </span>
 <span id="L1410"><span class="lineNum">    1410</span>              : /**</span>
