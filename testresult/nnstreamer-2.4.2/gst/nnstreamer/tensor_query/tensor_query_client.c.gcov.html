@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-12-18 05:38:17</td>
+            <td class="headerValue">2024-12-19 05:36:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -619,23 +619,23 @@
 <span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          16 :   nns_edge_set_info (self-&gt;edge_h, &quot;CAPS&quot;, self-&gt;in_caps_str);</span></span>
 <span id="L558"><span class="lineNum">     558</span>              : </span>
 <span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">          16 :   ret = nns_edge_start (self-&gt;edge_h);</span></span>
-<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
 <span id="L561"><span class="lineNum">     561</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge</span></span>
 <span id="L562"><span class="lineNum">     562</span>              :         (&quot;Failed to start NNStreamer-edge. Please check server IP and port.&quot;);</span>
 <span id="L563"><span class="lineNum">     563</span> <span class="tlaUNC">           0 :     goto done;</span></span>
 <span id="L564"><span class="lineNum">     564</span>              :   }</span>
 <span id="L565"><span class="lineNum">     565</span>              : </span>
-<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC tlaBgGNC">          16 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
-<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
-<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           5 :     nns_loge (&quot;Failed to connect to edge server!&quot;);</span></span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">           5 :     goto done;</span></span>
+<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC tlaBgGNC">          15 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
+<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           4 :     nns_loge (&quot;Failed to connect to edge server!&quot;);</span></span>
+<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">           4 :     goto done;</span></span>
 <span id="L570"><span class="lineNum">     570</span>              :   }</span>
 <span id="L571"><span class="lineNum">     571</span>              : </span>
 <span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">          11 :   started = TRUE;</span></span>
 <span id="L573"><span class="lineNum">     573</span>              : </span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          16 : done:</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          16 :   if (!started) {</span></span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           5 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          15 : done:</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          15 :   if (!started) {</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           4 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
 <span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           4 :     self-&gt;edge_h = NULL;</span></span>
 <span id="L578"><span class="lineNum">     578</span>              :   }</span>
 <span id="L579"><span class="lineNum">     579</span>              : </span>
