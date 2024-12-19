@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c57c288250578cad598f065b6fda6c0ff720cf9 - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_conf.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#1f7e2999eb276812f6e1244acd61f74d021d8309 - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_conf.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c57c288250578cad598f065b6fda6c0ff720cf9</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#1f7e2999eb276812f6e1244acd61f74d021d8309</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">75.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-12-19 05:36:02</td>
+            <td class="headerValue">2024-12-20 05:35:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">83.3&nbsp;%</td>
@@ -217,11 +217,11 @@
 <span id="L155"><span class="lineNum">     155</span>              :  * @brief Private function to validate .so file can be added to the list.</span>
 <span id="L156"><span class="lineNum">     156</span>              :  */</span>
 <span id="L157"><span class="lineNum">     157</span>              : static gboolean</span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">       12203 : _validate_file (nnsconf_type_path type, const gchar * fullpath)</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">       12199 : _validate_file (nnsconf_type_path type, const gchar * fullpath)</span></span>
 <span id="L159"><span class="lineNum">     159</span>              : {</span>
 <span id="L160"><span class="lineNum">     160</span>              :   /* ignore directory */</span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">       12203 :   if (!fullpath || !g_file_test (fullpath, G_FILE_TEST_IS_REGULAR))</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         153 :     return FALSE;</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">       12199 :   if (!fullpath || !g_file_test (fullpath, G_FILE_TEST_IS_REGULAR))</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         149 :     return FALSE;</span></span>
 <span id="L163"><span class="lineNum">     163</span>              :   /* ignore symbol link file */</span>
 <span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">       12050 :   if (!conf.enable_symlink &amp;&amp; g_file_test (fullpath, G_FILE_TEST_IS_SYMLINK))</span></span>
 <span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
@@ -288,27 +288,27 @@
 <span id="L226"><span class="lineNum">     226</span>              :  * @brief Private function to get sub-plugins list with type.</span>
 <span id="L227"><span class="lineNum">     227</span>              :  */</span>
 <span id="L228"><span class="lineNum">     228</span>              : static gboolean</span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        1631 : _get_subplugin_with_type (nnsconf_type_path type, gchar *** name,</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        1627 : _get_subplugin_with_type (nnsconf_type_path type, gchar *** name,</span></span>
 <span id="L230"><span class="lineNum">     230</span>              :     gchar *** filepath)</span>
 <span id="L231"><span class="lineNum">     231</span>              : {</span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        1631 :   if (type &gt;= NNSCONF_PATH_END) {</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        1627 :   if (type &gt;= NNSCONF_PATH_END) {</span></span>
 <span id="L233"><span class="lineNum">     233</span>              :     /* unknown type */</span>
 <span id="L234"><span class="lineNum">     234</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Failed to get sub-plugins, unknown sub-plugin type.&quot;);</span></span>
 <span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L236"><span class="lineNum">     236</span>              :   }</span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC tlaBgGNC">        1631 :   if (!conf.loaded) {</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC tlaBgGNC">        1627 :   if (!conf.loaded) {</span></span>
 <span id="L239"><span class="lineNum">     239</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Configuration file is not loaded.&quot;);</span></span>
 <span id="L240"><span class="lineNum">     240</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L241"><span class="lineNum">     241</span>              :   }</span>
 <span id="L242"><span class="lineNum">     242</span>              : </span>
 <span id="L243"><span class="lineNum">     243</span>              :   /* Easy custom uses the configuration of custom */</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC tlaBgGNC">        1631 :   if (type == NNSCONF_PATH_EASY_CUSTOM_FILTERS)</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          25 :     type = NNSCONF_PATH_CUSTOM_FILTERS;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC tlaBgGNC">        1627 :   if (type == NNSCONF_PATH_EASY_CUSTOM_FILTERS)</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          21 :     type = NNSCONF_PATH_CUSTOM_FILTERS;</span></span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        1631 :   *name = conf.conf[type].names;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        1631 :   *filepath = conf.conf[type].files;</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        1631 :   return TRUE;</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        1627 :   *name = conf.conf[type].names;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        1627 :   *filepath = conf.conf[type].files;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        1627 :   return TRUE;</span></span>
 <span id="L250"><span class="lineNum">     250</span>              : }</span>
 <span id="L251"><span class="lineNum">     251</span>              : </span>
 <span id="L252"><span class="lineNum">     252</span>              : /**</span>
@@ -401,14 +401,14 @@
 <span id="L339"><span class="lineNum">     339</span>              : </span>
 <span id="L340"><span class="lineNum">     340</span>              : /** @brief Public function defined in the header */</span>
 <span id="L341"><span class="lineNum">     341</span>              : gboolean</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        2717 : nnsconf_loadconf (gboolean force_reload)</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        2705 : nnsconf_loadconf (gboolean force_reload)</span></span>
 <span id="L343"><span class="lineNum">     343</span>              : {</span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">        2717 :   const gchar root_path_prefix[] = NNSTREAMER_SYS_ROOT_PATH_PREFIX;</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        2717 :   GKeyFile *key_file = NULL;</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">        2705 :   const gchar root_path_prefix[] = NNSTREAMER_SYS_ROOT_PATH_PREFIX;</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        2705 :   GKeyFile *key_file = NULL;</span></span>
 <span id="L346"><span class="lineNum">     346</span>              :   guint i, t;</span>
 <span id="L347"><span class="lineNum">     347</span>              : </span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">        2717 :   if (!force_reload &amp;&amp; conf.loaded)</span></span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">        2717 :     return TRUE;</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">        2705 :   if (!force_reload &amp;&amp; conf.loaded)</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">        2705 :     return TRUE;</span></span>
 <span id="L350"><span class="lineNum">     350</span>              : </span>
 <span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         452 :   if (force_reload &amp;&amp; conf.loaded) {</span></span>
 <span id="L352"><span class="lineNum">     352</span>              :     /* Do Clean Up */</span>
@@ -542,31 +542,31 @@
 <span id="L480"><span class="lineNum">     480</span>              : </span>
 <span id="L481"><span class="lineNum">     481</span>              : /** @brief Public function defined in the header */</span>
 <span id="L482"><span class="lineNum">     482</span>              : const gchar *</span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">         393 : nnsconf_get_fullpath (const gchar * subpluginname, nnsconf_type_path type)</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">         389 : nnsconf_get_fullpath (const gchar * subpluginname, nnsconf_type_path type)</span></span>
 <span id="L484"><span class="lineNum">     484</span>              : {</span>
 <span id="L485"><span class="lineNum">     485</span>              :   subplugin_info_s info;</span>
 <span id="L486"><span class="lineNum">     486</span>              :   guint i, total;</span>
 <span id="L487"><span class="lineNum">     487</span>              : </span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">         393 :   nnsconf_loadconf (FALSE);</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">         389 :   nnsconf_loadconf (FALSE);</span></span>
 <span id="L489"><span class="lineNum">     489</span>              : </span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">         393 :   total = nnsconf_get_subplugin_info (type, &amp;info);</span></span>
-<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        3203 :   for (i = 0; i &lt; total; i++) {</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">         389 :   total = nnsconf_get_subplugin_info (type, &amp;info);</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        3199 :   for (i = 0; i &lt; total; i++) {</span></span>
 <span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">        3047 :     if (g_strcmp0 (info.names[i], subpluginname) == 0)</span></span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">         393 :       return info.paths[i];</span></span>
+<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">         389 :       return info.paths[i];</span></span>
 <span id="L494"><span class="lineNum">     494</span>              :   }</span>
 <span id="L495"><span class="lineNum">     495</span>              : </span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         156 :   return NULL;</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         152 :   return NULL;</span></span>
 <span id="L497"><span class="lineNum">     497</span>              : }</span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
 <span id="L499"><span class="lineNum">     499</span>              : /**</span>
 <span id="L500"><span class="lineNum">     500</span>              :  * @brief Public function to validate sub-plugin library is available.</span>
 <span id="L501"><span class="lineNum">     501</span>              :  */</span>
 <span id="L502"><span class="lineNum">     502</span>              : gboolean</span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         471 : nnsconf_validate_file (nnsconf_type_path type, const gchar * fullpath)</span></span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         467 : nnsconf_validate_file (nnsconf_type_path type, const gchar * fullpath)</span></span>
 <span id="L504"><span class="lineNum">     504</span>              : {</span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         471 :   nnsconf_loadconf (FALSE);</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">         467 :   nnsconf_loadconf (FALSE);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              : </span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">         471 :   return _validate_file (type, fullpath);</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">         467 :   return _validate_file (type, fullpath);</span></span>
 <span id="L508"><span class="lineNum">     508</span>              : }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
 <span id="L510"><span class="lineNum">     510</span>              : /**</span>
@@ -587,22 +587,22 @@
 <span id="L525"><span class="lineNum">     525</span>              :  * @note DO NOT free sub-plugins info</span>
 <span id="L526"><span class="lineNum">     526</span>              :  */</span>
 <span id="L527"><span class="lineNum">     527</span>              : guint</span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">        1631 : nnsconf_get_subplugin_info (nnsconf_type_path type, subplugin_info_s * info)</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">        1627 : nnsconf_get_subplugin_info (nnsconf_type_path type, subplugin_info_s * info)</span></span>
 <span id="L529"><span class="lineNum">     529</span>              : {</span>
 <span id="L530"><span class="lineNum">     530</span>              :   gchar **vstr, **vstrFull;</span>
 <span id="L531"><span class="lineNum">     531</span>              : </span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">        3262 :   g_return_val_if_fail (info != NULL, 0);</span></span>
-<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">        1631 :   info-&gt;names = info-&gt;paths = NULL;</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">        3254 :   g_return_val_if_fail (info != NULL, 0);</span></span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">        1627 :   info-&gt;names = info-&gt;paths = NULL;</span></span>
 <span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">        1631 :   nnsconf_loadconf (FALSE);</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">        1627 :   nnsconf_loadconf (FALSE);</span></span>
 <span id="L536"><span class="lineNum">     536</span>              : </span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">        1631 :   if (!_get_subplugin_with_type (type, &amp;vstr, &amp;vstrFull))</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">        1627 :   if (!_get_subplugin_with_type (type, &amp;vstr, &amp;vstrFull))</span></span>
 <span id="L538"><span class="lineNum">     538</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
 <span id="L539"><span class="lineNum">     539</span>              : </span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC tlaBgGNC">        1631 :   info-&gt;names = vstr;</span></span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">        1631 :   info-&gt;paths = vstrFull;</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC tlaBgGNC">        1627 :   info-&gt;names = vstr;</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">        1627 :   info-&gt;paths = vstrFull;</span></span>
 <span id="L542"><span class="lineNum">     542</span>              : </span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">        1631 :   return g_strv_length (vstr);</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">        1627 :   return g_strv_length (vstr);</span></span>
 <span id="L544"><span class="lineNum">     544</span>              : }</span>
 <span id="L545"><span class="lineNum">     545</span>              : </span>
 <span id="L546"><span class="lineNum">     546</span>              : /**</span>
