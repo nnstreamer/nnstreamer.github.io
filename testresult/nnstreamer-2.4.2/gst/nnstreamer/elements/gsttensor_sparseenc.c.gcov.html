@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4ad0b2729845ea9935e4a0f557f676f254859454 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_sparseenc.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_sparseenc.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,21 +28,21 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4ad0b2729845ea9935e4a0f557f676f254859454</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">91.0&nbsp;%</td>
-            <td class="headerCovTableEntry">134</td>
-            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntryHi">91.9&nbsp;%</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntry">114</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-02 05:35:00</td>
+            <td class="headerValue">2025-01-03 05:35:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
           </tr>
                   <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -284,201 +284,175 @@
 <span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC tlaBgGNC">           2 : }</span></span>
 <span id="L223"><span class="lineNum">     223</span>              : </span>
 <span id="L224"><span class="lineNum">     224</span>              : /**</span>
-<span id="L225"><span class="lineNum">     225</span>              :  * @brief Parse caps and set tensors config</span>
+<span id="L225"><span class="lineNum">     225</span>              :  * @brief This function handles sink pad event.</span>
 <span id="L226"><span class="lineNum">     226</span>              :  */</span>
 <span id="L227"><span class="lineNum">     227</span>              : static gboolean</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           8 : gst_tensor_sparse_enc_parse_caps (GstTensorSparseEnc * self,</span></span>
-<span id="L229"><span class="lineNum">     229</span>              :     const GstCaps * caps)</span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          33 : gst_tensor_sparse_enc_sink_event (GstPad * pad, GstObject * parent,</span></span>
+<span id="L229"><span class="lineNum">     229</span>              :     GstEvent * event)</span>
 <span id="L230"><span class="lineNum">     230</span>              : {</span>
-<span id="L231"><span class="lineNum">     231</span>              :   GstStructure *structure;</span>
-<span id="L232"><span class="lineNum">     232</span>              :   GstTensorsConfig config;</span>
+<span id="L231"><span class="lineNum">     231</span>              :   GstTensorSparseEnc *self;</span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          33 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
 <span id="L233"><span class="lineNum">     233</span>              : </span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (caps != NULL, FALSE);</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (gst_caps_is_fixed (caps), FALSE);</span></span>
-<span id="L236"><span class="lineNum">     236</span>              : </span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           8 :   structure = gst_caps_get_structure (caps, 0);</span></span>
-<span id="L238"><span class="lineNum">     238</span>              : </span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           8 :   if (!gst_tensors_config_from_structure (&amp;config, structure) ||</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           8 :       !gst_tensors_config_validate (&amp;config)) {</span></span>
-<span id="L241"><span class="lineNum">     241</span>              :     /** not fully configured */</span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to configure tensors config.\n&quot;);</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :   }</span>
-<span id="L245"><span class="lineNum">     245</span>              : </span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC tlaBgGNC">           8 :   self-&gt;in_config = config;</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
-<span id="L248"><span class="lineNum">     248</span>              : }</span>
-<span id="L249"><span class="lineNum">     249</span>              : </span>
-<span id="L250"><span class="lineNum">     250</span>              : /**</span>
-<span id="L251"><span class="lineNum">     251</span>              :  * @brief This function handles sink pad event.</span>
-<span id="L252"><span class="lineNum">     252</span>              :  */</span>
-<span id="L253"><span class="lineNum">     253</span>              : static gboolean</span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          33 : gst_tensor_sparse_enc_sink_event (GstPad * pad, GstObject * parent,</span></span>
-<span id="L255"><span class="lineNum">     255</span>              :     GstEvent * event)</span>
-<span id="L256"><span class="lineNum">     256</span>              : {</span>
-<span id="L257"><span class="lineNum">     257</span>              :   GstTensorSparseEnc *self;</span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          33 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
-<span id="L259"><span class="lineNum">     259</span>              : </span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">          33 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
-<span id="L261"><span class="lineNum">     261</span>              : </span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          33 :   switch (GST_EVENT_TYPE (event)) {</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           8 :     case GST_EVENT_CAPS:</span></span>
-<span id="L264"><span class="lineNum">     264</span>              :     {</span>
-<span id="L265"><span class="lineNum">     265</span>              :       GstCaps *caps;</span>
-<span id="L266"><span class="lineNum">     266</span>              :       gboolean ret;</span>
-<span id="L267"><span class="lineNum">     267</span>              : </span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           8 :       gst_event_parse_caps (event, &amp;caps);</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           8 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          33 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
+<span id="L235"><span class="lineNum">     235</span>              : </span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          33 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           8 :     case GST_EVENT_CAPS:</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :     {</span>
+<span id="L239"><span class="lineNum">     239</span>              :       GstCaps *caps;</span>
+<span id="L240"><span class="lineNum">     240</span>              :       gboolean ret;</span>
+<span id="L241"><span class="lineNum">     241</span>              : </span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           8 :       gst_event_parse_caps (event, &amp;caps);</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           8 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
+<span id="L244"><span class="lineNum">     244</span>              : </span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           8 :       ret = gst_tensors_config_from_cap (&amp;self-&gt;in_config, caps);</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           8 :       gst_event_unref (event);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           8 :       return ret;</span></span>
+<span id="L248"><span class="lineNum">     248</span>              :     }</span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          25 :     default:</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          25 :       break;</span></span>
+<span id="L251"><span class="lineNum">     251</span>              :   }</span>
+<span id="L252"><span class="lineNum">     252</span>              : </span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          25 :   return gst_pad_event_default (pad, parent, event);</span></span>
+<span id="L254"><span class="lineNum">     254</span>              : }</span>
+<span id="L255"><span class="lineNum">     255</span>              : </span>
+<span id="L256"><span class="lineNum">     256</span>              : /**</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * @brief Get pad caps for caps negotiation.</span>
+<span id="L258"><span class="lineNum">     258</span>              :  */</span>
+<span id="L259"><span class="lineNum">     259</span>              : static GstCaps *</span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">          48 : gst_tensor_sparse_enc_query_caps (GstTensorSparseEnc * self, GstPad * pad,</span></span>
+<span id="L261"><span class="lineNum">     261</span>              :     GstCaps * filter)</span>
+<span id="L262"><span class="lineNum">     262</span>              : {</span>
+<span id="L263"><span class="lineNum">     263</span>              :   GstCaps *caps;</span>
+<span id="L264"><span class="lineNum">     264</span>              : </span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          48 :   caps = gst_pad_get_current_caps (pad);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          48 :   if (!caps) {</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :     /** pad don't have current caps. use the template caps */</span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          48 :     caps = gst_pad_get_pad_template_caps (pad);</span></span>
+<span id="L269"><span class="lineNum">     269</span>              :   }</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           8 :       ret = gst_tensor_sparse_enc_parse_caps (self, caps);</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           8 :       gst_event_unref (event);</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           8 :       return ret;</span></span>
-<span id="L274"><span class="lineNum">     274</span>              :     }</span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          25 :     default:</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          25 :       break;</span></span>
-<span id="L277"><span class="lineNum">     277</span>              :   }</span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
+<span id="L273"><span class="lineNum">     273</span>              : </span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          48 :   if (filter) {</span></span>
+<span id="L275"><span class="lineNum">     275</span>              :     GstCaps *intersection;</span>
+<span id="L276"><span class="lineNum">     276</span>              :     intersection =</span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           7 :         gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          25 :   return gst_pad_event_default (pad, parent, event);</span></span>
-<span id="L280"><span class="lineNum">     280</span>              : }</span>
-<span id="L281"><span class="lineNum">     281</span>              : </span>
-<span id="L282"><span class="lineNum">     282</span>              : /**</span>
-<span id="L283"><span class="lineNum">     283</span>              :  * @brief Get pad caps for caps negotiation.</span>
-<span id="L284"><span class="lineNum">     284</span>              :  */</span>
-<span id="L285"><span class="lineNum">     285</span>              : static GstCaps *</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          48 : gst_tensor_sparse_enc_query_caps (GstTensorSparseEnc * self, GstPad * pad,</span></span>
-<span id="L287"><span class="lineNum">     287</span>              :     GstCaps * filter)</span>
-<span id="L288"><span class="lineNum">     288</span>              : {</span>
-<span id="L289"><span class="lineNum">     289</span>              :   GstCaps *caps;</span>
-<span id="L290"><span class="lineNum">     290</span>              : </span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          48 :   caps = gst_pad_get_current_caps (pad);</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          48 :   if (!caps) {</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :     /** pad don't have current caps. use the template caps */</span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          48 :     caps = gst_pad_get_pad_template_caps (pad);</span></span>
-<span id="L295"><span class="lineNum">     295</span>              :   }</span>
-<span id="L296"><span class="lineNum">     296</span>              : </span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
-<span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">          48 :   if (filter) {</span></span>
-<span id="L301"><span class="lineNum">     301</span>              :     GstCaps *intersection;</span>
-<span id="L302"><span class="lineNum">     302</span>              :     intersection =</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           7 :         gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
-<span id="L304"><span class="lineNum">     304</span>              : </span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           7 :     gst_caps_unref (caps);</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           7 :     caps = intersection;</span></span>
-<span id="L307"><span class="lineNum">     307</span>              :   }</span>
-<span id="L308"><span class="lineNum">     308</span>              : </span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, caps, &quot;result&quot;);</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          48 :   return caps;</span></span>
-<span id="L311"><span class="lineNum">     311</span>              : }</span>
-<span id="L312"><span class="lineNum">     312</span>              : </span>
-<span id="L313"><span class="lineNum">     313</span>              : /**</span>
-<span id="L314"><span class="lineNum">     314</span>              :  * @brief This function handles sink pad query.</span>
-<span id="L315"><span class="lineNum">     315</span>              :  */</span>
-<span id="L316"><span class="lineNum">     316</span>              : static gboolean</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          69 : gst_tensor_sparse_enc_sink_query (GstPad * pad, GstObject * parent,</span></span>
-<span id="L318"><span class="lineNum">     318</span>              :     GstQuery * query)</span>
-<span id="L319"><span class="lineNum">     319</span>              : {</span>
-<span id="L320"><span class="lineNum">     320</span>              :   GstTensorSparseEnc *self;</span>
-<span id="L321"><span class="lineNum">     321</span>              : </span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          69 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           7 :     gst_caps_unref (caps);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           7 :     caps = intersection;</span></span>
+<span id="L281"><span class="lineNum">     281</span>              :   }</span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          48 :   silent_debug_caps (self, caps, &quot;result&quot;);</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          48 :   return caps;</span></span>
+<span id="L285"><span class="lineNum">     285</span>              : }</span>
+<span id="L286"><span class="lineNum">     286</span>              : </span>
+<span id="L287"><span class="lineNum">     287</span>              : /**</span>
+<span id="L288"><span class="lineNum">     288</span>              :  * @brief This function handles sink pad query.</span>
+<span id="L289"><span class="lineNum">     289</span>              :  */</span>
+<span id="L290"><span class="lineNum">     290</span>              : static gboolean</span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          69 : gst_tensor_sparse_enc_sink_query (GstPad * pad, GstObject * parent,</span></span>
+<span id="L292"><span class="lineNum">     292</span>              :     GstQuery * query)</span>
+<span id="L293"><span class="lineNum">     293</span>              : {</span>
+<span id="L294"><span class="lineNum">     294</span>              :   GstTensorSparseEnc *self;</span>
+<span id="L295"><span class="lineNum">     295</span>              : </span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          69 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
+<span id="L297"><span class="lineNum">     297</span>              : </span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          69 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L299"><span class="lineNum">     299</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
+<span id="L300"><span class="lineNum">     300</span>              : </span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          69 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          48 :     case GST_QUERY_CAPS:</span></span>
+<span id="L303"><span class="lineNum">     303</span>              :     {</span>
+<span id="L304"><span class="lineNum">     304</span>              :       GstCaps *caps;</span>
+<span id="L305"><span class="lineNum">     305</span>              :       GstCaps *filter;</span>
+<span id="L306"><span class="lineNum">     306</span>              : </span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          48 :       gst_query_parse_caps (query, &amp;filter);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          48 :       caps = gst_tensor_sparse_enc_query_caps (self, pad, filter);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          48 :       silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          48 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          48 :       gst_query_set_caps_result (query, caps);</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          48 :       gst_caps_unref (caps);</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          48 :       return TRUE;</span></span>
+<span id="L314"><span class="lineNum">     314</span>              :     }</span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          16 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
+<span id="L316"><span class="lineNum">     316</span>              :     {</span>
+<span id="L317"><span class="lineNum">     317</span>              :       GstCaps *caps;</span>
+<span id="L318"><span class="lineNum">     318</span>              :       GstCaps *template_caps;</span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">          16 :       gboolean res = FALSE;</span></span>
+<span id="L320"><span class="lineNum">     320</span>              : </span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">          16 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          16 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
 <span id="L323"><span class="lineNum">     323</span>              : </span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          69 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
-<span id="L325"><span class="lineNum">     325</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          16 :       if (gst_caps_is_fixed (caps)) {</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">          16 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
 <span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          69 :   switch (GST_QUERY_TYPE (query)) {</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          48 :     case GST_QUERY_CAPS:</span></span>
-<span id="L329"><span class="lineNum">     329</span>              :     {</span>
-<span id="L330"><span class="lineNum">     330</span>              :       GstCaps *caps;</span>
-<span id="L331"><span class="lineNum">     331</span>              :       GstCaps *filter;</span>
-<span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          48 :       gst_query_parse_caps (query, &amp;filter);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          48 :       caps = gst_tensor_sparse_enc_query_caps (self, pad, filter);</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          48 :       silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          48 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          48 :       gst_query_set_caps_result (query, caps);</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          48 :       gst_caps_unref (caps);</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          48 :       return TRUE;</span></span>
-<span id="L340"><span class="lineNum">     340</span>              :     }</span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          16 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
-<span id="L342"><span class="lineNum">     342</span>              :     {</span>
-<span id="L343"><span class="lineNum">     343</span>              :       GstCaps *caps;</span>
-<span id="L344"><span class="lineNum">     344</span>              :       GstCaps *template_caps;</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          16 :       gboolean res = FALSE;</span></span>
-<span id="L346"><span class="lineNum">     346</span>              : </span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          16 :       gst_query_parse_accept_caps (query, &amp;caps);</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          16 :       silent_debug_caps (self, caps, &quot;caps&quot;);</span></span>
-<span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          16 :       if (gst_caps_is_fixed (caps)) {</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          16 :         template_caps = gst_pad_get_pad_template_caps (pad);</span></span>
-<span id="L352"><span class="lineNum">     352</span>              : </span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          16 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          16 :         gst_caps_unref (template_caps);</span></span>
-<span id="L355"><span class="lineNum">     355</span>              :       }</span>
-<span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">          16 :       gst_query_set_accept_caps_result (query, res);</span></span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          16 :       return TRUE;</span></span>
-<span id="L359"><span class="lineNum">     359</span>              :     }</span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           5 :     default:</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           5 :       break;</span></span>
-<span id="L362"><span class="lineNum">     362</span>              :   }</span>
-<span id="L363"><span class="lineNum">     363</span>              : </span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           5 :   return gst_pad_query_default (pad, parent, query);</span></span>
-<span id="L365"><span class="lineNum">     365</span>              : }</span>
-<span id="L366"><span class="lineNum">     366</span>              : </span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          16 :         res = gst_caps_can_intersect (template_caps, caps);</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          16 :         gst_caps_unref (template_caps);</span></span>
+<span id="L329"><span class="lineNum">     329</span>              :       }</span>
+<span id="L330"><span class="lineNum">     330</span>              : </span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          16 :       gst_query_set_accept_caps_result (query, res);</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          16 :       return TRUE;</span></span>
+<span id="L333"><span class="lineNum">     333</span>              :     }</span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           5 :     default:</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           5 :       break;</span></span>
+<span id="L336"><span class="lineNum">     336</span>              :   }</span>
+<span id="L337"><span class="lineNum">     337</span>              : </span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           5 :   return gst_pad_query_default (pad, parent, query);</span></span>
+<span id="L339"><span class="lineNum">     339</span>              : }</span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span>              : </span>
+<span id="L342"><span class="lineNum">     342</span>              : /**</span>
+<span id="L343"><span class="lineNum">     343</span>              :  * @brief Internal function to transform the input buffer.</span>
+<span id="L344"><span class="lineNum">     344</span>              :  */</span>
+<span id="L345"><span class="lineNum">     345</span>              : static GstFlowReturn</span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          35 : gst_tensor_sparse_enc_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
+<span id="L347"><span class="lineNum">     347</span>              : {</span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          35 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">          35 :   GstTensorSparseEnc *self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
+<span id="L350"><span class="lineNum">     350</span>              :   GstMemory *in_mem, *out_mem;</span>
+<span id="L351"><span class="lineNum">     351</span>              :   GstBuffer *outbuf;</span>
+<span id="L352"><span class="lineNum">     352</span>              :   GstTensorsInfo *info;</span>
+<span id="L353"><span class="lineNum">     353</span>              :   GstTensorInfo *_info;</span>
+<span id="L354"><span class="lineNum">     354</span>              :   guint i;</span>
+<span id="L355"><span class="lineNum">     355</span>              : </span>
+<span id="L356"><span class="lineNum">     356</span>              :   UNUSED (pad);</span>
+<span id="L357"><span class="lineNum">     357</span>              : </span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          35 :   info = &amp;self-&gt;in_config.info;</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">          35 :   buf = gst_tensor_buffer_from_config (buf, &amp;self-&gt;in_config);</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          35 :   outbuf = gst_buffer_new ();</span></span>
+<span id="L361"><span class="lineNum">     361</span>              : </span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         101 :   for (i = 0; i &lt; info-&gt;num_tensors; ++i) {</span></span>
+<span id="L363"><span class="lineNum">     363</span>              :     GstTensorMetaInfo meta;</span>
+<span id="L364"><span class="lineNum">     364</span>              : </span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">          66 :     _info = gst_tensors_info_get_nth_info (info, i);</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          66 :     gst_tensor_info_convert_to_meta (_info, &amp;meta);</span></span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
-<span id="L368"><span class="lineNum">     368</span>              : /**</span>
-<span id="L369"><span class="lineNum">     369</span>              :  * @brief Internal function to transform the input buffer.</span>
-<span id="L370"><span class="lineNum">     370</span>              :  */</span>
-<span id="L371"><span class="lineNum">     371</span>              : static GstFlowReturn</span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          35 : gst_tensor_sparse_enc_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
-<span id="L373"><span class="lineNum">     373</span>              : {</span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          35 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          35 :   GstTensorSparseEnc *self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
-<span id="L376"><span class="lineNum">     376</span>              :   GstMemory *in_mem, *out_mem;</span>
-<span id="L377"><span class="lineNum">     377</span>              :   GstBuffer *outbuf;</span>
-<span id="L378"><span class="lineNum">     378</span>              :   GstTensorsInfo *info;</span>
-<span id="L379"><span class="lineNum">     379</span>              :   GstTensorInfo *_info;</span>
-<span id="L380"><span class="lineNum">     380</span>              :   guint i;</span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          66 :     meta.format = _NNS_TENSOR_FORMAT_SPARSE;</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          66 :     meta.media_type = _NNS_TENSOR;</span></span>
+<span id="L370"><span class="lineNum">     370</span>              : </span>
+<span id="L371"><span class="lineNum">     371</span>              :     /* do real encoding here */</span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          66 :     in_mem = gst_tensor_buffer_get_nth_memory (buf, i);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          66 :     out_mem = gst_tensor_sparse_from_dense (&amp;meta, in_mem);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          66 :     gst_memory_unref (in_mem);</span></span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">          66 :     if (!out_mem) {</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;failed to convert to sparse tensor&quot;);</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :       ret = GST_FLOW_ERROR;</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :       goto done;</span></span>
+<span id="L380"><span class="lineNum">     380</span>              :     }</span>
 <span id="L381"><span class="lineNum">     381</span>              : </span>
-<span id="L382"><span class="lineNum">     382</span>              :   UNUSED (pad);</span>
-<span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          35 :   info = &amp;self-&gt;in_config.info;</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          35 :   buf = gst_tensor_buffer_from_config (buf, &amp;self-&gt;in_config);</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          35 :   outbuf = gst_buffer_new ();</span></span>
-<span id="L387"><span class="lineNum">     387</span>              : </span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         101 :   for (i = 0; i &lt; info-&gt;num_tensors; ++i) {</span></span>
-<span id="L389"><span class="lineNum">     389</span>              :     GstTensorMetaInfo meta;</span>
-<span id="L390"><span class="lineNum">     390</span>              : </span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">          66 :     _info = gst_tensors_info_get_nth_info (info, i);</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">          66 :     gst_tensor_info_convert_to_meta (_info, &amp;meta);</span></span>
-<span id="L393"><span class="lineNum">     393</span>              : </span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">          66 :     meta.format = _NNS_TENSOR_FORMAT_SPARSE;</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          66 :     meta.media_type = _NNS_TENSOR;</span></span>
-<span id="L396"><span class="lineNum">     396</span>              : </span>
-<span id="L397"><span class="lineNum">     397</span>              :     /* do real encoding here */</span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          66 :     in_mem = gst_tensor_buffer_get_nth_memory (buf, i);</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          66 :     out_mem = gst_tensor_sparse_from_dense (&amp;meta, in_mem);</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          66 :     gst_memory_unref (in_mem);</span></span>
-<span id="L401"><span class="lineNum">     401</span>              : </span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          66 :     if (!out_mem) {</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;failed to convert to sparse tensor&quot;);</span></span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaUNC">           0 :       ret = GST_FLOW_ERROR;</span></span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaUNC">           0 :       goto done;</span></span>
-<span id="L406"><span class="lineNum">     406</span>              :     }</span>
-<span id="L407"><span class="lineNum">     407</span>              : </span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC tlaBgGNC">          66 :     gst_tensor_buffer_append_memory (outbuf, out_mem, _info);</span></span>
-<span id="L409"><span class="lineNum">     409</span>              :   }</span>
-<span id="L410"><span class="lineNum">     410</span>              : </span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          35 :   ret = gst_pad_push (self-&gt;srcpad, outbuf);</span></span>
-<span id="L412"><span class="lineNum">     412</span>              : </span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          35 : done:</span></span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          35 :   gst_buffer_unref (buf);</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          35 :   if (ret != GST_FLOW_OK)</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_unref (outbuf);</span></span>
-<span id="L417"><span class="lineNum">     417</span>              : </span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC tlaBgGNC">          35 :   return ret;</span></span>
-<span id="L419"><span class="lineNum">     419</span>              : }</span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC tlaBgGNC">          66 :     gst_tensor_buffer_append_memory (outbuf, out_mem, _info);</span></span>
+<span id="L383"><span class="lineNum">     383</span>              :   }</span>
+<span id="L384"><span class="lineNum">     384</span>              : </span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          35 :   ret = gst_pad_push (self-&gt;srcpad, outbuf);</span></span>
+<span id="L386"><span class="lineNum">     386</span>              : </span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          35 : done:</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          35 :   gst_buffer_unref (buf);</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">          35 :   if (ret != GST_FLOW_OK)</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_unref (outbuf);</span></span>
+<span id="L391"><span class="lineNum">     391</span>              : </span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC tlaBgGNC">          35 :   return ret;</span></span>
+<span id="L393"><span class="lineNum">     393</span>              : }</span>
         </pre>
               </td>
             </tr>

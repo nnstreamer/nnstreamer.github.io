@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4ad0b2729845ea9935e4a0f557f676f254859454 - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_custom_easy.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342 - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_custom_easy.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4ad0b2729845ea9935e4a0f557f676f254859454</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">82.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-02 05:35:00</td>
+            <td class="headerValue">2025-01-03 05:35:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -224,20 +224,20 @@
 <span id="L162"><span class="lineNum">     162</span>              :  * @brief Callback required by tensor_filter subplugin</span>
 <span id="L163"><span class="lineNum">     163</span>              :  */</span>
 <span id="L164"><span class="lineNum">     164</span>              : static int</span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          35 : custom_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          39 : custom_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : {</span>
 <span id="L167"><span class="lineNum">     167</span>              :   runtime_data *rd;</span>
 <span id="L168"><span class="lineNum">     168</span>              : </span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          35 :   rd = g_new (runtime_data, 1);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          35 :   if (!rd)</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          39 :   rd = g_new (runtime_data, 1);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          39 :   if (!rd)</span></span>
 <span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC tlaBgUNC">           0 :     return -ENOMEM;</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">          35 :   rd-&gt;model = get_subplugin (NNS_EASY_CUSTOM_FILTER, prop-&gt;model_files[0]);</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">          39 :   rd-&gt;model = get_subplugin (NNS_EASY_CUSTOM_FILTER, prop-&gt;model_files[0]);</span></span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          35 :   if (NULL == rd-&gt;model) {</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          20 :     ml_loge</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          39 :   if (NULL == rd-&gt;model) {</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          24 :     ml_loge</span></span>
 <span id="L176"><span class="lineNum">     176</span>              :         (&quot;Cannot find the easy-custom model, \&quot;%s\&quot;. You should provide a valid model name of easy-custom.&quot;,</span>
 <span id="L177"><span class="lineNum">     177</span>              :         prop-&gt;model_files[0]);</span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          20 :     goto errorreturn;</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          24 :     goto errorreturn;</span></span>
 <span id="L179"><span class="lineNum">     179</span>              :   }</span>
 <span id="L180"><span class="lineNum">     180</span>              : </span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          15 :   if (NULL == rd-&gt;model-&gt;func &amp;&amp; NULL == rd-&gt;model-&gt;func_dynamic) {</span></span>
@@ -280,9 +280,9 @@
 <span id="L218"><span class="lineNum">     218</span>              : </span>
 <span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC tlaBgGNC">           6 :   *private_data = rd;</span></span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           6 :   return 0;</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          29 : errorreturn:</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          29 :   g_free (rd);</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          29 :   return -EINVAL;</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          33 : errorreturn:</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          33 :   g_free (rd);</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          33 :   return -EINVAL;</span></span>
 <span id="L224"><span class="lineNum">     224</span>              : }</span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
 <span id="L226"><span class="lineNum">     226</span>              : /**</span>
