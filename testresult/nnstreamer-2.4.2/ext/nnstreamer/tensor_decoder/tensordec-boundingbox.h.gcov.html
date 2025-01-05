@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.h</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fc8a2ff509ab0e12a0b4eae26fbd1e9b923e40fa - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fc8a2ff509ab0e12a0b4eae26fbd1e9b923e40fa</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-03 05:35:50</td>
+            <td class="headerValue">2025-01-06 05:34:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
@@ -170,207 +170,277 @@
 <span id="L108"><span class="lineNum">     108</span>              : #include &lt;gst/gst.h&gt;</span>
 <span id="L109"><span class="lineNum">     109</span>              : #include &lt;math.h&gt; /* expf */</span>
 <span id="L110"><span class="lineNum">     110</span>              : #include &lt;nnstreamer_log.h&gt;</span>
-<span id="L111"><span class="lineNum">     111</span>              : #include &lt;nnstreamer_util.h&gt;</span>
-<span id="L112"><span class="lineNum">     112</span>              : #include &lt;nnstreamer_plugin_api_util.h&gt;</span>
+<span id="L111"><span class="lineNum">     111</span>              : #include &lt;nnstreamer_plugin_api_util.h&gt;</span>
+<span id="L112"><span class="lineNum">     112</span>              : #include &lt;nnstreamer_util.h&gt;</span>
 <span id="L113"><span class="lineNum">     113</span>              : #include &quot;tensordecutil.h&quot;</span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
-<span id="L115"><span class="lineNum">     115</span>              : #define PIXEL_VALUE (0xFF0000FF) /* RED 100% in RGBA */</span>
-<span id="L116"><span class="lineNum">     116</span>              : </span>
-<span id="L117"><span class="lineNum">     117</span>              : /**</span>
-<span id="L118"><span class="lineNum">     118</span>              :  * @brief Option of bounding box</span>
-<span id="L119"><span class="lineNum">     119</span>              :  */</span>
-<span id="L120"><span class="lineNum">     120</span>              : enum class BoundingBoxOption {</span>
-<span id="L121"><span class="lineNum">     121</span>              :   MODE = 0,</span>
-<span id="L122"><span class="lineNum">     122</span>              :   LABEL_PATH = 1,</span>
-<span id="L123"><span class="lineNum">     123</span>              :   INTERNAL = 2,</span>
-<span id="L124"><span class="lineNum">     124</span>              :   VIDEO_SIZE = 3,</span>
-<span id="L125"><span class="lineNum">     125</span>              :   INPUT_MODEL_SIZE = 4,</span>
-<span id="L126"><span class="lineNum">     126</span>              :   TRACK = 5,</span>
-<span id="L127"><span class="lineNum">     127</span>              :   LOG = 6,</span>
-<span id="L128"><span class="lineNum">     128</span>              :   UNKNOWN,</span>
-<span id="L129"><span class="lineNum">     129</span>              : };</span>
-<span id="L130"><span class="lineNum">     130</span>              : </span>
-<span id="L131"><span class="lineNum">     131</span>              : /**</span>
-<span id="L132"><span class="lineNum">     132</span>              :  * @brief There can be different schemes for bounding boxes.</span>
-<span id="L133"><span class="lineNum">     133</span>              :  */</span>
-<span id="L134"><span class="lineNum">     134</span>              : typedef enum {</span>
-<span id="L135"><span class="lineNum">     135</span>              :   MOBILENET_SSD_BOUNDING_BOX = 0,</span>
-<span id="L136"><span class="lineNum">     136</span>              :   MOBILENET_SSD_PP_BOUNDING_BOX = 1,</span>
-<span id="L137"><span class="lineNum">     137</span>              :   OV_PERSON_DETECTION_BOUNDING_BOX = 2,</span>
-<span id="L138"><span class="lineNum">     138</span>              :   OV_FACE_DETECTION_BOUNDING_BOX = 3,</span>
-<span id="L139"><span class="lineNum">     139</span>              : </span>
-<span id="L140"><span class="lineNum">     140</span>              :   /* the modes started with 'OLDNAME_' is for backward compatibility. */</span>
-<span id="L141"><span class="lineNum">     141</span>              :   OLDNAME_MOBILENET_SSD_BOUNDING_BOX = 4,</span>
-<span id="L142"><span class="lineNum">     142</span>              :   OLDNAME_MOBILENET_SSD_PP_BOUNDING_BOX = 5,</span>
-<span id="L143"><span class="lineNum">     143</span>              : </span>
-<span id="L144"><span class="lineNum">     144</span>              :   YOLOV5_BOUNDING_BOX = 6,</span>
-<span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span>              :   MP_PALM_DETECTION_BOUNDING_BOX = 7,</span>
-<span id="L147"><span class="lineNum">     147</span>              : </span>
-<span id="L148"><span class="lineNum">     148</span>              :   YOLOV8_BOUNDING_BOX = 8,</span>
-<span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span>              :   BOUNDING_BOX_UNKNOWN,</span>
-<span id="L151"><span class="lineNum">     151</span>              : } bounding_box_modes;</span>
+<span id="L115"><span class="lineNum">     115</span>              : #define MAX_POLY_CORNERS 8</span>
+<span id="L116"><span class="lineNum">     116</span>              : #define PIXEL_VALUE (0xFF0000FF) /* RED 100% in RGBA */</span>
+<span id="L117"><span class="lineNum">     117</span>              : </span>
+<span id="L118"><span class="lineNum">     118</span>              : /**</span>
+<span id="L119"><span class="lineNum">     119</span>              :  * @brief Option of bounding box</span>
+<span id="L120"><span class="lineNum">     120</span>              :  */</span>
+<span id="L121"><span class="lineNum">     121</span>              : enum class BoundingBoxOption {</span>
+<span id="L122"><span class="lineNum">     122</span>              :   MODE = 0,</span>
+<span id="L123"><span class="lineNum">     123</span>              :   LABEL_PATH = 1,</span>
+<span id="L124"><span class="lineNum">     124</span>              :   INTERNAL = 2,</span>
+<span id="L125"><span class="lineNum">     125</span>              :   VIDEO_SIZE = 3,</span>
+<span id="L126"><span class="lineNum">     126</span>              :   INPUT_MODEL_SIZE = 4,</span>
+<span id="L127"><span class="lineNum">     127</span>              :   TRACK = 5,</span>
+<span id="L128"><span class="lineNum">     128</span>              :   LOG = 6,</span>
+<span id="L129"><span class="lineNum">     129</span>              :   UNKNOWN,</span>
+<span id="L130"><span class="lineNum">     130</span>              : };</span>
+<span id="L131"><span class="lineNum">     131</span>              : </span>
+<span id="L132"><span class="lineNum">     132</span>              : /**</span>
+<span id="L133"><span class="lineNum">     133</span>              :  * @brief There can be different schemes for bounding boxes.</span>
+<span id="L134"><span class="lineNum">     134</span>              :  */</span>
+<span id="L135"><span class="lineNum">     135</span>              : typedef enum {</span>
+<span id="L136"><span class="lineNum">     136</span>              :   MOBILENET_SSD_BOUNDING_BOX = 0,</span>
+<span id="L137"><span class="lineNum">     137</span>              :   MOBILENET_SSD_PP_BOUNDING_BOX = 1,</span>
+<span id="L138"><span class="lineNum">     138</span>              :   OV_PERSON_DETECTION_BOUNDING_BOX = 2,</span>
+<span id="L139"><span class="lineNum">     139</span>              :   OV_FACE_DETECTION_BOUNDING_BOX = 3,</span>
+<span id="L140"><span class="lineNum">     140</span>              : </span>
+<span id="L141"><span class="lineNum">     141</span>              :   /* the modes started with 'OLDNAME_' is for backward compatibility. */</span>
+<span id="L142"><span class="lineNum">     142</span>              :   OLDNAME_MOBILENET_SSD_BOUNDING_BOX = 4,</span>
+<span id="L143"><span class="lineNum">     143</span>              :   OLDNAME_MOBILENET_SSD_PP_BOUNDING_BOX = 5,</span>
+<span id="L144"><span class="lineNum">     144</span>              : </span>
+<span id="L145"><span class="lineNum">     145</span>              :   YOLOV5_BOUNDING_BOX = 6,</span>
+<span id="L146"><span class="lineNum">     146</span>              : </span>
+<span id="L147"><span class="lineNum">     147</span>              :   MP_PALM_DETECTION_BOUNDING_BOX = 7,</span>
+<span id="L148"><span class="lineNum">     148</span>              : </span>
+<span id="L149"><span class="lineNum">     149</span>              :   YOLOV8_BOUNDING_BOX = 8,</span>
+<span id="L150"><span class="lineNum">     150</span>              : </span>
+<span id="L151"><span class="lineNum">     151</span>              :   YOLOV8_ORIENTED_BOUNDING_BOX = 9,</span>
 <span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span>              : /**</span>
-<span id="L154"><span class="lineNum">     154</span>              :  * @brief Structure for object centroid tracking.</span>
-<span id="L155"><span class="lineNum">     155</span>              :  */</span>
-<span id="L156"><span class="lineNum">     156</span>              : typedef struct {</span>
-<span id="L157"><span class="lineNum">     157</span>              :   guint id;</span>
-<span id="L158"><span class="lineNum">     158</span>              :   guint matched_box_idx;</span>
-<span id="L159"><span class="lineNum">     159</span>              :   gint cx;</span>
-<span id="L160"><span class="lineNum">     160</span>              :   gint cy;</span>
-<span id="L161"><span class="lineNum">     161</span>              :   guint consecutive_disappeared_frames;</span>
-<span id="L162"><span class="lineNum">     162</span>              : } centroid;</span>
-<span id="L163"><span class="lineNum">     163</span>              : </span>
-<span id="L164"><span class="lineNum">     164</span>              : /**</span>
-<span id="L165"><span class="lineNum">     165</span>              :  * @brief Structure for distances. {distance} : {centroids} x {boxes}</span>
-<span id="L166"><span class="lineNum">     166</span>              :  */</span>
-<span id="L167"><span class="lineNum">     167</span>              : typedef struct {</span>
-<span id="L168"><span class="lineNum">     168</span>              :   guint centroid_idx;</span>
-<span id="L169"><span class="lineNum">     169</span>              :   guint box_idx;</span>
-<span id="L170"><span class="lineNum">     170</span>              :   guint64 distance;</span>
-<span id="L171"><span class="lineNum">     171</span>              : } distanceArrayData;</span>
-<span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span>              : /**</span>
-<span id="L174"><span class="lineNum">     174</span>              :  * @brief anchor data</span>
-<span id="L175"><span class="lineNum">     175</span>              :  */</span>
-<span id="L176"><span class="lineNum">     176</span>              : typedef struct {</span>
-<span id="L177"><span class="lineNum">     177</span>              :   float x_center;</span>
-<span id="L178"><span class="lineNum">     178</span>              :   float y_center;</span>
-<span id="L179"><span class="lineNum">     179</span>              :   float w;</span>
-<span id="L180"><span class="lineNum">     180</span>              :   float h;</span>
-<span id="L181"><span class="lineNum">     181</span>              : } anchor;</span>
-<span id="L182"><span class="lineNum">     182</span>              : </span>
-<span id="L183"><span class="lineNum">     183</span>              : /** @brief Represents a detect object */</span>
-<span id="L184"><span class="lineNum">     184</span>              : typedef struct {</span>
-<span id="L185"><span class="lineNum">     185</span>              :   int valid;</span>
-<span id="L186"><span class="lineNum">     186</span>              :   int class_id;</span>
-<span id="L187"><span class="lineNum">     187</span>              :   int x;</span>
-<span id="L188"><span class="lineNum">     188</span>              :   int y;</span>
-<span id="L189"><span class="lineNum">     189</span>              :   int width;</span>
-<span id="L190"><span class="lineNum">     190</span>              :   int height;</span>
-<span id="L191"><span class="lineNum">     191</span>              :   gfloat prob;</span>
-<span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span>              :   int tracking_id;</span>
-<span id="L194"><span class="lineNum">     194</span>              : } detectedObject;</span>
-<span id="L195"><span class="lineNum">     195</span>              : </span>
+<span id="L153"><span class="lineNum">     153</span>              :   BOUNDING_BOX_UNKNOWN,</span>
+<span id="L154"><span class="lineNum">     154</span>              : } bounding_box_modes;</span>
+<span id="L155"><span class="lineNum">     155</span>              : </span>
+<span id="L156"><span class="lineNum">     156</span>              : /**</span>
+<span id="L157"><span class="lineNum">     157</span>              :  * @brief Structure for object centroid tracking.</span>
+<span id="L158"><span class="lineNum">     158</span>              :  */</span>
+<span id="L159"><span class="lineNum">     159</span>              : typedef struct {</span>
+<span id="L160"><span class="lineNum">     160</span>              :   guint id;</span>
+<span id="L161"><span class="lineNum">     161</span>              :   guint matched_box_idx;</span>
+<span id="L162"><span class="lineNum">     162</span>              :   gint cx;</span>
+<span id="L163"><span class="lineNum">     163</span>              :   gint cy;</span>
+<span id="L164"><span class="lineNum">     164</span>              :   guint consecutive_disappeared_frames;</span>
+<span id="L165"><span class="lineNum">     165</span>              : } centroid;</span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span>              : /**</span>
+<span id="L168"><span class="lineNum">     168</span>              :  * @brief Structure for distances. {distance} : {centroids} x {boxes}</span>
+<span id="L169"><span class="lineNum">     169</span>              :  */</span>
+<span id="L170"><span class="lineNum">     170</span>              : typedef struct {</span>
+<span id="L171"><span class="lineNum">     171</span>              :   guint centroid_idx;</span>
+<span id="L172"><span class="lineNum">     172</span>              :   guint box_idx;</span>
+<span id="L173"><span class="lineNum">     173</span>              :   guint64 distance;</span>
+<span id="L174"><span class="lineNum">     174</span>              : } distanceArrayData;</span>
+<span id="L175"><span class="lineNum">     175</span>              : </span>
+<span id="L176"><span class="lineNum">     176</span>              : /**</span>
+<span id="L177"><span class="lineNum">     177</span>              :  * @brief anchor data</span>
+<span id="L178"><span class="lineNum">     178</span>              :  */</span>
+<span id="L179"><span class="lineNum">     179</span>              : typedef struct {</span>
+<span id="L180"><span class="lineNum">     180</span>              :   float x_center;</span>
+<span id="L181"><span class="lineNum">     181</span>              :   float y_center;</span>
+<span id="L182"><span class="lineNum">     182</span>              :   float w;</span>
+<span id="L183"><span class="lineNum">     183</span>              :   float h;</span>
+<span id="L184"><span class="lineNum">     184</span>              : } anchor;</span>
+<span id="L185"><span class="lineNum">     185</span>              : </span>
+<span id="L186"><span class="lineNum">     186</span>              : /**</span>
+<span id="L187"><span class="lineNum">     187</span>              :  * @brief obb anchor data</span>
+<span id="L188"><span class="lineNum">     188</span>              :  */</span>
+<span id="L189"><span class="lineNum">     189</span>              : typedef struct {</span>
+<span id="L190"><span class="lineNum">     190</span>              :   float x_center;</span>
+<span id="L191"><span class="lineNum">     191</span>              :   float y_center;</span>
+<span id="L192"><span class="lineNum">     192</span>              :   float w;</span>
+<span id="L193"><span class="lineNum">     193</span>              :   float h;</span>
+<span id="L194"><span class="lineNum">     194</span>              :   float angle;</span>
+<span id="L195"><span class="lineNum">     195</span>              : } obb_anchor;</span>
 <span id="L196"><span class="lineNum">     196</span>              : </span>
 <span id="L197"><span class="lineNum">     197</span>              : /**</span>
-<span id="L198"><span class="lineNum">     198</span>              :  * @brief Apply NMS to the given results (objects[DETECTION_MAX])</span>
-<span id="L199"><span class="lineNum">     199</span>              :  * @param[in/out] results The results to be filtered with nms</span>
-<span id="L200"><span class="lineNum">     200</span>              :  */</span>
-<span id="L201"><span class="lineNum">     201</span>              : void nms (GArray *results, gfloat threshold);</span>
-<span id="L202"><span class="lineNum">     202</span>              : </span>
-<span id="L203"><span class="lineNum">     203</span>              : /**</span>
-<span id="L204"><span class="lineNum">     204</span>              :  * @brief check the num_tensors is valid</span>
-<span id="L205"><span class="lineNum">     205</span>              :  * @param[in] config The structure of tensors info to check.</span>
-<span id="L206"><span class="lineNum">     206</span>              :  * @param[in] limit The limit of tensors number.</span>
-<span id="L207"><span class="lineNum">     207</span>              :  * @return TRUE if tensors info is valid.</span>
-<span id="L208"><span class="lineNum">     208</span>              :  */</span>
-<span id="L209"><span class="lineNum">     209</span>              : int check_tensors (const GstTensorsConfig *config, const unsigned int limit);</span>
-<span id="L210"><span class="lineNum">     210</span>              : </span>
-<span id="L211"><span class="lineNum">     211</span>              : /**</span>
-<span id="L212"><span class="lineNum">     212</span>              :  * @brief       Interface for Bounding box's properties</span>
-<span id="L213"><span class="lineNum">     213</span>              :  */</span>
-<span id="L214"><span class="lineNum">     214</span>              : class BoxProperties</span>
-<span id="L215"><span class="lineNum">     215</span>              : {</span>
-<span id="L216"><span class="lineNum">     216</span>              :   public:</span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC tlaBgGNC">         231 :   virtual ~BoxProperties () = default;</span></span>
-<span id="L218"><span class="lineNum">     218</span>              : </span>
-<span id="L219"><span class="lineNum">     219</span>              :   /* mandatory methods */</span>
-<span id="L220"><span class="lineNum">     220</span>              :   virtual int setOptionInternal (const char *param) = 0;</span>
-<span id="L221"><span class="lineNum">     221</span>              :   virtual int checkCompatible (const GstTensorsConfig *config) = 0;</span>
-<span id="L222"><span class="lineNum">     222</span>              :   virtual GArray *decode (const GstTensorsConfig *config, const GstTensorMemory *input) = 0;</span>
-<span id="L223"><span class="lineNum">     223</span>              : </span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          30 :   void setInputWidth (guint width)</span></span>
-<span id="L225"><span class="lineNum">     225</span>              :   {</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          30 :     i_width = width;</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          30 :   }</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          30 :   void setInputHeight (guint height)</span></span>
-<span id="L229"><span class="lineNum">     229</span>              :   {</span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          30 :     i_height = height;</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          30 :   }</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          13 :   void setTotalLabels (guint labels)</span></span>
-<span id="L233"><span class="lineNum">     233</span>              :   {</span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          13 :     total_labels = labels;</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">          13 :   }</span></span>
-<span id="L236"><span class="lineNum">     236</span>              : </span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          32 :   guint getInputWidth ()</span></span>
-<span id="L238"><span class="lineNum">     238</span>              :   {</span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">          32 :     return i_width;</span></span>
-<span id="L240"><span class="lineNum">     240</span>              :   }</span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          32 :   guint getInputHeight ()</span></span>
-<span id="L242"><span class="lineNum">     242</span>              :   {</span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          32 :     return i_height;</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :   }</span>
-<span id="L245"><span class="lineNum">     245</span>              :   gchar *name;</span>
-<span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span>              :   protected:</span>
-<span id="L248"><span class="lineNum">     248</span>              :   guint i_width; /**&lt; Input Video Width */</span>
-<span id="L249"><span class="lineNum">     249</span>              :   guint i_height; /**&lt; Input Video Height */</span>
-<span id="L250"><span class="lineNum">     250</span>              : </span>
-<span id="L251"><span class="lineNum">     251</span>              :   guint max_detection;</span>
-<span id="L252"><span class="lineNum">     252</span>              :   guint total_labels;</span>
-<span id="L253"><span class="lineNum">     253</span>              : };</span>
-<span id="L254"><span class="lineNum">     254</span>              : </span>
-<span id="L255"><span class="lineNum">     255</span>              : /**</span>
-<span id="L256"><span class="lineNum">     256</span>              :  * @brief       Class for Bounding box tensor decoder</span>
-<span id="L257"><span class="lineNum">     257</span>              :  */</span>
-<span id="L258"><span class="lineNum">     258</span>              : class BoundingBox</span>
-<span id="L259"><span class="lineNum">     259</span>              : {</span>
-<span id="L260"><span class="lineNum">     260</span>              :   public:</span>
-<span id="L261"><span class="lineNum">     261</span>              :   BoundingBox ();</span>
-<span id="L262"><span class="lineNum">     262</span>              :   ~BoundingBox ();</span>
-<span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span>              :   gboolean checkLabelProps ();</span>
-<span id="L265"><span class="lineNum">     265</span>              :   int setBoxDecodingMode (const char *param);</span>
-<span id="L266"><span class="lineNum">     266</span>              :   int setLabelPath (const char *param);</span>
-<span id="L267"><span class="lineNum">     267</span>              :   int setVideoSize (const char *param);</span>
-<span id="L268"><span class="lineNum">     268</span>              :   int setInputModelSize (const char *param);</span>
-<span id="L269"><span class="lineNum">     269</span>              :   void draw (GstMapInfo *out_info, GArray *results);</span>
-<span id="L270"><span class="lineNum">     270</span>              :   void logBoxes (GArray *results);</span>
-<span id="L271"><span class="lineNum">     271</span>              :   void updateCentroids (GArray *boxes);</span>
-<span id="L272"><span class="lineNum">     272</span>              : </span>
-<span id="L273"><span class="lineNum">     273</span>              :   int setOption (BoundingBoxOption opNum, const char *param);</span>
-<span id="L274"><span class="lineNum">     274</span>              :   GstCaps *getOutCaps (const GstTensorsConfig *config);</span>
-<span id="L275"><span class="lineNum">     275</span>              :   GstFlowReturn decode (const GstTensorsConfig *config,</span>
-<span id="L276"><span class="lineNum">     276</span>              :       const GstTensorMemory *input, GstBuffer *outbuf);</span>
-<span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span>              :   static BoxProperties *getProperties (const gchar *properties_name);</span>
-<span id="L279"><span class="lineNum">     279</span>              :   static gboolean addProperties (BoxProperties *boxProperties);</span>
-<span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span>              :   private:</span>
-<span id="L282"><span class="lineNum">     282</span>              :   bounding_box_modes mode;</span>
-<span id="L283"><span class="lineNum">     283</span>              :   BoxProperties *bdata;</span>
-<span id="L284"><span class="lineNum">     284</span>              : </span>
-<span id="L285"><span class="lineNum">     285</span>              :   /* From option2 */</span>
-<span id="L286"><span class="lineNum">     286</span>              :   imglabel_t labeldata;</span>
-<span id="L287"><span class="lineNum">     287</span>              :   char *label_path;</span>
-<span id="L288"><span class="lineNum">     288</span>              : </span>
-<span id="L289"><span class="lineNum">     289</span>              :   /* From option4 */</span>
-<span id="L290"><span class="lineNum">     290</span>              :   guint width; /**&lt; Output Video Width */</span>
-<span id="L291"><span class="lineNum">     291</span>              :   guint height; /**&lt; Output Video Height */</span>
-<span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span>              :   /* From option6 (track or not) */</span>
-<span id="L294"><span class="lineNum">     294</span>              :   gint is_track;</span>
-<span id="L295"><span class="lineNum">     295</span>              :   guint centroids_last_id; /**&lt; The last_id of centroid valid id is 1, 2, ... (not 0). */</span>
-<span id="L296"><span class="lineNum">     296</span>              :   guint max_centroids_num; /**&lt; The maximum number of centroids */</span>
-<span id="L297"><span class="lineNum">     297</span>              :   guint consecutive_disappear_threshold; /**&lt; The threshold of consecutive disappeared frames */</span>
-<span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span>              :   GArray *centroids; /**&lt; Array for centroids */</span>
-<span id="L300"><span class="lineNum">     300</span>              :   GArray *distanceArray; /**&lt; Array for distances */</span>
-<span id="L301"><span class="lineNum">     301</span>              : </span>
-<span id="L302"><span class="lineNum">     302</span>              :   /* From option7 (log or not) */</span>
-<span id="L303"><span class="lineNum">     303</span>              :   gint do_log;</span>
-<span id="L304"><span class="lineNum">     304</span>              : </span>
-<span id="L305"><span class="lineNum">     305</span>              :   gboolean flag_use_label;</span>
-<span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span>              :   /* Table for box properties data */</span>
-<span id="L308"><span class="lineNum">     308</span>              :   inline static GHashTable *properties_table;</span>
-<span id="L309"><span class="lineNum">     309</span>              : };</span>
+<span id="L198"><span class="lineNum">     198</span>              :  * @brief Point data structure</span>
+<span id="L199"><span class="lineNum">     199</span>              :  */</span>
+<span id="L200"><span class="lineNum">     200</span>              : typedef struct {</span>
+<span id="L201"><span class="lineNum">     201</span>              :   float x, y;</span>
+<span id="L202"><span class="lineNum">     202</span>              : } Point;</span>
+<span id="L203"><span class="lineNum">     203</span>              : </span>
+<span id="L204"><span class="lineNum">     204</span>              : /** @brief Represents a detect object */</span>
+<span id="L205"><span class="lineNum">     205</span>              : typedef struct {</span>
+<span id="L206"><span class="lineNum">     206</span>              :   int valid;</span>
+<span id="L207"><span class="lineNum">     207</span>              :   int class_id;</span>
+<span id="L208"><span class="lineNum">     208</span>              :   int x;</span>
+<span id="L209"><span class="lineNum">     209</span>              :   int y;</span>
+<span id="L210"><span class="lineNum">     210</span>              :   int width;</span>
+<span id="L211"><span class="lineNum">     211</span>              :   int height;</span>
+<span id="L212"><span class="lineNum">     212</span>              :   float angle;</span>
+<span id="L213"><span class="lineNum">     213</span>              :   gfloat prob;</span>
+<span id="L214"><span class="lineNum">     214</span>              : </span>
+<span id="L215"><span class="lineNum">     215</span>              :   int tracking_id;</span>
+<span id="L216"><span class="lineNum">     216</span>              : } detectedObject;</span>
+<span id="L217"><span class="lineNum">     217</span>              : </span>
+<span id="L218"><span class="lineNum">     218</span>              : /**</span>
+<span id="L219"><span class="lineNum">     219</span>              :  * @brief check the num_tensors is valid</span>
+<span id="L220"><span class="lineNum">     220</span>              :  * @param[in] config The structure of tensors info to check.</span>
+<span id="L221"><span class="lineNum">     221</span>              :  * @param[in] limit The limit of tensors number.</span>
+<span id="L222"><span class="lineNum">     222</span>              :  * @return TRUE if tensors info is valid.</span>
+<span id="L223"><span class="lineNum">     223</span>              :  */</span>
+<span id="L224"><span class="lineNum">     224</span>              : int check_tensors (const GstTensorsConfig *config, const unsigned int limit);</span>
+<span id="L225"><span class="lineNum">     225</span>              : </span>
+<span id="L226"><span class="lineNum">     226</span>              : /**</span>
+<span id="L227"><span class="lineNum">     227</span>              :  * @brief Get the corners of a rotated rectangle.</span>
+<span id="L228"><span class="lineNum">     228</span>              :  */</span>
+<span id="L229"><span class="lineNum">     229</span>              : void get_rotated_rect_corners (detectedObject *obj, Point corners[4]);</span>
+<span id="L230"><span class="lineNum">     230</span>              : </span>
+<span id="L231"><span class="lineNum">     231</span>              : /**</span>
+<span id="L232"><span class="lineNum">     232</span>              :  * @brief Clips a polygon with another polygon using Sutherland-Hodgman algorithm.</span>
+<span id="L233"><span class="lineNum">     233</span>              :  * @param subjectPolygon The polygon to be clipped.</span>
+<span id="L234"><span class="lineNum">     234</span>              :  * @param subjectSize Number of vertices in subjectPolygon.</span>
+<span id="L235"><span class="lineNum">     235</span>              :  * @param clipPolygon The clipping polygon.</span>
+<span id="L236"><span class="lineNum">     236</span>              :  * @param clipSize Number of vertices in clipPolygon.</span>
+<span id="L237"><span class="lineNum">     237</span>              :  * @param outPolygon The resulting clipped polygon.</span>
+<span id="L238"><span class="lineNum">     238</span>              :  * @return Number of vertices in the output polygon.</span>
+<span id="L239"><span class="lineNum">     239</span>              :  */</span>
+<span id="L240"><span class="lineNum">     240</span>              : int polygon_clip (const Point *subjectPolygon, int subjectSize,</span>
+<span id="L241"><span class="lineNum">     241</span>              :     const Point *clipPolygon, int clipSize, Point *outPolygon);</span>
+<span id="L242"><span class="lineNum">     242</span>              : </span>
+<span id="L243"><span class="lineNum">     243</span>              : /**</span>
+<span id="L244"><span class="lineNum">     244</span>              :  * @brief Computes the intersection point of two lines.</span>
+<span id="L245"><span class="lineNum">     245</span>              :  * @param line1Start Start point of the first line.</span>
+<span id="L246"><span class="lineNum">     246</span>              :  * @param line1End End point of the first line.</span>
+<span id="L247"><span class="lineNum">     247</span>              :  * @param line2Start Start point of the second line.</span>
+<span id="L248"><span class="lineNum">     248</span>              :  * @param line2End End point of the second line.</span>
+<span id="L249"><span class="lineNum">     249</span>              :  * @return The intersection point.</span>
+<span id="L250"><span class="lineNum">     250</span>              :  */</span>
+<span id="L251"><span class="lineNum">     251</span>              : Point compute_intersection (Point line1Start, Point line1End, Point line2Start, Point line2End);</span>
+<span id="L252"><span class="lineNum">     252</span>              : </span>
+<span id="L253"><span class="lineNum">     253</span>              : /**</span>
+<span id="L254"><span class="lineNum">     254</span>              :  * @brief Computes the area of a polygon.</span>
+<span id="L255"><span class="lineNum">     255</span>              :  * @param polygon The array of points defining the polygon.</span>
+<span id="L256"><span class="lineNum">     256</span>              :  * @param numPoints Number of points in the polygon.</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * @return The area of the polygon.</span>
+<span id="L258"><span class="lineNum">     258</span>              :  */</span>
+<span id="L259"><span class="lineNum">     259</span>              : float polygon_area (const Point *polygon, int numPoints);</span>
+<span id="L260"><span class="lineNum">     260</span>              : </span>
+<span id="L261"><span class="lineNum">     261</span>              : /**</span>
+<span id="L262"><span class="lineNum">     262</span>              :  * @brief Draw a line on the frame buffer.</span>
+<span id="L263"><span class="lineNum">     263</span>              :  * @param frame The frame buffer.</span>
+<span id="L264"><span class="lineNum">     264</span>              :  * @param width The width of the frame.</span>
+<span id="L265"><span class="lineNum">     265</span>              :  * @param height The height of the frame.</span>
+<span id="L266"><span class="lineNum">     266</span>              :  * @param x0 Starting x coordinate.</span>
+<span id="L267"><span class="lineNum">     267</span>              :  * @param y0 Starting y coordinate.</span>
+<span id="L268"><span class="lineNum">     268</span>              :  * @param x1 Ending x coordinate.</span>
+<span id="L269"><span class="lineNum">     269</span>              :  * @param y1 Ending y coordinate.</span>
+<span id="L270"><span class="lineNum">     270</span>              :  * @param color The color to draw.</span>
+<span id="L271"><span class="lineNum">     271</span>              :  */</span>
+<span id="L272"><span class="lineNum">     272</span>              : void draw_line (uint32_t *frame, int width, int height, int x0, int y0, int x1,</span>
+<span id="L273"><span class="lineNum">     273</span>              :     int y1, uint32_t color);</span>
+<span id="L274"><span class="lineNum">     274</span>              : </span>
+<span id="L275"><span class="lineNum">     275</span>              : /**</span>
+<span id="L276"><span class="lineNum">     276</span>              :  * @brief       Interface for Bounding box's properties</span>
+<span id="L277"><span class="lineNum">     277</span>              :  */</span>
+<span id="L278"><span class="lineNum">     278</span>              : class BoxProperties</span>
+<span id="L279"><span class="lineNum">     279</span>              : {</span>
+<span id="L280"><span class="lineNum">     280</span>              :   public:</span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC tlaBgGNC">         264 :   virtual ~BoxProperties () = default;</span></span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span>              :   /* mandatory methods */</span>
+<span id="L284"><span class="lineNum">     284</span>              :   virtual int setOptionInternal (const char *param) = 0;</span>
+<span id="L285"><span class="lineNum">     285</span>              :   virtual int checkCompatible (const GstTensorsConfig *config) = 0;</span>
+<span id="L286"><span class="lineNum">     286</span>              :   virtual GArray *decode (const GstTensorsConfig *config, const GstTensorMemory *input) = 0;</span>
+<span id="L287"><span class="lineNum">     287</span>              : </span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          30 :   void setInputWidth (guint width)</span></span>
+<span id="L289"><span class="lineNum">     289</span>              :   {</span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          30 :     i_width = width;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          30 :   }</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          30 :   void setInputHeight (guint height)</span></span>
+<span id="L293"><span class="lineNum">     293</span>              :   {</span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          30 :     i_height = height;</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          30 :   }</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          13 :   void setTotalLabels (guint labels)</span></span>
+<span id="L297"><span class="lineNum">     297</span>              :   {</span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          13 :     total_labels = labels;</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          13 :   }</span></span>
+<span id="L300"><span class="lineNum">     300</span>              : </span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          32 :   guint getInputWidth ()</span></span>
+<span id="L302"><span class="lineNum">     302</span>              :   {</span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          32 :     return i_width;</span></span>
+<span id="L304"><span class="lineNum">     304</span>              :   }</span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          32 :   guint getInputHeight ()</span></span>
+<span id="L306"><span class="lineNum">     306</span>              :   {</span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          32 :     return i_height;</span></span>
+<span id="L308"><span class="lineNum">     308</span>              :   }</span>
+<span id="L309"><span class="lineNum">     309</span>              :   gchar *name;</span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span>              : #endif /* _TENSORDECBB_H__ */</span>
+<span id="L311"><span class="lineNum">     311</span>              :   protected:</span>
+<span id="L312"><span class="lineNum">     312</span>              :   guint i_width; /**&lt; Input Video Width */</span>
+<span id="L313"><span class="lineNum">     313</span>              :   guint i_height; /**&lt; Input Video Height */</span>
+<span id="L314"><span class="lineNum">     314</span>              : </span>
+<span id="L315"><span class="lineNum">     315</span>              :   guint max_detection;</span>
+<span id="L316"><span class="lineNum">     316</span>              :   guint total_labels;</span>
+<span id="L317"><span class="lineNum">     317</span>              : };</span>
+<span id="L318"><span class="lineNum">     318</span>              : </span>
+<span id="L319"><span class="lineNum">     319</span>              : /**</span>
+<span id="L320"><span class="lineNum">     320</span>              :  * @brief       Class for Bounding box tensor decoder</span>
+<span id="L321"><span class="lineNum">     321</span>              :  */</span>
+<span id="L322"><span class="lineNum">     322</span>              : class BoundingBox</span>
+<span id="L323"><span class="lineNum">     323</span>              : {</span>
+<span id="L324"><span class="lineNum">     324</span>              :   public:</span>
+<span id="L325"><span class="lineNum">     325</span>              :   BoundingBox ();</span>
+<span id="L326"><span class="lineNum">     326</span>              :   ~BoundingBox ();</span>
+<span id="L327"><span class="lineNum">     327</span>              : </span>
+<span id="L328"><span class="lineNum">     328</span>              :   gboolean checkLabelProps ();</span>
+<span id="L329"><span class="lineNum">     329</span>              :   int setBoxDecodingMode (const char *param);</span>
+<span id="L330"><span class="lineNum">     330</span>              :   int setLabelPath (const char *param);</span>
+<span id="L331"><span class="lineNum">     331</span>              :   int setVideoSize (const char *param);</span>
+<span id="L332"><span class="lineNum">     332</span>              :   int setInputModelSize (const char *param);</span>
+<span id="L333"><span class="lineNum">     333</span>              :   void draw (GstMapInfo *out_info, GArray *results);</span>
+<span id="L334"><span class="lineNum">     334</span>              :   void logBoxes (GArray *results);</span>
+<span id="L335"><span class="lineNum">     335</span>              :   void updateCentroids (GArray *boxes);</span>
+<span id="L336"><span class="lineNum">     336</span>              : </span>
+<span id="L337"><span class="lineNum">     337</span>              :   int setOption (BoundingBoxOption opNum, const char *param);</span>
+<span id="L338"><span class="lineNum">     338</span>              :   GstCaps *getOutCaps (const GstTensorsConfig *config);</span>
+<span id="L339"><span class="lineNum">     339</span>              :   GstFlowReturn decode (const GstTensorsConfig *config,</span>
+<span id="L340"><span class="lineNum">     340</span>              :       const GstTensorMemory *input, GstBuffer *outbuf);</span>
+<span id="L341"><span class="lineNum">     341</span>              : </span>
+<span id="L342"><span class="lineNum">     342</span>              :   static BoxProperties *getProperties (const gchar *properties_name);</span>
+<span id="L343"><span class="lineNum">     343</span>              :   static gboolean addProperties (BoxProperties *boxProperties);</span>
+<span id="L344"><span class="lineNum">     344</span>              : </span>
+<span id="L345"><span class="lineNum">     345</span>              :   private:</span>
+<span id="L346"><span class="lineNum">     346</span>              :   bounding_box_modes mode;</span>
+<span id="L347"><span class="lineNum">     347</span>              :   BoxProperties *bdata;</span>
+<span id="L348"><span class="lineNum">     348</span>              : </span>
+<span id="L349"><span class="lineNum">     349</span>              :   /* From option2 */</span>
+<span id="L350"><span class="lineNum">     350</span>              :   imglabel_t labeldata;</span>
+<span id="L351"><span class="lineNum">     351</span>              :   char *label_path;</span>
+<span id="L352"><span class="lineNum">     352</span>              : </span>
+<span id="L353"><span class="lineNum">     353</span>              :   /* From option4 */</span>
+<span id="L354"><span class="lineNum">     354</span>              :   guint width; /**&lt; Output Video Width */</span>
+<span id="L355"><span class="lineNum">     355</span>              :   guint height; /**&lt; Output Video Height */</span>
+<span id="L356"><span class="lineNum">     356</span>              : </span>
+<span id="L357"><span class="lineNum">     357</span>              :   /* From option6 (track or not) */</span>
+<span id="L358"><span class="lineNum">     358</span>              :   gint is_track;</span>
+<span id="L359"><span class="lineNum">     359</span>              :   guint centroids_last_id; /**&lt; The last_id of centroid valid id is 1, 2, ... (not 0). */</span>
+<span id="L360"><span class="lineNum">     360</span>              :   guint max_centroids_num; /**&lt; The maximum number of centroids */</span>
+<span id="L361"><span class="lineNum">     361</span>              :   guint consecutive_disappear_threshold; /**&lt; The threshold of consecutive disappeared frames */</span>
+<span id="L362"><span class="lineNum">     362</span>              : </span>
+<span id="L363"><span class="lineNum">     363</span>              :   GArray *centroids; /**&lt; Array for centroids */</span>
+<span id="L364"><span class="lineNum">     364</span>              :   GArray *distanceArray; /**&lt; Array for distances */</span>
+<span id="L365"><span class="lineNum">     365</span>              : </span>
+<span id="L366"><span class="lineNum">     366</span>              :   /* From option7 (log or not) */</span>
+<span id="L367"><span class="lineNum">     367</span>              :   gint do_log;</span>
+<span id="L368"><span class="lineNum">     368</span>              : </span>
+<span id="L369"><span class="lineNum">     369</span>              :   gboolean flag_use_label;</span>
+<span id="L370"><span class="lineNum">     370</span>              : </span>
+<span id="L371"><span class="lineNum">     371</span>              :   /* Table for box properties data */</span>
+<span id="L372"><span class="lineNum">     372</span>              :   inline static GHashTable *properties_table;</span>
+<span id="L373"><span class="lineNum">     373</span>              : };</span>
+<span id="L374"><span class="lineNum">     374</span>              : </span>
+<span id="L375"><span class="lineNum">     375</span>              : /**</span>
+<span id="L376"><span class="lineNum">     376</span>              :  * @brief Apply NMS to the given results (objects[DETECTION_MAX])</span>
+<span id="L377"><span class="lineNum">     377</span>              :  * @param[in/out] results The results to be filtered with nms</span>
+<span id="L378"><span class="lineNum">     378</span>              :  */</span>
+<span id="L379"><span class="lineNum">     379</span>              : void nms (GArray *results, gfloat threshold, bounding_box_modes mode = BOUNDING_BOX_UNKNOWN);</span>
+<span id="L380"><span class="lineNum">     380</span>              : </span>
+<span id="L381"><span class="lineNum">     381</span>              : #endif /* _TENSORDECBB_H__ */</span>
         </pre>
               </td>
             </tr>

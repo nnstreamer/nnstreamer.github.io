@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssd.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fc8a2ff509ab0e12a0b4eae26fbd1e9b923e40fa - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssd.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b1f66c649f56483758a0084aaf04f96825f25342</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fc8a2ff509ab0e12a0b4eae26fbd1e9b923e40fa</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">72.5&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-03 05:35:50</td>
+            <td class="headerValue">2025-01-06 05:34:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -180,314 +180,322 @@
 <span id="L118"><span class="lineNum">     118</span>              :  * @param[in] config Tensor configs of the input tensors</span>
 <span id="L119"><span class="lineNum">     119</span>              :  * @param[out] results The object returned. (GArray with detectedObject)</span>
 <span id="L120"><span class="lineNum">     120</span>              :  */</span>
-<span id="L121"><span class="lineNum">     121</span>              : #define _get_objects_mobilenet_ssd(_type, typename, boxprior, boxinput,                                      \</span>
-<span id="L122"><span class="lineNum">     122</span>              :     detinput, config, results, i_width, i_height, max_detection)                                             \</span>
-<span id="L123"><span class="lineNum">     123</span>              :   case typename:                                                                                             \</span>
-<span id="L124"><span class="lineNum">     124</span>              :     {                                                                                                        \</span>
-<span id="L125"><span class="lineNum">     125</span>              :       int d;                                                                                                 \</span>
-<span id="L126"><span class="lineNum">     126</span>              :       _type *boxinput_ = (_type *) boxinput;                                                                 \</span>
-<span id="L127"><span class="lineNum">     127</span>              :       info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);                            \</span>
-<span id="L128"><span class="lineNum">     128</span>              :       size_t boxbpi = info-&gt;dimension[0];                                                                    \</span>
-<span id="L129"><span class="lineNum">     129</span>              :       _type *detinput_ = (_type *) detinput;                                                                 \</span>
-<span id="L130"><span class="lineNum">     130</span>              :       info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 1);                            \</span>
-<span id="L131"><span class="lineNum">     131</span>              :       size_t detbpi = info-&gt;dimension[0];                                                                    \</span>
-<span id="L132"><span class="lineNum">     132</span>              :       int num = (DETECTION_MAX &gt; max_detection) ? max_detection : DETECTION_MAX;                             \</span>
-<span id="L133"><span class="lineNum">     133</span>              :       detectedObject object = {                                                                              \</span>
-<span id="L134"><span class="lineNum">     134</span>              :         .valid = FALSE, .class_id = 0, .x = 0, .y = 0, .width = 0, .height = 0, .prob = .0, .tracking_id = 0 \</span>
-<span id="L135"><span class="lineNum">     135</span>              :       };                                                                                                     \</span>
-<span id="L136"><span class="lineNum">     136</span>              :       for (d = 0; d &lt; num; d++) {                                                                            \</span>
-<span id="L137"><span class="lineNum">     137</span>              :         _get_object_i_mobilenet_ssd (d, detbpi, boxprior, (boxinput_ + (d * boxbpi)),                        \</span>
-<span id="L138"><span class="lineNum">     138</span>              :             (detinput_ + (d * detbpi)), (&amp;object), i_width, i_height);                                       \</span>
-<span id="L139"><span class="lineNum">     139</span>              :         if (object.valid == TRUE) {                                                                          \</span>
-<span id="L140"><span class="lineNum">     140</span>              :           g_array_append_val (results, object);                                                              \</span>
-<span id="L141"><span class="lineNum">     141</span>              :         }                                                                                                    \</span>
-<span id="L142"><span class="lineNum">     142</span>              :       }                                                                                                      \</span>
-<span id="L143"><span class="lineNum">     143</span>              :     }                                                                                                        \</span>
-<span id="L144"><span class="lineNum">     144</span>              :     break</span>
-<span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span>              : </span>
-<span id="L147"><span class="lineNum">     147</span>              : /** @brief Macro to simplify calling _get_objects_mobilenet_ssd */</span>
-<span id="L148"><span class="lineNum">     148</span>              : #define _get_objects_mobilenet_ssd_(type, typename)                      \</span>
-<span id="L149"><span class="lineNum">     149</span>              :   _get_objects_mobilenet_ssd (type, typename, box_priors, (boxes-&gt;data), \</span>
-<span id="L150"><span class="lineNum">     150</span>              :       (detections-&gt;data), config, results, i_width, i_height, max_detection)</span>
-<span id="L151"><span class="lineNum">     151</span>              : </span>
-<span id="L152"><span class="lineNum">     152</span>              : /** @brief Mathematic inverse of sigmoid function, aka logit */</span>
-<span id="L153"><span class="lineNum">     153</span>              : static float</span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC tlaBgGNC">          37 : logit (float x)</span></span>
-<span id="L155"><span class="lineNum">     155</span>              : {</span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          37 :   if (x &lt;= 0.0f)</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaUNC tlaBgUNC">           0 :     return -INFINITY;</span></span>
-<span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC tlaBgGNC">          37 :   if (x &gt;= 1.0f)</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaUNC tlaBgUNC">           0 :     return INFINITY;</span></span>
-<span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC tlaBgGNC">          37 :   return log (x / (1.0 - x));</span></span>
-<span id="L163"><span class="lineNum">     163</span>              : }</span>
-<span id="L164"><span class="lineNum">     164</span>              : </span>
-<span id="L165"><span class="lineNum">     165</span>              : static BoxProperties *mobilenet = nullptr;</span>
+<span id="L121"><span class="lineNum">     121</span>              : #define _get_objects_mobilenet_ssd(_type, typename, boxprior, boxinput,               \</span>
+<span id="L122"><span class="lineNum">     122</span>              :     detinput, config, results, i_width, i_height, max_detection)                      \</span>
+<span id="L123"><span class="lineNum">     123</span>              :   case typename:                                                                      \</span>
+<span id="L124"><span class="lineNum">     124</span>              :     {                                                                                 \</span>
+<span id="L125"><span class="lineNum">     125</span>              :       int d;                                                                          \</span>
+<span id="L126"><span class="lineNum">     126</span>              :       _type *boxinput_ = (_type *) boxinput;                                          \</span>
+<span id="L127"><span class="lineNum">     127</span>              :       info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);     \</span>
+<span id="L128"><span class="lineNum">     128</span>              :       size_t boxbpi = info-&gt;dimension[0];                                             \</span>
+<span id="L129"><span class="lineNum">     129</span>              :       _type *detinput_ = (_type *) detinput;                                          \</span>
+<span id="L130"><span class="lineNum">     130</span>              :       info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 1);     \</span>
+<span id="L131"><span class="lineNum">     131</span>              :       size_t detbpi = info-&gt;dimension[0];                                             \</span>
+<span id="L132"><span class="lineNum">     132</span>              :       int num = (DETECTION_MAX &gt; max_detection) ? max_detection : DETECTION_MAX;      \</span>
+<span id="L133"><span class="lineNum">     133</span>              :       detectedObject object = {                                                       \</span>
+<span id="L134"><span class="lineNum">     134</span>              :         .valid = FALSE,                                                               \</span>
+<span id="L135"><span class="lineNum">     135</span>              :         .class_id = 0,                                                                \</span>
+<span id="L136"><span class="lineNum">     136</span>              :         .x = 0,                                                                       \</span>
+<span id="L137"><span class="lineNum">     137</span>              :         .y = 0,                                                                       \</span>
+<span id="L138"><span class="lineNum">     138</span>              :         .width = 0,                                                                   \</span>
+<span id="L139"><span class="lineNum">     139</span>              :         .height = 0,                                                                  \</span>
+<span id="L140"><span class="lineNum">     140</span>              :         .angle = 0,                                                                   \</span>
+<span id="L141"><span class="lineNum">     141</span>              :         .prob = .0,                                                                   \</span>
+<span id="L142"><span class="lineNum">     142</span>              :         .tracking_id = 0,                                                             \</span>
+<span id="L143"><span class="lineNum">     143</span>              :       };                                                                              \</span>
+<span id="L144"><span class="lineNum">     144</span>              :       for (d = 0; d &lt; num; d++) {                                                     \</span>
+<span id="L145"><span class="lineNum">     145</span>              :         _get_object_i_mobilenet_ssd (d, detbpi, boxprior, (boxinput_ + (d * boxbpi)), \</span>
+<span id="L146"><span class="lineNum">     146</span>              :             (detinput_ + (d * detbpi)), (&amp;object), i_width, i_height);                \</span>
+<span id="L147"><span class="lineNum">     147</span>              :         if (object.valid == TRUE) {                                                   \</span>
+<span id="L148"><span class="lineNum">     148</span>              :           g_array_append_val (results, object);                                       \</span>
+<span id="L149"><span class="lineNum">     149</span>              :         }                                                                             \</span>
+<span id="L150"><span class="lineNum">     150</span>              :       }                                                                               \</span>
+<span id="L151"><span class="lineNum">     151</span>              :     }                                                                                 \</span>
+<span id="L152"><span class="lineNum">     152</span>              :     break</span>
+<span id="L153"><span class="lineNum">     153</span>              : </span>
+<span id="L154"><span class="lineNum">     154</span>              : </span>
+<span id="L155"><span class="lineNum">     155</span>              : /** @brief Macro to simplify calling _get_objects_mobilenet_ssd */</span>
+<span id="L156"><span class="lineNum">     156</span>              : #define _get_objects_mobilenet_ssd_(type, typename)                      \</span>
+<span id="L157"><span class="lineNum">     157</span>              :   _get_objects_mobilenet_ssd (type, typename, box_priors, (boxes-&gt;data), \</span>
+<span id="L158"><span class="lineNum">     158</span>              :       (detections-&gt;data), config, results, i_width, i_height, max_detection)</span>
+<span id="L159"><span class="lineNum">     159</span>              : </span>
+<span id="L160"><span class="lineNum">     160</span>              : /** @brief Mathematic inverse of sigmoid function, aka logit */</span>
+<span id="L161"><span class="lineNum">     161</span>              : static float</span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC tlaBgGNC">          37 : logit (float x)</span></span>
+<span id="L163"><span class="lineNum">     163</span>              : {</span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          37 :   if (x &lt;= 0.0f)</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC tlaBgUNC">           0 :     return -INFINITY;</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : </span>
-<span id="L167"><span class="lineNum">     167</span>              : #ifdef __cplusplus</span>
-<span id="L168"><span class="lineNum">     168</span>              : extern &quot;C&quot; {</span>
-<span id="L169"><span class="lineNum">     169</span>              : #endif /* __cplusplus */</span>
-<span id="L170"><span class="lineNum">     170</span>              : void init_properties_mobilenetssd (void) __attribute__ ((constructor));</span>
-<span id="L171"><span class="lineNum">     171</span>              : void fini_properties_mobilenetssd (void) __attribute__ ((destructor));</span>
-<span id="L172"><span class="lineNum">     172</span>              : #ifdef __cplusplus</span>
-<span id="L173"><span class="lineNum">     173</span>              : }</span>
-<span id="L174"><span class="lineNum">     174</span>              : #endif /* __cplusplus */</span>
-<span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span>              : /** @brief Constructor of MobilenetSSD */</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          33 : MobilenetSSD::MobilenetSSD ()</span></span>
-<span id="L178"><span class="lineNum">     178</span>              : {</span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          33 :   params[THRESHOLD_IDX] = DETECTION_THRESHOLD_DEFAULT;</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          33 :   params[Y_SCALE_IDX] = Y_SCALE_DEFAULT;</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          33 :   params[X_SCALE_IDX] = X_SCALE_DEFAULT;</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          33 :   params[H_SCALE_IDX] = H_SCALE_DEFAULT;</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          33 :   params[W_SCALE_IDX] = W_SCALE_DEFAULT;</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          33 :   params[IOU_THRESHOLD_IDX] = THRESHOLD_IOU_DEFAULT;</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          33 :   sigmoid_threshold = logit (DETECTION_THRESHOLD_DEFAULT);</span></span>
-<span id="L186"><span class="lineNum">     186</span>              : </span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          33 :   max_detection = 0;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          33 :   total_labels = 0;</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          33 :   box_prior_path = nullptr;</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          33 :   name = g_strdup_printf (&quot;mobilenet-ssd&quot;);</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          33 : }</span></span>
-<span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span>              : /** @brief Destructor of MobilenetSSD */</span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          66 : MobilenetSSD::~MobilenetSSD ()</span></span>
-<span id="L195"><span class="lineNum">     195</span>              : {</span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          33 :   g_free (name);</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          66 : }</span></span>
-<span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span>              : /**</span>
-<span id="L200"><span class="lineNum">     200</span>              :  * @brief Load box-prior data from a file</span>
-<span id="L201"><span class="lineNum">     201</span>              :  * @param[in/out] bdata The internal data.</span>
-<span id="L202"><span class="lineNum">     202</span>              :  * @return TRUE if loaded and configured. FALSE if failed to do so.</span>
-<span id="L203"><span class="lineNum">     203</span>              :  */</span>
-<span id="L204"><span class="lineNum">     204</span>              : int</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           4 : MobilenetSSD::mobilenet_ssd_loadBoxPrior ()</span></span>
-<span id="L206"><span class="lineNum">     206</span>              : {</span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           4 :   gboolean failed = FALSE;</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           4 :   GError *err = NULL;</span></span>
-<span id="L209"><span class="lineNum">     209</span>              :   gchar **priors;</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           4 :   gchar *line = NULL;</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           4 :   gchar *contents = NULL;</span></span>
-<span id="L212"><span class="lineNum">     212</span>              :   guint row;</span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           4 :   gint prev_reg = -1;</span></span>
-<span id="L214"><span class="lineNum">     214</span>              : </span>
-<span id="L215"><span class="lineNum">     215</span>              :   /* Read file contents */</span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           4 :   if (!g_file_get_contents (box_prior_path, &amp;contents, NULL, &amp;err)) {</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Decoder/Bound-Box/SSD's box prior file %s cannot be read: %s&quot;,</span></span>
-<span id="L218"><span class="lineNum">     218</span>              :         box_prior_path, err-&gt;message);</span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :     g_clear_error (&amp;err);</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L221"><span class="lineNum">     221</span>              :   }</span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC tlaBgGNC">          37 :   if (x &gt;= 1.0f)</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC tlaBgUNC">           0 :     return INFINITY;</span></span>
+<span id="L169"><span class="lineNum">     169</span>              : </span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC tlaBgGNC">          37 :   return log (x / (1.0 - x));</span></span>
+<span id="L171"><span class="lineNum">     171</span>              : }</span>
+<span id="L172"><span class="lineNum">     172</span>              : </span>
+<span id="L173"><span class="lineNum">     173</span>              : static BoxProperties *mobilenet = nullptr;</span>
+<span id="L174"><span class="lineNum">     174</span>              : </span>
+<span id="L175"><span class="lineNum">     175</span>              : #ifdef __cplusplus</span>
+<span id="L176"><span class="lineNum">     176</span>              : extern &quot;C&quot; {</span>
+<span id="L177"><span class="lineNum">     177</span>              : #endif /* __cplusplus */</span>
+<span id="L178"><span class="lineNum">     178</span>              : void init_properties_mobilenetssd (void) __attribute__ ((constructor));</span>
+<span id="L179"><span class="lineNum">     179</span>              : void fini_properties_mobilenetssd (void) __attribute__ ((destructor));</span>
+<span id="L180"><span class="lineNum">     180</span>              : #ifdef __cplusplus</span>
+<span id="L181"><span class="lineNum">     181</span>              : }</span>
+<span id="L182"><span class="lineNum">     182</span>              : #endif /* __cplusplus */</span>
+<span id="L183"><span class="lineNum">     183</span>              : </span>
+<span id="L184"><span class="lineNum">     184</span>              : /** @brief Constructor of MobilenetSSD */</span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          33 : MobilenetSSD::MobilenetSSD ()</span></span>
+<span id="L186"><span class="lineNum">     186</span>              : {</span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          33 :   params[THRESHOLD_IDX] = DETECTION_THRESHOLD_DEFAULT;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          33 :   params[Y_SCALE_IDX] = Y_SCALE_DEFAULT;</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          33 :   params[X_SCALE_IDX] = X_SCALE_DEFAULT;</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          33 :   params[H_SCALE_IDX] = H_SCALE_DEFAULT;</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          33 :   params[W_SCALE_IDX] = W_SCALE_DEFAULT;</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          33 :   params[IOU_THRESHOLD_IDX] = THRESHOLD_IOU_DEFAULT;</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          33 :   sigmoid_threshold = logit (DETECTION_THRESHOLD_DEFAULT);</span></span>
+<span id="L194"><span class="lineNum">     194</span>              : </span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          33 :   max_detection = 0;</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          33 :   total_labels = 0;</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          33 :   box_prior_path = nullptr;</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          33 :   name = g_strdup_printf (&quot;mobilenet-ssd&quot;);</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L200"><span class="lineNum">     200</span>              : </span>
+<span id="L201"><span class="lineNum">     201</span>              : /** @brief Destructor of MobilenetSSD */</span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          66 : MobilenetSSD::~MobilenetSSD ()</span></span>
+<span id="L203"><span class="lineNum">     203</span>              : {</span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          33 :   g_free (name);</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">          66 : }</span></span>
+<span id="L206"><span class="lineNum">     206</span>              : </span>
+<span id="L207"><span class="lineNum">     207</span>              : /**</span>
+<span id="L208"><span class="lineNum">     208</span>              :  * @brief Load box-prior data from a file</span>
+<span id="L209"><span class="lineNum">     209</span>              :  * @param[in/out] bdata The internal data.</span>
+<span id="L210"><span class="lineNum">     210</span>              :  * @return TRUE if loaded and configured. FALSE if failed to do so.</span>
+<span id="L211"><span class="lineNum">     211</span>              :  */</span>
+<span id="L212"><span class="lineNum">     212</span>              : int</span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           4 : MobilenetSSD::mobilenet_ssd_loadBoxPrior ()</span></span>
+<span id="L214"><span class="lineNum">     214</span>              : {</span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">           4 :   gboolean failed = FALSE;</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           4 :   GError *err = NULL;</span></span>
+<span id="L217"><span class="lineNum">     217</span>              :   gchar **priors;</span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           4 :   gchar *line = NULL;</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           4 :   gchar *contents = NULL;</span></span>
+<span id="L220"><span class="lineNum">     220</span>              :   guint row;</span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           4 :   gint prev_reg = -1;</span></span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC tlaBgGNC">           4 :   priors = g_strsplit (contents, &quot;\n&quot;, -1);</span></span>
-<span id="L224"><span class="lineNum">     224</span>              :   /* If given prior file is inappropriate, report back to tensor-decoder */</span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           4 :   if (g_strv_length (priors) &lt; BOX_SIZE) {</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;The given prior file, %s, should have at least %d lines.\n&quot;,</span></span>
-<span id="L227"><span class="lineNum">     227</span>              :         box_prior_path, BOX_SIZE);</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :     failed = TRUE;</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaUNC">           0 :     goto error;</span></span>
-<span id="L230"><span class="lineNum">     230</span>              :   }</span>
-<span id="L231"><span class="lineNum">     231</span>              : </span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC tlaBgGNC">          20 :   for (row = 0; row &lt; BOX_SIZE; row++) {</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          16 :     gint column = 0, registered = 0;</span></span>
-<span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">          16 :     line = priors[row];</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          16 :     if (line) {</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          16 :       gchar **list = g_strsplit_set (line, &quot; \t,&quot;, -1);</span></span>
-<span id="L238"><span class="lineNum">     238</span>              :       gchar *word;</span>
+<span id="L223"><span class="lineNum">     223</span>              :   /* Read file contents */</span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           4 :   if (!g_file_get_contents (box_prior_path, &amp;contents, NULL, &amp;err)) {</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Decoder/Bound-Box/SSD's box prior file %s cannot be read: %s&quot;,</span></span>
+<span id="L226"><span class="lineNum">     226</span>              :         box_prior_path, err-&gt;message);</span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaUNC">           0 :     g_clear_error (&amp;err);</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L229"><span class="lineNum">     229</span>              :   }</span>
+<span id="L230"><span class="lineNum">     230</span>              : </span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC tlaBgGNC">           4 :   priors = g_strsplit (contents, &quot;\n&quot;, -1);</span></span>
+<span id="L232"><span class="lineNum">     232</span>              :   /* If given prior file is inappropriate, report back to tensor-decoder */</span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           4 :   if (g_strv_length (priors) &lt; BOX_SIZE) {</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;The given prior file, %s, should have at least %d lines.\n&quot;,</span></span>
+<span id="L235"><span class="lineNum">     235</span>              :         box_prior_path, BOX_SIZE);</span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :     failed = TRUE;</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :     goto error;</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :   }</span>
 <span id="L239"><span class="lineNum">     239</span>              : </span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">       30832 :       while ((word = list[column]) != NULL) {</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">       30816 :         column++;</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC tlaBgGNC">          20 :   for (row = 0; row &lt; BOX_SIZE; row++) {</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          16 :     gint column = 0, registered = 0;</span></span>
 <span id="L242"><span class="lineNum">     242</span>              : </span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">       30816 :         if (word &amp;&amp; *word) {</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">       30672 :           if (registered &gt; DETECTION_MAX) {</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC tlaBgUNC">           0 :             GST_WARNING (&quot;Decoder/Bound-Box/SSD's box prior data file has too many priors. %d &gt;= %d&quot;,</span></span>
-<span id="L246"><span class="lineNum">     246</span>              :                 registered, DETECTION_MAX);</span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :             break;</span></span>
-<span id="L248"><span class="lineNum">     248</span>              :           }</span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC tlaBgGNC">       30672 :           box_priors[row][registered] = (gfloat) g_ascii_strtod (word, NULL);</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">       30672 :           registered++;</span></span>
-<span id="L251"><span class="lineNum">     251</span>              :         }</span>
-<span id="L252"><span class="lineNum">     252</span>              :       }</span>
-<span id="L253"><span class="lineNum">     253</span>              : </span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          16 :       g_strfreev (list);</span></span>
-<span id="L255"><span class="lineNum">     255</span>              :     }</span>
-<span id="L256"><span class="lineNum">     256</span>              : </span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          16 :     if (prev_reg != -1 &amp;&amp; prev_reg != registered) {</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_ERROR (&quot;Decoder/Bound-Box/SSD's box prior data file is not consistent.&quot;);</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :       failed = TRUE;</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L261"><span class="lineNum">     261</span>              :     }</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC tlaBgGNC">          16 :     prev_reg = registered;</span></span>
-<span id="L263"><span class="lineNum">     263</span>              :   }</span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          16 :     line = priors[row];</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          16 :     if (line) {</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          16 :       gchar **list = g_strsplit_set (line, &quot; \t,&quot;, -1);</span></span>
+<span id="L246"><span class="lineNum">     246</span>              :       gchar *word;</span>
+<span id="L247"><span class="lineNum">     247</span>              : </span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">       30832 :       while ((word = list[column]) != NULL) {</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">       30816 :         column++;</span></span>
+<span id="L250"><span class="lineNum">     250</span>              : </span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">       30816 :         if (word &amp;&amp; *word) {</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">       30672 :           if (registered &gt; DETECTION_MAX) {</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC tlaBgUNC">           0 :             GST_WARNING (&quot;Decoder/Bound-Box/SSD's box prior data file has too many priors. %d &gt;= %d&quot;,</span></span>
+<span id="L254"><span class="lineNum">     254</span>              :                 registered, DETECTION_MAX);</span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :             break;</span></span>
+<span id="L256"><span class="lineNum">     256</span>              :           }</span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC tlaBgGNC">       30672 :           box_priors[row][registered] = (gfloat) g_ascii_strtod (word, NULL);</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">       30672 :           registered++;</span></span>
+<span id="L259"><span class="lineNum">     259</span>              :         }</span>
+<span id="L260"><span class="lineNum">     260</span>              :       }</span>
+<span id="L261"><span class="lineNum">     261</span>              : </span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          16 :       g_strfreev (list);</span></span>
+<span id="L263"><span class="lineNum">     263</span>              :     }</span>
 <span id="L264"><span class="lineNum">     264</span>              : </span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           4 : error:</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           4 :   g_strfreev (priors);</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           4 :   g_free (contents);</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           4 :   return !failed;</span></span>
-<span id="L269"><span class="lineNum">     269</span>              : }</span>
-<span id="L270"><span class="lineNum">     270</span>              : </span>
-<span id="L271"><span class="lineNum">     271</span>              : /** @brief Set internal option of MobilenetSSD</span>
-<span id="L272"><span class="lineNum">     272</span>              :  *  @param[in] param The option string.</span>
-<span id="L273"><span class="lineNum">     273</span>              :  */</span>
-<span id="L274"><span class="lineNum">     274</span>              : int</span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           4 : MobilenetSSD::setOptionInternal (const char *param)</span></span>
-<span id="L276"><span class="lineNum">     276</span>              : {</span>
-<span id="L277"><span class="lineNum">     277</span>              :   gchar **options;</span>
-<span id="L278"><span class="lineNum">     278</span>              :   int noptions, idx;</span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           4 :   int ret = 1;</span></span>
-<span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           4 :   options = g_strsplit (param, &quot;:&quot;, -1);</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           4 :   noptions = g_strv_length (options);</span></span>
-<span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           4 :   if (noptions &gt; (PARAMS_MAX + 1))</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaUNC tlaBgUNC">           0 :     noptions = PARAMS_MAX + 1;</span></span>
-<span id="L286"><span class="lineNum">     286</span>              : </span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC tlaBgGNC">           4 :   if (box_prior_path) {</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC tlaBgUNC">           0 :     g_free (box_prior_path);</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC">           0 :     box_prior_path = nullptr;</span></span>
-<span id="L290"><span class="lineNum">     290</span>              :   }</span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          16 :     if (prev_reg != -1 &amp;&amp; prev_reg != registered) {</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_ERROR (&quot;Decoder/Bound-Box/SSD's box prior data file is not consistent.&quot;);</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC">           0 :       failed = TRUE;</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L269"><span class="lineNum">     269</span>              :     }</span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC tlaBgGNC">          16 :     prev_reg = registered;</span></span>
+<span id="L271"><span class="lineNum">     271</span>              :   }</span>
+<span id="L272"><span class="lineNum">     272</span>              : </span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           4 : error:</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           4 :   g_strfreev (priors);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           4 :   g_free (contents);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">           4 :   return !failed;</span></span>
+<span id="L277"><span class="lineNum">     277</span>              : }</span>
+<span id="L278"><span class="lineNum">     278</span>              : </span>
+<span id="L279"><span class="lineNum">     279</span>              : /** @brief Set internal option of MobilenetSSD</span>
+<span id="L280"><span class="lineNum">     280</span>              :  *  @param[in] param The option string.</span>
+<span id="L281"><span class="lineNum">     281</span>              :  */</span>
+<span id="L282"><span class="lineNum">     282</span>              : int</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           4 : MobilenetSSD::setOptionInternal (const char *param)</span></span>
+<span id="L284"><span class="lineNum">     284</span>              : {</span>
+<span id="L285"><span class="lineNum">     285</span>              :   gchar **options;</span>
+<span id="L286"><span class="lineNum">     286</span>              :   int noptions, idx;</span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           4 :   int ret = 1;</span></span>
+<span id="L288"><span class="lineNum">     288</span>              : </span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">           4 :   options = g_strsplit (param, &quot;:&quot;, -1);</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           4 :   noptions = g_strv_length (options);</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC tlaBgGNC">           4 :   box_prior_path = g_strdup (options[0]);</span></span>
-<span id="L293"><span class="lineNum">     293</span>              : </span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           4 :   if (NULL != box_prior_path) {</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           4 :     ret = mobilenet_ssd_loadBoxPrior ();</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           4 :     if (ret == 0)</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC tlaBgUNC">           0 :       goto exit_mobilenet_ssd;</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           4 :   if (noptions &gt; (PARAMS_MAX + 1))</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaUNC tlaBgUNC">           0 :     noptions = PARAMS_MAX + 1;</span></span>
+<span id="L294"><span class="lineNum">     294</span>              : </span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC tlaBgGNC">           4 :   if (box_prior_path) {</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaUNC tlaBgUNC">           0 :     g_free (box_prior_path);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :     box_prior_path = nullptr;</span></span>
 <span id="L298"><span class="lineNum">     298</span>              :   }</span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC tlaBgGNC">           4 :   for (idx = 1; idx &lt; noptions; idx++) {</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC tlaBgUNC">           0 :     if (strlen (options[idx]) == 0)</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :       continue;</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :     params[idx - 1] = strtod (options[idx], NULL);</span></span>
-<span id="L304"><span class="lineNum">     304</span>              :   }</span>
-<span id="L305"><span class="lineNum">     305</span>              : </span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC tlaBgGNC">           4 :   sigmoid_threshold = logit (params[THRESHOLD_IDX]);</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC tlaBgGNC">           4 :   box_prior_path = g_strdup (options[0]);</span></span>
+<span id="L301"><span class="lineNum">     301</span>              : </span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">           4 :   if (NULL != box_prior_path) {</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           4 :     ret = mobilenet_ssd_loadBoxPrior ();</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">           4 :     if (ret == 0)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC tlaBgUNC">           0 :       goto exit_mobilenet_ssd;</span></span>
+<span id="L306"><span class="lineNum">     306</span>              :   }</span>
 <span id="L307"><span class="lineNum">     307</span>              : </span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           4 :   return TRUE;</span></span>
-<span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC tlaBgUNC">           0 : exit_mobilenet_ssd:</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :   g_strfreev (options);</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :   return ret;</span></span>
-<span id="L313"><span class="lineNum">     313</span>              : }</span>
-<span id="L314"><span class="lineNum">     314</span>              : </span>
-<span id="L315"><span class="lineNum">     315</span>              : /** @brief Check compatibility of given tensors config</span>
-<span id="L316"><span class="lineNum">     316</span>              :  *  @param[in] config The tensors config to check compatibility</span>
-<span id="L317"><span class="lineNum">     317</span>              :  */</span>
-<span id="L318"><span class="lineNum">     318</span>              : int</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC tlaBgGNC">          36 : MobilenetSSD::checkCompatible (const GstTensorsConfig *config)</span></span>
-<span id="L320"><span class="lineNum">     320</span>              : {</span>
-<span id="L321"><span class="lineNum">     321</span>              :   const uint32_t *dim1, *dim2;</span>
-<span id="L322"><span class="lineNum">     322</span>              :   int i;</span>
-<span id="L323"><span class="lineNum">     323</span>              :   guint max_label;</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          36 :   GstTensorInfo *info = nullptr;</span></span>
-<span id="L325"><span class="lineNum">     325</span>              : </span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          36 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          20 :     return FALSE;</span></span>
-<span id="L328"><span class="lineNum">     328</span>              : </span>
-<span id="L329"><span class="lineNum">     329</span>              :   /* Check if the first tensor is compatible */</span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          16 :   dim1 = info-&gt;dimension;</span></span>
-<span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[0] == BOX_SIZE, FALSE);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[1] == 1, FALSE);</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[2] &gt; 0, FALSE);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC tlaBgGNC">           4 :   for (idx = 1; idx &lt; noptions; idx++) {</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC tlaBgUNC">           0 :     if (strlen (options[idx]) == 0)</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :       continue;</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :     params[idx - 1] = strtod (options[idx], NULL);</span></span>
+<span id="L312"><span class="lineNum">     312</span>              :   }</span>
+<span id="L313"><span class="lineNum">     313</span>              : </span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">           4 :   sigmoid_threshold = logit (params[THRESHOLD_IDX]);</span></span>
+<span id="L315"><span class="lineNum">     315</span>              : </span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">           4 :   return TRUE;</span></span>
+<span id="L317"><span class="lineNum">     317</span>              : </span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC tlaBgUNC">           0 : exit_mobilenet_ssd:</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :   g_strfreev (options);</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :   return ret;</span></span>
+<span id="L321"><span class="lineNum">     321</span>              : }</span>
+<span id="L322"><span class="lineNum">     322</span>              : </span>
+<span id="L323"><span class="lineNum">     323</span>              : /** @brief Check compatibility of given tensors config</span>
+<span id="L324"><span class="lineNum">     324</span>              :  *  @param[in] config The tensors config to check compatibility</span>
+<span id="L325"><span class="lineNum">     325</span>              :  */</span>
+<span id="L326"><span class="lineNum">     326</span>              : int</span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC tlaBgGNC">          36 : MobilenetSSD::checkCompatible (const GstTensorsConfig *config)</span></span>
+<span id="L328"><span class="lineNum">     328</span>              : {</span>
+<span id="L329"><span class="lineNum">     329</span>              :   const uint32_t *dim1, *dim2;</span>
+<span id="L330"><span class="lineNum">     330</span>              :   int i;</span>
+<span id="L331"><span class="lineNum">     331</span>              :   guint max_label;</span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          36 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L333"><span class="lineNum">     333</span>              : </span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          36 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          20 :     return FALSE;</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span>              :   /** @todo unused dimension value should be 0 */</span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         224 :   for (i = 3; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         208 :     g_return_val_if_fail (dim1[i] == 0 || dim1[i] == 1, FALSE);</span></span>
+<span id="L337"><span class="lineNum">     337</span>              :   /* Check if the first tensor is compatible */</span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          16 :   dim1 = info-&gt;dimension;</span></span>
 <span id="L340"><span class="lineNum">     340</span>              : </span>
-<span id="L341"><span class="lineNum">     341</span>              :   /* Check if the second tensor is compatible */</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 1);</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">          16 :   dim2 = info-&gt;dimension;</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[0] == BOX_SIZE, FALSE);</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[1] == 1, FALSE);</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[2] &gt; 0, FALSE);</span></span>
 <span id="L344"><span class="lineNum">     344</span>              : </span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          16 :   max_label = dim2[0];</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (max_label &lt;= total_labels, FALSE);</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          16 :   if (max_label &lt; total_labels)</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING (&quot;The given tensor (2nd) has max_label (first dimension: %u) smaller than the number of labels in labels file (%u).&quot;,</span></span>
-<span id="L349"><span class="lineNum">     349</span>              :         max_label, total_labels);</span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">          16 :   g_return_val_if_fail (dim1[2] == dim2[1], FALSE);</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         240 :   for (i = 2; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         224 :     g_return_val_if_fail (dim2[i] == 0 || dim2[i] == 1, FALSE);</span></span>
-<span id="L353"><span class="lineNum">     353</span>              : </span>
-<span id="L354"><span class="lineNum">     354</span>              :   /* Check consistency with max_detection */</span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          16 :   if (max_detection != 0 &amp;&amp; max_detection != dim1[2]) {</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to check consistency with max_detection&quot;);</span></span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L358"><span class="lineNum">     358</span>              :   } else {</span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC tlaBgGNC">          16 :     max_detection = dim1[2];</span></span>
-<span id="L360"><span class="lineNum">     360</span>              :   }</span>
+<span id="L345"><span class="lineNum">     345</span>              :   /** @todo unused dimension value should be 0 */</span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         224 :   for (i = 3; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         208 :     g_return_val_if_fail (dim1[i] == 0 || dim1[i] == 1, FALSE);</span></span>
+<span id="L348"><span class="lineNum">     348</span>              : </span>
+<span id="L349"><span class="lineNum">     349</span>              :   /* Check if the second tensor is compatible */</span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 1);</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          16 :   dim2 = info-&gt;dimension;</span></span>
+<span id="L352"><span class="lineNum">     352</span>              : </span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          16 :   max_label = dim2[0];</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (max_label &lt;= total_labels, FALSE);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          16 :   if (max_label &lt; total_labels)</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING (&quot;The given tensor (2nd) has max_label (first dimension: %u) smaller than the number of labels in labels file (%u).&quot;,</span></span>
+<span id="L357"><span class="lineNum">     357</span>              :         max_label, total_labels);</span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC tlaBgGNC">          16 :   g_return_val_if_fail (dim1[2] == dim2[1], FALSE);</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         240 :   for (i = 2; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         224 :     g_return_val_if_fail (dim2[i] == 0 || dim2[i] == 1, FALSE);</span></span>
 <span id="L361"><span class="lineNum">     361</span>              : </span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          16 :   if (max_detection &gt; DETECTION_MAX) {</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Incoming tensor has too large detection-max : %u&quot;, max_detection);</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L365"><span class="lineNum">     365</span>              :   }</span>
-<span id="L366"><span class="lineNum">     366</span>              : </span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC tlaBgGNC">          16 :   return TRUE;</span></span>
-<span id="L368"><span class="lineNum">     368</span>              : }</span>
+<span id="L362"><span class="lineNum">     362</span>              :   /* Check consistency with max_detection */</span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          16 :   if (max_detection != 0 &amp;&amp; max_detection != dim1[2]) {</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to check consistency with max_detection&quot;);</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L366"><span class="lineNum">     366</span>              :   } else {</span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC tlaBgGNC">          16 :     max_detection = dim1[2];</span></span>
+<span id="L368"><span class="lineNum">     368</span>              :   }</span>
 <span id="L369"><span class="lineNum">     369</span>              : </span>
-<span id="L370"><span class="lineNum">     370</span>              : /**</span>
-<span id="L371"><span class="lineNum">     371</span>              :  * @brief Decode input memory to out buffer</span>
-<span id="L372"><span class="lineNum">     372</span>              :  * @param[in] config The structure of input tensor info.</span>
-<span id="L373"><span class="lineNum">     373</span>              :  * @param[in] input The array of input tensor data. The maximum array size of input data is NNS_TENSOR_SIZE_LIMIT.</span>
-<span id="L374"><span class="lineNum">     374</span>              :  */</span>
-<span id="L375"><span class="lineNum">     375</span>              : GArray *</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">           8 : MobilenetSSD::decode (const GstTensorsConfig *config, const GstTensorMemory *input)</span></span>
-<span id="L377"><span class="lineNum">     377</span>              : {</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">           8 :   const GstTensorMemory *boxes, *detections = NULL;</span></span>
-<span id="L379"><span class="lineNum">     379</span>              :   GArray *results;</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">           8 :   const guint num_tensors = config-&gt;info.num_tensors;</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">           8 :   GstTensorInfo *info = nullptr;</span></span>
-<span id="L382"><span class="lineNum">     382</span>              : </span>
-<span id="L383"><span class="lineNum">     383</span>              :   /**</span>
-<span id="L384"><span class="lineNum">     384</span>              :    * @todo 100 is a heuristic number of objects in a picture frame</span>
-<span id="L385"><span class="lineNum">     385</span>              :    *       We may have better &quot;heuristics&quot; than this.</span>
-<span id="L386"><span class="lineNum">     386</span>              :    *       For the sake of performance, don't make it too small.</span>
-<span id="L387"><span class="lineNum">     387</span>              :    */</span>
-<span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span>              :   /* Already checked with getOutCaps. Thus, this is an internal bug */</span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">           8 :   g_assert (num_tensors &gt;= MAX_TENSORS);</span></span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">           8 :   results = g_array_sized_new (FALSE, TRUE, sizeof (detectedObject), 100);</span></span>
-<span id="L392"><span class="lineNum">     392</span>              : </span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">           8 :   boxes = &amp;input[0];</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">           8 :   detections = &amp;input[1];</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">           8 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          16 :   if (max_detection &gt; DETECTION_MAX) {</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Incoming tensor has too large detection-max : %u&quot;, max_detection);</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L373"><span class="lineNum">     373</span>              :   }</span>
+<span id="L374"><span class="lineNum">     374</span>              : </span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC tlaBgGNC">          16 :   return TRUE;</span></span>
+<span id="L376"><span class="lineNum">     376</span>              : }</span>
+<span id="L377"><span class="lineNum">     377</span>              : </span>
+<span id="L378"><span class="lineNum">     378</span>              : /**</span>
+<span id="L379"><span class="lineNum">     379</span>              :  * @brief Decode input memory to out buffer</span>
+<span id="L380"><span class="lineNum">     380</span>              :  * @param[in] config The structure of input tensor info.</span>
+<span id="L381"><span class="lineNum">     381</span>              :  * @param[in] input The array of input tensor data. The maximum array size of input data is NNS_TENSOR_SIZE_LIMIT.</span>
+<span id="L382"><span class="lineNum">     382</span>              :  */</span>
+<span id="L383"><span class="lineNum">     383</span>              : GArray *</span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">           8 : MobilenetSSD::decode (const GstTensorsConfig *config, const GstTensorMemory *input)</span></span>
+<span id="L385"><span class="lineNum">     385</span>              : {</span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">           8 :   const GstTensorMemory *boxes, *detections = NULL;</span></span>
+<span id="L387"><span class="lineNum">     387</span>              :   GArray *results;</span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">           8 :   const guint num_tensors = config-&gt;info.num_tensors;</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">           8 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L390"><span class="lineNum">     390</span>              : </span>
+<span id="L391"><span class="lineNum">     391</span>              :   /**</span>
+<span id="L392"><span class="lineNum">     392</span>              :    * @todo 100 is a heuristic number of objects in a picture frame</span>
+<span id="L393"><span class="lineNum">     393</span>              :    *       We may have better &quot;heuristics&quot; than this.</span>
+<span id="L394"><span class="lineNum">     394</span>              :    *       For the sake of performance, don't make it too small.</span>
+<span id="L395"><span class="lineNum">     395</span>              :    */</span>
 <span id="L396"><span class="lineNum">     396</span>              : </span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">           8 :   switch (info-&gt;type) {</span></span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mobilenet_ssd_ (uint8_t, _NNS_UINT8);</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int8_t, _NNS_INT8);</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint16_t, _NNS_UINT16);</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int16_t, _NNS_INT16);</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint32_t, _NNS_UINT32);</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int32_t, _NNS_INT32);</span></span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint64_t, _NNS_UINT64);</span></span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int64_t, _NNS_INT64);</span></span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC tlaBgGNC">     1395584 :     _get_objects_mobilenet_ssd_ (float, _NNS_FLOAT32);</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mobilenet_ssd_ (double, _NNS_FLOAT64);</span></span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaUNC">           0 :     default:</span></span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaUNC">           0 :       g_assert (0);</span></span>
-<span id="L410"><span class="lineNum">     410</span>              :   }</span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC tlaBgGNC">           8 :   nms (results, params[IOU_THRESHOLD_IDX]);</span></span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">           8 :   return results;</span></span>
-<span id="L413"><span class="lineNum">     413</span>              : }</span>
-<span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span>              : /** @brief Initialize this object for tensor decoder bounding box */</span>
-<span id="L416"><span class="lineNum">     416</span>              : void</span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">          33 : init_properties_mobilenetssd ()</span></span>
-<span id="L418"><span class="lineNum">     418</span>              : {</span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          33 :   mobilenet = new MobilenetSSD ();</span></span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">          33 :   BoundingBox::addProperties (mobilenet);</span></span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L397"><span class="lineNum">     397</span>              :   /* Already checked with getOutCaps. Thus, this is an internal bug */</span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">           8 :   g_assert (num_tensors &gt;= MAX_TENSORS);</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">           8 :   results = g_array_sized_new (FALSE, TRUE, sizeof (detectedObject), 100);</span></span>
+<span id="L400"><span class="lineNum">     400</span>              : </span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">           8 :   boxes = &amp;input[0];</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">           8 :   detections = &amp;input[1];</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">           8 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L404"><span class="lineNum">     404</span>              : </span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">           8 :   switch (info-&gt;type) {</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mobilenet_ssd_ (uint8_t, _NNS_UINT8);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int8_t, _NNS_INT8);</span></span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint16_t, _NNS_UINT16);</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int16_t, _NNS_INT16);</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint32_t, _NNS_UINT32);</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int32_t, _NNS_INT32);</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (uint64_t, _NNS_UINT64);</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaUNC">           0 :     _get_objects_mobilenet_ssd_ (int64_t, _NNS_INT64);</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC tlaBgGNC">     1395584 :     _get_objects_mobilenet_ssd_ (float, _NNS_FLOAT32);</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mobilenet_ssd_ (double, _NNS_FLOAT64);</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaUNC">           0 :       g_assert (0);</span></span>
+<span id="L418"><span class="lineNum">     418</span>              :   }</span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC tlaBgGNC">           8 :   nms (results, params[IOU_THRESHOLD_IDX], MOBILENET_SSD_BOUNDING_BOX);</span></span>
+<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">           8 :   return results;</span></span>
+<span id="L421"><span class="lineNum">     421</span>              : }</span>
 <span id="L422"><span class="lineNum">     422</span>              : </span>
-<span id="L423"><span class="lineNum">     423</span>              : /** @brief Destruct this object for tensor decoder bounding box */</span>
+<span id="L423"><span class="lineNum">     423</span>              : /** @brief Initialize this object for tensor decoder bounding box */</span>
 <span id="L424"><span class="lineNum">     424</span>              : void</span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          33 : fini_properties_mobilenetssd ()</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          33 : init_properties_mobilenetssd ()</span></span>
 <span id="L426"><span class="lineNum">     426</span>              : {</span>
-<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          33 :   delete mobilenet;</span></span>
-<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          33 :   mobilenet = new MobilenetSSD ();</span></span>
+<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          33 :   BoundingBox::addProperties (mobilenet);</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L430"><span class="lineNum">     430</span>              : </span>
+<span id="L431"><span class="lineNum">     431</span>              : /** @brief Destruct this object for tensor decoder bounding box */</span>
+<span id="L432"><span class="lineNum">     432</span>              : void</span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">          33 : fini_properties_mobilenetssd ()</span></span>
+<span id="L434"><span class="lineNum">     434</span>              : {</span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">          33 :   delete mobilenet;</span></span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">          33 : }</span></span>
         </pre>
               </td>
             </tr>
