@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#eba2cbed9702a44dbaf42fe53368e72c419751a0 - capi-machine-learning-inference-1.8.6/c/src/ml-api-common.c</title>
+  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#48ca203121742beeae4e812d81565013cd585491 - capi-machine-learning-inference-1.8.6/c/src/ml-api-common.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#eba2cbed9702a44dbaf42fe53368e72c419751a0</td>
+            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#48ca203121742beeae4e812d81565013cd585491</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">88.1&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-06 05:22:32</td>
+            <td class="headerValue">2025-01-07 05:18:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -184,61 +184,61 @@
 <span id="L122"><span class="lineNum">     122</span>              :  * @brief Internal function to create tensors-info handle.</span>
 <span id="L123"><span class="lineNum">     123</span>              :  */</span>
 <span id="L124"><span class="lineNum">     124</span>              : static int</span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">       20807 : _ml_tensors_info_create_internal (ml_tensors_info_h * info, bool extended)</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">       20802 : _ml_tensors_info_create_internal (ml_tensors_info_h * info, bool extended)</span></span>
 <span id="L126"><span class="lineNum">     126</span>              : {</span>
 <span id="L127"><span class="lineNum">     127</span>              :   ml_tensors_info_s *tensors_info;</span>
 <span id="L128"><span class="lineNum">     128</span>              : </span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">       20807 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">       20802 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L130"><span class="lineNum">     130</span>              : </span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       20807 :   if (!info)</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       20802 :   if (!info)</span></span>
 <span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">           2 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L133"><span class="lineNum">     133</span>              :         &quot;The parameter, info, is NULL. Provide a valid pointer.&quot;);</span>
 <span id="L134"><span class="lineNum">     134</span>              : </span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       20805 :   *info = tensors_info = g_new0 (ml_tensors_info_s, 1);</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">       20805 :   if (tensors_info == NULL)</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       20800 :   *info = tensors_info = g_new0 (ml_tensors_info_s, 1);</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">       20800 :   if (tensors_info == NULL)</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_OUT_OF_MEMORY,</span></span>
 <span id="L138"><span class="lineNum">     138</span>              :         &quot;Failed to allocate the tensors info handle. Out of memory?&quot;);</span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC tlaBgGNC">       20805 :   g_mutex_init (&amp;tensors_info-&gt;lock);</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">       20805 :   tensors_info-&gt;is_extended = extended;</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC tlaBgGNC">       20800 :   g_mutex_init (&amp;tensors_info-&gt;lock);</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">       20800 :   tensors_info-&gt;is_extended = extended;</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              :   /* init tensors info struct */</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">       20805 :   return _ml_tensors_info_initialize (tensors_info);</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">       20800 :   return _ml_tensors_info_initialize (tensors_info);</span></span>
 <span id="L145"><span class="lineNum">     145</span>              : }</span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
 <span id="L147"><span class="lineNum">     147</span>              : /**</span>
 <span id="L148"><span class="lineNum">     148</span>              :  * @brief Creates new tensors-info handle and copies tensors information.</span>
 <span id="L149"><span class="lineNum">     149</span>              :  */</span>
 <span id="L150"><span class="lineNum">     150</span>              : int</span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">        7050 : _ml_tensors_info_create_from (const ml_tensors_info_h in,</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">        7048 : _ml_tensors_info_create_from (const ml_tensors_info_h in,</span></span>
 <span id="L152"><span class="lineNum">     152</span>              :     ml_tensors_info_h * out)</span>
 <span id="L153"><span class="lineNum">     153</span>              : {</span>
 <span id="L154"><span class="lineNum">     154</span>              :   ml_tensors_info_s *_info;</span>
 <span id="L155"><span class="lineNum">     155</span>              :   int status;</span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">        7050 :   if (!in || !out)</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">        7048 :   if (!in || !out)</span></span>
 <span id="L158"><span class="lineNum">     158</span> <span class="tlaUNC tlaBgUNC">           0 :     return ML_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC tlaBgGNC">        7050 :   _info = (ml_tensors_info_s *) in;</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC tlaBgGNC">        7048 :   _info = (ml_tensors_info_s *) in;</span></span>
 <span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">        7050 :   if (_info-&gt;is_extended)</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">        7048 :   if (_info-&gt;is_extended)</span></span>
 <span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           7 :     status = ml_tensors_info_create_extended (out);</span></span>
 <span id="L164"><span class="lineNum">     164</span>              :   else</span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">        7043 :     status = ml_tensors_info_create (out);</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">        7041 :     status = ml_tensors_info_create (out);</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : </span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">        7050 :   if (status == ML_ERROR_NONE)</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">        7050 :     status = ml_tensors_info_clone (*out, in);</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">        7048 :   if (status == ML_ERROR_NONE)</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">        7048 :     status = ml_tensors_info_clone (*out, in);</span></span>
 <span id="L169"><span class="lineNum">     169</span>              : </span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">        7050 :   return status;</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">        7048 :   return status;</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : }</span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
 <span id="L173"><span class="lineNum">     173</span>              : /**</span>
 <span id="L174"><span class="lineNum">     174</span>              :  * @brief Allocates a tensors information handle with default value.</span>
 <span id="L175"><span class="lineNum">     175</span>              :  */</span>
 <span id="L176"><span class="lineNum">     176</span>              : int</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">       20772 : ml_tensors_info_create (ml_tensors_info_h * info)</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">       20767 : ml_tensors_info_create (ml_tensors_info_h * info)</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : {</span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">       20772 :   return _ml_tensors_info_create_internal (info, false);</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">       20767 :   return _ml_tensors_info_create_internal (info, false);</span></span>
 <span id="L180"><span class="lineNum">     180</span>              : }</span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
 <span id="L182"><span class="lineNum">     182</span>              : /**</span>
@@ -254,53 +254,53 @@
 <span id="L192"><span class="lineNum">     192</span>              :  * @brief Frees the given handle of a tensors information.</span>
 <span id="L193"><span class="lineNum">     193</span>              :  */</span>
 <span id="L194"><span class="lineNum">     194</span>              : int</span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">       20758 : ml_tensors_info_destroy (ml_tensors_info_h info)</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">       20751 : ml_tensors_info_destroy (ml_tensors_info_h info)</span></span>
 <span id="L196"><span class="lineNum">     196</span>              : {</span>
 <span id="L197"><span class="lineNum">     197</span>              :   ml_tensors_info_s *tensors_info;</span>
 <span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       20758 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       20751 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L200"><span class="lineNum">     200</span>              : </span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">       20758 :   tensors_info = (ml_tensors_info_s *) info;</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">       20751 :   tensors_info = (ml_tensors_info_s *) info;</span></span>
 <span id="L202"><span class="lineNum">     202</span>              : </span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">       20758 :   if (!tensors_info)</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">       20751 :   if (!tensors_info)</span></span>
 <span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L205"><span class="lineNum">     205</span>              :         &quot;The parameter, info, is NULL. Provide a valid pointer.&quot;);</span>
 <span id="L206"><span class="lineNum">     206</span>              : </span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">       20757 :   G_LOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">       20757 :   _ml_tensors_info_free (tensors_info);</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">       20757 :   G_UNLOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">       20750 :   G_LOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">       20750 :   _ml_tensors_info_free (tensors_info);</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">       20750 :   G_UNLOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
 <span id="L210"><span class="lineNum">     210</span>              : </span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">       20757 :   g_mutex_clear (&amp;tensors_info-&gt;lock);</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">       20757 :   g_free (tensors_info);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">       20750 :   g_mutex_clear (&amp;tensors_info-&gt;lock);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">       20750 :   g_free (tensors_info);</span></span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">       20757 :   return ML_ERROR_NONE;</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">       20750 :   return ML_ERROR_NONE;</span></span>
 <span id="L215"><span class="lineNum">     215</span>              : }</span>
 <span id="L216"><span class="lineNum">     216</span>              : </span>
 <span id="L217"><span class="lineNum">     217</span>              : /**</span>
 <span id="L218"><span class="lineNum">     218</span>              :  * @brief Validates the given tensors info is valid.</span>
 <span id="L219"><span class="lineNum">     219</span>              :  */</span>
 <span id="L220"><span class="lineNum">     220</span>              : int</span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        6874 : ml_tensors_info_validate (const ml_tensors_info_h info, bool *valid)</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        6872 : ml_tensors_info_validate (const ml_tensors_info_h info, bool *valid)</span></span>
 <span id="L222"><span class="lineNum">     222</span>              : {</span>
 <span id="L223"><span class="lineNum">     223</span>              :   ml_tensors_info_s *tensors_info;</span>
 <span id="L224"><span class="lineNum">     224</span>              : </span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        6874 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        6872 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L226"><span class="lineNum">     226</span>              : </span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        6874 :   if (!valid)</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        6872 :   if (!valid)</span></span>
 <span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L229"><span class="lineNum">     229</span>              :         &quot;The data-return parameter, valid, is NULL. It should be a pointer pre-allocated by the caller.&quot;);</span>
 <span id="L230"><span class="lineNum">     230</span>              : </span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        6873 :   tensors_info = (ml_tensors_info_s *) info;</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        6871 :   tensors_info = (ml_tensors_info_s *) info;</span></span>
 <span id="L232"><span class="lineNum">     232</span>              : </span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        6873 :   if (!tensors_info)</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        6871 :   if (!tensors_info)</span></span>
 <span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           3 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L235"><span class="lineNum">     235</span>              :         &quot;The input parameter, tensors_info, is NULL. It should be a valid ml_tensors_info_h, which is usually created by ml_tensors_info_create().&quot;);</span>
 <span id="L236"><span class="lineNum">     236</span>              : </span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        6870 :   G_LOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        6870 :   *valid = gst_tensors_info_validate (&amp;tensors_info-&gt;info);</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">        6870 :   G_UNLOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        6868 :   G_LOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        6868 :   *valid = gst_tensors_info_validate (&amp;tensors_info-&gt;info);</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">        6868 :   G_UNLOCK_UNLESS_NOLOCK (*tensors_info);</span></span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">        6870 :   return ML_ERROR_NONE;</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">        6868 :   return ML_ERROR_NONE;</span></span>
 <span id="L242"><span class="lineNum">     242</span>              : }</span>
 <span id="L243"><span class="lineNum">     243</span>              : </span>
 <span id="L244"><span class="lineNum">     244</span>              : /**</span>
@@ -711,15 +711,15 @@
 <span id="L649"><span class="lineNum">     649</span>              :  * @brief Initializes the tensors information with default value.</span>
 <span id="L650"><span class="lineNum">     650</span>              :  */</span>
 <span id="L651"><span class="lineNum">     651</span>              : int</span>
-<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">       20806 : _ml_tensors_info_initialize (ml_tensors_info_s * info)</span></span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">       20801 : _ml_tensors_info_initialize (ml_tensors_info_s * info)</span></span>
 <span id="L653"><span class="lineNum">     653</span>              : {</span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">       20806 :   if (!info)</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">       20801 :   if (!info)</span></span>
 <span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L656"><span class="lineNum">     656</span>              :         &quot;The parameter, info, is NULL. Provide a valid pointer.&quot;);</span>
 <span id="L657"><span class="lineNum">     657</span>              : </span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">       20805 :   gst_tensors_info_init (&amp;info-&gt;info);</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">       20800 :   gst_tensors_info_init (&amp;info-&gt;info);</span></span>
 <span id="L659"><span class="lineNum">     659</span>              : </span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">       20805 :   return ML_ERROR_NONE;</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">       20800 :   return ML_ERROR_NONE;</span></span>
 <span id="L661"><span class="lineNum">     661</span>              : }</span>
 <span id="L662"><span class="lineNum">     662</span>              : </span>
 <span id="L663"><span class="lineNum">     663</span>              : /**</span>
@@ -727,12 +727,12 @@
 <span id="L665"><span class="lineNum">     665</span>              :  * @note This does not touch the lock. The caller should lock.</span>
 <span id="L666"><span class="lineNum">     666</span>              :  */</span>
 <span id="L667"><span class="lineNum">     667</span>              : void</span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">       20797 : _ml_tensors_info_free (ml_tensors_info_s * info)</span></span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">       20790 : _ml_tensors_info_free (ml_tensors_info_s * info)</span></span>
 <span id="L669"><span class="lineNum">     669</span>              : {</span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       20797 :   if (!info)</span></span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       20790 :   if (!info)</span></span>
 <span id="L671"><span class="lineNum">     671</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L672"><span class="lineNum">     672</span>              : </span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC tlaBgGNC">       20797 :   gst_tensors_info_free (&amp;info-&gt;info);</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC tlaBgGNC">       20790 :   gst_tensors_info_free (&amp;info-&gt;info);</span></span>
 <span id="L674"><span class="lineNum">     674</span>              : }</span>
 <span id="L675"><span class="lineNum">     675</span>              : </span>
 <span id="L676"><span class="lineNum">     676</span>              : /**</span>
@@ -742,21 +742,21 @@
 <span id="L680"><span class="lineNum">     680</span>              :  * @return @c 0 on success. Otherwise a negative error value.</span>
 <span id="L681"><span class="lineNum">     681</span>              :  */</span>
 <span id="L682"><span class="lineNum">     682</span>              : int</span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">       13634 : _ml_tensors_data_destroy_internal (ml_tensors_data_h data, gboolean free_data)</span></span>
+<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">       13629 : _ml_tensors_data_destroy_internal (ml_tensors_data_h data, gboolean free_data)</span></span>
 <span id="L684"><span class="lineNum">     684</span>              : {</span>
-<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">       13634 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">       13629 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L686"><span class="lineNum">     686</span>              :   ml_tensors_data_s *_data;</span>
 <span id="L687"><span class="lineNum">     687</span>              :   guint i;</span>
 <span id="L688"><span class="lineNum">     688</span>              : </span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">       13634 :   if (data == NULL)</span></span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">       13629 :   if (data == NULL)</span></span>
 <span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">          19 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L691"><span class="lineNum">     691</span>              :         &quot;The parameter, data, is NULL. It should be a valid ml_tensors_data_h handle, which is usually created by ml_tensors_data_create ().&quot;);</span>
 <span id="L692"><span class="lineNum">     692</span>              : </span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">       13615 :   _data = (ml_tensors_data_s *) data;</span></span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">       13615 :   G_LOCK_UNLESS_NOLOCK (*_data);</span></span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">       13610 :   _data = (ml_tensors_data_s *) data;</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">       13610 :   G_LOCK_UNLESS_NOLOCK (*_data);</span></span>
 <span id="L695"><span class="lineNum">     695</span>              : </span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">       13615 :   if (free_data) {</span></span>
-<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">         466 :     if (_data-&gt;destroy) {</span></span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">       13610 :   if (free_data) {</span></span>
+<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">         464 :     if (_data-&gt;destroy) {</span></span>
 <span id="L698"><span class="lineNum">     698</span> <span class="tlaUNC tlaBgUNC">           0 :       status = _data-&gt;destroy (_data, _data-&gt;user_data);</span></span>
 <span id="L699"><span class="lineNum">     699</span> <span class="tlaUNC">           0 :       if (status != ML_ERROR_NONE) {</span></span>
 <span id="L700"><span class="lineNum">     700</span> <span class="tlaUNC">           0 :         G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
@@ -765,22 +765,22 @@
 <span id="L703"><span class="lineNum">     703</span>              :             status);</span>
 <span id="L704"><span class="lineNum">     704</span>              :       }</span>
 <span id="L705"><span class="lineNum">     705</span>              :     } else {</span>
-<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC tlaBgGNC">      119762 :       for (i = 0; i &lt; ML_TENSOR_SIZE_LIMIT; i++) {</span></span>
-<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">      119296 :         if (_data-&gt;tensors[i].data) {</span></span>
-<span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">         690 :           g_free (_data-&gt;tensors[i].data);</span></span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">         690 :           _data-&gt;tensors[i].data = NULL;</span></span>
+<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC tlaBgGNC">      119248 :       for (i = 0; i &lt; ML_TENSOR_SIZE_LIMIT; i++) {</span></span>
+<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">      118784 :         if (_data-&gt;tensors[i].data) {</span></span>
+<span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">         688 :           g_free (_data-&gt;tensors[i].data);</span></span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">         688 :           _data-&gt;tensors[i].data = NULL;</span></span>
 <span id="L710"><span class="lineNum">     710</span>              :         }</span>
 <span id="L711"><span class="lineNum">     711</span>              :       }</span>
 <span id="L712"><span class="lineNum">     712</span>              :     }</span>
 <span id="L713"><span class="lineNum">     713</span>              :   }</span>
 <span id="L714"><span class="lineNum">     714</span>              : </span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">       13615 :   if (_data-&gt;info)</span></span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">       13615 :     ml_tensors_info_destroy (_data-&gt;info);</span></span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">       13610 :   if (_data-&gt;info)</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">       13610 :     ml_tensors_info_destroy (_data-&gt;info);</span></span>
 <span id="L717"><span class="lineNum">     717</span>              : </span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">       13615 :   G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
-<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">       13615 :   g_mutex_clear (&amp;_data-&gt;lock);</span></span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">       13615 :   g_free (_data);</span></span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">       13615 :   return status;</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">       13610 :   G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">       13610 :   g_mutex_clear (&amp;_data-&gt;lock);</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">       13610 :   g_free (_data);</span></span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">       13610 :   return status;</span></span>
 <span id="L722"><span class="lineNum">     722</span>              : }</span>
 <span id="L723"><span class="lineNum">     723</span>              : </span>
 <span id="L724"><span class="lineNum">     724</span>              : /**</span>
@@ -788,15 +788,15 @@
 <span id="L726"><span class="lineNum">     726</span>              :  * @note This does not touch the lock</span>
 <span id="L727"><span class="lineNum">     727</span>              :  */</span>
 <span id="L728"><span class="lineNum">     728</span>              : int</span>
-<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         485 : ml_tensors_data_destroy (ml_tensors_data_h data)</span></span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         483 : ml_tensors_data_destroy (ml_tensors_data_h data)</span></span>
 <span id="L730"><span class="lineNum">     730</span>              : {</span>
 <span id="L731"><span class="lineNum">     731</span>              :   int ret;</span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">         485 :   check_feature_state (ML_FEATURE);</span></span>
-<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">         485 :   ret = _ml_tensors_data_destroy_internal (data, TRUE);</span></span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">         485 :   if (ret != ML_ERROR_NONE)</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">         483 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">         483 :   ret = _ml_tensors_data_destroy_internal (data, TRUE);</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">         483 :   if (ret != ML_ERROR_NONE)</span></span>
 <span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">          19 :     _ml_error_report_return_continue (ret,</span></span>
 <span id="L736"><span class="lineNum">     736</span>              :         &quot;Call to _ml_tensors_data_destroy_internal failed with %d&quot;, ret);</span>
-<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">         466 :   return ret;</span></span>
+<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">         464 :   return ret;</span></span>
 <span id="L738"><span class="lineNum">     738</span>              : }</span>
 <span id="L739"><span class="lineNum">     739</span>              : </span>
 <span id="L740"><span class="lineNum">     740</span>              : /**</span>
@@ -804,56 +804,56 @@
 <span id="L742"><span class="lineNum">     742</span>              :  * @note Memory for tensor data buffers is not allocated.</span>
 <span id="L743"><span class="lineNum">     743</span>              :  */</span>
 <span id="L744"><span class="lineNum">     744</span>              : int</span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">       13659 : _ml_tensors_data_create_no_alloc (const ml_tensors_info_h info,</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">       13656 : _ml_tensors_data_create_no_alloc (const ml_tensors_info_h info,</span></span>
 <span id="L746"><span class="lineNum">     746</span>              :     ml_tensors_data_h * data)</span>
 <span id="L747"><span class="lineNum">     747</span>              : {</span>
 <span id="L748"><span class="lineNum">     748</span>              :   ml_tensors_data_s *_data;</span>
 <span id="L749"><span class="lineNum">     749</span>              :   ml_tensors_info_s *_info;</span>
 <span id="L750"><span class="lineNum">     750</span>              :   guint i;</span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">       13659 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">       13656 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L752"><span class="lineNum">     752</span>              : </span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">       13659 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">       13656 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L754"><span class="lineNum">     754</span>              : </span>
-<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">       13659 :   if (data == NULL)</span></span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">       13656 :   if (data == NULL)</span></span>
 <span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L757"><span class="lineNum">     757</span>              :         &quot;The parameter, data, is NULL. It should be a valid ml_tensors_info_h handle that may hold a space for ml_tensors_info_h. E.g., ml_tensors_data_h data; _ml_tensors_data_create_no_alloc (info, &amp;data);.&quot;);</span>
 <span id="L758"><span class="lineNum">     758</span>              : </span>
 <span id="L759"><span class="lineNum">     759</span>              :   /* init null */</span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">       13658 :   *data = NULL;</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">       13655 :   *data = NULL;</span></span>
 <span id="L761"><span class="lineNum">     761</span>              : </span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">       13658 :   _data = g_new0 (ml_tensors_data_s, 1);</span></span>
-<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">       13658 :   if (!_data)</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">       13655 :   _data = g_new0 (ml_tensors_data_s, 1);</span></span>
+<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">       13655 :   if (!_data)</span></span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_OUT_OF_MEMORY,</span></span>
 <span id="L765"><span class="lineNum">     765</span>              :         &quot;Failed to allocate memory for tensors data. Probably the system is out of memory.&quot;);</span>
 <span id="L766"><span class="lineNum">     766</span>              : </span>
-<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC tlaBgGNC">       13658 :   g_mutex_init (&amp;_data-&gt;lock);</span></span>
+<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC tlaBgGNC">       13655 :   g_mutex_init (&amp;_data-&gt;lock);</span></span>
 <span id="L768"><span class="lineNum">     768</span>              : </span>
-<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">       13658 :   _info = (ml_tensors_info_s *) info;</span></span>
-<span id="L770"><span class="lineNum">     770</span> <span class="tlaGNC">       13658 :   if (_info != NULL) {</span></span>
-<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">        7041 :     status = _ml_tensors_info_create_from (info, &amp;_data-&gt;info);</span></span>
-<span id="L772"><span class="lineNum">     772</span> <span class="tlaGNC">        7041 :     if (status != ML_ERROR_NONE) {</span></span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">       13655 :   _info = (ml_tensors_info_s *) info;</span></span>
+<span id="L770"><span class="lineNum">     770</span> <span class="tlaGNC">       13655 :   if (_info != NULL) {</span></span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">        7039 :     status = _ml_tensors_info_create_from (info, &amp;_data-&gt;info);</span></span>
+<span id="L772"><span class="lineNum">     772</span> <span class="tlaGNC">        7039 :     if (status != ML_ERROR_NONE) {</span></span>
 <span id="L773"><span class="lineNum">     773</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report_continue</span></span>
 <span id="L774"><span class="lineNum">     774</span>              :           (&quot;Failed to create internal information handle for tensors data.&quot;);</span>
 <span id="L775"><span class="lineNum">     775</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L776"><span class="lineNum">     776</span>              :     }</span>
 <span id="L777"><span class="lineNum">     777</span>              : </span>
-<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC tlaBgGNC">        7041 :     G_LOCK_UNLESS_NOLOCK (*_info);</span></span>
-<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">        7041 :     _data-&gt;num_tensors = _info-&gt;info.num_tensors;</span></span>
-<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">       14522 :     for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
-<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">        7481 :       _data-&gt;tensors[i].size = gst_tensors_info_get_size (&amp;_info-&gt;info, i);</span></span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">        7481 :       _data-&gt;tensors[i].data = NULL;</span></span>
+<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC tlaBgGNC">        7039 :     G_LOCK_UNLESS_NOLOCK (*_info);</span></span>
+<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">        7039 :     _data-&gt;num_tensors = _info-&gt;info.num_tensors;</span></span>
+<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">       14518 :     for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
+<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">        7479 :       _data-&gt;tensors[i].size = gst_tensors_info_get_size (&amp;_info-&gt;info, i);</span></span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">        7479 :       _data-&gt;tensors[i].data = NULL;</span></span>
 <span id="L783"><span class="lineNum">     783</span>              :     }</span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">        7041 :     G_UNLOCK_UNLESS_NOLOCK (*_info);</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">        7039 :     G_UNLOCK_UNLESS_NOLOCK (*_info);</span></span>
 <span id="L785"><span class="lineNum">     785</span>              :   }</span>
 <span id="L786"><span class="lineNum">     786</span>              : </span>
-<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">        6617 : error:</span></span>
-<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">       13658 :   if (status == ML_ERROR_NONE) {</span></span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">       13658 :     *data = _data;</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">        6616 : error:</span></span>
+<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">       13655 :   if (status == ML_ERROR_NONE) {</span></span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">       13655 :     *data = _data;</span></span>
 <span id="L790"><span class="lineNum">     790</span>              :   } else {</span>
 <span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_tensors_data_destroy_internal (_data, FALSE);</span></span>
 <span id="L792"><span class="lineNum">     792</span>              :   }</span>
 <span id="L793"><span class="lineNum">     793</span>              : </span>
-<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC tlaBgGNC">       13658 :   return status;</span></span>
+<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC tlaBgGNC">       13655 :   return status;</span></span>
 <span id="L795"><span class="lineNum">     795</span>              : }</span>
 <span id="L796"><span class="lineNum">     796</span>              : </span>
 <span id="L797"><span class="lineNum">     797</span>              : /**</span>
@@ -973,48 +973,48 @@
 <span id="L911"><span class="lineNum">     911</span>              :  * @brief Allocates a tensor data frame with the given tensors info. (more info in nnstreamer.h)</span>
 <span id="L912"><span class="lineNum">     912</span>              :  */</span>
 <span id="L913"><span class="lineNum">     913</span>              : int</span>
-<span id="L914"><span class="lineNum">     914</span> <span class="tlaGNC">        6780 : ml_tensors_data_create (const ml_tensors_info_h info, ml_tensors_data_h * data)</span></span>
+<span id="L914"><span class="lineNum">     914</span> <span class="tlaGNC">        6778 : ml_tensors_data_create (const ml_tensors_info_h info, ml_tensors_data_h * data)</span></span>
 <span id="L915"><span class="lineNum">     915</span>              : {</span>
-<span id="L916"><span class="lineNum">     916</span> <span class="tlaGNC">        6780 :   gint status = ML_ERROR_STREAMS_PIPE;</span></span>
-<span id="L917"><span class="lineNum">     917</span> <span class="tlaGNC">        6780 :   ml_tensors_data_s *_data = NULL;</span></span>
+<span id="L916"><span class="lineNum">     916</span> <span class="tlaGNC">        6778 :   gint status = ML_ERROR_STREAMS_PIPE;</span></span>
+<span id="L917"><span class="lineNum">     917</span> <span class="tlaGNC">        6778 :   ml_tensors_data_s *_data = NULL;</span></span>
 <span id="L918"><span class="lineNum">     918</span>              :   guint i;</span>
 <span id="L919"><span class="lineNum">     919</span>              :   bool valid;</span>
 <span id="L920"><span class="lineNum">     920</span>              : </span>
-<span id="L921"><span class="lineNum">     921</span> <span class="tlaGNC">       13560 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L921"><span class="lineNum">     921</span> <span class="tlaGNC">       13556 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L922"><span class="lineNum">     922</span>              : </span>
-<span id="L923"><span class="lineNum">     923</span> <span class="tlaGNC">        6780 :   if (info == NULL)</span></span>
+<span id="L923"><span class="lineNum">     923</span> <span class="tlaGNC">        6778 :   if (info == NULL)</span></span>
 <span id="L924"><span class="lineNum">     924</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L925"><span class="lineNum">     925</span>              :         &quot;The parameter, info, is NULL. It should be a valid pointer of ml_tensors_info_h, which is usually created by ml_tensors_info_create().&quot;);</span>
-<span id="L926"><span class="lineNum">     926</span> <span class="tlaGNC">        6779 :   if (data == NULL)</span></span>
+<span id="L926"><span class="lineNum">     926</span> <span class="tlaGNC">        6777 :   if (data == NULL)</span></span>
 <span id="L927"><span class="lineNum">     927</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L928"><span class="lineNum">     928</span>              :         &quot;The parameter, data, is NULL. It should be a valid space to hold a ml_tensors_data_h handle. E.g., ml_tensors_data_h data; ml_tensors_data_create (info, &amp;data);.&quot;);</span>
 <span id="L929"><span class="lineNum">     929</span>              : </span>
-<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">        6778 :   status = ml_tensors_info_validate (info, &amp;valid);</span></span>
-<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">        6778 :   if (status != ML_ERROR_NONE)</span></span>
+<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">        6776 :   status = ml_tensors_info_validate (info, &amp;valid);</span></span>
+<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">        6776 :   if (status != ML_ERROR_NONE)</span></span>
 <span id="L932"><span class="lineNum">     932</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return_continue (status,</span></span>
 <span id="L933"><span class="lineNum">     933</span>              :         &quot;ml_tensors_info_validate() has reported that the parameter, info, is not NULL, but its contents are not valid. The user must provide a valid tensor information with it.&quot;);</span>
-<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC tlaBgGNC">        6778 :   if (!valid)</span></span>
+<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC tlaBgGNC">        6776 :   if (!valid)</span></span>
 <span id="L935"><span class="lineNum">     935</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L936"><span class="lineNum">     936</span>              :         &quot;The parameter, info, is not NULL, but its contents are not valid. The user must provide a valid tensor information with it. Probably, there is an entry that is not allocated or dimension/type information not available. The given info should have valid number of tensors, entries of every tensor along with its type and dimension info.&quot;);</span>
 <span id="L937"><span class="lineNum">     937</span>              : </span>
 <span id="L938"><span class="lineNum">     938</span>              :   status =</span>
-<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">        6777 :       _ml_tensors_data_create_no_alloc (info, (ml_tensors_data_h *) &amp; _data);</span></span>
+<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">        6775 :       _ml_tensors_data_create_no_alloc (info, (ml_tensors_data_h *) &amp; _data);</span></span>
 <span id="L940"><span class="lineNum">     940</span>              : </span>
-<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">        6777 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">        6775 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L942"><span class="lineNum">     942</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return_continue (status,</span></span>
 <span id="L943"><span class="lineNum">     943</span>              :         &quot;Failed to allocate tensor data based on the given info with the call to _ml_tensors_data_create_no_alloc (): %d. Check if it's out-of-memory.&quot;,</span>
 <span id="L944"><span class="lineNum">     944</span>              :         status);</span>
 <span id="L945"><span class="lineNum">     945</span>              :   }</span>
 <span id="L946"><span class="lineNum">     946</span>              : </span>
-<span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC tlaBgGNC">       13776 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
-<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">        6999 :     _data-&gt;tensors[i].data = g_malloc0 (_data-&gt;tensors[i].size);</span></span>
-<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">        6999 :     if (_data-&gt;tensors[i].data == NULL) {</span></span>
+<span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC tlaBgGNC">       13772 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
+<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">        6997 :     _data-&gt;tensors[i].data = g_malloc0 (_data-&gt;tensors[i].size);</span></span>
+<span id="L949"><span class="lineNum">     949</span> <span class="tlaGNC">        6997 :     if (_data-&gt;tensors[i].data == NULL) {</span></span>
 <span id="L950"><span class="lineNum">     950</span> <span class="tlaUNC tlaBgUNC">           0 :       goto failed_oom;</span></span>
 <span id="L951"><span class="lineNum">     951</span>              :     }</span>
 <span id="L952"><span class="lineNum">     952</span>              :   }</span>
 <span id="L953"><span class="lineNum">     953</span>              : </span>
-<span id="L954"><span class="lineNum">     954</span> <span class="tlaGNC tlaBgGNC">        6777 :   *data = _data;</span></span>
-<span id="L955"><span class="lineNum">     955</span> <span class="tlaGNC">        6777 :   return ML_ERROR_NONE;</span></span>
+<span id="L954"><span class="lineNum">     954</span> <span class="tlaGNC tlaBgGNC">        6775 :   *data = _data;</span></span>
+<span id="L955"><span class="lineNum">     955</span> <span class="tlaGNC">        6775 :   return ML_ERROR_NONE;</span></span>
 <span id="L956"><span class="lineNum">     956</span>              : </span>
 <span id="L957"><span class="lineNum">     957</span> <span class="tlaUNC tlaBgUNC">           0 : failed_oom:</span></span>
 <span id="L958"><span class="lineNum">     958</span> <span class="tlaUNC">           0 :   _ml_tensors_data_destroy_internal (_data, TRUE);</span></span>
@@ -1115,29 +1115,29 @@
 <span id="L1053"><span class="lineNum">    1053</span>              :  * @brief Copies tensor meta info.</span>
 <span id="L1054"><span class="lineNum">    1054</span>              :  */</span>
 <span id="L1055"><span class="lineNum">    1055</span>              : int</span>
-<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaGNC">        7063 : ml_tensors_info_clone (ml_tensors_info_h dest, const ml_tensors_info_h src)</span></span>
+<span id="L1056"><span class="lineNum">    1056</span> <span class="tlaGNC">        7061 : ml_tensors_info_clone (ml_tensors_info_h dest, const ml_tensors_info_h src)</span></span>
 <span id="L1057"><span class="lineNum">    1057</span>              : {</span>
 <span id="L1058"><span class="lineNum">    1058</span>              :   ml_tensors_info_s *dest_info, *src_info;</span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">        7063 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">        7061 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L1060"><span class="lineNum">    1060</span>              : </span>
-<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaGNC">        7063 :   check_feature_state (ML_FEATURE);</span></span>
+<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaGNC">        7061 :   check_feature_state (ML_FEATURE);</span></span>
 <span id="L1062"><span class="lineNum">    1062</span>              : </span>
-<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">        7063 :   dest_info = (ml_tensors_info_s *) dest;</span></span>
-<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">        7063 :   src_info = (ml_tensors_info_s *) src;</span></span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">        7061 :   dest_info = (ml_tensors_info_s *) dest;</span></span>
+<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">        7061 :   src_info = (ml_tensors_info_s *) src;</span></span>
 <span id="L1065"><span class="lineNum">    1065</span>              : </span>
-<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaGNC">        7063 :   if (!dest_info)</span></span>
+<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaGNC">        7061 :   if (!dest_info)</span></span>
 <span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1068"><span class="lineNum">    1068</span>              :         &quot;The parameter, dest, is NULL. It should be an allocated handle (ml_tensors_info_h), usually allocated by ml_tensors_info_create ().&quot;);</span>
-<span id="L1069"><span class="lineNum">    1069</span> <span class="tlaGNC">        7062 :   if (!src_info)</span></span>
+<span id="L1069"><span class="lineNum">    1069</span> <span class="tlaGNC">        7060 :   if (!src_info)</span></span>
 <span id="L1070"><span class="lineNum">    1070</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L1071"><span class="lineNum">    1071</span>              :         &quot;The parameter, src, is NULL. It should be a handle (ml_tensors_info_h) with valid data.&quot;);</span>
 <span id="L1072"><span class="lineNum">    1072</span>              : </span>
-<span id="L1073"><span class="lineNum">    1073</span> <span class="tlaGNC">        7061 :   G_LOCK_UNLESS_NOLOCK (*dest_info);</span></span>
-<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">        7061 :   G_LOCK_UNLESS_NOLOCK (*src_info);</span></span>
+<span id="L1073"><span class="lineNum">    1073</span> <span class="tlaGNC">        7059 :   G_LOCK_UNLESS_NOLOCK (*dest_info);</span></span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">        7059 :   G_LOCK_UNLESS_NOLOCK (*src_info);</span></span>
 <span id="L1075"><span class="lineNum">    1075</span>              : </span>
-<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">        7061 :   if (gst_tensors_info_validate (&amp;src_info-&gt;info)) {</span></span>
-<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaGNC">        7061 :     dest_info-&gt;is_extended = src_info-&gt;is_extended;</span></span>
-<span id="L1078"><span class="lineNum">    1078</span> <span class="tlaGNC">        7061 :     gst_tensors_info_copy (&amp;dest_info-&gt;info, &amp;src_info-&gt;info);</span></span>
+<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">        7059 :   if (gst_tensors_info_validate (&amp;src_info-&gt;info)) {</span></span>
+<span id="L1077"><span class="lineNum">    1077</span> <span class="tlaGNC">        7059 :     dest_info-&gt;is_extended = src_info-&gt;is_extended;</span></span>
+<span id="L1078"><span class="lineNum">    1078</span> <span class="tlaGNC">        7059 :     gst_tensors_info_copy (&amp;dest_info-&gt;info, &amp;src_info-&gt;info);</span></span>
 <span id="L1079"><span class="lineNum">    1079</span>              :   } else {</span>
 <span id="L1080"><span class="lineNum">    1080</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report</span></span>
 <span id="L1081"><span class="lineNum">    1081</span>              :         (&quot;The parameter, src, is a ml_tensors_info_h handle without valid data. Every tensor-info of tensors-info should have a valid type and dimension information and the number of tensors should be between 1 and %d.&quot;,</span>
@@ -1145,10 +1145,10 @@
 <span id="L1083"><span class="lineNum">    1083</span> <span class="tlaUNC">           0 :     status = ML_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L1084"><span class="lineNum">    1084</span>              :   }</span>
 <span id="L1085"><span class="lineNum">    1085</span>              : </span>
-<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaGNC tlaBgGNC">        7061 :   G_UNLOCK_UNLESS_NOLOCK (*src_info);</span></span>
-<span id="L1087"><span class="lineNum">    1087</span> <span class="tlaGNC">        7061 :   G_UNLOCK_UNLESS_NOLOCK (*dest_info);</span></span>
+<span id="L1086"><span class="lineNum">    1086</span> <span class="tlaGNC tlaBgGNC">        7059 :   G_UNLOCK_UNLESS_NOLOCK (*src_info);</span></span>
+<span id="L1087"><span class="lineNum">    1087</span> <span class="tlaGNC">        7059 :   G_UNLOCK_UNLESS_NOLOCK (*dest_info);</span></span>
 <span id="L1088"><span class="lineNum">    1088</span>              : </span>
-<span id="L1089"><span class="lineNum">    1089</span> <span class="tlaGNC">        7061 :   return status;</span></span>
+<span id="L1089"><span class="lineNum">    1089</span> <span class="tlaGNC">        7059 :   return status;</span></span>
 <span id="L1090"><span class="lineNum">    1090</span>              : }</span>
 <span id="L1091"><span class="lineNum">    1091</span>              : </span>
 <span id="L1092"><span class="lineNum">    1092</span>              : /**</span>
