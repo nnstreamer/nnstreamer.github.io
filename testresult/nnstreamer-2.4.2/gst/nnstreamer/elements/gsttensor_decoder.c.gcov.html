@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4334a9c194ca1bf6d8473193d51037204f866286 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_decoder.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#034d1b7d1797d67c975e7e560042bc0c39e26502 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_decoder.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4334a9c194ca1bf6d8473193d51037204f866286</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#034d1b7d1797d67c975e7e560042bc0c39e26502</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">82.6&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-07 05:34:49</td>
+            <td class="headerValue">2025-01-08 05:34:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -167,7 +167,7 @@
 <span id="L105"><span class="lineNum">     105</span>              :     GST_STATIC_CAPS (&quot;ANY&quot;));</span>
 <span id="L106"><span class="lineNum">     106</span>              : </span>
 <span id="L107"><span class="lineNum">     107</span>              : #define gst_tensordec_parent_class parent_class</span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC tlaBgGNC">        1536 : G_DEFINE_TYPE (GstTensorDecoder, gst_tensordec, GST_TYPE_BASE_TRANSFORM);</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC tlaBgGNC">        1508 : G_DEFINE_TYPE (GstTensorDecoder, gst_tensordec, GST_TYPE_BASE_TRANSFORM);</span></span>
 <span id="L109"><span class="lineNum">     109</span>              : </span>
 <span id="L110"><span class="lineNum">     110</span>              : /** GObject vmethod implementations */</span>
 <span id="L111"><span class="lineNum">     111</span>              : static void gst_tensordec_set_property (GObject * object, guint prop_id,</span>
@@ -193,19 +193,19 @@
 <span id="L131"><span class="lineNum">     131</span>              :  * @brief Validate decoder sub-plugin's data.</span>
 <span id="L132"><span class="lineNum">     132</span>              :  */</span>
 <span id="L133"><span class="lineNum">     133</span>              : static gboolean</span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">         560 : nnstreamer_decoder_validate (const GstTensorDecoderDef * decoder)</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">         551 : nnstreamer_decoder_validate (const GstTensorDecoderDef * decoder)</span></span>
 <span id="L135"><span class="lineNum">     135</span>              : {</span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         560 :   if (!decoder || !decoder-&gt;modename) {</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         551 :   if (!decoder || !decoder-&gt;modename) {</span></span>
 <span id="L137"><span class="lineNum">     137</span>              :     /* invalid name */</span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">           2 :     return FALSE;</span></span>
 <span id="L139"><span class="lineNum">     139</span>              :   }</span>
 <span id="L140"><span class="lineNum">     140</span>              : </span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         558 :   if (!decoder-&gt;init || !decoder-&gt;getOutCaps || !decoder-&gt;decode) {</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         549 :   if (!decoder-&gt;init || !decoder-&gt;getOutCaps || !decoder-&gt;decode) {</span></span>
 <span id="L142"><span class="lineNum">     142</span>              :     /* invalid methods in decoder sub-plugin */</span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">           3 :     return FALSE;</span></span>
 <span id="L144"><span class="lineNum">     144</span>              :   }</span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         555 :   return TRUE;</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         546 :   return TRUE;</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : }</span>
 <span id="L148"><span class="lineNum">     148</span>              : </span>
 <span id="L149"><span class="lineNum">     149</span>              : /**</span>
@@ -214,10 +214,10 @@
 <span id="L152"><span class="lineNum">     152</span>              :  * @return TRUE if registered. FALSE is failed or duplicated.</span>
 <span id="L153"><span class="lineNum">     153</span>              :  */</span>
 <span id="L154"><span class="lineNum">     154</span>              : int</span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         416 : nnstreamer_decoder_probe (GstTensorDecoderDef * decoder)</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         407 : nnstreamer_decoder_probe (GstTensorDecoderDef * decoder)</span></span>
 <span id="L156"><span class="lineNum">     156</span>              : {</span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         416 :   g_return_val_if_fail (nnstreamer_decoder_validate (decoder), FALSE);</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         411 :   return register_subplugin (NNS_SUBPLUGIN_DECODER, decoder-&gt;modename, decoder);</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         407 :   g_return_val_if_fail (nnstreamer_decoder_validate (decoder), FALSE);</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         402 :   return register_subplugin (NNS_SUBPLUGIN_DECODER, decoder-&gt;modename, decoder);</span></span>
 <span id="L159"><span class="lineNum">     159</span>              : }</span>
 <span id="L160"><span class="lineNum">     160</span>              : </span>
 <span id="L161"><span class="lineNum">     161</span>              : /**</span>
@@ -225,10 +225,10 @@
 <span id="L163"><span class="lineNum">     163</span>              :  * @param[in] name The name of decoder sub-plugin.</span>
 <span id="L164"><span class="lineNum">     164</span>              :  */</span>
 <span id="L165"><span class="lineNum">     165</span>              : void</span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         410 : nnstreamer_decoder_exit (const char *name)</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         401 : nnstreamer_decoder_exit (const char *name)</span></span>
 <span id="L167"><span class="lineNum">     167</span>              : {</span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         410 :   unregister_subplugin (NNS_SUBPLUGIN_DECODER, name);</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         410 : }</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         401 :   unregister_subplugin (NNS_SUBPLUGIN_DECODER, name);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         401 : }</span></span>
 <span id="L170"><span class="lineNum">     170</span>              : </span>
 <span id="L171"><span class="lineNum">     171</span>              : /**</span>
 <span id="L172"><span class="lineNum">     172</span>              :  * @brief Find decoder sub-plugin with the name.</span>
@@ -245,16 +245,16 @@
 <span id="L183"><span class="lineNum">     183</span>              :  * @brief set custom property description for tensor decoder sub-plugin</span>
 <span id="L184"><span class="lineNum">     184</span>              :  */</span>
 <span id="L185"><span class="lineNum">     185</span>              : void</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         158 : nnstreamer_decoder_set_custom_property_desc (const char *name, const char *prop,</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         155 : nnstreamer_decoder_set_custom_property_desc (const char *name, const char *prop,</span></span>
 <span id="L187"><span class="lineNum">     187</span>              :     ...)</span>
 <span id="L188"><span class="lineNum">     188</span>              : {</span>
 <span id="L189"><span class="lineNum">     189</span>              :   va_list varargs;</span>
 <span id="L190"><span class="lineNum">     190</span>              : </span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         158 :   va_start (varargs, prop);</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">         158 :   subplugin_set_custom_property_desc (NNS_SUBPLUGIN_DECODER, name, prop,</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         155 :   va_start (varargs, prop);</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">         155 :   subplugin_set_custom_property_desc (NNS_SUBPLUGIN_DECODER, name, prop,</span></span>
 <span id="L193"><span class="lineNum">     193</span>              :       varargs);</span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         158 :   va_end (varargs);</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         158 : }</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         155 :   va_end (varargs);</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         155 : }</span></span>
 <span id="L196"><span class="lineNum">     196</span>              : </span>
 <span id="L197"><span class="lineNum">     197</span>              : /**</span>
 <span id="L198"><span class="lineNum">     198</span>              :  * @brief Macro to clean sub-plugin data</span>
