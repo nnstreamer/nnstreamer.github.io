@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-15 05:20:06</td>
+            <td class="headerValue">2025-01-16 05:20:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.1&nbsp;%</td>
@@ -1242,15 +1242,15 @@
 <span id="L1180"><span class="lineNum">    1180</span> <span class="tlaGNC">           3 :   nns_edge_cond_signal (eh);</span></span>
 <span id="L1181"><span class="lineNum">    1181</span> <span class="tlaGNC">           3 :   nns_edge_unlock (eh);</span></span>
 <span id="L1182"><span class="lineNum">    1182</span>              : </span>
-<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">         861 :   while (eh-&gt;listening) {</span></span>
+<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">         859 :   while (eh-&gt;listening) {</span></span>
 <span id="L1184"><span class="lineNum">    1184</span>              :     struct pollfd poll_fd;</span>
 <span id="L1185"><span class="lineNum">    1185</span>              : </span>
-<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">         858 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
-<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">         858 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
-<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">         858 :     poll_fd.revents = 0;</span></span>
+<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">         856 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
+<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">         856 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
+<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">         856 :     poll_fd.revents = 0;</span></span>
 <span id="L1189"><span class="lineNum">    1189</span>              : </span>
 <span id="L1190"><span class="lineNum">    1190</span>              :     /* 10 milliseconds */</span>
-<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">         858 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
+<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">         856 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
 <span id="L1192"><span class="lineNum">    1192</span> <span class="tlaGNC">           4 :       if (!eh-&gt;listening)</span></span>
 <span id="L1193"><span class="lineNum">    1193</span> <span class="tlaUNC tlaBgUNC">           0 :         break;</span></span>
 <span id="L1194"><span class="lineNum">    1194</span>              : </span>
