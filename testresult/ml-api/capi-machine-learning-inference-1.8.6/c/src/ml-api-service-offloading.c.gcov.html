@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#4bc32bd9b7b15e8ed51e763b70d78589f6c7fda2 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-offloading.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#bf96991b3a1f81b8ee54ce20ca7d0ab203fbe468 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-offloading.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#4bc32bd9b7b15e8ed51e763b70d78589f6c7fda2</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#bf96991b3a1f81b8ee54ce20ca7d0ab203fbe468</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">79.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-17 05:25:14</td>
+            <td class="headerValue">2025-01-20 05:22:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -280,17 +280,17 @@
 <span id="L218"><span class="lineNum">     218</span>              :  * @brief Callback function for receiving data using curl.</span>
 <span id="L219"><span class="lineNum">     219</span>              :  */</span>
 <span id="L220"><span class="lineNum">     220</span>              : static size_t</span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         262 : curl_mem_write_cb (void *data, size_t size, size_t nmemb, void *clientp)</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         263 : curl_mem_write_cb (void *data, size_t size, size_t nmemb, void *clientp)</span></span>
 <span id="L222"><span class="lineNum">     222</span>              : {</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         262 :   size_t recv_size = size * nmemb;</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         262 :   GByteArray *array = (GByteArray *) clientp;</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         263 :   size_t recv_size = size * nmemb;</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         263 :   GByteArray *array = (GByteArray *) clientp;</span></span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         262 :   if (!array || !data || recv_size == 0)</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         263 :   if (!array || !data || recv_size == 0)</span></span>
 <span id="L227"><span class="lineNum">     227</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
 <span id="L228"><span class="lineNum">     228</span>              : </span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC tlaBgGNC">         262 :   g_byte_array_append (array, data, recv_size);</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC tlaBgGNC">         263 :   g_byte_array_append (array, data, recv_size);</span></span>
 <span id="L230"><span class="lineNum">     230</span>              : </span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         262 :   return recv_size;</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         263 :   return recv_size;</span></span>
 <span id="L232"><span class="lineNum">     232</span>              : }</span>
 <span id="L233"><span class="lineNum">     233</span>              : </span>
 <span id="L234"><span class="lineNum">     234</span>              : /**</span>
