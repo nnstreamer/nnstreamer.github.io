@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 gichan-jang/api#bf96991b3a1f81b8ee54ce20ca7d0ab203fbe468 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-offloading.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#96059284fea0f96d9cddb8a220bcda4a4a7f147b - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-offloading.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 gichan-jang/api#bf96991b3a1f81b8ee54ce20ca7d0ab203fbe468</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#96059284fea0f96d9cddb8a220bcda4a4a7f147b</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">79.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-22 05:17:49</td>
+            <td class="headerValue">2025-01-22 05:25:20</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -613,17 +613,17 @@
 <span id="L551"><span class="lineNum">     551</span>              :  * @brief Edge event callback.</span>
 <span id="L552"><span class="lineNum">     552</span>              :  */</span>
 <span id="L553"><span class="lineNum">     553</span>              : static int</span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">          69 : _mlrs_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">          68 : _mlrs_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
 <span id="L555"><span class="lineNum">     555</span>              : {</span>
-<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">          69 :   nns_edge_event_e event = NNS_EDGE_EVENT_UNKNOWN;</span></span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          69 :   nns_edge_data_h data_h = NULL;</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">          69 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">          68 :   nns_edge_event_e event = NNS_EDGE_EVENT_UNKNOWN;</span></span>
+<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          68 :   nns_edge_data_h data_h = NULL;</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">          68 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
 <span id="L559"><span class="lineNum">     559</span>              : </span>
-<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          69 :   ret = nns_edge_event_get_type (event_h, &amp;event);</span></span>
-<span id="L561"><span class="lineNum">     561</span> <span class="tlaGNC">          69 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
-<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">          69 :     return ret;</span></span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          68 :   ret = nns_edge_event_get_type (event_h, &amp;event);</span></span>
+<span id="L561"><span class="lineNum">     561</span> <span class="tlaGNC">          68 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
+<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">          68 :     return ret;</span></span>
 <span id="L563"><span class="lineNum">     563</span>              : </span>
-<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">          69 :   switch (event) {</span></span>
+<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">          68 :   switch (event) {</span></span>
 <span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">          17 :     case NNS_EDGE_EVENT_NEW_DATA_RECEIVED:</span></span>
 <span id="L566"><span class="lineNum">     566</span>              :     {</span>
 <span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">          17 :       ret = nns_edge_event_parse_new_data (event_h, &amp;data_h);</span></span>
@@ -633,14 +633,14 @@
 <span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC tlaBgGNC">          17 :       ret = _mlrs_process_service_offloading (data_h, user_data);</span></span>
 <span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">          17 :       break;</span></span>
 <span id="L573"><span class="lineNum">     573</span>              :     }</span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          52 :     default:</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          52 :       break;</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          51 :     default:</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          51 :       break;</span></span>
 <span id="L576"><span class="lineNum">     576</span>              :   }</span>
 <span id="L577"><span class="lineNum">     577</span>              : </span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          69 :   if (data_h)</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          68 :   if (data_h)</span></span>
 <span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          17 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L580"><span class="lineNum">     580</span>              : </span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          69 :   return ret;</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          68 :   return ret;</span></span>
 <span id="L582"><span class="lineNum">     582</span>              : }</span>
 <span id="L583"><span class="lineNum">     583</span>              : </span>
 <span id="L584"><span class="lineNum">     584</span>              : /**</span>
