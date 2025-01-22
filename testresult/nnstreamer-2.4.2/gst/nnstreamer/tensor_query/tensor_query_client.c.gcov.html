@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fdd738a0a93d2762b0f7334a3c29d208edc3228d - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#3b371e1a4ababf6abfc2b0146a3e4ec69b19b572 - nnstreamer-2.4.2/gst/nnstreamer/tensor_query/tensor_query_client.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fdd738a0a93d2762b0f7334a3c29d208edc3228d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#3b371e1a4ababf6abfc2b0146a3e4ec69b19b572</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">80.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-22 05:33:47</td>
+            <td class="headerValue">2025-01-23 05:35:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -139,7 +139,7 @@
 <span id="L77"><span class="lineNum">      77</span>              :     GST_STATIC_CAPS_ANY);</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
 <span id="L79"><span class="lineNum">      79</span>              : #define gst_tensor_query_client_parent_class parent_class</span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1253 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1247 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              : static void gst_tensor_query_client_finalize (GObject * object);</span>
 <span id="L83"><span class="lineNum">      83</span>              : static void gst_tensor_query_client_set_property (GObject * object,</span>
@@ -160,75 +160,75 @@
 <span id="L98"><span class="lineNum">      98</span>              :  * @brief initialize the class</span>
 <span id="L99"><span class="lineNum">      99</span>              :  */</span>
 <span id="L100"><span class="lineNum">     100</span>              : static void</span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">          30 : gst_tensor_query_client_class_init (GstTensorQueryClientClass * klass)</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">          28 : gst_tensor_query_client_class_init (GstTensorQueryClientClass * klass)</span></span>
 <span id="L102"><span class="lineNum">     102</span>              : {</span>
 <span id="L103"><span class="lineNum">     103</span>              :   GObjectClass *gobject_class;</span>
 <span id="L104"><span class="lineNum">     104</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L105"><span class="lineNum">     105</span>              : </span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">          30 :   gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">          30 :   gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">          28 :   gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">          28 :   gstelement_class = (GstElementClass *) klass;</span></span>
 <span id="L108"><span class="lineNum">     108</span>              : </span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">          30 :   gobject_class-&gt;set_property = gst_tensor_query_client_set_property;</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">          30 :   gobject_class-&gt;get_property = gst_tensor_query_client_get_property;</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">          30 :   gobject_class-&gt;finalize = gst_tensor_query_client_finalize;</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">          28 :   gobject_class-&gt;set_property = gst_tensor_query_client_set_property;</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">          28 :   gobject_class-&gt;get_property = gst_tensor_query_client_get_property;</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">          28 :   gobject_class-&gt;finalize = gst_tensor_query_client_finalize;</span></span>
 <span id="L112"><span class="lineNum">     112</span>              : </span>
 <span id="L113"><span class="lineNum">     113</span>              :   /** install property goes here */</span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
 <span id="L115"><span class="lineNum">     115</span>              :       g_param_spec_string (&quot;host&quot;, &quot;Host&quot;,</span>
 <span id="L116"><span class="lineNum">     116</span>              :           &quot;A host address to receive the packets from query server&quot;,</span>
 <span id="L117"><span class="lineNum">     117</span>              :           TCP_DEFAULT_HOST, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
 <span id="L119"><span class="lineNum">     119</span>              :       g_param_spec_uint (&quot;port&quot;, &quot;Port&quot;,</span>
 <span id="L120"><span class="lineNum">     120</span>              :           &quot;A port number to receive the packets from query server&quot;, 0,</span>
 <span id="L121"><span class="lineNum">     121</span>              :           TCP_HIGHEST_PORT, TCP_DEFAULT_SRV_SRC_PORT,</span>
 <span id="L122"><span class="lineNum">     122</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_DEST_HOST,</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_DEST_HOST,</span></span>
 <span id="L124"><span class="lineNum">     124</span>              :       g_param_spec_string (&quot;dest-host&quot;, &quot;Destination Host&quot;,</span>
 <span id="L125"><span class="lineNum">     125</span>              :           &quot;A tenor query server host to send the packets&quot;,</span>
 <span id="L126"><span class="lineNum">     126</span>              :           TCP_DEFAULT_HOST, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_DEST_PORT,</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_DEST_PORT,</span></span>
 <span id="L128"><span class="lineNum">     128</span>              :       g_param_spec_uint (&quot;dest-port&quot;, &quot;Destination Port&quot;,</span>
 <span id="L129"><span class="lineNum">     129</span>              :           &quot;The port of tensor query server to send the packets&quot;, 0,</span>
 <span id="L130"><span class="lineNum">     130</span>              :           TCP_HIGHEST_PORT, TCP_DEFAULT_CLIENT_SRC_PORT,</span>
 <span id="L131"><span class="lineNum">     131</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L133"><span class="lineNum">     133</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;, &quot;Produce verbose output&quot;,</span>
 <span id="L134"><span class="lineNum">     134</span>              :           DEFAULT_SILENT, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_CONNECT_TYPE,</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_CONNECT_TYPE,</span></span>
 <span id="L136"><span class="lineNum">     136</span>              :       g_param_spec_enum (&quot;connect-type&quot;, &quot;Connect Type&quot;,</span>
 <span id="L137"><span class="lineNum">     137</span>              :           &quot;The connections type between client and server.&quot;,</span>
 <span id="L138"><span class="lineNum">     138</span>              :           GST_TYPE_QUERY_CONNECT_TYPE, DEFAULT_CONNECT_TYPE,</span>
 <span id="L139"><span class="lineNum">     139</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_TOPIC,</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_TOPIC,</span></span>
 <span id="L141"><span class="lineNum">     141</span>              :       g_param_spec_string (&quot;topic&quot;, &quot;Topic&quot;,</span>
 <span id="L142"><span class="lineNum">     142</span>              :           &quot;The main topic of the host.&quot;,</span>
 <span id="L143"><span class="lineNum">     143</span>              :           &quot;&quot;, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L144"><span class="lineNum">     144</span>              : </span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_TIMEOUT,</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_TIMEOUT,</span></span>
 <span id="L146"><span class="lineNum">     146</span>              :       g_param_spec_uint (&quot;timeout&quot;, &quot;timeout value&quot;,</span>
 <span id="L147"><span class="lineNum">     147</span>              :           &quot;A timeout value (in ms) to wait message from query server after sending buffer to server. 0 means no wait.&quot;,</span>
 <span id="L148"><span class="lineNum">     148</span>              :           0, G_MAXUINT, DEFAULT_CLIENT_TIMEOUT,</span>
 <span id="L149"><span class="lineNum">     149</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          30 :   g_object_class_install_property (gobject_class, PROP_MAX_REQUEST,</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          28 :   g_object_class_install_property (gobject_class, PROP_MAX_REQUEST,</span></span>
 <span id="L151"><span class="lineNum">     151</span>              :       g_param_spec_uint (&quot;max-request&quot;, &quot;Maximum number of request&quot;,</span>
 <span id="L152"><span class="lineNum">     152</span>              :           &quot;Sets the maximum number of buffers to request to the query server. &quot;</span>
 <span id="L153"><span class="lineNum">     153</span>              :           &quot;If the processing speed of query server is slower than the query client, the input buffer is dropped. &quot;</span>
 <span id="L154"><span class="lineNum">     154</span>              :           &quot;Two buffers are requested by default, and 0 means that all buffers are sent to query server without drop. &quot;,</span>
 <span id="L155"><span class="lineNum">     155</span>              :           0, G_MAXUINT, DEFAULT_MAX_REQUEST,</span>
 <span id="L156"><span class="lineNum">     156</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          30 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          28 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L158"><span class="lineNum">     158</span>              :       gst_static_pad_template_get (&amp;sinktemplate));</span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          30 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          28 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :       gst_static_pad_template_get (&amp;srctemplate));</span>
 <span id="L161"><span class="lineNum">     161</span>              : </span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          30 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          28 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L163"><span class="lineNum">     163</span>              :       &quot;TensorQueryClient&quot;, &quot;Filter/Tensor/Query&quot;,</span>
 <span id="L164"><span class="lineNum">     164</span>              :       &quot;Handle querying tensor data through the network&quot;,</span>
 <span id="L165"><span class="lineNum">     165</span>              :       &quot;Samsung Electronics Co., Ltd.&quot;);</span>
 <span id="L166"><span class="lineNum">     166</span>              : </span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          30 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_query_client_debug, &quot;tensor_query_client&quot;,</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          28 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_query_client_debug, &quot;tensor_query_client&quot;,</span></span>
 <span id="L168"><span class="lineNum">     168</span>              :       0, &quot;Tensor Query Client&quot;);</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          30 : }</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          28 : }</span></span>
 <span id="L170"><span class="lineNum">     170</span>              : </span>
 <span id="L171"><span class="lineNum">     171</span>              : /**</span>
 <span id="L172"><span class="lineNum">     172</span>              :  * @brief initialize the new element</span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fdd738a0a93d2762b0f7334a3c29d208edc3228d - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_python3.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#3b371e1a4ababf6abfc2b0146a3e4ec69b19b572 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_python3.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#fdd738a0a93d2762b0f7334a3c29d208edc3228d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#3b371e1a4ababf6abfc2b0146a3e4ec69b19b572</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">77.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-22 05:33:47</td>
+            <td class="headerValue">2025-01-23 05:35:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -715,23 +715,23 @@
 <span id="L653"><span class="lineNum">     653</span>              : /**</span>
 <span id="L654"><span class="lineNum">     654</span>              :  * @brief Construct a new Python subplugin instance</span>
 <span id="L655"><span class="lineNum">     655</span>              :  */</span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          46 : TensorFilterPython::TensorFilterPython () : core (nullptr)</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          43 : TensorFilterPython::TensorFilterPython () : core (nullptr)</span></span>
 <span id="L657"><span class="lineNum">     657</span>              : {</span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          46 :   if (!Py_IsInitialized ())</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          43 :   if (!Py_IsInitialized ())</span></span>
 <span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC tlaBgUNC">           0 :     throw std::runtime_error (&quot;Python is not initialize.&quot;);</span></span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC tlaBgGNC">          46 : }</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC tlaBgGNC">          43 : }</span></span>
 <span id="L661"><span class="lineNum">     661</span>              : </span>
 <span id="L662"><span class="lineNum">     662</span>              : /**</span>
 <span id="L663"><span class="lineNum">     663</span>              :  * @brief Destructor of TensorFilterPython</span>
 <span id="L664"><span class="lineNum">     664</span>              :  */</span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">          80 : TensorFilterPython::~TensorFilterPython ()</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">          74 : TensorFilterPython::~TensorFilterPython ()</span></span>
 <span id="L666"><span class="lineNum">     666</span>              : {</span>
-<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">          40 :   if (core != nullptr) {</span></span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">          37 :   if (core != nullptr) {</span></span>
 <span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">           7 :     PyGILState_STATE gstate = PyGILState_Ensure ();</span></span>
 <span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">           7 :     delete core;</span></span>
 <span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">           7 :     PyGILState_Release (gstate);</span></span>
 <span id="L671"><span class="lineNum">     671</span>              :   }</span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">          80 : }</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">          74 : }</span></span>
 <span id="L673"><span class="lineNum">     673</span>              : </span>
 <span id="L674"><span class="lineNum">     674</span>              : /**</span>
 <span id="L675"><span class="lineNum">     675</span>              :  * @brief Method to get an empty object</span>
@@ -809,18 +809,18 @@
 <span id="L747"><span class="lineNum">     747</span>              :  * @brief Get Python framework info.</span>
 <span id="L748"><span class="lineNum">     748</span>              :  */</span>
 <span id="L749"><span class="lineNum">     749</span>              : void</span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">         107 : TensorFilterPython::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">          98 : TensorFilterPython::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
 <span id="L751"><span class="lineNum">     751</span>              : {</span>
-<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">         107 :   info.name = name;</span></span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">         107 :   info.allow_in_place = FALSE;</span></span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          98 :   info.name = name;</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">          98 :   info.allow_in_place = FALSE;</span></span>
 <span id="L754"><span class="lineNum">     754</span>              :   /** @todo: support this to optimize performance later. */</span>
-<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">         107 :   info.allocate_in_invoke = TRUE;</span></span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">         107 :   info.run_without_model = FALSE;</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">         107 :   info.verify_model_path = TRUE;</span></span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">         107 :   info.hw_list = hw_list;</span></span>
-<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">         107 :   info.num_hw = num_hw;</span></span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">         107 :   info.statistics = nullptr;</span></span>
-<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">         107 : }</span></span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">          98 :   info.allocate_in_invoke = TRUE;</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          98 :   info.run_without_model = FALSE;</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">          98 :   info.verify_model_path = TRUE;</span></span>
+<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">          98 :   info.hw_list = hw_list;</span></span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">          98 :   info.num_hw = num_hw;</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">          98 :   info.statistics = nullptr;</span></span>
+<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">          98 : }</span></span>
 <span id="L762"><span class="lineNum">     762</span>              : </span>
 <span id="L763"><span class="lineNum">     763</span>              : /**</span>
 <span id="L764"><span class="lineNum">     764</span>              :  * @brief Get Python model info.</span>
@@ -868,23 +868,23 @@
 <span id="L806"><span class="lineNum">     806</span>              : </span>
 <span id="L807"><span class="lineNum">     807</span>              : /** @brief Initialize this object for tensor_filter subplugin runtime register */</span>
 <span id="L808"><span class="lineNum">     808</span>              : void</span>
-<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">          33 : TensorFilterPython::init_filter_py ()</span></span>
+<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">          30 : TensorFilterPython::init_filter_py ()</span></span>
 <span id="L810"><span class="lineNum">     810</span>              : {</span>
 <span id="L811"><span class="lineNum">     811</span>              :   /** Python should be initialized and finalized only once */</span>
-<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">          33 :   nnstreamer_python_init_refcnt ();</span></span>
-<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          33 :   registered = tensor_filter_subplugin::register_subplugin&lt;TensorFilterPython&gt; ();</span></span>
-<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">          30 :   nnstreamer_python_init_refcnt ();</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">          30 :   registered = tensor_filter_subplugin::register_subplugin&lt;TensorFilterPython&gt; ();</span></span>
+<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">          30 : }</span></span>
 <span id="L815"><span class="lineNum">     815</span>              : </span>
 <span id="L816"><span class="lineNum">     816</span>              : /** @brief Destruct the subplugin */</span>
 <span id="L817"><span class="lineNum">     817</span>              : void</span>
-<span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">          33 : TensorFilterPython::fini_filter_py ()</span></span>
+<span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">          30 : TensorFilterPython::fini_filter_py ()</span></span>
 <span id="L819"><span class="lineNum">     819</span>              : {</span>
-<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">          33 :   nnstreamer_python_status_check ();</span></span>
-<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">          33 :   nnstreamer_python_fini_refcnt ();</span></span>
+<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">          30 :   nnstreamer_python_status_check ();</span></span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">          30 :   nnstreamer_python_fini_refcnt ();</span></span>
 <span id="L822"><span class="lineNum">     822</span>              : </span>
 <span id="L823"><span class="lineNum">     823</span>              :   /* internal logic error */</span>
-<span id="L824"><span class="lineNum">     824</span> <span class="tlaGNC">          33 :   assert (registered != nullptr);</span></span>
-<span id="L825"><span class="lineNum">     825</span> <span class="tlaGNC">          33 :   tensor_filter_subplugin::unregister_subplugin (registered);</span></span>
+<span id="L824"><span class="lineNum">     824</span> <span class="tlaGNC">          30 :   assert (registered != nullptr);</span></span>
+<span id="L825"><span class="lineNum">     825</span> <span class="tlaGNC">          30 :   tensor_filter_subplugin::unregister_subplugin (registered);</span></span>
 <span id="L826"><span class="lineNum">     826</span>              : </span>
 <span id="L827"><span class="lineNum">     827</span>              : /**</span>
 <span id="L828"><span class="lineNum">     828</span>              :  * @todo Remove below lines after this issue is addressed.</span>
@@ -899,25 +899,25 @@
 <span id="L837"><span class="lineNum">     837</span>              :   if (Py_IsInitialized ())</span>
 <span id="L838"><span class="lineNum">     838</span>              :     Py_Finalize ();</span>
 <span id="L839"><span class="lineNum">     839</span>              : #endif</span>
-<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">          30 : }</span></span>
 <span id="L841"><span class="lineNum">     841</span>              : </span>
 <span id="L842"><span class="lineNum">     842</span>              : /**</span>
 <span id="L843"><span class="lineNum">     843</span>              :  * @brief Subplugin initializer</span>
 <span id="L844"><span class="lineNum">     844</span>              :  */</span>
 <span id="L845"><span class="lineNum">     845</span>              : void</span>
-<span id="L846"><span class="lineNum">     846</span> <span class="tlaGNC">          33 : init_filter_py ()</span></span>
+<span id="L846"><span class="lineNum">     846</span> <span class="tlaGNC">          30 : init_filter_py ()</span></span>
 <span id="L847"><span class="lineNum">     847</span>              : {</span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">          33 :   TensorFilterPython::init_filter_py ();</span></span>
-<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">          30 :   TensorFilterPython::init_filter_py ();</span></span>
+<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">          30 : }</span></span>
 <span id="L850"><span class="lineNum">     850</span>              : </span>
 <span id="L851"><span class="lineNum">     851</span>              : /**</span>
 <span id="L852"><span class="lineNum">     852</span>              :  * @brief Subplugin finalizer</span>
 <span id="L853"><span class="lineNum">     853</span>              :  */</span>
 <span id="L854"><span class="lineNum">     854</span>              : void</span>
-<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">          33 : fini_filter_py ()</span></span>
+<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">          30 : fini_filter_py ()</span></span>
 <span id="L856"><span class="lineNum">     856</span>              : {</span>
-<span id="L857"><span class="lineNum">     857</span> <span class="tlaGNC">          33 :   TensorFilterPython::fini_filter_py ();</span></span>
-<span id="L858"><span class="lineNum">     858</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L857"><span class="lineNum">     857</span> <span class="tlaGNC">          30 :   TensorFilterPython::fini_filter_py ();</span></span>
+<span id="L858"><span class="lineNum">     858</span> <span class="tlaGNC">          30 : }</span></span>
 <span id="L859"><span class="lineNum">     859</span>              : } /* namespace tensorfilter_python3 */</span>
 <span id="L860"><span class="lineNum">     860</span>              : } /* namespace nnstreamer */</span>
         </pre>
