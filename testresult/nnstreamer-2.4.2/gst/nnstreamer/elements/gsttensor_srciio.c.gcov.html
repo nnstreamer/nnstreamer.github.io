@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-23 05:35:02</td>
+            <td class="headerValue">2025-01-24 05:35:20</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -313,7 +313,7 @@
 <span id="L251"><span class="lineNum">     251</span>              : </span>
 <span id="L252"><span class="lineNum">     252</span>              : /** Define data processing functions for various types */</span>
 <span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC tlaBgGNC">          24 : PROCESS_SCANNED_DATA (guint8, gint8);</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">         137 : PROCESS_SCANNED_DATA (guint16, gint16);</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">         135 : PROCESS_SCANNED_DATA (guint16, gint16);</span></span>
 <span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          24 : PROCESS_SCANNED_DATA (guint32, gint32);</span></span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          48 : PROCESS_SCANNED_DATA (guint64, gint64);</span></span>
 <span id="L257"><span class="lineNum">     257</span>              : </span>
@@ -345,7 +345,7 @@
 <span id="L283"><span class="lineNum">     283</span>              : /** internal functions */</span>
 <span id="L284"><span class="lineNum">     284</span>              : </span>
 <span id="L285"><span class="lineNum">     285</span>              : #define gst_tensor_src_iio_parent_class parent_class</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1160 : G_DEFINE_TYPE (GstTensorSrcIIO, gst_tensor_src_iio, GST_TYPE_BASE_SRC);</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1159 : G_DEFINE_TYPE (GstTensorSrcIIO, gst_tensor_src_iio, GST_TYPE_BASE_SRC);</span></span>
 <span id="L287"><span class="lineNum">     287</span>              : </span>
 <span id="L288"><span class="lineNum">     288</span>              : /**</span>
 <span id="L289"><span class="lineNum">     289</span>              :  * @brief initialize the tensor_src_iio class.</span>
@@ -2389,45 +2389,45 @@
 <span id="L2327"><span class="lineNum">    2327</span>              :  * @note offset, size ignored as the tensor src iio does not support pull mode</span>
 <span id="L2328"><span class="lineNum">    2328</span>              :  */</span>
 <span id="L2329"><span class="lineNum">    2329</span>              : static GstFlowReturn</span>
-<span id="L2330"><span class="lineNum">    2330</span> <span class="tlaGNC">          38 : gst_tensor_src_iio_create (GstBaseSrc * src, guint64 offset,</span></span>
+<span id="L2330"><span class="lineNum">    2330</span> <span class="tlaGNC">          37 : gst_tensor_src_iio_create (GstBaseSrc * src, guint64 offset,</span></span>
 <span id="L2331"><span class="lineNum">    2331</span>              :     guint size, GstBuffer ** buffer)</span>
 <span id="L2332"><span class="lineNum">    2332</span>              : {</span>
 <span id="L2333"><span class="lineNum">    2333</span>              :   GstTensorSrcIIO *self;</span>
-<span id="L2334"><span class="lineNum">    2334</span> <span class="tlaGNC">          38 :   GstFlowReturn ret = GST_FLOW_ERROR;</span></span>
+<span id="L2334"><span class="lineNum">    2334</span> <span class="tlaGNC">          37 :   GstFlowReturn ret = GST_FLOW_ERROR;</span></span>
 <span id="L2335"><span class="lineNum">    2335</span>              :   GstBuffer *buf;</span>
 <span id="L2336"><span class="lineNum">    2336</span>              :   GstMemory *mem;</span>
 <span id="L2337"><span class="lineNum">    2337</span>              :   GstTensorInfo *_info;</span>
 <span id="L2338"><span class="lineNum">    2338</span>              :   gsize buffer_size;</span>
-<span id="L2339"><span class="lineNum">    2339</span> <span class="tlaGNC">          38 :   guint idx = 0;</span></span>
+<span id="L2339"><span class="lineNum">    2339</span> <span class="tlaGNC">          37 :   guint idx = 0;</span></span>
 <span id="L2340"><span class="lineNum">    2340</span>              :   UNUSED (size);</span>
 <span id="L2341"><span class="lineNum">    2341</span>              : </span>
-<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">          38 :   self = GST_TENSOR_SRC_IIO_CAST (src);</span></span>
-<span id="L2343"><span class="lineNum">    2343</span> <span class="tlaGNC">          38 :   buf = gst_buffer_new ();</span></span>
-<span id="L2344"><span class="lineNum">    2344</span> <span class="tlaGNC">          38 :   buffer_size = gst_tensors_info_get_size (&amp;self-&gt;tensors_config-&gt;info, 0);</span></span>
+<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">          37 :   self = GST_TENSOR_SRC_IIO_CAST (src);</span></span>
+<span id="L2343"><span class="lineNum">    2343</span> <span class="tlaGNC">          37 :   buf = gst_buffer_new ();</span></span>
+<span id="L2344"><span class="lineNum">    2344</span> <span class="tlaGNC">          37 :   buffer_size = gst_tensors_info_get_size (&amp;self-&gt;tensors_config-&gt;info, 0);</span></span>
 <span id="L2345"><span class="lineNum">    2345</span>              : </span>
-<span id="L2346"><span class="lineNum">    2346</span> <span class="tlaGNC">         127 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
+<span id="L2346"><span class="lineNum">    2346</span> <span class="tlaGNC">         118 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
 <span id="L2347"><span class="lineNum">    2347</span>              :     /** all the data, if unermged should be of the same size*/</span>
-<span id="L2348"><span class="lineNum">    2348</span> <span class="tlaGNC">          89 :     _info = gst_tensors_info_get_nth_info (&amp;self-&gt;tensors_config-&gt;info, idx);</span></span>
-<span id="L2349"><span class="lineNum">    2349</span> <span class="tlaGNC">          89 :     g_assert (buffer_size == gst_tensor_info_get_size (_info));</span></span>
+<span id="L2348"><span class="lineNum">    2348</span> <span class="tlaGNC">          81 :     _info = gst_tensors_info_get_nth_info (&amp;self-&gt;tensors_config-&gt;info, idx);</span></span>
+<span id="L2349"><span class="lineNum">    2349</span> <span class="tlaGNC">          81 :     g_assert (buffer_size == gst_tensor_info_get_size (_info));</span></span>
 <span id="L2350"><span class="lineNum">    2350</span>              : </span>
-<span id="L2351"><span class="lineNum">    2351</span> <span class="tlaGNC">          89 :     mem = gst_allocator_alloc (NULL, buffer_size, NULL);</span></span>
-<span id="L2352"><span class="lineNum">    2352</span> <span class="tlaGNC">          89 :     if (mem == NULL) {</span></span>
+<span id="L2351"><span class="lineNum">    2351</span> <span class="tlaGNC">          81 :     mem = gst_allocator_alloc (NULL, buffer_size, NULL);</span></span>
+<span id="L2352"><span class="lineNum">    2352</span> <span class="tlaGNC">          81 :     if (mem == NULL) {</span></span>
 <span id="L2353"><span class="lineNum">    2353</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_ERROR_OBJECT (self, &quot;Error allocating memory for buffer.&quot;);</span></span>
 <span id="L2354"><span class="lineNum">    2354</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L2355"><span class="lineNum">    2355</span>              :     }</span>
 <span id="L2356"><span class="lineNum">    2356</span>              : </span>
-<span id="L2357"><span class="lineNum">    2357</span> <span class="tlaGNC tlaBgGNC">          89 :     gst_tensor_buffer_append_memory (buf, mem, _info);</span></span>
+<span id="L2357"><span class="lineNum">    2357</span> <span class="tlaGNC tlaBgGNC">          81 :     gst_tensor_buffer_append_memory (buf, mem, _info);</span></span>
 <span id="L2358"><span class="lineNum">    2358</span>              :   }</span>
 <span id="L2359"><span class="lineNum">    2359</span>              : </span>
-<span id="L2360"><span class="lineNum">    2360</span> <span class="tlaGNC">          38 :   ret = gst_tensor_src_iio_fill (src, offset, (guint) buffer_size, buf);</span></span>
+<span id="L2360"><span class="lineNum">    2360</span> <span class="tlaGNC">          37 :   ret = gst_tensor_src_iio_fill (src, offset, (guint) buffer_size, buf);</span></span>
 <span id="L2361"><span class="lineNum">    2361</span>              : </span>
-<span id="L2362"><span class="lineNum">    2362</span> <span class="tlaGNC">          38 : error:</span></span>
-<span id="L2363"><span class="lineNum">    2363</span> <span class="tlaGNC">          38 :   if (ret == GST_FLOW_OK)</span></span>
-<span id="L2364"><span class="lineNum">    2364</span> <span class="tlaGNC">          37 :     *buffer = buf;</span></span>
+<span id="L2362"><span class="lineNum">    2362</span> <span class="tlaGNC">          37 : error:</span></span>
+<span id="L2363"><span class="lineNum">    2363</span> <span class="tlaGNC">          37 :   if (ret == GST_FLOW_OK)</span></span>
+<span id="L2364"><span class="lineNum">    2364</span> <span class="tlaGNC">          36 :     *buffer = buf;</span></span>
 <span id="L2365"><span class="lineNum">    2365</span>              :   else</span>
 <span id="L2366"><span class="lineNum">    2366</span> <span class="tlaGNC">           1 :     gst_buffer_unref (buf);</span></span>
 <span id="L2367"><span class="lineNum">    2367</span>              : </span>
-<span id="L2368"><span class="lineNum">    2368</span> <span class="tlaGNC">          38 :   return ret;</span></span>
+<span id="L2368"><span class="lineNum">    2368</span> <span class="tlaGNC">          37 :   return ret;</span></span>
 <span id="L2369"><span class="lineNum">    2369</span>              : }</span>
 <span id="L2370"><span class="lineNum">    2370</span>              : </span>
 <span id="L2371"><span class="lineNum">    2371</span>              : /**</span>
@@ -2440,11 +2440,11 @@
 <span id="L2378"><span class="lineNum">    2378</span>              :  * assumes each data starting point is byte aligned</span>
 <span id="L2379"><span class="lineNum">    2379</span>              :  */</span>
 <span id="L2380"><span class="lineNum">    2380</span>              : static gboolean</span>
-<span id="L2381"><span class="lineNum">    2381</span> <span class="tlaGNC">         233 : gst_tensor_src_iio_process_scanned_data (GstTensorSrcIIOChannelProperties *</span></span>
+<span id="L2381"><span class="lineNum">    2381</span> <span class="tlaGNC">         231 : gst_tensor_src_iio_process_scanned_data (GstTensorSrcIIOChannelProperties *</span></span>
 <span id="L2382"><span class="lineNum">    2382</span>              :     prop, gchar * data, gfloat * buffer_map)</span>
 <span id="L2383"><span class="lineNum">    2383</span>              : {</span>
 <span id="L2384"><span class="lineNum">    2384</span>              :   guint64 storage_mask;</span>
-<span id="L2385"><span class="lineNum">    2385</span> <span class="tlaGNC">         233 :   switch (prop-&gt;storage_bytes) {</span></span>
+<span id="L2385"><span class="lineNum">    2385</span> <span class="tlaGNC">         231 :   switch (prop-&gt;storage_bytes) {</span></span>
 <span id="L2386"><span class="lineNum">    2386</span> <span class="tlaGNC">          24 :     case 1:</span></span>
 <span id="L2387"><span class="lineNum">    2387</span>              :     {</span>
 <span id="L2388"><span class="lineNum">    2388</span> <span class="tlaGNC">          24 :       guint8 value = *(guint8 *) (data + prop-&gt;location);</span></span>
@@ -2454,22 +2454,22 @@
 <span id="L2392"><span class="lineNum">    2392</span> <span class="tlaGNC">          24 :           gst_tensor_src_iio_process_scanned_data_from_guint8 (prop, value);</span></span>
 <span id="L2393"><span class="lineNum">    2393</span> <span class="tlaGNC">          24 :       break;</span></span>
 <span id="L2394"><span class="lineNum">    2394</span>              :     }</span>
-<span id="L2395"><span class="lineNum">    2395</span> <span class="tlaGNC">         137 :     case 2:</span></span>
+<span id="L2395"><span class="lineNum">    2395</span> <span class="tlaGNC">         135 :     case 2:</span></span>
 <span id="L2396"><span class="lineNum">    2396</span>              :     {</span>
-<span id="L2397"><span class="lineNum">    2397</span> <span class="tlaGNC">         137 :       guint16 value = *(guint16 *) (data + prop-&gt;location);</span></span>
-<span id="L2398"><span class="lineNum">    2398</span> <span class="tlaGNC">         137 :       if (prop-&gt;big_endian) {</span></span>
+<span id="L2397"><span class="lineNum">    2397</span> <span class="tlaGNC">         135 :       guint16 value = *(guint16 *) (data + prop-&gt;location);</span></span>
+<span id="L2398"><span class="lineNum">    2398</span> <span class="tlaGNC">         135 :       if (prop-&gt;big_endian) {</span></span>
 <span id="L2399"><span class="lineNum">    2399</span> <span class="tlaGNC">          68 :         value = GUINT16_FROM_BE (value);</span></span>
 <span id="L2400"><span class="lineNum">    2400</span>              :           /** right shift the extra storage bits for big endian */</span>
 <span id="L2401"><span class="lineNum">    2401</span> <span class="tlaGNC">          68 :         value &gt;&gt;= (16 - prop-&gt;storage_bits);</span></span>
 <span id="L2402"><span class="lineNum">    2402</span>              :       } else {</span>
-<span id="L2403"><span class="lineNum">    2403</span> <span class="tlaGNC">          69 :         value = GUINT16_FROM_LE (value);</span></span>
+<span id="L2403"><span class="lineNum">    2403</span> <span class="tlaGNC">          67 :         value = GUINT16_FROM_LE (value);</span></span>
 <span id="L2404"><span class="lineNum">    2404</span>              :           /** mask out the extra storage bits for little endian */</span>
-<span id="L2405"><span class="lineNum">    2405</span> <span class="tlaGNC">          69 :         storage_mask = G_MAXUINT64 &gt;&gt; (64 - prop-&gt;storage_bits);</span></span>
-<span id="L2406"><span class="lineNum">    2406</span> <span class="tlaGNC">          69 :         value &amp;= storage_mask;</span></span>
+<span id="L2405"><span class="lineNum">    2405</span> <span class="tlaGNC">          67 :         storage_mask = G_MAXUINT64 &gt;&gt; (64 - prop-&gt;storage_bits);</span></span>
+<span id="L2406"><span class="lineNum">    2406</span> <span class="tlaGNC">          67 :         value &amp;= storage_mask;</span></span>
 <span id="L2407"><span class="lineNum">    2407</span>              :       }</span>
-<span id="L2408"><span class="lineNum">    2408</span> <span class="tlaGNC">         137 :       *buffer_map =</span></span>
-<span id="L2409"><span class="lineNum">    2409</span> <span class="tlaGNC">         137 :           gst_tensor_src_iio_process_scanned_data_from_guint16 (prop, value);</span></span>
-<span id="L2410"><span class="lineNum">    2410</span> <span class="tlaGNC">         137 :       break;</span></span>
+<span id="L2408"><span class="lineNum">    2408</span> <span class="tlaGNC">         135 :       *buffer_map =</span></span>
+<span id="L2409"><span class="lineNum">    2409</span> <span class="tlaGNC">         135 :           gst_tensor_src_iio_process_scanned_data_from_guint16 (prop, value);</span></span>
+<span id="L2410"><span class="lineNum">    2410</span> <span class="tlaGNC">         135 :       break;</span></span>
 <span id="L2411"><span class="lineNum">    2411</span>              :     }</span>
 <span id="L2412"><span class="lineNum">    2412</span> <span class="tlaGNC">          24 :     case 3:</span></span>
 <span id="L2413"><span class="lineNum">    2413</span>              :       /** follow through */</span>
@@ -2517,7 +2517,7 @@
 <span id="L2455"><span class="lineNum">    2455</span> <span class="tlaUNC">           0 :       GST_ERROR (&quot;Storage bytes for channel %s out of bounds&quot;, prop-&gt;name);</span></span>
 <span id="L2456"><span class="lineNum">    2456</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
 <span id="L2457"><span class="lineNum">    2457</span>              :   }</span>
-<span id="L2458"><span class="lineNum">    2458</span> <span class="tlaGNC tlaBgGNC">         233 :   return TRUE;</span></span>
+<span id="L2458"><span class="lineNum">    2458</span> <span class="tlaGNC tlaBgGNC">         231 :   return TRUE;</span></span>
 <span id="L2459"><span class="lineNum">    2459</span>              : }</span>
 <span id="L2460"><span class="lineNum">    2460</span>              : </span>
 <span id="L2461"><span class="lineNum">    2461</span>              : /**</span>
@@ -2526,11 +2526,11 @@
 <span id="L2464"><span class="lineNum">    2464</span>              :  * @note buffer timestamp is already handled by gstreamer with gst clock</span>
 <span id="L2465"><span class="lineNum">    2465</span>              :  */</span>
 <span id="L2466"><span class="lineNum">    2466</span>              : static GstFlowReturn</span>
-<span id="L2467"><span class="lineNum">    2467</span> <span class="tlaGNC">          38 : gst_tensor_src_iio_fill (GstBaseSrc * src, guint64 offset, guint size,</span></span>
+<span id="L2467"><span class="lineNum">    2467</span> <span class="tlaGNC">          37 : gst_tensor_src_iio_fill (GstBaseSrc * src, guint64 offset, guint size,</span></span>
 <span id="L2468"><span class="lineNum">    2468</span>              :     GstBuffer * buffer)</span>
 <span id="L2469"><span class="lineNum">    2469</span>              : {</span>
 <span id="L2470"><span class="lineNum">    2470</span>              :   GstTensorSrcIIO *self;</span>
-<span id="L2471"><span class="lineNum">    2471</span> <span class="tlaGNC">          38 :   GstFlowReturn ret = GST_FLOW_ERROR;</span></span>
+<span id="L2471"><span class="lineNum">    2471</span> <span class="tlaGNC">          37 :   GstFlowReturn ret = GST_FLOW_ERROR;</span></span>
 <span id="L2472"><span class="lineNum">    2472</span>              :   gint status, bytes_to_read;</span>
 <span id="L2473"><span class="lineNum">    2473</span>              :   guint idx, ch_idx, num_mapped;</span>
 <span id="L2474"><span class="lineNum">    2474</span>              :   gchar *raw_data_base, *raw_data;</span>
@@ -2543,56 +2543,56 @@
 <span id="L2481"><span class="lineNum">    2481</span>              :   UNUSED (offset);</span>
 <span id="L2482"><span class="lineNum">    2482</span>              :   UNUSED (size);</span>
 <span id="L2483"><span class="lineNum">    2483</span>              : </span>
-<span id="L2484"><span class="lineNum">    2484</span> <span class="tlaGNC">          38 :   self = GST_TENSOR_SRC_IIO (src);</span></span>
+<span id="L2484"><span class="lineNum">    2484</span> <span class="tlaGNC">          37 :   self = GST_TENSOR_SRC_IIO (src);</span></span>
 <span id="L2485"><span class="lineNum">    2485</span>              : </span>
 <span id="L2486"><span class="lineNum">    2486</span>              :   /** Only supporting tensors made of 1 tensor for now */</span>
-<span id="L2487"><span class="lineNum">    2487</span> <span class="tlaGNC">          38 :   g_assert (gst_tensor_buffer_get_count (buffer) ==</span></span>
+<span id="L2487"><span class="lineNum">    2487</span> <span class="tlaGNC">          37 :   g_assert (gst_tensor_buffer_get_count (buffer) ==</span></span>
 <span id="L2488"><span class="lineNum">    2488</span>              :       self-&gt;tensors_config-&gt;info.num_tensors);</span>
 <span id="L2489"><span class="lineNum">    2489</span>              : </span>
 <span id="L2490"><span class="lineNum">    2490</span>              :   /** get writable buffer */</span>
-<span id="L2491"><span class="lineNum">    2491</span> <span class="tlaGNC">          38 :   num_mapped = 0;</span></span>
-<span id="L2492"><span class="lineNum">    2492</span> <span class="tlaGNC">         127 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
-<span id="L2493"><span class="lineNum">    2493</span> <span class="tlaGNC">          89 :     mem[idx] = gst_tensor_buffer_get_nth_memory (buffer, idx);</span></span>
-<span id="L2494"><span class="lineNum">    2494</span> <span class="tlaGNC">          89 :     if (!gst_memory_map (mem[idx], &amp;map[idx], GST_MAP_WRITE)) {</span></span>
+<span id="L2491"><span class="lineNum">    2491</span> <span class="tlaGNC">          37 :   num_mapped = 0;</span></span>
+<span id="L2492"><span class="lineNum">    2492</span> <span class="tlaGNC">         118 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
+<span id="L2493"><span class="lineNum">    2493</span> <span class="tlaGNC">          81 :     mem[idx] = gst_tensor_buffer_get_nth_memory (buffer, idx);</span></span>
+<span id="L2494"><span class="lineNum">    2494</span> <span class="tlaGNC">          81 :     if (!gst_memory_map (mem[idx], &amp;map[idx], GST_MAP_WRITE)) {</span></span>
 <span id="L2495"><span class="lineNum">    2495</span> <span class="tlaUNC tlaBgUNC">           0 :       for (ch_idx = 0; ch_idx &lt; num_mapped; ch_idx++) {</span></span>
 <span id="L2496"><span class="lineNum">    2496</span> <span class="tlaUNC">           0 :         gst_memory_unmap (mem[ch_idx], &amp;map[ch_idx]);</span></span>
 <span id="L2497"><span class="lineNum">    2497</span> <span class="tlaUNC">           0 :         gst_memory_unref (mem[ch_idx]);</span></span>
 <span id="L2498"><span class="lineNum">    2498</span>              :       }</span>
 <span id="L2499"><span class="lineNum">    2499</span> <span class="tlaUNC">           0 :       gst_memory_unref (mem[idx]);</span></span>
-<span id="L2500"><span class="lineNum">    2500</span> <span class="tlaGNC tlaBgGNC">          38 :       return GST_FLOW_ERROR;</span></span>
+<span id="L2500"><span class="lineNum">    2500</span> <span class="tlaGNC tlaBgGNC">          37 :       return GST_FLOW_ERROR;</span></span>
 <span id="L2501"><span class="lineNum">    2501</span>              :     }</span>
-<span id="L2502"><span class="lineNum">    2502</span> <span class="tlaGNC">          89 :     num_mapped = idx + 1;</span></span>
+<span id="L2502"><span class="lineNum">    2502</span> <span class="tlaGNC">          81 :     num_mapped = idx + 1;</span></span>
 <span id="L2503"><span class="lineNum">    2503</span>              :   }</span>
 <span id="L2504"><span class="lineNum">    2504</span>              :   /** memory to data from file */</span>
-<span id="L2505"><span class="lineNum">    2505</span> <span class="tlaGNC">          38 :   bytes_to_read = self-&gt;scan_size * self-&gt;buffer_capacity;</span></span>
-<span id="L2506"><span class="lineNum">    2506</span> <span class="tlaGNC">          38 :   raw_data_base = g_malloc (bytes_to_read);</span></span>
-<span id="L2507"><span class="lineNum">    2507</span> <span class="tlaGNC">          38 :   if (raw_data_base == NULL) {</span></span>
+<span id="L2505"><span class="lineNum">    2505</span> <span class="tlaGNC">          37 :   bytes_to_read = self-&gt;scan_size * self-&gt;buffer_capacity;</span></span>
+<span id="L2506"><span class="lineNum">    2506</span> <span class="tlaGNC">          37 :   raw_data_base = g_malloc (bytes_to_read);</span></span>
+<span id="L2507"><span class="lineNum">    2507</span> <span class="tlaGNC">          37 :   if (raw_data_base == NULL) {</span></span>
 <span id="L2508"><span class="lineNum">    2508</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to allocate memory to read raw data.&quot;);</span></span>
 <span id="L2509"><span class="lineNum">    2509</span> <span class="tlaUNC">           0 :     goto error_data_free;</span></span>
 <span id="L2510"><span class="lineNum">    2510</span>              :   }</span>
 <span id="L2511"><span class="lineNum">    2511</span>              : </span>
 <span id="L2512"><span class="lineNum">    2512</span>              :   /** wait for the data to arrive */</span>
-<span id="L2513"><span class="lineNum">    2513</span> <span class="tlaGNC tlaBgGNC">          38 :   time_to_end = g_get_real_time () + self-&gt;poll_timeout * 1000;</span></span>
+<span id="L2513"><span class="lineNum">    2513</span> <span class="tlaGNC tlaBgGNC">          37 :   time_to_end = g_get_real_time () + self-&gt;poll_timeout * 1000;</span></span>
 <span id="L2514"><span class="lineNum">    2514</span>              :   while (TRUE) {</span>
-<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         386 :     if (self-&gt;trigger.name != NULL) {</span></span>
-<span id="L2516"><span class="lineNum">    2516</span> <span class="tlaGNC">          17 :       status = poll (self-&gt;buffer_data_fp, 1, self-&gt;poll_timeout);</span></span>
-<span id="L2517"><span class="lineNum">    2517</span> <span class="tlaGNC">          17 :       if (status &lt; 0) {</span></span>
+<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         279 :     if (self-&gt;trigger.name != NULL) {</span></span>
+<span id="L2516"><span class="lineNum">    2516</span> <span class="tlaGNC">          16 :       status = poll (self-&gt;buffer_data_fp, 1, self-&gt;poll_timeout);</span></span>
+<span id="L2517"><span class="lineNum">    2517</span> <span class="tlaGNC">          16 :       if (status &lt; 0) {</span></span>
 <span id="L2518"><span class="lineNum">    2518</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Error %d while polling the buffer.&quot;, status);</span></span>
 <span id="L2519"><span class="lineNum">    2519</span> <span class="tlaUNC">           0 :         goto error_data_free;</span></span>
-<span id="L2520"><span class="lineNum">    2520</span> <span class="tlaGNC tlaBgGNC">          17 :       } else if (status == 0) {</span></span>
+<span id="L2520"><span class="lineNum">    2520</span> <span class="tlaGNC tlaBgGNC">          16 :       } else if (status == 0) {</span></span>
 <span id="L2521"><span class="lineNum">    2521</span> <span class="tlaGNC">           1 :         GST_ERROR_OBJECT (self, &quot;Timeout while polling the buffer.&quot;);</span></span>
 <span id="L2522"><span class="lineNum">    2522</span> <span class="tlaGNC">           1 :         goto error_data_free;</span></span>
-<span id="L2523"><span class="lineNum">    2523</span> <span class="tlaGNC">          16 :       } else if (!(self-&gt;buffer_data_fp-&gt;revents &amp; POLLIN)) {</span></span>
+<span id="L2523"><span class="lineNum">    2523</span> <span class="tlaGNC">          15 :       } else if (!(self-&gt;buffer_data_fp-&gt;revents &amp; POLLIN)) {</span></span>
 <span id="L2524"><span class="lineNum">    2524</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Poll succeeded on an unexpected event %d.&quot;,</span></span>
 <span id="L2525"><span class="lineNum">    2525</span>              :             self-&gt;buffer_data_fp-&gt;revents);</span>
 <span id="L2526"><span class="lineNum">    2526</span> <span class="tlaUNC">           0 :         goto error_data_free;</span></span>
 <span id="L2527"><span class="lineNum">    2527</span>              :       }</span>
-<span id="L2528"><span class="lineNum">    2528</span> <span class="tlaGNC tlaBgGNC">          16 :       self-&gt;buffer_data_fp-&gt;revents = 0;</span></span>
+<span id="L2528"><span class="lineNum">    2528</span> <span class="tlaGNC tlaBgGNC">          15 :       self-&gt;buffer_data_fp-&gt;revents = 0;</span></span>
 <span id="L2529"><span class="lineNum">    2529</span>              :     } else {</span>
 <span id="L2530"><span class="lineNum">    2530</span>              :       /** sleep for a device tick */</span>
-<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         369 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
+<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         263 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
 <span id="L2532"><span class="lineNum">    2532</span>              :               self-&gt;buffer_capacity)) {</span>
-<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         369 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
+<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         263 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
 <span id="L2534"><span class="lineNum">    2534</span>              :       } else {</span>
 <span id="L2535"><span class="lineNum">    2535</span> <span class="tlaUNC tlaBgUNC">           0 :         g_usleep (MAX (1,</span></span>
 <span id="L2536"><span class="lineNum">    2536</span>              :                 (self-&gt;buffer_capacity / self-&gt;sampling_frequency) *</span>
@@ -2601,13 +2601,13 @@
 <span id="L2539"><span class="lineNum">    2539</span>              :     }</span>
 <span id="L2540"><span class="lineNum">    2540</span>              : </span>
 <span id="L2541"><span class="lineNum">    2541</span>              :     /** using read for non-blocking access */</span>
-<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         385 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
-<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         385 :     if (status &lt; bytes_to_read) {</span></span>
-<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         348 :       if (errno == EAGAIN) {</span></span>
-<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         348 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
-<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         348 :         cur_time = g_get_real_time ();</span></span>
-<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         348 :         if (time_to_end &gt;= cur_time) {</span></span>
-<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         348 :           continue;</span></span>
+<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         278 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
+<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         278 :     if (status &lt; bytes_to_read) {</span></span>
+<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         242 :       if (errno == EAGAIN) {</span></span>
+<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         242 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
+<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         242 :         cur_time = g_get_real_time ();</span></span>
+<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         242 :         if (time_to_end &gt;= cur_time) {</span></span>
+<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         242 :           continue;</span></span>
 <span id="L2549"><span class="lineNum">    2549</span>              :         } else {</span>
 <span id="L2550"><span class="lineNum">    2550</span> <span class="tlaUNC tlaBgUNC">           0 :           GST_ERROR_OBJECT (self, &quot;EAGAIN timeout expired.&quot;);</span></span>
 <span id="L2551"><span class="lineNum">    2551</span> <span class="tlaUNC">           0 :           goto error_data_free;</span></span>
@@ -2618,48 +2618,48 @@
 <span id="L2556"><span class="lineNum">    2556</span>              :           errno, status, bytes_to_read);</span>
 <span id="L2557"><span class="lineNum">    2557</span> <span class="tlaUNC">           0 :       goto error_data_free;</span></span>
 <span id="L2558"><span class="lineNum">    2558</span>              :     }</span>
-<span id="L2559"><span class="lineNum">    2559</span> <span class="tlaGNC tlaBgGNC">          37 :     break;</span></span>
+<span id="L2559"><span class="lineNum">    2559</span> <span class="tlaGNC tlaBgGNC">          36 :     break;</span></span>
 <span id="L2560"><span class="lineNum">    2560</span>              :   }</span>
 <span id="L2561"><span class="lineNum">    2561</span>              : </span>
 <span id="L2562"><span class="lineNum">    2562</span>              :   /** parse the read data */</span>
-<span id="L2563"><span class="lineNum">    2563</span> <span class="tlaGNC">          37 :   raw_data = raw_data_base;</span></span>
+<span id="L2563"><span class="lineNum">    2563</span> <span class="tlaGNC">          36 :   raw_data = raw_data_base;</span></span>
 <span id="L2564"><span class="lineNum">    2564</span>              : </span>
 <span id="L2565"><span class="lineNum">    2565</span>              :   /**</span>
 <span id="L2566"><span class="lineNum">    2566</span>              :    * current assumption is that the all data is float and merged to form</span>
 <span id="L2567"><span class="lineNum">    2567</span>              :    * a 1 dimension data. 2nd dimension comes from buffer capacity.</span>
 <span id="L2568"><span class="lineNum">    2568</span>              :    */</span>
-<span id="L2569"><span class="lineNum">    2569</span> <span class="tlaGNC">          74 :   for (idx = 0; idx &lt; self-&gt;buffer_capacity; idx++) {</span></span>
-<span id="L2570"><span class="lineNum">    2570</span> <span class="tlaGNC">          37 :     for (channels = self-&gt;channels, ch_idx = 0;</span></span>
-<span id="L2571"><span class="lineNum">    2571</span> <span class="tlaGNC">         270 :         ch_idx &lt; self-&gt;num_channels_enabled;</span></span>
-<span id="L2572"><span class="lineNum">    2572</span> <span class="tlaGNC">         233 :         ch_idx++, channels = channels-&gt;next) {</span></span>
-<span id="L2573"><span class="lineNum">    2573</span> <span class="tlaGNC">         233 :       if (self-&gt;tensors_config-&gt;info.num_tensors == 1) {</span></span>
+<span id="L2569"><span class="lineNum">    2569</span> <span class="tlaGNC">          72 :   for (idx = 0; idx &lt; self-&gt;buffer_capacity; idx++) {</span></span>
+<span id="L2570"><span class="lineNum">    2570</span> <span class="tlaGNC">          36 :     for (channels = self-&gt;channels, ch_idx = 0;</span></span>
+<span id="L2571"><span class="lineNum">    2571</span> <span class="tlaGNC">         267 :         ch_idx &lt; self-&gt;num_channels_enabled;</span></span>
+<span id="L2572"><span class="lineNum">    2572</span> <span class="tlaGNC">         231 :         ch_idx++, channels = channels-&gt;next) {</span></span>
+<span id="L2573"><span class="lineNum">    2573</span> <span class="tlaGNC">         231 :       if (self-&gt;tensors_config-&gt;info.num_tensors == 1) {</span></span>
 <span id="L2574"><span class="lineNum">    2574</span>              :         /** for other/tensor, only 1 map exist as there is only 1 mem */</span>
-<span id="L2575"><span class="lineNum">    2575</span> <span class="tlaGNC">         182 :         map_data_float =</span></span>
-<span id="L2576"><span class="lineNum">    2576</span> <span class="tlaGNC">         182 :             ((gfloat *) map[0].data) + idx * self-&gt;num_channels_enabled +</span></span>
+<span id="L2575"><span class="lineNum">    2575</span> <span class="tlaGNC">         180 :         map_data_float =</span></span>
+<span id="L2576"><span class="lineNum">    2576</span> <span class="tlaGNC">         180 :             ((gfloat *) map[0].data) + idx * self-&gt;num_channels_enabled +</span></span>
 <span id="L2577"><span class="lineNum">    2577</span>              :             ch_idx;</span>
 <span id="L2578"><span class="lineNum">    2578</span>              :       } else {</span>
 <span id="L2579"><span class="lineNum">    2579</span>              :         /** for other/tensors, multiple maps exist as there are multiple mem */</span>
 <span id="L2580"><span class="lineNum">    2580</span> <span class="tlaGNC">          51 :         map_data_float = ((gfloat *) map[ch_idx].data) + idx;</span></span>
 <span id="L2581"><span class="lineNum">    2581</span>              :       }</span>
-<span id="L2582"><span class="lineNum">    2582</span> <span class="tlaGNC">         233 :       if (!gst_tensor_src_iio_process_scanned_data (channels-&gt;data, raw_data,</span></span>
+<span id="L2582"><span class="lineNum">    2582</span> <span class="tlaGNC">         231 :       if (!gst_tensor_src_iio_process_scanned_data (channels-&gt;data, raw_data,</span></span>
 <span id="L2583"><span class="lineNum">    2583</span>              :               map_data_float)) {</span>
 <span id="L2584"><span class="lineNum">    2584</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Error while processing scanned data.&quot;);</span></span>
 <span id="L2585"><span class="lineNum">    2585</span> <span class="tlaUNC">           0 :         goto error_data_free;</span></span>
 <span id="L2586"><span class="lineNum">    2586</span>              :       }</span>
 <span id="L2587"><span class="lineNum">    2587</span>              :     }</span>
-<span id="L2588"><span class="lineNum">    2588</span> <span class="tlaGNC tlaBgGNC">          37 :     raw_data += self-&gt;scan_size;</span></span>
+<span id="L2588"><span class="lineNum">    2588</span> <span class="tlaGNC tlaBgGNC">          36 :     raw_data += self-&gt;scan_size;</span></span>
 <span id="L2589"><span class="lineNum">    2589</span>              :   }</span>
 <span id="L2590"><span class="lineNum">    2590</span>              : </span>
-<span id="L2591"><span class="lineNum">    2591</span> <span class="tlaGNC">          37 :   ret = GST_FLOW_OK;</span></span>
+<span id="L2591"><span class="lineNum">    2591</span> <span class="tlaGNC">          36 :   ret = GST_FLOW_OK;</span></span>
 <span id="L2592"><span class="lineNum">    2592</span>              : </span>
-<span id="L2593"><span class="lineNum">    2593</span> <span class="tlaGNC">          38 : error_data_free:</span></span>
-<span id="L2594"><span class="lineNum">    2594</span> <span class="tlaGNC">          38 :   g_free (raw_data_base);</span></span>
-<span id="L2595"><span class="lineNum">    2595</span> <span class="tlaGNC">         127 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
-<span id="L2596"><span class="lineNum">    2596</span> <span class="tlaGNC">          89 :     gst_memory_unmap (mem[idx], &amp;map[idx]);</span></span>
-<span id="L2597"><span class="lineNum">    2597</span> <span class="tlaGNC">          89 :     gst_memory_unref (mem[idx]);</span></span>
+<span id="L2593"><span class="lineNum">    2593</span> <span class="tlaGNC">          37 : error_data_free:</span></span>
+<span id="L2594"><span class="lineNum">    2594</span> <span class="tlaGNC">          37 :   g_free (raw_data_base);</span></span>
+<span id="L2595"><span class="lineNum">    2595</span> <span class="tlaGNC">         118 :   for (idx = 0; idx &lt; self-&gt;tensors_config-&gt;info.num_tensors; idx++) {</span></span>
+<span id="L2596"><span class="lineNum">    2596</span> <span class="tlaGNC">          81 :     gst_memory_unmap (mem[idx], &amp;map[idx]);</span></span>
+<span id="L2597"><span class="lineNum">    2597</span> <span class="tlaGNC">          81 :     gst_memory_unref (mem[idx]);</span></span>
 <span id="L2598"><span class="lineNum">    2598</span>              :   }</span>
 <span id="L2599"><span class="lineNum">    2599</span>              : </span>
-<span id="L2600"><span class="lineNum">    2600</span> <span class="tlaGNC">          38 :   return ret;</span></span>
+<span id="L2600"><span class="lineNum">    2600</span> <span class="tlaGNC">          37 :   return ret;</span></span>
 <span id="L2601"><span class="lineNum">    2601</span>              : }</span>
         </pre>
               </td>
