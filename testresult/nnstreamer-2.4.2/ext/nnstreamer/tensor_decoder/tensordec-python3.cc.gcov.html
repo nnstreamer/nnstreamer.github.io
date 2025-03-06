@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-06 05:37:19</td>
+            <td class="headerValue">2025-03-07 05:36:41</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.3&nbsp;%</td>
@@ -449,20 +449,20 @@
 <span id="L387"><span class="lineNum">     387</span>              : #endif /* __cplusplus */</span>
 <span id="L388"><span class="lineNum">     388</span>              : /** @brief Initialize this object for tensordec-plugin */</span>
 <span id="L389"><span class="lineNum">     389</span>              : void</span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          31 : init_decoder_py (void)</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          34 : init_decoder_py (void)</span></span>
 <span id="L391"><span class="lineNum">     391</span>              : {</span>
 <span id="L392"><span class="lineNum">     392</span>              :   /** Python should be initialized and finalized only once */</span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          31 :   nnstreamer_python_init_refcnt ();</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">          31 :   nnstreamer_decoder_probe (&amp;Python);</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          34 :   nnstreamer_python_init_refcnt ();</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">          34 :   nnstreamer_decoder_probe (&amp;Python);</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          34 : }</span></span>
 <span id="L396"><span class="lineNum">     396</span>              : </span>
 <span id="L397"><span class="lineNum">     397</span>              : /** @brief Destruct this object for tensordec-plugin */</span>
 <span id="L398"><span class="lineNum">     398</span>              : void</span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          31 : fini_decoder_py (void)</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          34 : fini_decoder_py (void)</span></span>
 <span id="L400"><span class="lineNum">     400</span>              : {</span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          31 :   nnstreamer_python_status_check ();</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          31 :   nnstreamer_python_fini_refcnt ();</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          31 :   nnstreamer_decoder_exit (Python.modename);</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          34 :   nnstreamer_python_status_check ();</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          34 :   nnstreamer_python_fini_refcnt ();</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          34 :   nnstreamer_decoder_exit (Python.modename);</span></span>
 <span id="L404"><span class="lineNum">     404</span>              : </span>
 <span id="L405"><span class="lineNum">     405</span>              : /**</span>
 <span id="L406"><span class="lineNum">     406</span>              :  * @todo Remove below lines after this issue is addressed.</span>
@@ -477,7 +477,7 @@
 <span id="L415"><span class="lineNum">     415</span>              :   if (Py_IsInitialized ())</span>
 <span id="L416"><span class="lineNum">     416</span>              :     Py_Finalize ();</span>
 <span id="L417"><span class="lineNum">     417</span>              : #endif</span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">          34 : }</span></span>
 <span id="L419"><span class="lineNum">     419</span>              : #ifdef __cplusplus</span>
 <span id="L420"><span class="lineNum">     420</span>              : }</span>
 <span id="L421"><span class="lineNum">     421</span>              : #endif /* __cplusplus */</span>
