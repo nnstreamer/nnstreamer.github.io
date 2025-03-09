@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a5794952a998f27412f8529ce232706e4a975530 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordecutil.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordecutil.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a5794952a998f27412f8529ce232706e4a975530</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">91.2&nbsp;%</td>
-            <td class="headerCovTableEntry">57</td>
-            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntryHi">91.4&nbsp;%</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntry">53</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-07 05:36:41</td>
+            <td class="headerValue">2025-03-10 05:34:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -90,13 +90,13 @@
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          31 :   GError *err = NULL;</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :   gchar **_labels;</span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          31 :   gchar *contents = NULL;</span></span>
-<span id="L31"><span class="lineNum">      31</span>              :   gsize len;</span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          31 :   gsize len = 0;</span></span>
 <span id="L32"><span class="lineNum">      32</span>              :   guint i;</span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          31 :   _free_labels (l);</span></span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span>              :   /* Read file contents */</span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          31 :   if (!g_file_get_contents (label_path, &amp;contents, &amp;len, &amp;err)) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          31 :   if (!g_file_get_contents (label_path, &amp;contents, &amp;len, &amp;err) || len &lt;= 0) {</span></span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Unable to read file %s with error %s.&quot;, label_path, err-&gt;message);</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :     g_clear_error (&amp;err);</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC tlaBgGNC">          31 :     return;</span></span>
