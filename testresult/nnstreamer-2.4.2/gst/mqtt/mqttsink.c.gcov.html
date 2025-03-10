@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d - nnstreamer-2.4.2/gst/mqtt/mqttsink.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5 - nnstreamer-2.4.2/gst/mqtt/mqttsink.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">80.9&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-10 05:34:03</td>
+            <td class="headerValue">2025-03-11 05:37:17</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">90.6&nbsp;%</td>
@@ -98,7 +98,7 @@
 <span id="L36"><span class="lineNum">      36</span>              :     GST_PAD_SINK, GST_PAD_ALWAYS, GST_STATIC_CAPS_ANY);</span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
 <span id="L38"><span class="lineNum">      38</span>              : #define gst_mqtt_sink_parent_class parent_class</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC tlaBgGNC">         224 : G_DEFINE_TYPE (GstMqttSink, gst_mqtt_sink, GST_TYPE_BASE_SINK);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC tlaBgGNC">         170 : G_DEFINE_TYPE (GstMqttSink, gst_mqtt_sink, GST_TYPE_BASE_SINK);</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
 <span id="L41"><span class="lineNum">      41</span>              : GST_DEBUG_CATEGORY_STATIC (gst_mqtt_sink_debug);</span>
 <span id="L42"><span class="lineNum">      42</span>              : #define GST_CAT_DEFAULT gst_mqtt_sink_debug</span>
@@ -288,90 +288,90 @@
 <span id="L226"><span class="lineNum">     226</span>              :  * @brief Initialize GstMqttSinkClass object</span>
 <span id="L227"><span class="lineNum">     227</span>              :  */</span>
 <span id="L228"><span class="lineNum">     228</span>              : static void</span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          20 : gst_mqtt_sink_class_init (GstMqttSinkClass * klass)</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           2 : gst_mqtt_sink_class_init (GstMqttSinkClass * klass)</span></span>
 <span id="L230"><span class="lineNum">     230</span>              : {</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          20 :   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          20 :   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          20 :   GstBaseSinkClass *gstbasesink_class = GST_BASE_SINK_CLASS (klass);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           2 :   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           2 :   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           2 :   GstBaseSinkClass *gstbasesink_class = GST_BASE_SINK_CLASS (klass);</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">          20 :   GST_DEBUG_CATEGORY_INIT (GST_CAT_DEFAULT, GST_MQTT_ELEM_NAME_SINK, 0,</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           2 :   GST_DEBUG_CATEGORY_INIT (GST_CAT_DEFAULT, GST_MQTT_ELEM_NAME_SINK, 0,</span></span>
 <span id="L236"><span class="lineNum">     236</span>              :       &quot;MQTT sink&quot;);</span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          20 :   gobject_class-&gt;set_property = gst_mqtt_sink_set_property;</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">          20 :   gobject_class-&gt;get_property = gst_mqtt_sink_get_property;</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">          20 :   gobject_class-&gt;finalize = gst_mqtt_sink_class_finalize;</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           2 :   gobject_class-&gt;set_property = gst_mqtt_sink_set_property;</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           2 :   gobject_class-&gt;get_property = gst_mqtt_sink_get_property;</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           2 :   gobject_class-&gt;finalize = gst_mqtt_sink_class_finalize;</span></span>
 <span id="L241"><span class="lineNum">     241</span>              : </span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_DEBUG,</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_DEBUG,</span></span>
 <span id="L243"><span class="lineNum">     243</span>              :       g_param_spec_boolean (&quot;debug&quot;, &quot;Debug&quot;,</span>
 <span id="L244"><span class="lineNum">     244</span>              :           &quot;Produce extra verbose output for debug purpose&quot;, DEFAULT_DEBUG,</span>
 <span id="L245"><span class="lineNum">     245</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_CLIENT_ID,</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_CLIENT_ID,</span></span>
 <span id="L248"><span class="lineNum">     248</span>              :       g_param_spec_string (&quot;client-id&quot;, &quot;Client ID&quot;,</span>
 <span id="L249"><span class="lineNum">     249</span>              :           &quot;The client identifier passed to the server (broker).&quot;, NULL,</span>
 <span id="L250"><span class="lineNum">     250</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L251"><span class="lineNum">     251</span>              : </span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_HOST_ADDRESS,</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_HOST_ADDRESS,</span></span>
 <span id="L253"><span class="lineNum">     253</span>              :       g_param_spec_string (&quot;host&quot;, &quot;Host&quot;, &quot;Host (broker) to connect to&quot;,</span>
 <span id="L254"><span class="lineNum">     254</span>              :           DEFAULT_MQTT_HOST_ADDRESS,</span>
 <span id="L255"><span class="lineNum">     255</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L256"><span class="lineNum">     256</span>              : </span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_HOST_PORT,</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_HOST_PORT,</span></span>
 <span id="L258"><span class="lineNum">     258</span>              :       g_param_spec_string (&quot;port&quot;, &quot;Port&quot;,</span>
 <span id="L259"><span class="lineNum">     259</span>              :           &quot;Network port of host (broker) to connect to&quot;, DEFAULT_MQTT_HOST_PORT,</span>
 <span id="L260"><span class="lineNum">     260</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L261"><span class="lineNum">     261</span>              : </span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_NTP_SYNC,</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_NTP_SYNC,</span></span>
 <span id="L263"><span class="lineNum">     263</span>              :       g_param_spec_boolean (&quot;ntp-sync&quot;, &quot;NTP Synchronization&quot;,</span>
 <span id="L264"><span class="lineNum">     264</span>              :           &quot;Synchronize received streams to the NTP clock&quot;,</span>
 <span id="L265"><span class="lineNum">     265</span>              :           DEFAULT_MQTT_NTP_SYNC, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_NTP_SRVS,</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_NTP_SRVS,</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :       g_param_spec_string (&quot;ntp-srvs&quot;, &quot;NTP Server Host Name and Port Pairs&quot;,</span>
 <span id="L269"><span class="lineNum">     269</span>              :           &quot;NTP Servers' HOST_NAME:PORT pairs to use (valid only if ntp-sync is true)\n&quot;</span>
 <span id="L270"><span class="lineNum">     270</span>              :           &quot;\t\t\tUse ',' to separate each pair if there are more pairs than one&quot;,</span>
 <span id="L271"><span class="lineNum">     271</span>              :           DEFAULT_MQTT_NTP_SERVERS,</span>
 <span id="L272"><span class="lineNum">     272</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L273"><span class="lineNum">     273</span>              : </span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_PUB_TOPIC,</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_PUB_TOPIC,</span></span>
 <span id="L275"><span class="lineNum">     275</span>              :       g_param_spec_string (&quot;pub-topic&quot;, &quot;Topic to Publish&quot;,</span>
 <span id="L276"><span class="lineNum">     276</span>              :           &quot;The topic's name to publish&quot;, NULL,</span>
 <span id="L277"><span class="lineNum">     277</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class,</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class,</span></span>
 <span id="L280"><span class="lineNum">     280</span>              :       PROP_MQTT_PUB_WAIT_TIMEOUT,</span>
 <span id="L281"><span class="lineNum">     281</span>              :       g_param_spec_ulong (&quot;pub-wait-timeout&quot;, &quot;Timeout for Publish a message&quot;,</span>
 <span id="L282"><span class="lineNum">     282</span>              :           &quot;Timeout for execution of the main thread with completed publication of a message&quot;,</span>
 <span id="L283"><span class="lineNum">     283</span>              :           1UL, G_MAXULONG, DEFAULT_MQTT_PUB_WAIT_TIMEOUT,</span>
 <span id="L284"><span class="lineNum">     284</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_OPT_CLEANSESSION,</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_OPT_CLEANSESSION,</span></span>
 <span id="L287"><span class="lineNum">     287</span>              :       g_param_spec_boolean (&quot;cleansession&quot;, &quot;Cleansession&quot;,</span>
 <span id="L288"><span class="lineNum">     288</span>              :           &quot;When it is TRUE, the state information is discarded at connect and disconnect.&quot;,</span>
 <span id="L289"><span class="lineNum">     289</span>              :           DEFAULT_MQTT_OPT_CLEANSESSION,</span>
 <span id="L290"><span class="lineNum">     290</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class,</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class,</span></span>
 <span id="L293"><span class="lineNum">     293</span>              :       PROP_MQTT_OPT_KEEP_ALIVE_INTERVAL,</span>
 <span id="L294"><span class="lineNum">     294</span>              :       g_param_spec_int (&quot;keep-alive-interval&quot;, &quot;Keep Alive Interval&quot;,</span>
 <span id="L295"><span class="lineNum">     295</span>              :           &quot;The maximum time (in seconds) that should pass without communication between the client and the server (broker)&quot;,</span>
 <span id="L296"><span class="lineNum">     296</span>              :           1, G_MAXINT32, DEFAULT_MQTT_OPT_KEEP_ALIVE_INTERVAL,</span>
 <span id="L297"><span class="lineNum">     297</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MAX_MSG_BUF_SIZE,</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MAX_MSG_BUF_SIZE,</span></span>
 <span id="L300"><span class="lineNum">     300</span>              :       g_param_spec_ulong (&quot;max-buffer-size&quot;,</span>
 <span id="L301"><span class="lineNum">     301</span>              :           &quot;The maximum size of a message buffer&quot;,</span>
 <span id="L302"><span class="lineNum">     302</span>              :           &quot;The maximum size in bytes of a message buffer (0 = dynamic buffer size)&quot;,</span>
 <span id="L303"><span class="lineNum">     303</span>              :           0, G_MAXULONG, DEFAULT_MAX_MSG_BUF_SIZE,</span>
 <span id="L304"><span class="lineNum">     304</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L305"><span class="lineNum">     305</span>              : </span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_NUM_BUFFERS,</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_NUM_BUFFERS,</span></span>
 <span id="L307"><span class="lineNum">     307</span>              :       g_param_spec_int (&quot;num-buffers&quot;, &quot;Num Buffers&quot;,</span>
 <span id="L308"><span class="lineNum">     308</span>              :           &quot;Number of (remaining) buffers to accept until sending EOS event (-1 = no limit)&quot;,</span>
 <span id="L309"><span class="lineNum">     309</span>              :           -1, G_MAXINT32, DEFAULT_NUM_BUFFERS,</span>
 <span id="L310"><span class="lineNum">     310</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          20 :   g_object_class_install_property (gobject_class, PROP_MQTT_QOS,</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           2 :   g_object_class_install_property (gobject_class, PROP_MQTT_QOS,</span></span>
 <span id="L313"><span class="lineNum">     313</span>              :       g_param_spec_int (&quot;mqtt-qos&quot;, &quot;mqtt QoS level&quot;,</span>
 <span id="L314"><span class="lineNum">     314</span>              :           &quot;The QoS level of MQTT.\n&quot;</span>
 <span id="L315"><span class="lineNum">     315</span>              :           &quot;\t\t\t  0: At most once\n&quot;</span>
@@ -380,24 +380,24 @@
 <span id="L318"><span class="lineNum">     318</span>              :           &quot;\t\t\tsee also: https://www.eclipse.org/paho/files/mqttdoc/MQTTAsync/html/qos.html&quot;,</span>
 <span id="L319"><span class="lineNum">     319</span>              :           0, 2, DEFAULT_MQTT_QOS, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L320"><span class="lineNum">     320</span>              : </span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">          20 :   gstelement_class-&gt;change_state = gst_mqtt_sink_change_state;</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">           2 :   gstelement_class-&gt;change_state = gst_mqtt_sink_change_state;</span></span>
 <span id="L322"><span class="lineNum">     322</span>              : </span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;start = GST_DEBUG_FUNCPTR (gst_mqtt_sink_start);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_mqtt_sink_stop);</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;query = GST_DEBUG_FUNCPTR (gst_mqtt_sink_query);</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;render = GST_DEBUG_FUNCPTR (gst_mqtt_sink_render);</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;render_list =</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          20 :       GST_DEBUG_FUNCPTR (gst_mqtt_sink_render_list);</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;event = GST_DEBUG_FUNCPTR (gst_mqtt_sink_event);</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          20 :   gstbasesink_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_mqtt_sink_set_caps);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;start = GST_DEBUG_FUNCPTR (gst_mqtt_sink_start);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_mqtt_sink_stop);</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;query = GST_DEBUG_FUNCPTR (gst_mqtt_sink_query);</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;render = GST_DEBUG_FUNCPTR (gst_mqtt_sink_render);</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;render_list =</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">           2 :       GST_DEBUG_FUNCPTR (gst_mqtt_sink_render_list);</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;event = GST_DEBUG_FUNCPTR (gst_mqtt_sink_event);</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           2 :   gstbasesink_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_mqtt_sink_set_caps);</span></span>
 <span id="L331"><span class="lineNum">     331</span>              : </span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          20 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           2 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :       &quot;MQTT sink&quot;, &quot;Sink/MQTT&quot;,</span>
 <span id="L334"><span class="lineNum">     334</span>              :       &quot;Publish incoming data streams as a MQTT topic&quot;,</span>
 <span id="L335"><span class="lineNum">     335</span>              :       &quot;Wook Song &lt;wook16.song@samsung.com&gt;&quot;);</span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          20 :   gst_element_class_add_static_pad_template (gstelement_class,</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 :   gst_element_class_add_static_pad_template (gstelement_class,</span></span>
 <span id="L337"><span class="lineNum">     337</span>              :       &amp;sink_pad_template);</span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          20 : }</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           2 : }</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : </span>
 <span id="L340"><span class="lineNum">     340</span>              : /**</span>
 <span id="L341"><span class="lineNum">     341</span>              :  * @brief The setter for the mqttsink's properties</span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-imagesegment.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-imagesegment.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">78.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-10 05:34:03</td>
+            <td class="headerValue">2025-03-11 05:37:17</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">88.2&nbsp;%</td>
@@ -709,22 +709,22 @@
 <span id="L647"><span class="lineNum">     647</span>              : </span>
 <span id="L648"><span class="lineNum">     648</span>              : /** @brief Initialize this object for tensordec-plugin */</span>
 <span id="L649"><span class="lineNum">     649</span>              : void</span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          32 : init_is (void)</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          36 : init_is (void)</span></span>
 <span id="L651"><span class="lineNum">     651</span>              : {</span>
-<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">          32 :   nnstreamer_decoder_probe (&amp;imageSegment);</span></span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">          32 :   nnstreamer_decoder_set_custom_property_desc ( decoder_subplugin_image_segment,</span></span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">          36 :   nnstreamer_decoder_probe (&amp;imageSegment);</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">          36 :   nnstreamer_decoder_set_custom_property_desc ( decoder_subplugin_image_segment,</span></span>
 <span id="L654"><span class="lineNum">     654</span>              :       &quot;option1&quot;,</span>
 <span id="L655"><span class="lineNum">     655</span>              :       &quot;Mode of image segmentation. { tflite-deeplab (input: #labels x width x height (float32, label probability). e.g., deeplabv3_257_mv_gpu.tflite), snpe-deeplab (input: width x height x 1 (float32, label index) e.g., deeplabv3_mnv2_pascal_train_aug.dlc), snpe-depth (input: 1 x width x height (float32, grayscale) e.g., .dlc snpe models producing grayscale images) }&quot;,</span>
 <span id="L656"><span class="lineNum">     656</span>              :       &quot;option2&quot;, &quot;Maximum number of labels. 20 is applied if not specified.&quot;,</span>
 <span id="L657"><span class="lineNum">     657</span>              :       NULL);</span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          32 : }</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          36 : }</span></span>
 <span id="L659"><span class="lineNum">     659</span>              : </span>
 <span id="L660"><span class="lineNum">     660</span>              : /** @brief Destruct this object for tensordec-plugin */</span>
 <span id="L661"><span class="lineNum">     661</span>              : void</span>
-<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">          32 : fini_is (void)</span></span>
+<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">          36 : fini_is (void)</span></span>
 <span id="L663"><span class="lineNum">     663</span>              : {</span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">          32 :   nnstreamer_decoder_exit (imageSegment.modename);</span></span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">          32 : }</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">          36 :   nnstreamer_decoder_exit (imageSegment.modename);</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">          36 : }</span></span>
         </pre>
               </td>
             </tr>

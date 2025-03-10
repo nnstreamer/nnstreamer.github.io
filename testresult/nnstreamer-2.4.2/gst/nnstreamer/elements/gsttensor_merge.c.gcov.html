@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_merge.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_merge.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">85.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-10 05:34:03</td>
+            <td class="headerValue">2025-03-11 05:37:17</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -195,71 +195,71 @@
 <span id="L133"><span class="lineNum">     133</span>              : static void gst_tensor_merge_finalize (GObject * object);</span>
 <span id="L134"><span class="lineNum">     134</span>              : </span>
 <span id="L135"><span class="lineNum">     135</span>              : #define gst_tensor_merge_parent_class parent_class</span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">        1342 : G_DEFINE_TYPE (GstTensorMerge, gst_tensor_merge, GST_TYPE_ELEMENT);</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">        1316 : G_DEFINE_TYPE (GstTensorMerge, gst_tensor_merge, GST_TYPE_ELEMENT);</span></span>
 <span id="L137"><span class="lineNum">     137</span>              : </span>
 <span id="L138"><span class="lineNum">     138</span>              : /**</span>
 <span id="L139"><span class="lineNum">     139</span>              :  * @brief initialize the tensor_merge's class</span>
 <span id="L140"><span class="lineNum">     140</span>              :  */</span>
 <span id="L141"><span class="lineNum">     141</span>              : static void</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          40 : gst_tensor_merge_class_init (GstTensorMergeClass * klass)</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          22 : gst_tensor_merge_class_init (GstTensorMergeClass * klass)</span></span>
 <span id="L143"><span class="lineNum">     143</span>              : {</span>
 <span id="L144"><span class="lineNum">     144</span>              :   GObjectClass *gobject_class;</span>
 <span id="L145"><span class="lineNum">     145</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          40 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_merge_debug, &quot;tensor_merge&quot;, 0,</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          22 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_merge_debug, &quot;tensor_merge&quot;, 0,</span></span>
 <span id="L148"><span class="lineNum">     148</span>              :       &quot;Element to merge multiple tensor stream to tensor stream&quot;);</span>
 <span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          40 :   gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          40 :   gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          22 :   gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          22 :   gstelement_class = (GstElementClass *) klass;</span></span>
 <span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          40 :   parent_class = g_type_class_peek_parent (klass);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          22 :   parent_class = g_type_class_peek_parent (klass);</span></span>
 <span id="L154"><span class="lineNum">     154</span>              : </span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          40 :   gobject_class-&gt;finalize = gst_tensor_merge_finalize;</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          40 :   gobject_class-&gt;get_property = gst_tensor_merge_get_property;</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          40 :   gobject_class-&gt;set_property = gst_tensor_merge_set_property;</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          22 :   gobject_class-&gt;finalize = gst_tensor_merge_finalize;</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          22 :   gobject_class-&gt;get_property = gst_tensor_merge_get_property;</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          22 :   gobject_class-&gt;set_property = gst_tensor_merge_set_property;</span></span>
 <span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          40 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;, &quot;Produce verbose output&quot;,</span>
 <span id="L161"><span class="lineNum">     161</span>              :           TRUE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          40 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
 <span id="L164"><span class="lineNum">     164</span>              :       g_param_spec_string (&quot;mode&quot;, &quot;Mode&quot;,</span>
 <span id="L165"><span class="lineNum">     165</span>              :           &quot;Tensor Merge mode. Currently, `linear` is available only.&quot;,</span>
 <span id="L166"><span class="lineNum">     166</span>              :           gst_tensor_merge_mode_string[GTT_LINEAR], G_PARAM_READWRITE));</span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          40 :   g_object_class_install_property (gobject_class, PROP_OPTION,</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_OPTION,</span></span>
 <span id="L168"><span class="lineNum">     168</span>              :       g_param_spec_string (&quot;option&quot;, &quot;Option&quot;,</span>
 <span id="L169"><span class="lineNum">     169</span>              :           &quot;Option for the tensor Merge mode.\n&quot;</span>
 <span id="L170"><span class="lineNum">     170</span>              :           &quot;\t\t\t  1) linear mode: it will become the index of the rank.\n&quot;</span>
 <span id="L171"><span class="lineNum">     171</span>              :           &quot;\t\t\t     (e.g. want to merge 3:640:480 &amp; 3:640:480 to 3:1280:480, option=1)\n&quot;</span>
 <span id="L172"><span class="lineNum">     172</span>              :           &quot;\t\t\t  2) TBU&quot;, &quot;&quot;, G_PARAM_READWRITE));</span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          40 :   g_object_class_install_property (gobject_class, PROP_SYNC_MODE,</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SYNC_MODE,</span></span>
 <span id="L175"><span class="lineNum">     175</span>              :       g_param_spec_string (&quot;sync-mode&quot;, &quot;Sync Mode&quot;,</span>
 <span id="L176"><span class="lineNum">     176</span>              :           &quot;Time synchronization mode\n&quot;</span>
 <span id="L177"><span class="lineNum">     177</span>              :           &quot;\t\t\tSee also: https://github.com/nnstreamer/nnstreamer/blob/main/Documentation/synchronization-policies-at-mux-merge.md&quot;,</span>
 <span id="L178"><span class="lineNum">     178</span>              :           &quot;&quot;, G_PARAM_READWRITE));</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          40 :   g_object_class_install_property (gobject_class, PROP_SYNC_OPTION,</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SYNC_OPTION,</span></span>
 <span id="L181"><span class="lineNum">     181</span>              :       g_param_spec_string (&quot;sync-option&quot;, &quot;Sync Option&quot;,</span>
 <span id="L182"><span class="lineNum">     182</span>              :           &quot;Option for the time synchronization mode&quot;, &quot;&quot;, G_PARAM_READWRITE));</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          40 :   gstelement_class-&gt;request_new_pad =</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          40 :       GST_DEBUG_FUNCPTR (gst_tensor_merge_request_new_pad);</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          40 :   gstelement_class-&gt;change_state =</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          40 :       GST_DEBUG_FUNCPTR (gst_tensor_merge_change_state);</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          22 :   gstelement_class-&gt;request_new_pad =</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          22 :       GST_DEBUG_FUNCPTR (gst_tensor_merge_request_new_pad);</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          22 :   gstelement_class-&gt;change_state =</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          22 :       GST_DEBUG_FUNCPTR (gst_tensor_merge_change_state);</span></span>
 <span id="L188"><span class="lineNum">     188</span>              : </span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          40 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          22 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L190"><span class="lineNum">     190</span>              :       gst_static_pad_template_get (&amp;sink_templ));</span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          40 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          22 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L192"><span class="lineNum">     192</span>              :       gst_static_pad_template_get (&amp;src_templ));</span>
 <span id="L193"><span class="lineNum">     193</span>              : </span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          40 :   gst_element_class_set_details_simple (gstelement_class,</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          22 :   gst_element_class_set_details_simple (gstelement_class,</span></span>
 <span id="L195"><span class="lineNum">     195</span>              :       &quot;TensorMerge&quot;,</span>
 <span id="L196"><span class="lineNum">     196</span>              :       &quot;Muxer/Tensor&quot;,</span>
 <span id="L197"><span class="lineNum">     197</span>              :       &quot;Merge multiple tensor stream to tensor stream&quot;,</span>
 <span id="L198"><span class="lineNum">     198</span>              :       &quot;Jijoong Moon &lt;jijoong.moon@samsung.com&gt;&quot;);</span>
 <span id="L199"><span class="lineNum">     199</span>              : </span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          40 : }</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          22 : }</span></span>
 <span id="L201"><span class="lineNum">     201</span>              : </span>
 <span id="L202"><span class="lineNum">     202</span>              : /**</span>
 <span id="L203"><span class="lineNum">     203</span>              :  * @brief initialize the new element</span>
@@ -412,22 +412,22 @@
 <span id="L350"><span class="lineNum">     350</span>              :  * @brief sink event vmethod</span>
 <span id="L351"><span class="lineNum">     351</span>              :  */</span>
 <span id="L352"><span class="lineNum">     352</span>              : static gboolean</span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">         288 : gst_tensor_merge_sink_event (GstCollectPads * pads, GstCollectData * data,</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">         285 : gst_tensor_merge_sink_event (GstCollectPads * pads, GstCollectData * data,</span></span>
 <span id="L354"><span class="lineNum">     354</span>              :     GstEvent * event, GstTensorMerge * tensor_merge)</span>
 <span id="L355"><span class="lineNum">     355</span>              : {</span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         288 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         285 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
 <span id="L357"><span class="lineNum">     357</span>              : </span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         288 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         285 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_EVENT_FLUSH_STOP:</span></span>
 <span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :       tensor_merge-&gt;need_segment = TRUE;</span></span>
 <span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :       tensor_merge-&gt;need_set_time = TRUE;</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :       gst_tensor_time_sync_flush (tensor_merge-&gt;collect);</span></span>
 <span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">         288 :     default:</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         288 :       break;</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">         285 :     default:</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         285 :       break;</span></span>
 <span id="L366"><span class="lineNum">     366</span>              :   }</span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">         288 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">         285 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
 <span id="L369"><span class="lineNum">     369</span>              : }</span>
 <span id="L370"><span class="lineNum">     370</span>              : </span>
 <span id="L371"><span class="lineNum">     371</span>              : /**</span>
@@ -507,15 +507,15 @@
 <span id="L445"><span class="lineNum">     445</span>              :  * @return TRUE to push buffer to src pad</span>
 <span id="L446"><span class="lineNum">     446</span>              :  */</span>
 <span id="L447"><span class="lineNum">     447</span>              : static gboolean</span>
-<span id="L448"><span class="lineNum">     448</span> <span class="tlaGNC">         390 : gst_tensor_merge_collect_buffer (GstTensorMerge * tensor_merge,</span></span>
+<span id="L448"><span class="lineNum">     448</span> <span class="tlaGNC">         384 : gst_tensor_merge_collect_buffer (GstTensorMerge * tensor_merge,</span></span>
 <span id="L449"><span class="lineNum">     449</span>              :     GstBuffer * tensors_buf, gboolean * is_eos)</span>
 <span id="L450"><span class="lineNum">     450</span>              : {</span>
-<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">         390 :   if (tensor_merge-&gt;need_set_time) {</span></span>
-<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">         252 :     if (gst_tensor_time_sync_get_current_time (tensor_merge-&gt;collect,</span></span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">         384 :   if (tensor_merge-&gt;need_set_time) {</span></span>
+<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">         246 :     if (gst_tensor_time_sync_get_current_time (tensor_merge-&gt;collect,</span></span>
 <span id="L453"><span class="lineNum">     453</span>              :             &amp;tensor_merge-&gt;sync, &amp;tensor_merge-&gt;current_time, tensors_buf)) {</span>
 <span id="L454"><span class="lineNum">     454</span>              :       /* end-of-stream */</span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">          41 :       *is_eos = TRUE;</span></span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">          41 :       return FALSE;</span></span>
+<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">          35 :       *is_eos = TRUE;</span></span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">          35 :       return FALSE;</span></span>
 <span id="L457"><span class="lineNum">     457</span>              :     }</span>
 <span id="L458"><span class="lineNum">     458</span>              : </span>
 <span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">         211 :     tensor_merge-&gt;need_set_time = FALSE;</span></span>
@@ -752,16 +752,16 @@
 <span id="L690"><span class="lineNum">     690</span>              :  * @return GstFlowReturn</span>
 <span id="L691"><span class="lineNum">     691</span>              :  */</span>
 <span id="L692"><span class="lineNum">     692</span>              : static GstFlowReturn</span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">         390 : gst_tensor_merge_collected (GstCollectPads * pads,</span></span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">         384 : gst_tensor_merge_collected (GstCollectPads * pads,</span></span>
 <span id="L694"><span class="lineNum">     694</span>              :     GstTensorMerge * tensor_merge)</span>
 <span id="L695"><span class="lineNum">     695</span>              : {</span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">         390 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">         384 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
 <span id="L697"><span class="lineNum">     697</span>              :   GstBuffer *tensors_buf, *tensor_buf;</span>
-<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">         390 :   gboolean isEOS = FALSE;</span></span>
+<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">         384 :   gboolean isEOS = FALSE;</span></span>
 <span id="L699"><span class="lineNum">     699</span>              : </span>
-<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">         390 :   GST_DEBUG_OBJECT (tensor_merge, &quot; all pads are collected &quot;);</span></span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">         384 :   GST_DEBUG_OBJECT (tensor_merge, &quot; all pads are collected &quot;);</span></span>
 <span id="L701"><span class="lineNum">     701</span>              : </span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">         390 :   if (tensor_merge-&gt;need_stream_start) {</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">         384 :   if (tensor_merge-&gt;need_stream_start) {</span></span>
 <span id="L703"><span class="lineNum">     703</span>              :     /**</span>
 <span id="L704"><span class="lineNum">     704</span>              :      * Cannot use gst-pad util to get stream ID (multiple sink pads).</span>
 <span id="L705"><span class="lineNum">     705</span>              :      * Create stream ID using first sink pad.</span>
@@ -777,18 +777,18 @@
 <span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          25 :     tensor_merge-&gt;need_stream_start = FALSE;</span></span>
 <span id="L716"><span class="lineNum">     716</span>              :   }</span>
 <span id="L717"><span class="lineNum">     717</span>              : </span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">         390 :   if ((tensors_buf = gst_buffer_new ()) == NULL) {</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">         384 :   if ((tensors_buf = gst_buffer_new ()) == NULL) {</span></span>
 <span id="L719"><span class="lineNum">     719</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_logf (&quot;gst_buffer_new() returns NULL. Out of memory?\n&quot;);</span></span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC tlaBgGNC">         390 :     return GST_FLOW_ERROR;</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC tlaBgGNC">         384 :     return GST_FLOW_ERROR;</span></span>
 <span id="L721"><span class="lineNum">     721</span>              :   }</span>
 <span id="L722"><span class="lineNum">     722</span>              : </span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">         390 :   if (!gst_tensor_merge_collect_buffer (tensor_merge, tensors_buf, &amp;isEOS)) {</span></span>
-<span id="L724"><span class="lineNum">     724</span> <span class="tlaGNC">         179 :     if (isEOS) {</span></span>
-<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">          41 :       gst_pad_push_event (tensor_merge-&gt;srcpad, gst_event_new_eos ());</span></span>
-<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">          41 :       ret = GST_FLOW_EOS;</span></span>
+<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">         384 :   if (!gst_tensor_merge_collect_buffer (tensor_merge, tensors_buf, &amp;isEOS)) {</span></span>
+<span id="L724"><span class="lineNum">     724</span> <span class="tlaGNC">         173 :     if (isEOS) {</span></span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">          35 :       gst_pad_push_event (tensor_merge-&gt;srcpad, gst_event_new_eos ());</span></span>
+<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">          35 :       ret = GST_FLOW_EOS;</span></span>
 <span id="L727"><span class="lineNum">     727</span>              :     }</span>
 <span id="L728"><span class="lineNum">     728</span>              : </span>
-<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         179 :     goto beach;</span></span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">         173 :     goto beach;</span></span>
 <span id="L730"><span class="lineNum">     730</span>              :   }</span>
 <span id="L731"><span class="lineNum">     731</span>              : </span>
 <span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">         211 :   if (!gst_tensor_merge_set_src_caps (tensor_merge)) {</span></span>
@@ -815,8 +815,8 @@
 <span id="L753"><span class="lineNum">     753</span>              :         gst_flow_get_name (ret));</span>
 <span id="L754"><span class="lineNum">     754</span>              :   }</span>
 <span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC tlaBgGNC">         211 : beach:</span></span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">         390 :   gst_buffer_unref (tensors_buf);</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">         390 :   return ret;</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">         384 :   gst_buffer_unref (tensors_buf);</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">         384 :   return ret;</span></span>
 <span id="L758"><span class="lineNum">     758</span>              : }</span>
 <span id="L759"><span class="lineNum">     759</span>              : </span>
 <span id="L760"><span class="lineNum">     760</span>              : /**</span>

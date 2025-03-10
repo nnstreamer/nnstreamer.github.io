@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#27b03021a74b7cf7d07caa675ef17c10ae21c03d</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#93c9ce99e90ef68f626a8938fed9217ae43a56f5</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">70.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-10 05:34:03</td>
+            <td class="headerValue">2025-03-11 05:37:17</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">87.9&nbsp;%</td>
@@ -265,17 +265,17 @@
 <span id="L203"><span class="lineNum">     203</span>              : </span>
 <span id="L204"><span class="lineNum">     204</span>              : /** @brief Initialize this object for tensordec-plugin */</span>
 <span id="L205"><span class="lineNum">     205</span>              : void</span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          33 : init_bb (void)</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          15 : init_bb (void)</span></span>
 <span id="L207"><span class="lineNum">     207</span>              : {</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          33 :   nnstreamer_decoder_probe (&amp;boundingBox);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          15 :   nnstreamer_decoder_probe (&amp;boundingBox);</span></span>
 <span id="L209"><span class="lineNum">     209</span>              : </span>
 <span id="L210"><span class="lineNum">     210</span>              :   {</span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          33 :     g_autofree gchar *sub_desc = g_strjoinv (&quot;|&quot;, (GStrv) bb_modes);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          15 :     g_autofree gchar *sub_desc = g_strjoinv (&quot;|&quot;, (GStrv) bb_modes);</span></span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          33 :     g_free (custom_prop_desc);</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          33 :     custom_prop_desc = g_strdup_printf (&quot;Decoder mode of bounding box: [%s]&quot;, sub_desc);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          15 :     g_free (custom_prop_desc);</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          15 :     custom_prop_desc = g_strdup_printf (&quot;Decoder mode of bounding box: [%s]&quot;, sub_desc);</span></span>
 <span id="L215"><span class="lineNum">     215</span>              : </span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          33 :     nnstreamer_decoder_set_custom_property_desc (decoder_subplugin_bounding_box,</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          15 :     nnstreamer_decoder_set_custom_property_desc (decoder_subplugin_bounding_box,</span></span>
 <span id="L217"><span class="lineNum">     217</span>              :         &quot;option1&quot;, custom_prop_desc, &quot;option2&quot;,</span>
 <span id="L218"><span class="lineNum">     218</span>              :         &quot;Location of the label file. This is independent from option1.&quot;, &quot;option3&quot;,</span>
 <span id="L219"><span class="lineNum">     219</span>              :         &quot;Sub-option values that depend on option1;\n&quot;</span>
@@ -339,17 +339,17 @@
 <span id="L277"><span class="lineNum">     277</span>              :         &quot;\t\t 1 (log result bounding boxes)&quot;</span>
 <span id="L278"><span class="lineNum">     278</span>              :         &quot;\tThis is independent from option1&quot;,</span>
 <span id="L279"><span class="lineNum">     279</span>              :         &quot;option8&quot;, &quot;Box Style (NYI)&quot;, NULL);</span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          33 :   }</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          15 :   }</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          15 : }</span></span>
 <span id="L282"><span class="lineNum">     282</span>              : </span>
 <span id="L283"><span class="lineNum">     283</span>              : /** @brief Destruct this object for tensordec-plugin */</span>
 <span id="L284"><span class="lineNum">     284</span>              : void</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          33 : fini_bb (void)</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          15 : fini_bb (void)</span></span>
 <span id="L286"><span class="lineNum">     286</span>              : {</span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          33 :   g_free (custom_prop_desc);</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          33 :   custom_prop_desc = NULL;</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">          33 :   nnstreamer_decoder_exit (boundingBox.modename);</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          33 : }</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          15 :   g_free (custom_prop_desc);</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          15 :   custom_prop_desc = NULL;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">          15 :   nnstreamer_decoder_exit (boundingBox.modename);</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          15 : }</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
 <span id="L292"><span class="lineNum">     292</span>              : /** @brief Compare function for sorting distances. */</span>
 <span id="L293"><span class="lineNum">     293</span>              : static int</span>
@@ -1195,38 +1195,38 @@
 <span id="L1133"><span class="lineNum">    1133</span>              :  * @brief Get bounding box properties from hash table</span>
 <span id="L1134"><span class="lineNum">    1134</span>              :  */</span>
 <span id="L1135"><span class="lineNum">    1135</span>              : BoxProperties *</span>
-<span id="L1136"><span class="lineNum">    1136</span> <span class="tlaGNC tlaBgGNC">         279 : BoundingBox::getProperties (const gchar *properties_name)</span></span>
+<span id="L1136"><span class="lineNum">    1136</span> <span class="tlaGNC tlaBgGNC">         135 : BoundingBox::getProperties (const gchar *properties_name)</span></span>
 <span id="L1137"><span class="lineNum">    1137</span>              : {</span>
 <span id="L1138"><span class="lineNum">    1138</span>              :   gpointer data;</span>
-<span id="L1139"><span class="lineNum">    1139</span> <span class="tlaGNC">         279 :   G_LOCK (box_properties_table);</span></span>
-<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaGNC">         279 :   if (properties_table == nullptr) {</span></span>
-<span id="L1141"><span class="lineNum">    1141</span> <span class="tlaGNC">          33 :     properties_table = g_hash_table_new (g_str_hash, g_str_equal);</span></span>
+<span id="L1139"><span class="lineNum">    1139</span> <span class="tlaGNC">         135 :   G_LOCK (box_properties_table);</span></span>
+<span id="L1140"><span class="lineNum">    1140</span> <span class="tlaGNC">         135 :   if (properties_table == nullptr) {</span></span>
+<span id="L1141"><span class="lineNum">    1141</span> <span class="tlaGNC">          15 :     properties_table = g_hash_table_new (g_str_hash, g_str_equal);</span></span>
 <span id="L1142"><span class="lineNum">    1142</span>              :   }</span>
-<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaGNC">         279 :   data = g_hash_table_lookup (properties_table, properties_name);</span></span>
-<span id="L1144"><span class="lineNum">    1144</span> <span class="tlaGNC">         279 :   G_UNLOCK (box_properties_table);</span></span>
+<span id="L1143"><span class="lineNum">    1143</span> <span class="tlaGNC">         135 :   data = g_hash_table_lookup (properties_table, properties_name);</span></span>
+<span id="L1144"><span class="lineNum">    1144</span> <span class="tlaGNC">         135 :   G_UNLOCK (box_properties_table);</span></span>
 <span id="L1145"><span class="lineNum">    1145</span>              : </span>
-<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaGNC">         279 :   return static_cast&lt;BoxProperties *&gt; (data);</span></span>
+<span id="L1146"><span class="lineNum">    1146</span> <span class="tlaGNC">         135 :   return static_cast&lt;BoxProperties *&gt; (data);</span></span>
 <span id="L1147"><span class="lineNum">    1147</span>              : }</span>
 <span id="L1148"><span class="lineNum">    1148</span>              : </span>
 <span id="L1149"><span class="lineNum">    1149</span>              : /**</span>
 <span id="L1150"><span class="lineNum">    1150</span>              :  * @brief Add bounding box properties into hash table</span>
 <span id="L1151"><span class="lineNum">    1151</span>              :  */</span>
 <span id="L1152"><span class="lineNum">    1152</span>              : gboolean</span>
-<span id="L1153"><span class="lineNum">    1153</span> <span class="tlaGNC">         264 : BoundingBox::addProperties (BoxProperties *boxProperties)</span></span>
+<span id="L1153"><span class="lineNum">    1153</span> <span class="tlaGNC">         120 : BoundingBox::addProperties (BoxProperties *boxProperties)</span></span>
 <span id="L1154"><span class="lineNum">    1154</span>              : {</span>
 <span id="L1155"><span class="lineNum">    1155</span>              :   BoxProperties *data;</span>
 <span id="L1156"><span class="lineNum">    1156</span>              :   gboolean ret;</span>
 <span id="L1157"><span class="lineNum">    1157</span>              : </span>
-<span id="L1158"><span class="lineNum">    1158</span> <span class="tlaGNC">         264 :   data = getProperties (boxProperties-&gt;name);</span></span>
-<span id="L1159"><span class="lineNum">    1159</span> <span class="tlaGNC">         264 :   if (NULL != data) {</span></span>
+<span id="L1158"><span class="lineNum">    1158</span> <span class="tlaGNC">         120 :   data = getProperties (boxProperties-&gt;name);</span></span>
+<span id="L1159"><span class="lineNum">    1159</span> <span class="tlaGNC">         120 :   if (NULL != data) {</span></span>
 <span id="L1160"><span class="lineNum">    1160</span> <span class="tlaUNC tlaBgUNC">           0 :     return TRUE;</span></span>
 <span id="L1161"><span class="lineNum">    1161</span>              :   }</span>
 <span id="L1162"><span class="lineNum">    1162</span>              : </span>
-<span id="L1163"><span class="lineNum">    1163</span> <span class="tlaGNC tlaBgGNC">         264 :   G_LOCK (box_properties_table);</span></span>
-<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaGNC">         264 :   ret = g_hash_table_insert (properties_table, boxProperties-&gt;name, boxProperties);</span></span>
-<span id="L1165"><span class="lineNum">    1165</span> <span class="tlaGNC">         264 :   G_UNLOCK (box_properties_table);</span></span>
+<span id="L1163"><span class="lineNum">    1163</span> <span class="tlaGNC tlaBgGNC">         120 :   G_LOCK (box_properties_table);</span></span>
+<span id="L1164"><span class="lineNum">    1164</span> <span class="tlaGNC">         120 :   ret = g_hash_table_insert (properties_table, boxProperties-&gt;name, boxProperties);</span></span>
+<span id="L1165"><span class="lineNum">    1165</span> <span class="tlaGNC">         120 :   G_UNLOCK (box_properties_table);</span></span>
 <span id="L1166"><span class="lineNum">    1166</span>              : </span>
-<span id="L1167"><span class="lineNum">    1167</span> <span class="tlaGNC">         264 :   return ret;</span></span>
+<span id="L1167"><span class="lineNum">    1167</span> <span class="tlaGNC">         120 :   return ret;</span></span>
 <span id="L1168"><span class="lineNum">    1168</span>              : }</span>
         </pre>
               </td>
