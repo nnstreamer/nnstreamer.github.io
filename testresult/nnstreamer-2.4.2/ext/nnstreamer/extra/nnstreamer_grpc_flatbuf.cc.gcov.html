@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-12 05:36:48</td>
+            <td class="headerValue">2025-03-13 05:38:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -594,22 +594,22 @@
 <span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           4 :   new AsyncCallDataClient (this, client_stub_.get (), &amp;cq);</span></span>
 <span id="L533"><span class="lineNum">     533</span>              : </span>
 <span id="L534"><span class="lineNum">     534</span>              :   /* until the stop is called */</span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         160 :   while (!stop_) {</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         161 :   while (!stop_) {</span></span>
 <span id="L536"><span class="lineNum">     536</span>              :     void *tag;</span>
 <span id="L537"><span class="lineNum">     537</span>              :     bool ok;</span>
 <span id="L538"><span class="lineNum">     538</span>              : </span>
 <span id="L539"><span class="lineNum">     539</span>              :     /* 10 msec deadline to wait the next event */</span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         156 :     gpr_timespec deadline = gpr_time_add (</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         157 :     gpr_timespec deadline = gpr_time_add (</span></span>
 <span id="L541"><span class="lineNum">     541</span>              :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span>
 <span id="L542"><span class="lineNum">     542</span>              : </span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">         156 :     switch (cq.AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">         157 :     switch (cq.AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
 <span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">          34 :       case CompletionQueue::GOT_EVENT:</span></span>
 <span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">          34 :         static_cast&lt;AsyncCallDataClient *&gt; (tag)-&gt;RunState (ok);</span></span>
 <span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">          34 :         if (ok == false)</span></span>
 <span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC tlaBgUNC">           0 :           return;</span></span>
 <span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC tlaBgGNC">          34 :         break;</span></span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">         122 :       default:</span></span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         122 :         break;</span></span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">         123 :       default:</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         123 :         break;</span></span>
 <span id="L551"><span class="lineNum">     551</span>              :     }</span>
 <span id="L552"><span class="lineNum">     552</span>              :   }</span>
 <span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           4 : }</span></span>
