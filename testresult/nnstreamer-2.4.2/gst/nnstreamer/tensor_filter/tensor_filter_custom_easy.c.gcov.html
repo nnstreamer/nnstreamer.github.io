@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-17 05:35:25</td>
+            <td class="headerValue">2025-03-18 05:37:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -337,22 +337,22 @@
 <span id="L275"><span class="lineNum">     275</span>              :  * @brief V1 tensor-filter wrapper callback function, &quot;getFrameworkInfo&quot;</span>
 <span id="L276"><span class="lineNum">     276</span>              :  */</span>
 <span id="L277"><span class="lineNum">     277</span>              : static int</span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">        1063 : custom_getFrameworkInfo (const GstTensorFilterFramework * self,</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">        1067 : custom_getFrameworkInfo (const GstTensorFilterFramework * self,</span></span>
 <span id="L279"><span class="lineNum">     279</span>              :     const GstTensorFilterProperties * prop, void *private_data,</span>
 <span id="L280"><span class="lineNum">     280</span>              :     GstTensorFilterFrameworkInfo * fw_info)</span>
 <span id="L281"><span class="lineNum">     281</span>              : {</span>
 <span id="L282"><span class="lineNum">     282</span>              :   UNUSED (self);</span>
 <span id="L283"><span class="lineNum">     283</span>              :   UNUSED (prop);</span>
 <span id="L284"><span class="lineNum">     284</span>              :   UNUSED (private_data);</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        1063 :   fw_info-&gt;name = fw_name;</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1063 :   fw_info-&gt;allow_in_place = 0;</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1063 :   fw_info-&gt;allocate_in_invoke = 0;</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1063 :   fw_info-&gt;run_without_model = 1;</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1063 :   fw_info-&gt;verify_model_path = 0;</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1063 :   fw_info-&gt;hw_list = NULL;</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">        1063 :   fw_info-&gt;num_hw = 0;</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        1067 :   fw_info-&gt;name = fw_name;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1067 :   fw_info-&gt;allow_in_place = 0;</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1067 :   fw_info-&gt;allocate_in_invoke = 0;</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1067 :   fw_info-&gt;run_without_model = 1;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1067 :   fw_info-&gt;verify_model_path = 0;</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1067 :   fw_info-&gt;hw_list = NULL;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">        1067 :   fw_info-&gt;num_hw = 0;</span></span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1063 :   return 0;</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1067 :   return 0;</span></span>
 <span id="L294"><span class="lineNum">     294</span>              : }</span>
 <span id="L295"><span class="lineNum">     295</span>              : </span>
 <span id="L296"><span class="lineNum">     296</span>              : /**</span>
@@ -404,17 +404,17 @@
 <span id="L342"><span class="lineNum">     342</span>              : </span>
 <span id="L343"><span class="lineNum">     343</span>              : /** @brief Initialize this object for tensor_filter subplugin runtime register */</span>
 <span id="L344"><span class="lineNum">     344</span>              : void</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         525 : init_filter_custom_easy (void)</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         527 : init_filter_custom_easy (void)</span></span>
 <span id="L346"><span class="lineNum">     346</span>              : {</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         525 :   nnstreamer_filter_probe (&amp;NNS_support_custom_easy);</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         525 : }</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         527 :   nnstreamer_filter_probe (&amp;NNS_support_custom_easy);</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         527 : }</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
 <span id="L350"><span class="lineNum">     350</span>              : /** @brief Destruct the subplugin */</span>
 <span id="L351"><span class="lineNum">     351</span>              : void</span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         525 : fini_filter_custom_easy (void)</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         527 : fini_filter_custom_easy (void)</span></span>
 <span id="L353"><span class="lineNum">     353</span>              : {</span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         525 :   nnstreamer_filter_exit (NNS_support_custom_easy.name);</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         525 : }</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         527 :   nnstreamer_filter_exit (NNS_support_custom_easy.name);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         527 : }</span></span>
         </pre>
               </td>
             </tr>
