@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#e6fc1e0d3114192d93d6d15e33d66743777859d5 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_reposrc.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#50f05dce04aa4218c3b86bbccbe7490ee1c91b9e - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_reposrc.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#e6fc1e0d3114192d93d6d15e33d66743777859d5</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#50f05dce04aa4218c3b86bbccbe7490ee1c91b9e</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.8&nbsp;%</td>
-            <td class="headerCovTableEntry">160</td>
+            <td class="headerCovTableEntryMed">88.2&nbsp;%</td>
+            <td class="headerCovTableEntry">161</td>
             <td class="headerCovTableEntry">142</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-21 05:38:06</td>
+            <td class="headerValue">2025-03-24 05:35:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -365,73 +365,75 @@
 <span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          14 :     _info = gst_tensors_info_get_nth_info (&amp;self-&gt;config.info, i);</span></span>
 <span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          14 :     size = gst_tensor_info_get_size (_info);</span></span>
 <span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          14 :     mem = gst_allocator_alloc (NULL, size, NULL);</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          14 :     gst_tensor_buffer_append_memory (buf, mem, _info);</span></span>
-<span id="L307"><span class="lineNum">     307</span>              : </span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          14 :     if (!gst_memory_map (mem, &amp;map, GST_MAP_WRITE)) {</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC tlaBgUNC">           0 :       gst_buffer_unref (buf);</span></span>
+<span id="L306"><span class="lineNum">     306</span>              : </span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          14 :     if (!gst_memory_map (mem, &amp;map, GST_MAP_WRITE)) {</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :       gst_memory_unref (mem);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :       gst_buffer_unref (buf);</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :       ml_logf (&quot;Cannot map gst memory (tensor-repo-src).&quot;);</span></span>
 <span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC tlaBgGNC">          14 :       return NULL;</span></span>
 <span id="L312"><span class="lineNum">     312</span>              :     }</span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
 <span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          14 :     memset (map.data, 0, map.size);</span></span>
 <span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          14 :     gst_memory_unmap (mem, &amp;map);</span></span>
-<span id="L316"><span class="lineNum">     316</span>              :   }</span>
-<span id="L317"><span class="lineNum">     317</span>              : </span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">          14 :   return buf;</span></span>
-<span id="L319"><span class="lineNum">     319</span>              : }</span>
-<span id="L320"><span class="lineNum">     320</span>              : </span>
-<span id="L321"><span class="lineNum">     321</span>              : /**</span>
-<span id="L322"><span class="lineNum">     322</span>              :  * @brief create func of tensor_reposrc</span>
-<span id="L323"><span class="lineNum">     323</span>              :  */</span>
-<span id="L324"><span class="lineNum">     324</span>              : static GstFlowReturn</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">         135 : gst_tensor_reposrc_create (GstPushSrc * src, GstBuffer ** buffer)</span></span>
-<span id="L326"><span class="lineNum">     326</span>              : {</span>
-<span id="L327"><span class="lineNum">     327</span>              :   GstTensorRepoSrc *self;</span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         135 :   GstBuffer *buf = NULL;</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         135 :   GstCaps *caps = NULL;</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         135 :   gboolean eos = FALSE;</span></span>
-<span id="L331"><span class="lineNum">     331</span>              :   guint newid;</span>
-<span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         135 :   self = GST_TENSOR_REPOSRC (src);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         135 :   gst_tensor_repo_wait ();</span></span>
-<span id="L335"><span class="lineNum">     335</span>              : </span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         135 :   if (!self-&gt;ini) {</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          14 :     buf = gst_tensor_reposrc_gen_dummy_buffer (self);</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          14 :     self-&gt;ini = TRUE;</span></span>
-<span id="L339"><span class="lineNum">     339</span>              :   } else {</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         242 :     while (!buf &amp;&amp; !eos) {</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         121 :       buf = gst_tensor_repo_get_buffer (self-&gt;myid, &amp;eos, &amp;newid, &amp;caps);</span></span>
-<span id="L342"><span class="lineNum">     342</span>              :     }</span>
-<span id="L343"><span class="lineNum">     343</span>              : </span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         121 :     if (eos)</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           8 :       goto handle_eos;</span></span>
-<span id="L346"><span class="lineNum">     346</span>              : </span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         113 :     if (!self-&gt;negotiation &amp;&amp; buf != NULL) {</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          14 :       if (!gst_tensor_caps_can_intersect (self-&gt;caps, caps)) {</span></span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">           3 :         GST_ELEMENT_ERROR (GST_ELEMENT (self), CORE, NEGOTIATION,</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :             (&quot;Negotiation Failed! : repo_sink &amp; repos_src&quot;), (NULL));</span>
-<span id="L351"><span class="lineNum">     351</span>              : </span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           3 :         gst_tensor_repo_set_eos (self-&gt;myid);</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">           3 :         goto handle_eos;</span></span>
-<span id="L354"><span class="lineNum">     354</span>              :       }</span>
-<span id="L355"><span class="lineNum">     355</span>              : </span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          11 :       self-&gt;negotiation = TRUE;</span></span>
-<span id="L357"><span class="lineNum">     357</span>              :     }</span>
-<span id="L358"><span class="lineNum">     358</span>              : </span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         110 :     if (caps)</span></span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         110 :       gst_caps_unref (caps);</span></span>
-<span id="L361"><span class="lineNum">     361</span>              :   }</span>
-<span id="L362"><span class="lineNum">     362</span>              : </span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         124 :   *buffer = buf;</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">         135 :   return GST_FLOW_OK;</span></span>
-<span id="L365"><span class="lineNum">     365</span>              : </span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          11 : handle_eos:</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          11 :   if (buf)</span></span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           3 :     gst_buffer_unref (buf);</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          11 :   if (caps)</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           3 :     gst_caps_unref (caps);</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          11 :   return GST_FLOW_EOS;</span></span>
-<span id="L372"><span class="lineNum">     372</span>              : }</span>
+<span id="L316"><span class="lineNum">     316</span>              : </span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          14 :     gst_tensor_buffer_append_memory (buf, mem, _info);</span></span>
+<span id="L318"><span class="lineNum">     318</span>              :   }</span>
+<span id="L319"><span class="lineNum">     319</span>              : </span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">          14 :   return buf;</span></span>
+<span id="L321"><span class="lineNum">     321</span>              : }</span>
+<span id="L322"><span class="lineNum">     322</span>              : </span>
+<span id="L323"><span class="lineNum">     323</span>              : /**</span>
+<span id="L324"><span class="lineNum">     324</span>              :  * @brief create func of tensor_reposrc</span>
+<span id="L325"><span class="lineNum">     325</span>              :  */</span>
+<span id="L326"><span class="lineNum">     326</span>              : static GstFlowReturn</span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         135 : gst_tensor_reposrc_create (GstPushSrc * src, GstBuffer ** buffer)</span></span>
+<span id="L328"><span class="lineNum">     328</span>              : {</span>
+<span id="L329"><span class="lineNum">     329</span>              :   GstTensorRepoSrc *self;</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         135 :   GstBuffer *buf = NULL;</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         135 :   GstCaps *caps = NULL;</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         135 :   gboolean eos = FALSE;</span></span>
+<span id="L333"><span class="lineNum">     333</span>              :   guint newid;</span>
+<span id="L334"><span class="lineNum">     334</span>              : </span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         135 :   self = GST_TENSOR_REPOSRC (src);</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         135 :   gst_tensor_repo_wait ();</span></span>
+<span id="L337"><span class="lineNum">     337</span>              : </span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         135 :   if (!self-&gt;ini) {</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          14 :     buf = gst_tensor_reposrc_gen_dummy_buffer (self);</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          14 :     self-&gt;ini = TRUE;</span></span>
+<span id="L341"><span class="lineNum">     341</span>              :   } else {</span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">         242 :     while (!buf &amp;&amp; !eos) {</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         121 :       buf = gst_tensor_repo_get_buffer (self-&gt;myid, &amp;eos, &amp;newid, &amp;caps);</span></span>
+<span id="L344"><span class="lineNum">     344</span>              :     }</span>
+<span id="L345"><span class="lineNum">     345</span>              : </span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         121 :     if (eos)</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           8 :       goto handle_eos;</span></span>
+<span id="L348"><span class="lineNum">     348</span>              : </span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         113 :     if (!self-&gt;negotiation &amp;&amp; buf != NULL) {</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          14 :       if (!gst_tensor_caps_can_intersect (self-&gt;caps, caps)) {</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">           3 :         GST_ELEMENT_ERROR (GST_ELEMENT (self), CORE, NEGOTIATION,</span></span>
+<span id="L352"><span class="lineNum">     352</span>              :             (&quot;Negotiation Failed! : repo_sink &amp; repos_src&quot;), (NULL));</span>
+<span id="L353"><span class="lineNum">     353</span>              : </span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">           3 :         gst_tensor_repo_set_eos (self-&gt;myid);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">           3 :         goto handle_eos;</span></span>
+<span id="L356"><span class="lineNum">     356</span>              :       }</span>
+<span id="L357"><span class="lineNum">     357</span>              : </span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          11 :       self-&gt;negotiation = TRUE;</span></span>
+<span id="L359"><span class="lineNum">     359</span>              :     }</span>
+<span id="L360"><span class="lineNum">     360</span>              : </span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         110 :     if (caps)</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         110 :       gst_caps_unref (caps);</span></span>
+<span id="L363"><span class="lineNum">     363</span>              :   }</span>
+<span id="L364"><span class="lineNum">     364</span>              : </span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         124 :   *buffer = buf;</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">         135 :   return GST_FLOW_OK;</span></span>
+<span id="L367"><span class="lineNum">     367</span>              : </span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          11 : handle_eos:</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          11 :   if (buf)</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           3 :     gst_buffer_unref (buf);</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          11 :   if (caps)</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">           3 :     gst_caps_unref (caps);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          11 :   return GST_FLOW_EOS;</span></span>
+<span id="L374"><span class="lineNum">     374</span>              : }</span>
         </pre>
               </td>
             </tr>
