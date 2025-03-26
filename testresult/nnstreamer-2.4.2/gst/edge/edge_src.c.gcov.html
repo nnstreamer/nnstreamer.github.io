@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/edge/edge_src.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/edge/edge_src.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">84.6&nbsp;%</td>
+            <td class="headerCovTableEntryMed">87.4&nbsp;%</td>
             <td class="headerCovTableEntry">254</td>
-            <td class="headerCovTableEntry">215</td>
+            <td class="headerCovTableEntry">222</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -105,7 +105,7 @@
 <span id="L43"><span class="lineNum">      43</span>              : };</span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span>              : #define gst_edgesrc_parent_class parent_class</span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC tlaBgGNC">         408 : G_DEFINE_TYPE (GstEdgeSrc, gst_edgesrc, GST_TYPE_BASE_SRC);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC tlaBgGNC">         407 : G_DEFINE_TYPE (GstEdgeSrc, gst_edgesrc, GST_TYPE_BASE_SRC);</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : static void gst_edgesrc_set_property (GObject * object, guint prop_id,</span>
 <span id="L49"><span class="lineNum">      49</span>              :     const GValue * value, GParamSpec * pspec);</span>
@@ -364,26 +364,26 @@
 <span id="L302"><span class="lineNum">     302</span>              :  * @brief nnstreamer-edge event callback.</span>
 <span id="L303"><span class="lineNum">     303</span>              :  */</span>
 <span id="L304"><span class="lineNum">     304</span>              : static int</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         138 : _nns_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         137 : _nns_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : {</span>
 <span id="L307"><span class="lineNum">     307</span>              :   nns_edge_event_e event_type;</span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         138 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         137 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         138 :   GstEdgeSrc *self = GST_EDGESRC (user_data);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         137 :   GstEdgeSrc *self = GST_EDGESRC (user_data);</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         138 :   if (0 != nns_edge_event_get_type (event_h, &amp;event_type)) {</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         137 :   if (0 != nns_edge_event_get_type (event_h, &amp;event_type)) {</span></span>
 <span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to get event type!&quot;);</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">         138 :     return NNS_EDGE_ERROR_UNKNOWN;</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">         137 :     return NNS_EDGE_ERROR_UNKNOWN;</span></span>
 <span id="L315"><span class="lineNum">     315</span>              :   }</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         138 :   switch (event_type) {</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         130 :     case NNS_EDGE_EVENT_NEW_DATA_RECEIVED:</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         137 :   switch (event_type) {</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         129 :     case NNS_EDGE_EVENT_NEW_DATA_RECEIVED:</span></span>
 <span id="L319"><span class="lineNum">     319</span>              :     {</span>
 <span id="L320"><span class="lineNum">     320</span>              :       nns_edge_data_h data;</span>
 <span id="L321"><span class="lineNum">     321</span>              : </span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         130 :       nns_edge_event_parse_new_data (event_h, &amp;data);</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         130 :       g_async_queue_push (self-&gt;msg_queue, data);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         130 :       break;</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         129 :       nns_edge_event_parse_new_data (event_h, &amp;data);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         129 :       g_async_queue_push (self-&gt;msg_queue, data);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         129 :       break;</span></span>
 <span id="L325"><span class="lineNum">     325</span>              :     }</span>
 <span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNS_EDGE_EVENT_CONNECTION_CLOSED:</span></span>
 <span id="L327"><span class="lineNum">     327</span>              :     {</span>
@@ -394,7 +394,7 @@
 <span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           8 :       break;</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :   }</span>
 <span id="L334"><span class="lineNum">     334</span>              : </span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         138 :   return ret;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         137 :   return ret;</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : }</span>
 <span id="L337"><span class="lineNum">     337</span>              : </span>
 <span id="L338"><span class="lineNum">     338</span>              : /**</span>
@@ -486,11 +486,11 @@
 <span id="L424"><span class="lineNum">     424</span>              :     GstBuffer ** out_buf)</span>
 <span id="L425"><span class="lineNum">     425</span>              : {</span>
 <span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          94 :   GstEdgeSrc *self = GST_EDGESRC (basesrc);</span></span>
-<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          94 :   nns_edge_data_h data_h = NULL;</span></span>
-<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          94 :   GstBuffer *buffer = NULL;</span></span>
-<span id="L429"><span class="lineNum">     429</span>              :   GstMemory *mem;</span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          94 :   GstCaps *caps = NULL;</span></span>
-<span id="L431"><span class="lineNum">     431</span>              :   GstStructure *structure;</span>
+<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          94 :   GstPad *pad = GST_BASE_SRC_PAD (basesrc);</span></span>
+<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          94 :   nns_edge_data_h data_h = NULL;</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          94 :   GstBuffer *buffer = NULL;</span></span>
+<span id="L430"><span class="lineNum">     430</span>              :   GstMemory *mem;</span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          94 :   GstCaps *caps = NULL;</span></span>
 <span id="L432"><span class="lineNum">     432</span>              :   GstTensorsConfig config;</span>
 <span id="L433"><span class="lineNum">     433</span>              :   GstTensorInfo *_info;</span>
 <span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">          94 :   gboolean is_tensor = FALSE;</span></span>
@@ -517,115 +517,113 @@
 <span id="L455"><span class="lineNum">     455</span>              :   }</span>
 <span id="L456"><span class="lineNum">     456</span>              : </span>
 <span id="L457"><span class="lineNum">     457</span>              :   /* Check current caps and max memory. */</span>
-<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC tlaBgGNC">          92 :   caps = gst_pad_get_current_caps (GST_BASE_SRC_PAD (basesrc));</span></span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">          92 :   if (caps) {</span></span>
-<span id="L460"><span class="lineNum">     460</span> <span class="tlaUNC tlaBgUNC">           0 :     structure = gst_caps_get_structure (caps, 0);</span></span>
-<span id="L461"><span class="lineNum">     461</span> <span class="tlaUNC">           0 :     is_tensor = gst_structure_is_tensor_stream (structure);</span></span>
-<span id="L462"><span class="lineNum">     462</span>              : </span>
-<span id="L463"><span class="lineNum">     463</span> <span class="tlaUNC">           0 :     if (is_tensor)</span></span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaUNC">           0 :       gst_tensors_config_from_structure (&amp;config, structure);</span></span>
-<span id="L465"><span class="lineNum">     465</span>              : </span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaUNC">           0 :     gst_caps_unref (caps);</span></span>
-<span id="L467"><span class="lineNum">     467</span>              :   }</span>
-<span id="L468"><span class="lineNum">     468</span>              : </span>
-<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC tlaBgGNC">          92 :   max_mems = is_tensor ? NNS_TENSOR_SIZE_LIMIT : gst_buffer_get_max_memory ();</span></span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">          92 :   if (num_data &gt; max_mems) {</span></span>
-<span id="L471"><span class="lineNum">     471</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge</span></span>
-<span id="L472"><span class="lineNum">     472</span>              :         (&quot;Cannot create new buffer. The edge-data has %u memories, but allowed memories is %u.&quot;,</span>
-<span id="L473"><span class="lineNum">     473</span>              :         num_data, max_mems);</span>
-<span id="L474"><span class="lineNum">     474</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L475"><span class="lineNum">     475</span>              :   }</span>
-<span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC tlaBgGNC">          92 :   buffer = gst_buffer_new ();</span></span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">         184 :   for (i = 0; i &lt; num_data; i++) {</span></span>
-<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">          92 :     void *data = NULL;</span></span>
-<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">          92 :     nns_size_t data_len = 0;</span></span>
-<span id="L481"><span class="lineNum">     481</span>              :     gpointer new_data;</span>
-<span id="L482"><span class="lineNum">     482</span>              : </span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          92 :     nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">          92 :     new_data = _g_memdup (data, data_len);</span></span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">          92 :     mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
-<span id="L486"><span class="lineNum">     486</span>              :         new_data, g_free);</span>
-<span id="L487"><span class="lineNum">     487</span>              : </span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">          92 :     if (is_tensor) {</span></span>
-<span id="L489"><span class="lineNum">     489</span> <span class="tlaUNC tlaBgUNC">           0 :       _info = gst_tensors_info_get_nth_info (&amp;config.info, i);</span></span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaUNC">           0 :       gst_tensor_buffer_append_memory (buffer, mem, _info);</span></span>
-<span id="L491"><span class="lineNum">     491</span>              :     } else {</span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC tlaBgGNC">          92 :       gst_buffer_append_memory (buffer, mem);</span></span>
-<span id="L493"><span class="lineNum">     493</span>              :     }</span>
-<span id="L494"><span class="lineNum">     494</span>              :   }</span>
-<span id="L495"><span class="lineNum">     495</span>              : </span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">          92 : done:</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">          92 :   if (data_h)</span></span>
-<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">          92 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC tlaBgGNC">          92 :   caps = gst_pad_get_current_caps (pad);</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">          92 :   if (!caps)</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">          92 :     caps = gst_pad_get_allowed_caps (pad);</span></span>
+<span id="L461"><span class="lineNum">     461</span>              : </span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">          92 :   if (caps) {</span></span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          92 :     is_tensor = gst_tensors_config_from_caps (&amp;config, caps, TRUE);</span></span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          92 :     gst_caps_unref (caps);</span></span>
+<span id="L465"><span class="lineNum">     465</span>              :   }</span>
+<span id="L466"><span class="lineNum">     466</span>              : </span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">          92 :   max_mems = is_tensor ? NNS_TENSOR_SIZE_LIMIT : gst_buffer_get_max_memory ();</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          92 :   if (num_data &gt; max_mems) {</span></span>
+<span id="L469"><span class="lineNum">     469</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge</span></span>
+<span id="L470"><span class="lineNum">     470</span>              :         (&quot;Cannot create new buffer. The edge-data has %u memories, but allowed memories is %u.&quot;,</span>
+<span id="L471"><span class="lineNum">     471</span>              :         num_data, max_mems);</span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L473"><span class="lineNum">     473</span>              :   }</span>
+<span id="L474"><span class="lineNum">     474</span>              : </span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC tlaBgGNC">          92 :   buffer = gst_buffer_new ();</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         184 :   for (i = 0; i &lt; num_data; i++) {</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">          92 :     void *data = NULL;</span></span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">          92 :     nns_size_t data_len = 0;</span></span>
+<span id="L479"><span class="lineNum">     479</span>              :     gpointer new_data;</span>
+<span id="L480"><span class="lineNum">     480</span>              : </span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">          92 :     nns_edge_data_get (data_h, i, &amp;data, &amp;data_len);</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">          92 :     new_data = _g_memdup (data, data_len);</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          92 :     mem = gst_memory_new_wrapped (0, new_data, data_len, 0, data_len,</span></span>
+<span id="L484"><span class="lineNum">     484</span>              :         new_data, g_free);</span>
+<span id="L485"><span class="lineNum">     485</span>              : </span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">          92 :     if (is_tensor) {</span></span>
+<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC">           2 :       _info = gst_tensors_info_get_nth_info (&amp;config.info, i);</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">           2 :       gst_tensor_buffer_append_memory (buffer, mem, _info);</span></span>
+<span id="L489"><span class="lineNum">     489</span>              :     } else {</span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">          90 :       gst_buffer_append_memory (buffer, mem);</span></span>
+<span id="L491"><span class="lineNum">     491</span>              :     }</span>
+<span id="L492"><span class="lineNum">     492</span>              :   }</span>
+<span id="L493"><span class="lineNum">     493</span>              : </span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">          92 : done:</span></span>
+<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">          92 :   if (data_h)</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">          92 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L497"><span class="lineNum">     497</span>              : </span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">          92 :   gst_tensors_config_free (&amp;config);</span></span>
 <span id="L499"><span class="lineNum">     499</span>              : </span>
-<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">          92 :   gst_tensors_config_free (&amp;config);</span></span>
-<span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">          92 :   if (buffer == NULL) {</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to get buffer to push to the edgesrc.&quot;);</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaUNC">           0 :     return GST_FLOW_ERROR;</span></span>
-<span id="L505"><span class="lineNum">     505</span>              :   }</span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">          92 :   if (buffer == NULL) {</span></span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to get buffer to push to the edgesrc.&quot;);</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaUNC">           0 :     return GST_FLOW_ERROR;</span></span>
+<span id="L503"><span class="lineNum">     503</span>              :   }</span>
+<span id="L504"><span class="lineNum">     504</span>              : </span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC tlaBgGNC">          92 :   *out_buf = buffer;</span></span>
 <span id="L506"><span class="lineNum">     506</span>              : </span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">          92 :   *out_buf = buffer;</span></span>
-<span id="L508"><span class="lineNum">     508</span>              : </span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          92 :   return GST_FLOW_OK;</span></span>
-<span id="L510"><span class="lineNum">     510</span>              : }</span>
-<span id="L511"><span class="lineNum">     511</span>              : </span>
-<span id="L512"><span class="lineNum">     512</span>              : /**</span>
-<span id="L513"><span class="lineNum">     513</span>              :  * @brief getter for the 'host' property.</span>
-<span id="L514"><span class="lineNum">     514</span>              :  */</span>
-<span id="L515"><span class="lineNum">     515</span>              : static gchar *</span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           1 : gst_edgesrc_get_dest_host (GstEdgeSrc * self)</span></span>
-<span id="L517"><span class="lineNum">     517</span>              : {</span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">           1 :   return self-&gt;dest_host;</span></span>
-<span id="L519"><span class="lineNum">     519</span>              : }</span>
-<span id="L520"><span class="lineNum">     520</span>              : </span>
-<span id="L521"><span class="lineNum">     521</span>              : /**</span>
-<span id="L522"><span class="lineNum">     522</span>              :  * @brief setter for the 'host' property.</span>
-<span id="L523"><span class="lineNum">     523</span>              :  */</span>
-<span id="L524"><span class="lineNum">     524</span>              : static void</span>
-<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">           4 : gst_edgesrc_set_dest_host (GstEdgeSrc * self, const gchar * dest_host)</span></span>
-<span id="L526"><span class="lineNum">     526</span>              : {</span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           4 :   g_free (self-&gt;dest_host);</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           4 :   self-&gt;dest_host = g_strdup (dest_host);</span></span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           4 : }</span></span>
-<span id="L530"><span class="lineNum">     530</span>              : </span>
-<span id="L531"><span class="lineNum">     531</span>              : /**</span>
-<span id="L532"><span class="lineNum">     532</span>              :  * @brief getter for the 'port' property.</span>
-<span id="L533"><span class="lineNum">     533</span>              :  */</span>
-<span id="L534"><span class="lineNum">     534</span>              : static guint16</span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">           1 : gst_edgesrc_get_dest_port (GstEdgeSrc * self)</span></span>
-<span id="L536"><span class="lineNum">     536</span>              : {</span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">           1 :   return self-&gt;dest_port;</span></span>
-<span id="L538"><span class="lineNum">     538</span>              : }</span>
-<span id="L539"><span class="lineNum">     539</span>              : </span>
-<span id="L540"><span class="lineNum">     540</span>              : /**</span>
-<span id="L541"><span class="lineNum">     541</span>              :  * @brief setter for the 'port' property.</span>
-<span id="L542"><span class="lineNum">     542</span>              :  */</span>
-<span id="L543"><span class="lineNum">     543</span>              : static void</span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">          11 : gst_edgesrc_set_dest_port (GstEdgeSrc * self, const guint16 dest_port)</span></span>
-<span id="L545"><span class="lineNum">     545</span>              : {</span>
-<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">          11 :   self-&gt;dest_port = dest_port;</span></span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">          11 : }</span></span>
-<span id="L548"><span class="lineNum">     548</span>              : </span>
-<span id="L549"><span class="lineNum">     549</span>              : /**</span>
-<span id="L550"><span class="lineNum">     550</span>              :  * @brief getter for the 'connect_type' property.</span>
-<span id="L551"><span class="lineNum">     551</span>              :  */</span>
-<span id="L552"><span class="lineNum">     552</span>              : static nns_edge_connect_type_e</span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           1 : gst_edgesrc_get_connect_type (GstEdgeSrc * self)</span></span>
-<span id="L554"><span class="lineNum">     554</span>              : {</span>
-<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           1 :   return self-&gt;connect_type;</span></span>
-<span id="L556"><span class="lineNum">     556</span>              : }</span>
-<span id="L557"><span class="lineNum">     557</span>              : </span>
-<span id="L558"><span class="lineNum">     558</span>              : /**</span>
-<span id="L559"><span class="lineNum">     559</span>              :  * @brief setter for the 'connect_type' property.</span>
-<span id="L560"><span class="lineNum">     560</span>              :  */</span>
-<span id="L561"><span class="lineNum">     561</span>              : static void</span>
-<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">           7 : gst_edgesrc_set_connect_type (GstEdgeSrc * self,</span></span>
-<span id="L563"><span class="lineNum">     563</span>              :     const nns_edge_connect_type_e connect_type)</span>
-<span id="L564"><span class="lineNum">     564</span>              : {</span>
-<span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">           7 :   self-&gt;connect_type = connect_type;</span></span>
-<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC">           7 : }</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          92 :   return GST_FLOW_OK;</span></span>
+<span id="L508"><span class="lineNum">     508</span>              : }</span>
+<span id="L509"><span class="lineNum">     509</span>              : </span>
+<span id="L510"><span class="lineNum">     510</span>              : /**</span>
+<span id="L511"><span class="lineNum">     511</span>              :  * @brief getter for the 'host' property.</span>
+<span id="L512"><span class="lineNum">     512</span>              :  */</span>
+<span id="L513"><span class="lineNum">     513</span>              : static gchar *</span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">           1 : gst_edgesrc_get_dest_host (GstEdgeSrc * self)</span></span>
+<span id="L515"><span class="lineNum">     515</span>              : {</span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           1 :   return self-&gt;dest_host;</span></span>
+<span id="L517"><span class="lineNum">     517</span>              : }</span>
+<span id="L518"><span class="lineNum">     518</span>              : </span>
+<span id="L519"><span class="lineNum">     519</span>              : /**</span>
+<span id="L520"><span class="lineNum">     520</span>              :  * @brief setter for the 'host' property.</span>
+<span id="L521"><span class="lineNum">     521</span>              :  */</span>
+<span id="L522"><span class="lineNum">     522</span>              : static void</span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">           4 : gst_edgesrc_set_dest_host (GstEdgeSrc * self, const gchar * dest_host)</span></span>
+<span id="L524"><span class="lineNum">     524</span>              : {</span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">           4 :   g_free (self-&gt;dest_host);</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">           4 :   self-&gt;dest_host = g_strdup (dest_host);</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           4 : }</span></span>
+<span id="L528"><span class="lineNum">     528</span>              : </span>
+<span id="L529"><span class="lineNum">     529</span>              : /**</span>
+<span id="L530"><span class="lineNum">     530</span>              :  * @brief getter for the 'port' property.</span>
+<span id="L531"><span class="lineNum">     531</span>              :  */</span>
+<span id="L532"><span class="lineNum">     532</span>              : static guint16</span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">           1 : gst_edgesrc_get_dest_port (GstEdgeSrc * self)</span></span>
+<span id="L534"><span class="lineNum">     534</span>              : {</span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">           1 :   return self-&gt;dest_port;</span></span>
+<span id="L536"><span class="lineNum">     536</span>              : }</span>
+<span id="L537"><span class="lineNum">     537</span>              : </span>
+<span id="L538"><span class="lineNum">     538</span>              : /**</span>
+<span id="L539"><span class="lineNum">     539</span>              :  * @brief setter for the 'port' property.</span>
+<span id="L540"><span class="lineNum">     540</span>              :  */</span>
+<span id="L541"><span class="lineNum">     541</span>              : static void</span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">          11 : gst_edgesrc_set_dest_port (GstEdgeSrc * self, const guint16 dest_port)</span></span>
+<span id="L543"><span class="lineNum">     543</span>              : {</span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">          11 :   self-&gt;dest_port = dest_port;</span></span>
+<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">          11 : }</span></span>
+<span id="L546"><span class="lineNum">     546</span>              : </span>
+<span id="L547"><span class="lineNum">     547</span>              : /**</span>
+<span id="L548"><span class="lineNum">     548</span>              :  * @brief getter for the 'connect_type' property.</span>
+<span id="L549"><span class="lineNum">     549</span>              :  */</span>
+<span id="L550"><span class="lineNum">     550</span>              : static nns_edge_connect_type_e</span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">           1 : gst_edgesrc_get_connect_type (GstEdgeSrc * self)</span></span>
+<span id="L552"><span class="lineNum">     552</span>              : {</span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           1 :   return self-&gt;connect_type;</span></span>
+<span id="L554"><span class="lineNum">     554</span>              : }</span>
+<span id="L555"><span class="lineNum">     555</span>              : </span>
+<span id="L556"><span class="lineNum">     556</span>              : /**</span>
+<span id="L557"><span class="lineNum">     557</span>              :  * @brief setter for the 'connect_type' property.</span>
+<span id="L558"><span class="lineNum">     558</span>              :  */</span>
+<span id="L559"><span class="lineNum">     559</span>              : static void</span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">           7 : gst_edgesrc_set_connect_type (GstEdgeSrc * self,</span></span>
+<span id="L561"><span class="lineNum">     561</span>              :     const nns_edge_connect_type_e connect_type)</span>
+<span id="L562"><span class="lineNum">     562</span>              : {</span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">           7 :   self-&gt;connect_type = connect_type;</span></span>
+<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">           7 : }</span></span>
         </pre>
               </td>
             </tr>

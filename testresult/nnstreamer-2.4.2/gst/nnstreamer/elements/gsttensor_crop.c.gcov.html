@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_crop.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_crop.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">91.9&nbsp;%</td>
-            <td class="headerCovTableEntry">321</td>
-            <td class="headerCovTableEntry">295</td>
+            <td class="headerCovTableEntry">320</td>
+            <td class="headerCovTableEntry">294</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -462,103 +462,103 @@
 <span id="L400"><span class="lineNum">     400</span>              :     {</span>
 <span id="L401"><span class="lineNum">     401</span>              :       GstCaps *caps;</span>
 <span id="L402"><span class="lineNum">     402</span>              :       gboolean ret;</span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          15 :       gst_event_parse_caps (event, &amp;caps);</span></span>
-<span id="L404"><span class="lineNum">     404</span>              : </span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          15 :       ret = gst_tensors_config_from_caps (&amp;cpad-&gt;config, caps);</span></span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          15 :       gst_event_unref (event);</span></span>
-<span id="L407"><span class="lineNum">     407</span>              : </span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">          15 :       return ret;</span></span>
-<span id="L409"><span class="lineNum">     409</span>              :     }</span>
-<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          45 :     default:</span></span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          45 :       break;</span></span>
-<span id="L412"><span class="lineNum">     412</span>              :   }</span>
-<span id="L413"><span class="lineNum">     413</span>              : </span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          45 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
-<span id="L415"><span class="lineNum">     415</span>              : }</span>
-<span id="L416"><span class="lineNum">     416</span>              : </span>
-<span id="L417"><span class="lineNum">     417</span>              : /**</span>
-<span id="L418"><span class="lineNum">     418</span>              :  * @brief Set pad caps if not negotiated.</span>
-<span id="L419"><span class="lineNum">     419</span>              :  */</span>
-<span id="L420"><span class="lineNum">     420</span>              : static GstFlowReturn</span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          10 : gst_tensor_crop_negotiate (GstTensorCrop * self)</span></span>
-<span id="L422"><span class="lineNum">     422</span>              : {</span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;sinkpad_raw)) {</span></span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self,</span></span>
-<span id="L425"><span class="lineNum">     425</span>              :         &quot;The raw pad of tensor_crop '%s' does not have pad caps.&quot;,</span>
-<span id="L426"><span class="lineNum">     426</span>              :         GST_ELEMENT_NAME (self));</span>
-<span id="L427"><span class="lineNum">     427</span> <span class="tlaUNC">           0 :     return GST_FLOW_NOT_NEGOTIATED;</span></span>
-<span id="L428"><span class="lineNum">     428</span>              :   }</span>
-<span id="L429"><span class="lineNum">     429</span>              : </span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC tlaBgGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;sinkpad_info)) {</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self,</span></span>
-<span id="L432"><span class="lineNum">     432</span>              :         &quot;The info pad of tensor_crop '%s' does not have pad caps.&quot;,</span>
-<span id="L433"><span class="lineNum">     433</span>              :         GST_ELEMENT_NAME (self));</span>
-<span id="L434"><span class="lineNum">     434</span> <span class="tlaUNC">           0 :     return GST_FLOW_NOT_NEGOTIATED;</span></span>
-<span id="L435"><span class="lineNum">     435</span>              :   }</span>
-<span id="L436"><span class="lineNum">     436</span>              : </span>
-<span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC tlaBgGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;srcpad)) {</span></span>
-<span id="L438"><span class="lineNum">     438</span>              :     GstCaps *caps;</span>
-<span id="L439"><span class="lineNum">     439</span>              :     GstSegment segment;</span>
-<span id="L440"><span class="lineNum">     440</span>              :     GstTensorsConfig config;</span>
-<span id="L441"><span class="lineNum">     441</span>              :     GstTensorCropPadData *cpad;</span>
-<span id="L442"><span class="lineNum">     442</span>              :     GSList *walk;</span>
-<span id="L443"><span class="lineNum">     443</span>              : </span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">           6 :     if (self-&gt;send_stream_start) {</span></span>
-<span id="L445"><span class="lineNum">     445</span>              :       /**</span>
-<span id="L446"><span class="lineNum">     446</span>              :        * Cannot use gst-pad util to get stream ID (multiple sink pads).</span>
-<span id="L447"><span class="lineNum">     447</span>              :        * Create stream ID using first sink pad.</span>
-<span id="L448"><span class="lineNum">     448</span>              :        */</span>
-<span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC">           6 :       g_autofree gchar *sink_stream_id = gst_pad_get_stream_id (self-&gt;sinkpad_raw);</span></span>
-<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC">           6 :       g_autofree gchar *element_name = gst_element_get_name (self);</span></span>
-<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">           6 :       g_autofree gchar *pad_name = gst_pad_get_name (self-&gt;srcpad);</span></span>
-<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">          12 :       g_autofree gchar *stream_id = g_strdup_printf (&quot;%s-%s-nnscrop-%s-%08x&quot;,</span></span>
-<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">           6 :           GST_STR_NULL (sink_stream_id), element_name, pad_name, g_random_int ());</span></span>
-<span id="L454"><span class="lineNum">     454</span>              : </span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">           6 :       gst_pad_push_event (self-&gt;srcpad, gst_event_new_stream_start (stream_id));</span></span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           6 :       self-&gt;send_stream_start = FALSE;</span></span>
-<span id="L457"><span class="lineNum">     457</span>              :     }</span>
-<span id="L458"><span class="lineNum">     458</span>              : </span>
-<span id="L459"><span class="lineNum">     459</span>              :     /**</span>
-<span id="L460"><span class="lineNum">     460</span>              :      * Get config from collect-pads and set framerate.</span>
-<span id="L461"><span class="lineNum">     461</span>              :      * Output is always flexible tensor.</span>
-<span id="L462"><span class="lineNum">     462</span>              :      */</span>
-<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">           6 :     gst_tensors_config_init (&amp;config);</span></span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">           6 :     config.info.format = _NNS_TENSOR_FORMAT_FLEXIBLE;</span></span>
-<span id="L465"><span class="lineNum">     465</span>              : </span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">           6 :     walk = self-&gt;collect-&gt;data;</span></span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">          18 :     while (walk) {</span></span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          12 :       cpad = (GstTensorCropPadData *) walk-&gt;data;</span></span>
-<span id="L469"><span class="lineNum">     469</span>              : </span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">          12 :       if (config.rate_n &lt; 0 ||</span></span>
-<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">           6 :           gst_util_fraction_compare (cpad-&gt;config.rate_n, cpad-&gt;config.rate_d,</span></span>
-<span id="L472"><span class="lineNum">     472</span>              :               config.rate_n, config.rate_d) &lt; 0) {</span>
-<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">           6 :         config.rate_n = cpad-&gt;config.rate_n;</span></span>
-<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">           6 :         config.rate_d = cpad-&gt;config.rate_d;</span></span>
-<span id="L475"><span class="lineNum">     475</span>              :       }</span>
-<span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">          12 :       walk = g_slist_next (walk);</span></span>
-<span id="L478"><span class="lineNum">     478</span>              :     }</span>
-<span id="L479"><span class="lineNum">     479</span>              : </span>
-<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">           6 :     caps = gst_tensors_caps_from_config (&amp;config);</span></span>
-<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">           6 :     gst_pad_set_caps (self-&gt;srcpad, caps);</span></span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">           6 :     gst_caps_unref (caps);</span></span>
-<span id="L483"><span class="lineNum">     483</span>              : </span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">           6 :     gst_segment_init (&amp;segment, GST_FORMAT_TIME);</span></span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">           6 :     gst_pad_push_event (self-&gt;srcpad, gst_event_new_segment (&amp;segment));</span></span>
-<span id="L486"><span class="lineNum">     486</span>              :   }</span>
-<span id="L487"><span class="lineNum">     487</span>              : </span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">          10 :   return GST_FLOW_OK;</span></span>
-<span id="L489"><span class="lineNum">     489</span>              : }</span>
-<span id="L490"><span class="lineNum">     490</span>              : </span>
-<span id="L491"><span class="lineNum">     491</span>              : /**</span>
-<span id="L492"><span class="lineNum">     492</span>              :  * @brief Internal function to prepare output meta info.</span>
-<span id="L493"><span class="lineNum">     493</span>              :  */</span>
-<span id="L494"><span class="lineNum">     494</span>              : static gboolean</span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">           6 : gst_tensor_crop_prepare_out_meta (GstTensorCrop * self, gpointer buffer,</span></span>
-<span id="L496"><span class="lineNum">     496</span>              :     GstTensorMetaInfo * meta, GstTensorInfo * info, gboolean * is_flexible)</span>
-<span id="L497"><span class="lineNum">     497</span>              : {</span>
-<span id="L498"><span class="lineNum">     498</span>              :   GstCaps *caps;</span>
-<span id="L499"><span class="lineNum">     499</span>              :   GstStructure *structure;</span>
+<span id="L403"><span class="lineNum">     403</span>              : </span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          15 :       gst_event_parse_caps (event, &amp;caps);</span></span>
+<span id="L405"><span class="lineNum">     405</span>              : </span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          15 :       ret = gst_tensors_config_from_caps (&amp;cpad-&gt;config, caps, TRUE);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          15 :       gst_event_unref (event);</span></span>
+<span id="L408"><span class="lineNum">     408</span>              : </span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          15 :       return ret;</span></span>
+<span id="L410"><span class="lineNum">     410</span>              :     }</span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          45 :     default:</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          45 :       break;</span></span>
+<span id="L413"><span class="lineNum">     413</span>              :   }</span>
+<span id="L414"><span class="lineNum">     414</span>              : </span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          45 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
+<span id="L416"><span class="lineNum">     416</span>              : }</span>
+<span id="L417"><span class="lineNum">     417</span>              : </span>
+<span id="L418"><span class="lineNum">     418</span>              : /**</span>
+<span id="L419"><span class="lineNum">     419</span>              :  * @brief Set pad caps if not negotiated.</span>
+<span id="L420"><span class="lineNum">     420</span>              :  */</span>
+<span id="L421"><span class="lineNum">     421</span>              : static GstFlowReturn</span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          10 : gst_tensor_crop_negotiate (GstTensorCrop * self)</span></span>
+<span id="L423"><span class="lineNum">     423</span>              : {</span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;sinkpad_raw)) {</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self,</span></span>
+<span id="L426"><span class="lineNum">     426</span>              :         &quot;The raw pad of tensor_crop '%s' does not have pad caps.&quot;,</span>
+<span id="L427"><span class="lineNum">     427</span>              :         GST_ELEMENT_NAME (self));</span>
+<span id="L428"><span class="lineNum">     428</span> <span class="tlaUNC">           0 :     return GST_FLOW_NOT_NEGOTIATED;</span></span>
+<span id="L429"><span class="lineNum">     429</span>              :   }</span>
+<span id="L430"><span class="lineNum">     430</span>              : </span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC tlaBgGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;sinkpad_info)) {</span></span>
+<span id="L432"><span class="lineNum">     432</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self,</span></span>
+<span id="L433"><span class="lineNum">     433</span>              :         &quot;The info pad of tensor_crop '%s' does not have pad caps.&quot;,</span>
+<span id="L434"><span class="lineNum">     434</span>              :         GST_ELEMENT_NAME (self));</span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaUNC">           0 :     return GST_FLOW_NOT_NEGOTIATED;</span></span>
+<span id="L436"><span class="lineNum">     436</span>              :   }</span>
+<span id="L437"><span class="lineNum">     437</span>              : </span>
+<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC tlaBgGNC">          10 :   if (!gst_pad_has_current_caps (self-&gt;srcpad)) {</span></span>
+<span id="L439"><span class="lineNum">     439</span>              :     GstCaps *caps;</span>
+<span id="L440"><span class="lineNum">     440</span>              :     GstSegment segment;</span>
+<span id="L441"><span class="lineNum">     441</span>              :     GstTensorsConfig config;</span>
+<span id="L442"><span class="lineNum">     442</span>              :     GstTensorCropPadData *cpad;</span>
+<span id="L443"><span class="lineNum">     443</span>              :     GSList *walk;</span>
+<span id="L444"><span class="lineNum">     444</span>              : </span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">           6 :     if (self-&gt;send_stream_start) {</span></span>
+<span id="L446"><span class="lineNum">     446</span>              :       /**</span>
+<span id="L447"><span class="lineNum">     447</span>              :        * Cannot use gst-pad util to get stream ID (multiple sink pads).</span>
+<span id="L448"><span class="lineNum">     448</span>              :        * Create stream ID using first sink pad.</span>
+<span id="L449"><span class="lineNum">     449</span>              :        */</span>
+<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC">           6 :       g_autofree gchar *sink_stream_id = gst_pad_get_stream_id (self-&gt;sinkpad_raw);</span></span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">           6 :       g_autofree gchar *element_name = gst_element_get_name (self);</span></span>
+<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">           6 :       g_autofree gchar *pad_name = gst_pad_get_name (self-&gt;srcpad);</span></span>
+<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          12 :       g_autofree gchar *stream_id = g_strdup_printf (&quot;%s-%s-nnscrop-%s-%08x&quot;,</span></span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">           6 :           GST_STR_NULL (sink_stream_id), element_name, pad_name, g_random_int ());</span></span>
+<span id="L455"><span class="lineNum">     455</span>              : </span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           6 :       gst_pad_push_event (self-&gt;srcpad, gst_event_new_stream_start (stream_id));</span></span>
+<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">           6 :       self-&gt;send_stream_start = FALSE;</span></span>
+<span id="L458"><span class="lineNum">     458</span>              :     }</span>
+<span id="L459"><span class="lineNum">     459</span>              : </span>
+<span id="L460"><span class="lineNum">     460</span>              :     /**</span>
+<span id="L461"><span class="lineNum">     461</span>              :      * Get config from collect-pads and set framerate.</span>
+<span id="L462"><span class="lineNum">     462</span>              :      * Output is always flexible tensor.</span>
+<span id="L463"><span class="lineNum">     463</span>              :      */</span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">           6 :     gst_tensors_config_init (&amp;config);</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">           6 :     config.info.format = _NNS_TENSOR_FORMAT_FLEXIBLE;</span></span>
+<span id="L466"><span class="lineNum">     466</span>              : </span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">           6 :     walk = self-&gt;collect-&gt;data;</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          18 :     while (walk) {</span></span>
+<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">          12 :       cpad = (GstTensorCropPadData *) walk-&gt;data;</span></span>
+<span id="L470"><span class="lineNum">     470</span>              : </span>
+<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">          12 :       if (config.rate_n &lt; 0 ||</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           6 :           gst_util_fraction_compare (cpad-&gt;config.rate_n, cpad-&gt;config.rate_d,</span></span>
+<span id="L473"><span class="lineNum">     473</span>              :               config.rate_n, config.rate_d) &lt; 0) {</span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">           6 :         config.rate_n = cpad-&gt;config.rate_n;</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">           6 :         config.rate_d = cpad-&gt;config.rate_d;</span></span>
+<span id="L476"><span class="lineNum">     476</span>              :       }</span>
+<span id="L477"><span class="lineNum">     477</span>              : </span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">          12 :       walk = g_slist_next (walk);</span></span>
+<span id="L479"><span class="lineNum">     479</span>              :     }</span>
+<span id="L480"><span class="lineNum">     480</span>              : </span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">           6 :     caps = gst_tensors_caps_from_config (&amp;config);</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">           6 :     gst_pad_set_caps (self-&gt;srcpad, caps);</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">           6 :     gst_caps_unref (caps);</span></span>
+<span id="L484"><span class="lineNum">     484</span>              : </span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">           6 :     gst_segment_init (&amp;segment, GST_FORMAT_TIME);</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">           6 :     gst_pad_push_event (self-&gt;srcpad, gst_event_new_segment (&amp;segment));</span></span>
+<span id="L487"><span class="lineNum">     487</span>              :   }</span>
+<span id="L488"><span class="lineNum">     488</span>              : </span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">          10 :   return GST_FLOW_OK;</span></span>
+<span id="L490"><span class="lineNum">     490</span>              : }</span>
+<span id="L491"><span class="lineNum">     491</span>              : </span>
+<span id="L492"><span class="lineNum">     492</span>              : /**</span>
+<span id="L493"><span class="lineNum">     493</span>              :  * @brief Internal function to prepare output meta info.</span>
+<span id="L494"><span class="lineNum">     494</span>              :  */</span>
+<span id="L495"><span class="lineNum">     495</span>              : static gboolean</span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">           6 : gst_tensor_crop_prepare_out_meta (GstTensorCrop * self, gpointer buffer,</span></span>
+<span id="L497"><span class="lineNum">     497</span>              :     GstTensorMetaInfo * meta, GstTensorInfo * info, gboolean * is_flexible)</span>
+<span id="L498"><span class="lineNum">     498</span>              : {</span>
+<span id="L499"><span class="lineNum">     499</span>              :   GstCaps *caps;</span>
 <span id="L500"><span class="lineNum">     500</span>              :   GstTensorsConfig config;</span>
 <span id="L501"><span class="lineNum">     501</span>              :   GstTensorInfo *_info;</span>
 <span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">           6 :   gboolean ret = FALSE;</span></span>
@@ -567,341 +567,340 @@
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">           6 :   gst_tensor_info_init (info);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              : </span>
 <span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">           6 :   caps = gst_pad_get_current_caps (self-&gt;sinkpad_raw);</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">           6 :   structure = gst_caps_get_structure (caps, 0);</span></span>
-<span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">           6 :   if (!gst_tensors_config_from_structure (&amp;config, structure)) {</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the config from caps.&quot;);</span></span>
-<span id="L512"><span class="lineNum">     512</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L513"><span class="lineNum">     513</span>              :   }</span>
-<span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span>              :   /**</span>
-<span id="L516"><span class="lineNum">     516</span>              :    * @note tensor-crop handles single tensor. Parse first one.</span>
-<span id="L517"><span class="lineNum">     517</span>              :    */</span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC tlaBgGNC">           6 :   _info = gst_tensors_info_get_nth_info (&amp;config.info, 0);</span></span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">           6 :   *is_flexible = gst_tensors_config_is_flexible (&amp;config);</span></span>
-<span id="L520"><span class="lineNum">     520</span>              : </span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">           6 :   if (*is_flexible) {</span></span>
-<span id="L522"><span class="lineNum">     522</span>              :     /* meta from buffer */</span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">           1 :     if (gst_tensor_meta_info_parse_header (meta, buffer)) {</span></span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">           1 :       ret = gst_tensor_meta_info_convert (meta, info);</span></span>
-<span id="L525"><span class="lineNum">     525</span>              :     }</span>
-<span id="L526"><span class="lineNum">     526</span>              :   } else {</span>
-<span id="L527"><span class="lineNum">     527</span>              :     /* meta from caps */</span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           5 :     ret = gst_tensor_info_convert_to_meta (_info, meta);</span></span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           5 :     gst_tensor_info_copy (info, _info);</span></span>
-<span id="L530"><span class="lineNum">     530</span>              :   }</span>
-<span id="L531"><span class="lineNum">     531</span>              : </span>
-<span id="L532"><span class="lineNum">     532</span>              :   /* output is flex tensor */</span>
-<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">           6 :   meta-&gt;format = _NNS_TENSOR_FORMAT_FLEXIBLE;</span></span>
-<span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">           6 : done:</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">           6 :   gst_caps_unref (caps);</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">           6 :   gst_tensors_config_free (&amp;config);</span></span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">           6 :   return ret;</span></span>
-<span id="L539"><span class="lineNum">     539</span>              : }</span>
-<span id="L540"><span class="lineNum">     540</span>              : </span>
-<span id="L541"><span class="lineNum">     541</span>              : /**</span>
-<span id="L542"><span class="lineNum">     542</span>              :  * @brief Internal function to parse buffer and fill crop info.</span>
-<span id="L543"><span class="lineNum">     543</span>              :  */</span>
-<span id="L544"><span class="lineNum">     544</span>              : static gboolean</span>
-<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">           7 : gst_tensor_crop_get_crop_info (GstTensorCrop * self, GstBuffer * info,</span></span>
-<span id="L546"><span class="lineNum">     546</span>              :     tensor_crop_info_s * cinfo)</span>
-<span id="L547"><span class="lineNum">     547</span>              : {</span>
-<span id="L548"><span class="lineNum">     548</span>              :   GstMemory *mem;</span>
-<span id="L549"><span class="lineNum">     549</span>              :   GstMapInfo map;</span>
-<span id="L550"><span class="lineNum">     550</span>              :   GstTensorMetaInfo meta;</span>
-<span id="L551"><span class="lineNum">     551</span>              :   gsize hsize, dsize, esize;</span>
-<span id="L552"><span class="lineNum">     552</span>              :   guint i, j;</span>
-<span id="L553"><span class="lineNum">     553</span>              :   guint8 *pos, *src, *desc;</span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           7 :   gboolean ret = FALSE;</span></span>
-<span id="L555"><span class="lineNum">     555</span>              : </span>
-<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">           7 :   i = gst_tensor_buffer_get_count (info);</span></span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">           7 :   g_assert (i &gt; 0);</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">           7 :   if (i &gt; 1) {</span></span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (self,</span></span>
-<span id="L560"><span class="lineNum">     560</span>              :         &quot;Info buffer has %u memories, parse first one.&quot;, i);</span>
-<span id="L561"><span class="lineNum">     561</span>              :   }</span>
-<span id="L562"><span class="lineNum">     562</span>              : </span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC tlaBgGNC">           7 :   mem = gst_tensor_buffer_get_nth_memory (info, 0);</span></span>
-<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">           7 :   if (!gst_memory_map (mem, &amp;map, GST_MAP_READ)) {</span></span>
-<span id="L565"><span class="lineNum">     565</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to map the info buffer.&quot;);</span></span>
-<span id="L566"><span class="lineNum">     566</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L567"><span class="lineNum">     567</span>              :   }</span>
-<span id="L568"><span class="lineNum">     568</span>              : </span>
-<span id="L569"><span class="lineNum">     569</span>              :   /* parse crop-info from flex tensor */</span>
-<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC tlaBgGNC">           7 :   if (!gst_tensor_meta_info_parse_header (&amp;meta, map.data)) {</span></span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the meta from info buffer.&quot;);</span></span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L573"><span class="lineNum">     573</span>              :   }</span>
-<span id="L574"><span class="lineNum">     574</span>              : </span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC tlaBgGNC">           7 :   hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           7 :   dsize = gst_tensor_meta_info_get_data_size (&amp;meta);</span></span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           7 :   esize = gst_tensor_get_element_size (meta.type);</span></span>
-<span id="L578"><span class="lineNum">     578</span>              : </span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           7 :   if (hsize + dsize != map.size) {</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           1 :     GST_ERROR_OBJECT (self,</span></span>
-<span id="L581"><span class="lineNum">     581</span>              :         &quot;Invalid meta info, info buffer size is incorrect (received %zd, expected %zd).&quot;,</span>
-<span id="L582"><span class="lineNum">     582</span>              :         map.size, hsize + dsize);</span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">           1 :     goto done;</span></span>
-<span id="L584"><span class="lineNum">     584</span>              :   }</span>
-<span id="L585"><span class="lineNum">     585</span>              : </span>
-<span id="L586"><span class="lineNum">     586</span>              :   /**</span>
-<span id="L587"><span class="lineNum">     587</span>              :    * @todo Add various mode to crop tensor.</span>
-<span id="L588"><span class="lineNum">     588</span>              :    * Now tensor-crop handles NHWC data format only.</span>
-<span id="L589"><span class="lineNum">     589</span>              :    */</span>
-<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">           6 :   g_assert ((dsize % (esize * 4)) == 0);</span></span>
-<span id="L591"><span class="lineNum">     591</span>              : </span>
-<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">           6 :   memset (cinfo, 0, sizeof (tensor_crop_info_s));</span></span>
-<span id="L593"><span class="lineNum">     593</span>              : </span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">           6 :   cinfo-&gt;num = MIN (dsize / (esize * 4), NNS_TENSOR_SIZE_LIMIT);</span></span>
-<span id="L595"><span class="lineNum">     595</span>              : </span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          17 :   for (i = 0; i &lt; cinfo-&gt;num; i++) {</span></span>
-<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">          11 :     pos = map.data + hsize + (esize * 4 * i);</span></span>
-<span id="L598"><span class="lineNum">     598</span>              : </span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          55 :     for (j = 0; j &lt; 4; j++) {</span></span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          44 :       src = pos + (esize * j);</span></span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">          44 :       desc = (guint8 *) (&amp;cinfo-&gt;region[i]) + sizeof (guint) * j;</span></span>
-<span id="L602"><span class="lineNum">     602</span>              : </span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          44 :       gst_tensor_data_raw_typecast (src, meta.type, desc, _NNS_UINT32);</span></span>
-<span id="L604"><span class="lineNum">     604</span>              :     }</span>
-<span id="L605"><span class="lineNum">     605</span>              :   }</span>
-<span id="L606"><span class="lineNum">     606</span>              : </span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           6 :   ret = TRUE;</span></span>
-<span id="L608"><span class="lineNum">     608</span>              : </span>
-<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">           7 : done:</span></span>
-<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">           7 :   if (mem) {</span></span>
-<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">           7 :     gst_memory_unmap (mem, &amp;map);</span></span>
-<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">           7 :     gst_memory_unref (mem);</span></span>
-<span id="L613"><span class="lineNum">     613</span>              :   }</span>
-<span id="L614"><span class="lineNum">     614</span>              : </span>
-<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">           7 :   return ret;</span></span>
-<span id="L616"><span class="lineNum">     616</span>              : }</span>
-<span id="L617"><span class="lineNum">     617</span>              : </span>
-<span id="L618"><span class="lineNum">     618</span>              : /**</span>
-<span id="L619"><span class="lineNum">     619</span>              :  * @brief Internal function to crop incoming buffer.</span>
-<span id="L620"><span class="lineNum">     620</span>              :  */</span>
-<span id="L621"><span class="lineNum">     621</span>              : static GstBuffer *</span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">           6 : gst_tensor_crop_do_cropping (GstTensorCrop * self, GstBuffer * raw,</span></span>
-<span id="L623"><span class="lineNum">     623</span>              :     tensor_crop_info_s * cinfo)</span>
-<span id="L624"><span class="lineNum">     624</span>              : {</span>
-<span id="L625"><span class="lineNum">     625</span> <span class="tlaGNC">           6 :   GstBuffer *result = NULL;</span></span>
-<span id="L626"><span class="lineNum">     626</span>              :   GstMemory *mem;</span>
-<span id="L627"><span class="lineNum">     627</span>              :   GstMapInfo map;</span>
-<span id="L628"><span class="lineNum">     628</span>              :   GstTensorMetaInfo meta;</span>
-<span id="L629"><span class="lineNum">     629</span>              :   GstTensorInfo info;</span>
-<span id="L630"><span class="lineNum">     630</span>              :   gboolean flexible;</span>
-<span id="L631"><span class="lineNum">     631</span>              :   gsize hsize, esize, dsize;</span>
-<span id="L632"><span class="lineNum">     632</span>              :   guint8 *cropped, *dpos, *desc, *src;</span>
-<span id="L633"><span class="lineNum">     633</span>              :   guint i, j, ch, mw, mh, _x, _y, _w, _h;</span>
-<span id="L634"><span class="lineNum">     634</span>              : </span>
-<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           6 :   i = gst_tensor_buffer_get_count (raw);</span></span>
-<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           6 :   g_assert (i &gt; 0);</span></span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           6 :   if (i &gt; 1) {</span></span>
-<span id="L638"><span class="lineNum">     638</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (self,</span></span>
-<span id="L639"><span class="lineNum">     639</span>              :         &quot;Raw data buffer has %u memories, parse first one.&quot;, i);</span>
-<span id="L640"><span class="lineNum">     640</span>              :   }</span>
-<span id="L641"><span class="lineNum">     641</span>              : </span>
-<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC tlaBgGNC">           6 :   mem = gst_tensor_buffer_get_nth_memory (raw, 0);</span></span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC">           6 :   if (!gst_memory_map (mem, &amp;map, GST_MAP_READ)) {</span></span>
-<span id="L644"><span class="lineNum">     644</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to map the raw buffer.&quot;);</span></span>
-<span id="L645"><span class="lineNum">     645</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L646"><span class="lineNum">     646</span>              :   }</span>
-<span id="L647"><span class="lineNum">     647</span>              : </span>
-<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC tlaBgGNC">           6 :   if (!gst_tensor_crop_prepare_out_meta (self, map.data, &amp;meta,</span></span>
-<span id="L649"><span class="lineNum">     649</span>              :           &amp;info, &amp;flexible)) {</span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the output meta.&quot;);</span></span>
-<span id="L651"><span class="lineNum">     651</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L652"><span class="lineNum">     652</span>              :   }</span>
-<span id="L653"><span class="lineNum">     653</span>              : </span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC tlaBgGNC">           6 :   hsize = flexible ? gst_tensor_meta_info_get_header_size (&amp;meta) : 0;</span></span>
-<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           6 :   dsize = gst_tensor_meta_info_get_data_size (&amp;meta);</span></span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">           6 :   dpos = map.data + hsize;</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">           6 :   if ((hsize + dsize) != map.size) {</span></span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">           1 :     GST_ERROR_OBJECT (self,</span></span>
-<span id="L659"><span class="lineNum">     659</span>              :         &quot;Raw buffer has invalid data size (received %zd, expected %zd).&quot;,</span>
-<span id="L660"><span class="lineNum">     660</span>              :         map.size, dsize);</span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">           1 :     goto done;</span></span>
-<span id="L662"><span class="lineNum">     662</span>              :   }</span>
-<span id="L663"><span class="lineNum">     663</span>              : </span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">           5 :   result = gst_buffer_new ();</span></span>
-<span id="L665"><span class="lineNum">     665</span>              : </span>
-<span id="L666"><span class="lineNum">     666</span>              :   /** @todo Add various mode to crop tensor. */</span>
-<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">           5 :   ch = info.dimension[0];</span></span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">           5 :   mw = info.dimension[1];</span></span>
-<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">           5 :   mh = info.dimension[2];</span></span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">           5 :   esize = gst_tensor_get_element_size (info.type);</span></span>
-<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC">           5 :   hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
-<span id="L672"><span class="lineNum">     672</span>              : </span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">          14 :   for (i = 0; i &lt; cinfo-&gt;num; i++) {</span></span>
-<span id="L674"><span class="lineNum">     674</span>              :     GstTensorInfo crop_info;</span>
-<span id="L675"><span class="lineNum">     675</span>              :     GstMemory *crop_mem;</span>
-<span id="L676"><span class="lineNum">     676</span>              : </span>
-<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">           9 :     _x = (cinfo-&gt;region[i].x &lt; mw) ? cinfo-&gt;region[i].x : mw;</span></span>
-<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">           9 :     _y = (cinfo-&gt;region[i].y &lt; mh) ? cinfo-&gt;region[i].y : mh;</span></span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">           9 :     _w = (_x + cinfo-&gt;region[i].w - 1 &lt; mw) ? cinfo-&gt;region[i].w : (mw - _x);</span></span>
-<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">           9 :     _h = (_y + cinfo-&gt;region[i].h - 1 &lt; mh) ? cinfo-&gt;region[i].h : (mh - _y);</span></span>
-<span id="L681"><span class="lineNum">     681</span>              : </span>
-<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">           9 :     g_assert (_w &gt; 0 &amp;&amp; _h &gt; 0);</span></span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">           9 :     dsize = hsize + (esize * ch * _w * _h);</span></span>
-<span id="L684"><span class="lineNum">     684</span> <span class="tlaGNC">           9 :     cropped = (guint8 *) g_malloc0 (dsize);</span></span>
-<span id="L685"><span class="lineNum">     685</span>              : </span>
-<span id="L686"><span class="lineNum">     686</span>              :     /* set header for flex tensor */</span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">           9 :     meta.dimension[1] = _w;</span></span>
-<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">           9 :     meta.dimension[2] = _h;</span></span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">           9 :     meta.dimension[3] = 1;</span></span>
-<span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">           9 :     gst_tensor_meta_info_update_header (&amp;meta, cropped);</span></span>
-<span id="L691"><span class="lineNum">     691</span>              : </span>
-<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">         232 :     for (j = 0; j &lt; _h; j++) {</span></span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">         223 :       src = dpos + esize * ch * (_x + (j + _y) * mw);</span></span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">         223 :       desc = cropped + hsize + (esize * ch * _w) * j;</span></span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">         223 :       memcpy (desc, src, (esize * ch * _w));</span></span>
-<span id="L696"><span class="lineNum">     696</span>              :     }</span>
-<span id="L697"><span class="lineNum">     697</span>              : </span>
-<span id="L698"><span class="lineNum">     698</span>              :     /* Prepare tensors-info to append memory into gst-buffer. */</span>
-<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC">           9 :     gst_tensor_meta_info_convert (&amp;meta, &amp;crop_info);</span></span>
-<span id="L700"><span class="lineNum">     700</span>              :     crop_mem =</span>
-<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">           9 :         gst_memory_new_wrapped (0, cropped, dsize, 0, dsize, cropped, g_free);</span></span>
-<span id="L702"><span class="lineNum">     702</span>              : </span>
-<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">           9 :     gst_tensor_buffer_append_memory (result, crop_mem, &amp;crop_info);</span></span>
-<span id="L704"><span class="lineNum">     704</span> <span class="tlaGNC">           9 :     gst_tensor_info_free (&amp;crop_info);</span></span>
-<span id="L705"><span class="lineNum">     705</span>              :   }</span>
-<span id="L706"><span class="lineNum">     706</span>              : </span>
-<span id="L707"><span class="lineNum">     707</span>              :   /* set timestamp from raw buffer */</span>
-<span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">           5 :   gst_buffer_copy_into (result, raw, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
-<span id="L709"><span class="lineNum">     709</span>              : </span>
-<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">           6 : done:</span></span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           6 :   if (mem) {</span></span>
-<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">           6 :     gst_memory_unmap (mem, &amp;map);</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">           6 :     gst_memory_unref (mem);</span></span>
-<span id="L714"><span class="lineNum">     714</span>              :   }</span>
-<span id="L715"><span class="lineNum">     715</span>              : </span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">           6 :   return result;</span></span>
-<span id="L717"><span class="lineNum">     717</span>              : }</span>
-<span id="L718"><span class="lineNum">     718</span>              : </span>
-<span id="L719"><span class="lineNum">     719</span>              : /**</span>
-<span id="L720"><span class="lineNum">     720</span>              :  * @brief Internal function to transform the input buffer.</span>
-<span id="L721"><span class="lineNum">     721</span>              :  */</span>
-<span id="L722"><span class="lineNum">     722</span>              : static GstFlowReturn</span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">           9 : gst_tensor_crop_chain (GstTensorCrop * self,</span></span>
-<span id="L724"><span class="lineNum">     724</span>              :     GstCollectData * data_raw, GstCollectData * data_info)</span>
-<span id="L725"><span class="lineNum">     725</span>              : {</span>
-<span id="L726"><span class="lineNum">     726</span>              :   GstFlowReturn ret;</span>
-<span id="L727"><span class="lineNum">     727</span>              :   GstBuffer *buf_raw, *buf_info, *result;</span>
-<span id="L728"><span class="lineNum">     728</span>              :   GstTensorCropPadData *cpad;</span>
-<span id="L729"><span class="lineNum">     729</span>              :   tensor_crop_info_s cinfo;</span>
-<span id="L730"><span class="lineNum">     730</span>              :   gboolean drop_raw, drop_info;</span>
-<span id="L731"><span class="lineNum">     731</span>              : </span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          18 :   g_return_val_if_fail (data_raw &amp;&amp; data_info, GST_FLOW_ERROR);</span></span>
-<span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">           9 :   buf_raw = gst_collect_pads_peek (self-&gt;collect, data_raw);</span></span>
-<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">           9 :   buf_info = gst_collect_pads_peek (self-&gt;collect, data_info);</span></span>
-<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">           9 :   drop_raw = (buf_raw != NULL);</span></span>
-<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">           9 :   drop_info = (buf_info != NULL);</span></span>
-<span id="L738"><span class="lineNum">     738</span>              : </span>
-<span id="L739"><span class="lineNum">     739</span> <span class="tlaGNC">           9 :   if (!buf_raw || !buf_info) {</span></span>
-<span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC tlaBgUNC">           0 :     ret = GST_FLOW_EOS;</span></span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L742"><span class="lineNum">     742</span>              :   }</span>
-<span id="L743"><span class="lineNum">     743</span>              : </span>
-<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC tlaBgGNC">           9 :   cpad = (GstTensorCropPadData *) data_raw;</span></span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">           9 :   buf_raw = gst_tensor_buffer_from_config (buf_raw, &amp;cpad-&gt;config);</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">           9 :   cpad = (GstTensorCropPadData *) data_info;</span></span>
-<span id="L747"><span class="lineNum">     747</span> <span class="tlaGNC">           9 :   buf_info = gst_tensor_buffer_from_config (buf_info, &amp;cpad-&gt;config);</span></span>
-<span id="L748"><span class="lineNum">     748</span>              : </span>
-<span id="L749"><span class="lineNum">     749</span>              :   /**</span>
-<span id="L750"><span class="lineNum">     750</span>              :    * The case when raw and info have different timestamp.</span>
-<span id="L751"><span class="lineNum">     751</span>              :    * Compare timestamp and if time diff is less than lateness, crop raw buffer.</span>
-<span id="L752"><span class="lineNum">     752</span>              :    */</span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">           9 :   if (self-&gt;lateness &gt;= 0) {</span></span>
-<span id="L754"><span class="lineNum">     754</span>              :     GstClockTime ts_raw, ts_info, lateness;</span>
-<span id="L755"><span class="lineNum">     755</span>              : </span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">           4 :     ts_raw = GST_BUFFER_TIMESTAMP (buf_raw);</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">           4 :     ts_info = GST_BUFFER_TIMESTAMP (buf_info);</span></span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">           4 :     lateness = self-&gt;lateness * GST_MSECOND;</span></span>
-<span id="L759"><span class="lineNum">     759</span>              : </span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">           4 :     if (GST_CLOCK_TIME_IS_VALID (ts_raw) &amp;&amp; GST_CLOCK_TIME_IS_VALID (ts_info)) {</span></span>
-<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">           4 :       if (((GstClockTime) ABS (GST_CLOCK_DIFF (ts_raw, ts_info))) &gt; lateness) {</span></span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Drop old buffer and wait for next.&quot;);</span></span>
-<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Raw buffer ts: %&quot; GST_TIME_FORMAT,</span></span>
-<span id="L764"><span class="lineNum">     764</span>              :             GST_TIME_ARGS (ts_raw));</span>
-<span id="L765"><span class="lineNum">     765</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Info buffer ts: %&quot; GST_TIME_FORMAT,</span></span>
-<span id="L766"><span class="lineNum">     766</span>              :             GST_TIME_ARGS (ts_info));</span>
-<span id="L767"><span class="lineNum">     767</span>              : </span>
-<span id="L768"><span class="lineNum">     768</span>              :         /* clear old buffer and return ok to get next buffer */</span>
-<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">           2 :         if (ts_raw &gt; ts_info)</span></span>
-<span id="L770"><span class="lineNum">     770</span> <span class="tlaGNC">           1 :           drop_raw = FALSE;</span></span>
-<span id="L771"><span class="lineNum">     771</span>              :         else</span>
-<span id="L772"><span class="lineNum">     772</span> <span class="tlaGNC">           1 :           drop_info = FALSE;</span></span>
-<span id="L773"><span class="lineNum">     773</span>              : </span>
-<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           2 :         ret = GST_FLOW_OK;</span></span>
-<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">           2 :         goto done;</span></span>
-<span id="L776"><span class="lineNum">     776</span>              :       }</span>
-<span id="L777"><span class="lineNum">     777</span>              :     } else {</span>
-<span id="L778"><span class="lineNum">     778</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_WARNING_OBJECT (self,</span></span>
-<span id="L779"><span class="lineNum">     779</span>              :           &quot;Incoming buffer has invalid timestamp, continue cropping data.&quot;);</span>
-<span id="L780"><span class="lineNum">     780</span>              :     }</span>
-<span id="L781"><span class="lineNum">     781</span>              :   }</span>
-<span id="L782"><span class="lineNum">     782</span>              : </span>
-<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC tlaBgGNC">           7 :   if (!gst_tensor_crop_get_crop_info (self, buf_info, &amp;cinfo)) {</span></span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">           1 :     ret = GST_FLOW_ERROR;</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">           1 :     goto done;</span></span>
-<span id="L786"><span class="lineNum">     786</span>              :   }</span>
-<span id="L787"><span class="lineNum">     787</span>              : </span>
-<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">           6 :   result = gst_tensor_crop_do_cropping (self, buf_raw, &amp;cinfo);</span></span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">           6 :   ret = gst_pad_push (self-&gt;srcpad, result);</span></span>
-<span id="L790"><span class="lineNum">     790</span>              : </span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">           9 : done:</span></span>
-<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">           9 :   if (buf_raw)</span></span>
-<span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC">           9 :     gst_buffer_unref (buf_raw);</span></span>
-<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">           9 :   if (buf_info)</span></span>
-<span id="L795"><span class="lineNum">     795</span> <span class="tlaGNC">           9 :     gst_buffer_unref (buf_info);</span></span>
-<span id="L796"><span class="lineNum">     796</span>              : </span>
-<span id="L797"><span class="lineNum">     797</span>              :   /* clear buffer in collect pads */</span>
-<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">           9 :   if (drop_raw)</span></span>
-<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">           8 :     gst_buffer_unref (gst_collect_pads_pop (self-&gt;collect, data_raw));</span></span>
-<span id="L800"><span class="lineNum">     800</span> <span class="tlaGNC">           9 :   if (drop_info)</span></span>
-<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">           8 :     gst_buffer_unref (gst_collect_pads_pop (self-&gt;collect, data_info));</span></span>
-<span id="L802"><span class="lineNum">     802</span>              : </span>
-<span id="L803"><span class="lineNum">     803</span> <span class="tlaGNC">           9 :   return ret;</span></span>
-<span id="L804"><span class="lineNum">     804</span>              : }</span>
-<span id="L805"><span class="lineNum">     805</span>              : </span>
-<span id="L806"><span class="lineNum">     806</span>              : /**</span>
-<span id="L807"><span class="lineNum">     807</span>              :  * @brief Chain function called when the buffer is available on all of the collect pads.</span>
-<span id="L808"><span class="lineNum">     808</span>              :  */</span>
-<span id="L809"><span class="lineNum">     809</span>              : static GstFlowReturn</span>
-<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">          10 : gst_tensor_crop_collected (GstCollectPads * pads, gpointer user_data)</span></span>
-<span id="L811"><span class="lineNum">     811</span>              : {</span>
-<span id="L812"><span class="lineNum">     812</span>              :   GstTensorCrop *self;</span>
-<span id="L813"><span class="lineNum">     813</span>              :   GstCollectData *data_raw, *data_info;</span>
-<span id="L814"><span class="lineNum">     814</span>              :   GSList *walk;</span>
-<span id="L815"><span class="lineNum">     815</span>              :   GstFlowReturn ret;</span>
-<span id="L816"><span class="lineNum">     816</span>              : </span>
-<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC">          10 :   self = GST_TENSOR_CROP (user_data);</span></span>
-<span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">          10 :   data_raw = data_info = NULL;</span></span>
-<span id="L819"><span class="lineNum">     819</span>              : </span>
-<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">          10 :   ret = gst_tensor_crop_negotiate (self);</span></span>
-<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">          10 :   if (ret != GST_FLOW_OK)</span></span>
-<span id="L822"><span class="lineNum">     822</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
-<span id="L823"><span class="lineNum">     823</span>              : </span>
-<span id="L824"><span class="lineNum">     824</span> <span class="tlaGNC tlaBgGNC">          28 :   for (walk = pads-&gt;data; walk; walk = g_slist_next (walk)) {</span></span>
-<span id="L825"><span class="lineNum">     825</span>              :     GstCollectData *data;</span>
-<span id="L826"><span class="lineNum">     826</span>              : </span>
-<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">          19 :     data = (GstCollectData *) walk-&gt;data;</span></span>
-<span id="L828"><span class="lineNum">     828</span>              : </span>
-<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">          19 :     if (GST_COLLECT_PADS_STATE_IS_SET (data, GST_COLLECT_PADS_STATE_EOS)) {</span></span>
-<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">           1 :       gst_pad_push_event (self-&gt;srcpad, gst_event_new_eos ());</span></span>
-<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">           1 :       return GST_FLOW_EOS;</span></span>
-<span id="L832"><span class="lineNum">     832</span>              :     }</span>
-<span id="L833"><span class="lineNum">     833</span>              : </span>
-<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">          18 :     if (data-&gt;pad == self-&gt;sinkpad_raw) {</span></span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">           9 :       data_raw = data;</span></span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">           9 :     } else if (data-&gt;pad == self-&gt;sinkpad_info) {</span></span>
-<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">           9 :       data_info = data;</span></span>
-<span id="L838"><span class="lineNum">     838</span>              :     }</span>
-<span id="L839"><span class="lineNum">     839</span>              :   }</span>
-<span id="L840"><span class="lineNum">     840</span>              : </span>
-<span id="L841"><span class="lineNum">     841</span> <span class="tlaGNC">           9 :   return gst_tensor_crop_chain (self, data_raw, data_info);</span></span>
-<span id="L842"><span class="lineNum">     842</span>              : }</span>
+<span id="L508"><span class="lineNum">     508</span>              : </span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">           6 :   if (!gst_tensors_config_from_caps (&amp;config, caps, TRUE)) {</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the config from caps.&quot;);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L512"><span class="lineNum">     512</span>              :   }</span>
+<span id="L513"><span class="lineNum">     513</span>              : </span>
+<span id="L514"><span class="lineNum">     514</span>              :   /**</span>
+<span id="L515"><span class="lineNum">     515</span>              :    * @note tensor-crop handles single tensor. Parse first one.</span>
+<span id="L516"><span class="lineNum">     516</span>              :    */</span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC tlaBgGNC">           6 :   _info = gst_tensors_info_get_nth_info (&amp;config.info, 0);</span></span>
+<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">           6 :   *is_flexible = gst_tensors_config_is_flexible (&amp;config);</span></span>
+<span id="L519"><span class="lineNum">     519</span>              : </span>
+<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">           6 :   if (*is_flexible) {</span></span>
+<span id="L521"><span class="lineNum">     521</span>              :     /* meta from buffer */</span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">           1 :     if (gst_tensor_meta_info_parse_header (meta, buffer)) {</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">           1 :       ret = gst_tensor_meta_info_convert (meta, info);</span></span>
+<span id="L524"><span class="lineNum">     524</span>              :     }</span>
+<span id="L525"><span class="lineNum">     525</span>              :   } else {</span>
+<span id="L526"><span class="lineNum">     526</span>              :     /* meta from caps */</span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           5 :     ret = gst_tensor_info_convert_to_meta (_info, meta);</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           5 :     gst_tensor_info_copy (info, _info);</span></span>
+<span id="L529"><span class="lineNum">     529</span>              :   }</span>
+<span id="L530"><span class="lineNum">     530</span>              : </span>
+<span id="L531"><span class="lineNum">     531</span>              :   /* output is flex tensor */</span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           6 :   meta-&gt;format = _NNS_TENSOR_FORMAT_FLEXIBLE;</span></span>
+<span id="L533"><span class="lineNum">     533</span>              : </span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">           6 : done:</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">           6 :   gst_caps_unref (caps);</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">           6 :   gst_tensors_config_free (&amp;config);</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">           6 :   return ret;</span></span>
+<span id="L538"><span class="lineNum">     538</span>              : }</span>
+<span id="L539"><span class="lineNum">     539</span>              : </span>
+<span id="L540"><span class="lineNum">     540</span>              : /**</span>
+<span id="L541"><span class="lineNum">     541</span>              :  * @brief Internal function to parse buffer and fill crop info.</span>
+<span id="L542"><span class="lineNum">     542</span>              :  */</span>
+<span id="L543"><span class="lineNum">     543</span>              : static gboolean</span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">           7 : gst_tensor_crop_get_crop_info (GstTensorCrop * self, GstBuffer * info,</span></span>
+<span id="L545"><span class="lineNum">     545</span>              :     tensor_crop_info_s * cinfo)</span>
+<span id="L546"><span class="lineNum">     546</span>              : {</span>
+<span id="L547"><span class="lineNum">     547</span>              :   GstMemory *mem;</span>
+<span id="L548"><span class="lineNum">     548</span>              :   GstMapInfo map;</span>
+<span id="L549"><span class="lineNum">     549</span>              :   GstTensorMetaInfo meta;</span>
+<span id="L550"><span class="lineNum">     550</span>              :   gsize hsize, dsize, esize;</span>
+<span id="L551"><span class="lineNum">     551</span>              :   guint i, j;</span>
+<span id="L552"><span class="lineNum">     552</span>              :   guint8 *pos, *src, *desc;</span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           7 :   gboolean ret = FALSE;</span></span>
+<span id="L554"><span class="lineNum">     554</span>              : </span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           7 :   i = gst_tensor_buffer_get_count (info);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">           7 :   g_assert (i &gt; 0);</span></span>
+<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">           7 :   if (i &gt; 1) {</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (self,</span></span>
+<span id="L559"><span class="lineNum">     559</span>              :         &quot;Info buffer has %u memories, parse first one.&quot;, i);</span>
+<span id="L560"><span class="lineNum">     560</span>              :   }</span>
+<span id="L561"><span class="lineNum">     561</span>              : </span>
+<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC tlaBgGNC">           7 :   mem = gst_tensor_buffer_get_nth_memory (info, 0);</span></span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">           7 :   if (!gst_memory_map (mem, &amp;map, GST_MAP_READ)) {</span></span>
+<span id="L564"><span class="lineNum">     564</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to map the info buffer.&quot;);</span></span>
+<span id="L565"><span class="lineNum">     565</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L566"><span class="lineNum">     566</span>              :   }</span>
+<span id="L567"><span class="lineNum">     567</span>              : </span>
+<span id="L568"><span class="lineNum">     568</span>              :   /* parse crop-info from flex tensor */</span>
+<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC tlaBgGNC">           7 :   if (!gst_tensor_meta_info_parse_header (&amp;meta, map.data)) {</span></span>
+<span id="L570"><span class="lineNum">     570</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the meta from info buffer.&quot;);</span></span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L572"><span class="lineNum">     572</span>              :   }</span>
+<span id="L573"><span class="lineNum">     573</span>              : </span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC tlaBgGNC">           7 :   hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">           7 :   dsize = gst_tensor_meta_info_get_data_size (&amp;meta);</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           7 :   esize = gst_tensor_get_element_size (meta.type);</span></span>
+<span id="L577"><span class="lineNum">     577</span>              : </span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           7 :   if (hsize + dsize != map.size) {</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           1 :     GST_ERROR_OBJECT (self,</span></span>
+<span id="L580"><span class="lineNum">     580</span>              :         &quot;Invalid meta info, info buffer size is incorrect (received %zd, expected %zd).&quot;,</span>
+<span id="L581"><span class="lineNum">     581</span>              :         map.size, hsize + dsize);</span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           1 :     goto done;</span></span>
+<span id="L583"><span class="lineNum">     583</span>              :   }</span>
+<span id="L584"><span class="lineNum">     584</span>              : </span>
+<span id="L585"><span class="lineNum">     585</span>              :   /**</span>
+<span id="L586"><span class="lineNum">     586</span>              :    * @todo Add various mode to crop tensor.</span>
+<span id="L587"><span class="lineNum">     587</span>              :    * Now tensor-crop handles NHWC data format only.</span>
+<span id="L588"><span class="lineNum">     588</span>              :    */</span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">           6 :   g_assert ((dsize % (esize * 4)) == 0);</span></span>
+<span id="L590"><span class="lineNum">     590</span>              : </span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">           6 :   memset (cinfo, 0, sizeof (tensor_crop_info_s));</span></span>
+<span id="L592"><span class="lineNum">     592</span>              : </span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">           6 :   cinfo-&gt;num = MIN (dsize / (esize * 4), NNS_TENSOR_SIZE_LIMIT);</span></span>
+<span id="L594"><span class="lineNum">     594</span>              : </span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          17 :   for (i = 0; i &lt; cinfo-&gt;num; i++) {</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          11 :     pos = map.data + hsize + (esize * 4 * i);</span></span>
+<span id="L597"><span class="lineNum">     597</span>              : </span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">          55 :     for (j = 0; j &lt; 4; j++) {</span></span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          44 :       src = pos + (esize * j);</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          44 :       desc = (guint8 *) (&amp;cinfo-&gt;region[i]) + sizeof (guint) * j;</span></span>
+<span id="L601"><span class="lineNum">     601</span>              : </span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          44 :       gst_tensor_data_raw_typecast (src, meta.type, desc, _NNS_UINT32);</span></span>
+<span id="L603"><span class="lineNum">     603</span>              :     }</span>
+<span id="L604"><span class="lineNum">     604</span>              :   }</span>
+<span id="L605"><span class="lineNum">     605</span>              : </span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">           6 :   ret = TRUE;</span></span>
+<span id="L607"><span class="lineNum">     607</span>              : </span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">           7 : done:</span></span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">           7 :   if (mem) {</span></span>
+<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">           7 :     gst_memory_unmap (mem, &amp;map);</span></span>
+<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">           7 :     gst_memory_unref (mem);</span></span>
+<span id="L612"><span class="lineNum">     612</span>              :   }</span>
+<span id="L613"><span class="lineNum">     613</span>              : </span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">           7 :   return ret;</span></span>
+<span id="L615"><span class="lineNum">     615</span>              : }</span>
+<span id="L616"><span class="lineNum">     616</span>              : </span>
+<span id="L617"><span class="lineNum">     617</span>              : /**</span>
+<span id="L618"><span class="lineNum">     618</span>              :  * @brief Internal function to crop incoming buffer.</span>
+<span id="L619"><span class="lineNum">     619</span>              :  */</span>
+<span id="L620"><span class="lineNum">     620</span>              : static GstBuffer *</span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">           6 : gst_tensor_crop_do_cropping (GstTensorCrop * self, GstBuffer * raw,</span></span>
+<span id="L622"><span class="lineNum">     622</span>              :     tensor_crop_info_s * cinfo)</span>
+<span id="L623"><span class="lineNum">     623</span>              : {</span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">           6 :   GstBuffer *result = NULL;</span></span>
+<span id="L625"><span class="lineNum">     625</span>              :   GstMemory *mem;</span>
+<span id="L626"><span class="lineNum">     626</span>              :   GstMapInfo map;</span>
+<span id="L627"><span class="lineNum">     627</span>              :   GstTensorMetaInfo meta;</span>
+<span id="L628"><span class="lineNum">     628</span>              :   GstTensorInfo info;</span>
+<span id="L629"><span class="lineNum">     629</span>              :   gboolean flexible;</span>
+<span id="L630"><span class="lineNum">     630</span>              :   gsize hsize, esize, dsize;</span>
+<span id="L631"><span class="lineNum">     631</span>              :   guint8 *cropped, *dpos, *desc, *src;</span>
+<span id="L632"><span class="lineNum">     632</span>              :   guint i, j, ch, mw, mh, _x, _y, _w, _h;</span>
+<span id="L633"><span class="lineNum">     633</span>              : </span>
+<span id="L634"><span class="lineNum">     634</span> <span class="tlaGNC">           6 :   i = gst_tensor_buffer_get_count (raw);</span></span>
+<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           6 :   g_assert (i &gt; 0);</span></span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           6 :   if (i &gt; 1) {</span></span>
+<span id="L637"><span class="lineNum">     637</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (self,</span></span>
+<span id="L638"><span class="lineNum">     638</span>              :         &quot;Raw data buffer has %u memories, parse first one.&quot;, i);</span>
+<span id="L639"><span class="lineNum">     639</span>              :   }</span>
+<span id="L640"><span class="lineNum">     640</span>              : </span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC tlaBgGNC">           6 :   mem = gst_tensor_buffer_get_nth_memory (raw, 0);</span></span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">           6 :   if (!gst_memory_map (mem, &amp;map, GST_MAP_READ)) {</span></span>
+<span id="L643"><span class="lineNum">     643</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to map the raw buffer.&quot;);</span></span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L645"><span class="lineNum">     645</span>              :   }</span>
+<span id="L646"><span class="lineNum">     646</span>              : </span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC tlaBgGNC">           6 :   if (!gst_tensor_crop_prepare_out_meta (self, map.data, &amp;meta,</span></span>
+<span id="L648"><span class="lineNum">     648</span>              :           &amp;info, &amp;flexible)) {</span>
+<span id="L649"><span class="lineNum">     649</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Failed to get the output meta.&quot;);</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L651"><span class="lineNum">     651</span>              :   }</span>
+<span id="L652"><span class="lineNum">     652</span>              : </span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC tlaBgGNC">           6 :   hsize = flexible ? gst_tensor_meta_info_get_header_size (&amp;meta) : 0;</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           6 :   dsize = gst_tensor_meta_info_get_data_size (&amp;meta);</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           6 :   dpos = map.data + hsize;</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">           6 :   if ((hsize + dsize) != map.size) {</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">           1 :     GST_ERROR_OBJECT (self,</span></span>
+<span id="L658"><span class="lineNum">     658</span>              :         &quot;Raw buffer has invalid data size (received %zd, expected %zd).&quot;,</span>
+<span id="L659"><span class="lineNum">     659</span>              :         map.size, dsize);</span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">           1 :     goto done;</span></span>
+<span id="L661"><span class="lineNum">     661</span>              :   }</span>
+<span id="L662"><span class="lineNum">     662</span>              : </span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">           5 :   result = gst_buffer_new ();</span></span>
+<span id="L664"><span class="lineNum">     664</span>              : </span>
+<span id="L665"><span class="lineNum">     665</span>              :   /** @todo Add various mode to crop tensor. */</span>
+<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">           5 :   ch = info.dimension[0];</span></span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">           5 :   mw = info.dimension[1];</span></span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">           5 :   mh = info.dimension[2];</span></span>
+<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">           5 :   esize = gst_tensor_get_element_size (info.type);</span></span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">           5 :   hsize = gst_tensor_meta_info_get_header_size (&amp;meta);</span></span>
+<span id="L671"><span class="lineNum">     671</span>              : </span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">          14 :   for (i = 0; i &lt; cinfo-&gt;num; i++) {</span></span>
+<span id="L673"><span class="lineNum">     673</span>              :     GstTensorInfo crop_info;</span>
+<span id="L674"><span class="lineNum">     674</span>              :     GstMemory *crop_mem;</span>
+<span id="L675"><span class="lineNum">     675</span>              : </span>
+<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">           9 :     _x = (cinfo-&gt;region[i].x &lt; mw) ? cinfo-&gt;region[i].x : mw;</span></span>
+<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">           9 :     _y = (cinfo-&gt;region[i].y &lt; mh) ? cinfo-&gt;region[i].y : mh;</span></span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">           9 :     _w = (_x + cinfo-&gt;region[i].w - 1 &lt; mw) ? cinfo-&gt;region[i].w : (mw - _x);</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">           9 :     _h = (_y + cinfo-&gt;region[i].h - 1 &lt; mh) ? cinfo-&gt;region[i].h : (mh - _y);</span></span>
+<span id="L680"><span class="lineNum">     680</span>              : </span>
+<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">           9 :     g_assert (_w &gt; 0 &amp;&amp; _h &gt; 0);</span></span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">           9 :     dsize = hsize + (esize * ch * _w * _h);</span></span>
+<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">           9 :     cropped = (guint8 *) g_malloc0 (dsize);</span></span>
+<span id="L684"><span class="lineNum">     684</span>              : </span>
+<span id="L685"><span class="lineNum">     685</span>              :     /* set header for flex tensor */</span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">           9 :     meta.dimension[1] = _w;</span></span>
+<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">           9 :     meta.dimension[2] = _h;</span></span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">           9 :     meta.dimension[3] = 1;</span></span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">           9 :     gst_tensor_meta_info_update_header (&amp;meta, cropped);</span></span>
+<span id="L690"><span class="lineNum">     690</span>              : </span>
+<span id="L691"><span class="lineNum">     691</span> <span class="tlaGNC">         232 :     for (j = 0; j &lt; _h; j++) {</span></span>
+<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">         223 :       src = dpos + esize * ch * (_x + (j + _y) * mw);</span></span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">         223 :       desc = cropped + hsize + (esize * ch * _w) * j;</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">         223 :       memcpy (desc, src, (esize * ch * _w));</span></span>
+<span id="L695"><span class="lineNum">     695</span>              :     }</span>
+<span id="L696"><span class="lineNum">     696</span>              : </span>
+<span id="L697"><span class="lineNum">     697</span>              :     /* Prepare tensors-info to append memory into gst-buffer. */</span>
+<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">           9 :     gst_tensor_meta_info_convert (&amp;meta, &amp;crop_info);</span></span>
+<span id="L699"><span class="lineNum">     699</span>              :     crop_mem =</span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">           9 :         gst_memory_new_wrapped (0, cropped, dsize, 0, dsize, cropped, g_free);</span></span>
+<span id="L701"><span class="lineNum">     701</span>              : </span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">           9 :     gst_tensor_buffer_append_memory (result, crop_mem, &amp;crop_info);</span></span>
+<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">           9 :     gst_tensor_info_free (&amp;crop_info);</span></span>
+<span id="L704"><span class="lineNum">     704</span>              :   }</span>
+<span id="L705"><span class="lineNum">     705</span>              : </span>
+<span id="L706"><span class="lineNum">     706</span>              :   /* set timestamp from raw buffer */</span>
+<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">           5 :   gst_buffer_copy_into (result, raw, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
+<span id="L708"><span class="lineNum">     708</span>              : </span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">           6 : done:</span></span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">           6 :   if (mem) {</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           6 :     gst_memory_unmap (mem, &amp;map);</span></span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">           6 :     gst_memory_unref (mem);</span></span>
+<span id="L713"><span class="lineNum">     713</span>              :   }</span>
+<span id="L714"><span class="lineNum">     714</span>              : </span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">           6 :   return result;</span></span>
+<span id="L716"><span class="lineNum">     716</span>              : }</span>
+<span id="L717"><span class="lineNum">     717</span>              : </span>
+<span id="L718"><span class="lineNum">     718</span>              : /**</span>
+<span id="L719"><span class="lineNum">     719</span>              :  * @brief Internal function to transform the input buffer.</span>
+<span id="L720"><span class="lineNum">     720</span>              :  */</span>
+<span id="L721"><span class="lineNum">     721</span>              : static GstFlowReturn</span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">           9 : gst_tensor_crop_chain (GstTensorCrop * self,</span></span>
+<span id="L723"><span class="lineNum">     723</span>              :     GstCollectData * data_raw, GstCollectData * data_info)</span>
+<span id="L724"><span class="lineNum">     724</span>              : {</span>
+<span id="L725"><span class="lineNum">     725</span>              :   GstFlowReturn ret;</span>
+<span id="L726"><span class="lineNum">     726</span>              :   GstBuffer *buf_raw, *buf_info, *result;</span>
+<span id="L727"><span class="lineNum">     727</span>              :   GstTensorCropPadData *cpad;</span>
+<span id="L728"><span class="lineNum">     728</span>              :   tensor_crop_info_s cinfo;</span>
+<span id="L729"><span class="lineNum">     729</span>              :   gboolean drop_raw, drop_info;</span>
+<span id="L730"><span class="lineNum">     730</span>              : </span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          18 :   g_return_val_if_fail (data_raw &amp;&amp; data_info, GST_FLOW_ERROR);</span></span>
+<span id="L732"><span class="lineNum">     732</span>              : </span>
+<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">           9 :   buf_raw = gst_collect_pads_peek (self-&gt;collect, data_raw);</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">           9 :   buf_info = gst_collect_pads_peek (self-&gt;collect, data_info);</span></span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">           9 :   drop_raw = (buf_raw != NULL);</span></span>
+<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">           9 :   drop_info = (buf_info != NULL);</span></span>
+<span id="L737"><span class="lineNum">     737</span>              : </span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">           9 :   if (!buf_raw || !buf_info) {</span></span>
+<span id="L739"><span class="lineNum">     739</span> <span class="tlaUNC tlaBgUNC">           0 :     ret = GST_FLOW_EOS;</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L741"><span class="lineNum">     741</span>              :   }</span>
+<span id="L742"><span class="lineNum">     742</span>              : </span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC tlaBgGNC">           9 :   cpad = (GstTensorCropPadData *) data_raw;</span></span>
+<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">           9 :   buf_raw = gst_tensor_buffer_from_config (buf_raw, &amp;cpad-&gt;config);</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">           9 :   cpad = (GstTensorCropPadData *) data_info;</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">           9 :   buf_info = gst_tensor_buffer_from_config (buf_info, &amp;cpad-&gt;config);</span></span>
+<span id="L747"><span class="lineNum">     747</span>              : </span>
+<span id="L748"><span class="lineNum">     748</span>              :   /**</span>
+<span id="L749"><span class="lineNum">     749</span>              :    * The case when raw and info have different timestamp.</span>
+<span id="L750"><span class="lineNum">     750</span>              :    * Compare timestamp and if time diff is less than lateness, crop raw buffer.</span>
+<span id="L751"><span class="lineNum">     751</span>              :    */</span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">           9 :   if (self-&gt;lateness &gt;= 0) {</span></span>
+<span id="L753"><span class="lineNum">     753</span>              :     GstClockTime ts_raw, ts_info, lateness;</span>
+<span id="L754"><span class="lineNum">     754</span>              : </span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">           4 :     ts_raw = GST_BUFFER_TIMESTAMP (buf_raw);</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">           4 :     ts_info = GST_BUFFER_TIMESTAMP (buf_info);</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">           4 :     lateness = self-&gt;lateness * GST_MSECOND;</span></span>
+<span id="L758"><span class="lineNum">     758</span>              : </span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">           4 :     if (GST_CLOCK_TIME_IS_VALID (ts_raw) &amp;&amp; GST_CLOCK_TIME_IS_VALID (ts_info)) {</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">           4 :       if (((GstClockTime) ABS (GST_CLOCK_DIFF (ts_raw, ts_info))) &gt; lateness) {</span></span>
+<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Drop old buffer and wait for next.&quot;);</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Raw buffer ts: %&quot; GST_TIME_FORMAT,</span></span>
+<span id="L763"><span class="lineNum">     763</span>              :             GST_TIME_ARGS (ts_raw));</span>
+<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC">           2 :         GST_DEBUG_OBJECT (self, &quot;Info buffer ts: %&quot; GST_TIME_FORMAT,</span></span>
+<span id="L765"><span class="lineNum">     765</span>              :             GST_TIME_ARGS (ts_info));</span>
+<span id="L766"><span class="lineNum">     766</span>              : </span>
+<span id="L767"><span class="lineNum">     767</span>              :         /* clear old buffer and return ok to get next buffer */</span>
+<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC">           2 :         if (ts_raw &gt; ts_info)</span></span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">           1 :           drop_raw = FALSE;</span></span>
+<span id="L770"><span class="lineNum">     770</span>              :         else</span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">           1 :           drop_info = FALSE;</span></span>
+<span id="L772"><span class="lineNum">     772</span>              : </span>
+<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC">           2 :         ret = GST_FLOW_OK;</span></span>
+<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           2 :         goto done;</span></span>
+<span id="L775"><span class="lineNum">     775</span>              :       }</span>
+<span id="L776"><span class="lineNum">     776</span>              :     } else {</span>
+<span id="L777"><span class="lineNum">     777</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_WARNING_OBJECT (self,</span></span>
+<span id="L778"><span class="lineNum">     778</span>              :           &quot;Incoming buffer has invalid timestamp, continue cropping data.&quot;);</span>
+<span id="L779"><span class="lineNum">     779</span>              :     }</span>
+<span id="L780"><span class="lineNum">     780</span>              :   }</span>
+<span id="L781"><span class="lineNum">     781</span>              : </span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC tlaBgGNC">           7 :   if (!gst_tensor_crop_get_crop_info (self, buf_info, &amp;cinfo)) {</span></span>
+<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">           1 :     ret = GST_FLOW_ERROR;</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">           1 :     goto done;</span></span>
+<span id="L785"><span class="lineNum">     785</span>              :   }</span>
+<span id="L786"><span class="lineNum">     786</span>              : </span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">           6 :   result = gst_tensor_crop_do_cropping (self, buf_raw, &amp;cinfo);</span></span>
+<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">           6 :   ret = gst_pad_push (self-&gt;srcpad, result);</span></span>
+<span id="L789"><span class="lineNum">     789</span>              : </span>
+<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">           9 : done:</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">           9 :   if (buf_raw)</span></span>
+<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">           9 :     gst_buffer_unref (buf_raw);</span></span>
+<span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC">           9 :   if (buf_info)</span></span>
+<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">           9 :     gst_buffer_unref (buf_info);</span></span>
+<span id="L795"><span class="lineNum">     795</span>              : </span>
+<span id="L796"><span class="lineNum">     796</span>              :   /* clear buffer in collect pads */</span>
+<span id="L797"><span class="lineNum">     797</span> <span class="tlaGNC">           9 :   if (drop_raw)</span></span>
+<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">           8 :     gst_buffer_unref (gst_collect_pads_pop (self-&gt;collect, data_raw));</span></span>
+<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">           9 :   if (drop_info)</span></span>
+<span id="L800"><span class="lineNum">     800</span> <span class="tlaGNC">           8 :     gst_buffer_unref (gst_collect_pads_pop (self-&gt;collect, data_info));</span></span>
+<span id="L801"><span class="lineNum">     801</span>              : </span>
+<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">           9 :   return ret;</span></span>
+<span id="L803"><span class="lineNum">     803</span>              : }</span>
+<span id="L804"><span class="lineNum">     804</span>              : </span>
+<span id="L805"><span class="lineNum">     805</span>              : /**</span>
+<span id="L806"><span class="lineNum">     806</span>              :  * @brief Chain function called when the buffer is available on all of the collect pads.</span>
+<span id="L807"><span class="lineNum">     807</span>              :  */</span>
+<span id="L808"><span class="lineNum">     808</span>              : static GstFlowReturn</span>
+<span id="L809"><span class="lineNum">     809</span> <span class="tlaGNC">          10 : gst_tensor_crop_collected (GstCollectPads * pads, gpointer user_data)</span></span>
+<span id="L810"><span class="lineNum">     810</span>              : {</span>
+<span id="L811"><span class="lineNum">     811</span>              :   GstTensorCrop *self;</span>
+<span id="L812"><span class="lineNum">     812</span>              :   GstCollectData *data_raw, *data_info;</span>
+<span id="L813"><span class="lineNum">     813</span>              :   GSList *walk;</span>
+<span id="L814"><span class="lineNum">     814</span>              :   GstFlowReturn ret;</span>
+<span id="L815"><span class="lineNum">     815</span>              : </span>
+<span id="L816"><span class="lineNum">     816</span> <span class="tlaGNC">          10 :   self = GST_TENSOR_CROP (user_data);</span></span>
+<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC">          10 :   data_raw = data_info = NULL;</span></span>
+<span id="L818"><span class="lineNum">     818</span>              : </span>
+<span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC">          10 :   ret = gst_tensor_crop_negotiate (self);</span></span>
+<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">          10 :   if (ret != GST_FLOW_OK)</span></span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
+<span id="L822"><span class="lineNum">     822</span>              : </span>
+<span id="L823"><span class="lineNum">     823</span> <span class="tlaGNC tlaBgGNC">          28 :   for (walk = pads-&gt;data; walk; walk = g_slist_next (walk)) {</span></span>
+<span id="L824"><span class="lineNum">     824</span>              :     GstCollectData *data;</span>
+<span id="L825"><span class="lineNum">     825</span>              : </span>
+<span id="L826"><span class="lineNum">     826</span> <span class="tlaGNC">          19 :     data = (GstCollectData *) walk-&gt;data;</span></span>
+<span id="L827"><span class="lineNum">     827</span>              : </span>
+<span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">          19 :     if (GST_COLLECT_PADS_STATE_IS_SET (data, GST_COLLECT_PADS_STATE_EOS)) {</span></span>
+<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">           1 :       gst_pad_push_event (self-&gt;srcpad, gst_event_new_eos ());</span></span>
+<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">           1 :       return GST_FLOW_EOS;</span></span>
+<span id="L831"><span class="lineNum">     831</span>              :     }</span>
+<span id="L832"><span class="lineNum">     832</span>              : </span>
+<span id="L833"><span class="lineNum">     833</span> <span class="tlaGNC">          18 :     if (data-&gt;pad == self-&gt;sinkpad_raw) {</span></span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">           9 :       data_raw = data;</span></span>
+<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">           9 :     } else if (data-&gt;pad == self-&gt;sinkpad_info) {</span></span>
+<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">           9 :       data_info = data;</span></span>
+<span id="L837"><span class="lineNum">     837</span>              :     }</span>
+<span id="L838"><span class="lineNum">     838</span>              :   }</span>
+<span id="L839"><span class="lineNum">     839</span>              : </span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">           9 :   return gst_tensor_crop_chain (self, data_raw, data_info);</span></span>
+<span id="L841"><span class="lineNum">     841</span>              : }</span>
         </pre>
               </td>
             </tr>

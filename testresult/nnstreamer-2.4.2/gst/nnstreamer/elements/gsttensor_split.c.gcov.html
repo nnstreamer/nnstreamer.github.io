@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_split.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_split.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">91.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -161,7 +161,7 @@
 <span id="L99"><span class="lineNum">      99</span>              : static void gst_tensor_split_finalize (GObject * object);</span>
 <span id="L100"><span class="lineNum">     100</span>              : </span>
 <span id="L101"><span class="lineNum">     101</span>              : #define gst_tensor_split_parent_class parent_class</span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC tlaBgGNC">        1122 : G_DEFINE_TYPE (GstTensorSplit, gst_tensor_split, GST_TYPE_ELEMENT);</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC tlaBgGNC">        1120 : G_DEFINE_TYPE (GstTensorSplit, gst_tensor_split, GST_TYPE_ELEMENT);</span></span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span>              : </span>
 <span id="L105"><span class="lineNum">     105</span>              : /**</span>
@@ -236,7 +236,7 @@
 <span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          13 :   split-&gt;have_group_id = FALSE;</span></span>
 <span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          13 :   split-&gt;group_id = G_MAXUINT;</span></span>
 <span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">          13 :   split-&gt;srcpads = NULL;</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          13 :   gst_tensors_config_init (&amp;split-&gt;sink_tensor_conf);</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          13 :   gst_tensors_config_init (&amp;split-&gt;in_config);</span></span>
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          13 : }</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              : /**</span>
@@ -254,7 +254,7 @@
 <span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          25 :   split-&gt;srcpads = NULL;</span></span>
 <span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          25 :   split-&gt;num_tensors = 0;</span></span>
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          25 :   split-&gt;num_srcpads = 0;</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          25 :   gst_tensors_config_free (&amp;split-&gt;sink_tensor_conf);</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          25 :   gst_tensors_config_free (&amp;split-&gt;in_config);</span></span>
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          25 : }</span></span>
 <span id="L197"><span class="lineNum">     197</span>              : </span>
 <span id="L198"><span class="lineNum">     198</span>              : /**</span>
@@ -288,7 +288,7 @@
 <span id="L226"><span class="lineNum">     226</span>              :       GstCaps *caps;</span>
 <span id="L227"><span class="lineNum">     227</span>              : </span>
 <span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          12 :       gst_event_parse_caps (event, &amp;caps);</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          12 :       if (!gst_tensors_config_from_caps (&amp;split-&gt;sink_tensor_conf, caps)) {</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          12 :       if (!gst_tensors_config_from_caps (&amp;split-&gt;in_config, caps, TRUE)) {</span></span>
 <span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ELEMENT_ERROR (split, STREAM, WRONG_TYPE,</span></span>
 <span id="L231"><span class="lineNum">     231</span>              :             (&quot;This stream contains no valid type.&quot;), NULL);</span>
 <span id="L232"><span class="lineNum">     232</span>              :       }</span>
@@ -398,9 +398,9 @@
 <span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         408 :   for (i = 0; i &lt; NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
 <span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         384 :     pad_config.info.info[0].dimension[i] = (*dim)[i];</span></span>
 <span id="L338"><span class="lineNum">     338</span>              :   }</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          24 :   pad_config.info.info[0].type = split-&gt;sink_tensor_conf.info.info[0].type;</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          24 :   pad_config.rate_n = split-&gt;sink_tensor_conf.rate_n;</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          24 :   pad_config.rate_d = split-&gt;sink_tensor_conf.rate_d;</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          24 :   pad_config.info.info[0].type = split-&gt;in_config.info.info[0].type;</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          24 :   pad_config.rate_n = split-&gt;in_config.rate_n;</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          24 :   pad_config.rate_d = split-&gt;in_config.rate_d;</span></span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">          24 :   caps = gst_tensor_pad_caps_from_config (pad, &amp;pad_config);</span></span>
 <span id="L344"><span class="lineNum">     344</span>              : </span>
@@ -470,7 +470,7 @@
 <span id="L408"><span class="lineNum">     408</span>              : </span>
 <span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">         191 :   dim = g_array_index (split-&gt;tensorseg, tensor_dim *, nth);</span></span>
 <span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">         191 :   size = gst_tensor_get_element_count (*dim) *</span></span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">         191 :       gst_tensor_get_element_size (split-&gt;sink_tensor_conf.info.info[0].type);</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">         191 :       gst_tensor_get_element_size (split-&gt;in_config.info.info[0].type);</span></span>
 <span id="L412"><span class="lineNum">     412</span>              : </span>
 <span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">         191 :   mem = gst_allocator_alloc (NULL, size, NULL);</span></span>
 <span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">         191 :   if (!gst_memory_map (mem, &amp;dest_info, GST_MAP_WRITE)) {</span></span>
@@ -489,7 +489,7 @@
 <span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">         304 :   for (i = 0; i &lt; nth; i++) {</span></span>
 <span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">         113 :     dim = g_array_index (split-&gt;tensorseg, tensor_dim *, i);</span></span>
 <span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">         113 :     offset += gst_tensor_get_element_count (*dim) *</span></span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">         113 :         gst_tensor_get_element_size (split-&gt;sink_tensor_conf.info.info[0].type);</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">         113 :         gst_tensor_get_element_size (split-&gt;in_config.info.info[0].type);</span></span>
 <span id="L431"><span class="lineNum">     431</span>              :   }</span>
 <span id="L432"><span class="lineNum">     432</span>              : </span>
 <span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">         191 :   nns_memcpy (dest_info.data, src_info.data + offset, size);</span></span>

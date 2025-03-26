@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_sink/tensor_sink_grpc.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_sink/tensor_sink_grpc.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -314,20 +314,20 @@
 <span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          12 : gst_tensor_sink_grpc_setcaps (GstBaseSink * sink, GstCaps * caps)</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : {</span>
 <span id="L254"><span class="lineNum">     254</span>              :   GstTensorSinkGRPC *self;</span>
-<span id="L255"><span class="lineNum">     255</span>              :   GstStructure *structure;</span>
+<span id="L255"><span class="lineNum">     255</span>              :   gboolean ret;</span>
 <span id="L256"><span class="lineNum">     256</span>              : </span>
 <span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          12 :   self = GST_TENSOR_SINK_GRPC (sink);</span></span>
 <span id="L258"><span class="lineNum">     258</span>              : </span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          12 :   GST_OBJECT_LOCK (self);</span></span>
 <span id="L260"><span class="lineNum">     260</span>              : </span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          12 :   structure = gst_caps_get_structure (caps, 0);</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          12 :   gst_tensors_config_from_structure (&amp;self-&gt;config, structure);</span></span>
-<span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">          12 :   GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          12 :   ret = gst_tensors_config_from_caps (&amp;self-&gt;config, caps, TRUE);</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          12 :   if (ret) {</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          12 :     GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
+<span id="L264"><span class="lineNum">     264</span>              :   }</span>
 <span id="L265"><span class="lineNum">     265</span>              : </span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          12 :   GST_OBJECT_UNLOCK (self);</span></span>
 <span id="L267"><span class="lineNum">     267</span>              : </span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          12 :   return gst_tensors_config_validate (&amp;self-&gt;config);</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          12 :   return ret;</span></span>
 <span id="L269"><span class="lineNum">     269</span>              : }</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
 <span id="L271"><span class="lineNum">     271</span>              : /**</span>

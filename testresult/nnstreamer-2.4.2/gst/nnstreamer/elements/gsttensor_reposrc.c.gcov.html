@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_reposrc.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_reposrc.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.2&nbsp;%</td>
-            <td class="headerCovTableEntry">161</td>
-            <td class="headerCovTableEntry">142</td>
+            <td class="headerCovTableEntryMed">87.4&nbsp;%</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntry">139</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -222,38 +222,38 @@
 <span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">          41 : gst_tensor_reposrc_getcaps (GstBaseSrc * src, GstCaps * filter)</span></span>
 <span id="L161"><span class="lineNum">     161</span>              : {</span>
 <span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          41 :   GstTensorRepoSrc *self = GST_TENSOR_REPOSRC (src);</span></span>
-<span id="L163"><span class="lineNum">     163</span>              :   GstCaps *cap, *check, *result;</span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          41 :   GstStructure *st = NULL;</span></span>
-<span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          41 :   GST_DEBUG_OBJECT (self, &quot;returning %&quot; GST_PTR_FORMAT, self-&gt;caps);</span></span>
-<span id="L167"><span class="lineNum">     167</span>              : </span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          41 :   if (self-&gt;caps) {</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          41 :     if (filter) {</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC tlaBgUNC">           0 :       cap = gst_caps_intersect_full (filter, self-&gt;caps,</span></span>
-<span id="L171"><span class="lineNum">     171</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
-<span id="L172"><span class="lineNum">     172</span>              :     } else</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC tlaBgGNC">          41 :       cap = gst_caps_ref (self-&gt;caps);</span></span>
+<span id="L163"><span class="lineNum">     163</span>              :   GstCaps *caps, *check, *result;</span>
+<span id="L164"><span class="lineNum">     164</span>              : </span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          41 :   GST_DEBUG_OBJECT (self, &quot;returning %&quot; GST_PTR_FORMAT, self-&gt;caps);</span></span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          41 :   if (self-&gt;caps) {</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          41 :     if (filter) {</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC tlaBgUNC">           0 :       caps = gst_caps_intersect_full (filter, self-&gt;caps,</span></span>
+<span id="L170"><span class="lineNum">     170</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
+<span id="L171"><span class="lineNum">     171</span>              :     } else {</span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">          41 :       caps = gst_caps_ref (self-&gt;caps);</span></span>
+<span id="L173"><span class="lineNum">     173</span>              :     }</span>
 <span id="L174"><span class="lineNum">     174</span>              :   } else {</span>
 <span id="L175"><span class="lineNum">     175</span> <span class="tlaUNC tlaBgUNC">           0 :     if (filter) {</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :       cap = gst_caps_ref (filter);</span></span>
-<span id="L177"><span class="lineNum">     177</span>              :     } else</span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :       cap = gst_caps_new_any ();</span></span>
-<span id="L179"><span class="lineNum">     179</span>              :   }</span>
-<span id="L180"><span class="lineNum">     180</span>              : </span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC tlaBgGNC">          41 :   check = gst_caps_from_string (CAPS_STRING);</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          41 :   result = gst_caps_intersect_full (cap, check, GST_CAPS_INTERSECT_FIRST);</span></span>
-<span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          41 :   if (!result) {</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ELEMENT_ERROR (GST_ELEMENT (self), STREAM, WRONG_TYPE,</span></span>
-<span id="L186"><span class="lineNum">     186</span>              :         (&quot;Only Tensor/Tensors MIME are supported for now&quot;), (NULL));</span>
-<span id="L187"><span class="lineNum">     187</span>              :   }</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">          41 :   gst_caps_unref (check);</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          41 :   gst_caps_unref (cap);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :       caps = gst_caps_ref (filter);</span></span>
+<span id="L177"><span class="lineNum">     177</span>              :     } else {</span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :       caps = gst_caps_new_any ();</span></span>
+<span id="L179"><span class="lineNum">     179</span>              :     }</span>
+<span id="L180"><span class="lineNum">     180</span>              :   }</span>
+<span id="L181"><span class="lineNum">     181</span>              : </span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC tlaBgGNC">          41 :   check = gst_caps_from_string (CAPS_STRING);</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          41 :   result = gst_caps_intersect_full (caps, check, GST_CAPS_INTERSECT_FIRST);</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          41 :   gst_caps_unref (check);</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          41 :   gst_caps_unref (caps);</span></span>
+<span id="L186"><span class="lineNum">     186</span>              : </span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          41 :   if (!gst_tensors_config_from_caps (&amp;self-&gt;config, result, TRUE)) {</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ELEMENT_ERROR (GST_ELEMENT (self), STREAM, WRONG_TYPE,</span></span>
+<span id="L189"><span class="lineNum">     189</span>              :         (&quot;Only Tensor/Tensors MIME are supported for now&quot;), (NULL));</span>
 <span id="L190"><span class="lineNum">     190</span>              : </span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          41 :   st = gst_caps_get_structure (result, 0);</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          41 :   gst_tensors_config_from_structure (&amp;self-&gt;config, st);</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaUNC">           0 :     g_clear_pointer (&amp;result, gst_caps_unref);</span></span>
+<span id="L192"><span class="lineNum">     192</span>              :   }</span>
 <span id="L193"><span class="lineNum">     193</span>              : </span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          41 :   return result;</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC tlaBgGNC">          41 :   return result;</span></span>
 <span id="L195"><span class="lineNum">     195</span>              : }</span>
 <span id="L196"><span class="lineNum">     196</span>              : </span>
 <span id="L197"><span class="lineNum">     197</span>              : /**</span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_demux.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_demux.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">90.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -179,7 +179,7 @@
 <span id="L117"><span class="lineNum">     117</span>              :     GValue * value, GParamSpec * pspec);</span>
 <span id="L118"><span class="lineNum">     118</span>              : static void gst_tensor_demux_dispose (GObject * object);</span>
 <span id="L119"><span class="lineNum">     119</span>              : #define gst_tensor_demux_parent_class parent_class</span>
-<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC tlaBgGNC">        1401 : G_DEFINE_TYPE (GstTensorDemux, gst_tensor_demux, GST_TYPE_ELEMENT);</span></span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC tlaBgGNC">        1399 : G_DEFINE_TYPE (GstTensorDemux, gst_tensor_demux, GST_TYPE_ELEMENT);</span></span>
 <span id="L121"><span class="lineNum">     121</span>              : </span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
 <span id="L123"><span class="lineNum">     123</span>              : /**</span>
@@ -300,427 +300,428 @@
 <span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          31 :     case GST_EVENT_CAPS:</span></span>
 <span id="L239"><span class="lineNum">     239</span>              :     {</span>
 <span id="L240"><span class="lineNum">     240</span>              :       GstCaps *caps;</span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          31 :       gst_event_parse_caps (event, &amp;caps);</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          31 :       gst_tensors_config_from_caps (&amp;tensor_demux-&gt;tensors_config, caps);</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          31 :       break;</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :     }</span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          31 :     case GST_EVENT_EOS:</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          31 :       if (!tensor_demux-&gt;srcpads) {</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           1 :         GST_ELEMENT_ERROR (tensor_demux, STREAM, WRONG_TYPE,</span></span>
-<span id="L248"><span class="lineNum">     248</span>              :             (&quot;This stream contains no valid stremas.&quot;),</span>
-<span id="L249"><span class="lineNum">     249</span>              :             (&quot;Got EOS before adding any pads&quot;));</span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :         gst_event_unref (event);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           1 :         return FALSE;</span></span>
-<span id="L252"><span class="lineNum">     252</span>              :       }</span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          30 :       break;</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          66 :     default:</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          66 :       break;</span></span>
-<span id="L256"><span class="lineNum">     256</span>              :   }</span>
-<span id="L257"><span class="lineNum">     257</span>              : </span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">         127 :   return gst_pad_event_default (pad, parent, event);</span></span>
-<span id="L259"><span class="lineNum">     259</span>              : }</span>
-<span id="L260"><span class="lineNum">     260</span>              : </span>
-<span id="L261"><span class="lineNum">     261</span>              : /**</span>
-<span id="L262"><span class="lineNum">     262</span>              :  * @brief Get tensor config info from configured tensors</span>
-<span id="L263"><span class="lineNum">     263</span>              :  * @param tensor_demux &quot;this&quot; pointer</span>
-<span id="L264"><span class="lineNum">     264</span>              :  * @param config tensor config to be filled</span>
-<span id="L265"><span class="lineNum">     265</span>              :  * @param nth source ordering</span>
-<span id="L266"><span class="lineNum">     266</span>              :  * @param total number of tensors</span>
-<span id="L267"><span class="lineNum">     267</span>              :  * @return TRUE if successfully configured</span>
-<span id="L268"><span class="lineNum">     268</span>              :  */</span>
-<span id="L269"><span class="lineNum">     269</span>              : static gboolean</span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">          86 : gst_tensor_demux_get_tensor_config (GstTensorDemux * tensor_demux,</span></span>
-<span id="L271"><span class="lineNum">     271</span>              :     GstTensorsConfig * config, const guint nth, const guint total)</span>
-<span id="L272"><span class="lineNum">     272</span>              : {</span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          86 :   gst_tensors_config_init (config);</span></span>
-<span id="L274"><span class="lineNum">     274</span>              : </span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
-<span id="L276"><span class="lineNum">     276</span>              :     gchar *selected_tensor;</span>
-<span id="L277"><span class="lineNum">     277</span>              :     gchar **strv;</span>
-<span id="L278"><span class="lineNum">     278</span>              :     guint i, num, idx;</span>
-<span id="L279"><span class="lineNum">     279</span>              : </span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          15 :     g_assert (g_list_length (tensor_demux-&gt;tensorpick) &gt;= nth);</span></span>
-<span id="L281"><span class="lineNum">     281</span>              : </span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          15 :     selected_tensor = (gchar *) g_list_nth_data (tensor_demux-&gt;tensorpick, nth);</span></span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          15 :     strv = g_strsplit_set (selected_tensor, &quot;:+&quot;, -1);</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          15 :     num = g_strv_length (strv);</span></span>
-<span id="L285"><span class="lineNum">     285</span>              : </span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          32 :     for (i = 0; i &lt; num; i++) {</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          17 :       idx = (guint) g_ascii_strtoll (strv[i], NULL, 10);</span></span>
-<span id="L288"><span class="lineNum">     288</span>              : </span>
-<span id="L289"><span class="lineNum">     289</span>              :       /* Internal error, handle invalid index. */</span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          17 :       if (idx &gt;= total) {</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaUNC tlaBgUNC">           0 :         g_strfreev (strv);</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC">           0 :         return FALSE;</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :       }</span>
-<span id="L294"><span class="lineNum">     294</span>              : </span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC tlaBgGNC">          17 :       gst_tensor_info_copy (gst_tensors_info_get_nth_info (&amp;config-&gt;info, i),</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          17 :           gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
-<span id="L297"><span class="lineNum">     297</span>              :               idx));</span>
-<span id="L298"><span class="lineNum">     298</span>              :     }</span>
-<span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">          15 :     config-&gt;info.num_tensors = num;</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          15 :     g_strfreev (strv);</span></span>
-<span id="L302"><span class="lineNum">     302</span>              :   } else {</span>
-<span id="L303"><span class="lineNum">     303</span>              :     /* Internal error, handle invalid index. */</span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          71 :     if (nth &gt;= total)</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC tlaBgUNC">           0 :       return FALSE;</span></span>
-<span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC tlaBgGNC">          71 :     config-&gt;info.num_tensors = 1;</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          71 :     gst_tensor_info_copy (&amp;config-&gt;info.info[0],</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          71 :         gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
-<span id="L310"><span class="lineNum">     310</span>              :             nth));</span>
-<span id="L311"><span class="lineNum">     311</span>              :   }</span>
-<span id="L312"><span class="lineNum">     312</span>              : </span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          86 :   config-&gt;info.format = tensor_demux-&gt;tensors_config.info.format;</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          86 :   config-&gt;rate_n = tensor_demux-&gt;tensors_config.rate_n;</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          86 :   config-&gt;rate_d = tensor_demux-&gt;tensors_config.rate_d;</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          86 :   return TRUE;</span></span>
-<span id="L317"><span class="lineNum">     317</span>              : }</span>
-<span id="L318"><span class="lineNum">     318</span>              : </span>
-<span id="L319"><span class="lineNum">     319</span>              : /**</span>
-<span id="L320"><span class="lineNum">     320</span>              :  * @brief Checking if the source pad is created and if not, create TensorPad</span>
-<span id="L321"><span class="lineNum">     321</span>              :  * @param tensor_demux TensorDemux Object</span>
-<span id="L322"><span class="lineNum">     322</span>              :  * @param[out] created will be updated in this function</span>
-<span id="L323"><span class="lineNum">     323</span>              :  * @param nth source ordering</span>
-<span id="L324"><span class="lineNum">     324</span>              :  * @param total number of tensors</span>
-<span id="L325"><span class="lineNum">     325</span>              :  * @return TensorPad if pad is already created, then return created pad.</span>
-<span id="L326"><span class="lineNum">     326</span>              :  *         If not return new pad after creation.</span>
-<span id="L327"><span class="lineNum">     327</span>              :  */</span>
-<span id="L328"><span class="lineNum">     328</span>              : static GstTensorPad *</span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         429 : gst_tensor_demux_get_tensor_pad (GstTensorDemux * tensor_demux,</span></span>
-<span id="L330"><span class="lineNum">     330</span>              :     gboolean * created, const guint nth, const guint total)</span>
-<span id="L331"><span class="lineNum">     331</span>              : {</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         429 :   GstElement *element = GST_ELEMENT_CAST (tensor_demux);</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         429 :   g_autofree gchar *element_name = gst_element_get_name (element);</span></span>
-<span id="L334"><span class="lineNum">     334</span>              :   GSList *walk;</span>
-<span id="L335"><span class="lineNum">     335</span>              :   GstPad *pad;</span>
-<span id="L336"><span class="lineNum">     336</span>              :   GstTensorPad *tensorpad;</span>
-<span id="L337"><span class="lineNum">     337</span>              :   gchar *name;</span>
-<span id="L338"><span class="lineNum">     338</span>              :   GstEvent *event;</span>
-<span id="L339"><span class="lineNum">     339</span>              :   gchar *stream_id;</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         429 :   GstCaps *caps = NULL;</span></span>
-<span id="L341"><span class="lineNum">     341</span>              :   GstTensorsConfig config;</span>
-<span id="L342"><span class="lineNum">     342</span>              : </span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         429 :   walk = tensor_demux-&gt;srcpads;</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">        1642 :   while (walk) {</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        1556 :     GstTensorPad *pad = (GstTensorPad *) walk-&gt;data;</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1556 :     if (nth == pad-&gt;nth) {</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         343 :       if (created) {</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         343 :         *created = FALSE;</span></span>
-<span id="L349"><span class="lineNum">     349</span>              :       }</span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         343 :       return pad;</span></span>
-<span id="L351"><span class="lineNum">     351</span>              :     }</span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">        1213 :     walk = walk-&gt;next;</span></span>
-<span id="L353"><span class="lineNum">     353</span>              :   }</span>
-<span id="L354"><span class="lineNum">     354</span>              : </span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          86 :   tensorpad = g_new0 (GstTensorPad, 1);</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          86 :   g_assert (tensorpad != NULL);</span></span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">          86 :   GST_DEBUG_OBJECT (tensor_demux, &quot;creating pad: %d(%dth)&quot;,</span></span>
-<span id="L358"><span class="lineNum">     358</span>              :       tensor_demux-&gt;num_srcpads, nth);</span>
-<span id="L359"><span class="lineNum">     359</span>              : </span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          86 :   name = g_strdup_printf (&quot;src_%u&quot;, tensor_demux-&gt;num_srcpads);</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">          86 :   pad = gst_pad_new_from_static_template (&amp;src_templ, name);</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          86 :   stream_id = gst_pad_create_stream_id_printf (pad, element,</span></span>
-<span id="L363"><span class="lineNum">     363</span>              :       &quot;%s-nnsdemux-%s-%08x&quot;, element_name, name, g_random_int ());</span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">          86 :   g_free (name);</span></span>
-<span id="L365"><span class="lineNum">     365</span>              : </span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          86 :   tensorpad-&gt;pad = pad;</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          86 :   tensorpad-&gt;nth = nth;</span></span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          86 :   tensorpad-&gt;last_ret = GST_FLOW_OK;</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          86 :   tensorpad-&gt;last_ts = GST_CLOCK_TIME_NONE;</span></span>
-<span id="L370"><span class="lineNum">     370</span>              : </span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          86 :   tensor_demux-&gt;srcpads = g_slist_append (tensor_demux-&gt;srcpads, tensorpad);</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          86 :   tensor_demux-&gt;num_srcpads++;</span></span>
-<span id="L373"><span class="lineNum">     373</span>              : </span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          86 :   gst_pad_use_fixed_caps (pad);</span></span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          86 :   gst_pad_set_active (pad, TRUE);</span></span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">          86 :   gst_element_add_pad (GST_ELEMENT_CAST (tensor_demux), pad);</span></span>
-<span id="L377"><span class="lineNum">     377</span>              : </span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          86 :   if (!tensor_demux-&gt;have_group_id) {</span></span>
-<span id="L379"><span class="lineNum">     379</span>              :     event =</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">          86 :         gst_pad_get_sticky_event (tensor_demux-&gt;sinkpad, GST_EVENT_STREAM_START,</span></span>
-<span id="L381"><span class="lineNum">     381</span>              :         0);</span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">          86 :     if (event) {</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          86 :       tensor_demux-&gt;have_group_id =</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          86 :           gst_event_parse_group_id (event, &amp;tensor_demux-&gt;group_id);</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          86 :       gst_event_unref (event);</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaUNC tlaBgUNC">           0 :     } else if (!tensor_demux-&gt;have_group_id) {</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaUNC">           0 :       tensor_demux-&gt;have_group_id = TRUE;</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaUNC">           0 :       tensor_demux-&gt;group_id = gst_util_group_id_next ();</span></span>
-<span id="L389"><span class="lineNum">     389</span>              :     }</span>
-<span id="L390"><span class="lineNum">     390</span>              :   }</span>
-<span id="L391"><span class="lineNum">     391</span>              : </span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC tlaBgGNC">          86 :   event = gst_event_new_stream_start (stream_id);</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;have_group_id)</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_event_set_group_id (event, tensor_demux-&gt;group_id);</span></span>
-<span id="L395"><span class="lineNum">     395</span>              : </span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC tlaBgGNC">          86 :   gst_pad_store_sticky_event (pad, event);</span></span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">          86 :   g_free (stream_id);</span></span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          86 :   gst_event_unref (event);</span></span>
-<span id="L399"><span class="lineNum">     399</span>              : </span>
-<span id="L400"><span class="lineNum">     400</span>              :   /* configure nth pad caps */</span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          86 :   if (gst_tensor_demux_get_tensor_config (tensor_demux, &amp;config, nth, total)) {</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          86 :     caps = gst_tensor_pad_caps_from_config (pad, &amp;config);</span></span>
-<span id="L403"><span class="lineNum">     403</span>              : </span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          86 :     gst_pad_set_caps (pad, caps);</span></span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          86 :     gst_caps_unref (caps);</span></span>
-<span id="L406"><span class="lineNum">     406</span>              :   } else {</span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (tensor_demux, &quot;Unable to set pad caps&quot;);</span></span>
-<span id="L408"><span class="lineNum">     408</span>              :   }</span>
-<span id="L409"><span class="lineNum">     409</span>              : </span>
-<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC tlaBgGNC">          86 :   if (created) {</span></span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          86 :     *created = TRUE;</span></span>
-<span id="L412"><span class="lineNum">     412</span>              :   }</span>
-<span id="L413"><span class="lineNum">     413</span>              : </span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          15 :     GST_DEBUG_OBJECT (tensor_demux, &quot;TensorPick is set! : %dth tensor\n&quot;, nth);</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          15 :     if (g_list_length (tensor_demux-&gt;tensorpick) == tensor_demux-&gt;num_srcpads) {</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">           9 :       gst_element_no_more_pads (GST_ELEMENT_CAST (tensor_demux));</span></span>
-<span id="L418"><span class="lineNum">     418</span>              :     }</span>
-<span id="L419"><span class="lineNum">     419</span>              :   }</span>
-<span id="L420"><span class="lineNum">     420</span>              : </span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          86 :   gst_tensors_config_free (&amp;config);</span></span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          86 :   return tensorpad;</span></span>
-<span id="L423"><span class="lineNum">     423</span>              : }</span>
-<span id="L424"><span class="lineNum">     424</span>              : </span>
-<span id="L425"><span class="lineNum">     425</span>              : /**</span>
-<span id="L426"><span class="lineNum">     426</span>              :  * @brief Check the status among sources in demux</span>
-<span id="L427"><span class="lineNum">     427</span>              :  * @param tensor_demux TensorDemux Object</span>
-<span id="L428"><span class="lineNum">     428</span>              :  * @param TensorPad Tensorpad</span>
-<span id="L429"><span class="lineNum">     429</span>              :  * @param ret return status of current pad</span>
-<span id="L430"><span class="lineNum">     430</span>              :  * @return return status after check sources</span>
-<span id="L431"><span class="lineNum">     431</span>              :  */</span>
-<span id="L432"><span class="lineNum">     432</span>              : static GstFlowReturn</span>
-<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">         429 : gst_tensor_demux_combine_flows (GstTensorDemux * tensor_demux,</span></span>
-<span id="L434"><span class="lineNum">     434</span>              :     GstTensorPad * pad, GstFlowReturn ret)</span>
-<span id="L435"><span class="lineNum">     435</span>              : {</span>
-<span id="L436"><span class="lineNum">     436</span>              :   GSList *walk;</span>
-<span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">         429 :   pad-&gt;last_ret = ret;</span></span>
-<span id="L438"><span class="lineNum">     438</span>              : </span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">         429 :   if (ret != GST_FLOW_NOT_LINKED)</span></span>
-<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">         344 :     goto done;</span></span>
-<span id="L441"><span class="lineNum">     441</span>              : </span>
-<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">          85 :   for (walk = tensor_demux-&gt;srcpads; walk; walk = g_slist_next (walk)) {</span></span>
-<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">          85 :     GstTensorPad *opad = (GstTensorPad *) walk-&gt;data;</span></span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          85 :     ret = opad-&gt;last_ret;</span></span>
-<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">          85 :     if (ret != GST_FLOW_NOT_LINKED)</span></span>
-<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          85 :       goto done;</span></span>
-<span id="L447"><span class="lineNum">     447</span>              :   }</span>
-<span id="L448"><span class="lineNum">     448</span> <span class="tlaUNC tlaBgUNC">           0 : done:</span></span>
-<span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC tlaBgGNC">         429 :   return ret;</span></span>
-<span id="L450"><span class="lineNum">     450</span>              : }</span>
-<span id="L451"><span class="lineNum">     451</span>              : </span>
-<span id="L452"><span class="lineNum">     452</span>              : /**</span>
-<span id="L453"><span class="lineNum">     453</span>              :  * @brief chain function for sink (gst element vmethod)</span>
-<span id="L454"><span class="lineNum">     454</span>              :  */</span>
-<span id="L455"><span class="lineNum">     455</span>              : static GstFlowReturn</span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">         151 : gst_tensor_demux_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
-<span id="L457"><span class="lineNum">     457</span>              : {</span>
-<span id="L458"><span class="lineNum">     458</span>              :   guint num_tensors, num_srcs, i, idx;</span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">         151 :   GstFlowReturn res = GST_FLOW_OK;</span></span>
-<span id="L460"><span class="lineNum">     460</span>              :   GstTensorDemux *tensor_demux;</span>
-<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">         151 :   GList *list = NULL;</span></span>
-<span id="L462"><span class="lineNum">     462</span>              :   GstTensorInfo *_info;</span>
-<span id="L463"><span class="lineNum">     463</span>              : </span>
-<span id="L464"><span class="lineNum">     464</span>              :   UNUSED (pad);</span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">         151 :   tensor_demux = GST_TENSOR_DEMUX (parent);</span></span>
-<span id="L466"><span class="lineNum">     466</span>              : </span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         151 :   buf = gst_tensor_buffer_from_config (buf, &amp;tensor_demux-&gt;tensors_config);</span></span>
-<span id="L468"><span class="lineNum">     468</span>              : </span>
-<span id="L469"><span class="lineNum">     469</span>              :   /**</span>
-<span id="L470"><span class="lineNum">     470</span>              :    * The number of tensors in the buffer:</span>
-<span id="L471"><span class="lineNum">     471</span>              :    * The number of tensors from caps and gst-buffer should be same when incoming buffer is static tensor.</span>
-<span id="L472"><span class="lineNum">     472</span>              :    * If given buffer is flexible tensor, we cannot get exact number of tensors from config.</span>
-<span id="L473"><span class="lineNum">     473</span>              :    */</span>
-<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">         151 :   num_tensors = gst_tensor_buffer_get_count (buf);</span></span>
-<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">         151 :   if (gst_tensors_config_is_static (&amp;tensor_demux-&gt;tensors_config))</span></span>
-<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         144 :     g_assert (tensor_demux-&gt;tensors_config.info.num_tensors == num_tensors);</span></span>
-<span id="L477"><span class="lineNum">     477</span>              : </span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">         151 :   GST_DEBUG_OBJECT (tensor_demux, &quot; Number of Tensors: %d&quot;, num_tensors);</span></span>
-<span id="L479"><span class="lineNum">     479</span>              : </span>
-<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">         151 :   num_srcs = num_tensors;</span></span>
-<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">         151 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">          44 :     num_srcs = g_list_length (tensor_demux-&gt;tensorpick);</span></span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          44 :     list = tensor_demux-&gt;tensorpick;</span></span>
-<span id="L484"><span class="lineNum">     484</span>              :   }</span>
-<span id="L485"><span class="lineNum">     485</span>              : </span>
-<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">         577 :   for (i = 0; i &lt; num_srcs; i++) {</span></span>
-<span id="L487"><span class="lineNum">     487</span>              :     GstTensorPad *srcpad;</span>
-<span id="L488"><span class="lineNum">     488</span>              :     GstBuffer *outbuf;</span>
-<span id="L489"><span class="lineNum">     489</span>              :     GstMemory *mem;</span>
-<span id="L490"><span class="lineNum">     490</span>              :     gboolean created;</span>
-<span id="L491"><span class="lineNum">     491</span>              :     GstClockTime ts;</span>
-<span id="L492"><span class="lineNum">     492</span>              : </span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">         429 :     srcpad = gst_tensor_demux_get_tensor_pad (tensor_demux, &amp;created, i,</span></span>
-<span id="L494"><span class="lineNum">     494</span>              :         num_tensors);</span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">         429 :     outbuf = gst_buffer_new ();</span></span>
-<span id="L496"><span class="lineNum">     496</span>              : </span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         429 :     if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
-<span id="L498"><span class="lineNum">     498</span>              :       guint num, j;</span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">          67 :       gchar **strv = g_strsplit_set ((gchar *) list-&gt;data, &quot;:+&quot;, -1);</span></span>
-<span id="L500"><span class="lineNum">     500</span>              : </span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          67 :       num = g_strv_length (strv);</span></span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         136 :       for (j = 0; j &lt; num; j++) {</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">          69 :         idx = (guint) g_ascii_strtoll (strv[j], NULL, 10);</span></span>
-<span id="L504"><span class="lineNum">     504</span>              :         _info =</span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">          69 :             gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
-<span id="L506"><span class="lineNum">     506</span>              :             idx);</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          69 :         mem = gst_tensor_buffer_get_nth_memory (buf, idx);</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          69 :         if (!gst_tensor_buffer_append_memory (outbuf, mem, _info)) {</span></span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaUNC tlaBgUNC">           0 :           gst_buffer_unref (outbuf);</span></span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC">           0 :           res = GST_FLOW_ERROR;</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :           goto error;</span></span>
-<span id="L512"><span class="lineNum">     512</span>              :         }</span>
-<span id="L513"><span class="lineNum">     513</span>              :       }</span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC tlaBgGNC">          67 :       g_strfreev (strv);</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          67 :       list = list-&gt;next;</span></span>
-<span id="L516"><span class="lineNum">     516</span>              :     } else {</span>
-<span id="L517"><span class="lineNum">     517</span>              :       _info =</span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">         362 :           gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info, i);</span></span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">         362 :       mem = gst_tensor_buffer_get_nth_memory (buf, i);</span></span>
-<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">         362 :       if (!gst_tensor_buffer_append_memory (outbuf, mem, _info)) {</span></span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaUNC tlaBgUNC">           0 :         gst_buffer_unref (outbuf);</span></span>
-<span id="L522"><span class="lineNum">     522</span> <span class="tlaUNC">           0 :         res = GST_FLOW_ERROR;</span></span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :         goto error;</span></span>
-<span id="L524"><span class="lineNum">     524</span>              :       }</span>
-<span id="L525"><span class="lineNum">     525</span>              :     }</span>
-<span id="L526"><span class="lineNum">     526</span>              : </span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC tlaBgGNC">         429 :     ts = GST_BUFFER_TIMESTAMP (buf);</span></span>
-<span id="L528"><span class="lineNum">     528</span>              : </span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">         429 :     if (created) {</span></span>
-<span id="L530"><span class="lineNum">     530</span>              :       GstSegment segment;</span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">          86 :       gst_segment_init (&amp;segment, GST_FORMAT_TIME);</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">          86 :       gst_pad_push_event (srcpad-&gt;pad, gst_event_new_segment (&amp;segment));</span></span>
-<span id="L533"><span class="lineNum">     533</span>              :     }</span>
-<span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         429 :     outbuf = gst_buffer_make_writable (outbuf);</span></span>
-<span id="L536"><span class="lineNum">     536</span>              : </span>
-<span id="L537"><span class="lineNum">     537</span>              :     /* metadata from incoming buffer */</span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         429 :     gst_buffer_copy_into (outbuf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
-<span id="L539"><span class="lineNum">     539</span>              : </span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         429 :     if (srcpad-&gt;last_ts == GST_CLOCK_TIME_NONE || srcpad-&gt;last_ts != ts) {</span></span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         429 :       srcpad-&gt;last_ts = ts;</span></span>
-<span id="L542"><span class="lineNum">     542</span>              :     } else {</span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_DEBUG_OBJECT (tensor_demux, &quot;invalid timestamp %&quot; GST_TIME_FORMAT,</span></span>
-<span id="L544"><span class="lineNum">     544</span>              :           GST_TIME_ARGS (ts));</span>
-<span id="L545"><span class="lineNum">     545</span>              :     }</span>
-<span id="L546"><span class="lineNum">     546</span>              : </span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC tlaBgGNC">         429 :     GST_DEBUG_OBJECT (tensor_demux,</span></span>
-<span id="L548"><span class="lineNum">     548</span>              :         &quot;pushing buffer with timestamp %&quot; GST_TIME_FORMAT,</span>
-<span id="L549"><span class="lineNum">     549</span>              :         GST_TIME_ARGS (GST_BUFFER_TIMESTAMP (outbuf)));</span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         429 :     res = gst_pad_push (srcpad-&gt;pad, outbuf);</span></span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">         429 :     res = gst_tensor_demux_combine_flows (tensor_demux, srcpad, res);</span></span>
-<span id="L552"><span class="lineNum">     552</span>              : </span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">         429 :     if (res != GST_FLOW_OK)</span></span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           3 :       break;</span></span>
-<span id="L555"><span class="lineNum">     555</span>              :   }</span>
-<span id="L556"><span class="lineNum">     556</span>              : </span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">         148 : error:</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">         151 :   gst_buffer_unref (buf);</span></span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">         151 :   return res;</span></span>
-<span id="L560"><span class="lineNum">     560</span>              : }</span>
-<span id="L561"><span class="lineNum">     561</span>              : </span>
-<span id="L562"><span class="lineNum">     562</span>              : /**</span>
-<span id="L563"><span class="lineNum">     563</span>              :  * @brief change state (gst element vmethod)</span>
-<span id="L564"><span class="lineNum">     564</span>              :  */</span>
-<span id="L565"><span class="lineNum">     565</span>              : static GstStateChangeReturn</span>
-<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC">         186 : gst_tensor_demux_change_state (GstElement * element, GstStateChange transition)</span></span>
-<span id="L567"><span class="lineNum">     567</span>              : {</span>
-<span id="L568"><span class="lineNum">     568</span>              :   GstTensorDemux *tensor_demux;</span>
-<span id="L569"><span class="lineNum">     569</span>              :   GstStateChangeReturn ret;</span>
-<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC">         186 :   tensor_demux = GST_TENSOR_DEMUX (element);</span></span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">         186 :   ret = GST_ELEMENT_CLASS (parent_class)-&gt;change_state (element, transition);</span></span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">         186 :   if (ret == GST_STATE_CHANGE_FAILURE)</span></span>
-<span id="L573"><span class="lineNum">     573</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC tlaBgGNC">         186 :   switch (transition) {</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          30 :     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:</span></span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">          30 :       break;</span></span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          31 :     case GST_STATE_CHANGE_PAUSED_TO_READY:</span></span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          31 :       tensor_demux-&gt;group_id = G_MAXUINT;</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          31 :       tensor_demux-&gt;have_group_id = FALSE;</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          31 :       gst_tensor_demux_remove_src_pads (tensor_demux);</span></span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          31 :       break;</span></span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">          31 :     case GST_STATE_CHANGE_READY_TO_NULL:</span></span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          31 :       break;</span></span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          94 :     default:</span></span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          94 :       break;</span></span>
-<span id="L586"><span class="lineNum">     586</span>              :   }</span>
-<span id="L587"><span class="lineNum">     587</span>              : </span>
-<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">         186 :   return ret;</span></span>
-<span id="L589"><span class="lineNum">     589</span>              : }</span>
-<span id="L590"><span class="lineNum">     590</span>              : </span>
-<span id="L591"><span class="lineNum">     591</span>              : /**</span>
-<span id="L592"><span class="lineNum">     592</span>              :  * @brief Get property (gst element vmethod)</span>
-<span id="L593"><span class="lineNum">     593</span>              :  */</span>
-<span id="L594"><span class="lineNum">     594</span>              : static void</span>
-<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          12 : gst_tensor_demux_set_property (GObject * object, guint prop_id,</span></span>
-<span id="L596"><span class="lineNum">     596</span>              :     const GValue * value, GParamSpec * pspec)</span>
-<span id="L597"><span class="lineNum">     597</span>              : {</span>
-<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">          12 :   GstTensorDemux *filter = GST_TENSOR_DEMUX (object);</span></span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          12 :   switch (prop_id) {</span></span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">           2 :     case PROP_SILENT:</span></span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">           2 :       filter-&gt;silent = g_value_get_boolean (value);</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           2 :       break;</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          10 :     case PROP_TENSORPICK:</span></span>
-<span id="L604"><span class="lineNum">     604</span>              :     {</span>
-<span id="L605"><span class="lineNum">     605</span>              :       guint i;</span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          10 :       const gchar *param = g_value_get_string (value);</span></span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">          10 :       gchar **strv = g_strsplit_set (param, &quot;,.;/&quot;, -1);</span></span>
-<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">          10 :       guint num = g_strv_length (strv);</span></span>
-<span id="L609"><span class="lineNum">     609</span>              : </span>
-<span id="L610"><span class="lineNum">     610</span>              :       /* Before setting the new Tensor Pick data, the existing one should be removed. */</span>
-<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">          10 :       if (filter-&gt;tensorpick) {</span></span>
-<span id="L612"><span class="lineNum">     612</span> <span class="tlaUNC tlaBgUNC">           0 :         g_list_free_full (filter-&gt;tensorpick, g_free);</span></span>
-<span id="L613"><span class="lineNum">     613</span> <span class="tlaUNC">           0 :         filter-&gt;tensorpick = NULL;</span></span>
-<span id="L614"><span class="lineNum">     614</span>              :       }</span>
-<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC tlaBgGNC">          27 :       for (i = 0; i &lt; num; i++) {</span></span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">          17 :         gchar *tmp = g_strdup (strv[i]);</span></span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">          17 :         filter-&gt;tensorpick = g_list_append (filter-&gt;tensorpick, tmp);</span></span>
-<span id="L618"><span class="lineNum">     618</span>              :       }</span>
-<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">          10 :       g_strfreev (strv);</span></span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">          10 :       break;</span></span>
-<span id="L621"><span class="lineNum">     621</span>              :     }</span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
-<span id="L623"><span class="lineNum">     623</span> <span class="tlaUNC">           0 :       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);</span></span>
-<span id="L624"><span class="lineNum">     624</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L625"><span class="lineNum">     625</span>              :   }</span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC tlaBgGNC">          12 : }</span></span>
-<span id="L627"><span class="lineNum">     627</span>              : </span>
-<span id="L628"><span class="lineNum">     628</span>              : /**</span>
-<span id="L629"><span class="lineNum">     629</span>              :  * @brief Get property (gst element vmethod)</span>
-<span id="L630"><span class="lineNum">     630</span>              :  */</span>
-<span id="L631"><span class="lineNum">     631</span>              : static void</span>
-<span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">           6 : gst_tensor_demux_get_property (GObject * object, guint prop_id,</span></span>
-<span id="L633"><span class="lineNum">     633</span>              :     GValue * value, GParamSpec * pspec)</span>
-<span id="L634"><span class="lineNum">     634</span>              : {</span>
-<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           6 :   GstTensorDemux *filter = GST_TENSOR_DEMUX (object);</span></span>
-<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           6 :   switch (prop_id) {</span></span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           4 :     case PROP_SILENT:</span></span>
-<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">           4 :       g_value_set_boolean (value, filter-&gt;silent);</span></span>
-<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">           4 :       break;</span></span>
-<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">           2 :     case PROP_TENSORPICK:</span></span>
-<span id="L641"><span class="lineNum">     641</span>              :     {</span>
-<span id="L642"><span class="lineNum">     642</span>              :       GList *list;</span>
-<span id="L643"><span class="lineNum">     643</span>              :       char *p;</span>
-<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">           2 :       GPtrArray *arr = g_ptr_array_new ();</span></span>
-<span id="L645"><span class="lineNum">     645</span>              :       gchar **strings;</span>
-<span id="L646"><span class="lineNum">     646</span>              : </span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           6 :       for (list = filter-&gt;tensorpick; list != NULL; list = list-&gt;next) {</span></span>
-<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">           4 :         g_ptr_array_add (arr, g_strdup_printf (&quot;%s&quot;, (gchar *) list-&gt;data));</span></span>
-<span id="L649"><span class="lineNum">     649</span>              :       }</span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">           2 :       g_ptr_array_add (arr, NULL);</span></span>
-<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">           2 :       strings = (gchar **) g_ptr_array_free (arr, FALSE);</span></span>
-<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">           2 :       p = g_strjoinv (&quot;,&quot;, strings);</span></span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">           2 :       g_strfreev (strings);</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           2 :       g_value_take_string (value, p);</span></span>
-<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           2 :       break;</span></span>
-<span id="L656"><span class="lineNum">     656</span>              :     }</span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaUNC">           0 :       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);</span></span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L660"><span class="lineNum">     660</span>              :   }</span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC tlaBgGNC">           6 : }</span></span>
+<span id="L241"><span class="lineNum">     241</span>              : </span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          31 :       gst_event_parse_caps (event, &amp;caps);</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          31 :       gst_tensors_config_from_caps (&amp;tensor_demux-&gt;tensors_config, caps, TRUE);</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          31 :       break;</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :     }</span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          31 :     case GST_EVENT_EOS:</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          31 :       if (!tensor_demux-&gt;srcpads) {</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :         GST_ELEMENT_ERROR (tensor_demux, STREAM, WRONG_TYPE,</span></span>
+<span id="L249"><span class="lineNum">     249</span>              :             (&quot;This stream contains no valid stremas.&quot;),</span>
+<span id="L250"><span class="lineNum">     250</span>              :             (&quot;Got EOS before adding any pads&quot;));</span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           1 :         gst_event_unref (event);</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           1 :         return FALSE;</span></span>
+<span id="L253"><span class="lineNum">     253</span>              :       }</span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          30 :       break;</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          66 :     default:</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          66 :       break;</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :   }</span>
+<span id="L258"><span class="lineNum">     258</span>              : </span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">         127 :   return gst_pad_event_default (pad, parent, event);</span></span>
+<span id="L260"><span class="lineNum">     260</span>              : }</span>
+<span id="L261"><span class="lineNum">     261</span>              : </span>
+<span id="L262"><span class="lineNum">     262</span>              : /**</span>
+<span id="L263"><span class="lineNum">     263</span>              :  * @brief Get tensor config info from configured tensors</span>
+<span id="L264"><span class="lineNum">     264</span>              :  * @param tensor_demux &quot;this&quot; pointer</span>
+<span id="L265"><span class="lineNum">     265</span>              :  * @param config tensor config to be filled</span>
+<span id="L266"><span class="lineNum">     266</span>              :  * @param nth source ordering</span>
+<span id="L267"><span class="lineNum">     267</span>              :  * @param total number of tensors</span>
+<span id="L268"><span class="lineNum">     268</span>              :  * @return TRUE if successfully configured</span>
+<span id="L269"><span class="lineNum">     269</span>              :  */</span>
+<span id="L270"><span class="lineNum">     270</span>              : static gboolean</span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          86 : gst_tensor_demux_get_tensor_config (GstTensorDemux * tensor_demux,</span></span>
+<span id="L272"><span class="lineNum">     272</span>              :     GstTensorsConfig * config, const guint nth, const guint total)</span>
+<span id="L273"><span class="lineNum">     273</span>              : {</span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          86 :   gst_tensors_config_init (config);</span></span>
+<span id="L275"><span class="lineNum">     275</span>              : </span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
+<span id="L277"><span class="lineNum">     277</span>              :     gchar *selected_tensor;</span>
+<span id="L278"><span class="lineNum">     278</span>              :     gchar **strv;</span>
+<span id="L279"><span class="lineNum">     279</span>              :     guint i, num, idx;</span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          15 :     g_assert (g_list_length (tensor_demux-&gt;tensorpick) &gt;= nth);</span></span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          15 :     selected_tensor = (gchar *) g_list_nth_data (tensor_demux-&gt;tensorpick, nth);</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          15 :     strv = g_strsplit_set (selected_tensor, &quot;:+&quot;, -1);</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          15 :     num = g_strv_length (strv);</span></span>
+<span id="L286"><span class="lineNum">     286</span>              : </span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          32 :     for (i = 0; i &lt; num; i++) {</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          17 :       idx = (guint) g_ascii_strtoll (strv[i], NULL, 10);</span></span>
+<span id="L289"><span class="lineNum">     289</span>              : </span>
+<span id="L290"><span class="lineNum">     290</span>              :       /* Internal error, handle invalid index. */</span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          17 :       if (idx &gt;= total) {</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC tlaBgUNC">           0 :         g_strfreev (strv);</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaUNC">           0 :         return FALSE;</span></span>
+<span id="L294"><span class="lineNum">     294</span>              :       }</span>
+<span id="L295"><span class="lineNum">     295</span>              : </span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC tlaBgGNC">          17 :       gst_tensor_info_copy (gst_tensors_info_get_nth_info (&amp;config-&gt;info, i),</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          17 :           gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
+<span id="L298"><span class="lineNum">     298</span>              :               idx));</span>
+<span id="L299"><span class="lineNum">     299</span>              :     }</span>
+<span id="L300"><span class="lineNum">     300</span>              : </span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          15 :     config-&gt;info.num_tensors = num;</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          15 :     g_strfreev (strv);</span></span>
+<span id="L303"><span class="lineNum">     303</span>              :   } else {</span>
+<span id="L304"><span class="lineNum">     304</span>              :     /* Internal error, handle invalid index. */</span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          71 :     if (nth &gt;= total)</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC tlaBgUNC">           0 :       return FALSE;</span></span>
+<span id="L307"><span class="lineNum">     307</span>              : </span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC tlaBgGNC">          71 :     config-&gt;info.num_tensors = 1;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          71 :     gst_tensor_info_copy (&amp;config-&gt;info.info[0],</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          71 :         gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
+<span id="L311"><span class="lineNum">     311</span>              :             nth));</span>
+<span id="L312"><span class="lineNum">     312</span>              :   }</span>
+<span id="L313"><span class="lineNum">     313</span>              : </span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          86 :   config-&gt;info.format = tensor_demux-&gt;tensors_config.info.format;</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          86 :   config-&gt;rate_n = tensor_demux-&gt;tensors_config.rate_n;</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          86 :   config-&gt;rate_d = tensor_demux-&gt;tensors_config.rate_d;</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          86 :   return TRUE;</span></span>
+<span id="L318"><span class="lineNum">     318</span>              : }</span>
+<span id="L319"><span class="lineNum">     319</span>              : </span>
+<span id="L320"><span class="lineNum">     320</span>              : /**</span>
+<span id="L321"><span class="lineNum">     321</span>              :  * @brief Checking if the source pad is created and if not, create TensorPad</span>
+<span id="L322"><span class="lineNum">     322</span>              :  * @param tensor_demux TensorDemux Object</span>
+<span id="L323"><span class="lineNum">     323</span>              :  * @param[out] created will be updated in this function</span>
+<span id="L324"><span class="lineNum">     324</span>              :  * @param nth source ordering</span>
+<span id="L325"><span class="lineNum">     325</span>              :  * @param total number of tensors</span>
+<span id="L326"><span class="lineNum">     326</span>              :  * @return TensorPad if pad is already created, then return created pad.</span>
+<span id="L327"><span class="lineNum">     327</span>              :  *         If not return new pad after creation.</span>
+<span id="L328"><span class="lineNum">     328</span>              :  */</span>
+<span id="L329"><span class="lineNum">     329</span>              : static GstTensorPad *</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         429 : gst_tensor_demux_get_tensor_pad (GstTensorDemux * tensor_demux,</span></span>
+<span id="L331"><span class="lineNum">     331</span>              :     gboolean * created, const guint nth, const guint total)</span>
+<span id="L332"><span class="lineNum">     332</span>              : {</span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         429 :   GstElement *element = GST_ELEMENT_CAST (tensor_demux);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         429 :   g_autofree gchar *element_name = gst_element_get_name (element);</span></span>
+<span id="L335"><span class="lineNum">     335</span>              :   GSList *walk;</span>
+<span id="L336"><span class="lineNum">     336</span>              :   GstPad *pad;</span>
+<span id="L337"><span class="lineNum">     337</span>              :   GstTensorPad *tensorpad;</span>
+<span id="L338"><span class="lineNum">     338</span>              :   gchar *name;</span>
+<span id="L339"><span class="lineNum">     339</span>              :   GstEvent *event;</span>
+<span id="L340"><span class="lineNum">     340</span>              :   gchar *stream_id;</span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         429 :   GstCaps *caps = NULL;</span></span>
+<span id="L342"><span class="lineNum">     342</span>              :   GstTensorsConfig config;</span>
+<span id="L343"><span class="lineNum">     343</span>              : </span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         429 :   walk = tensor_demux-&gt;srcpads;</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        1642 :   while (walk) {</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1556 :     GstTensorPad *pad = (GstTensorPad *) walk-&gt;data;</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">        1556 :     if (nth == pad-&gt;nth) {</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         343 :       if (created) {</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         343 :         *created = FALSE;</span></span>
+<span id="L350"><span class="lineNum">     350</span>              :       }</span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         343 :       return pad;</span></span>
+<span id="L352"><span class="lineNum">     352</span>              :     }</span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">        1213 :     walk = walk-&gt;next;</span></span>
+<span id="L354"><span class="lineNum">     354</span>              :   }</span>
+<span id="L355"><span class="lineNum">     355</span>              : </span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          86 :   tensorpad = g_new0 (GstTensorPad, 1);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">          86 :   g_assert (tensorpad != NULL);</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          86 :   GST_DEBUG_OBJECT (tensor_demux, &quot;creating pad: %d(%dth)&quot;,</span></span>
+<span id="L359"><span class="lineNum">     359</span>              :       tensor_demux-&gt;num_srcpads, nth);</span>
+<span id="L360"><span class="lineNum">     360</span>              : </span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">          86 :   name = g_strdup_printf (&quot;src_%u&quot;, tensor_demux-&gt;num_srcpads);</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          86 :   pad = gst_pad_new_from_static_template (&amp;src_templ, name);</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          86 :   stream_id = gst_pad_create_stream_id_printf (pad, element,</span></span>
+<span id="L364"><span class="lineNum">     364</span>              :       &quot;%s-nnsdemux-%s-%08x&quot;, element_name, name, g_random_int ());</span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">          86 :   g_free (name);</span></span>
+<span id="L366"><span class="lineNum">     366</span>              : </span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          86 :   tensorpad-&gt;pad = pad;</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          86 :   tensorpad-&gt;nth = nth;</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          86 :   tensorpad-&gt;last_ret = GST_FLOW_OK;</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          86 :   tensorpad-&gt;last_ts = GST_CLOCK_TIME_NONE;</span></span>
+<span id="L371"><span class="lineNum">     371</span>              : </span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          86 :   tensor_demux-&gt;srcpads = g_slist_append (tensor_demux-&gt;srcpads, tensorpad);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          86 :   tensor_demux-&gt;num_srcpads++;</span></span>
+<span id="L374"><span class="lineNum">     374</span>              : </span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          86 :   gst_pad_use_fixed_caps (pad);</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">          86 :   gst_pad_set_active (pad, TRUE);</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">          86 :   gst_element_add_pad (GST_ELEMENT_CAST (tensor_demux), pad);</span></span>
+<span id="L378"><span class="lineNum">     378</span>              : </span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">          86 :   if (!tensor_demux-&gt;have_group_id) {</span></span>
+<span id="L380"><span class="lineNum">     380</span>              :     event =</span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">          86 :         gst_pad_get_sticky_event (tensor_demux-&gt;sinkpad, GST_EVENT_STREAM_START,</span></span>
+<span id="L382"><span class="lineNum">     382</span>              :         0);</span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          86 :     if (event) {</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          86 :       tensor_demux-&gt;have_group_id =</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">          86 :           gst_event_parse_group_id (event, &amp;tensor_demux-&gt;group_id);</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          86 :       gst_event_unref (event);</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaUNC tlaBgUNC">           0 :     } else if (!tensor_demux-&gt;have_group_id) {</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaUNC">           0 :       tensor_demux-&gt;have_group_id = TRUE;</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaUNC">           0 :       tensor_demux-&gt;group_id = gst_util_group_id_next ();</span></span>
+<span id="L390"><span class="lineNum">     390</span>              :     }</span>
+<span id="L391"><span class="lineNum">     391</span>              :   }</span>
+<span id="L392"><span class="lineNum">     392</span>              : </span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC tlaBgGNC">          86 :   event = gst_event_new_stream_start (stream_id);</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;have_group_id)</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_event_set_group_id (event, tensor_demux-&gt;group_id);</span></span>
+<span id="L396"><span class="lineNum">     396</span>              : </span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC tlaBgGNC">          86 :   gst_pad_store_sticky_event (pad, event);</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          86 :   g_free (stream_id);</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          86 :   gst_event_unref (event);</span></span>
+<span id="L400"><span class="lineNum">     400</span>              : </span>
+<span id="L401"><span class="lineNum">     401</span>              :   /* configure nth pad caps */</span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          86 :   if (gst_tensor_demux_get_tensor_config (tensor_demux, &amp;config, nth, total)) {</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          86 :     caps = gst_tensor_pad_caps_from_config (pad, &amp;config);</span></span>
+<span id="L404"><span class="lineNum">     404</span>              : </span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          86 :     gst_pad_set_caps (pad, caps);</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          86 :     gst_caps_unref (caps);</span></span>
+<span id="L407"><span class="lineNum">     407</span>              :   } else {</span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (tensor_demux, &quot;Unable to set pad caps&quot;);</span></span>
+<span id="L409"><span class="lineNum">     409</span>              :   }</span>
+<span id="L410"><span class="lineNum">     410</span>              : </span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC tlaBgGNC">          86 :   if (created) {</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          86 :     *created = TRUE;</span></span>
+<span id="L413"><span class="lineNum">     413</span>              :   }</span>
+<span id="L414"><span class="lineNum">     414</span>              : </span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          86 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          15 :     GST_DEBUG_OBJECT (tensor_demux, &quot;TensorPick is set! : %dth tensor\n&quot;, nth);</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">          15 :     if (g_list_length (tensor_demux-&gt;tensorpick) == tensor_demux-&gt;num_srcpads) {</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">           9 :       gst_element_no_more_pads (GST_ELEMENT_CAST (tensor_demux));</span></span>
+<span id="L419"><span class="lineNum">     419</span>              :     }</span>
+<span id="L420"><span class="lineNum">     420</span>              :   }</span>
+<span id="L421"><span class="lineNum">     421</span>              : </span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          86 :   gst_tensors_config_free (&amp;config);</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          86 :   return tensorpad;</span></span>
+<span id="L424"><span class="lineNum">     424</span>              : }</span>
+<span id="L425"><span class="lineNum">     425</span>              : </span>
+<span id="L426"><span class="lineNum">     426</span>              : /**</span>
+<span id="L427"><span class="lineNum">     427</span>              :  * @brief Check the status among sources in demux</span>
+<span id="L428"><span class="lineNum">     428</span>              :  * @param tensor_demux TensorDemux Object</span>
+<span id="L429"><span class="lineNum">     429</span>              :  * @param TensorPad Tensorpad</span>
+<span id="L430"><span class="lineNum">     430</span>              :  * @param ret return status of current pad</span>
+<span id="L431"><span class="lineNum">     431</span>              :  * @return return status after check sources</span>
+<span id="L432"><span class="lineNum">     432</span>              :  */</span>
+<span id="L433"><span class="lineNum">     433</span>              : static GstFlowReturn</span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">         429 : gst_tensor_demux_combine_flows (GstTensorDemux * tensor_demux,</span></span>
+<span id="L435"><span class="lineNum">     435</span>              :     GstTensorPad * pad, GstFlowReturn ret)</span>
+<span id="L436"><span class="lineNum">     436</span>              : {</span>
+<span id="L437"><span class="lineNum">     437</span>              :   GSList *walk;</span>
+<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">         429 :   pad-&gt;last_ret = ret;</span></span>
+<span id="L439"><span class="lineNum">     439</span>              : </span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">         429 :   if (ret != GST_FLOW_NOT_LINKED)</span></span>
+<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">         344 :     goto done;</span></span>
+<span id="L442"><span class="lineNum">     442</span>              : </span>
+<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">          85 :   for (walk = tensor_demux-&gt;srcpads; walk; walk = g_slist_next (walk)) {</span></span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          85 :     GstTensorPad *opad = (GstTensorPad *) walk-&gt;data;</span></span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">          85 :     ret = opad-&gt;last_ret;</span></span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          85 :     if (ret != GST_FLOW_NOT_LINKED)</span></span>
+<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">          85 :       goto done;</span></span>
+<span id="L448"><span class="lineNum">     448</span>              :   }</span>
+<span id="L449"><span class="lineNum">     449</span> <span class="tlaUNC tlaBgUNC">           0 : done:</span></span>
+<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC tlaBgGNC">         429 :   return ret;</span></span>
+<span id="L451"><span class="lineNum">     451</span>              : }</span>
+<span id="L452"><span class="lineNum">     452</span>              : </span>
+<span id="L453"><span class="lineNum">     453</span>              : /**</span>
+<span id="L454"><span class="lineNum">     454</span>              :  * @brief chain function for sink (gst element vmethod)</span>
+<span id="L455"><span class="lineNum">     455</span>              :  */</span>
+<span id="L456"><span class="lineNum">     456</span>              : static GstFlowReturn</span>
+<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">         151 : gst_tensor_demux_chain (GstPad * pad, GstObject * parent, GstBuffer * buf)</span></span>
+<span id="L458"><span class="lineNum">     458</span>              : {</span>
+<span id="L459"><span class="lineNum">     459</span>              :   guint num_tensors, num_srcs, i, idx;</span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">         151 :   GstFlowReturn res = GST_FLOW_OK;</span></span>
+<span id="L461"><span class="lineNum">     461</span>              :   GstTensorDemux *tensor_demux;</span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">         151 :   GList *list = NULL;</span></span>
+<span id="L463"><span class="lineNum">     463</span>              :   GstTensorInfo *_info;</span>
+<span id="L464"><span class="lineNum">     464</span>              : </span>
+<span id="L465"><span class="lineNum">     465</span>              :   UNUSED (pad);</span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">         151 :   tensor_demux = GST_TENSOR_DEMUX (parent);</span></span>
+<span id="L467"><span class="lineNum">     467</span>              : </span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">         151 :   buf = gst_tensor_buffer_from_config (buf, &amp;tensor_demux-&gt;tensors_config);</span></span>
+<span id="L469"><span class="lineNum">     469</span>              : </span>
+<span id="L470"><span class="lineNum">     470</span>              :   /**</span>
+<span id="L471"><span class="lineNum">     471</span>              :    * The number of tensors in the buffer:</span>
+<span id="L472"><span class="lineNum">     472</span>              :    * The number of tensors from caps and gst-buffer should be same when incoming buffer is static tensor.</span>
+<span id="L473"><span class="lineNum">     473</span>              :    * If given buffer is flexible tensor, we cannot get exact number of tensors from config.</span>
+<span id="L474"><span class="lineNum">     474</span>              :    */</span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">         151 :   num_tensors = gst_tensor_buffer_get_count (buf);</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         151 :   if (gst_tensors_config_is_static (&amp;tensor_demux-&gt;tensors_config))</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">         144 :     g_assert (tensor_demux-&gt;tensors_config.info.num_tensors == num_tensors);</span></span>
+<span id="L478"><span class="lineNum">     478</span>              : </span>
+<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">         151 :   GST_DEBUG_OBJECT (tensor_demux, &quot; Number of Tensors: %d&quot;, num_tensors);</span></span>
+<span id="L480"><span class="lineNum">     480</span>              : </span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">         151 :   num_srcs = num_tensors;</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">         151 :   if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          44 :     num_srcs = g_list_length (tensor_demux-&gt;tensorpick);</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">          44 :     list = tensor_demux-&gt;tensorpick;</span></span>
+<span id="L485"><span class="lineNum">     485</span>              :   }</span>
+<span id="L486"><span class="lineNum">     486</span>              : </span>
+<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC">         577 :   for (i = 0; i &lt; num_srcs; i++) {</span></span>
+<span id="L488"><span class="lineNum">     488</span>              :     GstTensorPad *srcpad;</span>
+<span id="L489"><span class="lineNum">     489</span>              :     GstBuffer *outbuf;</span>
+<span id="L490"><span class="lineNum">     490</span>              :     GstMemory *mem;</span>
+<span id="L491"><span class="lineNum">     491</span>              :     gboolean created;</span>
+<span id="L492"><span class="lineNum">     492</span>              :     GstClockTime ts;</span>
+<span id="L493"><span class="lineNum">     493</span>              : </span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">         429 :     srcpad = gst_tensor_demux_get_tensor_pad (tensor_demux, &amp;created, i,</span></span>
+<span id="L495"><span class="lineNum">     495</span>              :         num_tensors);</span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         429 :     outbuf = gst_buffer_new ();</span></span>
+<span id="L497"><span class="lineNum">     497</span>              : </span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">         429 :     if (tensor_demux-&gt;tensorpick != NULL) {</span></span>
+<span id="L499"><span class="lineNum">     499</span>              :       guint num, j;</span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">          67 :       gchar **strv = g_strsplit_set ((gchar *) list-&gt;data, &quot;:+&quot;, -1);</span></span>
+<span id="L501"><span class="lineNum">     501</span>              : </span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">          67 :       num = g_strv_length (strv);</span></span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         136 :       for (j = 0; j &lt; num; j++) {</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">          69 :         idx = (guint) g_ascii_strtoll (strv[j], NULL, 10);</span></span>
+<span id="L505"><span class="lineNum">     505</span>              :         _info =</span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">          69 :             gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info,</span></span>
+<span id="L507"><span class="lineNum">     507</span>              :             idx);</span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          69 :         mem = gst_tensor_buffer_get_nth_memory (buf, idx);</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          69 :         if (!gst_tensor_buffer_append_memory (outbuf, mem, _info)) {</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC tlaBgUNC">           0 :           gst_buffer_unref (outbuf);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :           res = GST_FLOW_ERROR;</span></span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaUNC">           0 :           goto error;</span></span>
+<span id="L513"><span class="lineNum">     513</span>              :         }</span>
+<span id="L514"><span class="lineNum">     514</span>              :       }</span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC tlaBgGNC">          67 :       g_strfreev (strv);</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          67 :       list = list-&gt;next;</span></span>
+<span id="L517"><span class="lineNum">     517</span>              :     } else {</span>
+<span id="L518"><span class="lineNum">     518</span>              :       _info =</span>
+<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">         362 :           gst_tensors_info_get_nth_info (&amp;tensor_demux-&gt;tensors_config.info, i);</span></span>
+<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">         362 :       mem = gst_tensor_buffer_get_nth_memory (buf, i);</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">         362 :       if (!gst_tensor_buffer_append_memory (outbuf, mem, _info)) {</span></span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaUNC tlaBgUNC">           0 :         gst_buffer_unref (outbuf);</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :         res = GST_FLOW_ERROR;</span></span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaUNC">           0 :         goto error;</span></span>
+<span id="L525"><span class="lineNum">     525</span>              :       }</span>
+<span id="L526"><span class="lineNum">     526</span>              :     }</span>
+<span id="L527"><span class="lineNum">     527</span>              : </span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC tlaBgGNC">         429 :     ts = GST_BUFFER_TIMESTAMP (buf);</span></span>
+<span id="L529"><span class="lineNum">     529</span>              : </span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">         429 :     if (created) {</span></span>
+<span id="L531"><span class="lineNum">     531</span>              :       GstSegment segment;</span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">          86 :       gst_segment_init (&amp;segment, GST_FORMAT_TIME);</span></span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">          86 :       gst_pad_push_event (srcpad-&gt;pad, gst_event_new_segment (&amp;segment));</span></span>
+<span id="L534"><span class="lineNum">     534</span>              :     }</span>
+<span id="L535"><span class="lineNum">     535</span>              : </span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         429 :     outbuf = gst_buffer_make_writable (outbuf);</span></span>
+<span id="L537"><span class="lineNum">     537</span>              : </span>
+<span id="L538"><span class="lineNum">     538</span>              :     /* metadata from incoming buffer */</span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">         429 :     gst_buffer_copy_into (outbuf, buf, GST_BUFFER_COPY_METADATA, 0, -1);</span></span>
+<span id="L540"><span class="lineNum">     540</span>              : </span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         429 :     if (srcpad-&gt;last_ts == GST_CLOCK_TIME_NONE || srcpad-&gt;last_ts != ts) {</span></span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">         429 :       srcpad-&gt;last_ts = ts;</span></span>
+<span id="L543"><span class="lineNum">     543</span>              :     } else {</span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_DEBUG_OBJECT (tensor_demux, &quot;invalid timestamp %&quot; GST_TIME_FORMAT,</span></span>
+<span id="L545"><span class="lineNum">     545</span>              :           GST_TIME_ARGS (ts));</span>
+<span id="L546"><span class="lineNum">     546</span>              :     }</span>
+<span id="L547"><span class="lineNum">     547</span>              : </span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC tlaBgGNC">         429 :     GST_DEBUG_OBJECT (tensor_demux,</span></span>
+<span id="L549"><span class="lineNum">     549</span>              :         &quot;pushing buffer with timestamp %&quot; GST_TIME_FORMAT,</span>
+<span id="L550"><span class="lineNum">     550</span>              :         GST_TIME_ARGS (GST_BUFFER_TIMESTAMP (outbuf)));</span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">         429 :     res = gst_pad_push (srcpad-&gt;pad, outbuf);</span></span>
+<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">         429 :     res = gst_tensor_demux_combine_flows (tensor_demux, srcpad, res);</span></span>
+<span id="L553"><span class="lineNum">     553</span>              : </span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">         429 :     if (res != GST_FLOW_OK)</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           3 :       break;</span></span>
+<span id="L556"><span class="lineNum">     556</span>              :   }</span>
+<span id="L557"><span class="lineNum">     557</span>              : </span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">         148 : error:</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">         151 :   gst_buffer_unref (buf);</span></span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">         151 :   return res;</span></span>
+<span id="L561"><span class="lineNum">     561</span>              : }</span>
+<span id="L562"><span class="lineNum">     562</span>              : </span>
+<span id="L563"><span class="lineNum">     563</span>              : /**</span>
+<span id="L564"><span class="lineNum">     564</span>              :  * @brief change state (gst element vmethod)</span>
+<span id="L565"><span class="lineNum">     565</span>              :  */</span>
+<span id="L566"><span class="lineNum">     566</span>              : static GstStateChangeReturn</span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         186 : gst_tensor_demux_change_state (GstElement * element, GstStateChange transition)</span></span>
+<span id="L568"><span class="lineNum">     568</span>              : {</span>
+<span id="L569"><span class="lineNum">     569</span>              :   GstTensorDemux *tensor_demux;</span>
+<span id="L570"><span class="lineNum">     570</span>              :   GstStateChangeReturn ret;</span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">         186 :   tensor_demux = GST_TENSOR_DEMUX (element);</span></span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">         186 :   ret = GST_ELEMENT_CLASS (parent_class)-&gt;change_state (element, transition);</span></span>
+<span id="L573"><span class="lineNum">     573</span> <span class="tlaGNC">         186 :   if (ret == GST_STATE_CHANGE_FAILURE)</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC tlaBgGNC">         186 :   switch (transition) {</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">          30 :     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          30 :       break;</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          31 :     case GST_STATE_CHANGE_PAUSED_TO_READY:</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          31 :       tensor_demux-&gt;group_id = G_MAXUINT;</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">          31 :       tensor_demux-&gt;have_group_id = FALSE;</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          31 :       gst_tensor_demux_remove_src_pads (tensor_demux);</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">          31 :       break;</span></span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          31 :     case GST_STATE_CHANGE_READY_TO_NULL:</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          31 :       break;</span></span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          94 :     default:</span></span>
+<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">          94 :       break;</span></span>
+<span id="L587"><span class="lineNum">     587</span>              :   }</span>
+<span id="L588"><span class="lineNum">     588</span>              : </span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">         186 :   return ret;</span></span>
+<span id="L590"><span class="lineNum">     590</span>              : }</span>
+<span id="L591"><span class="lineNum">     591</span>              : </span>
+<span id="L592"><span class="lineNum">     592</span>              : /**</span>
+<span id="L593"><span class="lineNum">     593</span>              :  * @brief Get property (gst element vmethod)</span>
+<span id="L594"><span class="lineNum">     594</span>              :  */</span>
+<span id="L595"><span class="lineNum">     595</span>              : static void</span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          12 : gst_tensor_demux_set_property (GObject * object, guint prop_id,</span></span>
+<span id="L597"><span class="lineNum">     597</span>              :     const GValue * value, GParamSpec * pspec)</span>
+<span id="L598"><span class="lineNum">     598</span>              : {</span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          12 :   GstTensorDemux *filter = GST_TENSOR_DEMUX (object);</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          12 :   switch (prop_id) {</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">           2 :     case PROP_SILENT:</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           2 :       filter-&gt;silent = g_value_get_boolean (value);</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           2 :       break;</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">          10 :     case PROP_TENSORPICK:</span></span>
+<span id="L605"><span class="lineNum">     605</span>              :     {</span>
+<span id="L606"><span class="lineNum">     606</span>              :       guint i;</span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">          10 :       const gchar *param = g_value_get_string (value);</span></span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">          10 :       gchar **strv = g_strsplit_set (param, &quot;,.;/&quot;, -1);</span></span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">          10 :       guint num = g_strv_length (strv);</span></span>
+<span id="L610"><span class="lineNum">     610</span>              : </span>
+<span id="L611"><span class="lineNum">     611</span>              :       /* Before setting the new Tensor Pick data, the existing one should be removed. */</span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">          10 :       if (filter-&gt;tensorpick) {</span></span>
+<span id="L613"><span class="lineNum">     613</span> <span class="tlaUNC tlaBgUNC">           0 :         g_list_free_full (filter-&gt;tensorpick, g_free);</span></span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaUNC">           0 :         filter-&gt;tensorpick = NULL;</span></span>
+<span id="L615"><span class="lineNum">     615</span>              :       }</span>
+<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC tlaBgGNC">          27 :       for (i = 0; i &lt; num; i++) {</span></span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">          17 :         gchar *tmp = g_strdup (strv[i]);</span></span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">          17 :         filter-&gt;tensorpick = g_list_append (filter-&gt;tensorpick, tmp);</span></span>
+<span id="L619"><span class="lineNum">     619</span>              :       }</span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">          10 :       g_strfreev (strv);</span></span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">          10 :       break;</span></span>
+<span id="L622"><span class="lineNum">     622</span>              :     }</span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaUNC">           0 :       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);</span></span>
+<span id="L625"><span class="lineNum">     625</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L626"><span class="lineNum">     626</span>              :   }</span>
+<span id="L627"><span class="lineNum">     627</span> <span class="tlaGNC tlaBgGNC">          12 : }</span></span>
+<span id="L628"><span class="lineNum">     628</span>              : </span>
+<span id="L629"><span class="lineNum">     629</span>              : /**</span>
+<span id="L630"><span class="lineNum">     630</span>              :  * @brief Get property (gst element vmethod)</span>
+<span id="L631"><span class="lineNum">     631</span>              :  */</span>
+<span id="L632"><span class="lineNum">     632</span>              : static void</span>
+<span id="L633"><span class="lineNum">     633</span> <span class="tlaGNC">           6 : gst_tensor_demux_get_property (GObject * object, guint prop_id,</span></span>
+<span id="L634"><span class="lineNum">     634</span>              :     GValue * value, GParamSpec * pspec)</span>
+<span id="L635"><span class="lineNum">     635</span>              : {</span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           6 :   GstTensorDemux *filter = GST_TENSOR_DEMUX (object);</span></span>
+<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           6 :   switch (prop_id) {</span></span>
+<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">           4 :     case PROP_SILENT:</span></span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">           4 :       g_value_set_boolean (value, filter-&gt;silent);</span></span>
+<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">           4 :       break;</span></span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">           2 :     case PROP_TENSORPICK:</span></span>
+<span id="L642"><span class="lineNum">     642</span>              :     {</span>
+<span id="L643"><span class="lineNum">     643</span>              :       GList *list;</span>
+<span id="L644"><span class="lineNum">     644</span>              :       char *p;</span>
+<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">           2 :       GPtrArray *arr = g_ptr_array_new ();</span></span>
+<span id="L646"><span class="lineNum">     646</span>              :       gchar **strings;</span>
+<span id="L647"><span class="lineNum">     647</span>              : </span>
+<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">           6 :       for (list = filter-&gt;tensorpick; list != NULL; list = list-&gt;next) {</span></span>
+<span id="L649"><span class="lineNum">     649</span> <span class="tlaGNC">           4 :         g_ptr_array_add (arr, g_strdup_printf (&quot;%s&quot;, (gchar *) list-&gt;data));</span></span>
+<span id="L650"><span class="lineNum">     650</span>              :       }</span>
+<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">           2 :       g_ptr_array_add (arr, NULL);</span></span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">           2 :       strings = (gchar **) g_ptr_array_free (arr, FALSE);</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">           2 :       p = g_strjoinv (&quot;,&quot;, strings);</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           2 :       g_strfreev (strings);</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">           2 :       g_value_take_string (value, p);</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">           2 :       break;</span></span>
+<span id="L657"><span class="lineNum">     657</span>              :     }</span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC">           0 :       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L661"><span class="lineNum">     661</span>              :   }</span>
+<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC tlaBgGNC">           6 : }</span></span>
         </pre>
               </td>
             </tr>

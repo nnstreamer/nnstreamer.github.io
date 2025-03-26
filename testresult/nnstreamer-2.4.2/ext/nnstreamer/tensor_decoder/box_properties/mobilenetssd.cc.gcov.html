@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssd.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssd.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">72.5&nbsp;%</td>
+            <td class="headerCovTableEntryLo">71.8&nbsp;%</td>
             <td class="headerCovTableEntry">142</td>
-            <td class="headerCovTableEntry">103</td>
+            <td class="headerCovTableEntry">102</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -385,18 +385,18 @@
 <span id="L323"><span class="lineNum">     323</span>              :  *  @param[in] config The tensors config to check compatibility</span>
 <span id="L324"><span class="lineNum">     324</span>              :  */</span>
 <span id="L325"><span class="lineNum">     325</span>              : int</span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC tlaBgGNC">          36 : MobilenetSSD::checkCompatible (const GstTensorsConfig *config)</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC tlaBgGNC">          16 : MobilenetSSD::checkCompatible (const GstTensorsConfig *config)</span></span>
 <span id="L327"><span class="lineNum">     327</span>              : {</span>
 <span id="L328"><span class="lineNum">     328</span>              :   const uint32_t *dim1, *dim2;</span>
 <span id="L329"><span class="lineNum">     329</span>              :   int i;</span>
 <span id="L330"><span class="lineNum">     330</span>              :   guint max_label;</span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          36 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          16 :   GstTensorInfo *info = nullptr;</span></span>
 <span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          36 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          20 :     return FALSE;</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          16 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
 <span id="L336"><span class="lineNum">     336</span>              :   /* Check if the first tensor is compatible */</span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC tlaBgGNC">          16 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
 <span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          16 :   dim1 = info-&gt;dimension;</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : </span>
 <span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (dim1[0] == BOX_SIZE, FALSE);</span></span>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/datarepo/gstdatareposink.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/datarepo/gstdatareposink.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">85.5&nbsp;%</td>
-            <td class="headerCovTableEntry">358</td>
-            <td class="headerCovTableEntry">306</td>
+            <td class="headerCovTableEntryMed">85.4&nbsp;%</td>
+            <td class="headerCovTableEntry">357</td>
+            <td class="headerCovTableEntry">305</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -154,7 +154,7 @@
 <span id="L92"><span class="lineNum">      92</span>              : #define _do_init \</span>
 <span id="L93"><span class="lineNum">      93</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_sink_debug, &quot;datareposink&quot;, 0, &quot;datareposink element&quot;);</span>
 <span id="L94"><span class="lineNum">      94</span>              : #define gst_data_repo_sink_parent_class parent_class</span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         785 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         780 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
 <span id="L96"><span class="lineNum">      96</span>              :     GST_TYPE_BASE_SINK, _do_init);</span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
 <span id="L98"><span class="lineNum">      98</span>              : static void gst_data_repo_sink_set_property (GObject * object, guint prop_id,</span>
@@ -553,26 +553,26 @@
 <span id="L491"><span class="lineNum">     491</span>              :  * @brief Get caps of datareposink.</span>
 <span id="L492"><span class="lineNum">     492</span>              :  */</span>
 <span id="L493"><span class="lineNum">     493</span>              : static GstCaps *</span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         539 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         534 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
 <span id="L495"><span class="lineNum">     495</span>              : {</span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         539 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         539 :   GstCaps *caps = NULL;</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         534 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         534 :   GstCaps *caps = NULL;</span></span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         539 :   GST_OBJECT_LOCK (sink);</span></span>
-<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         539 :   caps = sink-&gt;fixed_caps;</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         534 :   GST_OBJECT_LOCK (sink);</span></span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         534 :   caps = sink-&gt;fixed_caps;</span></span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         539 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         539 :   if (caps) {</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         404 :     if (filter)</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         534 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         534 :   if (caps) {</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         399 :     if (filter)</span></span>
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC tlaBgUNC">           0 :       caps = gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              :     else</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         404 :       caps = gst_caps_ref (caps);</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         399 :       caps = gst_caps_ref (caps);</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :   }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         539 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         539 :   GST_OBJECT_UNLOCK (sink);</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         534 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         534 :   GST_OBJECT_UNLOCK (sink);</span></span>
 <span id="L512"><span class="lineNum">     512</span>              : </span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         539 :   return caps;</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         534 :   return caps;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              : }</span>
 <span id="L515"><span class="lineNum">     515</span>              : </span>
 <span id="L516"><span class="lineNum">     516</span>              : /**</span>
@@ -581,290 +581,289 @@
 <span id="L519"><span class="lineNum">     519</span>              : static void</span>
 <span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">          22 : gst_data_repo_sink_set_is_static_tensors (GstDataRepoSink * sink)</span></span>
 <span id="L521"><span class="lineNum">     521</span>              : {</span>
-<span id="L522"><span class="lineNum">     522</span>              :   GstStructure *structure;</span>
-<span id="L523"><span class="lineNum">     523</span>              :   GstTensorsConfig config;</span>
-<span id="L524"><span class="lineNum">     524</span>              : </span>
-<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">          33 :   g_return_if_fail (sink != NULL);</span></span>
-<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">          22 :   g_return_if_fail (sink-&gt;fixed_caps != NULL);</span></span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">          22 :   g_return_if_fail (sink-&gt;data_type == GST_DATA_REPO_DATA_TENSOR);</span></span>
-<span id="L528"><span class="lineNum">     528</span>              : </span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">          11 :   structure = gst_caps_get_structure (sink-&gt;fixed_caps, 0);</span></span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">          11 :   gst_tensors_config_from_structure (&amp;config, structure);</span></span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">          11 :   sink-&gt;is_static_tensors = gst_tensors_config_is_static (&amp;config);</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">          11 :   gst_tensors_config_free (&amp;config);</span></span>
-<span id="L533"><span class="lineNum">     533</span>              : }</span>
-<span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span>              : /**</span>
-<span id="L536"><span class="lineNum">     536</span>              :  * @brief Set caps of datareposink.</span>
-<span id="L537"><span class="lineNum">     537</span>              :  */</span>
-<span id="L538"><span class="lineNum">     538</span>              : static gboolean</span>
-<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">          22 : gst_data_repo_sink_set_caps (GstBaseSink * bsink, GstCaps * caps)</span></span>
-<span id="L540"><span class="lineNum">     540</span>              : {</span>
-<span id="L541"><span class="lineNum">     541</span>              :   GstDataRepoSink *sink;</span>
-<span id="L542"><span class="lineNum">     542</span>              : </span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">          22 :   sink = GST_DATA_REPO_SINK (bsink);</span></span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">          22 :   GST_INFO_OBJECT (sink, &quot;set caps %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L545"><span class="lineNum">     545</span>              : </span>
-<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">          22 :   if (sink-&gt;fixed_caps) {</span></span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_caps_unref (sink-&gt;fixed_caps);</span></span>
-<span id="L548"><span class="lineNum">     548</span> <span class="tlaUNC">           0 :     sink-&gt;fixed_caps = NULL;</span></span>
-<span id="L549"><span class="lineNum">     549</span>              :   }</span>
-<span id="L550"><span class="lineNum">     550</span>              : </span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC tlaBgGNC">          22 :   sink-&gt;data_type = gst_data_repo_get_data_type_from_caps (caps);</span></span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">          22 :   sink-&gt;fixed_caps = gst_caps_copy (caps);</span></span>
-<span id="L553"><span class="lineNum">     553</span>              : </span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">          22 :   gst_data_repo_sink_set_is_static_tensors (sink);</span></span>
-<span id="L555"><span class="lineNum">     555</span>              : </span>
-<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">          22 :   GST_DEBUG_OBJECT (sink, &quot;data type: %d&quot;, sink-&gt;data_type);</span></span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">          22 :   return (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN);</span></span>
-<span id="L558"><span class="lineNum">     558</span>              : }</span>
-<span id="L559"><span class="lineNum">     559</span>              : </span>
-<span id="L560"><span class="lineNum">     560</span>              : /**</span>
-<span id="L561"><span class="lineNum">     561</span>              :  * @brief Perform a GstQuery on datareposink.</span>
-<span id="L562"><span class="lineNum">     562</span>              :  */</span>
-<span id="L563"><span class="lineNum">     563</span>              : static gboolean</span>
-<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">         554 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
-<span id="L565"><span class="lineNum">     565</span>              : {</span>
-<span id="L566"><span class="lineNum">     566</span>              :   gboolean ret;</span>
-<span id="L567"><span class="lineNum">     567</span>              : </span>
-<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">         554 :   switch (GST_QUERY_TYPE (query)) {</span></span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:{</span></span>
-<span id="L570"><span class="lineNum">     570</span>              :       GstFormat fmt;</span>
-<span id="L571"><span class="lineNum">     571</span>              : </span>
-<span id="L572"><span class="lineNum">     572</span>              :       /* we don't supporting seeking */</span>
-<span id="L573"><span class="lineNum">     573</span> <span class="tlaUNC">           0 :       gst_query_parse_seeking (query, &amp;fmt, NULL, NULL, NULL);</span></span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :       gst_query_set_seeking (query, fmt, FALSE, 0, -1);</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaUNC">           0 :       ret = TRUE;</span></span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L577"><span class="lineNum">     577</span>              :     }</span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC tlaBgGNC">         554 :     default:</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         554 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">         554 :       break;</span></span>
-<span id="L581"><span class="lineNum">     581</span>              :   }</span>
-<span id="L582"><span class="lineNum">     582</span>              : </span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">         554 :   return ret;</span></span>
-<span id="L584"><span class="lineNum">     584</span>              : }</span>
-<span id="L585"><span class="lineNum">     585</span>              : </span>
-<span id="L586"><span class="lineNum">     586</span>              : /**</span>
-<span id="L587"><span class="lineNum">     587</span>              :  * @brief Function to open file</span>
-<span id="L588"><span class="lineNum">     588</span>              :  */</span>
-<span id="L589"><span class="lineNum">     589</span>              : static gboolean</span>
-<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          21 : gst_data_repo_sink_open_file (GstDataRepoSink * sink)</span></span>
-<span id="L591"><span class="lineNum">     591</span>              : {</span>
-<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">          21 :   gchar *filename = NULL;</span></span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">          21 :   int flags = O_CREAT | O_WRONLY;</span></span>
-<span id="L594"><span class="lineNum">     594</span>              : </span>
-<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          21 :   g_return_val_if_fail (sink != NULL, FALSE);</span></span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">          21 :   g_return_val_if_fail (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN, FALSE);</span></span>
-<span id="L597"><span class="lineNum">     597</span>              : </span>
-<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">          21 :   if (sink-&gt;filename == NULL || sink-&gt;filename[0] == '\0')</span></span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaUNC tlaBgUNC">           0 :     goto no_filename;</span></span>
-<span id="L600"><span class="lineNum">     600</span>              : </span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC tlaBgGNC">          21 :   if (sink-&gt;data_type == GST_DATA_REPO_DATA_IMAGE) {</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           4 :     return TRUE;</span></span>
-<span id="L603"><span class="lineNum">     603</span>              :   }</span>
-<span id="L604"><span class="lineNum">     604</span>              : </span>
-<span id="L605"><span class="lineNum">     605</span>              :   /* need to get filename by media type */</span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">          17 :   filename = g_strdup (sink-&gt;filename);</span></span>
-<span id="L607"><span class="lineNum">     607</span>              : </span>
-<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">          17 :   GST_INFO_OBJECT (sink, &quot;opening file %s&quot;, filename);</span></span>
-<span id="L609"><span class="lineNum">     609</span>              : </span>
-<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">          17 :   flags |= O_TRUNC;             /* &quot;wb&quot; */</span></span>
-<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">          17 :   sink-&gt;fd = g_open (filename, flags, 0644);</span></span>
-<span id="L612"><span class="lineNum">     612</span>              : </span>
-<span id="L613"><span class="lineNum">     613</span> <span class="tlaGNC">          17 :   if (sink-&gt;fd &lt; 0)</span></span>
-<span id="L614"><span class="lineNum">     614</span> <span class="tlaUNC tlaBgUNC">           0 :     goto open_failed;</span></span>
-<span id="L615"><span class="lineNum">     615</span>              : </span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC tlaBgGNC">          17 :   g_free (filename);</span></span>
-<span id="L617"><span class="lineNum">     617</span>              : </span>
-<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">          17 :   return TRUE;</span></span>
-<span id="L619"><span class="lineNum">     619</span>              : </span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaUNC tlaBgUNC">           0 : no_filename:</span></span>
-<span id="L621"><span class="lineNum">     621</span>              :   {</span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaUNC">           0 :     GST_ELEMENT_ERROR (sink, RESOURCE, NOT_FOUND,</span></span>
-<span id="L623"><span class="lineNum">     623</span>              :         ((&quot;No file name specified for writing.&quot;)), (NULL));</span>
-<span id="L624"><span class="lineNum">     624</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L625"><span class="lineNum">     625</span>              :   }</span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaUNC">           0 : open_failed:</span></span>
-<span id="L627"><span class="lineNum">     627</span>              :   {</span>
-<span id="L628"><span class="lineNum">     628</span> <span class="tlaUNC">           0 :     switch (errno) {</span></span>
-<span id="L629"><span class="lineNum">     629</span> <span class="tlaUNC">           0 :       case ENOENT:</span></span>
-<span id="L630"><span class="lineNum">     630</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (sink, RESOURCE, NOT_FOUND, (NULL),</span></span>
-<span id="L631"><span class="lineNum">     631</span>              :             (&quot;No such file \&quot;%s\&quot;&quot;, sink-&gt;filename));</span>
-<span id="L632"><span class="lineNum">     632</span> <span class="tlaUNC">           0 :         break;</span></span>
-<span id="L633"><span class="lineNum">     633</span> <span class="tlaUNC">           0 :       default:</span></span>
-<span id="L634"><span class="lineNum">     634</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (sink, RESOURCE, OPEN_READ,</span></span>
-<span id="L635"><span class="lineNum">     635</span>              :             ((&quot;Could not open file \&quot;%s\&quot; for reading.&quot;), sink-&gt;filename),</span>
-<span id="L636"><span class="lineNum">     636</span>              :             GST_ERROR_SYSTEM);</span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaUNC">           0 :         break;</span></span>
-<span id="L638"><span class="lineNum">     638</span>              :     }</span>
-<span id="L639"><span class="lineNum">     639</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L640"><span class="lineNum">     640</span>              :   }</span>
-<span id="L641"><span class="lineNum">     641</span>              : </span>
-<span id="L642"><span class="lineNum">     642</span> <span class="tlaUNC">           0 : error_exit:</span></span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaUNC">           0 :   g_free (filename);</span></span>
-<span id="L644"><span class="lineNum">     644</span>              : </span>
-<span id="L645"><span class="lineNum">     645</span> <span class="tlaUNC">           0 :   return FALSE;</span></span>
-<span id="L646"><span class="lineNum">     646</span>              : }</span>
-<span id="L647"><span class="lineNum">     647</span>              : </span>
-<span id="L648"><span class="lineNum">     648</span>              : /**</span>
-<span id="L649"><span class="lineNum">     649</span>              :  * @brief Stop datareposink</span>
-<span id="L650"><span class="lineNum">     650</span>              :  */</span>
-<span id="L651"><span class="lineNum">     651</span>              : static gboolean</span>
-<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC tlaBgGNC">          22 : gst_data_repo_sink_stop (GstBaseSink * basesink)</span></span>
-<span id="L653"><span class="lineNum">     653</span>              : {</span>
-<span id="L654"><span class="lineNum">     654</span>              :   GstDataRepoSink *sink;</span>
-<span id="L655"><span class="lineNum">     655</span>              : </span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          22 :   sink = GST_DATA_REPO_SINK_CAST (basesink);</span></span>
-<span id="L657"><span class="lineNum">     657</span>              : </span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          22 :   g_close (sink-&gt;fd, NULL);</span></span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">          22 :   sink-&gt;fd = 0;</span></span>
-<span id="L660"><span class="lineNum">     660</span>              : </span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">          22 :   return TRUE;</span></span>
-<span id="L662"><span class="lineNum">     662</span>              : }</span>
-<span id="L663"><span class="lineNum">     663</span>              : </span>
-<span id="L664"><span class="lineNum">     664</span>              : /**</span>
-<span id="L665"><span class="lineNum">     665</span>              :  * @brief Write json to file</span>
-<span id="L666"><span class="lineNum">     666</span>              :  */</span>
-<span id="L667"><span class="lineNum">     667</span>              : static gboolean</span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">          22 : __write_json (JsonObject * object, const gchar * filename)</span></span>
-<span id="L669"><span class="lineNum">     669</span>              : {</span>
-<span id="L670"><span class="lineNum">     670</span>              :   JsonNode *root;</span>
-<span id="L671"><span class="lineNum">     671</span>              :   JsonGenerator *generator;</span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">          22 :   gboolean ret = TRUE;</span></span>
-<span id="L673"><span class="lineNum">     673</span>              : </span>
-<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (object != NULL, FALSE);</span></span>
-<span id="L675"><span class="lineNum">     675</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (filename != NULL, FALSE);</span></span>
-<span id="L676"><span class="lineNum">     676</span>              : </span>
-<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">          22 :   root = json_node_init_object (json_node_alloc (), object);</span></span>
-<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">          22 :   generator = json_generator_new ();</span></span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">          22 :   json_generator_set_root (generator, root);</span></span>
-<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">          22 :   json_generator_set_pretty (generator, TRUE);</span></span>
-<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">          22 :   ret = json_generator_to_file (generator, filename, NULL);</span></span>
-<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">          22 :   if (!ret) {</span></span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to write JSON to file %s&quot;, filename);</span></span>
-<span id="L684"><span class="lineNum">     684</span>              :   }</span>
-<span id="L685"><span class="lineNum">     685</span>              : </span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC tlaBgGNC">          22 :   g_object_unref (generator);</span></span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">          22 :   json_node_free (root);</span></span>
-<span id="L688"><span class="lineNum">     688</span>              : </span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">          22 :   return ret;</span></span>
-<span id="L690"><span class="lineNum">     690</span>              : }</span>
-<span id="L691"><span class="lineNum">     691</span>              : </span>
-<span id="L692"><span class="lineNum">     692</span>              : /**</span>
-<span id="L693"><span class="lineNum">     693</span>              :  * @brief write the meta information to a JSON file</span>
-<span id="L694"><span class="lineNum">     694</span>              :  */</span>
-<span id="L695"><span class="lineNum">     695</span>              : static gboolean</span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">          22 : gst_data_repo_sink_write_json_meta_file (GstDataRepoSink * sink)</span></span>
-<span id="L697"><span class="lineNum">     697</span>              : {</span>
-<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">          22 :   gchar *caps_str = NULL;</span></span>
-<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC">          22 :   gboolean ret = TRUE;</span></span>
-<span id="L700"><span class="lineNum">     700</span>              : </span>
-<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink != NULL, FALSE);</span></span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;json_filename != NULL, FALSE);</span></span>
-<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN, FALSE);</span></span>
-<span id="L704"><span class="lineNum">     704</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;fixed_caps != NULL, FALSE);</span></span>
-<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;json_object != NULL, FALSE);</span></span>
-<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;sample_offset_array != NULL, FALSE);</span></span>
-<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;tensor_size_array != NULL, FALSE);</span></span>
-<span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;tensor_count_array != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L709"><span class="lineNum">     709</span>              : </span>
-<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">          22 :   caps_str = gst_caps_to_string (sink-&gt;fixed_caps);</span></span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">          22 :   GST_DEBUG_OBJECT (sink, &quot;caps string: %s&quot;, caps_str);</span></span>
-<span id="L712"><span class="lineNum">     712</span>              : </span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">          22 :   json_object_set_string_member (sink-&gt;json_object, &quot;gst_caps&quot;, caps_str);</span></span>
-<span id="L714"><span class="lineNum">     714</span>              : </span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          22 :   json_object_set_int_member (sink-&gt;json_object, &quot;total_samples&quot;,</span></span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">          22 :       sink-&gt;total_samples);</span></span>
-<span id="L717"><span class="lineNum">     717</span>              : </span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">          22 :   if (sink-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; !sink-&gt;is_static_tensors) {</span></span>
-<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;sample_offset&quot;,</span></span>
-<span id="L720"><span class="lineNum">     720</span>              :         sink-&gt;sample_offset_array);</span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;tensor_size&quot;,</span></span>
-<span id="L722"><span class="lineNum">     722</span>              :         sink-&gt;tensor_size_array);</span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;tensor_count&quot;,</span></span>
-<span id="L724"><span class="lineNum">     724</span>              :         sink-&gt;tensor_count_array);</span>
-<span id="L725"><span class="lineNum">     725</span>              : </span>
-<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">          10 :     sink-&gt;sample_offset_array = NULL;</span></span>
-<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">          10 :     sink-&gt;tensor_size_array = NULL;</span></span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">          10 :     sink-&gt;tensor_count_array = NULL;</span></span>
-<span id="L729"><span class="lineNum">     729</span>              :   } else {</span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          12 :     json_object_set_int_member (sink-&gt;json_object, &quot;sample_size&quot;,</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">          12 :         sink-&gt;sample_size);</span></span>
-<span id="L732"><span class="lineNum">     732</span>              :   }</span>
-<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">          22 :   ret = __write_json (sink-&gt;json_object, sink-&gt;json_filename);</span></span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">          22 :   if (!ret) {</span></span>
-<span id="L735"><span class="lineNum">     735</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (sink, &quot;Failed to write json meta file: %s&quot;,</span></span>
-<span id="L736"><span class="lineNum">     736</span>              :         sink-&gt;json_filename);</span>
-<span id="L737"><span class="lineNum">     737</span>              :   }</span>
-<span id="L738"><span class="lineNum">     738</span>              : </span>
-<span id="L739"><span class="lineNum">     739</span> <span class="tlaGNC tlaBgGNC">          22 :   json_object_unref (sink-&gt;json_object);</span></span>
-<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">          22 :   g_free (caps_str);</span></span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">          22 :   sink-&gt;json_object = NULL;</span></span>
-<span id="L742"><span class="lineNum">     742</span>              : </span>
-<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">          22 :   return ret;</span></span>
-<span id="L744"><span class="lineNum">     744</span>              : }</span>
-<span id="L745"><span class="lineNum">     745</span>              : </span>
-<span id="L746"><span class="lineNum">     746</span>              : /**</span>
-<span id="L747"><span class="lineNum">     747</span>              :  * @brief Change state of datareposink.</span>
-<span id="L748"><span class="lineNum">     748</span>              :  */</span>
-<span id="L749"><span class="lineNum">     749</span>              : static GstStateChangeReturn</span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">         138 : gst_data_repo_sink_change_state (GstElement * element,</span></span>
-<span id="L751"><span class="lineNum">     751</span>              :     GstStateChange transition)</span>
-<span id="L752"><span class="lineNum">     752</span>              : {</span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">         138 :   GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;</span></span>
-<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">         138 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (element);</span></span>
-<span id="L755"><span class="lineNum">     755</span>              : </span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">         138 :   switch (transition) {</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">          26 :     case GST_STATE_CHANGE_NULL_TO_READY:</span></span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">          26 :       GST_INFO_OBJECT (sink, &quot;NULL_TO_READY&quot;);</span></span>
-<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">          26 :       if (sink-&gt;filename == NULL || sink-&gt;json_filename == NULL) {</span></span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">           2 :         GST_ERROR_OBJECT (sink, &quot;Set filenmae and json&quot;);</span></span>
-<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">           2 :         goto state_change_failed;</span></span>
-<span id="L762"><span class="lineNum">     762</span>              :       }</span>
-<span id="L763"><span class="lineNum">     763</span> <span class="tlaGNC">          24 :       break;</span></span>
-<span id="L764"><span class="lineNum">     764</span>              : </span>
-<span id="L765"><span class="lineNum">     765</span> <span class="tlaGNC">          24 :     case GST_STATE_CHANGE_READY_TO_PAUSED:</span></span>
-<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">          24 :       GST_INFO_OBJECT (sink, &quot;READY_TO_PAUSED&quot;);</span></span>
-<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC">          24 :       break;</span></span>
-<span id="L768"><span class="lineNum">     768</span>              : </span>
-<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">          21 :     case GST_STATE_CHANGE_PAUSED_TO_PLAYING:</span></span>
-<span id="L770"><span class="lineNum">     770</span> <span class="tlaGNC">          21 :       GST_INFO_OBJECT (sink, &quot;PAUSED_TO_PLAYING&quot;);</span></span>
-<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">          21 :       if (!gst_data_repo_sink_open_file (sink))</span></span>
-<span id="L772"><span class="lineNum">     772</span> <span class="tlaUNC tlaBgUNC">           0 :         goto state_change_failed;</span></span>
-<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC tlaBgGNC">          21 :       break;</span></span>
-<span id="L774"><span class="lineNum">     774</span>              : </span>
-<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">          67 :     default:</span></span>
-<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">          67 :       break;</span></span>
-<span id="L777"><span class="lineNum">     777</span>              :   }</span>
-<span id="L778"><span class="lineNum">     778</span>              : </span>
-<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">         136 :   ret = GST_ELEMENT_CLASS (parent_class)-&gt;change_state (element, transition);</span></span>
-<span id="L780"><span class="lineNum">     780</span>              : </span>
-<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">         136 :   switch (transition) {</span></span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          21 :     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:</span></span>
-<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">          21 :       GST_INFO_OBJECT (sink, &quot;PLAYING_TO_PAUSED&quot;);</span></span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          21 :       break;</span></span>
-<span id="L785"><span class="lineNum">     785</span>              : </span>
-<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">          22 :     case GST_STATE_CHANGE_PAUSED_TO_READY:</span></span>
-<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">          22 :       GST_INFO_OBJECT (sink, &quot;PAUSED_TO_READY&quot;);</span></span>
-<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">          22 :       break;</span></span>
-<span id="L789"><span class="lineNum">     789</span>              : </span>
-<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">          22 :     case GST_STATE_CHANGE_READY_TO_NULL:</span></span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          22 :       GST_INFO_OBJECT (sink, &quot;READY_TO_NULL&quot;);</span></span>
-<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">          22 :       if (!gst_data_repo_sink_write_json_meta_file (sink))</span></span>
-<span id="L793"><span class="lineNum">     793</span> <span class="tlaUNC tlaBgUNC">           0 :         goto state_change_failed;</span></span>
-<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC tlaBgGNC">          22 :       break;</span></span>
-<span id="L795"><span class="lineNum">     795</span>              : </span>
-<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">          71 :     default:</span></span>
-<span id="L797"><span class="lineNum">     797</span> <span class="tlaGNC">          71 :       break;</span></span>
-<span id="L798"><span class="lineNum">     798</span>              :   }</span>
-<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">         136 :   return ret;</span></span>
-<span id="L800"><span class="lineNum">     800</span>              : </span>
-<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">           2 : state_change_failed:</span></span>
-<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">           2 :   GST_ERROR_OBJECT (sink, &quot;state change failed&quot;);</span></span>
-<span id="L803"><span class="lineNum">     803</span>              : </span>
-<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">           2 :   return GST_STATE_CHANGE_FAILURE;</span></span>
-<span id="L805"><span class="lineNum">     805</span>              : }</span>
+<span id="L522"><span class="lineNum">     522</span>              :   GstTensorsConfig config;</span>
+<span id="L523"><span class="lineNum">     523</span>              : </span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">          33 :   g_return_if_fail (sink != NULL);</span></span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">          22 :   g_return_if_fail (sink-&gt;fixed_caps != NULL);</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">          22 :   g_return_if_fail (sink-&gt;data_type == GST_DATA_REPO_DATA_TENSOR);</span></span>
+<span id="L527"><span class="lineNum">     527</span>              : </span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">          11 :   if (gst_tensors_config_from_caps (&amp;config, sink-&gt;fixed_caps, TRUE)) {</span></span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">          11 :     sink-&gt;is_static_tensors = gst_tensors_config_is_static (&amp;config);</span></span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">          11 :     gst_tensors_config_free (&amp;config);</span></span>
+<span id="L531"><span class="lineNum">     531</span>              :   }</span>
+<span id="L532"><span class="lineNum">     532</span>              : }</span>
+<span id="L533"><span class="lineNum">     533</span>              : </span>
+<span id="L534"><span class="lineNum">     534</span>              : /**</span>
+<span id="L535"><span class="lineNum">     535</span>              :  * @brief Set caps of datareposink.</span>
+<span id="L536"><span class="lineNum">     536</span>              :  */</span>
+<span id="L537"><span class="lineNum">     537</span>              : static gboolean</span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">          22 : gst_data_repo_sink_set_caps (GstBaseSink * bsink, GstCaps * caps)</span></span>
+<span id="L539"><span class="lineNum">     539</span>              : {</span>
+<span id="L540"><span class="lineNum">     540</span>              :   GstDataRepoSink *sink;</span>
+<span id="L541"><span class="lineNum">     541</span>              : </span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">          22 :   sink = GST_DATA_REPO_SINK (bsink);</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">          22 :   GST_INFO_OBJECT (sink, &quot;set caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L544"><span class="lineNum">     544</span>              : </span>
+<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">          22 :   if (sink-&gt;fixed_caps) {</span></span>
+<span id="L546"><span class="lineNum">     546</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_caps_unref (sink-&gt;fixed_caps);</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC">           0 :     sink-&gt;fixed_caps = NULL;</span></span>
+<span id="L548"><span class="lineNum">     548</span>              :   }</span>
+<span id="L549"><span class="lineNum">     549</span>              : </span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC tlaBgGNC">          22 :   sink-&gt;data_type = gst_data_repo_get_data_type_from_caps (caps);</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">          22 :   sink-&gt;fixed_caps = gst_caps_copy (caps);</span></span>
+<span id="L552"><span class="lineNum">     552</span>              : </span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">          22 :   gst_data_repo_sink_set_is_static_tensors (sink);</span></span>
+<span id="L554"><span class="lineNum">     554</span>              : </span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">          22 :   GST_DEBUG_OBJECT (sink, &quot;data type: %d&quot;, sink-&gt;data_type);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">          22 :   return (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN);</span></span>
+<span id="L557"><span class="lineNum">     557</span>              : }</span>
+<span id="L558"><span class="lineNum">     558</span>              : </span>
+<span id="L559"><span class="lineNum">     559</span>              : /**</span>
+<span id="L560"><span class="lineNum">     560</span>              :  * @brief Perform a GstQuery on datareposink.</span>
+<span id="L561"><span class="lineNum">     561</span>              :  */</span>
+<span id="L562"><span class="lineNum">     562</span>              : static gboolean</span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">         549 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
+<span id="L564"><span class="lineNum">     564</span>              : {</span>
+<span id="L565"><span class="lineNum">     565</span>              :   gboolean ret;</span>
+<span id="L566"><span class="lineNum">     566</span>              : </span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         549 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L568"><span class="lineNum">     568</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:{</span></span>
+<span id="L569"><span class="lineNum">     569</span>              :       GstFormat fmt;</span>
+<span id="L570"><span class="lineNum">     570</span>              : </span>
+<span id="L571"><span class="lineNum">     571</span>              :       /* we don't supporting seeking */</span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaUNC">           0 :       gst_query_parse_seeking (query, &amp;fmt, NULL, NULL, NULL);</span></span>
+<span id="L573"><span class="lineNum">     573</span> <span class="tlaUNC">           0 :       gst_query_set_seeking (query, fmt, FALSE, 0, -1);</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :       ret = TRUE;</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L576"><span class="lineNum">     576</span>              :     }</span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC tlaBgGNC">         549 :     default:</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         549 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         549 :       break;</span></span>
+<span id="L580"><span class="lineNum">     580</span>              :   }</span>
+<span id="L581"><span class="lineNum">     581</span>              : </span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         549 :   return ret;</span></span>
+<span id="L583"><span class="lineNum">     583</span>              : }</span>
+<span id="L584"><span class="lineNum">     584</span>              : </span>
+<span id="L585"><span class="lineNum">     585</span>              : /**</span>
+<span id="L586"><span class="lineNum">     586</span>              :  * @brief Function to open file</span>
+<span id="L587"><span class="lineNum">     587</span>              :  */</span>
+<span id="L588"><span class="lineNum">     588</span>              : static gboolean</span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">          21 : gst_data_repo_sink_open_file (GstDataRepoSink * sink)</span></span>
+<span id="L590"><span class="lineNum">     590</span>              : {</span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          21 :   gchar *filename = NULL;</span></span>
+<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">          21 :   int flags = O_CREAT | O_WRONLY;</span></span>
+<span id="L593"><span class="lineNum">     593</span>              : </span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">          21 :   g_return_val_if_fail (sink != NULL, FALSE);</span></span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">          21 :   g_return_val_if_fail (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN, FALSE);</span></span>
+<span id="L596"><span class="lineNum">     596</span>              : </span>
+<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">          21 :   if (sink-&gt;filename == NULL || sink-&gt;filename[0] == '\0')</span></span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaUNC tlaBgUNC">           0 :     goto no_filename;</span></span>
+<span id="L599"><span class="lineNum">     599</span>              : </span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC tlaBgGNC">          21 :   if (sink-&gt;data_type == GST_DATA_REPO_DATA_IMAGE) {</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">           4 :     return TRUE;</span></span>
+<span id="L602"><span class="lineNum">     602</span>              :   }</span>
+<span id="L603"><span class="lineNum">     603</span>              : </span>
+<span id="L604"><span class="lineNum">     604</span>              :   /* need to get filename by media type */</span>
+<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">          17 :   filename = g_strdup (sink-&gt;filename);</span></span>
+<span id="L606"><span class="lineNum">     606</span>              : </span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">          17 :   GST_INFO_OBJECT (sink, &quot;opening file %s&quot;, filename);</span></span>
+<span id="L608"><span class="lineNum">     608</span>              : </span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">          17 :   flags |= O_TRUNC;             /* &quot;wb&quot; */</span></span>
+<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">          17 :   sink-&gt;fd = g_open (filename, flags, 0644);</span></span>
+<span id="L611"><span class="lineNum">     611</span>              : </span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">          17 :   if (sink-&gt;fd &lt; 0)</span></span>
+<span id="L613"><span class="lineNum">     613</span> <span class="tlaUNC tlaBgUNC">           0 :     goto open_failed;</span></span>
+<span id="L614"><span class="lineNum">     614</span>              : </span>
+<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC tlaBgGNC">          17 :   g_free (filename);</span></span>
+<span id="L616"><span class="lineNum">     616</span>              : </span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">          17 :   return TRUE;</span></span>
+<span id="L618"><span class="lineNum">     618</span>              : </span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaUNC tlaBgUNC">           0 : no_filename:</span></span>
+<span id="L620"><span class="lineNum">     620</span>              :   {</span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaUNC">           0 :     GST_ELEMENT_ERROR (sink, RESOURCE, NOT_FOUND,</span></span>
+<span id="L622"><span class="lineNum">     622</span>              :         ((&quot;No file name specified for writing.&quot;)), (NULL));</span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L624"><span class="lineNum">     624</span>              :   }</span>
+<span id="L625"><span class="lineNum">     625</span> <span class="tlaUNC">           0 : open_failed:</span></span>
+<span id="L626"><span class="lineNum">     626</span>              :   {</span>
+<span id="L627"><span class="lineNum">     627</span> <span class="tlaUNC">           0 :     switch (errno) {</span></span>
+<span id="L628"><span class="lineNum">     628</span> <span class="tlaUNC">           0 :       case ENOENT:</span></span>
+<span id="L629"><span class="lineNum">     629</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (sink, RESOURCE, NOT_FOUND, (NULL),</span></span>
+<span id="L630"><span class="lineNum">     630</span>              :             (&quot;No such file \&quot;%s\&quot;&quot;, sink-&gt;filename));</span>
+<span id="L631"><span class="lineNum">     631</span> <span class="tlaUNC">           0 :         break;</span></span>
+<span id="L632"><span class="lineNum">     632</span> <span class="tlaUNC">           0 :       default:</span></span>
+<span id="L633"><span class="lineNum">     633</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (sink, RESOURCE, OPEN_READ,</span></span>
+<span id="L634"><span class="lineNum">     634</span>              :             ((&quot;Could not open file \&quot;%s\&quot; for reading.&quot;), sink-&gt;filename),</span>
+<span id="L635"><span class="lineNum">     635</span>              :             GST_ERROR_SYSTEM);</span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaUNC">           0 :         break;</span></span>
+<span id="L637"><span class="lineNum">     637</span>              :     }</span>
+<span id="L638"><span class="lineNum">     638</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L639"><span class="lineNum">     639</span>              :   }</span>
+<span id="L640"><span class="lineNum">     640</span>              : </span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaUNC">           0 : error_exit:</span></span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaUNC">           0 :   g_free (filename);</span></span>
+<span id="L643"><span class="lineNum">     643</span>              : </span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaUNC">           0 :   return FALSE;</span></span>
+<span id="L645"><span class="lineNum">     645</span>              : }</span>
+<span id="L646"><span class="lineNum">     646</span>              : </span>
+<span id="L647"><span class="lineNum">     647</span>              : /**</span>
+<span id="L648"><span class="lineNum">     648</span>              :  * @brief Stop datareposink</span>
+<span id="L649"><span class="lineNum">     649</span>              :  */</span>
+<span id="L650"><span class="lineNum">     650</span>              : static gboolean</span>
+<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC tlaBgGNC">          22 : gst_data_repo_sink_stop (GstBaseSink * basesink)</span></span>
+<span id="L652"><span class="lineNum">     652</span>              : {</span>
+<span id="L653"><span class="lineNum">     653</span>              :   GstDataRepoSink *sink;</span>
+<span id="L654"><span class="lineNum">     654</span>              : </span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">          22 :   sink = GST_DATA_REPO_SINK_CAST (basesink);</span></span>
+<span id="L656"><span class="lineNum">     656</span>              : </span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">          22 :   g_close (sink-&gt;fd, NULL);</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          22 :   sink-&gt;fd = 0;</span></span>
+<span id="L659"><span class="lineNum">     659</span>              : </span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">          22 :   return TRUE;</span></span>
+<span id="L661"><span class="lineNum">     661</span>              : }</span>
+<span id="L662"><span class="lineNum">     662</span>              : </span>
+<span id="L663"><span class="lineNum">     663</span>              : /**</span>
+<span id="L664"><span class="lineNum">     664</span>              :  * @brief Write json to file</span>
+<span id="L665"><span class="lineNum">     665</span>              :  */</span>
+<span id="L666"><span class="lineNum">     666</span>              : static gboolean</span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">          22 : __write_json (JsonObject * object, const gchar * filename)</span></span>
+<span id="L668"><span class="lineNum">     668</span>              : {</span>
+<span id="L669"><span class="lineNum">     669</span>              :   JsonNode *root;</span>
+<span id="L670"><span class="lineNum">     670</span>              :   JsonGenerator *generator;</span>
+<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC">          22 :   gboolean ret = TRUE;</span></span>
+<span id="L672"><span class="lineNum">     672</span>              : </span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (object != NULL, FALSE);</span></span>
+<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (filename != NULL, FALSE);</span></span>
+<span id="L675"><span class="lineNum">     675</span>              : </span>
+<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">          22 :   root = json_node_init_object (json_node_alloc (), object);</span></span>
+<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">          22 :   generator = json_generator_new ();</span></span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">          22 :   json_generator_set_root (generator, root);</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">          22 :   json_generator_set_pretty (generator, TRUE);</span></span>
+<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">          22 :   ret = json_generator_to_file (generator, filename, NULL);</span></span>
+<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">          22 :   if (!ret) {</span></span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to write JSON to file %s&quot;, filename);</span></span>
+<span id="L683"><span class="lineNum">     683</span>              :   }</span>
+<span id="L684"><span class="lineNum">     684</span>              : </span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC tlaBgGNC">          22 :   g_object_unref (generator);</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">          22 :   json_node_free (root);</span></span>
+<span id="L687"><span class="lineNum">     687</span>              : </span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">          22 :   return ret;</span></span>
+<span id="L689"><span class="lineNum">     689</span>              : }</span>
+<span id="L690"><span class="lineNum">     690</span>              : </span>
+<span id="L691"><span class="lineNum">     691</span>              : /**</span>
+<span id="L692"><span class="lineNum">     692</span>              :  * @brief write the meta information to a JSON file</span>
+<span id="L693"><span class="lineNum">     693</span>              :  */</span>
+<span id="L694"><span class="lineNum">     694</span>              : static gboolean</span>
+<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">          22 : gst_data_repo_sink_write_json_meta_file (GstDataRepoSink * sink)</span></span>
+<span id="L696"><span class="lineNum">     696</span>              : {</span>
+<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">          22 :   gchar *caps_str = NULL;</span></span>
+<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">          22 :   gboolean ret = TRUE;</span></span>
+<span id="L699"><span class="lineNum">     699</span>              : </span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink != NULL, FALSE);</span></span>
+<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;json_filename != NULL, FALSE);</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;data_type != GST_DATA_REPO_DATA_UNKNOWN, FALSE);</span></span>
+<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;fixed_caps != NULL, FALSE);</span></span>
+<span id="L704"><span class="lineNum">     704</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;json_object != NULL, FALSE);</span></span>
+<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;sample_offset_array != NULL, FALSE);</span></span>
+<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;tensor_size_array != NULL, FALSE);</span></span>
+<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (sink-&gt;tensor_count_array != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L708"><span class="lineNum">     708</span>              : </span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">          22 :   caps_str = gst_caps_to_string (sink-&gt;fixed_caps);</span></span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">          22 :   GST_DEBUG_OBJECT (sink, &quot;caps string: %s&quot;, caps_str);</span></span>
+<span id="L711"><span class="lineNum">     711</span>              : </span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">          22 :   json_object_set_string_member (sink-&gt;json_object, &quot;gst_caps&quot;, caps_str);</span></span>
+<span id="L713"><span class="lineNum">     713</span>              : </span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">          22 :   json_object_set_int_member (sink-&gt;json_object, &quot;total_samples&quot;,</span></span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          22 :       sink-&gt;total_samples);</span></span>
+<span id="L716"><span class="lineNum">     716</span>              : </span>
+<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">          22 :   if (sink-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; !sink-&gt;is_static_tensors) {</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;sample_offset&quot;,</span></span>
+<span id="L719"><span class="lineNum">     719</span>              :         sink-&gt;sample_offset_array);</span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;tensor_size&quot;,</span></span>
+<span id="L721"><span class="lineNum">     721</span>              :         sink-&gt;tensor_size_array);</span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">          10 :     json_object_set_array_member (sink-&gt;json_object, &quot;tensor_count&quot;,</span></span>
+<span id="L723"><span class="lineNum">     723</span>              :         sink-&gt;tensor_count_array);</span>
+<span id="L724"><span class="lineNum">     724</span>              : </span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">          10 :     sink-&gt;sample_offset_array = NULL;</span></span>
+<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">          10 :     sink-&gt;tensor_size_array = NULL;</span></span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">          10 :     sink-&gt;tensor_count_array = NULL;</span></span>
+<span id="L728"><span class="lineNum">     728</span>              :   } else {</span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">          12 :     json_object_set_int_member (sink-&gt;json_object, &quot;sample_size&quot;,</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          12 :         sink-&gt;sample_size);</span></span>
+<span id="L731"><span class="lineNum">     731</span>              :   }</span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          22 :   ret = __write_json (sink-&gt;json_object, sink-&gt;json_filename);</span></span>
+<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">          22 :   if (!ret) {</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (sink, &quot;Failed to write json meta file: %s&quot;,</span></span>
+<span id="L735"><span class="lineNum">     735</span>              :         sink-&gt;json_filename);</span>
+<span id="L736"><span class="lineNum">     736</span>              :   }</span>
+<span id="L737"><span class="lineNum">     737</span>              : </span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC tlaBgGNC">          22 :   json_object_unref (sink-&gt;json_object);</span></span>
+<span id="L739"><span class="lineNum">     739</span> <span class="tlaGNC">          22 :   g_free (caps_str);</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">          22 :   sink-&gt;json_object = NULL;</span></span>
+<span id="L741"><span class="lineNum">     741</span>              : </span>
+<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">          22 :   return ret;</span></span>
+<span id="L743"><span class="lineNum">     743</span>              : }</span>
+<span id="L744"><span class="lineNum">     744</span>              : </span>
+<span id="L745"><span class="lineNum">     745</span>              : /**</span>
+<span id="L746"><span class="lineNum">     746</span>              :  * @brief Change state of datareposink.</span>
+<span id="L747"><span class="lineNum">     747</span>              :  */</span>
+<span id="L748"><span class="lineNum">     748</span>              : static GstStateChangeReturn</span>
+<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">         138 : gst_data_repo_sink_change_state (GstElement * element,</span></span>
+<span id="L750"><span class="lineNum">     750</span>              :     GstStateChange transition)</span>
+<span id="L751"><span class="lineNum">     751</span>              : {</span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">         138 :   GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">         138 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (element);</span></span>
+<span id="L754"><span class="lineNum">     754</span>              : </span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">         138 :   switch (transition) {</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          26 :     case GST_STATE_CHANGE_NULL_TO_READY:</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">          26 :       GST_INFO_OBJECT (sink, &quot;NULL_TO_READY&quot;);</span></span>
+<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">          26 :       if (sink-&gt;filename == NULL || sink-&gt;json_filename == NULL) {</span></span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">           2 :         GST_ERROR_OBJECT (sink, &quot;Set filenmae and json&quot;);</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">           2 :         goto state_change_failed;</span></span>
+<span id="L761"><span class="lineNum">     761</span>              :       }</span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          24 :       break;</span></span>
+<span id="L763"><span class="lineNum">     763</span>              : </span>
+<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC">          24 :     case GST_STATE_CHANGE_READY_TO_PAUSED:</span></span>
+<span id="L765"><span class="lineNum">     765</span> <span class="tlaGNC">          24 :       GST_INFO_OBJECT (sink, &quot;READY_TO_PAUSED&quot;);</span></span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">          24 :       break;</span></span>
+<span id="L767"><span class="lineNum">     767</span>              : </span>
+<span id="L768"><span class="lineNum">     768</span> <span class="tlaGNC">          21 :     case GST_STATE_CHANGE_PAUSED_TO_PLAYING:</span></span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">          21 :       GST_INFO_OBJECT (sink, &quot;PAUSED_TO_PLAYING&quot;);</span></span>
+<span id="L770"><span class="lineNum">     770</span> <span class="tlaGNC">          21 :       if (!gst_data_repo_sink_open_file (sink))</span></span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaUNC tlaBgUNC">           0 :         goto state_change_failed;</span></span>
+<span id="L772"><span class="lineNum">     772</span> <span class="tlaGNC tlaBgGNC">          21 :       break;</span></span>
+<span id="L773"><span class="lineNum">     773</span>              : </span>
+<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">          67 :     default:</span></span>
+<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">          67 :       break;</span></span>
+<span id="L776"><span class="lineNum">     776</span>              :   }</span>
+<span id="L777"><span class="lineNum">     777</span>              : </span>
+<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">         136 :   ret = GST_ELEMENT_CLASS (parent_class)-&gt;change_state (element, transition);</span></span>
+<span id="L779"><span class="lineNum">     779</span>              : </span>
+<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">         136 :   switch (transition) {</span></span>
+<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          21 :     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:</span></span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          21 :       GST_INFO_OBJECT (sink, &quot;PLAYING_TO_PAUSED&quot;);</span></span>
+<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">          21 :       break;</span></span>
+<span id="L784"><span class="lineNum">     784</span>              : </span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">          22 :     case GST_STATE_CHANGE_PAUSED_TO_READY:</span></span>
+<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">          22 :       GST_INFO_OBJECT (sink, &quot;PAUSED_TO_READY&quot;);</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">          22 :       break;</span></span>
+<span id="L788"><span class="lineNum">     788</span>              : </span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          22 :     case GST_STATE_CHANGE_READY_TO_NULL:</span></span>
+<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">          22 :       GST_INFO_OBJECT (sink, &quot;READY_TO_NULL&quot;);</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">          22 :       if (!gst_data_repo_sink_write_json_meta_file (sink))</span></span>
+<span id="L792"><span class="lineNum">     792</span> <span class="tlaUNC tlaBgUNC">           0 :         goto state_change_failed;</span></span>
+<span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC tlaBgGNC">          22 :       break;</span></span>
+<span id="L794"><span class="lineNum">     794</span>              : </span>
+<span id="L795"><span class="lineNum">     795</span> <span class="tlaGNC">          71 :     default:</span></span>
+<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">          71 :       break;</span></span>
+<span id="L797"><span class="lineNum">     797</span>              :   }</span>
+<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">         136 :   return ret;</span></span>
+<span id="L799"><span class="lineNum">     799</span>              : </span>
+<span id="L800"><span class="lineNum">     800</span> <span class="tlaGNC">           2 : state_change_failed:</span></span>
+<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">           2 :   GST_ERROR_OBJECT (sink, &quot;state change failed&quot;);</span></span>
+<span id="L802"><span class="lineNum">     802</span>              : </span>
+<span id="L803"><span class="lineNum">     803</span> <span class="tlaGNC">           2 :   return GST_STATE_CHANGE_FAILURE;</span></span>
+<span id="L804"><span class="lineNum">     804</span>              : }</span>
         </pre>
               </td>
             </tr>

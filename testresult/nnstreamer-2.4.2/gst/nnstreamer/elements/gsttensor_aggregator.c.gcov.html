@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_aggregator.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_aggregator.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">91.4&nbsp;%</td>
-            <td class="headerCovTableEntry">313</td>
-            <td class="headerCovTableEntry">286</td>
+            <td class="headerCovTableEntryHi">91.3&nbsp;%</td>
+            <td class="headerCovTableEntry">311</td>
+            <td class="headerCovTableEntry">284</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -1088,59 +1088,55 @@
 <span id="L1026"><span class="lineNum">    1026</span> <span class="tlaGNC">          18 : gst_tensor_aggregator_parse_caps (GstTensorAggregator * self,</span></span>
 <span id="L1027"><span class="lineNum">    1027</span>              :     const GstCaps * caps)</span>
 <span id="L1028"><span class="lineNum">    1028</span>              : {</span>
-<span id="L1029"><span class="lineNum">    1029</span>              :   GstStructure *structure;</span>
-<span id="L1030"><span class="lineNum">    1030</span>              :   GstTensorsConfig config;</span>
-<span id="L1031"><span class="lineNum">    1031</span>              :   GstTensorInfo *_info;</span>
-<span id="L1032"><span class="lineNum">    1032</span>              :   uint32_t per_frame;</span>
-<span id="L1033"><span class="lineNum">    1033</span>              :   guint count;</span>
-<span id="L1034"><span class="lineNum">    1034</span>              : </span>
-<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">          36 :   g_return_val_if_fail (caps != NULL, FALSE);</span></span>
-<span id="L1036"><span class="lineNum">    1036</span> <span class="tlaGNC">          18 :   g_return_val_if_fail (gst_caps_is_fixed (caps), FALSE);</span></span>
-<span id="L1037"><span class="lineNum">    1037</span>              : </span>
-<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaGNC">          18 :   structure = gst_caps_get_structure (caps, 0);</span></span>
-<span id="L1039"><span class="lineNum">    1039</span>              : </span>
-<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaGNC">          18 :   if (!gst_tensors_config_from_structure (&amp;config, structure) ||</span></span>
-<span id="L1041"><span class="lineNum">    1041</span> <span class="tlaGNC">          18 :       !gst_tensors_config_validate (&amp;config)) {</span></span>
-<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot configure tensor info&quot;);</span></span>
-<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L1044"><span class="lineNum">    1044</span>              :   }</span>
-<span id="L1045"><span class="lineNum">    1045</span>              : </span>
-<span id="L1046"><span class="lineNum">    1046</span>              :   /**</span>
-<span id="L1047"><span class="lineNum">    1047</span>              :    * @todo flush data</span>
-<span id="L1048"><span class="lineNum">    1048</span>              :    * Check properties to detect invalid case.</span>
-<span id="L1049"><span class="lineNum">    1049</span>              :    * Assertion when in=5 out=10 flush=20 or in=10 out=5 flush=20</span>
-<span id="L1050"><span class="lineNum">    1050</span>              :    */</span>
-<span id="L1051"><span class="lineNum">    1051</span> <span class="tlaGNC tlaBgGNC">          18 :   count = (self-&gt;frames_out + self-&gt;frames_in - 1) / self-&gt;frames_in;</span></span>
-<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaGNC">          18 :   if (self-&gt;frames_in * count &lt; self-&gt;frames_flush) {</span></span>
-<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot flush frames&quot;);</span></span>
-<span id="L1054"><span class="lineNum">    1054</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L1055"><span class="lineNum">    1055</span>              :   }</span>
+<span id="L1029"><span class="lineNum">    1029</span>              :   GstTensorsConfig config;</span>
+<span id="L1030"><span class="lineNum">    1030</span>              :   GstTensorInfo *_info;</span>
+<span id="L1031"><span class="lineNum">    1031</span>              :   uint32_t per_frame;</span>
+<span id="L1032"><span class="lineNum">    1032</span>              :   guint count;</span>
+<span id="L1033"><span class="lineNum">    1033</span>              : </span>
+<span id="L1034"><span class="lineNum">    1034</span> <span class="tlaGNC">          36 :   g_return_val_if_fail (caps != NULL, FALSE);</span></span>
+<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">          18 :   g_return_val_if_fail (gst_caps_is_fixed (caps), FALSE);</span></span>
+<span id="L1036"><span class="lineNum">    1036</span>              : </span>
+<span id="L1037"><span class="lineNum">    1037</span> <span class="tlaGNC">          18 :   if (!gst_tensors_config_from_caps (&amp;config, caps, TRUE)) {</span></span>
+<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot configure tensor info&quot;);</span></span>
+<span id="L1039"><span class="lineNum">    1039</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L1040"><span class="lineNum">    1040</span>              :   }</span>
+<span id="L1041"><span class="lineNum">    1041</span>              : </span>
+<span id="L1042"><span class="lineNum">    1042</span>              :   /**</span>
+<span id="L1043"><span class="lineNum">    1043</span>              :    * @todo flush data</span>
+<span id="L1044"><span class="lineNum">    1044</span>              :    * Check properties to detect invalid case.</span>
+<span id="L1045"><span class="lineNum">    1045</span>              :    * Assertion when in=5 out=10 flush=20 or in=10 out=5 flush=20</span>
+<span id="L1046"><span class="lineNum">    1046</span>              :    */</span>
+<span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC tlaBgGNC">          18 :   count = (self-&gt;frames_out + self-&gt;frames_in - 1) / self-&gt;frames_in;</span></span>
+<span id="L1048"><span class="lineNum">    1048</span> <span class="tlaGNC">          18 :   if (self-&gt;frames_in * count &lt; self-&gt;frames_flush) {</span></span>
+<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot flush frames&quot;);</span></span>
+<span id="L1050"><span class="lineNum">    1050</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L1051"><span class="lineNum">    1051</span>              :   }</span>
+<span id="L1052"><span class="lineNum">    1052</span>              : </span>
+<span id="L1053"><span class="lineNum">    1053</span> <span class="tlaGNC tlaBgGNC">          18 :   self-&gt;in_config = config;</span></span>
+<span id="L1054"><span class="lineNum">    1054</span>              :   /* tensor-aggregator now handles single tensor. */</span>
+<span id="L1055"><span class="lineNum">    1055</span> <span class="tlaGNC">          18 :   _info = gst_tensors_info_get_nth_info (&amp;config.info, 0);</span></span>
 <span id="L1056"><span class="lineNum">    1056</span>              : </span>
-<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC tlaBgGNC">          18 :   self-&gt;in_config = config;</span></span>
-<span id="L1058"><span class="lineNum">    1058</span>              :   /* tensor-aggregator now handles single tensor. */</span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">          18 :   _info = &amp;config.info.info[0];</span></span>
-<span id="L1060"><span class="lineNum">    1060</span>              : </span>
-<span id="L1061"><span class="lineNum">    1061</span>              :   /**</span>
-<span id="L1062"><span class="lineNum">    1062</span>              :    * update dimension in output tensor.</span>
-<span id="L1063"><span class="lineNum">    1063</span>              :    * e.g, in-dimension 2:200:200:1</span>
-<span id="L1064"><span class="lineNum">    1064</span>              :    * if frames_out=10 and frames_dim=3, then out-dimension is 2:200:200:10.</span>
-<span id="L1065"><span class="lineNum">    1065</span>              :    * if frames_out=10 and frames_dim=2, then out-dimension is 2:200:2000:1.</span>
-<span id="L1066"><span class="lineNum">    1066</span>              :    */</span>
-<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">          18 :   if (self-&gt;frames_dim &gt;= NNS_TENSOR_RANK_LIMIT ||</span></span>
-<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaGNC">          18 :       (_info-&gt;dimension[self-&gt;frames_dim] % self-&gt;frames_in) != 0) {</span></span>
-<span id="L1069"><span class="lineNum">    1069</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot update dimension in output tensor&quot;);</span></span>
-<span id="L1070"><span class="lineNum">    1070</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L1071"><span class="lineNum">    1071</span>              :   }</span>
-<span id="L1072"><span class="lineNum">    1072</span> <span class="tlaGNC tlaBgGNC">          18 :   per_frame = _info-&gt;dimension[self-&gt;frames_dim] / self-&gt;frames_in;</span></span>
+<span id="L1057"><span class="lineNum">    1057</span>              :   /**</span>
+<span id="L1058"><span class="lineNum">    1058</span>              :    * update dimension in output tensor.</span>
+<span id="L1059"><span class="lineNum">    1059</span>              :    * e.g, in-dimension 2:200:200:1</span>
+<span id="L1060"><span class="lineNum">    1060</span>              :    * if frames_out=10 and frames_dim=3, then out-dimension is 2:200:200:10.</span>
+<span id="L1061"><span class="lineNum">    1061</span>              :    * if frames_out=10 and frames_dim=2, then out-dimension is 2:200:2000:1.</span>
+<span id="L1062"><span class="lineNum">    1062</span>              :    */</span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">          18 :   if (self-&gt;frames_dim &gt;= NNS_TENSOR_RANK_LIMIT ||</span></span>
+<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">          18 :       (_info-&gt;dimension[self-&gt;frames_dim] % self-&gt;frames_in) != 0) {</span></span>
+<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot update dimension in output tensor&quot;);</span></span>
+<span id="L1066"><span class="lineNum">    1066</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L1067"><span class="lineNum">    1067</span>              :   }</span>
+<span id="L1068"><span class="lineNum">    1068</span> <span class="tlaGNC tlaBgGNC">          18 :   per_frame = _info-&gt;dimension[self-&gt;frames_dim] / self-&gt;frames_in;</span></span>
+<span id="L1069"><span class="lineNum">    1069</span>              : </span>
+<span id="L1070"><span class="lineNum">    1070</span> <span class="tlaGNC">          18 :   _info-&gt;dimension[self-&gt;frames_dim] = per_frame * self-&gt;frames_out;</span></span>
+<span id="L1071"><span class="lineNum">    1071</span> <span class="tlaGNC">          18 :   self-&gt;out_config = config;</span></span>
+<span id="L1072"><span class="lineNum">    1072</span> <span class="tlaGNC">          18 :   self-&gt;tensor_configured = TRUE;</span></span>
 <span id="L1073"><span class="lineNum">    1073</span>              : </span>
-<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">          18 :   _info-&gt;dimension[self-&gt;frames_dim] = per_frame * self-&gt;frames_out;</span></span>
-<span id="L1075"><span class="lineNum">    1075</span> <span class="tlaGNC">          18 :   self-&gt;out_config = config;</span></span>
-<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">          18 :   self-&gt;tensor_configured = TRUE;</span></span>
-<span id="L1077"><span class="lineNum">    1077</span>              : </span>
-<span id="L1078"><span class="lineNum">    1078</span> <span class="tlaGNC">          18 :   silent_debug_config (self, &amp;self-&gt;in_config, &quot;in-tensor&quot;);</span></span>
-<span id="L1079"><span class="lineNum">    1079</span> <span class="tlaGNC">          18 :   silent_debug_config (self, &amp;self-&gt;out_config, &quot;out-tensor&quot;);</span></span>
-<span id="L1080"><span class="lineNum">    1080</span> <span class="tlaGNC">          18 :   return TRUE;</span></span>
-<span id="L1081"><span class="lineNum">    1081</span>              : }</span>
+<span id="L1074"><span class="lineNum">    1074</span> <span class="tlaGNC">          18 :   silent_debug_config (self, &amp;self-&gt;in_config, &quot;in-tensor&quot;);</span></span>
+<span id="L1075"><span class="lineNum">    1075</span> <span class="tlaGNC">          18 :   silent_debug_config (self, &amp;self-&gt;out_config, &quot;out-tensor&quot;);</span></span>
+<span id="L1076"><span class="lineNum">    1076</span> <span class="tlaGNC">          18 :   return TRUE;</span></span>
+<span id="L1077"><span class="lineNum">    1077</span>              : }</span>
         </pre>
               </td>
             </tr>

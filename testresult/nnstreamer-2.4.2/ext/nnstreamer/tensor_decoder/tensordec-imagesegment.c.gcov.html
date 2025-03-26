@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-imagesegment.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-imagesegment.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">78.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">88.2&nbsp;%</td>
@@ -342,31 +342,31 @@
 <span id="L280"><span class="lineNum">     280</span>              :  * Probability that each pixel is assumed to be labeled object.</span>
 <span id="L281"><span class="lineNum">     281</span>              :  */</span>
 <span id="L282"><span class="lineNum">     282</span>              : static GstCaps *</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC tlaBgGNC">          34 : is_getOutCaps (void **pdata, const GstTensorsConfig * config)</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC tlaBgGNC">          20 : is_getOutCaps (void **pdata, const GstTensorsConfig * config)</span></span>
 <span id="L284"><span class="lineNum">     284</span>              : {</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          34 :   image_segments *idata = *pdata;</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          20 :   image_segments *idata = *pdata;</span></span>
 <span id="L286"><span class="lineNum">     286</span>              :   GstCaps *caps;</span>
 <span id="L287"><span class="lineNum">     287</span>              :   char *str;</span>
 <span id="L288"><span class="lineNum">     288</span>              : </span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">          34 :   g_return_val_if_fail (config != NULL, NULL);</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          34 :   GST_INFO (&quot;Num Tensors = %d&quot;, config-&gt;info.num_tensors);</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          34 :   g_return_val_if_fail (config-&gt;info.num_tensors &gt;= 1, NULL);</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">          20 :   g_return_val_if_fail (config != NULL, NULL);</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          20 :   GST_INFO (&quot;Num Tensors = %d&quot;, config-&gt;info.num_tensors);</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          20 :   g_return_val_if_fail (config-&gt;info.num_tensors &gt;= 1, NULL);</span></span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          34 :   if (idata-&gt;mode == MODE_SNPE_DEEPLAB) {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           8 :     idata-&gt;width = config-&gt;info.info[0].dimension[0];</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           8 :     idata-&gt;height = config-&gt;info.info[0].dimension[1];</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          20 :   if (idata-&gt;mode == MODE_SNPE_DEEPLAB) {</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           5 :     idata-&gt;width = config-&gt;info.info[0].dimension[0];</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           5 :     idata-&gt;height = config-&gt;info.info[0].dimension[1];</span></span>
 <span id="L296"><span class="lineNum">     296</span>              :   } else {</span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          26 :     idata-&gt;width = config-&gt;info.info[0].dimension[1];</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          26 :     idata-&gt;height = config-&gt;info.info[0].dimension[2];</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          15 :     idata-&gt;width = config-&gt;info.info[0].dimension[1];</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          15 :     idata-&gt;height = config-&gt;info.info[0].dimension[2];</span></span>
 <span id="L299"><span class="lineNum">     299</span>              :   }</span>
 <span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          34 :   str = g_strdup_printf (&quot;video/x-raw, format = RGBA, &quot;</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          20 :   str = g_strdup_printf (&quot;video/x-raw, format = RGBA, &quot;</span></span>
 <span id="L302"><span class="lineNum">     302</span>              :       &quot;width = %u, height = %u&quot;, idata-&gt;width, idata-&gt;height);</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          34 :   caps = gst_caps_from_string (str);</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          34 :   setFramerateFromConfig (caps, config);</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          34 :   g_free (str);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          20 :   caps = gst_caps_from_string (str);</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          20 :   setFramerateFromConfig (caps, config);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          20 :   g_free (str);</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          34 :   return gst_caps_simplify (caps);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          20 :   return gst_caps_simplify (caps);</span></span>
 <span id="L308"><span class="lineNum">     308</span>              : }</span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
 <span id="L310"><span class="lineNum">     310</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>

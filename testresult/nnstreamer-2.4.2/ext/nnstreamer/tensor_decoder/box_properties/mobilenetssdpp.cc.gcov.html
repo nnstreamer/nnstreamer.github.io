@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssdpp.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssdpp.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">72.6&nbsp;%</td>
+            <td class="headerCovTableEntryLo">71.6&nbsp;%</td>
             <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntry">68</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">88.9&nbsp;%</td>
@@ -248,16 +248,16 @@
 <span id="L186"><span class="lineNum">     186</span>              : </span>
 <span id="L187"><span class="lineNum">     187</span>              : /** @brief Check compatibility of given tensors config */</span>
 <span id="L188"><span class="lineNum">     188</span>              : int</span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC tlaBgGNC">          36 : MobilenetSSDPP::checkCompatible (const GstTensorsConfig *config)</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC tlaBgGNC">          16 : MobilenetSSDPP::checkCompatible (const GstTensorsConfig *config)</span></span>
 <span id="L190"><span class="lineNum">     190</span>              : {</span>
 <span id="L191"><span class="lineNum">     191</span>              :   const uint32_t *dim1, *dim2, *dim3, *dim4;</span>
 <span id="L192"><span class="lineNum">     192</span>              :   int locations_idx, classes_idx, scores_idx, num_idx, i;</span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          36 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          16 :   GstTensorInfo *info = nullptr;</span></span>
 <span id="L194"><span class="lineNum">     194</span>              : </span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          36 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          20 :     return FALSE;</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          16 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L197"><span class="lineNum">     197</span>              : </span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          16 :   locations_idx = get_mobilenet_ssd_pp_tensor_idx (LOCATIONS_IDX);</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC tlaBgGNC">          16 :   locations_idx = get_mobilenet_ssd_pp_tensor_idx (LOCATIONS_IDX);</span></span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          16 :   classes_idx = get_mobilenet_ssd_pp_tensor_idx (CLASSES_IDX);</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          16 :   scores_idx = get_mobilenet_ssd_pp_tensor_idx (SCORES_IDX);</span></span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          16 :   num_idx = get_mobilenet_ssd_pp_tensor_idx (NUM_IDX);</span></span>

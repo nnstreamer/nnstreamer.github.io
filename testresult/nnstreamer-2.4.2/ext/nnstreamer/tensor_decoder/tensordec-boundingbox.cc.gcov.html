@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">70.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">87.9&nbsp;%</td>
@@ -218,11 +218,11 @@
 <span id="L156"><span class="lineNum">     156</span>              :  * If there are third or more tensors, such tensors will be ignored.</span>
 <span id="L157"><span class="lineNum">     157</span>              :  */</span>
 <span id="L158"><span class="lineNum">     158</span>              : static GstCaps *</span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         144 : bb_getOutCaps (void **pdata, const GstTensorsConfig *config)</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          72 : bb_getOutCaps (void **pdata, const GstTensorsConfig *config)</span></span>
 <span id="L160"><span class="lineNum">     160</span>              : {</span>
 <span id="L161"><span class="lineNum">     161</span>              :   /** @todo this is compatible with &quot;SSD&quot; only. expand the capability! */</span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         144 :   BoundingBox *bdata = static_cast&lt;BoundingBox *&gt; (*pdata);</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         144 :   return bdata-&gt;getOutCaps (config);</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          72 :   BoundingBox *bdata = static_cast&lt;BoundingBox *&gt; (*pdata);</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          72 :   return bdata-&gt;getOutCaps (config);</span></span>
 <span id="L164"><span class="lineNum">     164</span>              : }</span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
 <span id="L166"><span class="lineNum">     166</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
@@ -543,31 +543,31 @@
 <span id="L481"><span class="lineNum">     481</span>              :  * @brief check the num_tensors is valid</span>
 <span id="L482"><span class="lineNum">     482</span>              :  */</span>
 <span id="L483"><span class="lineNum">     483</span>              : int</span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">         144 : check_tensors (const GstTensorsConfig *config, const unsigned int limit)</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">          72 : check_tensors (const GstTensorsConfig *config, const unsigned int limit)</span></span>
 <span id="L485"><span class="lineNum">     485</span>              : {</span>
 <span id="L486"><span class="lineNum">     486</span>              :   unsigned int i;</span>
 <span id="L487"><span class="lineNum">     487</span>              :   GstTensorInfo *_info, *_base;</span>
 <span id="L488"><span class="lineNum">     488</span>              : </span>
-<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">         144 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">         144 :   g_return_val_if_fail (config-&gt;info.num_tensors &gt;= limit, FALSE);</span></span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">          72 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">          72 :   g_return_val_if_fail (config-&gt;info.num_tensors &gt;= limit, FALSE);</span></span>
 <span id="L491"><span class="lineNum">     491</span>              : </span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">          94 :   if (config-&gt;info.num_tensors &gt; limit) {</span></span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">          72 :   if (config-&gt;info.num_tensors &gt; limit) {</span></span>
 <span id="L493"><span class="lineNum">     493</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING (&quot;tensor-decoder:boundingbox accepts %d or less tensors. &quot;</span></span>
 <span id="L494"><span class="lineNum">     494</span>              :                  &quot;You are wasting the bandwidth by supplying %d tensors.&quot;,</span>
 <span id="L495"><span class="lineNum">     495</span>              :         limit, config-&gt;info.num_tensors);</span>
 <span id="L496"><span class="lineNum">     496</span>              :   }</span>
 <span id="L497"><span class="lineNum">     497</span>              : </span>
 <span id="L498"><span class="lineNum">     498</span>              :   /* tensor-type of the tensors should be the same */</span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC tlaBgGNC">          94 :   if (config-&gt;info.num_tensors &gt; 0) {</span></span>
-<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">          94 :     _base = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC tlaBgGNC">          72 :   if (config-&gt;info.num_tensors &gt; 0) {</span></span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">          72 :     _base = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         166 :     for (i = 1; i &lt; config-&gt;info.num_tensors; ++i) {</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         144 :     for (i = 1; i &lt; config-&gt;info.num_tensors; ++i) {</span></span>
 <span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">          72 :       _info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, i);</span></span>
 <span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">          72 :       g_return_val_if_fail (_base-&gt;type == _info-&gt;type, FALSE);</span></span>
 <span id="L505"><span class="lineNum">     505</span>              :     }</span>
 <span id="L506"><span class="lineNum">     506</span>              :   }</span>
 <span id="L507"><span class="lineNum">     507</span>              : </span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          94 :   return TRUE;</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          72 :   return TRUE;</span></span>
 <span id="L509"><span class="lineNum">     509</span>              : }</span>
 <span id="L510"><span class="lineNum">     510</span>              : </span>
 <span id="L511"><span class="lineNum">     511</span>              : /** @brief Constructor of BoundingBox */</span>
@@ -1097,14 +1097,14 @@
 <span id="L1035"><span class="lineNum">    1035</span>              :  * @brief Get out caps of bounding box</span>
 <span id="L1036"><span class="lineNum">    1036</span>              :  */</span>
 <span id="L1037"><span class="lineNum">    1037</span>              : GstCaps *</span>
-<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaGNC tlaBgGNC">         144 : BoundingBox::getOutCaps (const GstTensorsConfig *config)</span></span>
+<span id="L1038"><span class="lineNum">    1038</span> <span class="tlaGNC tlaBgGNC">          72 : BoundingBox::getOutCaps (const GstTensorsConfig *config)</span></span>
 <span id="L1039"><span class="lineNum">    1039</span>              : {</span>
 <span id="L1040"><span class="lineNum">    1040</span>              :   GstCaps *caps;</span>
 <span id="L1041"><span class="lineNum">    1041</span>              :   char *str;</span>
 <span id="L1042"><span class="lineNum">    1042</span>              : </span>
-<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">         144 :   int ret = bdata-&gt;checkCompatible (config);</span></span>
-<span id="L1044"><span class="lineNum">    1044</span> <span class="tlaGNC">         144 :   if (!ret)</span></span>
-<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">          88 :     return NULL;</span></span>
+<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaGNC">          72 :   int ret = bdata-&gt;checkCompatible (config);</span></span>
+<span id="L1044"><span class="lineNum">    1044</span> <span class="tlaGNC">          72 :   if (!ret)</span></span>
+<span id="L1045"><span class="lineNum">    1045</span> <span class="tlaGNC">          16 :     return NULL;</span></span>
 <span id="L1046"><span class="lineNum">    1046</span>              : </span>
 <span id="L1047"><span class="lineNum">    1047</span> <span class="tlaGNC">          56 :   str = g_strdup_printf (&quot;video/x-raw, format = RGBA, &quot; /* Use alpha channel to make the background transparent */</span></span>
 <span id="L1048"><span class="lineNum">    1048</span>              :                          &quot;width = %u, height = %u&quot;,</span>

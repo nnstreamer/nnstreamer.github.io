@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-python3.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185 - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-python3.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dcfca8ee83aba2f5ee07bb9c2af957849b6bce8b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#089da04449a4934859581d1323e7626ecd600185</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">78.2&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-26 05:36:55</td>
+            <td class="headerValue">2025-03-27 05:37:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.3&nbsp;%</td>
@@ -108,15 +108,15 @@
 <span id="L46"><span class="lineNum">      46</span>              :   GstCaps *getOutCaps (const GstTensorsConfig *config);</span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              :   /** @brief Lock python-related actions */</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC tlaBgGNC">          68 :   void Py_LOCK ()</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC tlaBgGNC">          47 :   void Py_LOCK ()</span></span>
 <span id="L50"><span class="lineNum">      50</span>              :   {</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          68 :     g_mutex_lock (&amp;py_mutex);</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">          68 :   }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          47 :     g_mutex_lock (&amp;py_mutex);</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">          47 :   }</span></span>
 <span id="L53"><span class="lineNum">      53</span>              :   /** @brief Unlock python-related actions */</span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          68 :   void Py_UNLOCK ()</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          47 :   void Py_UNLOCK ()</span></span>
 <span id="L55"><span class="lineNum">      55</span>              :   {</span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          68 :     g_mutex_unlock (&amp;py_mutex);</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          68 :   }</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          47 :     g_mutex_unlock (&amp;py_mutex);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          47 :   }</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : </span>
 <span id="L59"><span class="lineNum">      59</span>              :   private:</span>
 <span id="L60"><span class="lineNum">      60</span>              :   std::string module_name;</span>
@@ -266,32 +266,32 @@
 <span id="L204"><span class="lineNum">     204</span>              :  * @brief       get output caps</span>
 <span id="L205"><span class="lineNum">     205</span>              :  */</span>
 <span id="L206"><span class="lineNum">     206</span>              : GstCaps *</span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          49 : PYDecoderCore::getOutCaps (const GstTensorsConfig *config)</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          28 : PYDecoderCore::getOutCaps (const GstTensorsConfig *config)</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : {</span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          49 :   PyObject *result = NULL;</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          49 :   GstCaps *caps = NULL;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          28 :   PyObject *result = NULL;</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          28 :   GstCaps *caps = NULL;</span></span>
 <span id="L211"><span class="lineNum">     211</span>              :   UNUSED (config);</span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          49 :   Py_LOCK ();</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          49 :   if (!PyObject_HasAttrString (core_obj, (char *) &quot;getOutCaps&quot;)) {</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          28 :   Py_LOCK ();</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          28 :   if (!PyObject_HasAttrString (core_obj, (char *) &quot;getOutCaps&quot;)) {</span></span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Cannot find 'getOutCaps'&quot;);</span></span>
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaUNC">           0 :     ml_loge (&quot;default caps is `application/octet-stream`&quot;);</span></span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC">           0 :     caps = gst_caps_from_string (&quot;application/octet-stream&quot;);</span></span>
 <span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC">           0 :     goto done;</span></span>
 <span id="L219"><span class="lineNum">     219</span>              :   }</span>
 <span id="L220"><span class="lineNum">     220</span>              : </span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC tlaBgGNC">          49 :   result = PyObject_CallMethod (core_obj, (char *) &quot;getOutCaps&quot;, NULL);</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          49 :   if (result) {</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          49 :     gchar *caps_str = PyBytes_AsString (result);</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          49 :     caps = gst_caps_from_string (caps_str);</span></span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          49 :     Py_SAFEDECREF (result);</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC tlaBgGNC">          28 :   result = PyObject_CallMethod (core_obj, (char *) &quot;getOutCaps&quot;, NULL);</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          28 :   if (result) {</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          28 :     gchar *caps_str = PyBytes_AsString (result);</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          28 :     caps = gst_caps_from_string (caps_str);</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          28 :     Py_SAFEDECREF (result);</span></span>
 <span id="L226"><span class="lineNum">     226</span>              :   } else {</span>
 <span id="L227"><span class="lineNum">     227</span> <span class="tlaUNC tlaBgUNC">           0 :     caps = gst_caps_from_string (&quot;application/octet-stream&quot;);</span></span>
 <span id="L228"><span class="lineNum">     228</span>              :   }</span>
 <span id="L229"><span class="lineNum">     229</span>              : </span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC tlaBgGNC">          49 : done:</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          49 :   Py_UNLOCK ();</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          49 :   return caps;</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC tlaBgGNC">          28 : done:</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          28 :   Py_UNLOCK ();</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          28 :   return caps;</span></span>
 <span id="L233"><span class="lineNum">     233</span>              : }</span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
 <span id="L235"><span class="lineNum">     235</span>              : /**</span>
@@ -404,16 +404,16 @@
 <span id="L342"><span class="lineNum">     342</span>              : </span>
 <span id="L343"><span class="lineNum">     343</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
 <span id="L344"><span class="lineNum">     344</span>              : static GstCaps *</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC tlaBgGNC">          49 : decoder_py_getOutCaps (void **pdata, const GstTensorsConfig *config)</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC tlaBgGNC">          28 : decoder_py_getOutCaps (void **pdata, const GstTensorsConfig *config)</span></span>
 <span id="L346"><span class="lineNum">     346</span>              : {</span>
 <span id="L347"><span class="lineNum">     347</span>              :   GstCaps *caps;</span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          49 :   PYDecoderCore *core = static_cast&lt;PYDecoderCore *&gt; (*pdata);</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          28 :   PYDecoderCore *core = static_cast&lt;PYDecoderCore *&gt; (*pdata);</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          49 :   PyGILState_STATE gstate = PyGILState_Ensure ();</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          49 :   caps = core-&gt;getOutCaps (config);</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          49 :   PyGILState_Release (gstate);</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          49 :   setFramerateFromConfig (caps, config);</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          49 :   return caps;</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          28 :   PyGILState_STATE gstate = PyGILState_Ensure ();</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          28 :   caps = core-&gt;getOutCaps (config);</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          28 :   PyGILState_Release (gstate);</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          28 :   setFramerateFromConfig (caps, config);</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">          28 :   return caps;</span></span>
 <span id="L355"><span class="lineNum">     355</span>              : }</span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
 <span id="L357"><span class="lineNum">     357</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
