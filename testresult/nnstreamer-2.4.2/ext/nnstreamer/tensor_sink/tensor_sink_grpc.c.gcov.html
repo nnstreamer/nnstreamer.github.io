@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-03-31 05:37:27</td>
+            <td class="headerValue">2025-04-01 05:37:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -180,190 +180,190 @@
 <span id="L118"><span class="lineNum">     118</span>              : </span>
 <span id="L119"><span class="lineNum">     119</span>              : /** internal functions */</span>
 <span id="L120"><span class="lineNum">     120</span>              : #define gst_tensor_sink_grpc_parent_class parent_class</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">         384 : G_DEFINE_TYPE (GstTensorSinkGRPC, gst_tensor_sink_grpc, GST_TYPE_BASE_SINK);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">         413 : G_DEFINE_TYPE (GstTensorSinkGRPC, gst_tensor_sink_grpc, GST_TYPE_BASE_SINK);</span></span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
 <span id="L123"><span class="lineNum">     123</span>              : /**</span>
 <span id="L124"><span class="lineNum">     124</span>              :  * @brief initialize the tensor_sink_grpc class.</span>
 <span id="L125"><span class="lineNum">     125</span>              :  */</span>
 <span id="L126"><span class="lineNum">     126</span>              : static void</span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          22 : gst_tensor_sink_grpc_class_init (GstTensorSinkGRPCClass * klass)</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          23 : gst_tensor_sink_grpc_class_init (GstTensorSinkGRPCClass * klass)</span></span>
 <span id="L128"><span class="lineNum">     128</span>              : {</span>
 <span id="L129"><span class="lineNum">     129</span>              :   GObjectClass *gobject_class;</span>
 <span id="L130"><span class="lineNum">     130</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L131"><span class="lineNum">     131</span>              :   GstBaseSinkClass *gstbasesink_class;</span>
 <span id="L132"><span class="lineNum">     132</span>              : </span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          22 :   gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          22 :   gstelement_class = (GstElementClass *) klass;</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          22 :   gstbasesink_class = (GstBaseSinkClass *) klass;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          23 :   gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          23 :   gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          23 :   gstbasesink_class = (GstBaseSinkClass *) klass;</span></span>
 <span id="L136"><span class="lineNum">     136</span>              : </span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          22 :   parent_class = g_type_class_peek_parent (klass);</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          23 :   parent_class = g_type_class_peek_parent (klass);</span></span>
 <span id="L138"><span class="lineNum">     138</span>              : </span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          22 :   gobject_class-&gt;set_property = gst_tensor_sink_grpc_set_property;</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          22 :   gobject_class-&gt;get_property = gst_tensor_sink_grpc_get_property;</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          22 :   gobject_class-&gt;finalize = gst_tensor_sink_grpc_finalize;</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          23 :   gobject_class-&gt;set_property = gst_tensor_sink_grpc_set_property;</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          23 :   gobject_class-&gt;get_property = gst_tensor_sink_grpc_get_property;</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          23 :   gobject_class-&gt;finalize = gst_tensor_sink_grpc_finalize;</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              :   /* install properties */</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L145"><span class="lineNum">     145</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;,</span>
 <span id="L146"><span class="lineNum">     146</span>              :           &quot;Dont' produce verbose output&quot;,</span>
 <span id="L147"><span class="lineNum">     147</span>              :           DEFAULT_PROP_SILENT, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L148"><span class="lineNum">     148</span>              : </span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SERVER,</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_SERVER,</span></span>
 <span id="L150"><span class="lineNum">     150</span>              :       g_param_spec_boolean (&quot;server&quot;, &quot;Server&quot;,</span>
 <span id="L151"><span class="lineNum">     151</span>              :           &quot;Specify its working mode either server or client&quot;,</span>
 <span id="L152"><span class="lineNum">     152</span>              :           DEFAULT_PROP_SERVER, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L153"><span class="lineNum">     153</span>              : </span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_BLOCKING,</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_BLOCKING,</span></span>
 <span id="L155"><span class="lineNum">     155</span>              :       g_param_spec_boolean (&quot;blocking&quot;, &quot;Blocking&quot;,</span>
 <span id="L156"><span class="lineNum">     156</span>              :           &quot;Specify its working mode either blocking or non-blocking&quot;,</span>
 <span id="L157"><span class="lineNum">     157</span>              :           DEFAULT_PROP_BLOCKING, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_IDL,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_IDL,</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :       g_param_spec_string (&quot;idl&quot;, &quot;IDL&quot;,</span>
 <span id="L161"><span class="lineNum">     161</span>              :           &quot;Specify Interface Description Language (IDL) for communication&quot;,</span>
 <span id="L162"><span class="lineNum">     162</span>              :           DEFAULT_PROP_IDL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L163"><span class="lineNum">     163</span>              : </span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
 <span id="L165"><span class="lineNum">     165</span>              :       g_param_spec_string (&quot;host&quot;, &quot;Host&quot;, &quot;The host/IP to send the packets to&quot;,</span>
 <span id="L166"><span class="lineNum">     166</span>              :           DEFAULT_PROP_HOST, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L167"><span class="lineNum">     167</span>              : </span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
 <span id="L169"><span class="lineNum">     169</span>              :       g_param_spec_int (&quot;port&quot;, &quot;Port&quot;, &quot;The port to send the packets to&quot;,</span>
 <span id="L170"><span class="lineNum">     170</span>              :           0, G_MAXUSHORT, DEFAULT_PROP_PORT,</span>
 <span id="L171"><span class="lineNum">     171</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_OUT,</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          23 :   g_object_class_install_property (gobject_class, PROP_OUT,</span></span>
 <span id="L174"><span class="lineNum">     174</span>              :       g_param_spec_uint (&quot;out&quot;, &quot;Out&quot;,</span>
 <span id="L175"><span class="lineNum">     175</span>              :           &quot;The number of output messages generated&quot;,</span>
 <span id="L176"><span class="lineNum">     176</span>              :           0, G_MAXUINT, 0, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          22 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;sinktemplate);</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          23 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;sinktemplate);</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          22 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          23 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L181"><span class="lineNum">     181</span>              :       &quot;TensorSinkGRPC&quot;, &quot;Sink/Network&quot;,</span>
 <span id="L182"><span class="lineNum">     182</span>              :       &quot;Send nnstreamer protocol buffers as gRPC server/client&quot;,</span>
 <span id="L183"><span class="lineNum">     183</span>              :       &quot;Dongju Chae &lt;dongju.chae@samsung.com&gt;&quot;);</span>
 <span id="L184"><span class="lineNum">     184</span>              : </span>
 <span id="L185"><span class="lineNum">     185</span>              :   /* GstBaseSinkClass */</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;start = gst_tensor_sink_grpc_start;</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;stop = gst_tensor_sink_grpc_stop;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;set_caps = gst_tensor_sink_grpc_setcaps;</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;render = gst_tensor_sink_grpc_render;</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;unlock = gst_tensor_sink_grpc_unlock;</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          23 :   gstbasesink_class-&gt;start = gst_tensor_sink_grpc_start;</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          23 :   gstbasesink_class-&gt;stop = gst_tensor_sink_grpc_stop;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          23 :   gstbasesink_class-&gt;set_caps = gst_tensor_sink_grpc_setcaps;</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          23 :   gstbasesink_class-&gt;render = gst_tensor_sink_grpc_render;</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          23 :   gstbasesink_class-&gt;unlock = gst_tensor_sink_grpc_unlock;</span></span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          22 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_sink_grpc_debug,</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          23 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_sink_grpc_debug,</span></span>
 <span id="L193"><span class="lineNum">     193</span>              :       &quot;tensor_sink_grpc&quot;, 0,</span>
 <span id="L194"><span class="lineNum">     194</span>              :       &quot;sink element to support protocol buffers as a gRPC server/client&quot;);</span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          22 : }</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          23 : }</span></span>
 <span id="L196"><span class="lineNum">     196</span>              : </span>
 <span id="L197"><span class="lineNum">     197</span>              : /**</span>
 <span id="L198"><span class="lineNum">     198</span>              :  * @brief initialize grpc config.</span>
 <span id="L199"><span class="lineNum">     199</span>              :  */</span>
 <span id="L200"><span class="lineNum">     200</span>              : static void</span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          15 : grpc_config_init (GstTensorSinkGRPC * self)</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          16 : grpc_config_init (GstTensorSinkGRPC * self)</span></span>
 <span id="L202"><span class="lineNum">     202</span>              : {</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          15 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          16 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">          15 :   grpc-&gt;config.is_server = DEFAULT_PROP_SERVER;</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          15 :   grpc-&gt;config.is_blocking = DEFAULT_PROP_BLOCKING;</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          15 :   grpc-&gt;config.idl = grpc_get_idl (DEFAULT_PROP_IDL);</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          15 :   grpc-&gt;config.dir = GRPC_DIRECTION_TENSORS_TO_BUFFER;</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          15 :   grpc-&gt;config.port = DEFAULT_PROP_PORT;</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          15 :   grpc-&gt;config.host = g_strdup (DEFAULT_PROP_HOST);</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          15 :   grpc-&gt;config.config = &amp;self-&gt;config;</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          15 : }</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">          16 :   grpc-&gt;config.is_server = DEFAULT_PROP_SERVER;</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          16 :   grpc-&gt;config.is_blocking = DEFAULT_PROP_BLOCKING;</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          16 :   grpc-&gt;config.idl = grpc_get_idl (DEFAULT_PROP_IDL);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          16 :   grpc-&gt;config.dir = GRPC_DIRECTION_TENSORS_TO_BUFFER;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          16 :   grpc-&gt;config.port = DEFAULT_PROP_PORT;</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          16 :   grpc-&gt;config.host = g_strdup (DEFAULT_PROP_HOST);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          16 :   grpc-&gt;config.config = &amp;self-&gt;config;</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          16 : }</span></span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
 <span id="L214"><span class="lineNum">     214</span>              : /**</span>
 <span id="L215"><span class="lineNum">     215</span>              :  * @brief initialize tensor_sink_grpc element.</span>
 <span id="L216"><span class="lineNum">     216</span>              :  */</span>
 <span id="L217"><span class="lineNum">     217</span>              : static void</span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          15 : gst_tensor_sink_grpc_init (GstTensorSinkGRPC * self)</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          16 : gst_tensor_sink_grpc_init (GstTensorSinkGRPC * self)</span></span>
 <span id="L219"><span class="lineNum">     219</span>              : {</span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">          15 :   gst_tensors_config_init (&amp;self-&gt;config);</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">          16 :   gst_tensors_config_init (&amp;self-&gt;config);</span></span>
 <span id="L221"><span class="lineNum">     221</span>              : </span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          15 :   self-&gt;silent = DEFAULT_PROP_SILENT;</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          15 :   self-&gt;out = 0;</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          16 :   self-&gt;silent = DEFAULT_PROP_SILENT;</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          16 :   self-&gt;out = 0;</span></span>
 <span id="L224"><span class="lineNum">     224</span>              : </span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          15 :   self-&gt;priv = g_new0 (grpc_private, 1);</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          15 :   grpc_config_init (self);</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          16 :   self-&gt;priv = g_new0 (grpc_private, 1);</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          16 :   grpc_config_init (self);</span></span>
 <span id="L227"><span class="lineNum">     227</span>              : </span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          15 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          15 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          15 : }</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          16 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          16 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          16 : }</span></span>
 <span id="L231"><span class="lineNum">     231</span>              : </span>
 <span id="L232"><span class="lineNum">     232</span>              : /**</span>
 <span id="L233"><span class="lineNum">     233</span>              :  * @brief finalize tensor_sink_grpc element.</span>
 <span id="L234"><span class="lineNum">     234</span>              :  */</span>
 <span id="L235"><span class="lineNum">     235</span>              : static void</span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          15 : gst_tensor_sink_grpc_finalize (GObject * gobject)</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          16 : gst_tensor_sink_grpc_finalize (GObject * gobject)</span></span>
 <span id="L237"><span class="lineNum">     237</span>              : {</span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          15 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (gobject);</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">          15 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          16 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (gobject);</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">          16 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          15 :   g_free (grpc-&gt;config.host);</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          15 :   g_free (grpc);</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          15 :   gst_tensors_config_free (&amp;self-&gt;config);</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          16 :   g_free (grpc-&gt;config.host);</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          16 :   g_free (grpc);</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          16 :   gst_tensors_config_free (&amp;self-&gt;config);</span></span>
 <span id="L244"><span class="lineNum">     244</span>              : </span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          15 :   G_OBJECT_CLASS (parent_class)-&gt;finalize (gobject);</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          15 : }</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          16 :   G_OBJECT_CLASS (parent_class)-&gt;finalize (gobject);</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          16 : }</span></span>
 <span id="L247"><span class="lineNum">     247</span>              : </span>
 <span id="L248"><span class="lineNum">     248</span>              : /**</span>
 <span id="L249"><span class="lineNum">     249</span>              :  * @brief set caps of tensor_sink_grpc element.</span>
 <span id="L250"><span class="lineNum">     250</span>              :  */</span>
 <span id="L251"><span class="lineNum">     251</span>              : static gboolean</span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          11 : gst_tensor_sink_grpc_setcaps (GstBaseSink * sink, GstCaps * caps)</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          12 : gst_tensor_sink_grpc_setcaps (GstBaseSink * sink, GstCaps * caps)</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : {</span>
 <span id="L254"><span class="lineNum">     254</span>              :   GstTensorSinkGRPC *self;</span>
 <span id="L255"><span class="lineNum">     255</span>              :   gboolean ret;</span>
 <span id="L256"><span class="lineNum">     256</span>              : </span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          11 :   self = GST_TENSOR_SINK_GRPC (sink);</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          12 :   self = GST_TENSOR_SINK_GRPC (sink);</span></span>
 <span id="L258"><span class="lineNum">     258</span>              : </span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          11 :   GST_OBJECT_LOCK (self);</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          12 :   GST_OBJECT_LOCK (self);</span></span>
 <span id="L260"><span class="lineNum">     260</span>              : </span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          11 :   ret = gst_tensors_config_from_caps (&amp;self-&gt;config, caps, TRUE);</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          11 :   if (ret) {</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          11 :     GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          12 :   ret = gst_tensors_config_from_caps (&amp;self-&gt;config, caps, TRUE);</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          12 :   if (ret) {</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          12 :     GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_CONFIGURED);</span></span>
 <span id="L264"><span class="lineNum">     264</span>              :   }</span>
 <span id="L265"><span class="lineNum">     265</span>              : </span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          11 :   GST_OBJECT_UNLOCK (self);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          12 :   GST_OBJECT_UNLOCK (self);</span></span>
 <span id="L267"><span class="lineNum">     267</span>              : </span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          11 :   return ret;</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          12 :   return ret;</span></span>
 <span id="L269"><span class="lineNum">     269</span>              : }</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
 <span id="L271"><span class="lineNum">     271</span>              : /**</span>
 <span id="L272"><span class="lineNum">     272</span>              :  * @brief render function of tensor_sink_grpc element.</span>
 <span id="L273"><span class="lineNum">     273</span>              :  */</span>
 <span id="L274"><span class="lineNum">     274</span>              : static GstFlowReturn</span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          80 : gst_tensor_sink_grpc_render (GstBaseSink * sink, GstBuffer * buf)</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          90 : gst_tensor_sink_grpc_render (GstBaseSink * sink, GstBuffer * buf)</span></span>
 <span id="L276"><span class="lineNum">     276</span>              : {</span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">          80 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">          80 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">          90 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">          90 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L279"><span class="lineNum">     279</span>              :   gboolean ret;</span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          80 :   g_return_val_if_fail (GST_OBJECT_FLAG_IS_SET (self,</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          90 :   g_return_val_if_fail (GST_OBJECT_FLAG_IS_SET (self,</span></span>
 <span id="L282"><span class="lineNum">     282</span>              :           GST_TENSOR_SINK_GRPC_STARTED), GST_FLOW_FLUSHING);</span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          80 :   ret = grpc_send (grpc-&gt;instance, buf);</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">          90 :   ret = grpc_send (grpc-&gt;instance, buf);</span></span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          80 :   return ret ? GST_FLOW_OK : GST_FLOW_ERROR;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          90 :   return ret ? GST_FLOW_OK : GST_FLOW_ERROR;</span></span>
 <span id="L287"><span class="lineNum">     287</span>              : }</span>
 <span id="L288"><span class="lineNum">     288</span>              : </span>
 <span id="L289"><span class="lineNum">     289</span>              : /**</span>
 <span id="L290"><span class="lineNum">     290</span>              :  * @brief set properties of tensor_sink_grpc element.</span>
 <span id="L291"><span class="lineNum">     291</span>              :  */</span>
 <span id="L292"><span class="lineNum">     292</span>              : static void</span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          56 : gst_tensor_sink_grpc_set_property (GObject * object, guint prop_id,</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          61 : gst_tensor_sink_grpc_set_property (GObject * object, guint prop_id,</span></span>
 <span id="L294"><span class="lineNum">     294</span>              :     const GValue * value, GParamSpec * pspec)</span>
 <span id="L295"><span class="lineNum">     295</span>              : {</span>
 <span id="L296"><span class="lineNum">     296</span>              :   GstTensorSinkGRPC *self;</span>
 <span id="L297"><span class="lineNum">     297</span>              :   grpc_private *grpc;</span>
 <span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          56 :   g_return_if_fail (GST_IS_TENSOR_SINK_GRPC (object));</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          61 :   g_return_if_fail (GST_IS_TENSOR_SINK_GRPC (object));</span></span>
 <span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          56 :   self = GST_TENSOR_SINK_GRPC (object);</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          56 :   grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          61 :   self = GST_TENSOR_SINK_GRPC (object);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          61 :   grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L303"><span class="lineNum">     303</span>              : </span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          56 :   grpc_common_set_property (object, &amp;self-&gt;silent, grpc, prop_id, value, pspec);</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          61 :   grpc_common_set_property (object, &amp;self-&gt;silent, grpc, prop_id, value, pspec);</span></span>
 <span id="L305"><span class="lineNum">     305</span>              : }</span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
 <span id="L307"><span class="lineNum">     307</span>              : /**</span>
@@ -388,73 +388,73 @@
 <span id="L326"><span class="lineNum">     326</span>              :  * @brief start tensor_sink_grpc element.</span>
 <span id="L327"><span class="lineNum">     327</span>              :  */</span>
 <span id="L328"><span class="lineNum">     328</span>              : static gboolean</span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">          11 : gst_tensor_sink_grpc_start (GstBaseSink * sink)</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">          12 : gst_tensor_sink_grpc_start (GstBaseSink * sink)</span></span>
 <span id="L330"><span class="lineNum">     330</span>              : {</span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          11 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          11 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          12 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          12 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :   gboolean ret;</span>
 <span id="L334"><span class="lineNum">     334</span>              : </span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          11 :   if (GST_OBJECT_FLAG_IS_SET (self, GST_TENSOR_SINK_GRPC_STARTED))</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          12 :   if (GST_OBJECT_FLAG_IS_SET (self, GST_TENSOR_SINK_GRPC_STARTED))</span></span>
 <span id="L336"><span class="lineNum">     336</span> <span class="tlaUNC tlaBgUNC">           0 :     return TRUE;</span></span>
 <span id="L337"><span class="lineNum">     337</span>              : </span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC tlaBgGNC">          11 :   if (grpc-&gt;instance)</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC tlaBgGNC">          12 :   if (grpc-&gt;instance)</span></span>
 <span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC tlaBgUNC">           0 :     grpc_destroy (grpc-&gt;instance);</span></span>
 <span id="L340"><span class="lineNum">     340</span>              : </span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC tlaBgGNC">          11 :   grpc-&gt;instance = grpc_new (&amp;grpc-&gt;config);</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          11 :   if (!grpc-&gt;instance)</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC tlaBgGNC">          12 :   grpc-&gt;instance = grpc_new (&amp;grpc-&gt;config);</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          12 :   if (!grpc-&gt;instance)</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L344"><span class="lineNum">     344</span>              : </span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC tlaBgGNC">          11 :   ret = grpc_start (grpc-&gt;instance);</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          11 :   if (ret) {</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          11 :     GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC tlaBgGNC">          12 :   ret = grpc_start (grpc-&gt;instance);</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          12 :   if (ret) {</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          12 :     GST_OBJECT_FLAG_SET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
 <span id="L348"><span class="lineNum">     348</span>              : </span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">          11 :     if (grpc-&gt;config.is_server) {</span></span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           3 :       gint port = grpc_get_listening_port (grpc-&gt;instance);</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">           3 :       if (port &gt; 0)</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           3 :         g_object_set (self, &quot;port&quot;, port, NULL);</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">          12 :     if (grpc-&gt;config.is_server) {</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           4 :       gint port = grpc_get_listening_port (grpc-&gt;instance);</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">           4 :       if (port &gt; 0)</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           4 :         g_object_set (self, &quot;port&quot;, port, NULL);</span></span>
 <span id="L353"><span class="lineNum">     353</span>              :     }</span>
 <span id="L354"><span class="lineNum">     354</span>              :   }</span>
 <span id="L355"><span class="lineNum">     355</span>              : </span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          11 :   return TRUE;</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          12 :   return TRUE;</span></span>
 <span id="L357"><span class="lineNum">     357</span>              : }</span>
 <span id="L358"><span class="lineNum">     358</span>              : </span>
 <span id="L359"><span class="lineNum">     359</span>              : /**</span>
 <span id="L360"><span class="lineNum">     360</span>              :  * @brief stop tensor_sink_grpc element.</span>
 <span id="L361"><span class="lineNum">     361</span>              :  */</span>
 <span id="L362"><span class="lineNum">     362</span>              : static gboolean</span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          11 : gst_tensor_sink_grpc_stop (GstBaseSink * sink)</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          12 : gst_tensor_sink_grpc_stop (GstBaseSink * sink)</span></span>
 <span id="L364"><span class="lineNum">     364</span>              : {</span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">          11 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          11 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">          12 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          12 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          11 :   if (!GST_OBJECT_FLAG_IS_SET (self, GST_TENSOR_SINK_GRPC_STARTED))</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          12 :   if (!GST_OBJECT_FLAG_IS_SET (self, GST_TENSOR_SINK_GRPC_STARTED))</span></span>
 <span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC tlaBgUNC">           0 :     return TRUE;</span></span>
 <span id="L370"><span class="lineNum">     370</span>              : </span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC tlaBgGNC">          11 :   if (grpc-&gt;instance)</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          11 :     grpc_destroy (grpc-&gt;instance);</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          11 :   grpc-&gt;instance = NULL;</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC tlaBgGNC">          12 :   if (grpc-&gt;instance)</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          12 :     grpc_destroy (grpc-&gt;instance);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          12 :   grpc-&gt;instance = NULL;</span></span>
 <span id="L374"><span class="lineNum">     374</span>              : </span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          11 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          12 :   GST_OBJECT_FLAG_UNSET (self, GST_TENSOR_SINK_GRPC_STARTED);</span></span>
 <span id="L376"><span class="lineNum">     376</span>              : </span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">          11 :   return TRUE;</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">          12 :   return TRUE;</span></span>
 <span id="L378"><span class="lineNum">     378</span>              : }</span>
 <span id="L379"><span class="lineNum">     379</span>              : </span>
 <span id="L380"><span class="lineNum">     380</span>              : /**</span>
 <span id="L381"><span class="lineNum">     381</span>              :  * @brief unlock any blocking operations</span>
 <span id="L382"><span class="lineNum">     382</span>              :  */</span>
 <span id="L383"><span class="lineNum">     383</span>              : static gboolean</span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          22 : gst_tensor_sink_grpc_unlock (GstBaseSink * sink)</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          24 : gst_tensor_sink_grpc_unlock (GstBaseSink * sink)</span></span>
 <span id="L385"><span class="lineNum">     385</span>              : {</span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          22 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          22 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          24 :   GstTensorSinkGRPC *self = GST_TENSOR_SINK_GRPC (sink);</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          24 :   grpc_private *grpc = GET_GRPC_PRIVATE (self);</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
 <span id="L389"><span class="lineNum">     389</span>              :   /* notify to gRPC */</span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          22 :   if (grpc-&gt;instance)</span></span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">          22 :     grpc_stop (grpc-&gt;instance);</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          24 :   if (grpc-&gt;instance)</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">          24 :     grpc_stop (grpc-&gt;instance);</span></span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          22 :   silent_debug (&quot;Unlocking create&quot;);</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          24 :   silent_debug (&quot;Unlocking create&quot;);</span></span>
 <span id="L394"><span class="lineNum">     394</span>              : </span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          22 :   return TRUE;</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          24 :   return TRUE;</span></span>
 <span id="L396"><span class="lineNum">     396</span>              : }</span>
         </pre>
               </td>
