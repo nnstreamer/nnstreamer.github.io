@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-02 05:37:16</td>
+            <td class="headerValue">2025-04-03 05:38:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -276,12 +276,12 @@
 <span id="L214"><span class="lineNum">     214</span>              :  * @return caps for media type</span>
 <span id="L215"><span class="lineNum">     215</span>              :  */</span>
 <span id="L216"><span class="lineNum">     216</span>              : static GstCaps *</span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         696 : gst_tensordec_get_media_caps_from_config (GstTensorDecoder * self,</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         693 : gst_tensordec_get_media_caps_from_config (GstTensorDecoder * self,</span></span>
 <span id="L218"><span class="lineNum">     218</span>              :     const GstTensorsConfig * config)</span>
 <span id="L219"><span class="lineNum">     219</span>              : {</span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         696 :   g_return_val_if_fail (config != NULL, NULL);</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         693 :   g_return_val_if_fail (config != NULL, NULL);</span></span>
 <span id="L221"><span class="lineNum">     221</span>              : </span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">         696 :   if (self-&gt;decoder == NULL) {</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">         693 :   if (self-&gt;decoder == NULL) {</span></span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           6 :     if (self-&gt;is_custom) {</span></span>
 <span id="L224"><span class="lineNum">     224</span>              :       GstCaps *caps;</span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           6 :       caps = gst_caps_from_string (&quot;application/octet-stream&quot;);</span></span>
@@ -295,7 +295,7 @@
 <span id="L233"><span class="lineNum">     233</span>              :   }</span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
 <span id="L235"><span class="lineNum">     235</span>              :   /* call sub-plugin vmethod */</span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC tlaBgGNC">         690 :   return self-&gt;decoder-&gt;getOutCaps (&amp;self-&gt;plugin_data, config);</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC tlaBgGNC">         687 :   return self-&gt;decoder-&gt;getOutCaps (&amp;self-&gt;plugin_data, config);</span></span>
 <span id="L237"><span class="lineNum">     237</span>              : }</span>
 <span id="L238"><span class="lineNum">     238</span>              : </span>
 <span id="L239"><span class="lineNum">     239</span>              : /**</span>
@@ -304,21 +304,21 @@
 <span id="L242"><span class="lineNum">     242</span>              :  * @param caps tensor caps to be interpreted</span>
 <span id="L243"><span class="lineNum">     243</span>              :  */</span>
 <span id="L244"><span class="lineNum">     244</span>              : static GstCaps *</span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         811 : gst_tensordec_get_media_caps (GstTensorDecoder * self, const GstCaps * caps)</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         809 : gst_tensordec_get_media_caps (GstTensorDecoder * self, const GstCaps * caps)</span></span>
 <span id="L246"><span class="lineNum">     246</span>              : {</span>
 <span id="L247"><span class="lineNum">     247</span>              :   GstTensorsConfig config;</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         811 :   GstCaps *result = NULL;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         809 :   GstCaps *result = NULL;</span></span>
 <span id="L249"><span class="lineNum">     249</span>              : </span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         811 :   if (gst_tensors_config_from_caps (&amp;config, caps, TRUE)) {</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         377 :     result = gst_tensordec_get_media_caps_from_config (self, &amp;config);</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         809 :   if (gst_tensors_config_from_caps (&amp;config, caps, TRUE)) {</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         375 :     result = gst_tensordec_get_media_caps_from_config (self, &amp;config);</span></span>
 <span id="L252"><span class="lineNum">     252</span>              :   }</span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">         811 :   if (result == NULL) {</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">         809 :   if (result == NULL) {</span></span>
 <span id="L255"><span class="lineNum">     255</span>              :     /* we cannot specify the media type */</span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">         458 :     result = gst_caps_new_any ();</span></span>
 <span id="L257"><span class="lineNum">     257</span>              :   }</span>
 <span id="L258"><span class="lineNum">     258</span>              : </span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">         811 :   return result;</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">         809 :   return result;</span></span>
 <span id="L260"><span class="lineNum">     260</span>              : }</span>
 <span id="L261"><span class="lineNum">     261</span>              : </span>
 <span id="L262"><span class="lineNum">     262</span>              : /**</span>
@@ -327,14 +327,14 @@
 <span id="L265"><span class="lineNum">     265</span>              :  * @param t_info newly configured tensor metadata</span>
 <span id="L266"><span class="lineNum">     266</span>              :  */</span>
 <span id="L267"><span class="lineNum">     267</span>              : static gboolean</span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">         170 : gst_tensordec_check_consistency (GstTensorDecoder * self,</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">         169 : gst_tensordec_check_consistency (GstTensorDecoder * self,</span></span>
 <span id="L269"><span class="lineNum">     269</span>              :     GstTensorsConfig * config)</span>
 <span id="L270"><span class="lineNum">     270</span>              : {</span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         170 :   g_return_val_if_fail (self != NULL, FALSE);</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         170 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         169 :   g_return_val_if_fail (self != NULL, FALSE);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         169 :   g_return_val_if_fail (config != NULL, FALSE);</span></span>
 <span id="L273"><span class="lineNum">     273</span>              : </span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         170 :   if (self-&gt;configured) {</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         170 :     return gst_tensors_config_is_equal (&amp;self-&gt;tensor_config, config);</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         169 :   if (self-&gt;configured) {</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         169 :     return gst_tensors_config_is_equal (&amp;self-&gt;tensor_config, config);</span></span>
 <span id="L276"><span class="lineNum">     276</span>              :   }</span>
 <span id="L277"><span class="lineNum">     277</span>              : </span>
 <span id="L278"><span class="lineNum">     278</span>              :   /** not configured yet */</span>
@@ -699,17 +699,17 @@
 <span id="L637"><span class="lineNum">     637</span>              :  * @brief Configure tensor metadata from sink caps</span>
 <span id="L638"><span class="lineNum">     638</span>              :  */</span>
 <span id="L639"><span class="lineNum">     639</span>              : static gboolean</span>
-<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">         308 : gst_tensordec_configure (GstTensorDecoder * self, const GstCaps * in_caps,</span></span>
+<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">         307 : gst_tensordec_configure (GstTensorDecoder * self, const GstCaps * in_caps,</span></span>
 <span id="L641"><span class="lineNum">     641</span>              :     const GstCaps * out_caps)</span>
 <span id="L642"><span class="lineNum">     642</span>              : {</span>
 <span id="L643"><span class="lineNum">     643</span>              :   GstTensorsConfig config;</span>
 <span id="L644"><span class="lineNum">     644</span>              : </span>
-<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">         308 :   if (self-&gt;decoder == NULL &amp;&amp; !self-&gt;is_custom) {</span></span>
+<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">         307 :   if (self-&gt;decoder == NULL &amp;&amp; !self-&gt;is_custom) {</span></span>
 <span id="L646"><span class="lineNum">     646</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Decoder plugin is not yet configured.&quot;);</span></span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC tlaBgGNC">         308 :     return FALSE;</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC tlaBgGNC">         307 :     return FALSE;</span></span>
 <span id="L648"><span class="lineNum">     648</span>              :   }</span>
 <span id="L649"><span class="lineNum">     649</span>              : </span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         308 :   if (!gst_tensors_config_from_caps (&amp;config, in_caps, TRUE)) {</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         307 :   if (!gst_tensors_config_from_caps (&amp;config, in_caps, TRUE)) {</span></span>
 <span id="L651"><span class="lineNum">     651</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Cannot configure tensor from in-caps.&quot;);</span></span>
 <span id="L652"><span class="lineNum">     652</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L653"><span class="lineNum">     653</span>              :   }</span>
@@ -718,7 +718,7 @@
 <span id="L656"><span class="lineNum">     656</span>              :    * If previous input configuration is set and is not compatible with incoming caps,</span>
 <span id="L657"><span class="lineNum">     657</span>              :    * get possible media caps from sub-plugin and change input configuration.</span>
 <span id="L658"><span class="lineNum">     658</span>              :    */</span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC tlaBgGNC">         308 :   if (self-&gt;configured &amp;&amp; !gst_tensordec_check_consistency (self, &amp;config)) {</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC tlaBgGNC">         307 :   if (self-&gt;configured &amp;&amp; !gst_tensordec_check_consistency (self, &amp;config)) {</span></span>
 <span id="L660"><span class="lineNum">     660</span>              :     GstCaps *supposed;</span>
 <span id="L661"><span class="lineNum">     661</span>              :     gboolean compatible;</span>
 <span id="L662"><span class="lineNum">     662</span>              : </span>
@@ -736,45 +736,45 @@
 <span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">          11 :     self-&gt;decoder-&gt;init (&amp;self-&gt;plugin_data);</span></span>
 <span id="L675"><span class="lineNum">     675</span>              :   }</span>
 <span id="L676"><span class="lineNum">     676</span>              : </span>
-<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">         308 :   self-&gt;tensor_config = config;</span></span>
-<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">         308 :   self-&gt;configured = TRUE;</span></span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">         308 :   return TRUE;</span></span>
+<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">         307 :   self-&gt;tensor_config = config;</span></span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">         307 :   self-&gt;configured = TRUE;</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">         307 :   return TRUE;</span></span>
 <span id="L680"><span class="lineNum">     680</span>              : }</span>
 <span id="L681"><span class="lineNum">     681</span>              : </span>
 <span id="L682"><span class="lineNum">     682</span>              : /**</span>
 <span id="L683"><span class="lineNum">     683</span>              :  * @brief non-ip transform. required vmethod for BaseTransform class.</span>
 <span id="L684"><span class="lineNum">     684</span>              :  */</span>
 <span id="L685"><span class="lineNum">     685</span>              : static GstFlowReturn</span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">         390 : gst_tensordec_transform (GstBaseTransform * trans,</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">         389 : gst_tensordec_transform (GstBaseTransform * trans,</span></span>
 <span id="L687"><span class="lineNum">     687</span>              :     GstBuffer * inbuf, GstBuffer * outbuf)</span>
 <span id="L688"><span class="lineNum">     688</span>              : {</span>
 <span id="L689"><span class="lineNum">     689</span>              :   GstTensorDecoder *self;</span>
 <span id="L690"><span class="lineNum">     690</span>              :   GstFlowReturn res;</span>
 <span id="L691"><span class="lineNum">     691</span>              : </span>
-<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">         390 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
+<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">         389 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
 <span id="L693"><span class="lineNum">     693</span>              : </span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">         390 :   if (G_UNLIKELY (!self-&gt;negotiated))</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">         389 :   if (G_UNLIKELY (!self-&gt;negotiated))</span></span>
 <span id="L695"><span class="lineNum">     695</span> <span class="tlaUNC tlaBgUNC">           0 :     goto unknown_tensor;</span></span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC tlaBgGNC">         390 :   if (G_UNLIKELY (!self-&gt;configured))</span></span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC tlaBgGNC">         389 :   if (G_UNLIKELY (!self-&gt;configured))</span></span>
 <span id="L697"><span class="lineNum">     697</span> <span class="tlaUNC tlaBgUNC">           0 :     goto unknown_format;</span></span>
 <span id="L698"><span class="lineNum">     698</span>              : </span>
-<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC tlaBgGNC">         780 :   if (self-&gt;decoder || self-&gt;is_custom) {</span></span>
+<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC tlaBgGNC">         778 :   if (self-&gt;decoder || self-&gt;is_custom) {</span></span>
 <span id="L700"><span class="lineNum">     700</span>              :     GstMemory *in_mem[NNS_TENSOR_SIZE_LIMIT];</span>
 <span id="L701"><span class="lineNum">     701</span>              :     GstMapInfo in_info[NNS_TENSOR_SIZE_LIMIT];</span>
 <span id="L702"><span class="lineNum">     702</span>              :     GstTensorMemory input[NNS_TENSOR_SIZE_LIMIT];</span>
 <span id="L703"><span class="lineNum">     703</span>              :     guint i, num_tensors, num_mems;</span>
 <span id="L704"><span class="lineNum">     704</span>              : </span>
-<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">         390 :     num_mems = gst_tensor_buffer_get_count (inbuf);</span></span>
-<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">         390 :     if (gst_tensors_config_is_flexible (&amp;self-&gt;tensor_config)) {</span></span>
+<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">         389 :     num_mems = gst_tensor_buffer_get_count (inbuf);</span></span>
+<span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">         389 :     if (gst_tensors_config_is_flexible (&amp;self-&gt;tensor_config)) {</span></span>
 <span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">          24 :       self-&gt;tensor_config.info.num_tensors = num_mems;</span></span>
 <span id="L708"><span class="lineNum">     708</span>              :     }</span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">         390 :     num_tensors = self-&gt;tensor_config.info.num_tensors;</span></span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">         389 :     num_tensors = self-&gt;tensor_config.info.num_tensors;</span></span>
 <span id="L710"><span class="lineNum">     710</span>              :     /** Internal logic error. Negotiation process should prevent this! */</span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         390 :     g_assert (num_mems == num_tensors);</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         389 :     g_assert (num_mems == num_tensors);</span></span>
 <span id="L712"><span class="lineNum">     712</span>              : </span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">         939 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">         549 :       in_mem[i] = gst_tensor_buffer_get_nth_memory (inbuf, i);</span></span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">         549 :       if (!gst_memory_map (in_mem[i], &amp;in_info[i], GST_MAP_READ)) {</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">         937 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">         548 :       in_mem[i] = gst_tensor_buffer_get_nth_memory (inbuf, i);</span></span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">         548 :       if (!gst_memory_map (in_mem[i], &amp;in_info[i], GST_MAP_READ)) {</span></span>
 <span id="L716"><span class="lineNum">     716</span>              :         guint j;</span>
 <span id="L717"><span class="lineNum">     717</span> <span class="tlaUNC tlaBgUNC">           0 :         ml_logf (&quot;Failed to map in_mem[%u].\n&quot;, i);</span></span>
 <span id="L718"><span class="lineNum">     718</span>              : </span>
@@ -786,11 +786,11 @@
 <span id="L724"><span class="lineNum">     724</span> <span class="tlaUNC">           0 :         return GST_FLOW_ERROR;</span></span>
 <span id="L725"><span class="lineNum">     725</span>              :       }</span>
 <span id="L726"><span class="lineNum">     726</span>              : </span>
-<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC tlaBgGNC">         549 :       input[i].data = in_info[i].data;</span></span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">         549 :       input[i].size = in_info[i].size;</span></span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC tlaBgGNC">         548 :       input[i].data = in_info[i].data;</span></span>
+<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">         548 :       input[i].size = in_info[i].size;</span></span>
 <span id="L729"><span class="lineNum">     729</span>              :     }</span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">         390 :     if (!self-&gt;is_custom) {</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">         389 :       res = self-&gt;decoder-&gt;decode (&amp;self-&gt;plugin_data, &amp;self-&gt;tensor_config,</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">         389 :     if (!self-&gt;is_custom) {</span></span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">         388 :       res = self-&gt;decoder-&gt;decode (&amp;self-&gt;plugin_data, &amp;self-&gt;tensor_config,</span></span>
 <span id="L732"><span class="lineNum">     732</span>              :           input, outbuf);</span>
 <span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">           1 :     } else if (self-&gt;custom.func != NULL) {</span></span>
 <span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">           1 :       res = self-&gt;custom.func (input, &amp;self-&gt;tensor_config, self-&gt;custom.data,</span></span>
@@ -800,16 +800,16 @@
 <span id="L738"><span class="lineNum">     738</span> <span class="tlaUNC">           0 :       res = GST_FLOW_ERROR;</span></span>
 <span id="L739"><span class="lineNum">     739</span>              :     }</span>
 <span id="L740"><span class="lineNum">     740</span>              : </span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC tlaBgGNC">         939 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">         549 :       gst_memory_unmap (in_mem[i], &amp;in_info[i]);</span></span>
-<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">         549 :       gst_memory_unref (in_mem[i]);</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC tlaBgGNC">         937 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">         548 :       gst_memory_unmap (in_mem[i], &amp;in_info[i]);</span></span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">         548 :       gst_memory_unref (in_mem[i]);</span></span>
 <span id="L744"><span class="lineNum">     744</span>              :     }</span>
 <span id="L745"><span class="lineNum">     745</span>              :   } else {</span>
 <span id="L746"><span class="lineNum">     746</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR_OBJECT (self, &quot;Decoder plugin not yet configured.&quot;);</span></span>
 <span id="L747"><span class="lineNum">     747</span> <span class="tlaUNC">           0 :     goto unknown_type;</span></span>
 <span id="L748"><span class="lineNum">     748</span>              :   }</span>
 <span id="L749"><span class="lineNum">     749</span>              : </span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC tlaBgGNC">         390 :   return res;</span></span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC tlaBgGNC">         389 :   return res;</span></span>
 <span id="L751"><span class="lineNum">     751</span>              : </span>
 <span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC tlaBgUNC">           0 : unknown_format:</span></span>
 <span id="L753"><span class="lineNum">     753</span> <span class="tlaUNC">           0 :   GST_ERROR_OBJECT (self, &quot;Hit unknown_format&quot;);</span></span>
@@ -835,19 +835,19 @@
 <span id="L773"><span class="lineNum">     773</span>              :  * @filter this element's cap (don't know specifically.)</span>
 <span id="L774"><span class="lineNum">     774</span>              :  */</span>
 <span id="L775"><span class="lineNum">     775</span>              : static GstCaps *</span>
-<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC tlaBgGNC">        2004 : gst_tensordec_transform_caps (GstBaseTransform * trans,</span></span>
+<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC tlaBgGNC">        2002 : gst_tensordec_transform_caps (GstBaseTransform * trans,</span></span>
 <span id="L777"><span class="lineNum">     777</span>              :     GstPadDirection direction, GstCaps * caps, GstCaps * filter)</span>
 <span id="L778"><span class="lineNum">     778</span>              : {</span>
 <span id="L779"><span class="lineNum">     779</span>              :   GstTensorDecoder *self;</span>
 <span id="L780"><span class="lineNum">     780</span>              :   GstCaps *result;</span>
 <span id="L781"><span class="lineNum">     781</span>              : </span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">        2004 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">        2002 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
 <span id="L783"><span class="lineNum">     783</span>              : </span>
 <span id="L784"><span class="lineNum">     784</span>              :   /* Not ready */</span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">        2004 :   if (self-&gt;decoder == NULL &amp;&amp; !self-&gt;is_custom)</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">        2002 :   if (self-&gt;decoder == NULL &amp;&amp; !self-&gt;is_custom)</span></span>
 <span id="L786"><span class="lineNum">     786</span> <span class="tlaUNC tlaBgUNC">           0 :     return NULL;</span></span>
 <span id="L787"><span class="lineNum">     787</span>              : </span>
-<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC tlaBgGNC">        2004 :   if (self-&gt;is_custom) {</span></span>
+<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC tlaBgGNC">        2002 :   if (self-&gt;is_custom) {</span></span>
 <span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          12 :     const decoder_custom_cb_s *ptr = NULL;</span></span>
 <span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">          12 :     if (self-&gt;option[0] == NULL) {</span></span>
 <span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_logw (&quot;Tensor decoder custom option is not given.&quot;);</span></span>
@@ -863,13 +863,13 @@
 <span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">          12 :     self-&gt;custom.data = ptr-&gt;data;</span></span>
 <span id="L802"><span class="lineNum">     802</span>              :   }</span>
 <span id="L803"><span class="lineNum">     803</span>              : </span>
-<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">        2004 :   silent_debug (self, &quot;Direction = %d\n&quot;, direction);</span></span>
-<span id="L805"><span class="lineNum">     805</span> <span class="tlaGNC">        2004 :   silent_debug_caps (self, caps, &quot;from&quot;);</span></span>
-<span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">        2004 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
+<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">        2002 :   silent_debug (self, &quot;Direction = %d\n&quot;, direction);</span></span>
+<span id="L805"><span class="lineNum">     805</span> <span class="tlaGNC">        2002 :   silent_debug_caps (self, caps, &quot;from&quot;);</span></span>
+<span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">        2002 :   silent_debug_caps (self, filter, &quot;filter&quot;);</span></span>
 <span id="L807"><span class="lineNum">     807</span>              : </span>
-<span id="L808"><span class="lineNum">     808</span> <span class="tlaGNC">        2004 :   if (direction == GST_PAD_SINK) {</span></span>
+<span id="L808"><span class="lineNum">     808</span> <span class="tlaGNC">        2002 :   if (direction == GST_PAD_SINK) {</span></span>
 <span id="L809"><span class="lineNum">     809</span>              :     /** caps = sinkpad (other/tensor) return = srcpad (media) */</span>
-<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">         811 :     result = gst_tensordec_get_media_caps (self, caps);</span></span>
+<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">         809 :     result = gst_tensordec_get_media_caps (self, caps);</span></span>
 <span id="L811"><span class="lineNum">     811</span> <span class="tlaGNC">        1193 :   } else if (direction == GST_PAD_SRC) {</span></span>
 <span id="L812"><span class="lineNum">     812</span>              :     /** caps = srcpad (media) return = sinkpad (other/tensor) */</span>
 <span id="L813"><span class="lineNum">     813</span>              :     /** @todo We may do more specific actions here */</span>
@@ -879,7 +879,7 @@
 <span id="L817"><span class="lineNum">     817</span>              :     return NULL;</span>
 <span id="L818"><span class="lineNum">     818</span>              :   }</span>
 <span id="L819"><span class="lineNum">     819</span>              : </span>
-<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC tlaBgGNC">        2004 :   if (filter &amp;&amp; gst_caps_get_size (filter) &gt; 0) {</span></span>
+<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC tlaBgGNC">        2002 :   if (filter &amp;&amp; gst_caps_get_size (filter) &gt; 0) {</span></span>
 <span id="L821"><span class="lineNum">     821</span>              :     GstCaps *intersection;</span>
 <span id="L822"><span class="lineNum">     822</span>              : </span>
 <span id="L823"><span class="lineNum">     823</span>              :     intersection =</span>
@@ -889,30 +889,30 @@
 <span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">          18 :     result = intersection;</span></span>
 <span id="L828"><span class="lineNum">     828</span>              :   }</span>
 <span id="L829"><span class="lineNum">     829</span>              : </span>
-<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">        2004 :   silent_debug_caps (self, result, &quot;to&quot;);</span></span>
+<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">        2002 :   silent_debug_caps (self, result, &quot;to&quot;);</span></span>
 <span id="L831"><span class="lineNum">     831</span>              : </span>
-<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">        2004 :   GST_DEBUG_OBJECT (self, &quot;Direction[%d] transformed %&quot; GST_PTR_FORMAT</span></span>
+<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">        2002 :   GST_DEBUG_OBJECT (self, &quot;Direction[%d] transformed %&quot; GST_PTR_FORMAT</span></span>
 <span id="L833"><span class="lineNum">     833</span>              :       &quot; into %&quot; GST_PTR_FORMAT, direction, caps, result);</span>
-<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">        2004 :   return result;</span></span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">        2002 :   return result;</span></span>
 <span id="L835"><span class="lineNum">     835</span>              : }</span>
 <span id="L836"><span class="lineNum">     836</span>              : </span>
 <span id="L837"><span class="lineNum">     837</span>              : /**</span>
 <span id="L838"><span class="lineNum">     838</span>              :  * @brief fixate caps. required vmethod of BaseTransform</span>
 <span id="L839"><span class="lineNum">     839</span>              :  */</span>
 <span id="L840"><span class="lineNum">     840</span>              : static GstCaps *</span>
-<span id="L841"><span class="lineNum">     841</span> <span class="tlaGNC">         162 : gst_tensordec_fixate_caps (GstBaseTransform * trans,</span></span>
+<span id="L841"><span class="lineNum">     841</span> <span class="tlaGNC">         161 : gst_tensordec_fixate_caps (GstBaseTransform * trans,</span></span>
 <span id="L842"><span class="lineNum">     842</span>              :     GstPadDirection direction, GstCaps * caps, GstCaps * othercaps)</span>
 <span id="L843"><span class="lineNum">     843</span>              : {</span>
 <span id="L844"><span class="lineNum">     844</span>              :   GstTensorDecoder *self;</span>
 <span id="L845"><span class="lineNum">     845</span>              :   GstCaps *supposed;</span>
 <span id="L846"><span class="lineNum">     846</span>              :   GstCaps *result;</span>
 <span id="L847"><span class="lineNum">     847</span>              : </span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">         162 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">         161 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
 <span id="L849"><span class="lineNum">     849</span>              : </span>
-<span id="L850"><span class="lineNum">     850</span> <span class="tlaGNC">         162 :   silent_debug_caps (self, caps, &quot;from caps&quot;);</span></span>
-<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">         162 :   silent_debug_caps (self, othercaps, &quot;from othercaps&quot;);</span></span>
+<span id="L850"><span class="lineNum">     850</span> <span class="tlaGNC">         161 :   silent_debug_caps (self, caps, &quot;from caps&quot;);</span></span>
+<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">         161 :   silent_debug_caps (self, othercaps, &quot;from othercaps&quot;);</span></span>
 <span id="L852"><span class="lineNum">     852</span>              : </span>
-<span id="L853"><span class="lineNum">     853</span> <span class="tlaGNC">         162 :   GST_DEBUG_OBJECT (self, &quot;trying to fixate othercaps %&quot; GST_PTR_FORMAT</span></span>
+<span id="L853"><span class="lineNum">     853</span> <span class="tlaGNC">         161 :   GST_DEBUG_OBJECT (self, &quot;trying to fixate othercaps %&quot; GST_PTR_FORMAT</span></span>
 <span id="L854"><span class="lineNum">     854</span>              :       &quot; based on caps %&quot; GST_PTR_FORMAT, othercaps, caps);</span>
 <span id="L855"><span class="lineNum">     855</span>              : </span>
 <span id="L856"><span class="lineNum">     856</span>              :   /**</span>
@@ -921,39 +921,39 @@
 <span id="L859"><span class="lineNum">     859</span>              :    * it with GST_PAD_SRC. If this happens, it's either internal logic</span>
 <span id="L860"><span class="lineNum">     860</span>              :    * error or GST bug.</span>
 <span id="L861"><span class="lineNum">     861</span>              :    */</span>
-<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">         162 :   if (direction != GST_PAD_SINK) {</span></span>
+<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">         161 :   if (direction != GST_PAD_SINK) {</span></span>
 <span id="L863"><span class="lineNum">     863</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_logf_stacktrace (&quot;Invalid direction for tensor-decoder fixate caps.\n&quot;);</span></span>
-<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC tlaBgGNC">         162 :     return NULL;</span></span>
+<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC tlaBgGNC">         161 :     return NULL;</span></span>
 <span id="L865"><span class="lineNum">     865</span>              :   }</span>
 <span id="L866"><span class="lineNum">     866</span>              : </span>
-<span id="L867"><span class="lineNum">     867</span> <span class="tlaGNC">         162 :   if (gst_tensordec_configure (self, caps, othercaps)) {</span></span>
+<span id="L867"><span class="lineNum">     867</span> <span class="tlaGNC">         161 :   if (gst_tensordec_configure (self, caps, othercaps)) {</span></span>
 <span id="L868"><span class="lineNum">     868</span>              :     supposed =</span>
-<span id="L869"><span class="lineNum">     869</span> <span class="tlaGNC">         162 :         gst_tensordec_get_media_caps_from_config (self, &amp;self-&gt;tensor_config);</span></span>
+<span id="L869"><span class="lineNum">     869</span> <span class="tlaGNC">         161 :         gst_tensordec_get_media_caps_from_config (self, &amp;self-&gt;tensor_config);</span></span>
 <span id="L870"><span class="lineNum">     870</span>              :   } else {</span>
 <span id="L871"><span class="lineNum">     871</span> <span class="tlaUNC tlaBgUNC">           0 :     supposed = gst_tensordec_get_media_caps (self, caps);</span></span>
 <span id="L872"><span class="lineNum">     872</span>              :   }</span>
 <span id="L873"><span class="lineNum">     873</span>              : </span>
-<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC tlaBgGNC">         162 :   result = gst_caps_intersect (othercaps, supposed);</span></span>
-<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC">         162 :   gst_caps_unref (supposed);</span></span>
+<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC tlaBgGNC">         161 :   result = gst_caps_intersect (othercaps, supposed);</span></span>
+<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC">         161 :   gst_caps_unref (supposed);</span></span>
 <span id="L876"><span class="lineNum">     876</span>              : </span>
-<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">         162 :   if (gst_caps_is_empty (result)) {</span></span>
+<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">         161 :   if (gst_caps_is_empty (result)) {</span></span>
 <span id="L878"><span class="lineNum">     878</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_caps_unref (result);</span></span>
 <span id="L879"><span class="lineNum">     879</span> <span class="tlaUNC">           0 :     result = othercaps;</span></span>
 <span id="L880"><span class="lineNum">     880</span>              :   } else {</span>
-<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC tlaBgGNC">         162 :     gst_caps_unref (othercaps);</span></span>
+<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC tlaBgGNC">         161 :     gst_caps_unref (othercaps);</span></span>
 <span id="L882"><span class="lineNum">     882</span>              :   }</span>
 <span id="L883"><span class="lineNum">     883</span>              : </span>
-<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">         162 :   GST_DEBUG_OBJECT (self, &quot;now fixating %&quot; GST_PTR_FORMAT, result);</span></span>
+<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">         161 :   GST_DEBUG_OBJECT (self, &quot;now fixating %&quot; GST_PTR_FORMAT, result);</span></span>
 <span id="L885"><span class="lineNum">     885</span>              : </span>
-<span id="L886"><span class="lineNum">     886</span> <span class="tlaGNC">         162 :   result = gst_caps_make_writable (result);</span></span>
-<span id="L887"><span class="lineNum">     887</span> <span class="tlaGNC">         162 :   result = gst_caps_fixate (result);</span></span>
+<span id="L886"><span class="lineNum">     886</span> <span class="tlaGNC">         161 :   result = gst_caps_make_writable (result);</span></span>
+<span id="L887"><span class="lineNum">     887</span> <span class="tlaGNC">         161 :   result = gst_caps_fixate (result);</span></span>
 <span id="L888"><span class="lineNum">     888</span>              : </span>
-<span id="L889"><span class="lineNum">     889</span> <span class="tlaGNC">         162 :   if (direction == GST_PAD_SINK) {</span></span>
-<span id="L890"><span class="lineNum">     890</span> <span class="tlaGNC">         162 :     if (gst_caps_is_subset (caps, result)) {</span></span>
+<span id="L889"><span class="lineNum">     889</span> <span class="tlaGNC">         161 :   if (direction == GST_PAD_SINK) {</span></span>
+<span id="L890"><span class="lineNum">     890</span> <span class="tlaGNC">         161 :     if (gst_caps_is_subset (caps, result)) {</span></span>
 <span id="L891"><span class="lineNum">     891</span> <span class="tlaUNC tlaBgUNC">           0 :       gst_caps_replace (&amp;result, caps);</span></span>
 <span id="L892"><span class="lineNum">     892</span>              :     }</span>
 <span id="L893"><span class="lineNum">     893</span>              :   }</span>
-<span id="L894"><span class="lineNum">     894</span> <span class="tlaGNC tlaBgGNC">         162 :   return result;</span></span>
+<span id="L894"><span class="lineNum">     894</span> <span class="tlaGNC tlaBgGNC">         161 :   return result;</span></span>
 <span id="L895"><span class="lineNum">     895</span>              : }</span>
 <span id="L896"><span class="lineNum">     896</span>              : </span>
 <span id="L897"><span class="lineNum">     897</span>              : /**</span>
@@ -992,26 +992,26 @@
 <span id="L930"><span class="lineNum">     930</span>              :  * This is called when non-ip mode is used.</span>
 <span id="L931"><span class="lineNum">     931</span>              :  */</span>
 <span id="L932"><span class="lineNum">     932</span>              : static gboolean</span>
-<span id="L933"><span class="lineNum">     933</span> <span class="tlaGNC">         373 : gst_tensordec_transform_size (GstBaseTransform * trans,</span></span>
+<span id="L933"><span class="lineNum">     933</span> <span class="tlaGNC">         372 : gst_tensordec_transform_size (GstBaseTransform * trans,</span></span>
 <span id="L934"><span class="lineNum">     934</span>              :     GstPadDirection direction, GstCaps * caps, gsize size,</span>
 <span id="L935"><span class="lineNum">     935</span>              :     GstCaps * othercaps, gsize * othersize)</span>
 <span id="L936"><span class="lineNum">     936</span>              : {</span>
 <span id="L937"><span class="lineNum">     937</span>              :   GstTensorDecoder *self;</span>
 <span id="L938"><span class="lineNum">     938</span>              : </span>
-<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">         373 :   if (direction == GST_PAD_SRC)</span></span>
+<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">         372 :   if (direction == GST_PAD_SRC)</span></span>
 <span id="L940"><span class="lineNum">     940</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L941"><span class="lineNum">     941</span>              :   /** @todo If direction = SRC, you may need different interpretation! */</span>
-<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC tlaBgGNC">         373 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
+<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC tlaBgGNC">         372 :   self = GST_TENSOR_DECODER_CAST (trans);</span></span>
 <span id="L943"><span class="lineNum">     943</span>              : </span>
-<span id="L944"><span class="lineNum">     944</span> <span class="tlaGNC">         373 :   g_assert (self-&gt;configured);</span></span>
+<span id="L944"><span class="lineNum">     944</span> <span class="tlaGNC">         372 :   g_assert (self-&gt;configured);</span></span>
 <span id="L945"><span class="lineNum">     945</span>              : </span>
-<span id="L946"><span class="lineNum">     946</span> <span class="tlaGNC">         373 :   if (!self-&gt;is_custom &amp;&amp; self-&gt;decoder-&gt;getTransformSize)</span></span>
+<span id="L946"><span class="lineNum">     946</span> <span class="tlaGNC">         372 :   if (!self-&gt;is_custom &amp;&amp; self-&gt;decoder-&gt;getTransformSize)</span></span>
 <span id="L947"><span class="lineNum">     947</span> <span class="tlaGNC">         126 :     *othersize = self-&gt;decoder-&gt;getTransformSize (&amp;self-&gt;plugin_data,</span></span>
 <span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">         126 :         &amp;self-&gt;tensor_config, caps, size, othercaps, direction);</span></span>
 <span id="L949"><span class="lineNum">     949</span>              :   else</span>
-<span id="L950"><span class="lineNum">     950</span> <span class="tlaGNC">         247 :     *othersize = 0;</span></span>
+<span id="L950"><span class="lineNum">     950</span> <span class="tlaGNC">         246 :     *othersize = 0;</span></span>
 <span id="L951"><span class="lineNum">     951</span>              : </span>
-<span id="L952"><span class="lineNum">     952</span> <span class="tlaGNC">         373 :   return TRUE;</span></span>
+<span id="L952"><span class="lineNum">     952</span> <span class="tlaGNC">         372 :   return TRUE;</span></span>
 <span id="L953"><span class="lineNum">     953</span>              : }</span>
 <span id="L954"><span class="lineNum">     954</span>              : </span>
 <span id="L955"><span class="lineNum">     955</span>              : /**</span>
