@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-03 14:36:44</td>
+            <td class="headerValue">2025-04-04 05:38:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">92.6&nbsp;%</td>
@@ -236,7 +236,7 @@
 <span id="L174"><span class="lineNum">     174</span>              :     guint64 offset, guint size, GstBuffer * buf);</span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
 <span id="L176"><span class="lineNum">     176</span>              : #define gst_tensor_src_tizensensor_parent_class parent_class</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC tlaBgGNC">         138 : G_DEFINE_TYPE (GstTensorSrcTIZENSENSOR, gst_tensor_src_tizensensor,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC tlaBgGNC">          78 : G_DEFINE_TYPE (GstTensorSrcTIZENSENSOR, gst_tensor_src_tizensensor,</span></span>
 <span id="L178"><span class="lineNum">     178</span>              :     GST_TYPE_BASE_SRC);</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              : #define GST_TYPE_TIZEN_SENSOR_TYPE (tizen_sensor_get_type ())</span>
@@ -245,10 +245,10 @@
 <span id="L183"><span class="lineNum">     183</span>              :  * @todo We need an automated maintenance system for sensor.h's sensor_type_e, which makes a build error if it has been changed.</span>
 <span id="L184"><span class="lineNum">     184</span>              :  */</span>
 <span id="L185"><span class="lineNum">     185</span>              : static GType</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          31 : tizen_sensor_get_type (void)</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          11 : tizen_sensor_get_type (void)</span></span>
 <span id="L187"><span class="lineNum">     187</span>              : {</span>
 <span id="L188"><span class="lineNum">     188</span>              :   static GType etype = 0;</span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          31 :   if (etype == 0) {</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          11 :   if (etype == 0) {</span></span>
 <span id="L190"><span class="lineNum">     190</span>              :     static const GEnumValue values[] = {</span>
 <span id="L191"><span class="lineNum">     191</span>              :       {SENSOR_ALL, &quot;SENSOR_ALL&quot;, &quot;all&quot;},</span>
 <span id="L192"><span class="lineNum">     192</span>              :       {SENSOR_ACCELEROMETER, &quot;SENSOR_ACCELEROMETER&quot;, &quot;accelerometer&quot;},</span>
@@ -290,9 +290,9 @@
 <span id="L228"><span class="lineNum">     228</span>              :       {SENSOR_CUSTOM, &quot;SENSOR_CUSTOM&quot;, &quot;custom&quot;},</span>
 <span id="L229"><span class="lineNum">     229</span>              :       {0, NULL, NULL},</span>
 <span id="L230"><span class="lineNum">     230</span>              :     };</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          31 :     etype = g_enum_register_static (&quot;sensor_type_e&quot;, values);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          11 :     etype = g_enum_register_static (&quot;sensor_type_e&quot;, values);</span></span>
 <span id="L232"><span class="lineNum">     232</span>              :   }</span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          31 :   return etype;</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          11 :   return etype;</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : }</span>
 <span id="L235"><span class="lineNum">     235</span>              : </span>
 <span id="L236"><span class="lineNum">     236</span>              : static GHashTable *tizensensors = NULL;</span>
@@ -400,58 +400,58 @@
 <span id="L338"><span class="lineNum">     338</span>              :  * @brief Provide options of sensor operations</span>
 <span id="L339"><span class="lineNum">     339</span>              :  */</span>
 <span id="L340"><span class="lineNum">     340</span>              : static GType</span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          31 : tizen_sensor_get_mode (void)</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          11 : tizen_sensor_get_mode (void)</span></span>
 <span id="L342"><span class="lineNum">     342</span>              : {</span>
 <span id="L343"><span class="lineNum">     343</span>              :   static GType etype = 0;</span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">          31 :   if (etype == 0) {</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">          11 :   if (etype == 0) {</span></span>
 <span id="L345"><span class="lineNum">     345</span>              :     static const GEnumValue values[] = {</span>
 <span id="L346"><span class="lineNum">     346</span>              :       {TZN_SENSOR_MODE_POLLING, &quot;POLLING&quot;, &quot;polling&quot;},</span>
 <span id="L347"><span class="lineNum">     347</span>              :       {0, NULL, NULL},</span>
 <span id="L348"><span class="lineNum">     348</span>              :     };</span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">          31 :     etype = g_enum_register_static (&quot;sensor_op_modes&quot;, values);</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">          11 :     etype = g_enum_register_static (&quot;sensor_op_modes&quot;, values);</span></span>
 <span id="L350"><span class="lineNum">     350</span>              :   }</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          31 :   return etype;</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          11 :   return etype;</span></span>
 <span id="L352"><span class="lineNum">     352</span>              : }</span>
 <span id="L353"><span class="lineNum">     353</span>              : </span>
 <span id="L354"><span class="lineNum">     354</span>              : /**</span>
 <span id="L355"><span class="lineNum">     355</span>              :  * @brief initialize the tensor_src_tizensensor class.</span>
 <span id="L356"><span class="lineNum">     356</span>              :  */</span>
 <span id="L357"><span class="lineNum">     357</span>              : static void</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          31 : gst_tensor_src_tizensensor_class_init (GstTensorSrcTIZENSENSORClass * klass)</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          11 : gst_tensor_src_tizensensor_class_init (GstTensorSrcTIZENSENSORClass * klass)</span></span>
 <span id="L359"><span class="lineNum">     359</span>              : {</span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          31 :   GObjectClass *gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">          31 :   GstElementClass *gstelement_class = (GstElementClass *) klass;</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          31 :   GstBaseSrcClass *gstbasesrc_class = (GstBaseSrcClass *) klass;</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          11 :   GObjectClass *gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">          11 :   GstElementClass *gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          11 :   GstBaseSrcClass *gstbasesrc_class = (GstBaseSrcClass *) klass;</span></span>
 <span id="L363"><span class="lineNum">     363</span>              :   GstPadTemplate *pad_template;</span>
 <span id="L364"><span class="lineNum">     364</span>              :   GstCaps *pad_caps;</span>
 <span id="L365"><span class="lineNum">     365</span>              : </span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          31 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_src_tizensensor_debug,</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          11 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_src_tizensensor_debug,</span></span>
 <span id="L367"><span class="lineNum">     367</span>              :       &quot;tensor_src_tizensensor&quot;, 0,</span>
 <span id="L368"><span class="lineNum">     368</span>              :       &quot;src element to support Tizen sensor framework&quot;);</span>
 <span id="L369"><span class="lineNum">     369</span>              : </span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          31 :   gobject_class-&gt;set_property = gst_tensor_src_tizensensor_set_property;</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          31 :   gobject_class-&gt;get_property = gst_tensor_src_tizensensor_get_property;</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          31 :   gobject_class-&gt;finalize = gst_tensor_src_tizensensor_finalize;</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          11 :   gobject_class-&gt;set_property = gst_tensor_src_tizensensor_set_property;</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          11 :   gobject_class-&gt;get_property = gst_tensor_src_tizensensor_get_property;</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          11 :   gobject_class-&gt;finalize = gst_tensor_src_tizensensor_finalize;</span></span>
 <span id="L373"><span class="lineNum">     373</span>              : </span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          31 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L375"><span class="lineNum">     375</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;,</span>
 <span id="L376"><span class="lineNum">     376</span>              :           &quot;Produce verbose output&quot;, DEFAULT_PROP_SILENT,</span>
 <span id="L377"><span class="lineNum">     377</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          31 :   g_object_class_install_property (gobject_class, PROP_TYPE,</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_TYPE,</span></span>
 <span id="L379"><span class="lineNum">     379</span>              :       g_param_spec_enum (&quot;type&quot;, &quot;Tizen Sensor Type (enum)&quot;,</span>
 <span id="L380"><span class="lineNum">     380</span>              :           &quot;Tizen sensor type as a enum-name, defined in sensor.h of Tizen&quot;,</span>
 <span id="L381"><span class="lineNum">     381</span>              :           GST_TYPE_TIZEN_SENSOR_TYPE, SENSOR_ALL,</span>
 <span id="L382"><span class="lineNum">     382</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          31 :   g_object_class_install_property (gobject_class, PROP_SEQUENCE,</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_SEQUENCE,</span></span>
 <span id="L384"><span class="lineNum">     384</span>              :       g_param_spec_int (&quot;sequence&quot;, &quot;Sequence number of a sensor type&quot;,</span>
 <span id="L385"><span class="lineNum">     385</span>              :           &quot;Select a sensor if there are multiple sensors of a type&quot;,</span>
 <span id="L386"><span class="lineNum">     386</span>              :           -1, G_MAXINT, DEFAULT_PROP_SEQUENCE, G_PARAM_READWRITE));</span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          31 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
 <span id="L388"><span class="lineNum">     388</span>              :       g_param_spec_enum (&quot;mode&quot;, &quot;Sensor data retrieval mode (enum)&quot;,</span>
 <span id="L389"><span class="lineNum">     389</span>              :           &quot;Determine how sensor data are retrieved (e.g. polling)&quot;,</span>
 <span id="L390"><span class="lineNum">     390</span>              :           GST_TYPE_TIZEN_SENSOR_MODE, TZN_SENSOR_MODE_POLLING,</span>
 <span id="L391"><span class="lineNum">     391</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">          31 :   g_object_class_install_property (gobject_class, PROP_FREQ,</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_FREQ,</span></span>
 <span id="L393"><span class="lineNum">     393</span>              :       gst_param_spec_fraction (&quot;framerate&quot;, &quot;Framerate&quot;,</span>
 <span id="L394"><span class="lineNum">     394</span>              :           &quot;Rate of data retrievals from a sensor. Effective only when &quot;</span>
 <span id="L395"><span class="lineNum">     395</span>              :           &quot;mode is ACTIVE_POLLING&quot;,</span>
@@ -461,36 +461,36 @@
 <span id="L399"><span class="lineNum">     399</span>              : </span>
 <span id="L400"><span class="lineNum">     400</span>              :   /* pad template */</span>
 <span id="L401"><span class="lineNum">     401</span>              :   /** @todo Narrow down allowed tensors/tensor. */</span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          31 :   pad_caps = gst_caps_from_string (GST_TENSOR_CAP_DEFAULT &quot;; &quot;</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          11 :   pad_caps = gst_caps_from_string (GST_TENSOR_CAP_DEFAULT &quot;; &quot;</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :       GST_TENSORS_CAP_WITH_NUM (&quot;1&quot;));</span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          31 :   pad_template = gst_pad_template_new (&quot;src&quot;, GST_PAD_SRC, GST_PAD_ALWAYS,</span></span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          11 :   pad_template = gst_pad_template_new (&quot;src&quot;, GST_PAD_SRC, GST_PAD_ALWAYS,</span></span>
 <span id="L405"><span class="lineNum">     405</span>              :       pad_caps);</span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          31 :   gst_element_class_add_pad_template (gstelement_class, pad_template);</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          31 :   gst_caps_unref (pad_caps);</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          11 :   gst_element_class_add_pad_template (gstelement_class, pad_template);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          11 :   gst_caps_unref (pad_caps);</span></span>
 <span id="L408"><span class="lineNum">     408</span>              : </span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          31 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          11 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L410"><span class="lineNum">     410</span>              :       &quot;TensorSrcTizenSensor&quot;, &quot;Source/Tensor/Device&quot;,</span>
 <span id="L411"><span class="lineNum">     411</span>              :       &quot;Creates tensor(s) stream from a given Tizen sensor framework node&quot;,</span>
 <span id="L412"><span class="lineNum">     412</span>              :       &quot;MyungJoo Ham &lt;myungjoo.ham@samsung.com&gt;&quot;);</span>
 <span id="L413"><span class="lineNum">     413</span>              : </span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;set_caps =</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_set_caps);</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;get_caps =</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_get_caps);</span></span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;fixate =</span></span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_fixate);</span></span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;is_seekable =</span></span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_is_seekable);</span></span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;start =</span></span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_start);</span></span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_stop);</span></span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;query = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_query);</span></span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;create =</span></span>
-<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_create);</span></span>
-<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;fill = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_fill);</span></span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          31 :   gstbasesrc_class-&gt;event =</span></span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          31 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_event);</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;set_caps =</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_set_caps);</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;get_caps =</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_get_caps);</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;fixate =</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_fixate);</span></span>
+<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;is_seekable =</span></span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_is_seekable);</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;start =</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_start);</span></span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_stop);</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;query = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_query);</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;create =</span></span>
+<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_create);</span></span>
+<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;fill = GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_fill);</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          11 :   gstbasesrc_class-&gt;event =</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_tizensensor_event);</span></span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          11 : }</span></span>
 <span id="L432"><span class="lineNum">     432</span>              : </span>
 <span id="L433"><span class="lineNum">     433</span>              : /**</span>
 <span id="L434"><span class="lineNum">     434</span>              :  * @brief initialize tensor_src_tizensensor element.</span>

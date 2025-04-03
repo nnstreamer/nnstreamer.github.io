@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-03 14:36:44</td>
+            <td class="headerValue">2025-04-04 05:38:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -176,7 +176,7 @@
 <span id="L114"><span class="lineNum">     114</span>              :     GST_STATIC_CAPS (GST_TENSORS_FLEX_CAP_DEFAULT));</span>
 <span id="L115"><span class="lineNum">     115</span>              : </span>
 <span id="L116"><span class="lineNum">     116</span>              : #define gst_tensor_crop_parent_class parent_class</span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC tlaBgGNC">         983 : G_DEFINE_TYPE (GstTensorCrop, gst_tensor_crop, GST_TYPE_ELEMENT);</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC tlaBgGNC">         953 : G_DEFINE_TYPE (GstTensorCrop, gst_tensor_crop, GST_TYPE_ELEMENT);</span></span>
 <span id="L118"><span class="lineNum">     118</span>              : </span>
 <span id="L119"><span class="lineNum">     119</span>              : static void gst_tensor_crop_finalize (GObject * object);</span>
 <span id="L120"><span class="lineNum">     120</span>              : static void gst_tensor_crop_set_property (GObject * object, guint prop_id,</span>
@@ -196,20 +196,20 @@
 <span id="L134"><span class="lineNum">     134</span>              :  * @brief Initialize the tensor_crop's class.</span>
 <span id="L135"><span class="lineNum">     135</span>              :  */</span>
 <span id="L136"><span class="lineNum">     136</span>              : static void</span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          12 : gst_tensor_crop_class_init (GstTensorCropClass * klass)</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">           2 : gst_tensor_crop_class_init (GstTensorCropClass * klass)</span></span>
 <span id="L138"><span class="lineNum">     138</span>              : {</span>
 <span id="L139"><span class="lineNum">     139</span>              :   GObjectClass *object_class;</span>
 <span id="L140"><span class="lineNum">     140</span>              :   GstElementClass *element_class;</span>
 <span id="L141"><span class="lineNum">     141</span>              : </span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          12 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_crop_debug, &quot;tensor_crop&quot;, 0,</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           2 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_crop_debug, &quot;tensor_crop&quot;, 0,</span></span>
 <span id="L143"><span class="lineNum">     143</span>              :       &quot;Element to crop the regions of incoming tensor&quot;);</span>
 <span id="L144"><span class="lineNum">     144</span>              : </span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          12 :   object_class = (GObjectClass *) klass;</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          12 :   element_class = (GstElementClass *) klass;</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           2 :   object_class = (GObjectClass *) klass;</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           2 :   element_class = (GstElementClass *) klass;</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : </span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          12 :   object_class-&gt;set_property = gst_tensor_crop_set_property;</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          12 :   object_class-&gt;get_property = gst_tensor_crop_get_property;</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          12 :   object_class-&gt;finalize = gst_tensor_crop_finalize;</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           2 :   object_class-&gt;set_property = gst_tensor_crop_set_property;</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           2 :   object_class-&gt;get_property = gst_tensor_crop_get_property;</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           2 :   object_class-&gt;finalize = gst_tensor_crop_finalize;</span></span>
 <span id="L151"><span class="lineNum">     151</span>              : </span>
 <span id="L152"><span class="lineNum">     152</span>              :   /**</span>
 <span id="L153"><span class="lineNum">     153</span>              :    * GstTensorCrop::lateness:</span>
@@ -218,7 +218,7 @@
 <span id="L156"><span class="lineNum">     156</span>              :    * If raw and info buffers on the pads have different timestamp and time-diff is larger than 'lateness',</span>
 <span id="L157"><span class="lineNum">     157</span>              :    * tensor-crop will drop old buffer and wait for next buffers.</span>
 <span id="L158"><span class="lineNum">     158</span>              :    */</span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          12 :   g_object_class_install_property (object_class, PROP_LATENESS,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           2 :   g_object_class_install_property (object_class, PROP_LATENESS,</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :       g_param_spec_int (&quot;lateness&quot;, &quot;Lateness&quot;,</span>
 <span id="L161"><span class="lineNum">     161</span>              :           &quot;The time difference between raw and info buffer in milliseconds&quot;,</span>
 <span id="L162"><span class="lineNum">     162</span>              :           -1, G_MAXINT, DEFAULT_LATENESS,</span>
@@ -229,26 +229,26 @@
 <span id="L167"><span class="lineNum">     167</span>              :    *</span>
 <span id="L168"><span class="lineNum">     168</span>              :    * The flag to enable/disable debugging messages.</span>
 <span id="L169"><span class="lineNum">     169</span>              :    */</span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          12 :   g_object_class_install_property (object_class, PROP_SILENT,</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           2 :   g_object_class_install_property (object_class, PROP_SILENT,</span></span>
 <span id="L171"><span class="lineNum">     171</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;, &quot;Produce verbose output&quot;,</span>
 <span id="L172"><span class="lineNum">     172</span>              :           DEFAULT_SILENT, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          12 :   element_class-&gt;change_state =</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          12 :       GST_DEBUG_FUNCPTR (gst_tensor_crop_change_state);</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           2 :   element_class-&gt;change_state =</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           2 :       GST_DEBUG_FUNCPTR (gst_tensor_crop_change_state);</span></span>
 <span id="L176"><span class="lineNum">     176</span>              : </span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          12 :   gst_element_class_add_pad_template (element_class,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           2 :   gst_element_class_add_pad_template (element_class,</span></span>
 <span id="L178"><span class="lineNum">     178</span>              :       gst_static_pad_template_get (&amp;src_template));</span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          12 :   gst_element_class_add_pad_template (element_class,</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           2 :   gst_element_class_add_pad_template (element_class,</span></span>
 <span id="L180"><span class="lineNum">     180</span>              :       gst_static_pad_template_get (&amp;raw_template));</span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          12 :   gst_element_class_add_pad_template (element_class,</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           2 :   gst_element_class_add_pad_template (element_class,</span></span>
 <span id="L182"><span class="lineNum">     182</span>              :       gst_static_pad_template_get (&amp;info_template));</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          12 :   gst_element_class_set_static_metadata (element_class,</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           2 :   gst_element_class_set_static_metadata (element_class,</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :       &quot;TensorCrop&quot;,</span>
 <span id="L186"><span class="lineNum">     186</span>              :       &quot;Filter/Tensor&quot;,</span>
 <span id="L187"><span class="lineNum">     187</span>              :       &quot;Element to crop the regions of incoming tensor&quot;,</span>
 <span id="L188"><span class="lineNum">     188</span>              :       &quot;Samsung Electronics Co., Ltd.&quot;);</span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          12 : }</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           2 : }</span></span>
 <span id="L190"><span class="lineNum">     190</span>              : </span>
 <span id="L191"><span class="lineNum">     191</span>              : /**</span>
 <span id="L192"><span class="lineNum">     192</span>              :  * @brief Clear and reset old pad data.</span>
