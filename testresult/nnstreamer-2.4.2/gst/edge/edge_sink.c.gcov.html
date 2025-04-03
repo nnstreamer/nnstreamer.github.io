@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7850bdaab41c91bb3a5f8cef9447546694fd7171 - nnstreamer-2.4.2/gst/edge/edge_sink.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4eb034d0c3450924523c2caf05274faac7be5c08 - nnstreamer-2.4.2/gst/edge/edge_sink.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7850bdaab41c91bb3a5f8cef9447546694fd7171</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4eb034d0c3450924523c2caf05274faac7be5c08</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">82.9&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-03 05:38:08</td>
+            <td class="headerValue">2025-04-03 14:36:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -251,7 +251,7 @@
 <span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           7 :       break;</span></span>
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           1 :     case PROP_DEST_HOST:</span></span>
 <span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           1 :       if (!g_value_get_string (value)) {</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaUNC tlaBgUNC">           0 :         nns_logw (&quot;dest host property cannot be NULL&quot;);</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaUNC tlaBgUNC">           0 :         nns_logw (&quot;dest host property cannot be NULL.&quot;);</span></span>
 <span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :         break;</span></span>
 <span id="L194"><span class="lineNum">     194</span>              :       }</span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC tlaBgGNC">           1 :       g_free (self-&gt;dest_host);</span></span>
@@ -448,7 +448,7 @@
 <span id="L386"><span class="lineNum">     386</span>              : </span>
 <span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">           3 :   if (0 != nns_edge_start (self-&gt;edge_h)) {</span></span>
 <span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">           1 :     nns_loge</span></span>
-<span id="L389"><span class="lineNum">     389</span>              :         (&quot;Failed to start NNStreamer-edge. Please check server IP and port&quot;);</span>
+<span id="L389"><span class="lineNum">     389</span>              :         (&quot;Failed to start NNStreamer-edge. Please check server IP and port.&quot;);</span>
 <span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">           1 :     return FALSE;</span></span>
 <span id="L391"><span class="lineNum">     391</span>              :   }</span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
@@ -498,7 +498,7 @@
 <span id="L436"><span class="lineNum">     436</span>              : </span>
 <span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">           1 :   ret = nns_edge_stop (self-&gt;edge_h);</span></span>
 <span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">           1 :   if (NNS_EDGE_ERROR_NONE != ret) {</span></span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to stop edge. error code(%d)&quot;, ret);</span></span>
+<span id="L439"><span class="lineNum">     439</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to stop edge (error code: %d).&quot;, ret);</span></span>
 <span id="L440"><span class="lineNum">     440</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L441"><span class="lineNum">     441</span>              :   }</span>
 <span id="L442"><span class="lineNum">     442</span>              : </span>
@@ -528,7 +528,7 @@
 <span id="L466"><span class="lineNum">     466</span>              : </span>
 <span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">          13 :   ret = nns_edge_data_create (&amp;data_h);</span></span>
 <span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          13 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
-<span id="L469"><span class="lineNum">     469</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to create data handle in edgesink&quot;);</span></span>
+<span id="L469"><span class="lineNum">     469</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to create data handle in edgesink.&quot;);</span></span>
 <span id="L470"><span class="lineNum">     470</span> <span class="tlaUNC">           0 :     return GST_FLOW_ERROR;</span></span>
 <span id="L471"><span class="lineNum">     471</span>              :   }</span>
 <span id="L472"><span class="lineNum">     472</span>              : </span>
@@ -557,7 +557,7 @@
 <span id="L495"><span class="lineNum">     495</span>              : </span>
 <span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC tlaBgGNC">          13 :     ret = nns_edge_data_add (data_h, map[i].data, map[i].size, NULL);</span></span>
 <span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">          13 :     if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
-<span id="L498"><span class="lineNum">     498</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Failed to append %u-th memory into edge data.&quot;, i);</span></span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Failed to append %uth memory into edge data.&quot;, i);</span></span>
 <span id="L499"><span class="lineNum">     499</span> <span class="tlaUNC">           0 :       num_mems = i + 1;</span></span>
 <span id="L500"><span class="lineNum">     500</span> <span class="tlaUNC">           0 :       goto done;</span></span>
 <span id="L501"><span class="lineNum">     501</span>              :     }</span>
