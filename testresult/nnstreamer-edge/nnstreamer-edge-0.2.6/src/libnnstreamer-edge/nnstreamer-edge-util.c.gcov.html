@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#50d7f09bec491b7f95347c890a9f83ead50f6e68 - nnstreamer-edge-0.2.6/src/libnnstreamer-edge/nnstreamer-edge-util.c</title>
+  <title>LCOV - NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#121619a22eefb07aef74ab765d1eb0ec59b1416e - nnstreamer-edge-0.2.6/src/libnnstreamer-edge/nnstreamer-edge-util.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#50d7f09bec491b7f95347c890a9f83ead50f6e68</td>
+            <td class="headerValue">NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#121619a22eefb07aef74ab765d1eb0ec59b1416e</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">92.9&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-29 05:20:34</td>
+            <td class="headerValue">2025-04-08 05:23:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -228,17 +228,17 @@
 <span id="L166"><span class="lineNum">     166</span>              :  * @note Caller should release newly allocated memory using nns_edge_free().</span>
 <span id="L167"><span class="lineNum">     167</span>              :  */</span>
 <span id="L168"><span class="lineNum">     168</span>              : void *</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">        1183 : nns_edge_malloc (nns_size_t size)</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">        1184 : nns_edge_malloc (nns_size_t size)</span></span>
 <span id="L170"><span class="lineNum">     170</span>              : {</span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        1183 :   void *mem = NULL;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        1184 :   void *mem = NULL;</span></span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">        1183 :   if (size &gt; 0 &amp;&amp; size &lt;= SIZE_MAX)</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        1183 :     mem = malloc (size);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">        1184 :   if (size &gt; 0 &amp;&amp; size &lt;= SIZE_MAX)</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        1184 :     mem = malloc (size);</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        1183 :   if (!mem)</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        1184 :   if (!mem)</span></span>
 <span id="L177"><span class="lineNum">     177</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_edge_loge (&quot;Failed to allocate memory (%&quot; PRIu64 &quot;).&quot;, size);</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : </span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC tlaBgGNC">        1183 :   return mem;</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC tlaBgGNC">        1184 :   return mem;</span></span>
 <span id="L180"><span class="lineNum">     180</span>              : }</span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
 <span id="L182"><span class="lineNum">     182</span>              : /**</span>
@@ -275,14 +275,14 @@
 <span id="L213"><span class="lineNum">     213</span>              :  * @note Caller should release newly allocated string using nns_edge_free().</span>
 <span id="L214"><span class="lineNum">     214</span>              :  */</span>
 <span id="L215"><span class="lineNum">     215</span>              : char *</span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         934 : nns_edge_strdup (const char *str)</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         935 : nns_edge_strdup (const char *str)</span></span>
 <span id="L217"><span class="lineNum">     217</span>              : {</span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         934 :   char *new_str = NULL;</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         935 :   char *new_str = NULL;</span></span>
 <span id="L219"><span class="lineNum">     219</span>              : </span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         934 :   if (str)</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         934 :     new_str = nns_edge_strndup (str, strlen (str));</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         935 :   if (str)</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         935 :     new_str = nns_edge_strndup (str, strlen (str));</span></span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         934 :   return new_str;</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         935 :   return new_str;</span></span>
 <span id="L224"><span class="lineNum">     224</span>              : }</span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
 <span id="L226"><span class="lineNum">     226</span>              : /**</span>
@@ -290,20 +290,20 @@
 <span id="L228"><span class="lineNum">     228</span>              :  * @note Caller should release newly allocated string using nns_edge_free().</span>
 <span id="L229"><span class="lineNum">     229</span>              :  */</span>
 <span id="L230"><span class="lineNum">     230</span>              : char *</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         941 : nns_edge_strndup (const char *str, nns_size_t len)</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         942 : nns_edge_strndup (const char *str, nns_size_t len)</span></span>
 <span id="L232"><span class="lineNum">     232</span>              : {</span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         941 :   char *new_str = NULL;</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         942 :   char *new_str = NULL;</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">         941 :   if (str) {</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">         941 :     new_str = (char *) nns_edge_malloc (len + 1);</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">         942 :   if (str) {</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">         942 :     new_str = (char *) nns_edge_malloc (len + 1);</span></span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">         941 :     if (new_str) {</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">         941 :       strncpy (new_str, str, len);</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         941 :       new_str[len] = '\0';</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">         942 :     if (new_str) {</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">         942 :       strncpy (new_str, str, len);</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         942 :       new_str[len] = '\0';</span></span>
 <span id="L241"><span class="lineNum">     241</span>              :     }</span>
 <span id="L242"><span class="lineNum">     242</span>              :   }</span>
 <span id="L243"><span class="lineNum">     243</span>              : </span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         941 :   return new_str;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         942 :   return new_str;</span></span>
 <span id="L245"><span class="lineNum">     245</span>              : }</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
 <span id="L247"><span class="lineNum">     247</span>              : /**</span>
