@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#6a7335c8c27479f900bc39b192dc755073f45a28 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-training-offloading.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#7f90a0f95de4596f5c0a8ede49af36210228e2ab - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-training-offloading.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#6a7335c8c27479f900bc39b192dc755073f45a28</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#7f90a0f95de4596f5c0a8ede49af36210228e2ab</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">87.6&nbsp;%</td>
-            <td class="headerCovTableEntry">426</td>
-            <td class="headerCovTableEntry">373</td>
+            <td class="headerCovTableEntry">427</td>
+            <td class="headerCovTableEntry">374</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-01-29 05:23:43</td>
+            <td class="headerValue">2025-04-09 05:26:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -80,7 +80,7 @@
 <span id="L18"><span class="lineNum">      18</span>              : #include &quot;ml-api-service.h&quot;</span>
 <span id="L19"><span class="lineNum">      19</span>              : #include &quot;ml-api-service-training-offloading.h&quot;</span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span>              : /** It(@~~@) will be replaced with the path set by the app.*/</span>
+<span id="L21"><span class="lineNum">      21</span>              : /** It(@~~@) will be replaced with the path set by the app. */</span>
 <span id="L22"><span class="lineNum">      22</span>              : #define APP_RW_PATH &quot;@APP_RW_PATH@&quot;</span>
 <span id="L23"><span class="lineNum">      23</span>              : #define REMOTE_APP_RW_PATH &quot;@REMOTE_APP_RW_PATH@&quot;</span>
 <span id="L24"><span class="lineNum">      24</span>              : /** combined with trained model file name set in conf */</span>
@@ -235,7 +235,7 @@
 <span id="L173"><span class="lineNum">     173</span>              : </span>
 <span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           7 :   if (json_object_has_member (training_obj, &quot;time-limit&quot;)) {</span></span>
 <span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           6 :     training_s-&gt;time_limit =</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           6 :         json_object_get_int_member (training_obj, &quot;time-limit&quot;);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           6 :         (gint) json_object_get_int_member (training_obj, &quot;time-limit&quot;);</span></span>
 <span id="L177"><span class="lineNum">     177</span>              :   } else {</span>
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :     _ml_logw</span></span>
 <span id="L179"><span class="lineNum">     179</span>              :         (&quot;The default time-limit(10 sec) is set because `time-limit` is not set.&quot;);</span>
@@ -510,496 +510,494 @@
 <span id="L448"><span class="lineNum">     448</span>              :   GList *list, *iter;</span>
 <span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC">           1 :   gchar *transfer_data = NULL, *service_name = NULL;</span></span>
 <span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC">           1 :   gchar *contents = NULL, *pipeline = NULL;</span></span>
-<span id="L451"><span class="lineNum">     451</span>              :   guint changed;</span>
-<span id="L452"><span class="lineNum">     452</span>              :   gsize len;</span>
-<span id="L453"><span class="lineNum">     453</span>              : </span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">           1 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
-<span id="L456"><span class="lineNum">     456</span>              : </span>
-<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">           1 :   _ml_logd (&quot;path set by app:%s &quot;, training_s-&gt;path);</span></span>
-<span id="L458"><span class="lineNum">     458</span>              : </span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           1 :   list = g_hash_table_get_keys (training_s-&gt;transfer_data_table);</span></span>
-<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">           1 :   if (!list) {</span></span>
-<span id="L461"><span class="lineNum">     461</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L462"><span class="lineNum">     462</span>              :         &quot;Failed to get transfer data table&quot;);</span>
-<span id="L463"><span class="lineNum">     463</span>              :   }</span>
-<span id="L464"><span class="lineNum">     464</span>              : </span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC tlaBgGNC">           4 :   for (iter = list; iter != NULL; iter = g_list_next (iter)) {</span></span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">           3 :     const gchar *name = iter-&gt;data;</span></span>
-<span id="L467"><span class="lineNum">     467</span>              : </span>
-<span id="L468"><span class="lineNum">     468</span>              :     transfer_data =</span>
-<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">           3 :         g_strdup (g_hash_table_lookup (training_s-&gt;transfer_data_table, name));</span></span>
-<span id="L470"><span class="lineNum">     470</span>              : </span>
-<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">           3 :     if (g_strstr_len (transfer_data, -1, APP_RW_PATH)) {</span></span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           4 :       transfer_data = _ml_replace_string (transfer_data, APP_RW_PATH,</span></span>
-<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">           2 :           training_s-&gt;path, NULL, &amp;changed);</span></span>
-<span id="L474"><span class="lineNum">     474</span>              : </span>
-<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">           2 :       _ml_logd (&quot;transfer_data:%s&quot;, transfer_data);</span></span>
-<span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">           2 :       if (!g_file_get_contents (transfer_data, &amp;contents, &amp;len, NULL)) {</span></span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report (&quot;Failed to read file:%s&quot;, transfer_data);</span></span>
-<span id="L479"><span class="lineNum">     479</span> <span class="tlaUNC">           0 :         goto error;</span></span>
-<span id="L480"><span class="lineNum">     480</span>              :       }</span>
-<span id="L481"><span class="lineNum">     481</span>              : </span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC tlaBgGNC">           2 :       ret = _request_offloading_service (mls, name, contents, len);</span></span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">           2 :       if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report (&quot;Failed to request service '%s'.&quot;, name);</span></span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaUNC">           0 :         goto error;</span></span>
-<span id="L486"><span class="lineNum">     486</span>              :       }</span>
-<span id="L487"><span class="lineNum">     487</span>              : </span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC tlaBgGNC">           2 :       g_free (transfer_data);</span></span>
-<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">           2 :       g_free (contents);</span></span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">           2 :       transfer_data = NULL;</span></span>
-<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">           2 :       contents = NULL;</span></span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">           1 :     } else if (g_strstr_len (transfer_data, -1, &quot;pipeline&quot;)) {</span></span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">           2 :       service_name = g_strdup (iter-&gt;data);</span></span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">           1 :       pipeline = g_strdup (transfer_data);</span></span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">           1 :       transfer_data = NULL;</span></span>
-<span id="L496"><span class="lineNum">     496</span>              :     }</span>
-<span id="L497"><span class="lineNum">     497</span>              :   }</span>
-<span id="L498"><span class="lineNum">     498</span>              : </span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">           1 :   if (pipeline) {</span></span>
-<span id="L500"><span class="lineNum">     500</span>              :     /**</span>
-<span id="L501"><span class="lineNum">     501</span>              :      * The remote sender sends the last in the pipeline.</span>
-<span id="L502"><span class="lineNum">     502</span>              :      * When the pipeline arrives, the remote receiver determines that the sender has sent all the necessary files specified in the pipeline.</span>
-<span id="L503"><span class="lineNum">     503</span>              :      * pipeline description must be sent last.</span>
-<span id="L504"><span class="lineNum">     504</span>              :      */</span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">           1 :     _ml_logd</span></span>
-<span id="L506"><span class="lineNum">     506</span>              :         (&quot;In case of pipeline, @REMOTE_APP_RW_PATH@ will be replaced at the remote receiver.\n transfer_data:pipeline(%s),&quot;,</span>
-<span id="L507"><span class="lineNum">     507</span>              :         pipeline);</span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">           2 :     ret = _request_offloading_service (mls, service_name, pipeline,</span></span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">           1 :         strlen (pipeline) + 1);</span></span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">           1 :     if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report (&quot;Failed to request service(%s)&quot;, service_name);</span></span>
-<span id="L512"><span class="lineNum">     512</span>              :     }</span>
-<span id="L513"><span class="lineNum">     513</span>              :   }</span>
-<span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC tlaBgGNC">           1 : error:</span></span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           1 :   g_free (service_name);</span></span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">           1 :   g_free (transfer_data);</span></span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">           1 :   g_free (contents);</span></span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">           1 :   g_list_free (list);</span></span>
-<span id="L520"><span class="lineNum">     520</span>              : </span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">           1 :   return ret;</span></span>
-<span id="L522"><span class="lineNum">     522</span>              : }</span>
-<span id="L523"><span class="lineNum">     523</span>              : </span>
-<span id="L524"><span class="lineNum">     524</span>              : /**</span>
-<span id="L525"><span class="lineNum">     525</span>              :  * @brief Thread for checking receive data.</span>
-<span id="L526"><span class="lineNum">     526</span>              :  */</span>
-<span id="L527"><span class="lineNum">     527</span>              : static gpointer</span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           2 : _check_received_data_thread (gpointer data)</span></span>
-<span id="L529"><span class="lineNum">     529</span>              : {</span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">           2 :   ml_training_services_s *training_s = (ml_training_services_s *) data;</span></span>
-<span id="L531"><span class="lineNum">     531</span>              :   gint usec;</span>
-<span id="L532"><span class="lineNum">     532</span>              : </span>
-<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (training_s != NULL, NULL);</span></span>
-<span id="L534"><span class="lineNum">     534</span>              : </span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">           2 :   usec = training_s-&gt;time_limit * 1000000;</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         102 :   while (usec &gt; 0) {</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         101 :     g_usleep (100000);</span></span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         101 :     if (training_s-&gt;receiver_pipe_json_str != NULL) {</span></span>
-<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
-<span id="L540"><span class="lineNum">     540</span>              :           (&quot;Lock to receive pipeline JSON string required for model training.&quot;);</span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">           1 :       g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">           1 :       training_s-&gt;is_received = TRUE;</span></span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;receive_pipe:%s&quot;, training_s-&gt;receiver_pipe_json_str);</span></span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
-<span id="L545"><span class="lineNum">     545</span>              :           (&quot;Now pipeline has arrived, The remote sender send the pipeline last, so probably received all the data.&quot;</span>
-<span id="L546"><span class="lineNum">     546</span>              :           &quot;If there are no files required for the pipeline, a runtime error occurs.&quot;);</span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">           1 :       g_cond_signal (&amp;training_s-&gt;received_cond);</span></span>
-<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">           1 :       g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">           1 :       return NULL;</span></span>
-<span id="L550"><span class="lineNum">     550</span>              :     }</span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">         100 :     usec -= 100000;</span></span>
-<span id="L552"><span class="lineNum">     552</span>              :   }</span>
-<span id="L553"><span class="lineNum">     553</span>              : </span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           1 :   _ml_loge (&quot;Required data is null, receive_pipe:%s&quot;,</span></span>
-<span id="L555"><span class="lineNum">     555</span>              :       training_s-&gt;receiver_pipe_json_str);</span>
-<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">           1 :   g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">           1 :   training_s-&gt;is_received = FALSE;</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">           1 :   g_cond_signal (&amp;training_s-&gt;received_cond);</span></span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">           1 :   g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">           1 :   return NULL;</span></span>
-<span id="L561"><span class="lineNum">     561</span>              : }</span>
-<span id="L562"><span class="lineNum">     562</span>              : </span>
-<span id="L563"><span class="lineNum">     563</span>              : /**</span>
-<span id="L564"><span class="lineNum">     564</span>              :  * @brief Check if all necessary data is received.</span>
-<span id="L565"><span class="lineNum">     565</span>              :  */</span>
-<span id="L566"><span class="lineNum">     566</span>              : static gboolean</span>
-<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">           2 : _training_offloading_check_received_data (ml_training_services_s * training_s)</span></span>
-<span id="L568"><span class="lineNum">     568</span>              : {</span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">           2 :   gboolean is_received = FALSE;</span></span>
-<span id="L570"><span class="lineNum">     570</span>              : </span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (training_s != NULL, FALSE);</span></span>
-<span id="L572"><span class="lineNum">     572</span>              : </span>
-<span id="L573"><span class="lineNum">     573</span> <span class="tlaGNC">           2 :   training_s-&gt;received_thread = g_thread_new (&quot;check_received_file&quot;,</span></span>
-<span id="L574"><span class="lineNum">     574</span>              :       _check_received_data_thread, training_s);</span>
-<span id="L575"><span class="lineNum">     575</span>              : </span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">           2 :   g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L577"><span class="lineNum">     577</span>              : </span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           3 :   while (!training_s-&gt;is_received) {</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           2 :     _ml_logd (&quot;Wait to receive all data needed for model training.&quot;);</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           2 :     g_cond_wait (&amp;training_s-&gt;received_cond, &amp;training_s-&gt;received_lock);</span></span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">           2 :     if (training_s-&gt;is_received == FALSE)</span></span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           1 :       break;</span></span>
-<span id="L583"><span class="lineNum">     583</span>              :   }</span>
-<span id="L584"><span class="lineNum">     584</span>              : </span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">           2 :   is_received = training_s-&gt;is_received;</span></span>
-<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">           2 :   g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">           2 :   _ml_logd (&quot;unlock, receive all data&quot;);</span></span>
-<span id="L588"><span class="lineNum">     588</span>              : </span>
-<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">           2 :   return is_received;</span></span>
-<span id="L590"><span class="lineNum">     590</span>              : }</span>
-<span id="L591"><span class="lineNum">     591</span>              : </span>
-<span id="L592"><span class="lineNum">     592</span>              : /**</span>
-<span id="L593"><span class="lineNum">     593</span>              :  * @brief replace path.</span>
-<span id="L594"><span class="lineNum">     594</span>              :  */</span>
-<span id="L595"><span class="lineNum">     595</span>              : static void</span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">           2 : _training_offloading_replce_pipeline_data_path (ml_service_s * mls)</span></span>
-<span id="L597"><span class="lineNum">     597</span>              : {</span>
-<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">           2 :   guint changed = 0;</span></span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">           2 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L600"><span class="lineNum">     600</span>              :   int ret;</span>
-<span id="L601"><span class="lineNum">     601</span>              : </span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           2 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           2 :   g_return_if_fail (ret == ML_ERROR_NONE);</span></span>
-<span id="L604"><span class="lineNum">     604</span>              : </span>
-<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">           2 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_SENDER) {</span></span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">           1 :     if (training_s-&gt;sender_pipe) {</span></span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           2 :       training_s-&gt;sender_pipe =</span></span>
-<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;sender_pipe, APP_RW_PATH,</span></span>
-<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">           1 :           training_s-&gt;path, NULL, &amp;changed);</span></span>
-<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;@APP_RW_PATH@ is replaced, sender_pipe:%s&quot;,</span></span>
-<span id="L611"><span class="lineNum">     611</span>              :           training_s-&gt;sender_pipe);</span>
-<span id="L612"><span class="lineNum">     612</span>              :     }</span>
-<span id="L613"><span class="lineNum">     613</span>              :   } else {</span>
-<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">           1 :     if (training_s-&gt;receiver_pipe_json_str) {</span></span>
-<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">           2 :       training_s-&gt;trained_model_path =</span></span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;trained_model_path, APP_RW_PATH,</span></span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           1 :           training_s-&gt;path, NULL, &amp;changed);</span></span>
-<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">           2 :       training_s-&gt;receiver_pipe_json_str =</span></span>
-<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;receiver_pipe_json_str,</span></span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">           1 :           REMOTE_APP_RW_PATH, training_s-&gt;path, NULL, &amp;changed);</span></span>
-<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">           2 :       training_s-&gt;receiver_pipe_json_str =</span></span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;receiver_pipe_json_str,</span></span>
-<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">           1 :           TRAINED_MODEL_FILE, training_s-&gt;trained_model_path, NULL, &amp;changed);</span></span>
-<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
-<span id="L625"><span class="lineNum">     625</span>              :           (&quot;@REMOTE_APP_RW_PATH@ and @TRAINED_MODEL_FILE@ are replaced, receiver_pipe JSON string: %s&quot;,</span>
-<span id="L626"><span class="lineNum">     626</span>              :           training_s-&gt;receiver_pipe_json_str);</span>
-<span id="L627"><span class="lineNum">     627</span>              :     }</span>
-<span id="L628"><span class="lineNum">     628</span>              :   }</span>
-<span id="L629"><span class="lineNum">     629</span>              : }</span>
-<span id="L630"><span class="lineNum">     630</span>              : </span>
-<span id="L631"><span class="lineNum">     631</span>              : /**</span>
-<span id="L632"><span class="lineNum">     632</span>              :  * @brief Set path in ml-service training offloading handle.</span>
-<span id="L633"><span class="lineNum">     633</span>              :  */</span>
-<span id="L634"><span class="lineNum">     634</span>              : int</span>
-<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           6 : _ml_service_training_offloading_set_path (ml_service_s * mls,</span></span>
-<span id="L636"><span class="lineNum">     636</span>              :     const gchar * path)</span>
-<span id="L637"><span class="lineNum">     637</span>              : {</span>
-<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">           6 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">           1 :   gsize len = 0;</span></span>
+<span id="L452"><span class="lineNum">     452</span>              : </span>
+<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">           1 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L455"><span class="lineNum">     455</span>              : </span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           1 :   _ml_logd (&quot;path set by app:%s &quot;, training_s-&gt;path);</span></span>
+<span id="L457"><span class="lineNum">     457</span>              : </span>
+<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">           1 :   list = g_hash_table_get_keys (training_s-&gt;transfer_data_table);</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           1 :   if (!list) {</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L461"><span class="lineNum">     461</span>              :         &quot;Failed to get transfer data table&quot;);</span>
+<span id="L462"><span class="lineNum">     462</span>              :   }</span>
+<span id="L463"><span class="lineNum">     463</span>              : </span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC tlaBgGNC">           4 :   for (iter = list; iter != NULL; iter = g_list_next (iter)) {</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">           3 :     const gchar *name = iter-&gt;data;</span></span>
+<span id="L466"><span class="lineNum">     466</span>              : </span>
+<span id="L467"><span class="lineNum">     467</span>              :     transfer_data =</span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">           3 :         g_strdup (g_hash_table_lookup (training_s-&gt;transfer_data_table, name));</span></span>
+<span id="L469"><span class="lineNum">     469</span>              : </span>
+<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">           3 :     if (g_strstr_len (transfer_data, -1, APP_RW_PATH)) {</span></span>
+<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">           4 :       transfer_data = _ml_replace_string (transfer_data, APP_RW_PATH,</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           2 :           training_s-&gt;path, NULL, NULL);</span></span>
+<span id="L473"><span class="lineNum">     473</span>              : </span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">           2 :       _ml_logd (&quot;transfer_data:%s&quot;, transfer_data);</span></span>
+<span id="L475"><span class="lineNum">     475</span>              : </span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">           2 :       if (!g_file_get_contents (transfer_data, &amp;contents, &amp;len, NULL)) {</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report (&quot;Failed to read file:%s&quot;, transfer_data);</span></span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaUNC">           0 :         goto error;</span></span>
+<span id="L479"><span class="lineNum">     479</span>              :       }</span>
+<span id="L480"><span class="lineNum">     480</span>              : </span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC tlaBgGNC">           2 :       ret = _request_offloading_service (mls, name, contents, len);</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">           2 :       if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report (&quot;Failed to request service '%s'.&quot;, name);</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaUNC">           0 :         goto error;</span></span>
+<span id="L485"><span class="lineNum">     485</span>              :       }</span>
+<span id="L486"><span class="lineNum">     486</span>              : </span>
+<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC tlaBgGNC">           2 :       g_free (transfer_data);</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">           2 :       g_free (contents);</span></span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">           2 :       transfer_data = NULL;</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">           2 :       contents = NULL;</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">           1 :     } else if (g_strstr_len (transfer_data, -1, &quot;pipeline&quot;)) {</span></span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">           2 :       service_name = g_strdup (iter-&gt;data);</span></span>
+<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">           1 :       pipeline = g_strdup (transfer_data);</span></span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">           1 :       transfer_data = NULL;</span></span>
+<span id="L495"><span class="lineNum">     495</span>              :     }</span>
+<span id="L496"><span class="lineNum">     496</span>              :   }</span>
+<span id="L497"><span class="lineNum">     497</span>              : </span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">           1 :   if (pipeline) {</span></span>
+<span id="L499"><span class="lineNum">     499</span>              :     /**</span>
+<span id="L500"><span class="lineNum">     500</span>              :      * The remote sender sends the last in the pipeline.</span>
+<span id="L501"><span class="lineNum">     501</span>              :      * When the pipeline arrives, the remote receiver determines that the sender has sent all the necessary files specified in the pipeline.</span>
+<span id="L502"><span class="lineNum">     502</span>              :      * pipeline description must be sent last.</span>
+<span id="L503"><span class="lineNum">     503</span>              :      */</span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">           1 :     _ml_logd</span></span>
+<span id="L505"><span class="lineNum">     505</span>              :         (&quot;In case of pipeline, @REMOTE_APP_RW_PATH@ will be replaced at the remote receiver.\n transfer_data:pipeline(%s),&quot;,</span>
+<span id="L506"><span class="lineNum">     506</span>              :         pipeline);</span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">           2 :     ret = _request_offloading_service (mls, service_name, pipeline,</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">           1 :         strlen (pipeline) + 1);</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">           1 :     if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report (&quot;Failed to request service(%s)&quot;, service_name);</span></span>
+<span id="L511"><span class="lineNum">     511</span>              :     }</span>
+<span id="L512"><span class="lineNum">     512</span>              :   }</span>
+<span id="L513"><span class="lineNum">     513</span>              : </span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC tlaBgGNC">           1 : error:</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">           1 :   g_free (service_name);</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           1 :   g_free (transfer_data);</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">           1 :   g_free (contents);</span></span>
+<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">           1 :   g_list_free (list);</span></span>
+<span id="L519"><span class="lineNum">     519</span>              : </span>
+<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">           1 :   return ret;</span></span>
+<span id="L521"><span class="lineNum">     521</span>              : }</span>
+<span id="L522"><span class="lineNum">     522</span>              : </span>
+<span id="L523"><span class="lineNum">     523</span>              : /**</span>
+<span id="L524"><span class="lineNum">     524</span>              :  * @brief Thread for checking receive data.</span>
+<span id="L525"><span class="lineNum">     525</span>              :  */</span>
+<span id="L526"><span class="lineNum">     526</span>              : static gpointer</span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           2 : _check_received_data_thread (gpointer data)</span></span>
+<span id="L528"><span class="lineNum">     528</span>              : {</span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           2 :   ml_training_services_s *training_s = (ml_training_services_s *) data;</span></span>
+<span id="L530"><span class="lineNum">     530</span>              :   gint usec;</span>
+<span id="L531"><span class="lineNum">     531</span>              : </span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (training_s != NULL, NULL);</span></span>
+<span id="L533"><span class="lineNum">     533</span>              : </span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">           2 :   usec = training_s-&gt;time_limit * 1000000;</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         102 :   while (usec &gt; 0) {</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         101 :     g_usleep (100000);</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         101 :     if (training_s-&gt;receiver_pipe_json_str != NULL) {</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
+<span id="L539"><span class="lineNum">     539</span>              :           (&quot;Lock to receive pipeline JSON string required for model training.&quot;);</span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">           1 :       g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">           1 :       training_s-&gt;is_received = TRUE;</span></span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;receive_pipe:%s&quot;, training_s-&gt;receiver_pipe_json_str);</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
+<span id="L544"><span class="lineNum">     544</span>              :           (&quot;Now pipeline has arrived, The remote sender send the pipeline last, so probably received all the data.&quot;</span>
+<span id="L545"><span class="lineNum">     545</span>              :           &quot;If there are no files required for the pipeline, a runtime error occurs.&quot;);</span>
+<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">           1 :       g_cond_signal (&amp;training_s-&gt;received_cond);</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">           1 :       g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">           1 :       return NULL;</span></span>
+<span id="L549"><span class="lineNum">     549</span>              :     }</span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         100 :     usec -= 100000;</span></span>
+<span id="L551"><span class="lineNum">     551</span>              :   }</span>
+<span id="L552"><span class="lineNum">     552</span>              : </span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           1 :   _ml_loge (&quot;Required data is null, receive_pipe:%s&quot;,</span></span>
+<span id="L554"><span class="lineNum">     554</span>              :       training_s-&gt;receiver_pipe_json_str);</span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           1 :   g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">           1 :   training_s-&gt;is_received = FALSE;</span></span>
+<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">           1 :   g_cond_signal (&amp;training_s-&gt;received_cond);</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">           1 :   g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">           1 :   return NULL;</span></span>
+<span id="L560"><span class="lineNum">     560</span>              : }</span>
+<span id="L561"><span class="lineNum">     561</span>              : </span>
+<span id="L562"><span class="lineNum">     562</span>              : /**</span>
+<span id="L563"><span class="lineNum">     563</span>              :  * @brief Check if all necessary data is received.</span>
+<span id="L564"><span class="lineNum">     564</span>              :  */</span>
+<span id="L565"><span class="lineNum">     565</span>              : static gboolean</span>
+<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC">           2 : _training_offloading_check_received_data (ml_training_services_s * training_s)</span></span>
+<span id="L567"><span class="lineNum">     567</span>              : {</span>
+<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           2 :   gboolean is_received = FALSE;</span></span>
+<span id="L569"><span class="lineNum">     569</span>              : </span>
+<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC">           2 :   g_return_val_if_fail (training_s != NULL, FALSE);</span></span>
+<span id="L571"><span class="lineNum">     571</span>              : </span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">           2 :   training_s-&gt;received_thread = g_thread_new (&quot;check_received_file&quot;,</span></span>
+<span id="L573"><span class="lineNum">     573</span>              :       _check_received_data_thread, training_s);</span>
+<span id="L574"><span class="lineNum">     574</span>              : </span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">           2 :   g_mutex_lock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L576"><span class="lineNum">     576</span>              : </span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           3 :   while (!training_s-&gt;is_received) {</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           2 :     _ml_logd (&quot;Wait to receive all data needed for model training.&quot;);</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           2 :     g_cond_wait (&amp;training_s-&gt;received_cond, &amp;training_s-&gt;received_lock);</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           2 :     if (training_s-&gt;is_received == FALSE)</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">           1 :       break;</span></span>
+<span id="L582"><span class="lineNum">     582</span>              :   }</span>
+<span id="L583"><span class="lineNum">     583</span>              : </span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">           2 :   is_received = training_s-&gt;is_received;</span></span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">           2 :   g_mutex_unlock (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">           2 :   _ml_logd (&quot;unlock, receive all data&quot;);</span></span>
+<span id="L587"><span class="lineNum">     587</span>              : </span>
+<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">           2 :   return is_received;</span></span>
+<span id="L589"><span class="lineNum">     589</span>              : }</span>
+<span id="L590"><span class="lineNum">     590</span>              : </span>
+<span id="L591"><span class="lineNum">     591</span>              : /**</span>
+<span id="L592"><span class="lineNum">     592</span>              :  * @brief replace path.</span>
+<span id="L593"><span class="lineNum">     593</span>              :  */</span>
+<span id="L594"><span class="lineNum">     594</span>              : static void</span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">           2 : _training_offloading_replace_pipeline_data_path (ml_service_s * mls)</span></span>
+<span id="L596"><span class="lineNum">     596</span>              : {</span>
+<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">           2 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L598"><span class="lineNum">     598</span>              :   int ret;</span>
+<span id="L599"><span class="lineNum">     599</span>              : </span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">           2 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">           2 :   g_return_if_fail (ret == ML_ERROR_NONE);</span></span>
+<span id="L602"><span class="lineNum">     602</span>              : </span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           2 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_SENDER) {</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">           1 :     if (training_s-&gt;sender_pipe) {</span></span>
+<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">           2 :       training_s-&gt;sender_pipe =</span></span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;sender_pipe, APP_RW_PATH,</span></span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">           1 :           training_s-&gt;path, NULL, NULL);</span></span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;@APP_RW_PATH@ is replaced, sender_pipe:%s&quot;,</span></span>
+<span id="L609"><span class="lineNum">     609</span>              :           training_s-&gt;sender_pipe);</span>
+<span id="L610"><span class="lineNum">     610</span>              :     }</span>
+<span id="L611"><span class="lineNum">     611</span>              :   } else {</span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">           1 :     if (training_s-&gt;receiver_pipe_json_str) {</span></span>
+<span id="L613"><span class="lineNum">     613</span> <span class="tlaGNC">           2 :       training_s-&gt;trained_model_path =</span></span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;trained_model_path, APP_RW_PATH,</span></span>
+<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">           1 :           training_s-&gt;path, NULL, NULL);</span></span>
+<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">           2 :       training_s-&gt;receiver_pipe_json_str =</span></span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;receiver_pipe_json_str,</span></span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">           1 :           REMOTE_APP_RW_PATH, training_s-&gt;path, NULL, NULL);</span></span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           2 :       training_s-&gt;receiver_pipe_json_str =</span></span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">           2 :           _ml_replace_string (training_s-&gt;receiver_pipe_json_str,</span></span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">           1 :           TRAINED_MODEL_FILE, training_s-&gt;trained_model_path, NULL, NULL);</span></span>
+<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">           1 :       _ml_logd</span></span>
+<span id="L623"><span class="lineNum">     623</span>              :           (&quot;@REMOTE_APP_RW_PATH@ and @TRAINED_MODEL_FILE@ are replaced, receiver_pipe JSON string: %s&quot;,</span>
+<span id="L624"><span class="lineNum">     624</span>              :           training_s-&gt;receiver_pipe_json_str);</span>
+<span id="L625"><span class="lineNum">     625</span>              :     }</span>
+<span id="L626"><span class="lineNum">     626</span>              :   }</span>
+<span id="L627"><span class="lineNum">     627</span>              : }</span>
+<span id="L628"><span class="lineNum">     628</span>              : </span>
+<span id="L629"><span class="lineNum">     629</span>              : /**</span>
+<span id="L630"><span class="lineNum">     630</span>              :  * @brief Set path in ml-service training offloading handle.</span>
+<span id="L631"><span class="lineNum">     631</span>              :  */</span>
+<span id="L632"><span class="lineNum">     632</span>              : int</span>
+<span id="L633"><span class="lineNum">     633</span> <span class="tlaGNC">           6 : _ml_service_training_offloading_set_path (ml_service_s * mls,</span></span>
+<span id="L634"><span class="lineNum">     634</span>              :     const gchar * path)</span>
+<span id="L635"><span class="lineNum">     635</span>              : {</span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           6 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L638"><span class="lineNum">     638</span>              : </span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">          11 :   g_return_val_if_fail (path != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
 <span id="L640"><span class="lineNum">     640</span>              : </span>
-<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">          11 :   g_return_val_if_fail (path != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
-<span id="L642"><span class="lineNum">     642</span>              : </span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC">           5 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">           5 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
-<span id="L645"><span class="lineNum">     645</span>              : </span>
-<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">           5 :   g_free (training_s-&gt;path);</span></span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           5 :   training_s-&gt;path = g_strdup (path);</span></span>
-<span id="L648"><span class="lineNum">     648</span>              : </span>
-<span id="L649"><span class="lineNum">     649</span> <span class="tlaGNC">           5 :   return ret;</span></span>
-<span id="L650"><span class="lineNum">     650</span>              : }</span>
-<span id="L651"><span class="lineNum">     651</span>              : </span>
-<span id="L652"><span class="lineNum">     652</span>              : /**</span>
-<span id="L653"><span class="lineNum">     653</span>              :  * @brief Prepare ml training offloading service as sender.</span>
-<span id="L654"><span class="lineNum">     654</span>              :  */</span>
-<span id="L655"><span class="lineNum">     655</span>              : static int</span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">           1 : _ml_service_training_offloading_prepare_sender (ml_service_s * mls,</span></span>
-<span id="L657"><span class="lineNum">     657</span>              :     ml_training_services_s * training_s)</span>
-<span id="L658"><span class="lineNum">     658</span>              : {</span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">           1 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L660"><span class="lineNum">     660</span>              : </span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">           1 :   ret = _training_offloading_services_request (mls);</span></span>
-<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">           1 :   if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to request service.&quot;);</span></span>
-<span id="L664"><span class="lineNum">     664</span>              :   }</span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC tlaBgGNC">           1 :   _training_offloading_replce_pipeline_data_path (mls);</span></span>
-<span id="L666"><span class="lineNum">     666</span>              : </span>
-<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">           1 :   ret = ml_pipeline_construct (training_s-&gt;sender_pipe, NULL, NULL,</span></span>
-<span id="L668"><span class="lineNum">     668</span>              :       &amp;training_s-&gt;pipeline_h);</span>
-<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret) {</span></span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to construct pipeline.&quot;);</span></span>
-<span id="L671"><span class="lineNum">     671</span>              :   }</span>
-<span id="L672"><span class="lineNum">     672</span>              : </span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC tlaBgGNC">           1 :   return ret;</span></span>
-<span id="L674"><span class="lineNum">     674</span>              : }</span>
-<span id="L675"><span class="lineNum">     675</span>              : </span>
-<span id="L676"><span class="lineNum">     676</span>              : /**</span>
-<span id="L677"><span class="lineNum">     677</span>              :  * @brief Prepare ml training offloading service as receiver.</span>
-<span id="L678"><span class="lineNum">     678</span>              :  */</span>
-<span id="L679"><span class="lineNum">     679</span>              : static int</span>
-<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">           2 : _ml_service_training_offloading_prepare_receiver (ml_service_s * mls,</span></span>
-<span id="L681"><span class="lineNum">     681</span>              :     ml_training_services_s * training_s)</span>
-<span id="L682"><span class="lineNum">     682</span>              : {</span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">           2 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L684"><span class="lineNum">     684</span> <span class="tlaGNC">           2 :   g_autoptr (JsonNode) pipeline_node = NULL;</span></span>
-<span id="L685"><span class="lineNum">     685</span>              :   JsonObject *pipeline_obj;</span>
-<span id="L686"><span class="lineNum">     686</span>              :   JsonObject *pipe;</span>
-<span id="L687"><span class="lineNum">     687</span>              : </span>
-<span id="L688"><span class="lineNum">     688</span>              :   /* checking if all required files are received */</span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">           2 :   if (!_training_offloading_check_received_data (training_s)) {</span></span>
-<span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L691"><span class="lineNum">     691</span>              :         &quot;Failed to receive the required data&quot;);</span>
-<span id="L692"><span class="lineNum">     692</span>              :   }</span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">           1 :   _training_offloading_replce_pipeline_data_path (mls);</span></span>
-<span id="L694"><span class="lineNum">     694</span>              : </span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">           1 :   pipeline_node = json_from_string (training_s-&gt;receiver_pipe_json_str, NULL);</span></span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">           1 :   if (!pipeline_node) {</span></span>
-<span id="L697"><span class="lineNum">     697</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L698"><span class="lineNum">     698</span>              :         &quot;Failed to parse the json string, %s.&quot;,</span>
-<span id="L699"><span class="lineNum">     699</span>              :         training_s-&gt;receiver_pipe_json_str);</span>
-<span id="L700"><span class="lineNum">     700</span>              :   }</span>
-<span id="L701"><span class="lineNum">     701</span>              : </span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC tlaBgGNC">           1 :   pipeline_obj = json_node_get_object (pipeline_node);</span></span>
-<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">           1 :   if (!pipeline_obj) {</span></span>
-<span id="L704"><span class="lineNum">     704</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L705"><span class="lineNum">     705</span>              :         &quot;Failed to get the json object from the json node.&quot;);</span>
-<span id="L706"><span class="lineNum">     706</span>              :   }</span>
-<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC tlaBgGNC">           1 :   if (!json_object_has_member (pipeline_obj, &quot;pipeline&quot;)) {</span></span>
-<span id="L708"><span class="lineNum">     708</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L709"><span class="lineNum">     709</span>              :         &quot;Failed to parse configuration file, cannot get the pipeline JSON object.&quot;);</span>
-<span id="L710"><span class="lineNum">     710</span>              :   }</span>
-<span id="L711"><span class="lineNum">     711</span>              : </span>
-<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC tlaBgGNC">           1 :   pipe = json_object_get_object_member (pipeline_obj, &quot;pipeline&quot;);</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">           1 :   if (json_object_has_member (pipe, &quot;description&quot;)) {</span></span>
-<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">           1 :     training_s-&gt;receiver_pipe =</span></span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">           2 :         g_strdup (_ml_service_get_json_string_member (pipe, &quot;description&quot;));</span></span>
-<span id="L716"><span class="lineNum">     716</span>              :   } else {</span>
-<span id="L717"><span class="lineNum">     717</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L718"><span class="lineNum">     718</span>              :         &quot;Failed to parse configuration file, cannot get the pipeline description.&quot;);</span>
-<span id="L719"><span class="lineNum">     719</span>              :   }</span>
-<span id="L720"><span class="lineNum">     720</span>              : </span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = ml_pipeline_construct (training_s-&gt;receiver_pipe, NULL, NULL,</span></span>
-<span id="L722"><span class="lineNum">     722</span>              :       &amp;training_s-&gt;pipeline_h);</span>
-<span id="L723"><span class="lineNum">     723</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret) {</span></span>
-<span id="L724"><span class="lineNum">     724</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to construct pipeline.&quot;);</span></span>
-<span id="L725"><span class="lineNum">     725</span>              :   }</span>
-<span id="L726"><span class="lineNum">     726</span>              : </span>
-<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = _training_offloading_conf_parse_pipeline (mls, pipe);</span></span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">           1 :   if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L729"><span class="lineNum">     729</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
-<span id="L730"><span class="lineNum">     730</span>              :   }</span>
-<span id="L731"><span class="lineNum">     731</span>              : </span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC tlaBgGNC">           1 :   return ret;</span></span>
-<span id="L733"><span class="lineNum">     733</span>              : }</span>
-<span id="L734"><span class="lineNum">     734</span>              : </span>
-<span id="L735"><span class="lineNum">     735</span>              : /**</span>
-<span id="L736"><span class="lineNum">     736</span>              :  * @brief Start ml training offloading service.</span>
-<span id="L737"><span class="lineNum">     737</span>              :  */</span>
-<span id="L738"><span class="lineNum">     738</span>              : int</span>
-<span id="L739"><span class="lineNum">     739</span> <span class="tlaGNC">           4 : _ml_service_training_offloading_start (ml_service_s * mls)</span></span>
-<span id="L740"><span class="lineNum">     740</span>              : {</span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">           4 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">           4 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L743"><span class="lineNum">     743</span>              : </span>
-<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">           4 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
-<span id="L746"><span class="lineNum">     746</span>              : </span>
-<span id="L747"><span class="lineNum">     747</span> <span class="tlaGNC">           3 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_SENDER) {</span></span>
-<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">           1 :     ret = _ml_service_training_offloading_prepare_sender (mls, training_s);</span></span>
-<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">           2 :   } else if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">           2 :     ret = _ml_service_training_offloading_prepare_receiver (mls, training_s);</span></span>
-<span id="L751"><span class="lineNum">     751</span>              :   } else {</span>
-<span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L753"><span class="lineNum">     753</span>              :         &quot;The node type information in JSON is incorrect.&quot;);</span>
-<span id="L754"><span class="lineNum">     754</span>              :   }</span>
-<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC tlaBgGNC">           3 :   if (ret != ML_ERROR_NONE)</span></span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">           1 :     return ret;</span></span>
-<span id="L757"><span class="lineNum">     757</span>              : </span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">           2 :   ret = ml_pipeline_start (training_s-&gt;pipeline_h);</span></span>
-<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">           2 :   if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to start ml pipeline.&quot;);</span></span>
-<span id="L761"><span class="lineNum">     761</span>              :   }</span>
-<span id="L762"><span class="lineNum">     762</span>              : </span>
-<span id="L763"><span class="lineNum">     763</span>              : </span>
-<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
-<span id="L765"><span class="lineNum">     765</span>              : }</span>
-<span id="L766"><span class="lineNum">     766</span>              : </span>
-<span id="L767"><span class="lineNum">     767</span>              : /**</span>
-<span id="L768"><span class="lineNum">     768</span>              :  * @brief Stop ml training offloading service.</span>
-<span id="L769"><span class="lineNum">     769</span>              :  */</span>
-<span id="L770"><span class="lineNum">     770</span>              : int</span>
-<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">           3 : _ml_service_training_offloading_stop (ml_service_s * mls)</span></span>
-<span id="L772"><span class="lineNum">     772</span>              : {</span>
-<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC">           3 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           3 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L775"><span class="lineNum">     775</span>              : </span>
-<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">           3 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
-<span id="L778"><span class="lineNum">     778</span>              : </span>
-<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">           3 :   if (!training_s-&gt;pipeline_h) {</span></span>
-<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_STREAMS_PIPE,</span></span>
-<span id="L781"><span class="lineNum">     781</span>              :         &quot;Pipeline is not constructed.&quot;);</span>
-<span id="L782"><span class="lineNum">     782</span>              :   }</span>
-<span id="L783"><span class="lineNum">     783</span>              : </span>
-<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">           2 :   ret = ml_pipeline_stop (training_s-&gt;pipeline_h);</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret) {</span></span>
-<span id="L786"><span class="lineNum">     786</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to stop pipeline.&quot;);</span></span>
-<span id="L787"><span class="lineNum">     787</span>              :   }</span>
-<span id="L788"><span class="lineNum">     788</span>              : </span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
-<span id="L790"><span class="lineNum">     790</span>              : }</span>
-<span id="L791"><span class="lineNum">     791</span>              : </span>
-<span id="L792"><span class="lineNum">     792</span>              : /**</span>
-<span id="L793"><span class="lineNum">     793</span>              :  * @brief Save receiver pipeline description.</span>
-<span id="L794"><span class="lineNum">     794</span>              :  */</span>
-<span id="L795"><span class="lineNum">     795</span>              : int</span>
-<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">           4 : _ml_service_training_offloading_process_received_data (ml_service_s * mls,</span></span>
-<span id="L797"><span class="lineNum">     797</span>              :     void *data_h, const gchar * dir_path, const gchar * data, int service_type)</span>
-<span id="L798"><span class="lineNum">     798</span>              : {</span>
-<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">           4 :   g_autofree gchar *name = NULL;</span></span>
-<span id="L800"><span class="lineNum">     800</span> <span class="tlaGNC">           4 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L801"><span class="lineNum">     801</span>              :   int ret;</span>
-<span id="L802"><span class="lineNum">     802</span>              : </span>
-<span id="L803"><span class="lineNum">     803</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (data_h != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
-<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (dir_path != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
-<span id="L805"><span class="lineNum">     805</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (data != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
-<span id="L806"><span class="lineNum">     806</span>              : </span>
-<span id="L807"><span class="lineNum">     807</span> <span class="tlaGNC">           4 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L808"><span class="lineNum">     808</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">           5 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">           5 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L643"><span class="lineNum">     643</span>              : </span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">           5 :   g_free (training_s-&gt;path);</span></span>
+<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">           5 :   training_s-&gt;path = g_strdup (path);</span></span>
+<span id="L646"><span class="lineNum">     646</span>              : </span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           5 :   return ret;</span></span>
+<span id="L648"><span class="lineNum">     648</span>              : }</span>
+<span id="L649"><span class="lineNum">     649</span>              : </span>
+<span id="L650"><span class="lineNum">     650</span>              : /**</span>
+<span id="L651"><span class="lineNum">     651</span>              :  * @brief Prepare ml training offloading service as sender.</span>
+<span id="L652"><span class="lineNum">     652</span>              :  */</span>
+<span id="L653"><span class="lineNum">     653</span>              : static int</span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           1 : _ml_service_training_offloading_prepare_sender (ml_service_s * mls,</span></span>
+<span id="L655"><span class="lineNum">     655</span>              :     ml_training_services_s * training_s)</span>
+<span id="L656"><span class="lineNum">     656</span>              : {</span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">           1 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L658"><span class="lineNum">     658</span>              : </span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">           1 :   ret = _training_offloading_services_request (mls);</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">           1 :   if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L661"><span class="lineNum">     661</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to request service.&quot;);</span></span>
+<span id="L662"><span class="lineNum">     662</span>              :   }</span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC tlaBgGNC">           1 :   _training_offloading_replace_pipeline_data_path (mls);</span></span>
+<span id="L664"><span class="lineNum">     664</span>              : </span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">           1 :   ret = ml_pipeline_construct (training_s-&gt;sender_pipe, NULL, NULL,</span></span>
+<span id="L666"><span class="lineNum">     666</span>              :       &amp;training_s-&gt;pipeline_h);</span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret) {</span></span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to construct pipeline.&quot;);</span></span>
+<span id="L669"><span class="lineNum">     669</span>              :   }</span>
+<span id="L670"><span class="lineNum">     670</span>              : </span>
+<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC tlaBgGNC">           1 :   return ret;</span></span>
+<span id="L672"><span class="lineNum">     672</span>              : }</span>
+<span id="L673"><span class="lineNum">     673</span>              : </span>
+<span id="L674"><span class="lineNum">     674</span>              : /**</span>
+<span id="L675"><span class="lineNum">     675</span>              :  * @brief Prepare ml training offloading service as receiver.</span>
+<span id="L676"><span class="lineNum">     676</span>              :  */</span>
+<span id="L677"><span class="lineNum">     677</span>              : static int</span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">           2 : _ml_service_training_offloading_prepare_receiver (ml_service_s * mls,</span></span>
+<span id="L679"><span class="lineNum">     679</span>              :     ml_training_services_s * training_s)</span>
+<span id="L680"><span class="lineNum">     680</span>              : {</span>
+<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">           2 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">           2 :   g_autoptr (JsonNode) pipeline_node = NULL;</span></span>
+<span id="L683"><span class="lineNum">     683</span>              :   JsonObject *pipeline_obj;</span>
+<span id="L684"><span class="lineNum">     684</span>              :   JsonObject *pipe;</span>
+<span id="L685"><span class="lineNum">     685</span>              : </span>
+<span id="L686"><span class="lineNum">     686</span>              :   /* checking if all required files are received */</span>
+<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">           2 :   if (!_training_offloading_check_received_data (training_s)) {</span></span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L689"><span class="lineNum">     689</span>              :         &quot;Failed to receive the required data&quot;);</span>
+<span id="L690"><span class="lineNum">     690</span>              :   }</span>
+<span id="L691"><span class="lineNum">     691</span> <span class="tlaGNC">           1 :   _training_offloading_replace_pipeline_data_path (mls);</span></span>
+<span id="L692"><span class="lineNum">     692</span>              : </span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">           1 :   pipeline_node = json_from_string (training_s-&gt;receiver_pipe_json_str, NULL);</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">           1 :   if (!pipeline_node) {</span></span>
+<span id="L695"><span class="lineNum">     695</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L696"><span class="lineNum">     696</span>              :         &quot;Failed to parse the json string, %s.&quot;,</span>
+<span id="L697"><span class="lineNum">     697</span>              :         training_s-&gt;receiver_pipe_json_str);</span>
+<span id="L698"><span class="lineNum">     698</span>              :   }</span>
+<span id="L699"><span class="lineNum">     699</span>              : </span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC tlaBgGNC">           1 :   pipeline_obj = json_node_get_object (pipeline_node);</span></span>
+<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">           1 :   if (!pipeline_obj) {</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L703"><span class="lineNum">     703</span>              :         &quot;Failed to get the json object from the json node.&quot;);</span>
+<span id="L704"><span class="lineNum">     704</span>              :   }</span>
+<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC tlaBgGNC">           1 :   if (!json_object_has_member (pipeline_obj, &quot;pipeline&quot;)) {</span></span>
+<span id="L706"><span class="lineNum">     706</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L707"><span class="lineNum">     707</span>              :         &quot;Failed to parse configuration file, cannot get the pipeline JSON object.&quot;);</span>
+<span id="L708"><span class="lineNum">     708</span>              :   }</span>
+<span id="L709"><span class="lineNum">     709</span>              : </span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC tlaBgGNC">           1 :   pipe = json_object_get_object_member (pipeline_obj, &quot;pipeline&quot;);</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           1 :   if (json_object_has_member (pipe, &quot;description&quot;)) {</span></span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">           1 :     training_s-&gt;receiver_pipe =</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">           2 :         g_strdup (_ml_service_get_json_string_member (pipe, &quot;description&quot;));</span></span>
+<span id="L714"><span class="lineNum">     714</span>              :   } else {</span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L716"><span class="lineNum">     716</span>              :         &quot;Failed to parse configuration file, cannot get the pipeline description.&quot;);</span>
+<span id="L717"><span class="lineNum">     717</span>              :   }</span>
+<span id="L718"><span class="lineNum">     718</span>              : </span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = ml_pipeline_construct (training_s-&gt;receiver_pipe, NULL, NULL,</span></span>
+<span id="L720"><span class="lineNum">     720</span>              :       &amp;training_s-&gt;pipeline_h);</span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret) {</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to construct pipeline.&quot;);</span></span>
+<span id="L723"><span class="lineNum">     723</span>              :   }</span>
+<span id="L724"><span class="lineNum">     724</span>              : </span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = _training_offloading_conf_parse_pipeline (mls, pipe);</span></span>
+<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">           1 :   if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaUNC tlaBgUNC">           0 :     return ret;</span></span>
+<span id="L728"><span class="lineNum">     728</span>              :   }</span>
+<span id="L729"><span class="lineNum">     729</span>              : </span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC tlaBgGNC">           1 :   return ret;</span></span>
+<span id="L731"><span class="lineNum">     731</span>              : }</span>
+<span id="L732"><span class="lineNum">     732</span>              : </span>
+<span id="L733"><span class="lineNum">     733</span>              : /**</span>
+<span id="L734"><span class="lineNum">     734</span>              :  * @brief Start ml training offloading service.</span>
+<span id="L735"><span class="lineNum">     735</span>              :  */</span>
+<span id="L736"><span class="lineNum">     736</span>              : int</span>
+<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">           4 : _ml_service_training_offloading_start (ml_service_s * mls)</span></span>
+<span id="L738"><span class="lineNum">     738</span>              : {</span>
+<span id="L739"><span class="lineNum">     739</span> <span class="tlaGNC">           4 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">           4 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L741"><span class="lineNum">     741</span>              : </span>
+<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">           4 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L744"><span class="lineNum">     744</span>              : </span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">           3 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_SENDER) {</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">           1 :     ret = _ml_service_training_offloading_prepare_sender (mls, training_s);</span></span>
+<span id="L747"><span class="lineNum">     747</span> <span class="tlaGNC">           2 :   } else if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
+<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">           2 :     ret = _ml_service_training_offloading_prepare_receiver (mls, training_s);</span></span>
+<span id="L749"><span class="lineNum">     749</span>              :   } else {</span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L751"><span class="lineNum">     751</span>              :         &quot;The node type information in JSON is incorrect.&quot;);</span>
+<span id="L752"><span class="lineNum">     752</span>              :   }</span>
+<span id="L753"><span class="lineNum">     753</span>              : </span>
+<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC tlaBgGNC">           3 :   if (ret != ML_ERROR_NONE)</span></span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">           1 :     return ret;</span></span>
+<span id="L756"><span class="lineNum">     756</span>              : </span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">           2 :   ret = ml_pipeline_start (training_s-&gt;pipeline_h);</span></span>
+<span id="L758"><span class="lineNum">     758</span> <span class="tlaGNC">           2 :   if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to start ml pipeline.&quot;);</span></span>
+<span id="L760"><span class="lineNum">     760</span>              :   }</span>
+<span id="L761"><span class="lineNum">     761</span>              : </span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
+<span id="L763"><span class="lineNum">     763</span>              : }</span>
+<span id="L764"><span class="lineNum">     764</span>              : </span>
+<span id="L765"><span class="lineNum">     765</span>              : /**</span>
+<span id="L766"><span class="lineNum">     766</span>              :  * @brief Stop ml training offloading service.</span>
+<span id="L767"><span class="lineNum">     767</span>              :  */</span>
+<span id="L768"><span class="lineNum">     768</span>              : int</span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaGNC">           3 : _ml_service_training_offloading_stop (ml_service_s * mls)</span></span>
+<span id="L770"><span class="lineNum">     770</span>              : {</span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC">           3 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L772"><span class="lineNum">     772</span> <span class="tlaGNC">           3 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L773"><span class="lineNum">     773</span>              : </span>
+<span id="L774"><span class="lineNum">     774</span> <span class="tlaGNC">           3 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L776"><span class="lineNum">     776</span>              : </span>
+<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">           3 :   if (!training_s-&gt;pipeline_h) {</span></span>
+<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_STREAMS_PIPE,</span></span>
+<span id="L779"><span class="lineNum">     779</span>              :         &quot;Pipeline is not constructed.&quot;);</span>
+<span id="L780"><span class="lineNum">     780</span>              :   }</span>
+<span id="L781"><span class="lineNum">     781</span>              : </span>
+<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">           2 :   ret = ml_pipeline_stop (training_s-&gt;pipeline_h);</span></span>
+<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret) {</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to stop pipeline.&quot;);</span></span>
+<span id="L785"><span class="lineNum">     785</span>              :   }</span>
+<span id="L786"><span class="lineNum">     786</span>              : </span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
+<span id="L788"><span class="lineNum">     788</span>              : }</span>
+<span id="L789"><span class="lineNum">     789</span>              : </span>
+<span id="L790"><span class="lineNum">     790</span>              : /**</span>
+<span id="L791"><span class="lineNum">     791</span>              :  * @brief Save receiver pipeline description.</span>
+<span id="L792"><span class="lineNum">     792</span>              :  */</span>
+<span id="L793"><span class="lineNum">     793</span>              : int</span>
+<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">           4 : _ml_service_training_offloading_process_received_data (ml_service_s * mls,</span></span>
+<span id="L795"><span class="lineNum">     795</span>              :     void *data_h, const gchar * dir_path, const gchar * data, int service_type)</span>
+<span id="L796"><span class="lineNum">     796</span>              : {</span>
+<span id="L797"><span class="lineNum">     797</span> <span class="tlaGNC">           4 :   g_autofree gchar *name = NULL;</span></span>
+<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">           4 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L799"><span class="lineNum">     799</span>              :   int ret;</span>
+<span id="L800"><span class="lineNum">     800</span>              : </span>
+<span id="L801"><span class="lineNum">     801</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (data_h != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
+<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (dir_path != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
+<span id="L803"><span class="lineNum">     803</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (data != NULL, ML_ERROR_INVALID_PARAMETER);</span></span>
+<span id="L804"><span class="lineNum">     804</span>              : </span>
+<span id="L805"><span class="lineNum">     805</span> <span class="tlaGNC">           4 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L807"><span class="lineNum">     807</span>              : </span>
+<span id="L808"><span class="lineNum">     808</span> <span class="tlaGNC">           4 :   _ml_logd (&quot;Received data, service_type:%d&quot;, service_type);</span></span>
 <span id="L809"><span class="lineNum">     809</span>              : </span>
-<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">           4 :   _ml_logd (&quot;Received data, service_type:%d&quot;, service_type);</span></span>
-<span id="L811"><span class="lineNum">     811</span>              : </span>
-<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">           4 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
-<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">           3 :     if (service_type == ML_SERVICE_OFFLOADING_TYPE_PIPELINE_RAW) {</span></span>
-<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">           1 :       training_s-&gt;receiver_pipe_json_str = g_strdup (data);</span></span>
-<span id="L815"><span class="lineNum">     815</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;Received JSON string pipeline:%s&quot;,</span></span>
-<span id="L816"><span class="lineNum">     816</span>              :           training_s-&gt;receiver_pipe_json_str);</span>
-<span id="L817"><span class="lineNum">     817</span>              :     }</span>
-<span id="L818"><span class="lineNum">     818</span>              :   } else {</span>
-<span id="L819"><span class="lineNum">     819</span>              :     /* receive trained model from remote */</span>
-<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">           1 :     if (service_type == ML_SERVICE_OFFLOADING_TYPE_REPLY) {</span></span>
-<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">           1 :       ret = nns_edge_data_get_info (data_h, &quot;name&quot;, &amp;name);</span></span>
-<span id="L822"><span class="lineNum">     822</span> <span class="tlaGNC">           1 :       if (NNS_EDGE_ERROR_NONE != ret) {</span></span>
-<span id="L823"><span class="lineNum">     823</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report_return (ret,</span></span>
-<span id="L824"><span class="lineNum">     824</span>              :             &quot;Failed to get name while processing the ml-offloading service.&quot;);</span>
-<span id="L825"><span class="lineNum">     825</span>              :       }</span>
-<span id="L826"><span class="lineNum">     826</span> <span class="tlaGNC tlaBgGNC">           2 :       training_s-&gt;trained_model_path =</span></span>
-<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">           1 :           g_build_path (G_DIR_SEPARATOR_S, dir_path, name, NULL);</span></span>
-<span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;Reply: name:%s, received trained_model:%s&quot;, name,</span></span>
-<span id="L829"><span class="lineNum">     829</span>              :           training_s-&gt;trained_model_path);</span>
-<span id="L830"><span class="lineNum">     830</span>              :     }</span>
-<span id="L831"><span class="lineNum">     831</span>              :   }</span>
-<span id="L832"><span class="lineNum">     832</span>              : </span>
-<span id="L833"><span class="lineNum">     833</span> <span class="tlaGNC">           4 :   return ML_ERROR_NONE;</span></span>
-<span id="L834"><span class="lineNum">     834</span>              : }</span>
-<span id="L835"><span class="lineNum">     835</span>              : </span>
-<span id="L836"><span class="lineNum">     836</span>              : /**</span>
-<span id="L837"><span class="lineNum">     837</span>              :  * @brief Send trained model</span>
-<span id="L838"><span class="lineNum">     838</span>              :  */</span>
-<span id="L839"><span class="lineNum">     839</span>              : static void</span>
-<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">           5 : _training_offloading_send_trained_model (ml_service_s * mls)</span></span>
-<span id="L841"><span class="lineNum">     841</span>              : {</span>
-<span id="L842"><span class="lineNum">     842</span> <span class="tlaGNC">           5 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L843"><span class="lineNum">     843</span>              :   GList *list, *iter;</span>
-<span id="L844"><span class="lineNum">     844</span> <span class="tlaGNC">           5 :   gchar *contents = NULL;</span></span>
-<span id="L845"><span class="lineNum">     845</span>              :   gsize len;</span>
-<span id="L846"><span class="lineNum">     846</span>              :   int ret;</span>
-<span id="L847"><span class="lineNum">     847</span>              : </span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">           5 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">          10 :   g_return_if_fail (ret == ML_ERROR_NONE);</span></span>
-<span id="L850"><span class="lineNum">     850</span>              : </span>
-<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">           5 :   if (training_s-&gt;trained_model_path == NULL)</span></span>
-<span id="L852"><span class="lineNum">     852</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
-<span id="L853"><span class="lineNum">     853</span>              : </span>
-<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC tlaBgGNC">           5 :   if (!g_file_get_contents (training_s-&gt;trained_model_path, &amp;contents, &amp;len,</span></span>
-<span id="L855"><span class="lineNum">     855</span>              :           NULL)) {</span>
-<span id="L856"><span class="lineNum">     856</span> <span class="tlaGNC">           4 :     _ml_error_report (&quot;Failed to read file:%s&quot;, training_s-&gt;trained_model_path);</span></span>
-<span id="L857"><span class="lineNum">     857</span> <span class="tlaGNC">           4 :     return;</span></span>
-<span id="L858"><span class="lineNum">     858</span>              :   }</span>
+<span id="L810"><span class="lineNum">     810</span> <span class="tlaGNC">           4 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
+<span id="L811"><span class="lineNum">     811</span> <span class="tlaGNC">           3 :     if (service_type == ML_SERVICE_OFFLOADING_TYPE_PIPELINE_RAW) {</span></span>
+<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">           1 :       training_s-&gt;receiver_pipe_json_str = g_strdup (data);</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;Received JSON string pipeline:%s&quot;,</span></span>
+<span id="L814"><span class="lineNum">     814</span>              :           training_s-&gt;receiver_pipe_json_str);</span>
+<span id="L815"><span class="lineNum">     815</span>              :     }</span>
+<span id="L816"><span class="lineNum">     816</span>              :   } else {</span>
+<span id="L817"><span class="lineNum">     817</span>              :     /* receive trained model from remote */</span>
+<span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">           1 :     if (service_type == ML_SERVICE_OFFLOADING_TYPE_REPLY) {</span></span>
+<span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC">           1 :       ret = nns_edge_data_get_info (data_h, &quot;name&quot;, &amp;name);</span></span>
+<span id="L820"><span class="lineNum">     820</span> <span class="tlaGNC">           1 :       if (NNS_EDGE_ERROR_NONE != ret) {</span></span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_error_report_return (ret,</span></span>
+<span id="L822"><span class="lineNum">     822</span>              :             &quot;Failed to get name while processing the ml-offloading service.&quot;);</span>
+<span id="L823"><span class="lineNum">     823</span>              :       }</span>
+<span id="L824"><span class="lineNum">     824</span> <span class="tlaGNC tlaBgGNC">           2 :       training_s-&gt;trained_model_path =</span></span>
+<span id="L825"><span class="lineNum">     825</span> <span class="tlaGNC">           1 :           g_build_path (G_DIR_SEPARATOR_S, dir_path, name, NULL);</span></span>
+<span id="L826"><span class="lineNum">     826</span> <span class="tlaGNC">           1 :       _ml_logd (&quot;Reply: name:%s, received trained_model:%s&quot;, name,</span></span>
+<span id="L827"><span class="lineNum">     827</span>              :           training_s-&gt;trained_model_path);</span>
+<span id="L828"><span class="lineNum">     828</span>              :     }</span>
+<span id="L829"><span class="lineNum">     829</span>              :   }</span>
+<span id="L830"><span class="lineNum">     830</span>              : </span>
+<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">           4 :   return ML_ERROR_NONE;</span></span>
+<span id="L832"><span class="lineNum">     832</span>              : }</span>
+<span id="L833"><span class="lineNum">     833</span>              : </span>
+<span id="L834"><span class="lineNum">     834</span>              : /**</span>
+<span id="L835"><span class="lineNum">     835</span>              :  * @brief Send trained model</span>
+<span id="L836"><span class="lineNum">     836</span>              :  */</span>
+<span id="L837"><span class="lineNum">     837</span>              : static void</span>
+<span id="L838"><span class="lineNum">     838</span> <span class="tlaGNC">           5 : _training_offloading_send_trained_model (ml_service_s * mls)</span></span>
+<span id="L839"><span class="lineNum">     839</span>              : {</span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaGNC">           5 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L841"><span class="lineNum">     841</span>              :   GList *list, *iter;</span>
+<span id="L842"><span class="lineNum">     842</span> <span class="tlaGNC">           5 :   gchar *contents = NULL;</span></span>
+<span id="L843"><span class="lineNum">     843</span> <span class="tlaGNC">           5 :   gsize len = 0;</span></span>
+<span id="L844"><span class="lineNum">     844</span>              :   int ret;</span>
+<span id="L845"><span class="lineNum">     845</span>              : </span>
+<span id="L846"><span class="lineNum">     846</span> <span class="tlaGNC">           5 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L847"><span class="lineNum">     847</span> <span class="tlaGNC">          10 :   g_return_if_fail (ret == ML_ERROR_NONE);</span></span>
+<span id="L848"><span class="lineNum">     848</span>              : </span>
+<span id="L849"><span class="lineNum">     849</span> <span class="tlaGNC">           5 :   if (training_s-&gt;trained_model_path == NULL)</span></span>
+<span id="L850"><span class="lineNum">     850</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
+<span id="L851"><span class="lineNum">     851</span>              : </span>
+<span id="L852"><span class="lineNum">     852</span> <span class="tlaGNC tlaBgGNC">           5 :   if (!g_file_get_contents (training_s-&gt;trained_model_path, &amp;contents, &amp;len,</span></span>
+<span id="L853"><span class="lineNum">     853</span>              :           NULL)) {</span>
+<span id="L854"><span class="lineNum">     854</span> <span class="tlaGNC">           4 :     _ml_error_report (&quot;Failed to read file:%s&quot;, training_s-&gt;trained_model_path);</span></span>
+<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">           4 :     return;</span></span>
+<span id="L856"><span class="lineNum">     856</span>              :   }</span>
+<span id="L857"><span class="lineNum">     857</span>              : </span>
+<span id="L858"><span class="lineNum">     858</span> <span class="tlaGNC">           1 :   list = g_hash_table_get_keys (training_s-&gt;transfer_data_table);</span></span>
 <span id="L859"><span class="lineNum">     859</span>              : </span>
-<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC">           1 :   list = g_hash_table_get_keys (training_s-&gt;transfer_data_table);</span></span>
-<span id="L861"><span class="lineNum">     861</span>              : </span>
-<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">           1 :   if (list) {</span></span>
-<span id="L863"><span class="lineNum">     863</span> <span class="tlaGNC">           1 :     _ml_logd (&quot;Send trained model&quot;);</span></span>
-<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">           2 :     for (iter = list; iter != NULL; iter = g_list_next (iter)) {</span></span>
-<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">           1 :       _request_offloading_service (mls, iter-&gt;data, contents, len);</span></span>
-<span id="L866"><span class="lineNum">     866</span>              :     }</span>
-<span id="L867"><span class="lineNum">     867</span>              : </span>
-<span id="L868"><span class="lineNum">     868</span> <span class="tlaGNC">           1 :     g_list_free (list);</span></span>
-<span id="L869"><span class="lineNum">     869</span>              :   } else {</span>
-<span id="L870"><span class="lineNum">     870</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to get transfer data table.&quot;);</span></span>
-<span id="L871"><span class="lineNum">     871</span>              :   }</span>
-<span id="L872"><span class="lineNum">     872</span>              : </span>
-<span id="L873"><span class="lineNum">     873</span> <span class="tlaGNC tlaBgGNC">           1 :   g_free (contents);</span></span>
-<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC">           1 :   return;</span></span>
-<span id="L875"><span class="lineNum">     875</span>              : }</span>
-<span id="L876"><span class="lineNum">     876</span>              : </span>
-<span id="L877"><span class="lineNum">     877</span>              : /**</span>
-<span id="L878"><span class="lineNum">     878</span>              :  * @brief Internal function to destroy ml-service training offloading data.</span>
-<span id="L879"><span class="lineNum">     879</span>              :  */</span>
-<span id="L880"><span class="lineNum">     880</span>              : int</span>
-<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC">           7 : _ml_service_training_offloading_destroy (ml_service_s * mls)</span></span>
-<span id="L882"><span class="lineNum">     882</span>              : {</span>
-<span id="L883"><span class="lineNum">     883</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">           7 :   ml_training_services_s *training_s = NULL;</span></span>
-<span id="L885"><span class="lineNum">     885</span>              : </span>
-<span id="L886"><span class="lineNum">     886</span> <span class="tlaGNC">           7 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
-<span id="L887"><span class="lineNum">     887</span> <span class="tlaGNC">          13 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
-<span id="L888"><span class="lineNum">     888</span>              : </span>
-<span id="L889"><span class="lineNum">     889</span> <span class="tlaGNC">           6 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
-<span id="L890"><span class="lineNum">     890</span>              :     /* reply to remote sender */</span>
-<span id="L891"><span class="lineNum">     891</span> <span class="tlaGNC">           5 :     _training_offloading_send_trained_model (mls);</span></span>
-<span id="L892"><span class="lineNum">     892</span>              :   }</span>
-<span id="L893"><span class="lineNum">     893</span>              : </span>
-<span id="L894"><span class="lineNum">     894</span> <span class="tlaGNC">           6 :   g_cond_clear (&amp;training_s-&gt;received_cond);</span></span>
-<span id="L895"><span class="lineNum">     895</span> <span class="tlaGNC">           6 :   g_mutex_clear (&amp;training_s-&gt;received_lock);</span></span>
-<span id="L896"><span class="lineNum">     896</span>              : </span>
-<span id="L897"><span class="lineNum">     897</span> <span class="tlaGNC">           6 :   if (training_s-&gt;received_thread) {</span></span>
-<span id="L898"><span class="lineNum">     898</span> <span class="tlaGNC">           2 :     g_thread_join (training_s-&gt;received_thread);</span></span>
-<span id="L899"><span class="lineNum">     899</span> <span class="tlaGNC">           2 :     training_s-&gt;received_thread = NULL;</span></span>
-<span id="L900"><span class="lineNum">     900</span>              :   }</span>
-<span id="L901"><span class="lineNum">     901</span>              : </span>
-<span id="L902"><span class="lineNum">     902</span> <span class="tlaGNC">           6 :   if (training_s-&gt;transfer_data_table) {</span></span>
-<span id="L903"><span class="lineNum">     903</span> <span class="tlaGNC">           6 :     g_hash_table_destroy (training_s-&gt;transfer_data_table);</span></span>
-<span id="L904"><span class="lineNum">     904</span> <span class="tlaGNC">           6 :     training_s-&gt;transfer_data_table = NULL;</span></span>
-<span id="L905"><span class="lineNum">     905</span>              :   }</span>
-<span id="L906"><span class="lineNum">     906</span>              : </span>
-<span id="L907"><span class="lineNum">     907</span> <span class="tlaGNC">           6 :   if (training_s-&gt;node_table) {</span></span>
-<span id="L908"><span class="lineNum">     908</span> <span class="tlaGNC">           6 :     g_hash_table_destroy (training_s-&gt;node_table);</span></span>
-<span id="L909"><span class="lineNum">     909</span> <span class="tlaGNC">           6 :     training_s-&gt;node_table = NULL;</span></span>
-<span id="L910"><span class="lineNum">     910</span>              :   }</span>
-<span id="L911"><span class="lineNum">     911</span>              : </span>
-<span id="L912"><span class="lineNum">     912</span> <span class="tlaGNC">           6 :   if (training_s-&gt;pipeline_h) {</span></span>
-<span id="L913"><span class="lineNum">     913</span> <span class="tlaGNC">           2 :     ret = ml_pipeline_destroy (training_s-&gt;pipeline_h);</span></span>
-<span id="L914"><span class="lineNum">     914</span> <span class="tlaGNC">           2 :     if (ret != ML_ERROR_NONE) {</span></span>
-<span id="L915"><span class="lineNum">     915</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report (&quot;Failed to destroy ml pipeline, clear handle anyway.&quot;);</span></span>
-<span id="L916"><span class="lineNum">     916</span>              :     }</span>
-<span id="L917"><span class="lineNum">     917</span>              : </span>
-<span id="L918"><span class="lineNum">     918</span> <span class="tlaGNC tlaBgGNC">           2 :     training_s-&gt;pipeline_h = NULL;</span></span>
-<span id="L919"><span class="lineNum">     919</span>              :   }</span>
-<span id="L920"><span class="lineNum">     920</span>              : </span>
-<span id="L921"><span class="lineNum">     921</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;path);</span></span>
-<span id="L922"><span class="lineNum">     922</span> <span class="tlaGNC">           6 :   training_s-&gt;path = NULL;</span></span>
-<span id="L923"><span class="lineNum">     923</span>              : </span>
-<span id="L924"><span class="lineNum">     924</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;trained_model_path);</span></span>
-<span id="L925"><span class="lineNum">     925</span> <span class="tlaGNC">           6 :   training_s-&gt;trained_model_path = NULL;</span></span>
-<span id="L926"><span class="lineNum">     926</span>              : </span>
-<span id="L927"><span class="lineNum">     927</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;receiver_pipe_json_str);</span></span>
-<span id="L928"><span class="lineNum">     928</span> <span class="tlaGNC">           6 :   training_s-&gt;receiver_pipe_json_str = NULL;</span></span>
-<span id="L929"><span class="lineNum">     929</span>              : </span>
-<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;receiver_pipe);</span></span>
-<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">           6 :   training_s-&gt;receiver_pipe = NULL;</span></span>
-<span id="L932"><span class="lineNum">     932</span>              : </span>
-<span id="L933"><span class="lineNum">     933</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;sender_pipe);</span></span>
-<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC">           6 :   training_s-&gt;sender_pipe = NULL;</span></span>
+<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC">           1 :   if (list) {</span></span>
+<span id="L861"><span class="lineNum">     861</span> <span class="tlaGNC">           1 :     _ml_logd (&quot;Send trained model&quot;);</span></span>
+<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">           2 :     for (iter = list; iter != NULL; iter = g_list_next (iter)) {</span></span>
+<span id="L863"><span class="lineNum">     863</span> <span class="tlaGNC">           1 :       _request_offloading_service (mls, iter-&gt;data, contents, len);</span></span>
+<span id="L864"><span class="lineNum">     864</span>              :     }</span>
+<span id="L865"><span class="lineNum">     865</span>              : </span>
+<span id="L866"><span class="lineNum">     866</span> <span class="tlaGNC">           1 :     g_list_free (list);</span></span>
+<span id="L867"><span class="lineNum">     867</span>              :   } else {</span>
+<span id="L868"><span class="lineNum">     868</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to get transfer data table.&quot;);</span></span>
+<span id="L869"><span class="lineNum">     869</span>              :   }</span>
+<span id="L870"><span class="lineNum">     870</span>              : </span>
+<span id="L871"><span class="lineNum">     871</span> <span class="tlaGNC tlaBgGNC">           1 :   g_free (contents);</span></span>
+<span id="L872"><span class="lineNum">     872</span> <span class="tlaGNC">           1 :   return;</span></span>
+<span id="L873"><span class="lineNum">     873</span>              : }</span>
+<span id="L874"><span class="lineNum">     874</span>              : </span>
+<span id="L875"><span class="lineNum">     875</span>              : /**</span>
+<span id="L876"><span class="lineNum">     876</span>              :  * @brief Internal function to destroy ml-service training offloading data.</span>
+<span id="L877"><span class="lineNum">     877</span>              :  */</span>
+<span id="L878"><span class="lineNum">     878</span>              : int</span>
+<span id="L879"><span class="lineNum">     879</span> <span class="tlaGNC">           7 : _ml_service_training_offloading_destroy (ml_service_s * mls)</span></span>
+<span id="L880"><span class="lineNum">     880</span>              : {</span>
+<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">           7 :   ml_training_services_s *training_s = NULL;</span></span>
+<span id="L883"><span class="lineNum">     883</span>              : </span>
+<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">           7 :   ret = _training_offloading_get_priv (mls, &amp;training_s);</span></span>
+<span id="L885"><span class="lineNum">     885</span> <span class="tlaGNC">          13 :   g_return_val_if_fail (ret == ML_ERROR_NONE, ret);</span></span>
+<span id="L886"><span class="lineNum">     886</span>              : </span>
+<span id="L887"><span class="lineNum">     887</span> <span class="tlaGNC">           6 :   if (training_s-&gt;type == ML_TRAINING_OFFLOADING_TYPE_RECEIVER) {</span></span>
+<span id="L888"><span class="lineNum">     888</span>              :     /* reply to remote sender */</span>
+<span id="L889"><span class="lineNum">     889</span> <span class="tlaGNC">           5 :     _training_offloading_send_trained_model (mls);</span></span>
+<span id="L890"><span class="lineNum">     890</span>              :   }</span>
+<span id="L891"><span class="lineNum">     891</span>              : </span>
+<span id="L892"><span class="lineNum">     892</span> <span class="tlaGNC">           6 :   g_cond_clear (&amp;training_s-&gt;received_cond);</span></span>
+<span id="L893"><span class="lineNum">     893</span> <span class="tlaGNC">           6 :   g_mutex_clear (&amp;training_s-&gt;received_lock);</span></span>
+<span id="L894"><span class="lineNum">     894</span>              : </span>
+<span id="L895"><span class="lineNum">     895</span> <span class="tlaGNC">           6 :   if (training_s-&gt;received_thread) {</span></span>
+<span id="L896"><span class="lineNum">     896</span> <span class="tlaGNC">           2 :     g_thread_join (training_s-&gt;received_thread);</span></span>
+<span id="L897"><span class="lineNum">     897</span> <span class="tlaGNC">           2 :     training_s-&gt;received_thread = NULL;</span></span>
+<span id="L898"><span class="lineNum">     898</span>              :   }</span>
+<span id="L899"><span class="lineNum">     899</span>              : </span>
+<span id="L900"><span class="lineNum">     900</span> <span class="tlaGNC">           6 :   if (training_s-&gt;transfer_data_table) {</span></span>
+<span id="L901"><span class="lineNum">     901</span> <span class="tlaGNC">           6 :     g_hash_table_destroy (training_s-&gt;transfer_data_table);</span></span>
+<span id="L902"><span class="lineNum">     902</span> <span class="tlaGNC">           6 :     training_s-&gt;transfer_data_table = NULL;</span></span>
+<span id="L903"><span class="lineNum">     903</span>              :   }</span>
+<span id="L904"><span class="lineNum">     904</span>              : </span>
+<span id="L905"><span class="lineNum">     905</span> <span class="tlaGNC">           6 :   if (training_s-&gt;node_table) {</span></span>
+<span id="L906"><span class="lineNum">     906</span> <span class="tlaGNC">           6 :     g_hash_table_destroy (training_s-&gt;node_table);</span></span>
+<span id="L907"><span class="lineNum">     907</span> <span class="tlaGNC">           6 :     training_s-&gt;node_table = NULL;</span></span>
+<span id="L908"><span class="lineNum">     908</span>              :   }</span>
+<span id="L909"><span class="lineNum">     909</span>              : </span>
+<span id="L910"><span class="lineNum">     910</span> <span class="tlaGNC">           6 :   if (training_s-&gt;pipeline_h) {</span></span>
+<span id="L911"><span class="lineNum">     911</span> <span class="tlaGNC">           2 :     ret = ml_pipeline_destroy (training_s-&gt;pipeline_h);</span></span>
+<span id="L912"><span class="lineNum">     912</span> <span class="tlaGNC">           2 :     if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L913"><span class="lineNum">     913</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report (&quot;Failed to destroy ml pipeline, clear handle anyway.&quot;);</span></span>
+<span id="L914"><span class="lineNum">     914</span>              :     }</span>
+<span id="L915"><span class="lineNum">     915</span>              : </span>
+<span id="L916"><span class="lineNum">     916</span> <span class="tlaGNC tlaBgGNC">           2 :     training_s-&gt;pipeline_h = NULL;</span></span>
+<span id="L917"><span class="lineNum">     917</span>              :   }</span>
+<span id="L918"><span class="lineNum">     918</span>              : </span>
+<span id="L919"><span class="lineNum">     919</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;path);</span></span>
+<span id="L920"><span class="lineNum">     920</span> <span class="tlaGNC">           6 :   training_s-&gt;path = NULL;</span></span>
+<span id="L921"><span class="lineNum">     921</span>              : </span>
+<span id="L922"><span class="lineNum">     922</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;trained_model_path);</span></span>
+<span id="L923"><span class="lineNum">     923</span> <span class="tlaGNC">           6 :   training_s-&gt;trained_model_path = NULL;</span></span>
+<span id="L924"><span class="lineNum">     924</span>              : </span>
+<span id="L925"><span class="lineNum">     925</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;receiver_pipe_json_str);</span></span>
+<span id="L926"><span class="lineNum">     926</span> <span class="tlaGNC">           6 :   training_s-&gt;receiver_pipe_json_str = NULL;</span></span>
+<span id="L927"><span class="lineNum">     927</span>              : </span>
+<span id="L928"><span class="lineNum">     928</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;receiver_pipe);</span></span>
+<span id="L929"><span class="lineNum">     929</span> <span class="tlaGNC">           6 :   training_s-&gt;receiver_pipe = NULL;</span></span>
+<span id="L930"><span class="lineNum">     930</span>              : </span>
+<span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">           6 :   g_free (training_s-&gt;sender_pipe);</span></span>
+<span id="L932"><span class="lineNum">     932</span> <span class="tlaGNC">           6 :   training_s-&gt;sender_pipe = NULL;</span></span>
+<span id="L933"><span class="lineNum">     933</span>              : </span>
+<span id="L934"><span class="lineNum">     934</span> <span class="tlaGNC">           6 :   g_free (training_s);</span></span>
 <span id="L935"><span class="lineNum">     935</span>              : </span>
-<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">           6 :   g_free (training_s);</span></span>
-<span id="L937"><span class="lineNum">     937</span>              : </span>
-<span id="L938"><span class="lineNum">     938</span> <span class="tlaGNC">           6 :   _ml_service_offloading_set_mode (mls, ML_SERVICE_OFFLOADING_MODE_NONE, NULL);</span></span>
-<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">           6 :   return ret;</span></span>
-<span id="L940"><span class="lineNum">     940</span>              : }</span>
+<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">           6 :   _ml_service_offloading_set_mode (mls, ML_SERVICE_OFFLOADING_MODE_NONE, NULL);</span></span>
+<span id="L937"><span class="lineNum">     937</span> <span class="tlaGNC">           6 :   return ret;</span></span>
+<span id="L938"><span class="lineNum">     938</span>              : }</span>
         </pre>
               </td>
             </tr>
