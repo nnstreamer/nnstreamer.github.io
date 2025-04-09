@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-09 05:39:59</td>
+            <td class="headerValue">2025-04-10 05:38:31</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -105,7 +105,7 @@
 <span id="L43"><span class="lineNum">      43</span>              : };</span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span>              : #define gst_edgesrc_parent_class parent_class</span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC tlaBgGNC">         407 : G_DEFINE_TYPE (GstEdgeSrc, gst_edgesrc, GST_TYPE_BASE_SRC);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC tlaBgGNC">         408 : G_DEFINE_TYPE (GstEdgeSrc, gst_edgesrc, GST_TYPE_BASE_SRC);</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : static void gst_edgesrc_set_property (GObject * object, guint prop_id,</span>
 <span id="L49"><span class="lineNum">      49</span>              :     const GValue * value, GParamSpec * pspec);</span>
@@ -364,26 +364,26 @@
 <span id="L302"><span class="lineNum">     302</span>              :  * @brief nnstreamer-edge event callback.</span>
 <span id="L303"><span class="lineNum">     303</span>              :  */</span>
 <span id="L304"><span class="lineNum">     304</span>              : static int</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         137 : _nns_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         138 : _nns_edge_event_cb (nns_edge_event_h event_h, void *user_data)</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : {</span>
 <span id="L307"><span class="lineNum">     307</span>              :   nns_edge_event_e event_type;</span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         137 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         138 :   int ret = NNS_EDGE_ERROR_NONE;</span></span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         137 :   GstEdgeSrc *self = GST_EDGESRC (user_data);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         138 :   GstEdgeSrc *self = GST_EDGESRC (user_data);</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         137 :   if (0 != nns_edge_event_get_type (event_h, &amp;event_type)) {</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         138 :   if (0 != nns_edge_event_get_type (event_h, &amp;event_type)) {</span></span>
 <span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to get event type!&quot;);</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">         137 :     return NNS_EDGE_ERROR_UNKNOWN;</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">         138 :     return NNS_EDGE_ERROR_UNKNOWN;</span></span>
 <span id="L315"><span class="lineNum">     315</span>              :   }</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         137 :   switch (event_type) {</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         129 :     case NNS_EDGE_EVENT_NEW_DATA_RECEIVED:</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         138 :   switch (event_type) {</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         130 :     case NNS_EDGE_EVENT_NEW_DATA_RECEIVED:</span></span>
 <span id="L319"><span class="lineNum">     319</span>              :     {</span>
 <span id="L320"><span class="lineNum">     320</span>              :       nns_edge_data_h data;</span>
 <span id="L321"><span class="lineNum">     321</span>              : </span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         129 :       nns_edge_event_parse_new_data (event_h, &amp;data);</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         129 :       g_async_queue_push (self-&gt;msg_queue, data);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         129 :       break;</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         130 :       nns_edge_event_parse_new_data (event_h, &amp;data);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         130 :       g_async_queue_push (self-&gt;msg_queue, data);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         130 :       break;</span></span>
 <span id="L325"><span class="lineNum">     325</span>              :     }</span>
 <span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNS_EDGE_EVENT_CONNECTION_CLOSED:</span></span>
 <span id="L327"><span class="lineNum">     327</span>              :     {</span>
@@ -394,7 +394,7 @@
 <span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           8 :       break;</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :   }</span>
 <span id="L334"><span class="lineNum">     334</span>              : </span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         137 :   return ret;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         138 :   return ret;</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : }</span>
 <span id="L337"><span class="lineNum">     337</span>              : </span>
 <span id="L338"><span class="lineNum">     338</span>              : /**</span>
