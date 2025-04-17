@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-17 05:39:21</td>
+            <td class="headerValue">2025-04-18 05:37:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">81.8&nbsp;%</td>
@@ -134,23 +134,23 @@
 <span id="L72"><span class="lineNum">      72</span>              :  * @brief C tensor-filter wrapper callback function, &quot;open&quot;</span>
 <span id="L73"><span class="lineNum">      73</span>              :  */</span>
 <span id="L74"><span class="lineNum">      74</span>              : int</span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC tlaBgGNC">         164 : tensor_filter_subplugin::cpp_open (const GstTensorFilterProperties *prop, void **private_data)</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC tlaBgGNC">         160 : tensor_filter_subplugin::cpp_open (const GstTensorFilterProperties *prop, void **private_data)</span></span>
 <span id="L76"><span class="lineNum">      76</span>              : {</span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         164 :   const GstTensorFilterFramework *tfsp = nnstreamer_filter_find (prop-&gt;fwname);</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         160 :   const GstTensorFilterFramework *tfsp = nnstreamer_filter_find (prop-&gt;fwname);</span></span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">         164 :   assert (tfsp);</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">         164 :   assert (tfsp-&gt;version == GST_TENSOR_FILTER_FRAMEWORK_V1);</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">         160 :   assert (tfsp);</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">         160 :   assert (tfsp-&gt;version == GST_TENSOR_FILTER_FRAMEWORK_V1);</span></span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              :   /* 1. Fetch stored empty object from subplugin api (subplugin_data) */</span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         164 :   tensor_filter_subplugin *sp = (tensor_filter_subplugin *) tfsp-&gt;v1.subplugin_data;</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">         164 :   assert (sp-&gt;sanity == _SANITY_CHECK); /** tfsp is using me! */</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         160 :   tensor_filter_subplugin *sp = (tensor_filter_subplugin *) tfsp-&gt;v1.subplugin_data;</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">         160 :   assert (sp-&gt;sanity == _SANITY_CHECK); /** tfsp is using me! */</span></span>
 <span id="L85"><span class="lineNum">      85</span>              : </span>
 <span id="L86"><span class="lineNum">      86</span>              :   /* 2. Spawn another empty object and configure the empty object */</span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         164 :   tensor_filter_subplugin &amp;obj = sp-&gt;getEmptyInstance ();</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         160 :   tensor_filter_subplugin &amp;obj = sp-&gt;getEmptyInstance ();</span></span>
 <span id="L88"><span class="lineNum">      88</span>              :   try {</span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         164 :     obj.configure_instance (prop);</span></span>
-<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">          94 :   } catch (const std::invalid_argument &amp;e) {</span></span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">          59 :     _RETURN_ERR_WITH_MSG (-EINVAL, e.what ());</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         160 :     obj.configure_instance (prop);</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">          90 :   } catch (const std::invalid_argument &amp;e) {</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">          55 :     _RETURN_ERR_WITH_MSG (-EINVAL, e.what ());</span></span>
 <span id="L92"><span class="lineNum">      92</span> <span class="tlaUNC tlaBgUNC">           0 :   } catch (const std::system_error &amp;e) {</span></span>
 <span id="L93"><span class="lineNum">      93</span> <span class="tlaUNC">           0 :     _RETURN_ERR_WITH_MSG (e.code ().value () * -1, e.what ());</span></span>
 <span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC tlaBgGNC">          28 :   } catch (const std::runtime_error &amp;e) {</span></span>
@@ -247,34 +247,34 @@
 <span id="L185"><span class="lineNum">     185</span>              :  * @brief C V1 tensor-filter wrapper callback function, &quot;getFrameworkInfo&quot;</span>
 <span id="L186"><span class="lineNum">     186</span>              :  */</span>
 <span id="L187"><span class="lineNum">     187</span>              : int</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         267 : tensor_filter_subplugin::cpp_getFrameworkInfo (const GstTensorFilterFramework *tf,</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         431 : tensor_filter_subplugin::cpp_getFrameworkInfo (const GstTensorFilterFramework *tf,</span></span>
 <span id="L189"><span class="lineNum">     189</span>              :     const GstTensorFilterProperties *prop, void *private_data,</span>
 <span id="L190"><span class="lineNum">     190</span>              :     GstTensorFilterFrameworkInfo *fw_info)</span>
 <span id="L191"><span class="lineNum">     191</span>              : {</span>
 <span id="L192"><span class="lineNum">     192</span>              :   tensor_filter_subplugin *obj;</span>
 <span id="L193"><span class="lineNum">     193</span>              : </span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         267 :   if (private_data == nullptr) {</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         431 :   if (private_data == nullptr) {</span></span>
 <span id="L195"><span class="lineNum">     195</span>              :     /** generate an emptyInstance and make query to it */</span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         234 :     const GstTensorFilterFramework *tfsp = tf;</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         398 :     const GstTensorFilterFramework *tfsp = tf;</span></span>
 <span id="L197"><span class="lineNum">     197</span>              : </span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         234 :     if (tfsp == nullptr)</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         398 :     if (tfsp == nullptr)</span></span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC tlaBgUNC">           0 :       tfsp = nnstreamer_filter_find (prop-&gt;fwname);</span></span>
 <span id="L200"><span class="lineNum">     200</span>              : </span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC tlaBgGNC">         234 :     assert (tfsp);</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         234 :     assert (tfsp-&gt;version == GST_TENSOR_FILTER_FRAMEWORK_V1);</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC tlaBgGNC">         398 :     assert (tfsp);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         398 :     assert (tfsp-&gt;version == GST_TENSOR_FILTER_FRAMEWORK_V1);</span></span>
 <span id="L203"><span class="lineNum">     203</span>              : </span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         234 :     obj = (tensor_filter_subplugin *) tfsp-&gt;v1.subplugin_data;</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         398 :     obj = (tensor_filter_subplugin *) tfsp-&gt;v1.subplugin_data;</span></span>
 <span id="L205"><span class="lineNum">     205</span>              :   } else {</span>
 <span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          33 :     GET_TFSP_WITH_CHECKS (obj, private_data);</span></span>
 <span id="L207"><span class="lineNum">     207</span>              :   }</span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
 <span id="L209"><span class="lineNum">     209</span>              :   try {</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         267 :     obj-&gt;getFrameworkInfo (*fw_info);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         431 :     obj-&gt;getFrameworkInfo (*fw_info);</span></span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaUNC tlaBgUNC">           0 :   } catch (const std::exception &amp;e) {</span></span>
 <span id="L212"><span class="lineNum">     212</span>              :     /** @todo Write exception handlers. */</span>
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaUNC">           0 :     _RETURN_ERR_WITH_MSG (-EINVAL, e.what ());</span></span>
 <span id="L214"><span class="lineNum">     214</span>              :   }</span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC tlaBgGNC">         267 :   return 0;</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC tlaBgGNC">         431 :   return 0;</span></span>
 <span id="L216"><span class="lineNum">     216</span>              : }</span>
 <span id="L217"><span class="lineNum">     217</span>              : </span>
 <span id="L218"><span class="lineNum">     218</span>              : /**</span>
@@ -329,18 +329,18 @@
 <span id="L267"><span class="lineNum">     267</span>              : /**</span>
 <span id="L268"><span class="lineNum">     268</span>              :  * @brief Base constructor. The object represents a non-functional empty anchor</span>
 <span id="L269"><span class="lineNum">     269</span>              :  */</span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         259 : tensor_filter_subplugin::tensor_filter_subplugin () : sanity (_SANITY_CHECK)</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         337 : tensor_filter_subplugin::tensor_filter_subplugin () : sanity (_SANITY_CHECK)</span></span>
 <span id="L271"><span class="lineNum">     271</span>              : {</span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         259 :   memcpy (&amp;fwdesc, &amp;fwdesc_template, sizeof (fwdesc_template));</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         259 : }</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         337 :   memcpy (&amp;fwdesc, &amp;fwdesc_template, sizeof (fwdesc_template));</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         337 : }</span></span>
 <span id="L274"><span class="lineNum">     274</span>              : </span>
 <span id="L275"><span class="lineNum">     275</span>              : /**</span>
 <span id="L276"><span class="lineNum">     276</span>              :  * @brief Base destructor. The object represents a single GST element instance in a pipeline</span>
 <span id="L277"><span class="lineNum">     277</span>              :  */</span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         150 : tensor_filter_subplugin::~tensor_filter_subplugin ()</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         232 : tensor_filter_subplugin::~tensor_filter_subplugin ()</span></span>
 <span id="L279"><span class="lineNum">     279</span>              : {</span>
 <span id="L280"><span class="lineNum">     280</span>              :   /* Nothing to do */</span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         150 : }</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         232 : }</span></span>
 <span id="L282"><span class="lineNum">     282</span>              : </span>
 <span id="L283"><span class="lineNum">     283</span>              : /**</span>
 <span id="L284"><span class="lineNum">     284</span>              :  * @brief Base eventHandler, which does nothing!</span>

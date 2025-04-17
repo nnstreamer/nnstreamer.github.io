@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-17 05:39:21</td>
+            <td class="headerValue">2025-04-18 05:37:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -171,26 +171,26 @@
 <span id="L109"><span class="lineNum">     109</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_src_debug, &quot;datareposrc&quot;, 0, &quot;datareposrc element&quot;);</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              : #define gst_data_repo_src_parent_class parent_class</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         866 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         898 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
 <span id="L113"><span class="lineNum">     113</span>              :     _do_init);</span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
 <span id="L115"><span class="lineNum">     115</span>              : /**</span>
 <span id="L116"><span class="lineNum">     116</span>              :  * @brief initialize the datareposrc's class</span>
 <span id="L117"><span class="lineNum">     117</span>              :  */</span>
 <span id="L118"><span class="lineNum">     118</span>              : static void</span>
-<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">           3 : gst_data_repo_src_class_init (GstDataRepoSrcClass * klass)</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          13 : gst_data_repo_src_class_init (GstDataRepoSrcClass * klass)</span></span>
 <span id="L120"><span class="lineNum">     120</span>              : {</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">           3 :   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">           3 :   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           3 :   GstBaseSrcClass *gstbasesrc_class = GST_BASE_SRC_CLASS (klass);</span></span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">           3 :   GstPushSrcClass *gstpushsrc_class = GST_PUSH_SRC_CLASS (klass);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">          13 :   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">          13 :   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">          13 :   GstBaseSrcClass *gstbasesrc_class = GST_BASE_SRC_CLASS (klass);</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">          13 :   GstPushSrcClass *gstpushsrc_class = GST_PUSH_SRC_CLASS (klass);</span></span>
 <span id="L125"><span class="lineNum">     125</span>              : </span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">           3 :   gobject_class-&gt;set_property =</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">           3 :       GST_DEBUG_FUNCPTR (gst_data_repo_src_set_property);</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">           3 :   gobject_class-&gt;get_property =</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">           3 :       GST_DEBUG_FUNCPTR (gst_data_repo_src_get_property);</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">          13 :   gobject_class-&gt;set_property =</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          13 :       GST_DEBUG_FUNCPTR (gst_data_repo_src_set_property);</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">          13 :   gobject_class-&gt;get_property =</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">          13 :       GST_DEBUG_FUNCPTR (gst_data_repo_src_get_property);</span></span>
 <span id="L130"><span class="lineNum">     130</span>              : </span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_LOCATION,</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_LOCATION,</span></span>
 <span id="L132"><span class="lineNum">     132</span>              :       g_param_spec_string (&quot;location&quot;, &quot;File Location&quot;,</span>
 <span id="L133"><span class="lineNum">     133</span>              :           &quot;Location of the file to read that is stored in MLOps Data Repository, &quot;</span>
 <span id="L134"><span class="lineNum">     134</span>              :           &quot;if the files are images, write the index of filename name &quot;</span>
@@ -199,14 +199,14 @@
 <span id="L137"><span class="lineNum">     137</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L138"><span class="lineNum">     138</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_JSON,</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_JSON,</span></span>
 <span id="L141"><span class="lineNum">     141</span>              :       g_param_spec_string (&quot;json&quot;, &quot;Json file path&quot;,</span>
 <span id="L142"><span class="lineNum">     142</span>              :           &quot;Json file path containing the meta information of the file &quot;</span>
 <span id="L143"><span class="lineNum">     143</span>              :           &quot;specified as location&quot;, NULL,</span>
 <span id="L144"><span class="lineNum">     144</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L145"><span class="lineNum">     145</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_START_SAMPLE_INDEX,</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_START_SAMPLE_INDEX,</span></span>
 <span id="L148"><span class="lineNum">     148</span>              :       g_param_spec_uint (&quot;start-sample-index&quot;, &quot;Start index of samples&quot;,</span>
 <span id="L149"><span class="lineNum">     149</span>              :           &quot;Start index of sample to read, in case of image, &quot;</span>
 <span id="L150"><span class="lineNum">     150</span>              :           &quot;the starting index of the numbered files. start at 0.&quot;</span>
@@ -215,7 +215,7 @@
 <span id="L153"><span class="lineNum">     153</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L154"><span class="lineNum">     154</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L155"><span class="lineNum">     155</span>              : </span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_STOP_SAMPLE_INDEX,</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_STOP_SAMPLE_INDEX,</span></span>
 <span id="L157"><span class="lineNum">     157</span>              :       g_param_spec_uint (&quot;stop-sample-index&quot;, &quot;Stop index of samples&quot;,</span>
 <span id="L158"><span class="lineNum">     158</span>              :           &quot;Stop index of sample to read, in case of image, &quot;</span>
 <span id="L159"><span class="lineNum">     159</span>              :           &quot;the stopping index of the numbered files. start at 0.&quot;</span>
@@ -224,14 +224,14 @@
 <span id="L162"><span class="lineNum">     162</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L163"><span class="lineNum">     163</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L164"><span class="lineNum">     164</span>              : </span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_EPOCHS,</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_EPOCHS,</span></span>
 <span id="L166"><span class="lineNum">     166</span>              :       g_param_spec_uint (&quot;epochs&quot;, &quot;Epochs&quot;,</span>
 <span id="L167"><span class="lineNum">     167</span>              :           &quot;Repetition of range of files or samples to read, set number of repetitions&quot;,</span>
 <span id="L168"><span class="lineNum">     168</span>              :           0, G_MAXINT, DEFAULT_EPOCHS,</span>
 <span id="L169"><span class="lineNum">     169</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L170"><span class="lineNum">     170</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_TENSORS_SEQUENCE,</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_TENSORS_SEQUENCE,</span></span>
 <span id="L173"><span class="lineNum">     173</span>              :       g_param_spec_string (&quot;tensors-sequence&quot;, &quot;Tensors sequence&quot;,</span>
 <span id="L174"><span class="lineNum">     174</span>              :           &quot;Tensors in a sample are read into gstBuffer according to tensors-sequence.&quot;</span>
 <span id="L175"><span class="lineNum">     175</span>              :           &quot;Only read the set tensors among all tensors in a sample&quot;</span>
@@ -243,40 +243,40 @@
 <span id="L181"><span class="lineNum">     181</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L182"><span class="lineNum">     182</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_IS_SHUFFLE,</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_IS_SHUFFLE,</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :       g_param_spec_boolean (&quot;is-shuffle&quot;, &quot;Is shuffle&quot;,</span>
 <span id="L186"><span class="lineNum">     186</span>              :           &quot;If the value is true, samples are shuffled&quot;,</span>
 <span id="L187"><span class="lineNum">     187</span>              :           DEFAULT_IS_SHUFFLE,</span>
 <span id="L188"><span class="lineNum">     188</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L189"><span class="lineNum">     189</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L190"><span class="lineNum">     190</span>              : </span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           3 :   g_object_class_install_property (gobject_class, PROP_CAPS,</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          13 :   g_object_class_install_property (gobject_class, PROP_CAPS,</span></span>
 <span id="L192"><span class="lineNum">     192</span>              :       g_param_spec_boxed (&quot;caps&quot;, &quot;Caps&quot;,</span>
 <span id="L193"><span class="lineNum">     193</span>              :           &quot;Optional property, Caps describing the format of the sample data.&quot;,</span>
 <span id="L194"><span class="lineNum">     194</span>              :           GST_TYPE_CAPS,</span>
 <span id="L195"><span class="lineNum">     195</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |</span>
 <span id="L196"><span class="lineNum">     196</span>              :           GST_PARAM_MUTABLE_READY));</span>
 <span id="L197"><span class="lineNum">     197</span>              : </span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">           3 :   gobject_class-&gt;finalize = gst_data_repo_src_finalize;</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           3 :   gstelement_class-&gt;change_state = gst_data_repo_src_change_state;</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          13 :   gobject_class-&gt;finalize = gst_data_repo_src_finalize;</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          13 :   gstelement_class-&gt;change_state = gst_data_repo_src_change_state;</span></span>
 <span id="L200"><span class="lineNum">     200</span>              : </span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">           3 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          13 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L202"><span class="lineNum">     202</span>              :       &quot;NNStreamer MLOps Data Repository Source&quot;,</span>
 <span id="L203"><span class="lineNum">     203</span>              :       &quot;Source/File&quot;,</span>
 <span id="L204"><span class="lineNum">     204</span>              :       &quot;Read files in MLOps Data Repository into buffers&quot;,</span>
 <span id="L205"><span class="lineNum">     205</span>              :       &quot;Samsung Electronics Co., Ltd.&quot;);</span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           3 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;srctemplate);</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          13 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;srctemplate);</span></span>
 <span id="L207"><span class="lineNum">     207</span>              : </span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           3 :   gstbasesrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_data_repo_src_stop);</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           3 :   gstbasesrc_class-&gt;get_caps = GST_DEBUG_FUNCPTR (gst_data_repo_src_get_caps);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           3 :   gstbasesrc_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_data_repo_src_set_caps);</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           3 :   gstpushsrc_class-&gt;create = GST_DEBUG_FUNCPTR (gst_data_repo_src_create);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          13 :   gstbasesrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_data_repo_src_stop);</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          13 :   gstbasesrc_class-&gt;get_caps = GST_DEBUG_FUNCPTR (gst_data_repo_src_get_caps);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          13 :   gstbasesrc_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_data_repo_src_set_caps);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          13 :   gstpushsrc_class-&gt;create = GST_DEBUG_FUNCPTR (gst_data_repo_src_create);</span></span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
 <span id="L213"><span class="lineNum">     213</span>              :   if (sizeof (off_t) &lt; 8) {</span>
 <span id="L214"><span class="lineNum">     214</span>              :     GST_LOG (&quot;No large file support, sizeof (off_t) = %&quot; G_GSIZE_FORMAT &quot;!&quot;,</span>
 <span id="L215"><span class="lineNum">     215</span>              :         sizeof (off_t));</span>
 <span id="L216"><span class="lineNum">     216</span>              :   }</span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           3 : }</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          13 : }</span></span>
 <span id="L218"><span class="lineNum">     218</span>              : </span>
 <span id="L219"><span class="lineNum">     219</span>              : /**</span>
 <span id="L220"><span class="lineNum">     220</span>              :  * @brief Initialize datareposrc</span>
@@ -1428,24 +1428,24 @@
 <span id="L1366"><span class="lineNum">    1366</span>              :  * @brief Get caps for caps negotiation</span>
 <span id="L1367"><span class="lineNum">    1367</span>              :  */</span>
 <span id="L1368"><span class="lineNum">    1368</span>              : static GstCaps *</span>
-<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaGNC">         112 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
+<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaGNC">         113 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
 <span id="L1370"><span class="lineNum">    1370</span>              : {</span>
-<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         112 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         113 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1372"><span class="lineNum">    1372</span>              : </span>
-<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         112 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         113 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
 <span id="L1374"><span class="lineNum">    1374</span> <span class="tlaGNC">          17 :     gst_data_repo_get_caps_by_tensors_sequence (src);</span></span>
 <span id="L1375"><span class="lineNum">    1375</span> <span class="tlaGNC">          17 :     src-&gt;need_changed_caps = FALSE;</span></span>
 <span id="L1376"><span class="lineNum">    1376</span>              :   }</span>
 <span id="L1377"><span class="lineNum">    1377</span>              : </span>
-<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC">         112 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC">         113 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L1379"><span class="lineNum">    1379</span>              :       src-&gt;caps);</span>
 <span id="L1380"><span class="lineNum">    1380</span>              : </span>
-<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaGNC">         112 :   if (src-&gt;caps) {</span></span>
-<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaGNC">          98 :     if (filter)</span></span>
+<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaGNC">         113 :   if (src-&gt;caps) {</span></span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaGNC">          99 :     if (filter)</span></span>
 <span id="L1383"><span class="lineNum">    1383</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_intersect_full (filter, src-&gt;caps,</span></span>
 <span id="L1384"><span class="lineNum">    1384</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
 <span id="L1385"><span class="lineNum">    1385</span>              :     else</span>
-<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC tlaBgGNC">          98 :       return gst_caps_ref (src-&gt;caps);</span></span>
+<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC tlaBgGNC">          99 :       return gst_caps_ref (src-&gt;caps);</span></span>
 <span id="L1387"><span class="lineNum">    1387</span>              :   } else {</span>
 <span id="L1388"><span class="lineNum">    1388</span> <span class="tlaGNC">          14 :     if (filter)</span></span>
 <span id="L1389"><span class="lineNum">    1389</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_ref (filter);</span></span>
@@ -1458,13 +1458,13 @@
 <span id="L1396"><span class="lineNum">    1396</span>              :  * @brief caps after caps negotiation</span>
 <span id="L1397"><span class="lineNum">    1397</span>              :  */</span>
 <span id="L1398"><span class="lineNum">    1398</span>              : static gboolean</span>
-<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaGNC">          18 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
+<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaGNC">          19 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
 <span id="L1400"><span class="lineNum">    1400</span>              : {</span>
-<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          18 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          19 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1402"><span class="lineNum">    1402</span>              : </span>
-<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          18 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          19 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
 <span id="L1404"><span class="lineNum">    1404</span>              : </span>
-<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          18 :   return TRUE;</span></span>
+<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          19 :   return TRUE;</span></span>
 <span id="L1406"><span class="lineNum">    1406</span>              : }</span>
 <span id="L1407"><span class="lineNum">    1407</span>              : </span>
 <span id="L1408"><span class="lineNum">    1408</span>              : /**</span>
