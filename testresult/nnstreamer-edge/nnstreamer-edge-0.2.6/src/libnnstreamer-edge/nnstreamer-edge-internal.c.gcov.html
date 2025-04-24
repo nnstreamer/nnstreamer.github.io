@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-24 05:23:14</td>
+            <td class="headerValue">2025-04-25 05:23:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -780,21 +780,21 @@
 <span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">           6 :   SAFE_FREE (_tdata);</span></span>
 <span id="L719"><span class="lineNum">     719</span>              : </span>
 <span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">           6 :   conn-&gt;running = true;</span></span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">        1496 :   while (conn-&gt;running) {</span></span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">        1498 :   while (conn-&gt;running) {</span></span>
 <span id="L722"><span class="lineNum">     722</span>              :     struct pollfd poll_fd;</span>
 <span id="L723"><span class="lineNum">     723</span>              : </span>
 <span id="L724"><span class="lineNum">     724</span>              :     /* Validate edge handle */</span>
-<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">        1493 :     if (!nns_edge_handle_is_valid (eh)) {</span></span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">        1495 :     if (!nns_edge_handle_is_valid (eh)) {</span></span>
 <span id="L726"><span class="lineNum">     726</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_edge_loge (&quot;The edge handle is invalid, it would be expired.&quot;);</span></span>
 <span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC tlaBgGNC">           3 :       break;</span></span>
 <span id="L728"><span class="lineNum">     728</span>              :     }</span>
 <span id="L729"><span class="lineNum">     729</span>              : </span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">        1493 :     poll_fd.fd = conn-&gt;sockfd;</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">        1493 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">        1493 :     poll_fd.revents = 0;</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">        1495 :     poll_fd.fd = conn-&gt;sockfd;</span></span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">        1495 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">        1495 :     poll_fd.revents = 0;</span></span>
 <span id="L733"><span class="lineNum">     733</span>              : </span>
 <span id="L734"><span class="lineNum">     734</span>              :     /* 10 milliseconds */</span>
-<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">        1493 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">        1495 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
 <span id="L736"><span class="lineNum">     736</span>              :       nns_edge_cmd_s cmd;</span>
 <span id="L737"><span class="lineNum">     737</span>              :       nns_edge_data_h data_h;</span>
 <span id="L738"><span class="lineNum">     738</span>              :       char *val;</span>
@@ -1242,15 +1242,15 @@
 <span id="L1180"><span class="lineNum">    1180</span> <span class="tlaGNC">           6 :   nns_edge_cond_signal (eh);</span></span>
 <span id="L1181"><span class="lineNum">    1181</span> <span class="tlaGNC">           6 :   nns_edge_unlock (eh);</span></span>
 <span id="L1182"><span class="lineNum">    1182</span>              : </span>
-<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">        1569 :   while (eh-&gt;listening) {</span></span>
+<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">        1574 :   while (eh-&gt;listening) {</span></span>
 <span id="L1184"><span class="lineNum">    1184</span>              :     struct pollfd poll_fd;</span>
 <span id="L1185"><span class="lineNum">    1185</span>              : </span>
-<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">        1563 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
-<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">        1563 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
-<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">        1563 :     poll_fd.revents = 0;</span></span>
+<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">        1568 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
+<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">        1568 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
+<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">        1568 :     poll_fd.revents = 0;</span></span>
 <span id="L1189"><span class="lineNum">    1189</span>              : </span>
 <span id="L1190"><span class="lineNum">    1190</span>              :     /* 10 milliseconds */</span>
-<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">        1563 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
+<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">        1568 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
 <span id="L1192"><span class="lineNum">    1192</span> <span class="tlaGNC">           6 :       if (!eh-&gt;listening)</span></span>
 <span id="L1193"><span class="lineNum">    1193</span> <span class="tlaUNC tlaBgUNC">           0 :         break;</span></span>
 <span id="L1194"><span class="lineNum">    1194</span>              : </span>
