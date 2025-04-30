@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-30 05:39:32</td>
+            <td class="headerValue">2025-05-01 05:37:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -345,13 +345,13 @@
 <span id="L283"><span class="lineNum">     283</span>              : /** internal functions */</span>
 <span id="L284"><span class="lineNum">     284</span>              : </span>
 <span id="L285"><span class="lineNum">     285</span>              : #define gst_tensor_src_iio_parent_class parent_class</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1170 : G_DEFINE_TYPE (GstTensorSrcIIO, gst_tensor_src_iio, GST_TYPE_BASE_SRC);</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1140 : G_DEFINE_TYPE (GstTensorSrcIIO, gst_tensor_src_iio, GST_TYPE_BASE_SRC);</span></span>
 <span id="L287"><span class="lineNum">     287</span>              : </span>
 <span id="L288"><span class="lineNum">     288</span>              : /**</span>
 <span id="L289"><span class="lineNum">     289</span>              :  * @brief initialize the tensor_src_iio class.</span>
 <span id="L290"><span class="lineNum">     290</span>              :  */</span>
 <span id="L291"><span class="lineNum">     291</span>              : static void</span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          11 : gst_tensor_src_iio_class_init (GstTensorSrcIIOClass * klass)</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           1 : gst_tensor_src_iio_class_init (GstTensorSrcIIOClass * klass)</span></span>
 <span id="L293"><span class="lineNum">     293</span>              : {</span>
 <span id="L294"><span class="lineNum">     294</span>              :   GObjectClass *gobject_class;</span>
 <span id="L295"><span class="lineNum">     295</span>              :   GstElementClass *gstelement_class;</span>
@@ -359,59 +359,59 @@
 <span id="L297"><span class="lineNum">     297</span>              :   GstPadTemplate *pad_template;</span>
 <span id="L298"><span class="lineNum">     298</span>              :   GstCaps *pad_caps;</span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">          11 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_src_iio_debug, &quot;tensor_src_iio&quot;, 0,</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">           1 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_src_iio_debug, &quot;tensor_src_iio&quot;, 0,</span></span>
 <span id="L301"><span class="lineNum">     301</span>              :       &quot;Source element to handle Linux Industrial I/O sensors as input&quot;);</span>
 <span id="L302"><span class="lineNum">     302</span>              : </span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          11 :   gobject_class = G_OBJECT_CLASS (klass);</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          11 :   gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          11 :   bsrc_class = GST_BASE_SRC_CLASS (klass);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           1 :   gobject_class = G_OBJECT_CLASS (klass);</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">           1 :   gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           1 :   bsrc_class = GST_BASE_SRC_CLASS (klass);</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
 <span id="L307"><span class="lineNum">     307</span>              :   /** GObject methods */</span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          11 :   gobject_class-&gt;set_property = gst_tensor_src_iio_set_property;</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          11 :   gobject_class-&gt;get_property = gst_tensor_src_iio_get_property;</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          11 :   gobject_class-&gt;finalize = gst_tensor_src_iio_finalize;</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           1 :   gobject_class-&gt;set_property = gst_tensor_src_iio_set_property;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           1 :   gobject_class-&gt;get_property = gst_tensor_src_iio_get_property;</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           1 :   gobject_class-&gt;finalize = gst_tensor_src_iio_finalize;</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L313"><span class="lineNum">     313</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;,</span>
 <span id="L314"><span class="lineNum">     314</span>              :           &quot;Produce verbose output&quot;, DEFAULT_PROP_SILENT,</span>
 <span id="L315"><span class="lineNum">     315</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_MODE,</span></span>
 <span id="L318"><span class="lineNum">     318</span>              :       g_param_spec_string (&quot;mode&quot;, &quot;Operating mode&quot;,</span>
 <span id="L319"><span class="lineNum">     319</span>              :           &quot;Mode for the device to run in - one-shot or continuous&quot;,</span>
 <span id="L320"><span class="lineNum">     320</span>              :           DEFAULT_OPERATING_MODE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L321"><span class="lineNum">     321</span>              : </span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_BASE_DIRECTORY,</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_BASE_DIRECTORY,</span></span>
 <span id="L323"><span class="lineNum">     323</span>              :       g_param_spec_string (&quot;iio-base-dir&quot;, &quot;IIO Base Dir&quot;,</span>
 <span id="L324"><span class="lineNum">     324</span>              :           &quot;Base directory for IIO devices&quot;, DEFAULT_PROP_BASE_DIRECTORY,</span>
 <span id="L325"><span class="lineNum">     325</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_DEV_DIRECTORY,</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_DEV_DIRECTORY,</span></span>
 <span id="L328"><span class="lineNum">     328</span>              :       g_param_spec_string (&quot;dev-dir&quot;, &quot;Dev Dir&quot;,</span>
 <span id="L329"><span class="lineNum">     329</span>              :           &quot;Directory for device files&quot;, DEFAULT_PROP_DEV_DIRECTORY,</span>
 <span id="L330"><span class="lineNum">     330</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L331"><span class="lineNum">     331</span>              : </span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_DEVICE,</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_DEVICE,</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :       g_param_spec_string (&quot;device&quot;, &quot;Device Name&quot;,</span>
 <span id="L334"><span class="lineNum">     334</span>              :           &quot;Name of the device to be opened&quot;, DEFAULT_PROP_STRING,</span>
 <span id="L335"><span class="lineNum">     335</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_DEVICE_NUM,</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_DEVICE_NUM,</span></span>
 <span id="L338"><span class="lineNum">     338</span>              :       g_param_spec_int (&quot;device-number&quot;, &quot;Device Number&quot;,</span>
 <span id="L339"><span class="lineNum">     339</span>              :           &quot;Number (numeric id) of the device to be opened&quot;,</span>
 <span id="L340"><span class="lineNum">     340</span>              :           -1, G_MAXINT, DEFAULT_PROP_DEVICE_NUM, G_PARAM_READWRITE));</span>
 <span id="L341"><span class="lineNum">     341</span>              : </span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_TRIGGER,</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_TRIGGER,</span></span>
 <span id="L343"><span class="lineNum">     343</span>              :       g_param_spec_string (&quot;trigger&quot;, &quot;Trigger Name&quot;,</span>
 <span id="L344"><span class="lineNum">     344</span>              :           &quot;Name of the trigger to be used&quot;, DEFAULT_PROP_STRING,</span>
 <span id="L345"><span class="lineNum">     345</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L346"><span class="lineNum">     346</span>              : </span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_TRIGGER_NUM,</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_TRIGGER_NUM,</span></span>
 <span id="L348"><span class="lineNum">     348</span>              :       g_param_spec_int (&quot;trigger-number&quot;, &quot;Trigger Number&quot;,</span>
 <span id="L349"><span class="lineNum">     349</span>              :           &quot;Number (numeric id) of the trigger to be opened&quot;,</span>
 <span id="L350"><span class="lineNum">     350</span>              :           -1, G_MAXINT, DEFAULT_PROP_TRIGGER_NUM, G_PARAM_READWRITE));</span>
 <span id="L351"><span class="lineNum">     351</span>              : </span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_CHANNELS,</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_CHANNELS,</span></span>
 <span id="L353"><span class="lineNum">     353</span>              :       g_param_spec_string (&quot;channels&quot;, &quot;Channels to be enabled&quot;,</span>
 <span id="L354"><span class="lineNum">     354</span>              :           &quot;Specify channels to be enabled:&quot;</span>
 <span id="L355"><span class="lineNum">     355</span>              :           &quot; 1) auto: enable all channels when no channels are enabled automatically,&quot;</span>
@@ -419,56 +419,56 @@
 <span id="L357"><span class="lineNum">     357</span>              :           &quot; 3) x,y,z: list the idx of the channels to be enabled&quot;,</span>
 <span id="L358"><span class="lineNum">     358</span>              :           DEFAULT_OPERATING_CHANNELS_ENABLED, G_PARAM_READWRITE));</span>
 <span id="L359"><span class="lineNum">     359</span>              : </span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_BUFFER_CAPACITY,</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_BUFFER_CAPACITY,</span></span>
 <span id="L361"><span class="lineNum">     361</span>              :       g_param_spec_uint (&quot;buffer-capacity&quot;, &quot;Buffer Capacity&quot;,</span>
 <span id="L362"><span class="lineNum">     362</span>              :           &quot;Capacity of the data buffer&quot;, MIN_BUFFER_CAPACITY,</span>
 <span id="L363"><span class="lineNum">     363</span>              :           MAX_BUFFER_CAPACITY, DEFAULT_BUFFER_CAPACITY,</span>
 <span id="L364"><span class="lineNum">     364</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L365"><span class="lineNum">     365</span>              : </span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_FREQUENCY,</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_FREQUENCY,</span></span>
 <span id="L367"><span class="lineNum">     367</span>              :       g_param_spec_ulong (&quot;frequency&quot;, &quot;Frequency&quot;,</span>
 <span id="L368"><span class="lineNum">     368</span>              :           &quot;Operating frequency of the device&quot;, MIN_FREQUENCY, MAX_FREQUENCY,</span>
 <span id="L369"><span class="lineNum">     369</span>              :           DEFAULT_FREQUENCY, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L370"><span class="lineNum">     370</span>              : </span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_MERGE_CHANNELS,</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_MERGE_CHANNELS,</span></span>
 <span id="L372"><span class="lineNum">     372</span>              :       g_param_spec_boolean (&quot;merge-channels-data&quot;, &quot;Merge Channels Data&quot;,</span>
 <span id="L373"><span class="lineNum">     373</span>              :           &quot;Merge the data of channels into single tensor&quot;,</span>
 <span id="L374"><span class="lineNum">     374</span>              :           DEFAULT_MERGE_CHANNELS, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L375"><span class="lineNum">     375</span>              : </span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">          11 :   g_object_class_install_property (gobject_class, PROP_POLL_TIMEOUT,</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_POLL_TIMEOUT,</span></span>
 <span id="L377"><span class="lineNum">     377</span>              :       g_param_spec_int (&quot;poll-timeout&quot;, &quot;Poll Timeout&quot;,</span>
 <span id="L378"><span class="lineNum">     378</span>              :           &quot;Timeout for polling in milliseconds&quot;, MIN_POLL_TIMEOUT,</span>
 <span id="L379"><span class="lineNum">     379</span>              :           MAX_POLL_TIMEOUT, DEFAULT_POLL_TIMEOUT, G_PARAM_READWRITE));</span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">          11 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">           1 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L382"><span class="lineNum">     382</span>              :       &quot;TensorSrcIIO&quot;,</span>
 <span id="L383"><span class="lineNum">     383</span>              :       &quot;Source/Tensor/Device&quot;,</span>
 <span id="L384"><span class="lineNum">     384</span>              :       &quot;Src element to support linux IIO&quot;,</span>
 <span id="L385"><span class="lineNum">     385</span>              :       &quot;Parichay Kapoor &lt;pk.kapoor@samsung.com&gt;&quot;);</span>
 <span id="L386"><span class="lineNum">     386</span>              : </span>
 <span id="L387"><span class="lineNum">     387</span>              :   /** pad template */</span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          11 :   pad_caps = gst_caps_from_string (GST_TENSOR_CAP_DEFAULT &quot;; &quot;</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">           1 :   pad_caps = gst_caps_from_string (GST_TENSOR_CAP_DEFAULT &quot;; &quot;</span></span>
 <span id="L389"><span class="lineNum">     389</span>              :       GST_TENSORS_CAP_DEFAULT);</span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          11 :   pad_template = gst_pad_template_new (&quot;src&quot;, GST_PAD_SRC, GST_PAD_ALWAYS,</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">           1 :   pad_template = gst_pad_template_new (&quot;src&quot;, GST_PAD_SRC, GST_PAD_ALWAYS,</span></span>
 <span id="L391"><span class="lineNum">     391</span>              :       pad_caps);</span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">          11 :   gst_element_class_add_pad_template (gstelement_class, pad_template);</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          11 :   gst_caps_unref (pad_caps);</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">           1 :   gst_element_class_add_pad_template (gstelement_class, pad_template);</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">           1 :   gst_caps_unref (pad_caps);</span></span>
 <span id="L394"><span class="lineNum">     394</span>              : </span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          11 :   gstelement_class-&gt;change_state =</span></span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">          11 :       GST_DEBUG_FUNCPTR (gst_tensor_src_iio_change_state);</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">           1 :   gstelement_class-&gt;change_state =</span></span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">           1 :       GST_DEBUG_FUNCPTR (gst_tensor_src_iio_change_state);</span></span>
 <span id="L397"><span class="lineNum">     397</span>              : </span>
 <span id="L398"><span class="lineNum">     398</span>              :   /** GstBaseSrcIIO methods */</span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;start = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_start);</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_stop);</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;event = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_event);</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_set_caps);</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;get_caps = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_get_caps);</span></span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;fixate = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_fixate);</span></span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;is_seekable = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_is_seekable);</span></span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;create = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_create);</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;fill = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_fill);</span></span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">          11 :   bsrc_class-&gt;get_times = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_get_times);</span></span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          11 : }</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;start = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_start);</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;stop = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_stop);</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;event = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_event);</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;set_caps = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_set_caps);</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;get_caps = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_get_caps);</span></span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;fixate = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_fixate);</span></span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;is_seekable = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_is_seekable);</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;create = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_create);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;fill = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_fill);</span></span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">           1 :   bsrc_class-&gt;get_times = GST_DEBUG_FUNCPTR (gst_tensor_src_iio_get_times);</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">           1 : }</span></span>
 <span id="L410"><span class="lineNum">     410</span>              : </span>
 <span id="L411"><span class="lineNum">     411</span>              : /**</span>
 <span id="L412"><span class="lineNum">     412</span>              :  * @brief delete GstTensorSrcIIODeviceProperties structure</span>
@@ -661,9 +661,9 @@
 <span id="L599"><span class="lineNum">     599</span> <span class="tlaUNC">           0 :     return ret;</span></span>
 <span id="L600"><span class="lineNum">     600</span>              :   }</span>
 <span id="L601"><span class="lineNum">     601</span>              : </span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC tlaBgGNC">          15 :   while ((dir_entry = readdir (dptr)) != NULL) {</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC tlaBgGNC">          28 :   while ((dir_entry = readdir (dptr)) != NULL) {</span></span>
 <span id="L603"><span class="lineNum">     603</span>              :     /** check for prefix and the next digit should be a number */</span>
-<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">          15 :     if (g_str_has_prefix (dir_entry-&gt;d_name, prefix) &amp;&amp;</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">          28 :     if (g_str_has_prefix (dir_entry-&gt;d_name, prefix) &amp;&amp;</span></span>
 <span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">          13 :         g_ascii_isdigit (dir_entry-&gt;d_name[strlen (prefix)])) {</span></span>
 <span id="L606"><span class="lineNum">     606</span>              : </span>
 <span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">          13 :       id = (gint) g_ascii_strtoll (dir_entry-&gt;d_name + strlen (prefix), NULL,</span></span>
@@ -886,12 +886,12 @@
 <span id="L824"><span class="lineNum">     824</span>              :  *         positive if a&gt;b</span>
 <span id="L825"><span class="lineNum">     825</span>              :  */</span>
 <span id="L826"><span class="lineNum">     826</span>              : static gint</span>
-<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">         240 : gst_tensor_channel_list_sort_cmp (gconstpointer a, gconstpointer b)</span></span>
+<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">         210 : gst_tensor_channel_list_sort_cmp (gconstpointer a, gconstpointer b)</span></span>
 <span id="L828"><span class="lineNum">     828</span>              : {</span>
-<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">         240 :   const GstTensorSrcIIOChannelProperties *a_ch = a;</span></span>
-<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">         240 :   const GstTensorSrcIIOChannelProperties *b_ch = b;</span></span>
-<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         240 :   gint compare_result = a_ch-&gt;index - b_ch-&gt;index;</span></span>
-<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">         240 :   return compare_result;</span></span>
+<span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">         210 :   const GstTensorSrcIIOChannelProperties *a_ch = a;</span></span>
+<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">         210 :   const GstTensorSrcIIOChannelProperties *b_ch = b;</span></span>
+<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         210 :   gint compare_result = a_ch-&gt;index - b_ch-&gt;index;</span></span>
+<span id="L832"><span class="lineNum">     832</span> <span class="tlaGNC">         210 :   return compare_result;</span></span>
 <span id="L833"><span class="lineNum">     833</span>              : }</span>
 <span id="L834"><span class="lineNum">     834</span>              : </span>
 <span id="L835"><span class="lineNum">     835</span>              : /**</span>
@@ -2574,7 +2574,7 @@
 <span id="L2512"><span class="lineNum">    2512</span>              :   /** wait for the data to arrive */</span>
 <span id="L2513"><span class="lineNum">    2513</span> <span class="tlaGNC tlaBgGNC">          38 :   time_to_end = g_get_real_time () + self-&gt;poll_timeout * 1000;</span></span>
 <span id="L2514"><span class="lineNum">    2514</span>              :   while (TRUE) {</span>
-<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         278 :     if (self-&gt;trigger.name != NULL) {</span></span>
+<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         285 :     if (self-&gt;trigger.name != NULL) {</span></span>
 <span id="L2516"><span class="lineNum">    2516</span> <span class="tlaGNC">          17 :       status = poll (self-&gt;buffer_data_fp, 1, self-&gt;poll_timeout);</span></span>
 <span id="L2517"><span class="lineNum">    2517</span> <span class="tlaGNC">          17 :       if (status &lt; 0) {</span></span>
 <span id="L2518"><span class="lineNum">    2518</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Error %d while polling the buffer.&quot;, status);</span></span>
@@ -2590,9 +2590,9 @@
 <span id="L2528"><span class="lineNum">    2528</span> <span class="tlaGNC tlaBgGNC">          16 :       self-&gt;buffer_data_fp-&gt;revents = 0;</span></span>
 <span id="L2529"><span class="lineNum">    2529</span>              :     } else {</span>
 <span id="L2530"><span class="lineNum">    2530</span>              :       /** sleep for a device tick */</span>
-<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         261 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
+<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         268 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
 <span id="L2532"><span class="lineNum">    2532</span>              :               self-&gt;buffer_capacity)) {</span>
-<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         261 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
+<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         268 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
 <span id="L2534"><span class="lineNum">    2534</span>              :       } else {</span>
 <span id="L2535"><span class="lineNum">    2535</span> <span class="tlaUNC tlaBgUNC">           0 :         g_usleep (MAX (1,</span></span>
 <span id="L2536"><span class="lineNum">    2536</span>              :                 (self-&gt;buffer_capacity / self-&gt;sampling_frequency) *</span>
@@ -2601,13 +2601,13 @@
 <span id="L2539"><span class="lineNum">    2539</span>              :     }</span>
 <span id="L2540"><span class="lineNum">    2540</span>              : </span>
 <span id="L2541"><span class="lineNum">    2541</span>              :     /** using read for non-blocking access */</span>
-<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         277 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
-<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         277 :     if (status &lt; bytes_to_read) {</span></span>
-<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         240 :       if (errno == EAGAIN) {</span></span>
-<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         240 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
-<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         240 :         cur_time = g_get_real_time ();</span></span>
-<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         240 :         if (time_to_end &gt;= cur_time) {</span></span>
-<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         240 :           continue;</span></span>
+<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         284 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
+<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         284 :     if (status &lt; bytes_to_read) {</span></span>
+<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         247 :       if (errno == EAGAIN) {</span></span>
+<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         247 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
+<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         247 :         cur_time = g_get_real_time ();</span></span>
+<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         247 :         if (time_to_end &gt;= cur_time) {</span></span>
+<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         247 :           continue;</span></span>
 <span id="L2549"><span class="lineNum">    2549</span>              :         } else {</span>
 <span id="L2550"><span class="lineNum">    2550</span> <span class="tlaUNC tlaBgUNC">           0 :           GST_ERROR_OBJECT (self, &quot;EAGAIN timeout expired.&quot;);</span></span>
 <span id="L2551"><span class="lineNum">    2551</span> <span class="tlaUNC">           0 :           goto error_data_free;</span></span>
