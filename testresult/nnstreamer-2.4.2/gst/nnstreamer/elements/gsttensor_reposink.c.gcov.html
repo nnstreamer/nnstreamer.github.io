@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-02 05:38:03</td>
+            <td class="headerValue">2025-05-05 05:38:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.1&nbsp;%</td>
@@ -389,16 +389,16 @@
 <span id="L327"><span class="lineNum">     327</span>              :  * @brief Push GstBuffer</span>
 <span id="L328"><span class="lineNum">     328</span>              :  */</span>
 <span id="L329"><span class="lineNum">     329</span>              : static gboolean</span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         118 : gst_tensor_reposink_render_buffer (GstTensorRepoSink * self, GstBuffer * buffer)</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         119 : gst_tensor_reposink_render_buffer (GstTensorRepoSink * self, GstBuffer * buffer)</span></span>
 <span id="L331"><span class="lineNum">     331</span>              : {</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         118 :   GstClockTime now = GST_CLOCK_TIME_NONE;</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         119 :   GstClockTime now = GST_CLOCK_TIME_NONE;</span></span>
 <span id="L333"><span class="lineNum">     333</span>              :   guint signal_rate;</span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         118 :   gboolean notify = FALSE;</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         118 :   g_return_val_if_fail (GST_IS_TENSOR_REPOSINK (self), FALSE);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         119 :   gboolean notify = FALSE;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         119 :   g_return_val_if_fail (GST_IS_TENSOR_REPOSINK (self), FALSE);</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         118 :   signal_rate = self-&gt;signal_rate;</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         119 :   signal_rate = self-&gt;signal_rate;</span></span>
 <span id="L338"><span class="lineNum">     338</span>              : </span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         118 :   if (signal_rate) {</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">         119 :   if (signal_rate) {</span></span>
 <span id="L340"><span class="lineNum">     340</span>              :     GstClock *clock;</span>
 <span id="L341"><span class="lineNum">     341</span>              :     GstClockTime render_time;</span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
@@ -416,16 +416,16 @@
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :       gst_object_unref (clock);</span></span>
 <span id="L355"><span class="lineNum">     355</span>              :     }</span>
 <span id="L356"><span class="lineNum">     356</span>              :   } else {</span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC tlaBgGNC">         118 :     notify = TRUE;</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC tlaBgGNC">         119 :     notify = TRUE;</span></span>
 <span id="L358"><span class="lineNum">     358</span>              :   }</span>
 <span id="L359"><span class="lineNum">     359</span>              : </span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         118 :   if (notify) {</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         118 :     self-&gt;last_render_time = now;</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         119 :   if (notify) {</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         119 :     self-&gt;last_render_time = now;</span></span>
 <span id="L362"><span class="lineNum">     362</span>              : </span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         118 :     if (!gst_tensor_repo_set_buffer (self-&gt;myid, buffer, self-&gt;in_caps)) {</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           2 :       GST_ELEMENT_ERROR (self, RESOURCE, WRITE,</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         119 :     if (!gst_tensor_repo_set_buffer (self-&gt;myid, buffer, self-&gt;in_caps)) {</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           3 :       GST_ELEMENT_ERROR (self, RESOURCE, WRITE,</span></span>
 <span id="L365"><span class="lineNum">     365</span>              :           (&quot;Cannot Set buffer into repo [key: %d]&quot;, self-&gt;myid), NULL);</span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           2 :       return FALSE;</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           3 :       return FALSE;</span></span>
 <span id="L367"><span class="lineNum">     367</span>              :     }</span>
 <span id="L368"><span class="lineNum">     368</span>              :   }</span>
 <span id="L369"><span class="lineNum">     369</span>              : </span>
@@ -436,14 +436,14 @@
 <span id="L374"><span class="lineNum">     374</span>              :  * @brief render vmethod implementation</span>
 <span id="L375"><span class="lineNum">     375</span>              :  */</span>
 <span id="L376"><span class="lineNum">     376</span>              : static GstFlowReturn</span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         118 : gst_tensor_reposink_render (GstBaseSink * sink, GstBuffer * buffer)</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         119 : gst_tensor_reposink_render (GstBaseSink * sink, GstBuffer * buffer)</span></span>
 <span id="L378"><span class="lineNum">     378</span>              : {</span>
 <span id="L379"><span class="lineNum">     379</span>              :   GstTensorRepoSink *self;</span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         118 :   self = GST_TENSOR_REPOSINK (sink);</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         119 :   self = GST_TENSOR_REPOSINK (sink);</span></span>
 <span id="L382"><span class="lineNum">     382</span>              : </span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         118 :   if (!gst_tensor_reposink_render_buffer (self, buffer))</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">           2 :     return GST_FLOW_ERROR;</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         119 :   if (!gst_tensor_reposink_render_buffer (self, buffer))</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">           3 :     return GST_FLOW_ERROR;</span></span>
 <span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         116 :   return GST_FLOW_OK;</span></span>
 <span id="L386"><span class="lineNum">     386</span>              : }</span>
 <span id="L387"><span class="lineNum">     387</span>              : </span>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-02 05:38:03</td>
+            <td class="headerValue">2025-05-05 05:38:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.8&nbsp;%</td>
@@ -277,15 +277,15 @@
 <span id="L215"><span class="lineNum">     215</span>              :   }</span>
 <span id="L216"><span class="lineNum">     216</span>              : </span>
 <span id="L217"><span class="lineNum">     217</span>              :   /** @brief lock this interpreter */</span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">        3000 :   void lock ()</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">        2936 :   void lock ()</span></span>
 <span id="L219"><span class="lineNum">     219</span>              :   {</span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">        3000 :     g_mutex_lock (&amp;mutex);</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        3000 :   }</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">        2936 :     g_mutex_lock (&amp;mutex);</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        2936 :   }</span></span>
 <span id="L222"><span class="lineNum">     222</span>              :   /** @brief unlock this interpreter */</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">        3000 :   void unlock ()</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">        2936 :   void unlock ()</span></span>
 <span id="L224"><span class="lineNum">     224</span>              :   {</span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        3000 :     g_mutex_unlock (&amp;mutex);</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        3000 :   }</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        2936 :     g_mutex_unlock (&amp;mutex);</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        2936 :   }</span></span>
 <span id="L227"><span class="lineNum">     227</span>              :   /** @brief cache input and output tensor ptr before invoke */</span>
 <span id="L228"><span class="lineNum">     228</span>              :   int cacheInOutTensorPtr ();</span>
 <span id="L229"><span class="lineNum">     229</span>              : </span>
@@ -415,60 +415,60 @@
 <span id="L353"><span class="lineNum">     353</span>              :  * @brief Internal implementation of TFLiteCore's invoke()</span>
 <span id="L354"><span class="lineNum">     354</span>              :  */</span>
 <span id="L355"><span class="lineNum">     355</span>              : int</span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">        1436 : TFLiteInterpreter::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">        1372 : TFLiteInterpreter::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
 <span id="L357"><span class="lineNum">     357</span>              : {</span>
 <span id="L358"><span class="lineNum">     358</span>              :   int64_t start_time, stop_time;</span>
 <span id="L359"><span class="lineNum">     359</span>              :   TfLiteTensor *tensor_ptr;</span>
 <span id="L360"><span class="lineNum">     360</span>              :   TfLiteStatus status;</span>
 <span id="L361"><span class="lineNum">     361</span>              : </span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">        1436 :   start_time = g_get_monotonic_time ();</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">        1372 :   start_time = g_get_monotonic_time ();</span></span>
 <span id="L363"><span class="lineNum">     363</span>              : </span>
 <span id="L364"><span class="lineNum">     364</span>              :   /**</span>
 <span id="L365"><span class="lineNum">     365</span>              :    * XNNPACK Delegate uses fixed buffer address for input/output tensors.</span>
 <span id="L366"><span class="lineNum">     366</span>              :    * Therefore tensor data is to be manually copied from/to input/output</span>
 <span id="L367"><span class="lineNum">     367</span>              :    * GStreamer buffers memory whose address changes at every round.</span>
 <span id="L368"><span class="lineNum">     368</span>              :    */</span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">        1436 :   if (is_xnnpack_delegated) {</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">        2332 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        1166 :       tensor_ptr = inputTensorPtr[i];</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        1166 :       g_assert (tensor_ptr-&gt;bytes == input[i].size);</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">        1166 :       memcpy (tensor_ptr-&gt;data.raw, input[i].data, input[i].size);</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">        1372 :   if (is_xnnpack_delegated) {</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">        2206 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        1103 :       tensor_ptr = inputTensorPtr[i];</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        1103 :       g_assert (tensor_ptr-&gt;bytes == input[i].size);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">        1103 :       memcpy (tensor_ptr-&gt;data.raw, input[i].data, input[i].size);</span></span>
 <span id="L374"><span class="lineNum">     374</span>              :     }</span>
 <span id="L375"><span class="lineNum">     375</span>              :   } else {</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         917 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         647 :       tensor_ptr = inputTensorPtr[i];</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         647 :       tensor_ptr-&gt;data.raw = (char *) input[i].data;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         915 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         646 :       tensor_ptr = inputTensorPtr[i];</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         646 :       tensor_ptr-&gt;data.raw = (char *) input[i].data;</span></span>
 <span id="L379"><span class="lineNum">     379</span>              :     }</span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         936 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         666 :       tensor_ptr = outputTensorPtr[i];</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         666 :       tensor_ptr-&gt;data.raw = (char *) output[i].data;</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         934 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         665 :       tensor_ptr = outputTensorPtr[i];</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         665 :       tensor_ptr-&gt;data.raw = (char *) output[i].data;</span></span>
 <span id="L384"><span class="lineNum">     384</span>              :     }</span>
 <span id="L385"><span class="lineNum">     385</span>              :   }</span>
 <span id="L386"><span class="lineNum">     386</span>              : </span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">        1436 :   stop_time = g_get_monotonic_time ();</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">        1372 :   stop_time = g_get_monotonic_time ();</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">        1436 :   tflite_internal_stats.total_overhead_latency += stop_time - start_time;</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">        1372 :   tflite_internal_stats.total_overhead_latency += stop_time - start_time;</span></span>
 <span id="L390"><span class="lineNum">     390</span>              : </span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">        1436 :   start_time = g_get_monotonic_time ();</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">        1436 :   status = interpreter-&gt;Invoke ();</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">        1372 :   start_time = g_get_monotonic_time ();</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">        1372 :   status = interpreter-&gt;Invoke ();</span></span>
 <span id="L393"><span class="lineNum">     393</span>              : </span>
 <span id="L394"><span class="lineNum">     394</span>              :   /**</span>
 <span id="L395"><span class="lineNum">     395</span>              :    * After the very first invoke, the output buffer address may change.</span>
 <span id="L396"><span class="lineNum">     396</span>              :    * To handle the case, memcpy the output buffer directly.</span>
 <span id="L397"><span class="lineNum">     397</span>              :    */</span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">        1436 :   if (is_xnnpack_delegated || !is_cached_after_first_invoke) {</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">        2588 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">        1328 :       tensor_ptr = outputTensorPtr[i];</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">        1328 :       g_assert (tensor_ptr-&gt;bytes == output[i].size);</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">        1328 :       memcpy (output[i].data, tensor_ptr-&gt;data.raw, output[i].size);</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">        1372 :   if (is_xnnpack_delegated || !is_cached_after_first_invoke) {</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">        2462 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">        1265 :       tensor_ptr = outputTensorPtr[i];</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">        1265 :       g_assert (tensor_ptr-&gt;bytes == output[i].size);</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">        1265 :       memcpy (output[i].data, tensor_ptr-&gt;data.raw, output[i].size);</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :     }</span>
 <span id="L404"><span class="lineNum">     404</span>              :   }</span>
 <span id="L405"><span class="lineNum">     405</span>              : </span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1436 :   stop_time = g_get_monotonic_time ();</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1372 :   stop_time = g_get_monotonic_time ();</span></span>
 <span id="L407"><span class="lineNum">     407</span>              : </span>
-<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">        1436 :   tflite_internal_stats.total_invoke_latency += stop_time - start_time;</span></span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">        1436 :   tflite_internal_stats.total_invoke_num += 1;</span></span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">        1372 :   tflite_internal_stats.total_invoke_latency += stop_time - start_time;</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">        1372 :   tflite_internal_stats.total_invoke_num += 1;</span></span>
 <span id="L410"><span class="lineNum">     410</span>              : </span>
 <span id="L411"><span class="lineNum">     411</span>              : #if (DBG)</span>
 <span id="L412"><span class="lineNum">     412</span>              :   ml_logi (&quot;Invoke() is finished: %&quot; G_GINT64_FORMAT &quot;ms, model path: %s&quot;,</span>
@@ -480,12 +480,12 @@
 <span id="L418"><span class="lineNum">     418</span>              :       tflite_internal_stats.total_overhead_latency);</span>
 <span id="L419"><span class="lineNum">     419</span>              : #endif</span>
 <span id="L420"><span class="lineNum">     420</span>              : </span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">        1436 :   if (status != kTfLiteOk) {</span></span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">        1372 :   if (status != kTfLiteOk) {</span></span>
 <span id="L422"><span class="lineNum">     422</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Failed to invoke&quot;);</span></span>
 <span id="L423"><span class="lineNum">     423</span> <span class="tlaUNC">           0 :     return -1;</span></span>
 <span id="L424"><span class="lineNum">     424</span>              :   }</span>
 <span id="L425"><span class="lineNum">     425</span>              : </span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC tlaBgGNC">        1436 :   if (!is_cached_after_first_invoke) {</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC tlaBgGNC">        1372 :   if (!is_cached_after_first_invoke) {</span></span>
 <span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          95 :     if (cacheInOutTensorPtr () == 0) {</span></span>
 <span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">          95 :       is_cached_after_first_invoke = true;</span></span>
 <span id="L429"><span class="lineNum">     429</span>              :     } else {</span>
@@ -493,7 +493,7 @@
 <span id="L431"><span class="lineNum">     431</span>              :     }</span>
 <span id="L432"><span class="lineNum">     432</span>              :   }</span>
 <span id="L433"><span class="lineNum">     433</span>              : </span>
-<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC tlaBgGNC">        1436 :   return 0;</span></span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC tlaBgGNC">        1372 :   return 0;</span></span>
 <span id="L435"><span class="lineNum">     435</span>              : }</span>
 <span id="L436"><span class="lineNum">     436</span>              : </span>
 <span id="L437"><span class="lineNum">     437</span>              : /**</span>
@@ -1397,15 +1397,15 @@
 <span id="L1335"><span class="lineNum">    1335</span>              :  * @return 0 if OK. non-zero if error.</span>
 <span id="L1336"><span class="lineNum">    1336</span>              :  */</span>
 <span id="L1337"><span class="lineNum">    1337</span>              : int</span>
-<span id="L1338"><span class="lineNum">    1338</span> <span class="tlaGNC">        1436 : TFLiteCore::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
+<span id="L1338"><span class="lineNum">    1338</span> <span class="tlaGNC">        1372 : TFLiteCore::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
 <span id="L1339"><span class="lineNum">    1339</span>              : {</span>
 <span id="L1340"><span class="lineNum">    1340</span>              :   int err;</span>
 <span id="L1341"><span class="lineNum">    1341</span>              : </span>
-<span id="L1342"><span class="lineNum">    1342</span> <span class="tlaGNC">        1436 :   interpreter-&gt;lock ();</span></span>
-<span id="L1343"><span class="lineNum">    1343</span> <span class="tlaGNC">        1436 :   err = interpreter-&gt;invoke (input, output);</span></span>
-<span id="L1344"><span class="lineNum">    1344</span> <span class="tlaGNC">        1436 :   interpreter-&gt;unlock ();</span></span>
+<span id="L1342"><span class="lineNum">    1342</span> <span class="tlaGNC">        1372 :   interpreter-&gt;lock ();</span></span>
+<span id="L1343"><span class="lineNum">    1343</span> <span class="tlaGNC">        1372 :   err = interpreter-&gt;invoke (input, output);</span></span>
+<span id="L1344"><span class="lineNum">    1344</span> <span class="tlaGNC">        1372 :   interpreter-&gt;unlock ();</span></span>
 <span id="L1345"><span class="lineNum">    1345</span>              : </span>
-<span id="L1346"><span class="lineNum">    1346</span> <span class="tlaGNC">        1436 :   return err;</span></span>
+<span id="L1346"><span class="lineNum">    1346</span> <span class="tlaGNC">        1372 :   return err;</span></span>
 <span id="L1347"><span class="lineNum">    1347</span>              : }</span>
 <span id="L1348"><span class="lineNum">    1348</span>              : </span>
 <span id="L1349"><span class="lineNum">    1349</span>              : /**</span>
@@ -1631,14 +1631,14 @@
 <span id="L1569"><span class="lineNum">    1569</span>              :  * @return 0 if OK. non-zero if error.</span>
 <span id="L1570"><span class="lineNum">    1570</span>              :  */</span>
 <span id="L1571"><span class="lineNum">    1571</span>              : static int</span>
-<span id="L1572"><span class="lineNum">    1572</span> <span class="tlaGNC">        1446 : tflite_invoke (const GstTensorFilterProperties *prop, void **private_data,</span></span>
+<span id="L1572"><span class="lineNum">    1572</span> <span class="tlaGNC">        1382 : tflite_invoke (const GstTensorFilterProperties *prop, void **private_data,</span></span>
 <span id="L1573"><span class="lineNum">    1573</span>              :     const GstTensorMemory *input, GstTensorMemory *output)</span>
 <span id="L1574"><span class="lineNum">    1574</span>              : {</span>
-<span id="L1575"><span class="lineNum">    1575</span> <span class="tlaGNC">        1446 :   TFLiteCore *core = static_cast&lt;TFLiteCore *&gt; (*private_data);</span></span>
-<span id="L1576"><span class="lineNum">    1576</span> <span class="tlaGNC">        1446 :   g_return_val_if_fail (core &amp;&amp; input &amp;&amp; output, -EINVAL);</span></span>
+<span id="L1575"><span class="lineNum">    1575</span> <span class="tlaGNC">        1382 :   TFLiteCore *core = static_cast&lt;TFLiteCore *&gt; (*private_data);</span></span>
+<span id="L1576"><span class="lineNum">    1576</span> <span class="tlaGNC">        1382 :   g_return_val_if_fail (core &amp;&amp; input &amp;&amp; output, -EINVAL);</span></span>
 <span id="L1577"><span class="lineNum">    1577</span>              :   UNUSED (prop);</span>
 <span id="L1578"><span class="lineNum">    1578</span>              : </span>
-<span id="L1579"><span class="lineNum">    1579</span> <span class="tlaGNC">        1436 :   return core-&gt;invoke (input, output);</span></span>
+<span id="L1579"><span class="lineNum">    1579</span> <span class="tlaGNC">        1372 :   return core-&gt;invoke (input, output);</span></span>
 <span id="L1580"><span class="lineNum">    1580</span>              : }</span>
 <span id="L1581"><span class="lineNum">    1581</span>              : </span>
 <span id="L1582"><span class="lineNum">    1582</span>              : /**</span>
