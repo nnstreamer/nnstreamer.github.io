@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-02 05:21:39</td>
+            <td class="headerValue">2025-05-05 05:22:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -123,14 +123,14 @@
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          46 :       q-&gt;head = q-&gt;tail = NULL;</span></span>
 <span id="L62"><span class="lineNum">      62</span>              : </span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">          60 :     if (clear) {</span></span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">          11 :       if (qdata-&gt;data.destroy_cb)</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           8 :         qdata-&gt;data.destroy_cb (qdata-&gt;data.data);</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">          12 :       if (qdata-&gt;data.destroy_cb)</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           9 :         qdata-&gt;data.destroy_cb (qdata-&gt;data.data);</span></span>
 <span id="L66"><span class="lineNum">      66</span>              :     } else {</span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">          49 :       if (data)</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          49 :         *data = qdata-&gt;data.data;</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          49 :       if (size)</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          49 :         *size = qdata-&gt;data.data_len;</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">          49 :       popped = true;</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">          48 :       if (data)</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          48 :         *data = qdata-&gt;data.data;</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          48 :       if (size)</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          48 :         *size = qdata-&gt;data.data_len;</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">          48 :       popped = true;</span></span>
 <span id="L72"><span class="lineNum">      72</span>              :     }</span>
 <span id="L73"><span class="lineNum">      73</span>              : </span>
 <span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">          60 :     SAFE_FREE (qdata);</span></span>
@@ -341,39 +341,39 @@
 <span id="L279"><span class="lineNum">     279</span>              :  * @brief Remove and return the first data in queue. If queue is empty, wait until new data is added in the queue.</span>
 <span id="L280"><span class="lineNum">     280</span>              :  */</span>
 <span id="L281"><span class="lineNum">     281</span>              : int</span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          55 : nns_edge_queue_wait_pop (nns_edge_queue_h handle, unsigned int timeout,</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          54 : nns_edge_queue_wait_pop (nns_edge_queue_h handle, unsigned int timeout,</span></span>
 <span id="L283"><span class="lineNum">     283</span>              :     void **data, nns_size_t * size)</span>
 <span id="L284"><span class="lineNum">     284</span>              : {</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          55 :   nns_edge_queue_s *q = (nns_edge_queue_s *) handle;</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          55 :   bool popped = false;</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          54 :   nns_edge_queue_s *q = (nns_edge_queue_s *) handle;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">          54 :   bool popped = false;</span></span>
 <span id="L287"><span class="lineNum">     287</span>              : </span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          55 :   if (!nns_edge_handle_is_valid (q)) {</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          54 :   if (!nns_edge_handle_is_valid (q)) {</span></span>
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">           2 :     nns_edge_loge (&quot;[Queue] Invalid param, queue is invalid.&quot;);</span></span>
 <span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           2 :     return NNS_EDGE_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L291"><span class="lineNum">     291</span>              :   }</span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          53 :   if (!data) {</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          52 :   if (!data) {</span></span>
 <span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           1 :     nns_edge_loge (&quot;[Queue] Invalid param, data is null.&quot;);</span></span>
 <span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           1 :     return NNS_EDGE_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L296"><span class="lineNum">     296</span>              :   }</span>
 <span id="L297"><span class="lineNum">     297</span>              : </span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          52 :   if (!size) {</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          51 :   if (!size) {</span></span>
 <span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           2 :     nns_edge_loge (&quot;[Queue] Invalid param, size is null.&quot;);</span></span>
 <span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">           2 :     return NNS_EDGE_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L301"><span class="lineNum">     301</span>              :   }</span>
 <span id="L302"><span class="lineNum">     302</span>              : </span>
 <span id="L303"><span class="lineNum">     303</span>              :   /* init data */</span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          50 :   *data = NULL;</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          50 :   *size = 0U;</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          49 :   *data = NULL;</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          49 :   *size = 0U;</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          50 :   nns_edge_lock (q);</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          50 :   if (q-&gt;length == 0U)</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          50 :     nns_edge_cond_wait_until (q, timeout);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          49 :   nns_edge_lock (q);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          49 :   if (q-&gt;length == 0U)</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          49 :     nns_edge_cond_wait_until (q, timeout);</span></span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          50 :   popped = _pop_data (q, false, data, size);</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          50 :   nns_edge_unlock (q);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          49 :   popped = _pop_data (q, false, data, size);</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          49 :   nns_edge_unlock (q);</span></span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          50 :   return (popped &amp;&amp; *data != NULL) ? NNS_EDGE_ERROR_NONE : NNS_EDGE_ERROR_IO;</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          49 :   return (popped &amp;&amp; *data != NULL) ? NNS_EDGE_ERROR_NONE : NNS_EDGE_ERROR_IO;</span></span>
 <span id="L315"><span class="lineNum">     315</span>              : }</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
 <span id="L317"><span class="lineNum">     317</span>              : /**</span>
@@ -393,8 +393,8 @@
 <span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC tlaBgGNC">         107 :   nns_edge_lock (q);</span></span>
 <span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         107 :   nns_edge_cond_signal (q);</span></span>
 <span id="L333"><span class="lineNum">     333</span>              : </span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         116 :   while (q-&gt;length &gt; 0U)</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           9 :     _pop_data (q, true, NULL, NULL);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">         117 :   while (q-&gt;length &gt; 0U)</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          10 :     _pop_data (q, true, NULL, NULL);</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
 <span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         107 :   nns_edge_unlock (q);</span></span>
 <span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         107 :   return NNS_EDGE_ERROR_NONE;</span></span>
