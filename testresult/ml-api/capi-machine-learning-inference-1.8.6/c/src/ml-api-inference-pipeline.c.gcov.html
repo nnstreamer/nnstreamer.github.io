@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-05 05:26:29</td>
+            <td class="headerValue">2025-05-06 05:27:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.0&nbsp;%</td>
@@ -315,69 +315,69 @@
 <span id="L253"><span class="lineNum">     253</span>              :  * @brief Internal function to get the tensors info from the element caps.</span>
 <span id="L254"><span class="lineNum">     254</span>              :  */</span>
 <span id="L255"><span class="lineNum">     255</span>              : static gboolean</span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">       12456 : get_tensors_info_from_caps (GstCaps * caps, GstTensorsInfo * info,</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">       12494 : get_tensors_info_from_caps (GstCaps * caps, GstTensorsInfo * info,</span></span>
 <span id="L257"><span class="lineNum">     257</span>              :     gboolean * is_flexible)</span>
 <span id="L258"><span class="lineNum">     258</span>              : {</span>
 <span id="L259"><span class="lineNum">     259</span>              :   GstStructure *s;</span>
 <span id="L260"><span class="lineNum">     260</span>              :   GstTensorsConfig config;</span>
 <span id="L261"><span class="lineNum">     261</span>              :   guint i, n_caps;</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">       12456 :   gboolean found = FALSE;</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">       12494 :   gboolean found = FALSE;</span></span>
 <span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">       12456 :   n_caps = gst_caps_get_size (caps);</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">       12494 :   n_caps = gst_caps_get_size (caps);</span></span>
 <span id="L265"><span class="lineNum">     265</span>              : </span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">       12463 :   for (i = 0; i &lt; n_caps; i++) {</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">       12457 :     s = gst_caps_get_structure (caps, i);</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       12457 :     found = gst_tensors_config_from_structure (&amp;config, s);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">       12501 :   for (i = 0; i &lt; n_caps; i++) {</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">       12495 :     s = gst_caps_get_structure (caps, i);</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       12495 :     found = gst_tensors_config_from_structure (&amp;config, s);</span></span>
 <span id="L269"><span class="lineNum">     269</span>              : </span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       12457 :     if (found) {</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       12450 :       gst_tensors_info_free (info);</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">       12450 :       gst_tensors_info_copy (info, &amp;config.info);</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">       12450 :       *is_flexible = gst_tensors_config_is_flexible (&amp;config);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       12495 :     if (found) {</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       12488 :       gst_tensors_info_free (info);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">       12488 :       gst_tensors_info_copy (info, &amp;config.info);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">       12488 :       *is_flexible = gst_tensors_config_is_flexible (&amp;config);</span></span>
 <span id="L274"><span class="lineNum">     274</span>              :     }</span>
 <span id="L275"><span class="lineNum">     275</span>              : </span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">       12457 :     gst_tensors_config_free (&amp;config);</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">       12457 :     if (found)</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">       12450 :       break;</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">       12495 :     gst_tensors_config_free (&amp;config);</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">       12495 :     if (found)</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">       12488 :       break;</span></span>
 <span id="L279"><span class="lineNum">     279</span>              :   }</span>
 <span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">       12456 :   return found;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">       12494 :   return found;</span></span>
 <span id="L282"><span class="lineNum">     282</span>              : }</span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
 <span id="L284"><span class="lineNum">     284</span>              : /**</span>
 <span id="L285"><span class="lineNum">     285</span>              :  * @brief Handle a sink element for registered ml_pipeline_sink_cb</span>
 <span id="L286"><span class="lineNum">     286</span>              :  */</span>
 <span id="L287"><span class="lineNum">     287</span>              : static void</span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        6258 : cb_sink_event (GstElement * e, GstBuffer * b, gpointer user_data)</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        6279 : cb_sink_event (GstElement * e, GstBuffer * b, gpointer user_data)</span></span>
 <span id="L289"><span class="lineNum">     289</span>              : {</span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        6258 :   ml_pipeline_element *elem = user_data;</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        6279 :   ml_pipeline_element *elem = user_data;</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
 <span id="L292"><span class="lineNum">     292</span>              :   /** @todo CRITICAL if the pipeline is being killed, don't proceed! */</span>
 <span id="L293"><span class="lineNum">     293</span>              :   GstMemory *mem[ML_TENSOR_SIZE_LIMIT];</span>
 <span id="L294"><span class="lineNum">     294</span>              :   GstMapInfo map[ML_TENSOR_SIZE_LIMIT];</span>
 <span id="L295"><span class="lineNum">     295</span>              :   guint i, num_tensors;</span>
 <span id="L296"><span class="lineNum">     296</span>              :   GList *l;</span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">        6258 :   ml_tensors_data_s *_data = NULL;</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">        6279 :   ml_tensors_data_s *_data = NULL;</span></span>
 <span id="L298"><span class="lineNum">     298</span>              :   GstTensorsInfo gst_info;</span>
 <span id="L299"><span class="lineNum">     299</span>              :   int status;</span>
 <span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">        6258 :   gst_tensors_info_init (&amp;gst_info);</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">        6258 :   gst_info.num_tensors = num_tensors = gst_tensor_buffer_get_count (b);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">        6279 :   gst_tensors_info_init (&amp;gst_info);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">        6279 :   gst_info.num_tensors = num_tensors = gst_tensor_buffer_get_count (b);</span></span>
 <span id="L303"><span class="lineNum">     303</span>              : </span>
 <span id="L304"><span class="lineNum">     304</span>              :   /* Set tensor data. The handle for tensors-info in data should be added. */</span>
 <span id="L305"><span class="lineNum">     305</span>              :   status =</span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        6258 :       _ml_tensors_data_create_no_alloc (NULL, (ml_tensors_data_h *) &amp; _data);</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        6258 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        6279 :       _ml_tensors_data_create_no_alloc (NULL, (ml_tensors_data_h *) &amp; _data);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        6279 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_loge (_ml_detail</span></span>
 <span id="L309"><span class="lineNum">     309</span>              :         (&quot;Failed to allocate memory for tensors data in sink callback, which is registered by ml_pipeline_sink_register ().&quot;));</span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC tlaBgGNC">        6258 :     return;</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC tlaBgGNC">        6279 :     return;</span></span>
 <span id="L311"><span class="lineNum">     311</span>              :   }</span>
 <span id="L312"><span class="lineNum">     312</span>              : </span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">        6258 :   g_mutex_lock (&amp;elem-&gt;lock);</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">        6279 :   g_mutex_lock (&amp;elem-&gt;lock);</span></span>
 <span id="L314"><span class="lineNum">     314</span>              : </span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">        6258 :   _data-&gt;num_tensors = num_tensors;</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">       12993 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">        6735 :     mem[i] = gst_tensor_buffer_get_nth_memory (b, i);</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        6735 :     if (!gst_memory_map (mem[i], &amp;map[i], GST_MAP_READ)) {</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">        6279 :   _data-&gt;num_tensors = num_tensors;</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">       13035 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">        6756 :     mem[i] = gst_tensor_buffer_get_nth_memory (b, i);</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        6756 :     if (!gst_memory_map (mem[i], &amp;map[i], GST_MAP_READ)) {</span></span>
 <span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_loge (_ml_detail</span></span>
 <span id="L320"><span class="lineNum">     320</span>              :           (&quot;Failed to map the output in sink '%s' callback, which is registered by ml_pipeline_sink_register ()&quot;,</span>
 <span id="L321"><span class="lineNum">     321</span>              :               elem-&gt;name));</span>
@@ -386,12 +386,12 @@
 <span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L325"><span class="lineNum">     325</span>              :     }</span>
 <span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC tlaBgGNC">        6735 :     _data-&gt;tensors[i].data = map[i].data;</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">        6735 :     _data-&gt;tensors[i].size = map[i].size;</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC tlaBgGNC">        6756 :     _data-&gt;tensors[i].data = map[i].data;</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">        6756 :     _data-&gt;tensors[i].size = map[i].size;</span></span>
 <span id="L329"><span class="lineNum">     329</span>              :   }</span>
 <span id="L330"><span class="lineNum">     330</span>              : </span>
 <span id="L331"><span class="lineNum">     331</span>              :   /** @todo This assumes that padcap is static */</span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">        6258 :   if (elem-&gt;sink == NULL) {</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">        6279 :   if (elem-&gt;sink == NULL) {</span></span>
 <span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          28 :     gboolean found = FALSE;</span></span>
 <span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          28 :     gboolean flexible = FALSE;</span></span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
@@ -423,7 +423,7 @@
 <span id="L361"><span class="lineNum">     361</span>              :   }</span>
 <span id="L362"><span class="lineNum">     362</span>              : </span>
 <span id="L363"><span class="lineNum">     363</span>              :   /* Prepare output and set data. */</span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">        6258 :   if (elem-&gt;is_flexible_tensor) {</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">        6279 :   if (elem-&gt;is_flexible_tensor) {</span></span>
 <span id="L365"><span class="lineNum">     365</span>              :     GstTensorMetaInfo meta;</span>
 <span id="L366"><span class="lineNum">     366</span>              :     gsize hsize;</span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
@@ -439,10 +439,10 @@
 <span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">           9 :       _data-&gt;tensors[i].size = map[i].size - hsize;</span></span>
 <span id="L378"><span class="lineNum">     378</span>              :     }</span>
 <span id="L379"><span class="lineNum">     379</span>              :   } else {</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">        6255 :     gst_tensors_info_copy (&amp;gst_info, &amp;elem-&gt;tensors_info);</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">        6276 :     gst_tensors_info_copy (&amp;gst_info, &amp;elem-&gt;tensors_info);</span></span>
 <span id="L381"><span class="lineNum">     381</span>              : </span>
 <span id="L382"><span class="lineNum">     382</span>              :     /* Compare output info and buffer if gst-buffer is not flexible. */</span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">        6255 :     if (gst_info.num_tensors != num_tensors) {</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">        6276 :     if (gst_info.num_tensors != num_tensors) {</span></span>
 <span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_loge (_ml_detail</span></span>
 <span id="L385"><span class="lineNum">     385</span>              :           (&quot;The sink event of [%s] cannot be handled because the number of tensors mismatches.&quot;,</span>
 <span id="L386"><span class="lineNum">     386</span>              :               elem-&gt;name));</span>
@@ -452,15 +452,15 @@
 <span id="L390"><span class="lineNum">     390</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L391"><span class="lineNum">     391</span>              :     }</span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC tlaBgGNC">       12981 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">        6726 :       size_t sz = gst_tensors_info_get_size (&amp;gst_info, i);</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC tlaBgGNC">       13023 :     for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">        6747 :       size_t sz = gst_tensors_info_get_size (&amp;gst_info, i);</span></span>
 <span id="L395"><span class="lineNum">     395</span>              : </span>
 <span id="L396"><span class="lineNum">     396</span>              :       /* Not configured, yet. */</span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">        6726 :       if (sz == 0)</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">        6747 :       if (sz == 0)</span></span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_loge (_ml_detail</span></span>
 <span id="L399"><span class="lineNum">     399</span>              :             (&quot;The caps for sink(%s) is not configured.&quot;, elem-&gt;name));</span>
 <span id="L400"><span class="lineNum">     400</span>              : </span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC tlaBgGNC">        6726 :       if (sz != map[i].size) {</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC tlaBgGNC">        6747 :       if (sz != map[i].size) {</span></span>
 <span id="L402"><span class="lineNum">     402</span> <span class="tlaUNC tlaBgUNC">           0 :         _ml_loge (_ml_detail</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :             (&quot;The sink event of [%s] cannot be handled because the tensor dimension mismatches.&quot;,</span>
 <span id="L404"><span class="lineNum">     404</span>              :                 elem-&gt;name));</span>
@@ -473,35 +473,35 @@
 <span id="L411"><span class="lineNum">     411</span>              :   }</span>
 <span id="L412"><span class="lineNum">     412</span>              : </span>
 <span id="L413"><span class="lineNum">     413</span>              :   /* Create new output info, data handle should be updated here. */</span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC tlaBgGNC">        6258 :   _ml_tensors_info_create_from_gst (&amp;_data-&gt;info, &amp;gst_info);</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC tlaBgGNC">        6279 :   _ml_tensors_info_create_from_gst (&amp;_data-&gt;info, &amp;gst_info);</span></span>
 <span id="L415"><span class="lineNum">     415</span>              : </span>
 <span id="L416"><span class="lineNum">     416</span>              :   /* Iterate e-&gt;handles, pass the data to them */</span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">       12522 :   for (l = elem-&gt;handles; l != NULL; l = l-&gt;next) {</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">       12564 :   for (l = elem-&gt;handles; l != NULL; l = l-&gt;next) {</span></span>
 <span id="L418"><span class="lineNum">     418</span>              :     ml_pipeline_sink_cb callback;</span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">        6264 :     ml_pipeline_common_elem *sink = l-&gt;data;</span></span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">        6264 :     if (sink-&gt;callback_info == NULL)</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">        6285 :     ml_pipeline_common_elem *sink = l-&gt;data;</span></span>
+<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">        6285 :     if (sink-&gt;callback_info == NULL)</span></span>
 <span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">           3 :       continue;</span></span>
 <span id="L422"><span class="lineNum">     422</span>              : </span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">        6261 :     callback = sink-&gt;callback_info-&gt;sink_cb;</span></span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">        6261 :     if (callback)</span></span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        6261 :       callback (_data, _data-&gt;info, sink-&gt;callback_info-&gt;sink_pdata);</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">        6282 :     callback = sink-&gt;callback_info-&gt;sink_cb;</span></span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">        6282 :     if (callback)</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        6282 :       callback (_data, _data-&gt;info, sink-&gt;callback_info-&gt;sink_pdata);</span></span>
 <span id="L426"><span class="lineNum">     426</span>              : </span>
 <span id="L427"><span class="lineNum">     427</span>              :     /** @todo Measure time. Warn if it takes long. Kill if it takes too long. */</span>
 <span id="L428"><span class="lineNum">     428</span>              :   }</span>
 <span id="L429"><span class="lineNum">     429</span>              : </span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">        6258 : error:</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        6258 :   g_mutex_unlock (&amp;elem-&gt;lock);</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">        6279 : error:</span></span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        6279 :   g_mutex_unlock (&amp;elem-&gt;lock);</span></span>
 <span id="L432"><span class="lineNum">     432</span>              : </span>
-<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">       12993 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">        6735 :     gst_memory_unmap (mem[i], &amp;map[i]);</span></span>
-<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">        6735 :     gst_memory_unref (mem[i]);</span></span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">       13035 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">        6756 :     gst_memory_unmap (mem[i], &amp;map[i]);</span></span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">        6756 :     gst_memory_unref (mem[i]);</span></span>
 <span id="L436"><span class="lineNum">     436</span>              :   }</span>
 <span id="L437"><span class="lineNum">     437</span>              : </span>
-<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">        6258 :   _ml_tensors_data_destroy_internal (_data, FALSE);</span></span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">        6258 :   _data = NULL;</span></span>
+<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">        6279 :   _ml_tensors_data_destroy_internal (_data, FALSE);</span></span>
+<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">        6279 :   _data = NULL;</span></span>
 <span id="L440"><span class="lineNum">     440</span>              : </span>
-<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">        6258 :   gst_tensors_info_free (&amp;gst_info);</span></span>
-<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">        6258 :   return;</span></span>
+<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">        6279 :   gst_tensors_info_free (&amp;gst_info);</span></span>
+<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">        6279 :   return;</span></span>
 <span id="L443"><span class="lineNum">     443</span>              : }</span>
 <span id="L444"><span class="lineNum">     444</span>              : </span>
 <span id="L445"><span class="lineNum">     445</span>              : /**</span>
@@ -527,16 +527,16 @@
 <span id="L465"><span class="lineNum">     465</span>              :  * @brief Callback for bus message.</span>
 <span id="L466"><span class="lineNum">     466</span>              :  */</span>
 <span id="L467"><span class="lineNum">     467</span>              : static void</span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">        5402 : cb_bus_sync_message (GstBus * bus, GstMessage * message, gpointer user_data)</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">        5409 : cb_bus_sync_message (GstBus * bus, GstMessage * message, gpointer user_data)</span></span>
 <span id="L469"><span class="lineNum">     469</span>              : {</span>
 <span id="L470"><span class="lineNum">     470</span>              :   ml_pipeline *pipe_h;</span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">        5402 :   pipe_h = (ml_pipeline *) user_data;</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">        5409 :   pipe_h = (ml_pipeline *) user_data;</span></span>
 <span id="L473"><span class="lineNum">     473</span>              : </span>
-<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">        5402 :   if (pipe_h == NULL)</span></span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">        5409 :   if (pipe_h == NULL)</span></span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC tlaBgGNC">        5402 :   switch (GST_MESSAGE_TYPE (message)) {</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC tlaBgGNC">        5409 :   switch (GST_MESSAGE_TYPE (message)) {</span></span>
 <span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">           7 :     case GST_MESSAGE_EOS:</span></span>
 <span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">           7 :       pipe_h-&gt;isEOS = TRUE;</span></span>
 <span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">           7 :       break;</span></span>
@@ -556,8 +556,8 @@
 <span id="L494"><span class="lineNum">     494</span>              :         }</span>
 <span id="L495"><span class="lineNum">     495</span>              :       }</span>
 <span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">        4391 :       break;</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">        1004 :     default:</span></span>
-<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">        1004 :       break;</span></span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">        1011 :     default:</span></span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">        1011 :       break;</span></span>
 <span id="L499"><span class="lineNum">     499</span>              :   }</span>
 <span id="L500"><span class="lineNum">     500</span>              : }</span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
@@ -1559,29 +1559,29 @@
 <span id="L1497"><span class="lineNum">    1497</span>              :  * @brief Parse tensors info of src element.</span>
 <span id="L1498"><span class="lineNum">    1498</span>              :  */</span>
 <span id="L1499"><span class="lineNum">    1499</span>              : static int</span>
-<span id="L1500"><span class="lineNum">    1500</span> <span class="tlaGNC">       12428 : ml_pipeline_src_parse_tensors_info (ml_pipeline_element * elem)</span></span>
+<span id="L1500"><span class="lineNum">    1500</span> <span class="tlaGNC">       12466 : ml_pipeline_src_parse_tensors_info (ml_pipeline_element * elem)</span></span>
 <span id="L1501"><span class="lineNum">    1501</span>              : {</span>
-<span id="L1502"><span class="lineNum">    1502</span> <span class="tlaGNC">       12428 :   GstCaps *caps = NULL;</span></span>
-<span id="L1503"><span class="lineNum">    1503</span> <span class="tlaGNC">       12428 :   gboolean found = FALSE, flexible = FALSE;</span></span>
+<span id="L1502"><span class="lineNum">    1502</span> <span class="tlaGNC">       12466 :   GstCaps *caps = NULL;</span></span>
+<span id="L1503"><span class="lineNum">    1503</span> <span class="tlaGNC">       12466 :   gboolean found = FALSE, flexible = FALSE;</span></span>
 <span id="L1504"><span class="lineNum">    1504</span>              : </span>
-<span id="L1505"><span class="lineNum">    1505</span> <span class="tlaGNC">       12428 :   if (elem-&gt;src == NULL) {</span></span>
+<span id="L1505"><span class="lineNum">    1505</span> <span class="tlaGNC">       12466 :   if (elem-&gt;src == NULL) {</span></span>
 <span id="L1506"><span class="lineNum">    1506</span> <span class="tlaGNC">          41 :     elem-&gt;src = gst_element_get_static_pad (elem-&gt;element, &quot;src&quot;);</span></span>
 <span id="L1507"><span class="lineNum">    1507</span>              :   }</span>
 <span id="L1508"><span class="lineNum">    1508</span>              : </span>
-<span id="L1509"><span class="lineNum">    1509</span> <span class="tlaGNC">       12428 :   if (elem-&gt;src == NULL) {</span></span>
+<span id="L1509"><span class="lineNum">    1509</span> <span class="tlaGNC">       12466 :   if (elem-&gt;src == NULL) {</span></span>
 <span id="L1510"><span class="lineNum">    1510</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report</span></span>
 <span id="L1511"><span class="lineNum">    1511</span>              :         (&quot;Failed to get the src pad of the element[%s]. The designated source element does not have available src pad? For the detail, please check the GStreamer log messages.&quot;,</span>
 <span id="L1512"><span class="lineNum">    1512</span>              :         elem-&gt;name);</span>
-<span id="L1513"><span class="lineNum">    1513</span> <span class="tlaGNC tlaBgGNC">       12428 :     return ML_ERROR_STREAMS_PIPE;</span></span>
+<span id="L1513"><span class="lineNum">    1513</span> <span class="tlaGNC tlaBgGNC">       12466 :     return ML_ERROR_STREAMS_PIPE;</span></span>
 <span id="L1514"><span class="lineNum">    1514</span>              :   }</span>
 <span id="L1515"><span class="lineNum">    1515</span>              : </span>
 <span id="L1516"><span class="lineNum">    1516</span>              :   /* If caps is given, use it. e.g. Use cap &quot;image/png&quot; when the pipeline is */</span>
 <span id="L1517"><span class="lineNum">    1517</span>              :   /* given as &quot;appsrc caps=image/png ! pngdec ! ... &quot; */</span>
-<span id="L1518"><span class="lineNum">    1518</span> <span class="tlaGNC">       12428 :   caps = gst_pad_get_current_caps (elem-&gt;src);</span></span>
-<span id="L1519"><span class="lineNum">    1519</span> <span class="tlaGNC">       12428 :   if (!caps)</span></span>
-<span id="L1520"><span class="lineNum">    1520</span> <span class="tlaGNC">       12364 :     caps = gst_pad_get_allowed_caps (elem-&gt;src);</span></span>
+<span id="L1518"><span class="lineNum">    1518</span> <span class="tlaGNC">       12466 :   caps = gst_pad_get_current_caps (elem-&gt;src);</span></span>
+<span id="L1519"><span class="lineNum">    1519</span> <span class="tlaGNC">       12466 :   if (!caps)</span></span>
+<span id="L1520"><span class="lineNum">    1520</span> <span class="tlaGNC">       12402 :     caps = gst_pad_get_allowed_caps (elem-&gt;src);</span></span>
 <span id="L1521"><span class="lineNum">    1521</span>              : </span>
-<span id="L1522"><span class="lineNum">    1522</span> <span class="tlaGNC">       12428 :   if (!caps) {</span></span>
+<span id="L1522"><span class="lineNum">    1522</span> <span class="tlaGNC">       12466 :   if (!caps) {</span></span>
 <span id="L1523"><span class="lineNum">    1523</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_logw</span></span>
 <span id="L1524"><span class="lineNum">    1524</span>              :         (&quot;Cannot find caps. The pipeline is not yet negotiated for src element [%s].&quot;,</span>
 <span id="L1525"><span class="lineNum">    1525</span>              :         elem-&gt;name);</span>
@@ -1590,10 +1590,10 @@
 <span id="L1528"><span class="lineNum">    1528</span> <span class="tlaUNC">           0 :     return ML_ERROR_TRY_AGAIN;</span></span>
 <span id="L1529"><span class="lineNum">    1529</span>              :   }</span>
 <span id="L1530"><span class="lineNum">    1530</span>              : </span>
-<span id="L1531"><span class="lineNum">    1531</span> <span class="tlaGNC tlaBgGNC">       12428 :   found = get_tensors_info_from_caps (caps, &amp;elem-&gt;tensors_info, &amp;flexible);</span></span>
+<span id="L1531"><span class="lineNum">    1531</span> <span class="tlaGNC tlaBgGNC">       12466 :   found = get_tensors_info_from_caps (caps, &amp;elem-&gt;tensors_info, &amp;flexible);</span></span>
 <span id="L1532"><span class="lineNum">    1532</span>              : </span>
-<span id="L1533"><span class="lineNum">    1533</span> <span class="tlaGNC">       12428 :   if (found) {</span></span>
-<span id="L1534"><span class="lineNum">    1534</span> <span class="tlaGNC">       12422 :     elem-&gt;is_flexible_tensor = flexible;</span></span>
+<span id="L1533"><span class="lineNum">    1533</span> <span class="tlaGNC">       12466 :   if (found) {</span></span>
+<span id="L1534"><span class="lineNum">    1534</span> <span class="tlaGNC">       12460 :     elem-&gt;is_flexible_tensor = flexible;</span></span>
 <span id="L1535"><span class="lineNum">    1535</span>              :   } else {</span>
 <span id="L1536"><span class="lineNum">    1536</span> <span class="tlaGNC">           6 :     if (gst_caps_is_fixed (caps)) {</span></span>
 <span id="L1537"><span class="lineNum">    1537</span> <span class="tlaGNC">           5 :       GstStructure *st = gst_caps_get_structure (caps, 0);</span></span>
@@ -1601,8 +1601,8 @@
 <span id="L1539"><span class="lineNum">    1539</span>              :     }</span>
 <span id="L1540"><span class="lineNum">    1540</span>              :   }</span>
 <span id="L1541"><span class="lineNum">    1541</span>              : </span>
-<span id="L1542"><span class="lineNum">    1542</span> <span class="tlaGNC">       12428 :   gst_caps_unref (caps);</span></span>
-<span id="L1543"><span class="lineNum">    1543</span> <span class="tlaGNC">       12428 :   return ML_ERROR_NONE;</span></span>
+<span id="L1542"><span class="lineNum">    1542</span> <span class="tlaGNC">       12466 :   gst_caps_unref (caps);</span></span>
+<span id="L1543"><span class="lineNum">    1543</span> <span class="tlaGNC">       12466 :   return ML_ERROR_NONE;</span></span>
 <span id="L1544"><span class="lineNum">    1544</span>              : }</span>
 <span id="L1545"><span class="lineNum">    1545</span>              : </span>
 <span id="L1546"><span class="lineNum">    1546</span>              : /**</span>
@@ -1698,7 +1698,7 @@
 <span id="L1636"><span class="lineNum">    1636</span>              :  * @brief Push a data frame to a src (more info in nnstreamer.h)</span>
 <span id="L1637"><span class="lineNum">    1637</span>              :  */</span>
 <span id="L1638"><span class="lineNum">    1638</span>              : int</span>
-<span id="L1639"><span class="lineNum">    1639</span> <span class="tlaGNC">        6235 : ml_pipeline_src_input_data (ml_pipeline_src_h h, ml_tensors_data_h data,</span></span>
+<span id="L1639"><span class="lineNum">    1639</span> <span class="tlaGNC">        6254 : ml_pipeline_src_input_data (ml_pipeline_src_h h, ml_tensors_data_h data,</span></span>
 <span id="L1640"><span class="lineNum">    1640</span>              :     ml_pipeline_buf_policy_e policy)</span>
 <span id="L1641"><span class="lineNum">    1641</span>              : {</span>
 <span id="L1642"><span class="lineNum">    1642</span>              :   GstBuffer *buffer;</span>
@@ -1710,18 +1710,18 @@
 <span id="L1648"><span class="lineNum">    1648</span>              :   ml_tensors_data_s *_data;</span>
 <span id="L1649"><span class="lineNum">    1649</span>              :   unsigned int i;</span>
 <span id="L1650"><span class="lineNum">    1650</span>              : </span>
-<span id="L1651"><span class="lineNum">    1651</span> <span class="tlaGNC">       12470 :   handle_init (src, h);</span></span>
+<span id="L1651"><span class="lineNum">    1651</span> <span class="tlaGNC">       12508 :   handle_init (src, h);</span></span>
 <span id="L1652"><span class="lineNum">    1652</span>              : </span>
-<span id="L1653"><span class="lineNum">    1653</span> <span class="tlaGNC">        6235 :   _data = (ml_tensors_data_s *) data;</span></span>
-<span id="L1654"><span class="lineNum">    1654</span> <span class="tlaGNC">        6235 :   if (!_data) {</span></span>
+<span id="L1653"><span class="lineNum">    1653</span> <span class="tlaGNC">        6254 :   _data = (ml_tensors_data_s *) data;</span></span>
+<span id="L1654"><span class="lineNum">    1654</span> <span class="tlaGNC">        6254 :   if (!_data) {</span></span>
 <span id="L1655"><span class="lineNum">    1655</span> <span class="tlaGNC">           1 :     _ml_error_report</span></span>
 <span id="L1656"><span class="lineNum">    1656</span>              :         (&quot;The given parameter, data (ml_tensors_data_h), is NULL. It should be a valid ml_tensor_data_h instance, which is usually created by ml_tensors_data_create().&quot;);</span>
 <span id="L1657"><span class="lineNum">    1657</span> <span class="tlaGNC">           1 :     ret = ML_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L1658"><span class="lineNum">    1658</span> <span class="tlaGNC">           1 :     goto unlock_return;</span></span>
 <span id="L1659"><span class="lineNum">    1659</span>              :   }</span>
-<span id="L1660"><span class="lineNum">    1660</span> <span class="tlaGNC">        6234 :   G_LOCK_UNLESS_NOLOCK (*_data);</span></span>
+<span id="L1660"><span class="lineNum">    1660</span> <span class="tlaGNC">        6253 :   G_LOCK_UNLESS_NOLOCK (*_data);</span></span>
 <span id="L1661"><span class="lineNum">    1661</span>              : </span>
-<span id="L1662"><span class="lineNum">    1662</span> <span class="tlaGNC">        6234 :   if (_data-&gt;num_tensors &lt; 1 || _data-&gt;num_tensors &gt; ML_TENSOR_SIZE_LIMIT) {</span></span>
+<span id="L1662"><span class="lineNum">    1662</span> <span class="tlaGNC">        6253 :   if (_data-&gt;num_tensors &lt; 1 || _data-&gt;num_tensors &gt; ML_TENSOR_SIZE_LIMIT) {</span></span>
 <span id="L1663"><span class="lineNum">    1663</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report</span></span>
 <span id="L1664"><span class="lineNum">    1664</span>              :         (&quot;The number of tensors of the given data (ml_tensors_data_h) is invalid. The number of tensors of data is %u. It should be between 1 and %u.&quot;,</span>
 <span id="L1665"><span class="lineNum">    1665</span>              :         _data-&gt;num_tensors, ML_TENSOR_SIZE_LIMIT);</span>
@@ -1729,9 +1729,9 @@
 <span id="L1667"><span class="lineNum">    1667</span> <span class="tlaUNC">           0 :     goto dont_destroy_data;</span></span>
 <span id="L1668"><span class="lineNum">    1668</span>              :   }</span>
 <span id="L1669"><span class="lineNum">    1669</span>              : </span>
-<span id="L1670"><span class="lineNum">    1670</span> <span class="tlaGNC tlaBgGNC">        6234 :   ret = ml_pipeline_src_parse_tensors_info (elem);</span></span>
+<span id="L1670"><span class="lineNum">    1670</span> <span class="tlaGNC tlaBgGNC">        6253 :   ret = ml_pipeline_src_parse_tensors_info (elem);</span></span>
 <span id="L1671"><span class="lineNum">    1671</span>              : </span>
-<span id="L1672"><span class="lineNum">    1672</span> <span class="tlaGNC">        6234 :   if (ret != ML_ERROR_NONE) {</span></span>
+<span id="L1672"><span class="lineNum">    1672</span> <span class="tlaGNC">        6253 :   if (ret != ML_ERROR_NONE) {</span></span>
 <span id="L1673"><span class="lineNum">    1673</span> <span class="tlaUNC tlaBgUNC">           0 :     if (ret == ML_ERROR_TRY_AGAIN)</span></span>
 <span id="L1674"><span class="lineNum">    1674</span> <span class="tlaUNC">           0 :       _ml_error_report_continue</span></span>
 <span id="L1675"><span class="lineNum">    1675</span>              :           (&quot;The pipeline is not ready to accept input streams. The input is ignored.&quot;);</span>
@@ -1741,8 +1741,8 @@
 <span id="L1679"><span class="lineNum">    1679</span> <span class="tlaUNC">           0 :     goto dont_destroy_data;</span></span>
 <span id="L1680"><span class="lineNum">    1680</span>              :   }</span>
 <span id="L1681"><span class="lineNum">    1681</span>              : </span>
-<span id="L1682"><span class="lineNum">    1682</span> <span class="tlaGNC tlaBgGNC">        6234 :   if (!elem-&gt;is_media_stream &amp;&amp; !elem-&gt;is_flexible_tensor) {</span></span>
-<span id="L1683"><span class="lineNum">    1683</span> <span class="tlaGNC">        6227 :     if (elem-&gt;tensors_info.num_tensors != _data-&gt;num_tensors) {</span></span>
+<span id="L1682"><span class="lineNum">    1682</span> <span class="tlaGNC tlaBgGNC">        6253 :   if (!elem-&gt;is_media_stream &amp;&amp; !elem-&gt;is_flexible_tensor) {</span></span>
+<span id="L1683"><span class="lineNum">    1683</span> <span class="tlaGNC">        6246 :     if (elem-&gt;tensors_info.num_tensors != _data-&gt;num_tensors) {</span></span>
 <span id="L1684"><span class="lineNum">    1684</span> <span class="tlaUNC tlaBgUNC">           0 :       _ml_error_report</span></span>
 <span id="L1685"><span class="lineNum">    1685</span>              :           (&quot;The src push of [%s] cannot be handled because the number of tensors in a frame mismatches. %u != %u&quot;,</span>
 <span id="L1686"><span class="lineNum">    1686</span>              :           elem-&gt;name, elem-&gt;tensors_info.num_tensors, _data-&gt;num_tensors);</span>
@@ -1751,10 +1751,10 @@
 <span id="L1689"><span class="lineNum">    1689</span> <span class="tlaUNC">           0 :       goto dont_destroy_data;</span></span>
 <span id="L1690"><span class="lineNum">    1690</span>              :     }</span>
 <span id="L1691"><span class="lineNum">    1691</span>              : </span>
-<span id="L1692"><span class="lineNum">    1692</span> <span class="tlaGNC tlaBgGNC">       12607 :     for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
-<span id="L1693"><span class="lineNum">    1693</span> <span class="tlaGNC">        6382 :       size_t sz = gst_tensors_info_get_size (&amp;elem-&gt;tensors_info, i);</span></span>
+<span id="L1692"><span class="lineNum">    1692</span> <span class="tlaGNC tlaBgGNC">       12645 :     for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
+<span id="L1693"><span class="lineNum">    1693</span> <span class="tlaGNC">        6401 :       size_t sz = gst_tensors_info_get_size (&amp;elem-&gt;tensors_info, i);</span></span>
 <span id="L1694"><span class="lineNum">    1694</span>              : </span>
-<span id="L1695"><span class="lineNum">    1695</span> <span class="tlaGNC">        6382 :       if (sz != _data-&gt;tensors[i].size) {</span></span>
+<span id="L1695"><span class="lineNum">    1695</span> <span class="tlaGNC">        6401 :       if (sz != _data-&gt;tensors[i].size) {</span></span>
 <span id="L1696"><span class="lineNum">    1696</span> <span class="tlaGNC">           2 :         _ml_error_report</span></span>
 <span id="L1697"><span class="lineNum">    1697</span>              :             (&quot;The given input tensor size (%d'th, %zu bytes) mismatches the source pad (%zu bytes)&quot;,</span>
 <span id="L1698"><span class="lineNum">    1698</span>              :             i, _data-&gt;tensors[i].size, sz);</span>
@@ -1766,21 +1766,21 @@
 <span id="L1704"><span class="lineNum">    1704</span>              :   }</span>
 <span id="L1705"><span class="lineNum">    1705</span>              : </span>
 <span id="L1706"><span class="lineNum">    1706</span>              :   /* Create buffer to be pushed from buf[] */</span>
-<span id="L1707"><span class="lineNum">    1707</span> <span class="tlaGNC">        6232 :   buffer = gst_buffer_new ();</span></span>
-<span id="L1708"><span class="lineNum">    1708</span> <span class="tlaGNC">        6232 :   _ml_tensors_info_copy_from_ml (&amp;gst_info, _data-&gt;info);</span></span>
+<span id="L1707"><span class="lineNum">    1707</span> <span class="tlaGNC">        6251 :   buffer = gst_buffer_new ();</span></span>
+<span id="L1708"><span class="lineNum">    1708</span> <span class="tlaGNC">        6251 :   _ml_tensors_info_copy_from_ml (&amp;gst_info, _data-&gt;info);</span></span>
 <span id="L1709"><span class="lineNum">    1709</span>              : </span>
-<span id="L1710"><span class="lineNum">    1710</span> <span class="tlaGNC">       12625 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
+<span id="L1710"><span class="lineNum">    1710</span> <span class="tlaGNC">       12663 :   for (i = 0; i &lt; _data-&gt;num_tensors; i++) {</span></span>
 <span id="L1711"><span class="lineNum">    1711</span>              :     GstTensorInfo *_gst_tensor_info =</span>
-<span id="L1712"><span class="lineNum">    1712</span> <span class="tlaGNC">        6393 :         gst_tensors_info_get_nth_info (&amp;gst_info, i);</span></span>
-<span id="L1713"><span class="lineNum">    1713</span> <span class="tlaGNC">        6393 :     mem_data = _data-&gt;tensors[i].data;</span></span>
-<span id="L1714"><span class="lineNum">    1714</span> <span class="tlaGNC">        6393 :     mem_size = _data-&gt;tensors[i].size;</span></span>
+<span id="L1712"><span class="lineNum">    1712</span> <span class="tlaGNC">        6412 :         gst_tensors_info_get_nth_info (&amp;gst_info, i);</span></span>
+<span id="L1713"><span class="lineNum">    1713</span> <span class="tlaGNC">        6412 :     mem_data = _data-&gt;tensors[i].data;</span></span>
+<span id="L1714"><span class="lineNum">    1714</span> <span class="tlaGNC">        6412 :     mem_size = _data-&gt;tensors[i].size;</span></span>
 <span id="L1715"><span class="lineNum">    1715</span>              : </span>
-<span id="L1716"><span class="lineNum">    1716</span> <span class="tlaGNC">        6393 :     mem = tmp = gst_memory_new_wrapped (GST_MEMORY_FLAG_READONLY,</span></span>
+<span id="L1716"><span class="lineNum">    1716</span> <span class="tlaGNC">        6412 :     mem = tmp = gst_memory_new_wrapped (GST_MEMORY_FLAG_READONLY,</span></span>
 <span id="L1717"><span class="lineNum">    1717</span>              :         mem_data, mem_size, 0, mem_size, mem_data,</span>
 <span id="L1718"><span class="lineNum">    1718</span>              :         (policy == ML_PIPELINE_BUF_POLICY_AUTO_FREE) ? g_free : NULL);</span>
 <span id="L1719"><span class="lineNum">    1719</span>              : </span>
 <span id="L1720"><span class="lineNum">    1720</span>              :     /* flex tensor, append header. */</span>
-<span id="L1721"><span class="lineNum">    1721</span> <span class="tlaGNC">        6393 :     if (elem-&gt;is_flexible_tensor) {</span></span>
+<span id="L1721"><span class="lineNum">    1721</span> <span class="tlaGNC">        6412 :     if (elem-&gt;is_flexible_tensor) {</span></span>
 <span id="L1722"><span class="lineNum">    1722</span>              :       GstTensorMetaInfo meta;</span>
 <span id="L1723"><span class="lineNum">    1723</span>              : </span>
 <span id="L1724"><span class="lineNum">    1724</span> <span class="tlaGNC">           9 :       gst_tensor_info_convert_to_meta (_gst_tensor_info, &amp;meta);</span></span>
@@ -1789,76 +1789,76 @@
 <span id="L1727"><span class="lineNum">    1727</span> <span class="tlaGNC">           9 :       gst_memory_unref (tmp);</span></span>
 <span id="L1728"><span class="lineNum">    1728</span>              :     }</span>
 <span id="L1729"><span class="lineNum">    1729</span>              : </span>
-<span id="L1730"><span class="lineNum">    1730</span> <span class="tlaGNC">        6393 :     gst_tensor_buffer_append_memory (buffer, mem, _gst_tensor_info);</span></span>
+<span id="L1730"><span class="lineNum">    1730</span> <span class="tlaGNC">        6412 :     gst_tensor_buffer_append_memory (buffer, mem, _gst_tensor_info);</span></span>
 <span id="L1731"><span class="lineNum">    1731</span>              :     /** @todo Verify that gst_buffer_append lists tensors/gstmem in the correct order */</span>
 <span id="L1732"><span class="lineNum">    1732</span>              :   }</span>
 <span id="L1733"><span class="lineNum">    1733</span>              : </span>
-<span id="L1734"><span class="lineNum">    1734</span> <span class="tlaGNC">        6232 :   gst_tensors_info_free (&amp;gst_info);</span></span>
+<span id="L1734"><span class="lineNum">    1734</span> <span class="tlaGNC">        6251 :   gst_tensors_info_free (&amp;gst_info);</span></span>
 <span id="L1735"><span class="lineNum">    1735</span>              : </span>
 <span id="L1736"><span class="lineNum">    1736</span>              :   /* Unlock if it's not auto-free. We do not know when it'll be freed. */</span>
-<span id="L1737"><span class="lineNum">    1737</span> <span class="tlaGNC">        6232 :   if (policy != ML_PIPELINE_BUF_POLICY_AUTO_FREE)</span></span>
+<span id="L1737"><span class="lineNum">    1737</span> <span class="tlaGNC">        6251 :   if (policy != ML_PIPELINE_BUF_POLICY_AUTO_FREE)</span></span>
 <span id="L1738"><span class="lineNum">    1738</span> <span class="tlaGNC">          55 :     G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
 <span id="L1739"><span class="lineNum">    1739</span>              : </span>
 <span id="L1740"><span class="lineNum">    1740</span>              :   /* Push the data! */</span>
-<span id="L1741"><span class="lineNum">    1741</span> <span class="tlaGNC">        6232 :   gret = gst_app_src_push_buffer (GST_APP_SRC (elem-&gt;element), buffer);</span></span>
+<span id="L1741"><span class="lineNum">    1741</span> <span class="tlaGNC">        6251 :   gret = gst_app_src_push_buffer (GST_APP_SRC (elem-&gt;element), buffer);</span></span>
 <span id="L1742"><span class="lineNum">    1742</span>              : </span>
 <span id="L1743"><span class="lineNum">    1743</span>              :   /* Free data ptr if buffer policy is auto-free */</span>
-<span id="L1744"><span class="lineNum">    1744</span> <span class="tlaGNC">        6232 :   if (policy == ML_PIPELINE_BUF_POLICY_AUTO_FREE) {</span></span>
-<span id="L1745"><span class="lineNum">    1745</span> <span class="tlaGNC">        6177 :     G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
-<span id="L1746"><span class="lineNum">    1746</span> <span class="tlaGNC">        6177 :     _ml_tensors_data_destroy_internal (_data, FALSE);</span></span>
-<span id="L1747"><span class="lineNum">    1747</span> <span class="tlaGNC">        6177 :     _data = NULL;</span></span>
+<span id="L1744"><span class="lineNum">    1744</span> <span class="tlaGNC">        6251 :   if (policy == ML_PIPELINE_BUF_POLICY_AUTO_FREE) {</span></span>
+<span id="L1745"><span class="lineNum">    1745</span> <span class="tlaGNC">        6196 :     G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
+<span id="L1746"><span class="lineNum">    1746</span> <span class="tlaGNC">        6196 :     _ml_tensors_data_destroy_internal (_data, FALSE);</span></span>
+<span id="L1747"><span class="lineNum">    1747</span> <span class="tlaGNC">        6196 :     _data = NULL;</span></span>
 <span id="L1748"><span class="lineNum">    1748</span>              :   }</span>
 <span id="L1749"><span class="lineNum">    1749</span>              : </span>
-<span id="L1750"><span class="lineNum">    1750</span> <span class="tlaGNC">        6232 :   if (gret == GST_FLOW_FLUSHING) {</span></span>
+<span id="L1750"><span class="lineNum">    1750</span> <span class="tlaGNC">        6251 :   if (gret == GST_FLOW_FLUSHING) {</span></span>
 <span id="L1751"><span class="lineNum">    1751</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_logw</span></span>
 <span id="L1752"><span class="lineNum">    1752</span>              :         (&quot;The pipeline is not in PAUSED/PLAYING. The input may be ignored.&quot;);</span>
 <span id="L1753"><span class="lineNum">    1753</span> <span class="tlaUNC">           0 :     ret = ML_ERROR_TRY_AGAIN;</span></span>
-<span id="L1754"><span class="lineNum">    1754</span> <span class="tlaGNC tlaBgGNC">        6232 :   } else if (gret == GST_FLOW_EOS) {</span></span>
+<span id="L1754"><span class="lineNum">    1754</span> <span class="tlaGNC tlaBgGNC">        6251 :   } else if (gret == GST_FLOW_EOS) {</span></span>
 <span id="L1755"><span class="lineNum">    1755</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_logw (&quot;THe pipeline is in EOS state. The input is ignored.&quot;);</span></span>
 <span id="L1756"><span class="lineNum">    1756</span> <span class="tlaUNC">           0 :     ret = ML_ERROR_STREAMS_PIPE;</span></span>
 <span id="L1757"><span class="lineNum">    1757</span>              :   }</span>
 <span id="L1758"><span class="lineNum">    1758</span>              : </span>
-<span id="L1759"><span class="lineNum">    1759</span> <span class="tlaGNC tlaBgGNC">        6232 :   goto unlock_return;</span></span>
+<span id="L1759"><span class="lineNum">    1759</span> <span class="tlaGNC tlaBgGNC">        6251 :   goto unlock_return;</span></span>
 <span id="L1760"><span class="lineNum">    1760</span>              : </span>
 <span id="L1761"><span class="lineNum">    1761</span> <span class="tlaGNC">           2 : dont_destroy_data:</span></span>
 <span id="L1762"><span class="lineNum">    1762</span> <span class="tlaGNC">           2 :   G_UNLOCK_UNLESS_NOLOCK (*_data);</span></span>
 <span id="L1763"><span class="lineNum">    1763</span>              : </span>
-<span id="L1764"><span class="lineNum">    1764</span> <span class="tlaGNC">        6235 :   handle_exit (h);</span></span>
+<span id="L1764"><span class="lineNum">    1764</span> <span class="tlaGNC">        6254 :   handle_exit (h);</span></span>
 <span id="L1765"><span class="lineNum">    1765</span>              : }</span>
 <span id="L1766"><span class="lineNum">    1766</span>              : </span>
 <span id="L1767"><span class="lineNum">    1767</span>              : /**</span>
 <span id="L1768"><span class="lineNum">    1768</span>              :  * @brief Internal function to fetch ml_pipeline_src_callbacks_s pointer</span>
 <span id="L1769"><span class="lineNum">    1769</span>              :  */</span>
 <span id="L1770"><span class="lineNum">    1770</span>              : static ml_pipeline_src_callbacks_s *</span>
-<span id="L1771"><span class="lineNum">    1771</span> <span class="tlaGNC">        6147 : get_app_src_callback (ml_pipeline_common_elem * src_h, void **data)</span></span>
+<span id="L1771"><span class="lineNum">    1771</span> <span class="tlaGNC">        6166 : get_app_src_callback (ml_pipeline_common_elem * src_h, void **data)</span></span>
 <span id="L1772"><span class="lineNum">    1772</span>              : {</span>
-<span id="L1773"><span class="lineNum">    1773</span> <span class="tlaGNC">        6147 :   ml_pipeline_src_callbacks_s *src_cb = NULL;</span></span>
+<span id="L1773"><span class="lineNum">    1773</span> <span class="tlaGNC">        6166 :   ml_pipeline_src_callbacks_s *src_cb = NULL;</span></span>
 <span id="L1774"><span class="lineNum">    1774</span>              : </span>
-<span id="L1775"><span class="lineNum">    1775</span> <span class="tlaGNC">        6147 :   if (src_h-&gt;callback_info) {</span></span>
-<span id="L1776"><span class="lineNum">    1776</span> <span class="tlaGNC">        6147 :     src_cb = &amp;src_h-&gt;callback_info-&gt;src_cb;</span></span>
-<span id="L1777"><span class="lineNum">    1777</span> <span class="tlaGNC">        6147 :     *data = src_h-&gt;callback_info-&gt;src_pdata;</span></span>
+<span id="L1775"><span class="lineNum">    1775</span> <span class="tlaGNC">        6166 :   if (src_h-&gt;callback_info) {</span></span>
+<span id="L1776"><span class="lineNum">    1776</span> <span class="tlaGNC">        6166 :     src_cb = &amp;src_h-&gt;callback_info-&gt;src_cb;</span></span>
+<span id="L1777"><span class="lineNum">    1777</span> <span class="tlaGNC">        6166 :     *data = src_h-&gt;callback_info-&gt;src_pdata;</span></span>
 <span id="L1778"><span class="lineNum">    1778</span>              :   }</span>
 <span id="L1779"><span class="lineNum">    1779</span>              : </span>
-<span id="L1780"><span class="lineNum">    1780</span> <span class="tlaGNC">        6147 :   return src_cb;</span></span>
+<span id="L1780"><span class="lineNum">    1780</span> <span class="tlaGNC">        6166 :   return src_cb;</span></span>
 <span id="L1781"><span class="lineNum">    1781</span>              : }</span>
 <span id="L1782"><span class="lineNum">    1782</span>              : </span>
 <span id="L1783"><span class="lineNum">    1783</span>              : /**</span>
 <span id="L1784"><span class="lineNum">    1784</span>              :  * @brief Internal function for appsrc callback - need_data.</span>
 <span id="L1785"><span class="lineNum">    1785</span>              :  */</span>
 <span id="L1786"><span class="lineNum">    1786</span>              : static void</span>
-<span id="L1787"><span class="lineNum">    1787</span> <span class="tlaGNC">        6147 : _pipe_src_cb_need_data (GstAppSrc * src, guint length, gpointer user_data)</span></span>
+<span id="L1787"><span class="lineNum">    1787</span> <span class="tlaGNC">        6166 : _pipe_src_cb_need_data (GstAppSrc * src, guint length, gpointer user_data)</span></span>
 <span id="L1788"><span class="lineNum">    1788</span>              : {</span>
 <span id="L1789"><span class="lineNum">    1789</span>              :   ml_pipeline_common_elem *src_h;</span>
-<span id="L1790"><span class="lineNum">    1790</span> <span class="tlaGNC">        6147 :   ml_pipeline_src_callbacks_s *src_cb = NULL;</span></span>
-<span id="L1791"><span class="lineNum">    1791</span> <span class="tlaGNC">        6147 :   void *pdata = NULL;</span></span>
+<span id="L1790"><span class="lineNum">    1790</span> <span class="tlaGNC">        6166 :   ml_pipeline_src_callbacks_s *src_cb = NULL;</span></span>
+<span id="L1791"><span class="lineNum">    1791</span> <span class="tlaGNC">        6166 :   void *pdata = NULL;</span></span>
 <span id="L1792"><span class="lineNum">    1792</span>              : </span>
-<span id="L1793"><span class="lineNum">    1793</span> <span class="tlaGNC">        6147 :   src_h = (ml_pipeline_common_elem *) user_data;</span></span>
-<span id="L1794"><span class="lineNum">    1794</span> <span class="tlaGNC">        6147 :   if (!src_h)</span></span>
+<span id="L1793"><span class="lineNum">    1793</span> <span class="tlaGNC">        6166 :   src_h = (ml_pipeline_common_elem *) user_data;</span></span>
+<span id="L1794"><span class="lineNum">    1794</span> <span class="tlaGNC">        6166 :   if (!src_h)</span></span>
 <span id="L1795"><span class="lineNum">    1795</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L1796"><span class="lineNum">    1796</span>              : </span>
-<span id="L1797"><span class="lineNum">    1797</span> <span class="tlaGNC tlaBgGNC">        6147 :   src_cb = get_app_src_callback (src_h, &amp;pdata);</span></span>
-<span id="L1798"><span class="lineNum">    1798</span> <span class="tlaGNC">        6147 :   if (src_cb &amp;&amp; src_cb-&gt;need_data)</span></span>
-<span id="L1799"><span class="lineNum">    1799</span> <span class="tlaGNC">        6147 :     src_cb-&gt;need_data (src_h, length, pdata);</span></span>
+<span id="L1797"><span class="lineNum">    1797</span> <span class="tlaGNC tlaBgGNC">        6166 :   src_cb = get_app_src_callback (src_h, &amp;pdata);</span></span>
+<span id="L1798"><span class="lineNum">    1798</span> <span class="tlaGNC">        6166 :   if (src_cb &amp;&amp; src_cb-&gt;need_data)</span></span>
+<span id="L1799"><span class="lineNum">    1799</span> <span class="tlaGNC">        6166 :     src_cb-&gt;need_data (src_h, length, pdata);</span></span>
 <span id="L1800"><span class="lineNum">    1800</span>              : }</span>
 <span id="L1801"><span class="lineNum">    1801</span>              : </span>
 <span id="L1802"><span class="lineNum">    1802</span>              : /**</span>
@@ -1944,27 +1944,27 @@
 <span id="L1882"><span class="lineNum">    1882</span>              :  * @brief Gets a handle for the tensors metadata of given src node.</span>
 <span id="L1883"><span class="lineNum">    1883</span>              :  */</span>
 <span id="L1884"><span class="lineNum">    1884</span>              : int</span>
-<span id="L1885"><span class="lineNum">    1885</span> <span class="tlaGNC">        6151 : ml_pipeline_src_get_tensors_info (ml_pipeline_src_h h, ml_tensors_info_h * info)</span></span>
+<span id="L1885"><span class="lineNum">    1885</span> <span class="tlaGNC">        6170 : ml_pipeline_src_get_tensors_info (ml_pipeline_src_h h, ml_tensors_info_h * info)</span></span>
 <span id="L1886"><span class="lineNum">    1886</span>              : {</span>
-<span id="L1887"><span class="lineNum">    1887</span> <span class="tlaGNC">        6151 :   handle_init (src, h);</span></span>
+<span id="L1887"><span class="lineNum">    1887</span> <span class="tlaGNC">        6170 :   handle_init (src, h);</span></span>
 <span id="L1888"><span class="lineNum">    1888</span>              : </span>
-<span id="L1889"><span class="lineNum">    1889</span> <span class="tlaGNC">        6151 :   if (info == NULL) {</span></span>
+<span id="L1889"><span class="lineNum">    1889</span> <span class="tlaGNC">        6170 :   if (info == NULL) {</span></span>
 <span id="L1890"><span class="lineNum">    1890</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report</span></span>
 <span id="L1891"><span class="lineNum">    1891</span>              :         (&quot;The parameter, info (ml_tensors_info_h *), is NULL. It should be a valid pointer to a ml_tensors_info_h instance, which is usually created by ml_tensors_info_create().&quot;);</span>
 <span id="L1892"><span class="lineNum">    1892</span> <span class="tlaUNC">           0 :     ret = ML_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L1893"><span class="lineNum">    1893</span> <span class="tlaUNC">           0 :     goto unlock_return;</span></span>
 <span id="L1894"><span class="lineNum">    1894</span>              :   }</span>
 <span id="L1895"><span class="lineNum">    1895</span>              : </span>
-<span id="L1896"><span class="lineNum">    1896</span> <span class="tlaGNC tlaBgGNC">        6151 :   ret = ml_pipeline_src_parse_tensors_info (elem);</span></span>
+<span id="L1896"><span class="lineNum">    1896</span> <span class="tlaGNC tlaBgGNC">        6170 :   ret = ml_pipeline_src_parse_tensors_info (elem);</span></span>
 <span id="L1897"><span class="lineNum">    1897</span>              : </span>
-<span id="L1898"><span class="lineNum">    1898</span> <span class="tlaGNC">        6151 :   if (ret == ML_ERROR_NONE) {</span></span>
-<span id="L1899"><span class="lineNum">    1899</span> <span class="tlaGNC">        6151 :     ret = _ml_tensors_info_create_from_gst (info, &amp;elem-&gt;tensors_info);</span></span>
+<span id="L1898"><span class="lineNum">    1898</span> <span class="tlaGNC">        6170 :   if (ret == ML_ERROR_NONE) {</span></span>
+<span id="L1899"><span class="lineNum">    1899</span> <span class="tlaGNC">        6170 :     ret = _ml_tensors_info_create_from_gst (info, &amp;elem-&gt;tensors_info);</span></span>
 <span id="L1900"><span class="lineNum">    1900</span>              :   } else {</span>
 <span id="L1901"><span class="lineNum">    1901</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_continue</span></span>
 <span id="L1902"><span class="lineNum">    1902</span>              :         (&quot;ml_pipeline_src_parse_tensors_info () has returned error; it cannot fetch input tensor info (metadata of input stream) for the given ml_pipeline_src_h handle (h). ml_pipeline_src_get_tensors_info () cannot continue.&quot;);</span>
 <span id="L1903"><span class="lineNum">    1903</span>              :   }</span>
 <span id="L1904"><span class="lineNum">    1904</span>              : </span>
-<span id="L1905"><span class="lineNum">    1905</span> <span class="tlaGNC tlaBgGNC">        6151 :   handle_exit (h);</span></span>
+<span id="L1905"><span class="lineNum">    1905</span> <span class="tlaGNC tlaBgGNC">        6170 :   handle_exit (h);</span></span>
 <span id="L1906"><span class="lineNum">    1906</span>              : }</span>
 <span id="L1907"><span class="lineNum">    1907</span>              : </span>
 <span id="L1908"><span class="lineNum">    1908</span>              : /****************************************************</span>
