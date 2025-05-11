@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4c76ea22f50caebc3b4dbd993d95154a8adf99a6 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_sparseutil.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#004444bc4e5b2a84fd7d2cd9903a2ef0c1ab037a - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_sparseutil.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#4c76ea22f50caebc3b4dbd993d95154a8adf99a6</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#004444bc4e5b2a84fd7d2cd9903a2ef0c1ab037a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">91.6&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-09 05:38:30</td>
+            <td class="headerValue">2025-05-12 05:37:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -121,8 +121,8 @@
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">          35 :   input = map.data + gst_tensor_meta_info_get_header_size (meta);</span></span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          35 :   indices = (guint *) (input + element_size * nnz);</span></span>
 <span id="L61"><span class="lineNum">      61</span>              : </span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1497 :   for (i = 0; i &lt; nnz; ++i) {</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">        1462 :     switch (meta-&gt;type) {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1511 :   for (i = 0; i &lt; nnz; ++i) {</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">        1476 :     switch (meta-&gt;type) {</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           6 :       case _NNS_INT32:</span></span>
 <span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           6 :         ((int32_t *) output)[indices[i]] = ((int32_t *) input)[i];</span></span>
 <span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           6 :         break;</span></span>
@@ -144,9 +144,9 @@
 <span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">           6 :       case _NNS_FLOAT64:</span></span>
 <span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">           6 :         ((double *) output)[indices[i]] = ((double *) input)[i];</span></span>
 <span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">           6 :         break;</span></span>
-<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">        1397 :       case _NNS_FLOAT32:</span></span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        1397 :         ((float *) output)[indices[i]] = ((float *) input)[i];</span></span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        1397 :         break;</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">        1411 :       case _NNS_FLOAT32:</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        1411 :         ((float *) output)[indices[i]] = ((float *) input)[i];</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        1411 :         break;</span></span>
 <span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">           6 :       case _NNS_INT64:</span></span>
 <span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">           6 :         ((int64_t *) output)[indices[i]] = ((int64_t *) input)[i];</span></span>
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">           6 :         break;</span></span>
@@ -261,9 +261,9 @@
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          40 :         break;</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">       23885 :       case _NNS_FLOAT32:</span></span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">       23885 :         if (((float *) map.data)[i] != 0) {</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        4175 :           ((float *) values)[nnz] = ((float *) map.data)[i];</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        4175 :           indices[nnz] = i;</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        4175 :           nnz += 1;</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        4189 :           ((float *) values)[nnz] = ((float *) map.data)[i];</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        4189 :           indices[nnz] = i;</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        4189 :           nnz += 1;</span></span>
 <span id="L205"><span class="lineNum">     205</span>              :         }</span>
 <span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">       23885 :         break;</span></span>
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          40 :       case _NNS_INT64:</span></span>
