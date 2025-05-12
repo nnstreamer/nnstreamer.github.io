@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#8e4f49246567f73276731a5057fc142516d14475 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#ca2448f9d72b1ab4423fa8f802341023b4f55e08 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#8e4f49246567f73276731a5057fc142516d14475</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#ca2448f9d72b1ab4423fa8f802341023b4f55e08</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">87.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-12 05:24:28</td>
+            <td class="headerValue">2025-05-13 05:27:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -229,15 +229,15 @@
 <span id="L167"><span class="lineNum">     167</span>              :  * @brief Internal function to get ml-service event callback.</span>
 <span id="L168"><span class="lineNum">     168</span>              :  */</span>
 <span id="L169"><span class="lineNum">     169</span>              : void</span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          67 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          63 : _ml_service_get_event_cb_info (ml_service_s * mls,</span></span>
 <span id="L171"><span class="lineNum">     171</span>              :     ml_service_event_cb_info_s * cb_info)</span>
 <span id="L172"><span class="lineNum">     172</span>              : {</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          67 :   if (!mls || !cb_info)</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          63 :   if (!mls || !cb_info)</span></span>
 <span id="L174"><span class="lineNum">     174</span> <span class="tlaUNC tlaBgUNC">           0 :     return;</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC tlaBgGNC">          67 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          67 :   *cb_info = mls-&gt;cb_info;</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          67 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC tlaBgGNC">          63 :   g_mutex_lock (&amp;mls-&gt;lock);</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          63 :   *cb_info = mls-&gt;cb_info;</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          63 :   g_mutex_unlock (&amp;mls-&gt;lock);</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : }</span>
 <span id="L180"><span class="lineNum">     180</span>              : </span>
 <span id="L181"><span class="lineNum">     181</span>              : /**</span>
@@ -907,47 +907,47 @@
 <span id="L845"><span class="lineNum">     845</span>              :  * a registered callback function.</span>
 <span id="L846"><span class="lineNum">     846</span>              :  */</span>
 <span id="L847"><span class="lineNum">     847</span>              : int</span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">          50 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">          46 : _ml_service_invoke_event_new_data (ml_service_s * mls, const char *name,</span></span>
 <span id="L849"><span class="lineNum">     849</span>              :     const ml_tensors_data_h data)</span>
 <span id="L850"><span class="lineNum">     850</span>              : {</span>
-<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">          50 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
-<span id="L852"><span class="lineNum">     852</span> <span class="tlaGNC">          50 :   ml_information_h ml_information = NULL;</span></span>
-<span id="L853"><span class="lineNum">     853</span> <span class="tlaGNC">          50 :   int status = ML_ERROR_NONE;</span></span>
+<span id="L851"><span class="lineNum">     851</span> <span class="tlaGNC">          46 :   ml_service_event_cb_info_s cb_info = { 0 };</span></span>
+<span id="L852"><span class="lineNum">     852</span> <span class="tlaGNC">          46 :   ml_information_h ml_information = NULL;</span></span>
+<span id="L853"><span class="lineNum">     853</span> <span class="tlaGNC">          46 :   int status = ML_ERROR_NONE;</span></span>
 <span id="L854"><span class="lineNum">     854</span>              : </span>
-<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">          50 :   if (!mls || !data) {</span></span>
-<span id="L856"><span class="lineNum">     856</span> <span class="tlaGNC">          50 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L855"><span class="lineNum">     855</span> <span class="tlaGNC">          46 :   if (!mls || !data) {</span></span>
+<span id="L856"><span class="lineNum">     856</span> <span class="tlaGNC">          46 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
 <span id="L857"><span class="lineNum">     857</span>              :         &quot;Failed to create ml-service event data, invalid parameter.&quot;);</span>
 <span id="L858"><span class="lineNum">     858</span>              :   }</span>
 <span id="L859"><span class="lineNum">     859</span>              : </span>
-<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC">          50 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
+<span id="L860"><span class="lineNum">     860</span> <span class="tlaGNC">          46 :   _ml_service_get_event_cb_info (mls, &amp;cb_info);</span></span>
 <span id="L861"><span class="lineNum">     861</span>              : </span>
-<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">          50 :   if (cb_info.cb) {</span></span>
+<span id="L862"><span class="lineNum">     862</span> <span class="tlaGNC">          46 :   if (cb_info.cb) {</span></span>
 <span id="L863"><span class="lineNum">     863</span>              :     /* Create information handle for ml-service event. */</span>
-<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">          40 :     status = _ml_information_create (&amp;ml_information);</span></span>
-<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">          40 :     if (status != ML_ERROR_NONE)</span></span>
+<span id="L864"><span class="lineNum">     864</span> <span class="tlaGNC">          36 :     status = _ml_information_create (&amp;ml_information);</span></span>
+<span id="L865"><span class="lineNum">     865</span> <span class="tlaGNC">          36 :     if (status != ML_ERROR_NONE)</span></span>
 <span id="L866"><span class="lineNum">     866</span> <span class="tlaUNC tlaBgUNC">           0 :       goto done;</span></span>
 <span id="L867"><span class="lineNum">     867</span>              : </span>
-<span id="L868"><span class="lineNum">     868</span> <span class="tlaGNC tlaBgGNC">          40 :     if (name) {</span></span>
+<span id="L868"><span class="lineNum">     868</span> <span class="tlaGNC tlaBgGNC">          36 :     if (name) {</span></span>
 <span id="L869"><span class="lineNum">     869</span>              :       status =</span>
 <span id="L870"><span class="lineNum">     870</span> <span class="tlaGNC">          11 :           _ml_information_set (ml_information, &quot;name&quot;, (void *) name, NULL);</span></span>
 <span id="L871"><span class="lineNum">     871</span> <span class="tlaGNC">          11 :       if (status != ML_ERROR_NONE)</span></span>
 <span id="L872"><span class="lineNum">     872</span> <span class="tlaUNC tlaBgUNC">           0 :         goto done;</span></span>
 <span id="L873"><span class="lineNum">     873</span>              :     }</span>
 <span id="L874"><span class="lineNum">     874</span>              : </span>
-<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC tlaBgGNC">          40 :     status = _ml_information_set (ml_information, &quot;data&quot;, (void *) data, NULL);</span></span>
-<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          40 :     if (status == ML_ERROR_NONE)</span></span>
-<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">          40 :       cb_info.cb (ML_SERVICE_EVENT_NEW_DATA, ml_information, cb_info.pdata);</span></span>
+<span id="L875"><span class="lineNum">     875</span> <span class="tlaGNC tlaBgGNC">          36 :     status = _ml_information_set (ml_information, &quot;data&quot;, (void *) data, NULL);</span></span>
+<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          36 :     if (status == ML_ERROR_NONE)</span></span>
+<span id="L877"><span class="lineNum">     877</span> <span class="tlaGNC">          36 :       cb_info.cb (ML_SERVICE_EVENT_NEW_DATA, ml_information, cb_info.pdata);</span></span>
 <span id="L878"><span class="lineNum">     878</span>              :   }</span>
 <span id="L879"><span class="lineNum">     879</span>              : </span>
 <span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">          10 : done:</span></span>
-<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC">          50 :   if (ml_information)</span></span>
-<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">          40 :     ml_information_destroy (ml_information);</span></span>
+<span id="L881"><span class="lineNum">     881</span> <span class="tlaGNC">          46 :   if (ml_information)</span></span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">          36 :     ml_information_destroy (ml_information);</span></span>
 <span id="L883"><span class="lineNum">     883</span>              : </span>
-<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">          50 :   if (status != ML_ERROR_NONE) {</span></span>
+<span id="L884"><span class="lineNum">     884</span> <span class="tlaGNC">          46 :   if (status != ML_ERROR_NONE) {</span></span>
 <span id="L885"><span class="lineNum">     885</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke 'new data' event.&quot;);</span></span>
 <span id="L886"><span class="lineNum">     886</span>              :   }</span>
 <span id="L887"><span class="lineNum">     887</span>              : </span>
-<span id="L888"><span class="lineNum">     888</span> <span class="tlaGNC tlaBgGNC">          50 :   return status;</span></span>
+<span id="L888"><span class="lineNum">     888</span> <span class="tlaGNC tlaBgGNC">          46 :   return status;</span></span>
 <span id="L889"><span class="lineNum">     889</span>              : }</span>
 <span id="L890"><span class="lineNum">     890</span>              : </span>
 <span id="L891"><span class="lineNum">     891</span>              : /**</span>
