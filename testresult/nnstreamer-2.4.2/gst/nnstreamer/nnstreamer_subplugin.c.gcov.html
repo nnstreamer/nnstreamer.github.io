@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#004444bc4e5b2a84fd7d2cd9903a2ef0c1ab037a - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_subplugin.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dd6100ea8d4d51c67365c978dcb25a0b49401340 - nnstreamer-2.4.2/gst/nnstreamer/nnstreamer_subplugin.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#004444bc4e5b2a84fd7d2cd9903a2ef0c1ab037a</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#dd6100ea8d4d51c67365c978dcb25a0b49401340</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">91.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-13 05:40:05</td>
+            <td class="headerValue">2025-05-14 05:40:06</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -113,15 +113,15 @@
 <span id="L51"><span class="lineNum">      51</span>              : </span>
 <span id="L52"><span class="lineNum">      52</span>              : /** @brief Private function for g_hash_table data destructor, GDestroyNotify */</span>
 <span id="L53"><span class="lineNum">      53</span>              : static void</span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC tlaBgGNC">        3143 : _spdata_destroy (gpointer _data)</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC tlaBgGNC">        3159 : _spdata_destroy (gpointer _data)</span></span>
 <span id="L55"><span class="lineNum">      55</span>              : {</span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">        3143 :   subpluginData *data = _data;</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">        3159 :   subpluginData *data = _data;</span></span>
 <span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">        3143 :   g_datalist_clear (&amp;data-&gt;custom_dlist);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">        3159 :   g_datalist_clear (&amp;data-&gt;custom_dlist);</span></span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        3143 :   g_free (data-&gt;name);</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">        3143 :   g_free (data);</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        3143 : }</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        3159 :   g_free (data-&gt;name);</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">        3159 :   g_free (data);</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        3159 : }</span></span>
 <span id="L63"><span class="lineNum">      63</span>              : </span>
 <span id="L64"><span class="lineNum">      64</span>              : typedef enum</span>
 <span id="L65"><span class="lineNum">      65</span>              : {</span>
@@ -146,48 +146,48 @@
 <span id="L84"><span class="lineNum">      84</span>              :  * @brief Internal function to get sub-plugin data.</span>
 <span id="L85"><span class="lineNum">      85</span>              :  */</span>
 <span id="L86"><span class="lineNum">      86</span>              : static subpluginData *</span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        8931 : _get_subplugin_data (subpluginType type, const gchar * name)</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        8976 : _get_subplugin_data (subpluginType type, const gchar * name)</span></span>
 <span id="L88"><span class="lineNum">      88</span>              : {</span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        8931 :   subpluginData *spdata = NULL;</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        8976 :   subpluginData *spdata = NULL;</span></span>
 <span id="L90"><span class="lineNum">      90</span>              : </span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        8931 :   G_LOCK (splock);</span></span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        8931 :   if (subplugins[type] == NULL) {</span></span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        1414 :     subplugins[type] =</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        1414 :         g_hash_table_new_full (g_str_hash, g_str_equal, g_free,</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        8976 :   G_LOCK (splock);</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        8976 :   if (subplugins[type] == NULL) {</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        1421 :     subplugins[type] =</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        1421 :         g_hash_table_new_full (g_str_hash, g_str_equal, g_free,</span></span>
 <span id="L95"><span class="lineNum">      95</span>              :         _spdata_destroy);</span>
 <span id="L96"><span class="lineNum">      96</span>              :   } else {</span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        7517 :     spdata = g_hash_table_lookup (subplugins[type], name);</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        7555 :     spdata = g_hash_table_lookup (subplugins[type], name);</span></span>
 <span id="L98"><span class="lineNum">      98</span>              :   }</span>
-<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">        8931 :   G_UNLOCK (splock);</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">        8976 :   G_UNLOCK (splock);</span></span>
 <span id="L100"><span class="lineNum">     100</span>              : </span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        8931 :   return spdata;</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        8976 :   return spdata;</span></span>
 <span id="L102"><span class="lineNum">     102</span>              : }</span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span>              : /**</span>
 <span id="L105"><span class="lineNum">     105</span>              :  * @brief Internal function to scan sub-plugin.</span>
 <span id="L106"><span class="lineNum">     106</span>              :  */</span>
 <span id="L107"><span class="lineNum">     107</span>              : static subpluginData *</span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">        1899 : _search_subplugin (subpluginType type, const gchar * name, const gchar * path)</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">        1911 : _search_subplugin (subpluginType type, const gchar * name, const gchar * path)</span></span>
 <span id="L109"><span class="lineNum">     109</span>              : {</span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        1899 :   subpluginData *spdata = NULL;</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        1911 :   subpluginData *spdata = NULL;</span></span>
 <span id="L111"><span class="lineNum">     111</span>              :   GModule *module;</span>
 <span id="L112"><span class="lineNum">     112</span>              : </span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">        1899 :   g_return_val_if_fail (name != NULL, NULL);</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        1899 :   g_return_val_if_fail (path != NULL, NULL);</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">        1911 :   g_return_val_if_fail (name != NULL, NULL);</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        1911 :   g_return_val_if_fail (path != NULL, NULL);</span></span>
 <span id="L115"><span class="lineNum">     115</span>              : </span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">        1899 :   module = g_module_open (path, G_MODULE_BIND_LOCAL);</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">        1911 :   module = g_module_open (path, G_MODULE_BIND_LOCAL);</span></span>
 <span id="L117"><span class="lineNum">     117</span>              :   /* If this is a correct subplugin, it will register itself */</span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">        1899 :   if (module == NULL) {</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">        1911 :   if (module == NULL) {</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Cannot open %s(%s) with error %s.&quot;, name, path,</span></span>
 <span id="L120"><span class="lineNum">     120</span>              :         g_module_error ());</span>
 <span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :     return NULL;</span></span>
 <span id="L122"><span class="lineNum">     122</span>              :   }</span>
 <span id="L123"><span class="lineNum">     123</span>              : </span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC tlaBgGNC">        1899 :   spdata = _get_subplugin_data (type, name);</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        1899 :   if (spdata) {</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        1899 :     G_LOCK (splock);</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1899 :     g_ptr_array_add (handles, (gpointer) module);</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        1899 :     G_UNLOCK (splock);</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC tlaBgGNC">        1911 :   spdata = _get_subplugin_data (type, name);</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        1911 :   if (spdata) {</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        1911 :     G_LOCK (splock);</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1911 :     g_ptr_array_add (handles, (gpointer) module);</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        1911 :     G_UNLOCK (splock);</span></span>
 <span id="L129"><span class="lineNum">     129</span>              :   } else {</span>
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge</span></span>
 <span id="L131"><span class="lineNum">     131</span>              :         (&quot;nnstreamer_subplugin of %s(%s) is broken. It does not call register_subplugin with its init function.&quot;,</span>
@@ -195,107 +195,107 @@
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :     g_module_close (module);</span></span>
 <span id="L134"><span class="lineNum">     134</span>              :   }</span>
 <span id="L135"><span class="lineNum">     135</span>              : </span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">        1899 :   return spdata;</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">        1911 :   return spdata;</span></span>
 <span id="L137"><span class="lineNum">     137</span>              : }</span>
 <span id="L138"><span class="lineNum">     138</span>              : </span>
 <span id="L139"><span class="lineNum">     139</span>              : /** @brief Public function defined in the header */</span>
 <span id="L140"><span class="lineNum">     140</span>              : const void *</span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">        2782 : get_subplugin (subpluginType type, const char *name)</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">        2795 : get_subplugin (subpluginType type, const char *name)</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : {</span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        2782 :   subpluginData *spdata = NULL;</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        2795 :   subpluginData *spdata = NULL;</span></span>
 <span id="L144"><span class="lineNum">     144</span>              : </span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">        2782 :   g_return_val_if_fail (name, NULL);</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">        2795 :   g_return_val_if_fail (name, NULL);</span></span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">        2777 :   if (searchAlgorithm[type] == NNS_SEARCH_GETALL) {</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         417 :     nnsconf_type_path conf_type = (nnsconf_type_path) type;</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">        2790 :   if (searchAlgorithm[type] == NNS_SEARCH_GETALL) {</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         420 :     nnsconf_type_path conf_type = (nnsconf_type_path) type;</span></span>
 <span id="L149"><span class="lineNum">     149</span>              :     subplugin_info_s info;</span>
 <span id="L150"><span class="lineNum">     150</span>              :     guint i;</span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         417 :     guint ret = nnsconf_get_subplugin_info (conf_type, &amp;info);</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         420 :     guint ret = nnsconf_get_subplugin_info (conf_type, &amp;info);</span></span>
 <span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">        2085 :     for (i = 0; i &lt; ret; i++) {</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        1668 :       _search_subplugin (type, info.names[i], info.paths[i]);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">        2100 :     for (i = 0; i &lt; ret; i++) {</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        1680 :       _search_subplugin (type, info.names[i], info.paths[i]);</span></span>
 <span id="L155"><span class="lineNum">     155</span>              :     }</span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         417 :     searchAlgorithm[type] = NNS_SEARCH_NO_OP;</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         420 :     searchAlgorithm[type] = NNS_SEARCH_NO_OP;</span></span>
 <span id="L158"><span class="lineNum">     158</span>              :   }</span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">        2777 :   spdata = _get_subplugin_data (type, name);</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">        2777 :   if (spdata == NULL &amp;&amp; searchAlgorithm[type] == NNS_SEARCH_FILENAME) {</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">        2790 :   spdata = _get_subplugin_data (type, name);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">        2790 :   if (spdata == NULL &amp;&amp; searchAlgorithm[type] == NNS_SEARCH_FILENAME) {</span></span>
 <span id="L162"><span class="lineNum">     162</span>              :     /** Search and register if found with the conf */</span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         368 :     nnsconf_type_path conf_type = (nnsconf_type_path) type;</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         368 :     const gchar *fullpath = nnsconf_get_fullpath (name, conf_type);</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         370 :     nnsconf_type_path conf_type = (nnsconf_type_path) type;</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         370 :     const gchar *fullpath = nnsconf_get_fullpath (name, conf_type);</span></span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         368 :     if (nnsconf_validate_file (conf_type, fullpath)) {</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         370 :     if (nnsconf_validate_file (conf_type, fullpath)) {</span></span>
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         231 :       spdata = _search_subplugin (type, name, fullpath);</span></span>
 <span id="L168"><span class="lineNum">     168</span>              :     }</span>
 <span id="L169"><span class="lineNum">     169</span>              :   }</span>
 <span id="L170"><span class="lineNum">     170</span>              : </span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        2777 :   return (spdata != NULL) ? spdata-&gt;data : NULL;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        2790 :   return (spdata != NULL) ? spdata-&gt;data : NULL;</span></span>
 <span id="L172"><span class="lineNum">     172</span>              : }</span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
 <span id="L174"><span class="lineNum">     174</span>              : /** @brief Public function defined in the header */</span>
 <span id="L175"><span class="lineNum">     175</span>              : gchar **</span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">         743 : get_all_subplugins (subpluginType type)</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">         746 : get_all_subplugins (subpluginType type)</span></span>
 <span id="L177"><span class="lineNum">     177</span>              : {</span>
 <span id="L178"><span class="lineNum">     178</span>              :   GString *names;</span>
 <span id="L179"><span class="lineNum">     179</span>              :   subplugin_info_s info;</span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">         743 :   gchar **list = NULL;</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">         746 :   gchar **list = NULL;</span></span>
 <span id="L181"><span class="lineNum">     181</span>              :   gchar *name;</span>
 <span id="L182"><span class="lineNum">     182</span>              :   guint i, total;</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">         743 :   names = g_string_new (NULL);</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">         746 :   names = g_string_new (NULL);</span></span>
 <span id="L185"><span class="lineNum">     185</span>              : </span>
 <span id="L186"><span class="lineNum">     186</span>              :   /* get registered subplugins */</span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">         743 :   G_LOCK (splock);</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         743 :   if (subplugins[type]) {</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">         746 :   G_LOCK (splock);</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         746 :   if (subplugins[type]) {</span></span>
 <span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">         208 :     list = (gchar **) g_hash_table_get_keys_as_array (subplugins[type], NULL);</span></span>
 <span id="L190"><span class="lineNum">     190</span>              :   }</span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         743 :   G_UNLOCK (splock);</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         746 :   G_UNLOCK (splock);</span></span>
 <span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">         743 :   if (list) {</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">         746 :   if (list) {</span></span>
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         208 :     name = g_strjoinv (&quot;,&quot;, list);</span></span>
 <span id="L195"><span class="lineNum">     195</span>              :     g_string_append (names, name);</span>
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         208 :     g_free (name);</span></span>
 <span id="L197"><span class="lineNum">     197</span>              :   }</span>
 <span id="L198"><span class="lineNum">     198</span>              : </span>
 <span id="L199"><span class="lineNum">     199</span>              :   /* get subplugins from configuration */</span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         743 :   total = nnsconf_get_subplugin_info ((nnsconf_type_path) type, &amp;info);</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         746 :   total = nnsconf_get_subplugin_info ((nnsconf_type_path) type, &amp;info);</span></span>
 <span id="L201"><span class="lineNum">     201</span>              : </span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        5848 :   for (i = 0; i &lt; total; i++) {</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        5105 :     name = info.names[i];</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        5863 :   for (i = 0; i &lt; total; i++) {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        5117 :     name = info.names[i];</span></span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">        5105 :     if (!list || !g_strv_contains ((const gchar * const *) list, name)) {</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        4792 :       if (list || i &gt; 0)</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        8514 :         g_string_append (names, &quot;,&quot;);</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">        5117 :     if (!list || !g_strv_contains ((const gchar * const *) list, name)) {</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        4804 :       if (list || i &gt; 0)</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        8532 :         g_string_append (names, &quot;,&quot;);</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
 <span id="L209"><span class="lineNum">     209</span>              :       g_string_append (names, name);</span>
 <span id="L210"><span class="lineNum">     210</span>              :     }</span>
 <span id="L211"><span class="lineNum">     211</span>              :   }</span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         743 :   g_free (list);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         746 :   g_free (list);</span></span>
 <span id="L214"><span class="lineNum">     214</span>              : </span>
 <span id="L215"><span class="lineNum">     215</span>              :   /* finally get the list of subplugins */</span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         743 :   name = g_string_free (names, FALSE);</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         743 :   list = g_strsplit (name, &quot;,&quot;, -1);</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         743 :   g_free (name);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         746 :   name = g_string_free (names, FALSE);</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         746 :   list = g_strsplit (name, &quot;,&quot;, -1);</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         746 :   g_free (name);</span></span>
 <span id="L219"><span class="lineNum">     219</span>              : </span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         743 :   return list;</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         746 :   return list;</span></span>
 <span id="L221"><span class="lineNum">     221</span>              : }</span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
 <span id="L223"><span class="lineNum">     223</span>              : /** @brief Public function defined in the header */</span>
 <span id="L224"><span class="lineNum">     224</span>              : gboolean</span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        3995 : register_subplugin (subpluginType type, const char *name, const void *data)</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        4015 : register_subplugin (subpluginType type, const char *name, const void *data)</span></span>
 <span id="L226"><span class="lineNum">     226</span>              : {</span>
 <span id="L227"><span class="lineNum">     227</span>              :   /** @todo data out of scope at add */</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        3995 :   subpluginData *spdata = NULL;</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        3995 :   gchar *sp_name = NULL;</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        4015 :   subpluginData *spdata = NULL;</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        4015 :   gchar *sp_name = NULL;</span></span>
 <span id="L230"><span class="lineNum">     230</span>              :   gboolean ret;</span>
 <span id="L231"><span class="lineNum">     231</span>              : </span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        3995 :   g_return_val_if_fail (name, FALSE);</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        3994 :   g_return_val_if_fail (data, FALSE);</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        4015 :   g_return_val_if_fail (name, FALSE);</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        4014 :   g_return_val_if_fail (data, FALSE);</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        3994 :   switch (type) {</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        3994 :     case NNS_SUBPLUGIN_FILTER:</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        4014 :   switch (type) {</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        4014 :     case NNS_SUBPLUGIN_FILTER:</span></span>
 <span id="L237"><span class="lineNum">     237</span>              :     case NNS_SUBPLUGIN_DECODER:</span>
 <span id="L238"><span class="lineNum">     238</span>              :     case NNS_EASY_CUSTOM_FILTER:</span>
 <span id="L239"><span class="lineNum">     239</span>              :     case NNS_SUBPLUGIN_CONVERTER:</span>
@@ -303,68 +303,68 @@
 <span id="L241"><span class="lineNum">     241</span>              :     case NNS_CUSTOM_DECODER:</span>
 <span id="L242"><span class="lineNum">     242</span>              :     case NNS_IF_CUSTOM:</span>
 <span id="L243"><span class="lineNum">     243</span>              :     case NNS_CUSTOM_CONVERTER:</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        3994 :       break;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        4014 :       break;</span></span>
 <span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
 <span id="L246"><span class="lineNum">     246</span>              :       /* unknown sub-plugin type */</span>
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
 <span id="L248"><span class="lineNum">     248</span>              :   }</span>
 <span id="L249"><span class="lineNum">     249</span>              : </span>
 <span id="L250"><span class="lineNum">     250</span>              :   /* check the sub-pugin name */</span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC tlaBgGNC">        3994 :   if (g_ascii_strcasecmp (name, &quot;any&quot;) == 0 ||</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">        3991 :       g_ascii_strcasecmp (name, &quot;auto&quot;) == 0) {</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC tlaBgGNC">        4014 :   if (g_ascii_strcasecmp (name, &quot;any&quot;) == 0 ||</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">        4011 :       g_ascii_strcasecmp (name, &quot;auto&quot;) == 0) {</span></span>
 <span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           4 :     ml_loge (&quot;Failed, the name %s is not allowed.&quot;, name);</span></span>
 <span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           4 :     return FALSE;</span></span>
 <span id="L255"><span class="lineNum">     255</span>              :   }</span>
 <span id="L256"><span class="lineNum">     256</span>              : </span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        3990 :   spdata = _get_subplugin_data (type, name);</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">        3990 :   if (spdata) {</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        4010 :   spdata = _get_subplugin_data (type, name);</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">        4010 :   if (spdata) {</span></span>
 <span id="L259"><span class="lineNum">     259</span>              :     /* already exists */</span>
 <span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           3 :     ml_logw (&quot;Subplugin %s is already registered.&quot;, name);</span></span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           3 :     return FALSE;</span></span>
 <span id="L262"><span class="lineNum">     262</span>              :   }</span>
 <span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3987 :   spdata = g_new0 (subpluginData, 1);</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3987 :   if (spdata == NULL) {</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        4007 :   spdata = g_new0 (subpluginData, 1);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        4007 :   if (spdata == NULL) {</span></span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_loge (&quot;Failed to allocate memory for subplugin registration.&quot;);</span></span>
 <span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :   }</span>
 <span id="L269"><span class="lineNum">     269</span>              : </span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC tlaBgGNC">        3987 :   spdata-&gt;name = g_strdup (name);</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        3987 :   spdata-&gt;data = data;</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        3987 :   g_datalist_init (&amp;spdata-&gt;custom_dlist);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC tlaBgGNC">        4007 :   spdata-&gt;name = g_strdup (name);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        4007 :   spdata-&gt;data = data;</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        4007 :   g_datalist_init (&amp;spdata-&gt;custom_dlist);</span></span>
 <span id="L273"><span class="lineNum">     273</span>              : </span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        3987 :   G_LOCK (splock);</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        3987 :   sp_name = g_strdup (name);</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        3987 :   ret = g_hash_table_insert (subplugins[type], sp_name, spdata);</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        3987 :   if (!ret) {</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        4007 :   G_LOCK (splock);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        4007 :   sp_name = g_strdup (name);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        4007 :   ret = g_hash_table_insert (subplugins[type], sp_name, spdata);</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        4007 :   if (!ret) {</span></span>
 <span id="L278"><span class="lineNum">     278</span> <span class="tlaUNC tlaBgUNC">           0 :     _spdata_destroy (spdata);</span></span>
 <span id="L279"><span class="lineNum">     279</span> <span class="tlaUNC">           0 :     g_free (sp_name);</span></span>
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :     ml_loge (&quot;Failed to add subplugin data into the table.&quot;);</span></span>
 <span id="L281"><span class="lineNum">     281</span>              :   }</span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC tlaBgGNC">        3987 :   G_UNLOCK (splock);</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC tlaBgGNC">        4007 :   G_UNLOCK (splock);</span></span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        3987 :   return ret;</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        4007 :   return ret;</span></span>
 <span id="L285"><span class="lineNum">     285</span>              : }</span>
 <span id="L286"><span class="lineNum">     286</span>              : </span>
 <span id="L287"><span class="lineNum">     287</span>              : /** @brief Public function defined in the header */</span>
 <span id="L288"><span class="lineNum">     288</span>              : gboolean</span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        3994 : unregister_subplugin (subpluginType type, const char *name)</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        4014 : unregister_subplugin (subpluginType type, const char *name)</span></span>
 <span id="L290"><span class="lineNum">     290</span>              : {</span>
 <span id="L291"><span class="lineNum">     291</span>              :   gboolean ret;</span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        3994 :   g_return_val_if_fail (name, FALSE);</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        3991 :   g_return_val_if_fail (subplugins[type], FALSE);</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        4014 :   g_return_val_if_fail (name, FALSE);</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        4011 :   g_return_val_if_fail (subplugins[type], FALSE);</span></span>
 <span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">        3991 :   G_LOCK (splock);</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">        3991 :   ret = g_hash_table_remove (subplugins[type], name);</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">        3991 :   G_UNLOCK (splock);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">        4011 :   G_LOCK (splock);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">        4011 :   ret = g_hash_table_remove (subplugins[type], name);</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">        4011 :   G_UNLOCK (splock);</span></span>
 <span id="L299"><span class="lineNum">     299</span>              : </span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">        3991 :   return ret;</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">        4011 :   return ret;</span></span>
 <span id="L301"><span class="lineNum">     301</span>              : }</span>
 <span id="L302"><span class="lineNum">     302</span>              : </span>
 <span id="L303"><span class="lineNum">     303</span>              : /** @brief dealloc function for handles */</span>
 <span id="L304"><span class="lineNum">     304</span>              : static void</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        1899 : _close_handle (gpointer data)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        1911 : _close_handle (gpointer data)</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : {</span>
 <span id="L307"><span class="lineNum">     307</span>              : /**</span>
 <span id="L308"><span class="lineNum">     308</span>              :  * Ubuntu 16.04 / GLIBC 2.23 Workaround</span>
@@ -380,9 +380,9 @@
 <span id="L318"><span class="lineNum">     318</span>              :   UNUSED (data);</span>
 <span id="L319"><span class="lineNum">     319</span>              :   return;                       /* Do not call close and return */</span>
 <span id="L320"><span class="lineNum">     320</span>              : #else</span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">        1899 :   g_module_close ((GModule *) data);</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">        1911 :   g_module_close ((GModule *) data);</span></span>
 <span id="L322"><span class="lineNum">     322</span>              : #endif</span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">        1899 : }</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">        1911 : }</span></span>
 <span id="L324"><span class="lineNum">     324</span>              : </span>
 <span id="L325"><span class="lineNum">     325</span>              : /**</span>
 <span id="L326"><span class="lineNum">     326</span>              :  * @brief common interface to set custom property description of a sub-plugin.</span>
@@ -434,26 +434,26 @@
 <span id="L372"><span class="lineNum">     372</span>              : </span>
 <span id="L373"><span class="lineNum">     373</span>              : /** @brief Create handles at the start of library */</span>
 <span id="L374"><span class="lineNum">     374</span>              : static void</span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC tlaBgGNC">         844 : init_subplugin (void)</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC tlaBgGNC">         848 : init_subplugin (void)</span></span>
 <span id="L376"><span class="lineNum">     376</span>              : {</span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         844 :   G_LOCK (splock);</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         844 :   g_assert (NULL == handles); /** Internal error (duplicated init call?) */</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         844 :   handles = g_ptr_array_new_full (16, _close_handle);</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         844 :   G_UNLOCK (splock);</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         844 : }</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         848 :   G_LOCK (splock);</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         848 :   g_assert (NULL == handles); /** Internal error (duplicated init call?) */</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         848 :   handles = g_ptr_array_new_full (16, _close_handle);</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         848 :   G_UNLOCK (splock);</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         848 : }</span></span>
 <span id="L382"><span class="lineNum">     382</span>              : </span>
 <span id="L383"><span class="lineNum">     383</span>              : /** @brief Free handles at the start of library */</span>
 <span id="L384"><span class="lineNum">     384</span>              : static void</span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         844 : fini_subplugin (void)</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         848 : fini_subplugin (void)</span></span>
 <span id="L386"><span class="lineNum">     386</span>              : {</span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         844 :   G_LOCK (splock);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         844 :   g_assert (handles); /** Internal error (init not called?) */</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         848 :   G_LOCK (splock);</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">         848 :   g_assert (handles); /** Internal error (init not called?) */</span></span>
 <span id="L389"><span class="lineNum">     389</span>              : </span>
 <span id="L390"><span class="lineNum">     390</span>              :   /* iterate and call close by calling g_array_clear */</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         844 :   g_ptr_array_free (handles, TRUE);</span></span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         844 :   handles = NULL;</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         844 :   G_UNLOCK (splock);</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         844 : }</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         848 :   g_ptr_array_free (handles, TRUE);</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         848 :   handles = NULL;</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         848 :   G_UNLOCK (splock);</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         848 : }</span></span>
         </pre>
               </td>
             </tr>
