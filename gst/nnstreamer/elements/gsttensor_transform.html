@@ -150,7 +150,7 @@ $('body').removeClass('no-script');
 <li>If possible, the tensor_transform element exploits <a href="https://gitlab.freedesktop.org/gstreamer/orc">ORC: Optimized inner Loop Runtime Compiler</a> to accelerate the supported operations.</li>
 <li>Aggregate multiple operators into a single transform instance for performance optimization.
 <ul>
-<li>E.g., <code>tensor_transform mode=typecast option=uint8 ! tensor_transform mode=arithmetic option=mul:4 ! tensor_transform mode=arithmetic option=add:25 can be optimized by tensor_transform mode=arithmetic option=typecast:uint8,mul:8,add:25</code>
+<li>E.g., <code>tensor_transform mode=typecast option=uint8 ! tensor_transform mode=arithmetic option=mul:4 ! tensor_transform mode=arithmetic option=add:25 can be optimized by tensor_transform mode=arithmetic option=typecast:uint8,mul:4,add:25</code>
 </li>
 </ul>
 </li>
