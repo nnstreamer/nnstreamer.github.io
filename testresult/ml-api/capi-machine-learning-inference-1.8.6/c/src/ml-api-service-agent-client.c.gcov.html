@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#ca2448f9d72b1ab4423fa8f802341023b4f55e08 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-agent-client.c</title>
+  <title>LCOV - ML API 1.8.6-0 nnstreamer/api#7f8530c294f86ec880b29347a861499239d358a1 - capi-machine-learning-inference-1.8.6/c/src/ml-api-service-agent-client.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#ca2448f9d72b1ab4423fa8f802341023b4f55e08</td>
+            <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#7f8530c294f86ec880b29347a861499239d358a1</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.0&nbsp;%</td>
-            <td class="headerCovTableEntry">334</td>
-            <td class="headerCovTableEntry">294</td>
+            <td class="headerCovTableEntryMed">88.2&nbsp;%</td>
+            <td class="headerCovTableEntry">338</td>
+            <td class="headerCovTableEntry">298</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-16 05:26:25</td>
+            <td class="headerValue">2025-05-19 05:26:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -491,338 +491,342 @@
 <span id="L429"><span class="lineNum">     429</span>              : {</span>
 <span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          16 :   int ret = ML_ERROR_NONE;</span></span>
 <span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          16 :   g_autofree gchar *app_info = NULL;</span></span>
-<span id="L432"><span class="lineNum">     432</span>              : </span>
-<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">          16 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
-<span id="L434"><span class="lineNum">     434</span>              : </span>
-<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">          16 :   if (!name) {</span></span>
-<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L437"><span class="lineNum">     437</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L438"><span class="lineNum">     438</span>              :   }</span>
-<span id="L439"><span class="lineNum">     439</span>              : </span>
-<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">          15 :   if (NULL == version) {</span></span>
-<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L442"><span class="lineNum">     442</span>              :         &quot;The parameter 'version' should not be NULL.&quot;);</span>
-<span id="L443"><span class="lineNum">     443</span>              :   }</span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          14 :   *version = 0U;</span></span>
-<span id="L445"><span class="lineNum">     445</span>              : </span>
-<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          14 :   ret = _ml_service_check_path (path);</span></span>
-<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">          14 :   if (ret != ML_ERROR_NONE)</span></span>
-<span id="L448"><span class="lineNum">     448</span> <span class="tlaGNC">           2 :     return ret;</span></span>
-<span id="L449"><span class="lineNum">     449</span>              : </span>
-<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC">          12 :   app_info = _get_app_info ();</span></span>
+<span id="L432"><span class="lineNum">     432</span> <span class="tlaGNC">          16 :   g_autofree gchar *converted = NULL;</span></span>
+<span id="L433"><span class="lineNum">     433</span>              : </span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">          16 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L435"><span class="lineNum">     435</span>              : </span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">          16 :   if (!name) {</span></span>
+<span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L438"><span class="lineNum">     438</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L439"><span class="lineNum">     439</span>              :   }</span>
+<span id="L440"><span class="lineNum">     440</span>              : </span>
+<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">          15 :   if (NULL == version) {</span></span>
+<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L443"><span class="lineNum">     443</span>              :         &quot;The parameter 'version' should not be NULL.&quot;);</span>
+<span id="L444"><span class="lineNum">     444</span>              :   }</span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">          14 :   *version = 0U;</span></span>
+<span id="L446"><span class="lineNum">     446</span>              : </span>
+<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">          14 :   converted = _ml_convert_predefined_entity (path);</span></span>
+<span id="L448"><span class="lineNum">     448</span> <span class="tlaGNC">          14 :   ret = _ml_service_check_path (converted);</span></span>
+<span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC">          14 :   if (ret != ML_ERROR_NONE)</span></span>
+<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC">           2 :     return ret;</span></span>
 <span id="L451"><span class="lineNum">     451</span>              : </span>
-<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">          12 :   ret = ml_agent_model_register (name, path, activate,</span></span>
-<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          12 :       description ? description : &quot;&quot;, app_info ? app_info : &quot;&quot;, version);</span></span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">          12 :   if (ret &lt; 0) {</span></span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">           1 :     _ml_error_report (&quot;Failed to invoke the method model_register.&quot;);</span></span>
-<span id="L456"><span class="lineNum">     456</span>              :   }</span>
-<span id="L457"><span class="lineNum">     457</span>              : </span>
-<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          12 :   return ret;</span></span>
-<span id="L459"><span class="lineNum">     459</span>              : }</span>
-<span id="L460"><span class="lineNum">     460</span>              : </span>
-<span id="L461"><span class="lineNum">     461</span>              : /**</span>
-<span id="L462"><span class="lineNum">     462</span>              :  * @brief Updates the description of neural network model with given @a name and @a version.</span>
-<span id="L463"><span class="lineNum">     463</span>              :  */</span>
-<span id="L464"><span class="lineNum">     464</span>              : int</span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">           7 : ml_service_model_update_description (const char *name,</span></span>
-<span id="L466"><span class="lineNum">     466</span>              :     const unsigned int version, const char *description)</span>
-<span id="L467"><span class="lineNum">     467</span>              : {</span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L469"><span class="lineNum">     469</span>              : </span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">           7 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L452"><span class="lineNum">     452</span> <span class="tlaGNC">          12 :   app_info = _get_app_info ();</span></span>
+<span id="L453"><span class="lineNum">     453</span>              : </span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">          12 :   ret = ml_agent_model_register (name, converted, activate,</span></span>
+<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">          12 :       description ? description : &quot;&quot;, app_info ? app_info : &quot;&quot;, version);</span></span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">          12 :   if (ret &lt; 0) {</span></span>
+<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">           1 :     _ml_error_report (&quot;Failed to invoke the method model_register.&quot;);</span></span>
+<span id="L458"><span class="lineNum">     458</span>              :   }</span>
+<span id="L459"><span class="lineNum">     459</span>              : </span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">          12 :   return ret;</span></span>
+<span id="L461"><span class="lineNum">     461</span>              : }</span>
+<span id="L462"><span class="lineNum">     462</span>              : </span>
+<span id="L463"><span class="lineNum">     463</span>              : /**</span>
+<span id="L464"><span class="lineNum">     464</span>              :  * @brief Updates the description of neural network model with given @a name and @a version.</span>
+<span id="L465"><span class="lineNum">     465</span>              :  */</span>
+<span id="L466"><span class="lineNum">     466</span>              : int</span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">           7 : ml_service_model_update_description (const char *name,</span></span>
+<span id="L468"><span class="lineNum">     468</span>              :     const unsigned int version, const char *description)</span>
+<span id="L469"><span class="lineNum">     469</span>              : {</span>
+<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           7 :   if (!name) {</span></span>
-<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L474"><span class="lineNum">     474</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L475"><span class="lineNum">     475</span>              :   }</span>
-<span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">           6 :   if (version == 0U) {</span></span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L479"><span class="lineNum">     479</span>              :         &quot;The parameter, 'version' is 0. It should be a valid unsigned int.&quot;);</span>
-<span id="L480"><span class="lineNum">     480</span>              :   }</span>
-<span id="L481"><span class="lineNum">     481</span>              : </span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">           5 :   if (!description) {</span></span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L484"><span class="lineNum">     484</span>              :         &quot;The parameter, 'description' is NULL. It should be a valid string.&quot;);</span>
-<span id="L485"><span class="lineNum">     485</span>              :   }</span>
-<span id="L486"><span class="lineNum">     486</span>              : </span>
-<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_update_description (name, version, description);</span></span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">           4 :   if (ret &lt; 0) {</span></span>
-<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_update_description.&quot;);</span></span>
-<span id="L490"><span class="lineNum">     490</span>              :   }</span>
-<span id="L491"><span class="lineNum">     491</span>              : </span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">           4 :   return ret;</span></span>
-<span id="L493"><span class="lineNum">     493</span>              : }</span>
-<span id="L494"><span class="lineNum">     494</span>              : </span>
-<span id="L495"><span class="lineNum">     495</span>              : /**</span>
-<span id="L496"><span class="lineNum">     496</span>              :  * @brief Activates a neural network model with given @a name and @a version.</span>
-<span id="L497"><span class="lineNum">     497</span>              :  */</span>
-<span id="L498"><span class="lineNum">     498</span>              : int</span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">           6 : ml_service_model_activate (const char *name, const unsigned int version)</span></span>
-<span id="L500"><span class="lineNum">     500</span>              : {</span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L502"><span class="lineNum">     502</span>              : </span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">           6 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           7 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L473"><span class="lineNum">     473</span>              : </span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">           7 :   if (!name) {</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L476"><span class="lineNum">     476</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L477"><span class="lineNum">     477</span>              :   }</span>
+<span id="L478"><span class="lineNum">     478</span>              : </span>
+<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">           6 :   if (version == 0U) {</span></span>
+<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L481"><span class="lineNum">     481</span>              :         &quot;The parameter, 'version' is 0. It should be a valid unsigned int.&quot;);</span>
+<span id="L482"><span class="lineNum">     482</span>              :   }</span>
+<span id="L483"><span class="lineNum">     483</span>              : </span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">           5 :   if (!description) {</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L486"><span class="lineNum">     486</span>              :         &quot;The parameter, 'description' is NULL. It should be a valid string.&quot;);</span>
+<span id="L487"><span class="lineNum">     487</span>              :   }</span>
+<span id="L488"><span class="lineNum">     488</span>              : </span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_update_description (name, version, description);</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">           4 :   if (ret &lt; 0) {</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_update_description.&quot;);</span></span>
+<span id="L492"><span class="lineNum">     492</span>              :   }</span>
+<span id="L493"><span class="lineNum">     493</span>              : </span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC">           4 :   return ret;</span></span>
+<span id="L495"><span class="lineNum">     495</span>              : }</span>
+<span id="L496"><span class="lineNum">     496</span>              : </span>
+<span id="L497"><span class="lineNum">     497</span>              : /**</span>
+<span id="L498"><span class="lineNum">     498</span>              :  * @brief Activates a neural network model with given @a name and @a version.</span>
+<span id="L499"><span class="lineNum">     499</span>              :  */</span>
+<span id="L500"><span class="lineNum">     500</span>              : int</span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">           6 : ml_service_model_activate (const char *name, const unsigned int version)</span></span>
+<span id="L502"><span class="lineNum">     502</span>              : {</span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
 <span id="L504"><span class="lineNum">     504</span>              : </span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">           6 :   if (!name) {</span></span>
-<span id="L506"><span class="lineNum">     506</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L507"><span class="lineNum">     507</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L508"><span class="lineNum">     508</span>              :   }</span>
-<span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">           5 :   if (version == 0U) {</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L512"><span class="lineNum">     512</span>              :         &quot;The parameter, 'version' is 0. It should be a valid unsigned int.&quot;);</span>
-<span id="L513"><span class="lineNum">     513</span>              :   }</span>
-<span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_activate (name, version);</span></span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">           4 :   if (ret &lt; 0) {</span></span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_activate.&quot;);</span></span>
-<span id="L518"><span class="lineNum">     518</span>              :   }</span>
-<span id="L519"><span class="lineNum">     519</span>              : </span>
-<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">           4 :   return ret;</span></span>
-<span id="L521"><span class="lineNum">     521</span>              : }</span>
-<span id="L522"><span class="lineNum">     522</span>              : </span>
-<span id="L523"><span class="lineNum">     523</span>              : /**</span>
-<span id="L524"><span class="lineNum">     524</span>              :  * @brief Gets the information of neural network model with given @a name and @a version.</span>
-<span id="L525"><span class="lineNum">     525</span>              :  */</span>
-<span id="L526"><span class="lineNum">     526</span>              : int</span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">           7 : ml_service_model_get (const char *name, const unsigned int version,</span></span>
-<span id="L528"><span class="lineNum">     528</span>              :     ml_information_h * info)</span>
-<span id="L529"><span class="lineNum">     529</span>              : {</span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">           7 :   ml_information_h _info = NULL;</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           7 :   g_autofree gchar *description = NULL;</span></span>
-<span id="L533"><span class="lineNum">     533</span>              : </span>
-<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">           7 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">           6 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L506"><span class="lineNum">     506</span>              : </span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">           6 :   if (!name) {</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L509"><span class="lineNum">     509</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L510"><span class="lineNum">     510</span>              :   }</span>
+<span id="L511"><span class="lineNum">     511</span>              : </span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">           5 :   if (version == 0U) {</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L514"><span class="lineNum">     514</span>              :         &quot;The parameter, 'version' is 0. It should be a valid unsigned int.&quot;);</span>
+<span id="L515"><span class="lineNum">     515</span>              :   }</span>
+<span id="L516"><span class="lineNum">     516</span>              : </span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_activate (name, version);</span></span>
+<span id="L518"><span class="lineNum">     518</span> <span class="tlaGNC">           4 :   if (ret &lt; 0) {</span></span>
+<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_activate.&quot;);</span></span>
+<span id="L520"><span class="lineNum">     520</span>              :   }</span>
+<span id="L521"><span class="lineNum">     521</span>              : </span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">           4 :   return ret;</span></span>
+<span id="L523"><span class="lineNum">     523</span>              : }</span>
+<span id="L524"><span class="lineNum">     524</span>              : </span>
+<span id="L525"><span class="lineNum">     525</span>              : /**</span>
+<span id="L526"><span class="lineNum">     526</span>              :  * @brief Gets the information of neural network model with given @a name and @a version.</span>
+<span id="L527"><span class="lineNum">     527</span>              :  */</span>
+<span id="L528"><span class="lineNum">     528</span>              : int</span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">           7 : ml_service_model_get (const char *name, const unsigned int version,</span></span>
+<span id="L530"><span class="lineNum">     530</span>              :     ml_information_h * info)</span>
+<span id="L531"><span class="lineNum">     531</span>              : {</span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">           7 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC">           7 :   ml_information_h _info = NULL;</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">           7 :   g_autofree gchar *description = NULL;</span></span>
 <span id="L535"><span class="lineNum">     535</span>              : </span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">           7 :   if (!name) {</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L538"><span class="lineNum">     538</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L539"><span class="lineNum">     539</span>              :   }</span>
-<span id="L540"><span class="lineNum">     540</span>              : </span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">           6 :   if (info == NULL) {</span></span>
-<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L543"><span class="lineNum">     543</span>              :         &quot;The argument for 'info' should not be NULL.&quot;);</span>
-<span id="L544"><span class="lineNum">     544</span>              :   }</span>
-<span id="L545"><span class="lineNum">     545</span>              : </span>
-<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">           5 :   if (*info != NULL) {</span></span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">           3 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_h info = NULL&quot;);</span></span>
-<span id="L548"><span class="lineNum">     548</span>              :   }</span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">           5 :   *info = NULL;</span></span>
-<span id="L550"><span class="lineNum">     550</span>              : </span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">           5 :   ret = ml_agent_model_get (name, version, &amp;description);</span></span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">           5 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_get.&quot;);</span></span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           3 :     return ret;</span></span>
-<span id="L555"><span class="lineNum">     555</span>              :   }</span>
-<span id="L556"><span class="lineNum">     556</span>              : </span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">           2 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info);</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret)</span></span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information.&quot;);</span></span>
-<span id="L560"><span class="lineNum">     560</span>              :   else</span>
-<span id="L561"><span class="lineNum">     561</span> <span class="tlaGNC tlaBgGNC">           2 :     *info = _info;</span></span>
-<span id="L562"><span class="lineNum">     562</span>              : </span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">           2 :   return ret;</span></span>
-<span id="L564"><span class="lineNum">     564</span>              : }</span>
-<span id="L565"><span class="lineNum">     565</span>              : </span>
-<span id="L566"><span class="lineNum">     566</span>              : /**</span>
-<span id="L567"><span class="lineNum">     567</span>              :  * @brief Gets the information of activated neural network model with given @a name.</span>
-<span id="L568"><span class="lineNum">     568</span>              :  */</span>
-<span id="L569"><span class="lineNum">     569</span>              : int</span>
-<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC">          10 : ml_service_model_get_activated (const char *name, ml_information_h * info)</span></span>
-<span id="L571"><span class="lineNum">     571</span>              : {</span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">          10 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L573"><span class="lineNum">     573</span>              : </span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          10 :   ml_information_h _info = NULL;</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          10 :   g_autofree gchar *description = NULL;</span></span>
-<span id="L576"><span class="lineNum">     576</span>              : </span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          10 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">           7 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L537"><span class="lineNum">     537</span>              : </span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">           7 :   if (!name) {</span></span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L540"><span class="lineNum">     540</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L541"><span class="lineNum">     541</span>              :   }</span>
+<span id="L542"><span class="lineNum">     542</span>              : </span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">           6 :   if (info == NULL) {</span></span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L545"><span class="lineNum">     545</span>              :         &quot;The argument for 'info' should not be NULL.&quot;);</span>
+<span id="L546"><span class="lineNum">     546</span>              :   }</span>
+<span id="L547"><span class="lineNum">     547</span>              : </span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">           5 :   if (*info != NULL) {</span></span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">           3 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_h info = NULL&quot;);</span></span>
+<span id="L550"><span class="lineNum">     550</span>              :   }</span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">           5 :   *info = NULL;</span></span>
+<span id="L552"><span class="lineNum">     552</span>              : </span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           5 :   ret = ml_agent_model_get (name, version, &amp;description);</span></span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">           5 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           3 :     _ml_error_report (&quot;Failed to invoke the method model_get.&quot;);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">           3 :     return ret;</span></span>
+<span id="L557"><span class="lineNum">     557</span>              :   }</span>
+<span id="L558"><span class="lineNum">     558</span>              : </span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">           2 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info);</span></span>
+<span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret)</span></span>
+<span id="L561"><span class="lineNum">     561</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information.&quot;);</span></span>
+<span id="L562"><span class="lineNum">     562</span>              :   else</span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC tlaBgGNC">           2 :     *info = _info;</span></span>
+<span id="L564"><span class="lineNum">     564</span>              : </span>
+<span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">           2 :   return ret;</span></span>
+<span id="L566"><span class="lineNum">     566</span>              : }</span>
+<span id="L567"><span class="lineNum">     567</span>              : </span>
+<span id="L568"><span class="lineNum">     568</span>              : /**</span>
+<span id="L569"><span class="lineNum">     569</span>              :  * @brief Gets the information of activated neural network model with given @a name.</span>
+<span id="L570"><span class="lineNum">     570</span>              :  */</span>
+<span id="L571"><span class="lineNum">     571</span>              : int</span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">          10 : ml_service_model_get_activated (const char *name, ml_information_h * info)</span></span>
+<span id="L573"><span class="lineNum">     573</span>              : {</span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          10 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L575"><span class="lineNum">     575</span>              : </span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">          10 :   ml_information_h _info = NULL;</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          10 :   g_autofree gchar *description = NULL;</span></span>
 <span id="L578"><span class="lineNum">     578</span>              : </span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          10 :   if (!name) {</span></span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L581"><span class="lineNum">     581</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L582"><span class="lineNum">     582</span>              :   }</span>
-<span id="L583"><span class="lineNum">     583</span>              : </span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">           9 :   if (info == NULL) {</span></span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L586"><span class="lineNum">     586</span>              :         &quot;The argument for 'info' should not be NULL.&quot;);</span>
-<span id="L587"><span class="lineNum">     587</span>              :   }</span>
-<span id="L588"><span class="lineNum">     588</span>              : </span>
-<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">           8 :   if (*info != NULL) {</span></span>
-<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">           7 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_h info = NULL&quot;);</span></span>
-<span id="L591"><span class="lineNum">     591</span>              :   }</span>
-<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">           8 :   *info = NULL;</span></span>
-<span id="L593"><span class="lineNum">     593</span>              : </span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">           8 :   ret = ml_agent_model_get_activated (name, &amp;description);</span></span>
-<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">           8 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">           2 :     _ml_error_report (&quot;Failed to invoke the method model_get_activated.&quot;);</span></span>
-<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">           2 :     return ret;</span></span>
-<span id="L598"><span class="lineNum">     598</span>              :   }</span>
-<span id="L599"><span class="lineNum">     599</span>              : </span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">           6 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info);</span></span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">           6 :   if (ML_ERROR_NONE != ret)</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml_information_h.&quot;);</span></span>
-<span id="L603"><span class="lineNum">     603</span>              :   else</span>
-<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC tlaBgGNC">           6 :     *info = _info;</span></span>
-<span id="L605"><span class="lineNum">     605</span>              : </span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">           6 :   return ret;</span></span>
-<span id="L607"><span class="lineNum">     607</span>              : }</span>
-<span id="L608"><span class="lineNum">     608</span>              : </span>
-<span id="L609"><span class="lineNum">     609</span>              : /**</span>
-<span id="L610"><span class="lineNum">     610</span>              :  * @brief Gets the list of neural network model with given @a name.</span>
-<span id="L611"><span class="lineNum">     611</span>              :  */</span>
-<span id="L612"><span class="lineNum">     612</span>              : int</span>
-<span id="L613"><span class="lineNum">     613</span> <span class="tlaGNC">           6 : ml_service_model_get_all (const char *name, ml_information_list_h * info_list)</span></span>
-<span id="L614"><span class="lineNum">     614</span>              : {</span>
-<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">           6 :   g_autofree gchar *description = NULL;</span></span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">           6 :   ml_information_list_h _info_list = NULL;</span></span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L618"><span class="lineNum">     618</span>              : </span>
-<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           6 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">          10 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L580"><span class="lineNum">     580</span>              : </span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          10 :   if (!name) {</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L583"><span class="lineNum">     583</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L584"><span class="lineNum">     584</span>              :   }</span>
+<span id="L585"><span class="lineNum">     585</span>              : </span>
+<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">           9 :   if (info == NULL) {</span></span>
+<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L588"><span class="lineNum">     588</span>              :         &quot;The argument for 'info' should not be NULL.&quot;);</span>
+<span id="L589"><span class="lineNum">     589</span>              :   }</span>
+<span id="L590"><span class="lineNum">     590</span>              : </span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">           8 :   if (*info != NULL) {</span></span>
+<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">           7 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_h info = NULL&quot;);</span></span>
+<span id="L593"><span class="lineNum">     593</span>              :   }</span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">           8 :   *info = NULL;</span></span>
+<span id="L595"><span class="lineNum">     595</span>              : </span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">           8 :   ret = ml_agent_model_get_activated (name, &amp;description);</span></span>
+<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">           8 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">           2 :     _ml_error_report (&quot;Failed to invoke the method model_get_activated.&quot;);</span></span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">           2 :     return ret;</span></span>
+<span id="L600"><span class="lineNum">     600</span>              :   }</span>
+<span id="L601"><span class="lineNum">     601</span>              : </span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           6 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info);</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           6 :   if (ML_ERROR_NONE != ret)</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml_information_h.&quot;);</span></span>
+<span id="L605"><span class="lineNum">     605</span>              :   else</span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC tlaBgGNC">           6 :     *info = _info;</span></span>
+<span id="L607"><span class="lineNum">     607</span>              : </span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">           6 :   return ret;</span></span>
+<span id="L609"><span class="lineNum">     609</span>              : }</span>
+<span id="L610"><span class="lineNum">     610</span>              : </span>
+<span id="L611"><span class="lineNum">     611</span>              : /**</span>
+<span id="L612"><span class="lineNum">     612</span>              :  * @brief Gets the list of neural network model with given @a name.</span>
+<span id="L613"><span class="lineNum">     613</span>              :  */</span>
+<span id="L614"><span class="lineNum">     614</span>              : int</span>
+<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">           6 : ml_service_model_get_all (const char *name, ml_information_list_h * info_list)</span></span>
+<span id="L616"><span class="lineNum">     616</span>              : {</span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           6 :   g_autofree gchar *description = NULL;</span></span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">           6 :   ml_information_list_h _info_list = NULL;</span></span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           6 :   int ret = ML_ERROR_NONE;</span></span>
 <span id="L620"><span class="lineNum">     620</span>              : </span>
-<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">           6 :   if (!name) {</span></span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L623"><span class="lineNum">     623</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L624"><span class="lineNum">     624</span>              :   }</span>
-<span id="L625"><span class="lineNum">     625</span>              : </span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">           5 :   if (NULL == info_list) {</span></span>
-<span id="L627"><span class="lineNum">     627</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L628"><span class="lineNum">     628</span>              :         &quot;The parameter 'info_list' should not be NULL.&quot;);</span>
-<span id="L629"><span class="lineNum">     629</span>              :   }</span>
-<span id="L630"><span class="lineNum">     630</span> <span class="tlaGNC">           4 :   *info_list = NULL;</span></span>
-<span id="L631"><span class="lineNum">     631</span>              : </span>
-<span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_get_all (name, &amp;description);</span></span>
-<span id="L633"><span class="lineNum">     633</span> <span class="tlaGNC">           4 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
-<span id="L634"><span class="lineNum">     634</span> <span class="tlaGNC">           2 :     _ml_error_report_return (ret, &quot;Failed to invoke the method model_get_all.&quot;);</span></span>
-<span id="L635"><span class="lineNum">     635</span>              :   }</span>
-<span id="L636"><span class="lineNum">     636</span>              : </span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           2 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info_list);</span></span>
-<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret)</span></span>
-<span id="L639"><span class="lineNum">     639</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information list.&quot;);</span></span>
-<span id="L640"><span class="lineNum">     640</span>              :   else</span>
-<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC tlaBgGNC">           2 :     *info_list = _info_list;</span></span>
-<span id="L642"><span class="lineNum">     642</span>              : </span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC">           2 :   return ret;</span></span>
-<span id="L644"><span class="lineNum">     644</span>              : }</span>
-<span id="L645"><span class="lineNum">     645</span>              : </span>
-<span id="L646"><span class="lineNum">     646</span>              : /**</span>
-<span id="L647"><span class="lineNum">     647</span>              :  * @brief Deletes a model information with given @a name and @a version from machine learning service.</span>
-<span id="L648"><span class="lineNum">     648</span>              :  */</span>
-<span id="L649"><span class="lineNum">     649</span>              : int</span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">          18 : ml_service_model_delete (const char *name, const unsigned int version)</span></span>
-<span id="L651"><span class="lineNum">     651</span>              : {</span>
-<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">          18 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L653"><span class="lineNum">     653</span>              : </span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">          18 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">           6 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L622"><span class="lineNum">     622</span>              : </span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">           6 :   if (!name) {</span></span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L625"><span class="lineNum">     625</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L626"><span class="lineNum">     626</span>              :   }</span>
+<span id="L627"><span class="lineNum">     627</span>              : </span>
+<span id="L628"><span class="lineNum">     628</span> <span class="tlaGNC">           5 :   if (NULL == info_list) {</span></span>
+<span id="L629"><span class="lineNum">     629</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L630"><span class="lineNum">     630</span>              :         &quot;The parameter 'info_list' should not be NULL.&quot;);</span>
+<span id="L631"><span class="lineNum">     631</span>              :   }</span>
+<span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">           4 :   *info_list = NULL;</span></span>
+<span id="L633"><span class="lineNum">     633</span>              : </span>
+<span id="L634"><span class="lineNum">     634</span> <span class="tlaGNC">           4 :   ret = ml_agent_model_get_all (name, &amp;description);</span></span>
+<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           4 :   if (ML_ERROR_NONE != ret || !description) {</span></span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           2 :     _ml_error_report_return (ret, &quot;Failed to invoke the method model_get_all.&quot;);</span></span>
+<span id="L637"><span class="lineNum">     637</span>              :   }</span>
+<span id="L638"><span class="lineNum">     638</span>              : </span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">           2 :   ret = _build_ml_info_from_json_cstr (description, &amp;_info_list);</span></span>
+<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">           2 :   if (ML_ERROR_NONE != ret)</span></span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information list.&quot;);</span></span>
+<span id="L642"><span class="lineNum">     642</span>              :   else</span>
+<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC tlaBgGNC">           2 :     *info_list = _info_list;</span></span>
+<span id="L644"><span class="lineNum">     644</span>              : </span>
+<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">           2 :   return ret;</span></span>
+<span id="L646"><span class="lineNum">     646</span>              : }</span>
+<span id="L647"><span class="lineNum">     647</span>              : </span>
+<span id="L648"><span class="lineNum">     648</span>              : /**</span>
+<span id="L649"><span class="lineNum">     649</span>              :  * @brief Deletes a model information with given @a name and @a version from machine learning service.</span>
+<span id="L650"><span class="lineNum">     650</span>              :  */</span>
+<span id="L651"><span class="lineNum">     651</span>              : int</span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">          18 : ml_service_model_delete (const char *name, const unsigned int version)</span></span>
+<span id="L653"><span class="lineNum">     653</span>              : {</span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">          18 :   int ret = ML_ERROR_NONE;</span></span>
 <span id="L655"><span class="lineNum">     655</span>              : </span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          18 :   if (!name) {</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L658"><span class="lineNum">     658</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L659"><span class="lineNum">     659</span>              :   }</span>
-<span id="L660"><span class="lineNum">     660</span>              : </span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">          17 :   ret = ml_agent_model_delete (name, version, FALSE);</span></span>
-<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">          17 :   if (ret &lt; 0) {</span></span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">          10 :     _ml_error_report (&quot;Failed to invoke the method model_delete.&quot;);</span></span>
-<span id="L664"><span class="lineNum">     664</span>              :   }</span>
-<span id="L665"><span class="lineNum">     665</span>              : </span>
-<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">          17 :   return ret;</span></span>
-<span id="L667"><span class="lineNum">     667</span>              : }</span>
-<span id="L668"><span class="lineNum">     668</span>              : </span>
-<span id="L669"><span class="lineNum">     669</span>              : /**</span>
-<span id="L670"><span class="lineNum">     670</span>              :  * @brief Adds new information of machine learning resources.</span>
-<span id="L671"><span class="lineNum">     671</span>              :  */</span>
-<span id="L672"><span class="lineNum">     672</span>              : int</span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">           5 : ml_service_resource_add (const char *name, const char *path,</span></span>
-<span id="L674"><span class="lineNum">     674</span>              :     const char *description)</span>
-<span id="L675"><span class="lineNum">     675</span>              : {</span>
-<span id="L676"><span class="lineNum">     676</span> <span class="tlaGNC">           5 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">           5 :   g_autofree gchar *app_info = NULL;</span></span>
-<span id="L678"><span class="lineNum">     678</span>              : </span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">           5 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
-<span id="L680"><span class="lineNum">     680</span>              : </span>
-<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">           5 :   if (!name) {</span></span>
-<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L683"><span class="lineNum">     683</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L684"><span class="lineNum">     684</span>              :   }</span>
-<span id="L685"><span class="lineNum">     685</span>              : </span>
-<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">           4 :   ret = _ml_service_check_path (path);</span></span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">           4 :   if (ret != ML_ERROR_NONE)</span></span>
-<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">           2 :     return ret;</span></span>
-<span id="L689"><span class="lineNum">     689</span>              : </span>
-<span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">           2 :   app_info = _get_app_info ();</span></span>
-<span id="L691"><span class="lineNum">     691</span>              : </span>
-<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">           2 :   ret = ml_agent_resource_add (name, path, description ? description : &quot;&quot;,</span></span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC">           2 :       app_info ? app_info : &quot;&quot;);</span></span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">           2 :   if (ret &lt; 0) {</span></span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke the method resource_add.&quot;);</span></span>
-<span id="L696"><span class="lineNum">     696</span>              :   }</span>
-<span id="L697"><span class="lineNum">     697</span>              : </span>
-<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
-<span id="L699"><span class="lineNum">     699</span>              : }</span>
-<span id="L700"><span class="lineNum">     700</span>              : </span>
-<span id="L701"><span class="lineNum">     701</span>              : /**</span>
-<span id="L702"><span class="lineNum">     702</span>              :  * @brief Deletes the information of the resources from machine learning service.</span>
-<span id="L703"><span class="lineNum">     703</span>              :  */</span>
-<span id="L704"><span class="lineNum">     704</span>              : int</span>
-<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">           2 : ml_service_resource_delete (const char *name)</span></span>
-<span id="L706"><span class="lineNum">     706</span>              : {</span>
-<span id="L707"><span class="lineNum">     707</span> <span class="tlaGNC">           2 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L708"><span class="lineNum">     708</span>              : </span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">           2 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
-<span id="L710"><span class="lineNum">     710</span>              : </span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           2 :   if (!name) {</span></span>
-<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L713"><span class="lineNum">     713</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L714"><span class="lineNum">     714</span>              :   }</span>
-<span id="L715"><span class="lineNum">     715</span>              : </span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">           1 :   ret = ml_agent_resource_delete (name);</span></span>
-<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">           1 :   if (ret &lt; 0) {</span></span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">           1 :     _ml_error_report (&quot;Failed to invoke the method resource_delete.&quot;);</span></span>
-<span id="L719"><span class="lineNum">     719</span>              :   }</span>
-<span id="L720"><span class="lineNum">     720</span>              : </span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">           1 :   return ret;</span></span>
-<span id="L722"><span class="lineNum">     722</span>              : }</span>
-<span id="L723"><span class="lineNum">     723</span>              : </span>
-<span id="L724"><span class="lineNum">     724</span>              : /**</span>
-<span id="L725"><span class="lineNum">     725</span>              :  * @brief Gets the information of the resources from machine learning service.</span>
-<span id="L726"><span class="lineNum">     726</span>              :  */</span>
-<span id="L727"><span class="lineNum">     727</span>              : int</span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaGNC">           3 : ml_service_resource_get (const char *name, ml_information_list_h * res)</span></span>
-<span id="L729"><span class="lineNum">     729</span>              : {</span>
-<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">           3 :   int ret = ML_ERROR_NONE;</span></span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">           3 :   ml_information_list_h _info_list = NULL;</span></span>
-<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">           3 :   g_autofree gchar *res_info = NULL;</span></span>
-<span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">           3 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
-<span id="L735"><span class="lineNum">     735</span>              : </span>
-<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">           3 :   if (!name) {</span></span>
-<span id="L737"><span class="lineNum">     737</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L738"><span class="lineNum">     738</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
-<span id="L739"><span class="lineNum">     739</span>              :   }</span>
-<span id="L740"><span class="lineNum">     740</span>              : </span>
-<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">           2 :   if (res == NULL) {</span></span>
-<span id="L742"><span class="lineNum">     742</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
-<span id="L743"><span class="lineNum">     743</span>              :         &quot;The argument for 'res' should not be NULL.&quot;);</span>
-<span id="L744"><span class="lineNum">     744</span>              :   }</span>
-<span id="L745"><span class="lineNum">     745</span>              : </span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">           1 :   if (*res != NULL) {</span></span>
-<span id="L747"><span class="lineNum">     747</span> <span class="tlaGNC">           1 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_list_h res = NULL&quot;);</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaGNC">          18 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L657"><span class="lineNum">     657</span>              : </span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">          18 :   if (!name) {</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L660"><span class="lineNum">     660</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L661"><span class="lineNum">     661</span>              :   }</span>
+<span id="L662"><span class="lineNum">     662</span>              : </span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">          17 :   ret = ml_agent_model_delete (name, version, FALSE);</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">          17 :   if (ret &lt; 0) {</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">          10 :     _ml_error_report (&quot;Failed to invoke the method model_delete.&quot;);</span></span>
+<span id="L666"><span class="lineNum">     666</span>              :   }</span>
+<span id="L667"><span class="lineNum">     667</span>              : </span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">          17 :   return ret;</span></span>
+<span id="L669"><span class="lineNum">     669</span>              : }</span>
+<span id="L670"><span class="lineNum">     670</span>              : </span>
+<span id="L671"><span class="lineNum">     671</span>              : /**</span>
+<span id="L672"><span class="lineNum">     672</span>              :  * @brief Adds new information of machine learning resources.</span>
+<span id="L673"><span class="lineNum">     673</span>              :  */</span>
+<span id="L674"><span class="lineNum">     674</span>              : int</span>
+<span id="L675"><span class="lineNum">     675</span> <span class="tlaGNC">           5 : ml_service_resource_add (const char *name, const char *path,</span></span>
+<span id="L676"><span class="lineNum">     676</span>              :     const char *description)</span>
+<span id="L677"><span class="lineNum">     677</span>              : {</span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">           5 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">           5 :   g_autofree gchar *app_info = NULL;</span></span>
+<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">           5 :   g_autofree gchar *converted = NULL;</span></span>
+<span id="L681"><span class="lineNum">     681</span>              : </span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaGNC">           5 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L683"><span class="lineNum">     683</span>              : </span>
+<span id="L684"><span class="lineNum">     684</span> <span class="tlaGNC">           5 :   if (!name) {</span></span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L686"><span class="lineNum">     686</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L687"><span class="lineNum">     687</span>              :   }</span>
+<span id="L688"><span class="lineNum">     688</span>              : </span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">           4 :   converted = _ml_convert_predefined_entity (path);</span></span>
+<span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">           4 :   ret = _ml_service_check_path (converted);</span></span>
+<span id="L691"><span class="lineNum">     691</span> <span class="tlaGNC">           4 :   if (ret != ML_ERROR_NONE)</span></span>
+<span id="L692"><span class="lineNum">     692</span> <span class="tlaGNC">           2 :     return ret;</span></span>
+<span id="L693"><span class="lineNum">     693</span>              : </span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">           2 :   app_info = _get_app_info ();</span></span>
+<span id="L695"><span class="lineNum">     695</span>              : </span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaGNC">           2 :   ret = ml_agent_resource_add (name, converted, description ? description : &quot;&quot;,</span></span>
+<span id="L697"><span class="lineNum">     697</span> <span class="tlaGNC">           2 :       app_info ? app_info : &quot;&quot;);</span></span>
+<span id="L698"><span class="lineNum">     698</span> <span class="tlaGNC">           2 :   if (ret &lt; 0) {</span></span>
+<span id="L699"><span class="lineNum">     699</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to invoke the method resource_add.&quot;);</span></span>
+<span id="L700"><span class="lineNum">     700</span>              :   }</span>
+<span id="L701"><span class="lineNum">     701</span>              : </span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC tlaBgGNC">           2 :   return ret;</span></span>
+<span id="L703"><span class="lineNum">     703</span>              : }</span>
+<span id="L704"><span class="lineNum">     704</span>              : </span>
+<span id="L705"><span class="lineNum">     705</span>              : /**</span>
+<span id="L706"><span class="lineNum">     706</span>              :  * @brief Deletes the information of the resources from machine learning service.</span>
+<span id="L707"><span class="lineNum">     707</span>              :  */</span>
+<span id="L708"><span class="lineNum">     708</span>              : int</span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">           2 : ml_service_resource_delete (const char *name)</span></span>
+<span id="L710"><span class="lineNum">     710</span>              : {</span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           2 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L712"><span class="lineNum">     712</span>              : </span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">           2 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L714"><span class="lineNum">     714</span>              : </span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">           2 :   if (!name) {</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L717"><span class="lineNum">     717</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L718"><span class="lineNum">     718</span>              :   }</span>
+<span id="L719"><span class="lineNum">     719</span>              : </span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">           1 :   ret = ml_agent_resource_delete (name);</span></span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">           1 :   if (ret &lt; 0) {</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">           1 :     _ml_error_report (&quot;Failed to invoke the method resource_delete.&quot;);</span></span>
+<span id="L723"><span class="lineNum">     723</span>              :   }</span>
+<span id="L724"><span class="lineNum">     724</span>              : </span>
+<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">           1 :   return ret;</span></span>
+<span id="L726"><span class="lineNum">     726</span>              : }</span>
+<span id="L727"><span class="lineNum">     727</span>              : </span>
+<span id="L728"><span class="lineNum">     728</span>              : /**</span>
+<span id="L729"><span class="lineNum">     729</span>              :  * @brief Gets the information of the resources from machine learning service.</span>
+<span id="L730"><span class="lineNum">     730</span>              :  */</span>
+<span id="L731"><span class="lineNum">     731</span>              : int</span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">           3 : ml_service_resource_get (const char *name, ml_information_list_h * res)</span></span>
+<span id="L733"><span class="lineNum">     733</span>              : {</span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaGNC">           3 :   int ret = ML_ERROR_NONE;</span></span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaGNC">           3 :   ml_information_list_h _info_list = NULL;</span></span>
+<span id="L736"><span class="lineNum">     736</span> <span class="tlaGNC">           3 :   g_autofree gchar *res_info = NULL;</span></span>
+<span id="L737"><span class="lineNum">     737</span>              : </span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">           3 :   check_feature_state (ML_FEATURE_SERVICE);</span></span>
+<span id="L739"><span class="lineNum">     739</span>              : </span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaGNC">           3 :   if (!name) {</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L742"><span class="lineNum">     742</span>              :         &quot;The parameter, 'name' is NULL. It should be a valid string.&quot;);</span>
+<span id="L743"><span class="lineNum">     743</span>              :   }</span>
+<span id="L744"><span class="lineNum">     744</span>              : </span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">           2 :   if (res == NULL) {</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">           1 :     _ml_error_report_return (ML_ERROR_INVALID_PARAMETER,</span></span>
+<span id="L747"><span class="lineNum">     747</span>              :         &quot;The argument for 'res' should not be NULL.&quot;);</span>
 <span id="L748"><span class="lineNum">     748</span>              :   }</span>
-<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">           1 :   *res = NULL;</span></span>
-<span id="L750"><span class="lineNum">     750</span>              : </span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">           1 :   ret = ml_agent_resource_get (name, &amp;res_info);</span></span>
-<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret || !res_info) {</span></span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to invoke the method resource_get.&quot;);</span></span>
-<span id="L754"><span class="lineNum">     754</span>              :   }</span>
-<span id="L755"><span class="lineNum">     755</span>              : </span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = _build_ml_info_from_json_cstr (res_info, &amp;_info_list);</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret)</span></span>
-<span id="L758"><span class="lineNum">     758</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information list.&quot;);</span></span>
-<span id="L759"><span class="lineNum">     759</span>              :   else</span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC tlaBgGNC">           1 :     *res = _info_list;</span></span>
-<span id="L761"><span class="lineNum">     761</span>              : </span>
-<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">           1 :   return ret;</span></span>
-<span id="L763"><span class="lineNum">     763</span>              : }</span>
+<span id="L749"><span class="lineNum">     749</span>              : </span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">           1 :   if (*res != NULL) {</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">           1 :     _ml_logw (WARN_MSG_DPTR_SET_OVER, &quot;ml_information_list_h res = NULL&quot;);</span></span>
+<span id="L752"><span class="lineNum">     752</span>              :   }</span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">           1 :   *res = NULL;</span></span>
+<span id="L754"><span class="lineNum">     754</span>              : </span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">           1 :   ret = ml_agent_resource_get (name, &amp;res_info);</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret || !res_info) {</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report_return (ret, &quot;Failed to invoke the method resource_get.&quot;);</span></span>
+<span id="L758"><span class="lineNum">     758</span>              :   }</span>
+<span id="L759"><span class="lineNum">     759</span>              : </span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC tlaBgGNC">           1 :   ret = _build_ml_info_from_json_cstr (res_info, &amp;_info_list);</span></span>
+<span id="L761"><span class="lineNum">     761</span> <span class="tlaGNC">           1 :   if (ML_ERROR_NONE != ret)</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaUNC tlaBgUNC">           0 :     _ml_error_report (&quot;Failed to convert json string to ml-information list.&quot;);</span></span>
+<span id="L763"><span class="lineNum">     763</span>              :   else</span>
+<span id="L764"><span class="lineNum">     764</span> <span class="tlaGNC tlaBgGNC">           1 :     *res = _info_list;</span></span>
+<span id="L765"><span class="lineNum">     765</span>              : </span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">           1 :   return ret;</span></span>
+<span id="L767"><span class="lineNum">     767</span>              : }</span>
         </pre>
               </td>
             </tr>
