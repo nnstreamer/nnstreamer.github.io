@@ -31,13 +31,13 @@
             <td class="headerValue">NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#121619a22eefb07aef74ab765d1eb0ec59b1416e</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">85.0&nbsp;%</td>
+            <td class="headerCovTableEntryMed">82.6&nbsp;%</td>
             <td class="headerCovTableEntry">167</td>
-            <td class="headerCovTableEntry">142</td>
+            <td class="headerCovTableEntry">138</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-29 05:24:43</td>
+            <td class="headerValue">2025-05-30 05:24:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -395,35 +395,35 @@
 <span id="L333"><span class="lineNum">     333</span>              :  * @brief Internal function to send data to custom connection.</span>
 <span id="L334"><span class="lineNum">     334</span>              :  */</span>
 <span id="L335"><span class="lineNum">     335</span>              : int</span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           3 : nns_edge_custom_send_data (nns_edge_custom_connection_h handle,</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 : nns_edge_custom_send_data (nns_edge_custom_connection_h handle,</span></span>
 <span id="L337"><span class="lineNum">     337</span>              :     nns_edge_data_h data_h)</span>
 <span id="L338"><span class="lineNum">     338</span>              : {</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           3 :   custom_connection_s *custom = (custom_connection_s *) handle;</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           2 :   custom_connection_s *custom = (custom_connection_s *) handle;</span></span>
 <span id="L340"><span class="lineNum">     340</span>              :   nns_edge_custom_s *custom_h;</span>
 <span id="L341"><span class="lineNum">     341</span>              :   int ret;</span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           3 :   if (!custom || !custom-&gt;instance)</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">           2 :   if (!custom || !custom-&gt;instance)</span></span>
 <span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           1 :     return NNS_EDGE_ERROR_INVALID_PARAMETER;</span></span>
 <span id="L345"><span class="lineNum">     345</span>              : </span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           2 :   ret = nns_edge_data_is_valid (data_h);</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           2 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           1 :   ret = nns_edge_data_is_valid (data_h);</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">           1 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           1 :     return ret;</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           1 :   custom_h = custom-&gt;instance;</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaUNC tlaBgUNC">           0 :   custom_h = custom-&gt;instance;</span></span>
 <span id="L351"><span class="lineNum">     351</span>              : </span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           1 :   ret = custom_h-&gt;nns_edge_custom_send_data (custom-&gt;priv, data_h);</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">           1 :   if (NNS_EDGE_ERROR_NONE != ret) {</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_edge_loge (&quot;Failed to send data to custom connection.&quot;);</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :   ret = custom_h-&gt;nns_edge_custom_send_data (custom-&gt;priv, data_h);</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :   if (NNS_EDGE_ERROR_NONE != ret) {</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :     nns_edge_loge (&quot;Failed to send data to custom connection.&quot;);</span></span>
 <span id="L355"><span class="lineNum">     355</span>              :   }</span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC tlaBgGNC">           1 :   return ret;</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :   return ret;</span></span>
 <span id="L358"><span class="lineNum">     358</span>              : }</span>
 <span id="L359"><span class="lineNum">     359</span>              : </span>
 <span id="L360"><span class="lineNum">     360</span>              : /**</span>
 <span id="L361"><span class="lineNum">     361</span>              :  * @brief Internal function to set information to custom connection.</span>
 <span id="L362"><span class="lineNum">     362</span>              :  */</span>
 <span id="L363"><span class="lineNum">     363</span>              : int</span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           6 : nns_edge_custom_set_info (nns_edge_custom_connection_h handle, const char *key,</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">           6 : nns_edge_custom_set_info (nns_edge_custom_connection_h handle, const char *key,</span></span>
 <span id="L365"><span class="lineNum">     365</span>              :     const char *value)</span>
 <span id="L366"><span class="lineNum">     366</span>              : {</span>
 <span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">           6 :   custom_connection_s *custom = (custom_connection_s *) handle;</span></span>
