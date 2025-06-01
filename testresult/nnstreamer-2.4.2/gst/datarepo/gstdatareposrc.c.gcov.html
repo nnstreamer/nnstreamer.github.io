@@ -31,13 +31,13 @@
             <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b08aab5fb9262b0538330a1f36ba76245a951b7b</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">79.3&nbsp;%</td>
+            <td class="headerCovTableEntryMed">79.1&nbsp;%</td>
             <td class="headerCovTableEntry">866</td>
-            <td class="headerCovTableEntry">687</td>
+            <td class="headerCovTableEntry">685</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-30 05:40:10</td>
+            <td class="headerValue">2025-06-02 05:37:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -890,13 +890,13 @@
 <span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">         112 :     byte_read = 0;</span></span>
 <span id="L829"><span class="lineNum">     829</span> <span class="tlaGNC">         112 :     to_read = tensor_size;</span></span>
 <span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">         224 :     while (to_read &gt; 0) {</span></span>
-<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         113 :       GST_LOG_OBJECT (src,</span></span>
+<span id="L831"><span class="lineNum">     831</span> <span class="tlaGNC">         112 :       GST_LOG_OBJECT (src,</span></span>
 <span id="L832"><span class="lineNum">     832</span>              :           &quot;Reading %zd bytes at offset 0x%&quot; G_GINT64_MODIFIER &quot;x (%lld size)&quot;,</span>
 <span id="L833"><span class="lineNum">     833</span>              :           to_read, src-&gt;fd_offset + byte_read, (long long) src-&gt;fd_offset);</span>
-<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">         113 :       errno = 0;</span></span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">         113 :       read_size = read (src-&gt;fd, data + byte_read, to_read);</span></span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">         113 :       GST_LOG_OBJECT (src, &quot;Read: %zd&quot;, read_size);</span></span>
-<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">         113 :       if (read_size &lt; 0) {</span></span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaGNC">         112 :       errno = 0;</span></span>
+<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">         112 :       read_size = read (src-&gt;fd, data + byte_read, to_read);</span></span>
+<span id="L836"><span class="lineNum">     836</span> <span class="tlaGNC">         112 :       GST_LOG_OBJECT (src, &quot;Read: %zd&quot;, read_size);</span></span>
+<span id="L837"><span class="lineNum">     837</span> <span class="tlaGNC">         112 :       if (read_size &lt; 0) {</span></span>
 <span id="L838"><span class="lineNum">     838</span> <span class="tlaUNC tlaBgUNC">           0 :         if (errno == EAGAIN || errno == EINTR)</span></span>
 <span id="L839"><span class="lineNum">     839</span> <span class="tlaUNC">           0 :           continue;</span></span>
 <span id="L840"><span class="lineNum">     840</span> <span class="tlaUNC">           0 :         GST_ELEMENT_ERROR (src, RESOURCE, READ, (NULL), GST_ERROR_SYSTEM);</span></span>
@@ -904,11 +904,11 @@
 <span id="L842"><span class="lineNum">     842</span> <span class="tlaUNC">           0 :         goto error;</span></span>
 <span id="L843"><span class="lineNum">     843</span>              :       }</span>
 <span id="L844"><span class="lineNum">     844</span>              :       /* files should eos if they read 0 and more was requested */</span>
-<span id="L845"><span class="lineNum">     845</span> <span class="tlaGNC tlaBgGNC">         113 :       if (read_size == 0) {</span></span>
+<span id="L845"><span class="lineNum">     845</span> <span class="tlaGNC tlaBgGNC">         112 :       if (read_size == 0) {</span></span>
 <span id="L846"><span class="lineNum">     846</span>              :         /* .. but first we should return any remaining data */</span>
-<span id="L847"><span class="lineNum">     847</span> <span class="tlaGNC">           1 :         if (byte_read &gt; 0)</span></span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaGNC">           1 :           break;</span></span>
-<span id="L849"><span class="lineNum">     849</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_DEBUG_OBJECT (src, &quot;EOS&quot;);</span></span>
+<span id="L847"><span class="lineNum">     847</span> <span class="tlaUNC tlaBgUNC">           0 :         if (byte_read &gt; 0)</span></span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaUNC">           0 :           break;</span></span>
+<span id="L849"><span class="lineNum">     849</span> <span class="tlaUNC">           0 :         GST_DEBUG_OBJECT (src, &quot;EOS&quot;);</span></span>
 <span id="L850"><span class="lineNum">     850</span> <span class="tlaUNC">           0 :         ret = GST_FLOW_EOS;</span></span>
 <span id="L851"><span class="lineNum">     851</span> <span class="tlaUNC">           0 :         goto error;</span></span>
 <span id="L852"><span class="lineNum">     852</span>              :       }</span>
