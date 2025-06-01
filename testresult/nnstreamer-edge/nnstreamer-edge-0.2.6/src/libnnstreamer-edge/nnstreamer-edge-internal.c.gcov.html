@@ -31,13 +31,13 @@
             <td class="headerValue">NNStreamer-edge 0.2.6-1 nnstreamer/nnstreamer-edge#121619a22eefb07aef74ab765d1eb0ec59b1416e</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">76.6&nbsp;%</td>
+            <td class="headerCovTableEntryMed">77.0&nbsp;%</td>
             <td class="headerCovTableEntry">1077</td>
-            <td class="headerCovTableEntry">825</td>
+            <td class="headerCovTableEntry">829</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-30 05:24:14</td>
+            <td class="headerValue">2025-06-02 05:22:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -932,16 +932,16 @@
 <span id="L870"><span class="lineNum">     870</span> <span class="tlaGNC">           7 :   nns_edge_cond_signal (eh);</span></span>
 <span id="L871"><span class="lineNum">     871</span> <span class="tlaGNC">           7 :   nns_edge_unlock (eh);</span></span>
 <span id="L872"><span class="lineNum">     872</span>              : </span>
-<span id="L873"><span class="lineNum">     873</span> <span class="tlaGNC">          42 :   while (eh-&gt;sending &amp;&amp;</span></span>
-<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC">          42 :       NNS_EDGE_ERROR_NONE == nns_edge_queue_wait_pop (eh-&gt;send_queue, 0U,</span></span>
+<span id="L873"><span class="lineNum">     873</span> <span class="tlaGNC">          43 :   while (eh-&gt;sending &amp;&amp;</span></span>
+<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC">          43 :       NNS_EDGE_ERROR_NONE == nns_edge_queue_wait_pop (eh-&gt;send_queue, 0U,</span></span>
 <span id="L875"><span class="lineNum">     875</span>              :           &amp;data_h, &amp;data_size)) {</span>
-<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          35 :     if (!eh-&gt;sending) {</span></span>
+<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          36 :     if (!eh-&gt;sending) {</span></span>
 <span id="L877"><span class="lineNum">     877</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_edge_data_destroy (data_h);</span></span>
 <span id="L878"><span class="lineNum">     878</span> <span class="tlaUNC">           0 :       break;</span></span>
 <span id="L879"><span class="lineNum">     879</span>              :     }</span>
 <span id="L880"><span class="lineNum">     880</span>              : </span>
 <span id="L881"><span class="lineNum">     881</span>              :     /* Send data to destination */</span>
-<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC tlaBgGNC">          35 :     switch (eh-&gt;connect_type) {</span></span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC tlaBgGNC">          36 :     switch (eh-&gt;connect_type) {</span></span>
 <span id="L883"><span class="lineNum">     883</span> <span class="tlaGNC">          30 :       case NNS_EDGE_CONNECT_TYPE_TCP:</span></span>
 <span id="L884"><span class="lineNum">     884</span>              :       case NNS_EDGE_CONNECT_TYPE_HYBRID:</span>
 <span id="L885"><span class="lineNum">     885</span> <span class="tlaGNC">          30 :         ret = nns_edge_data_get_info (data_h, &quot;client_id&quot;, &amp;val);</span></span>
@@ -980,15 +980,15 @@
 <span id="L918"><span class="lineNum">     918</span> <span class="tlaGNC">           5 :         if (NNS_EDGE_ERROR_NONE != ret)</span></span>
 <span id="L919"><span class="lineNum">     919</span> <span class="tlaUNC tlaBgUNC">           0 :           nns_edge_loge (&quot;Failed to send data via MQTT connection.&quot;);</span></span>
 <span id="L920"><span class="lineNum">     920</span> <span class="tlaGNC tlaBgGNC">           5 :         break;</span></span>
-<span id="L921"><span class="lineNum">     921</span> <span class="tlaUNC tlaBgUNC">           0 :       case NNS_EDGE_CONNECT_TYPE_CUSTOM:</span></span>
-<span id="L922"><span class="lineNum">     922</span> <span class="tlaUNC">           0 :         ret = nns_edge_custom_send_data (eh-&gt;custom_connection_h, data_h);</span></span>
-<span id="L923"><span class="lineNum">     923</span> <span class="tlaUNC">           0 :         if (NNS_EDGE_ERROR_NONE != ret)</span></span>
-<span id="L924"><span class="lineNum">     924</span> <span class="tlaUNC">           0 :           nns_edge_loge (&quot;Failed to send data via custom connection.&quot;);</span></span>
-<span id="L925"><span class="lineNum">     925</span> <span class="tlaUNC">           0 :         break;</span></span>
-<span id="L926"><span class="lineNum">     926</span> <span class="tlaUNC">           0 :       default:</span></span>
+<span id="L921"><span class="lineNum">     921</span> <span class="tlaGNC">           1 :       case NNS_EDGE_CONNECT_TYPE_CUSTOM:</span></span>
+<span id="L922"><span class="lineNum">     922</span> <span class="tlaGNC">           1 :         ret = nns_edge_custom_send_data (eh-&gt;custom_connection_h, data_h);</span></span>
+<span id="L923"><span class="lineNum">     923</span> <span class="tlaGNC">           1 :         if (NNS_EDGE_ERROR_NONE != ret)</span></span>
+<span id="L924"><span class="lineNum">     924</span> <span class="tlaUNC tlaBgUNC">           0 :           nns_edge_loge (&quot;Failed to send data via custom connection.&quot;);</span></span>
+<span id="L925"><span class="lineNum">     925</span> <span class="tlaGNC tlaBgGNC">           1 :         break;</span></span>
+<span id="L926"><span class="lineNum">     926</span> <span class="tlaUNC tlaBgUNC">           0 :       default:</span></span>
 <span id="L927"><span class="lineNum">     927</span> <span class="tlaUNC">           0 :         break;</span></span>
 <span id="L928"><span class="lineNum">     928</span>              :     }</span>
-<span id="L929"><span class="lineNum">     929</span> <span class="tlaGNC tlaBgGNC">          35 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L929"><span class="lineNum">     929</span> <span class="tlaGNC tlaBgGNC">          36 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L930"><span class="lineNum">     930</span>              :   }</span>
 <span id="L931"><span class="lineNum">     931</span> <span class="tlaGNC">           7 :   eh-&gt;sending = false;</span></span>
 <span id="L932"><span class="lineNum">     932</span>              : </span>
@@ -1242,15 +1242,15 @@
 <span id="L1180"><span class="lineNum">    1180</span> <span class="tlaGNC">           6 :   nns_edge_cond_signal (eh);</span></span>
 <span id="L1181"><span class="lineNum">    1181</span> <span class="tlaGNC">           6 :   nns_edge_unlock (eh);</span></span>
 <span id="L1182"><span class="lineNum">    1182</span>              : </span>
-<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">        1567 :   while (eh-&gt;listening) {</span></span>
+<span id="L1183"><span class="lineNum">    1183</span> <span class="tlaGNC">        1568 :   while (eh-&gt;listening) {</span></span>
 <span id="L1184"><span class="lineNum">    1184</span>              :     struct pollfd poll_fd;</span>
 <span id="L1185"><span class="lineNum">    1185</span>              : </span>
-<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">        1561 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
-<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">        1561 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
-<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">        1561 :     poll_fd.revents = 0;</span></span>
+<span id="L1186"><span class="lineNum">    1186</span> <span class="tlaGNC">        1562 :     poll_fd.fd = eh-&gt;listener_fd;</span></span>
+<span id="L1187"><span class="lineNum">    1187</span> <span class="tlaGNC">        1562 :     poll_fd.events = POLLIN | POLLHUP | POLLERR;</span></span>
+<span id="L1188"><span class="lineNum">    1188</span> <span class="tlaGNC">        1562 :     poll_fd.revents = 0;</span></span>
 <span id="L1189"><span class="lineNum">    1189</span>              : </span>
 <span id="L1190"><span class="lineNum">    1190</span>              :     /* 10 milliseconds */</span>
-<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">        1561 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
+<span id="L1191"><span class="lineNum">    1191</span> <span class="tlaGNC">        1562 :     if (poll (&amp;poll_fd, 1, 10) &gt; 0) {</span></span>
 <span id="L1192"><span class="lineNum">    1192</span> <span class="tlaGNC">           6 :       if (!eh-&gt;listening)</span></span>
 <span id="L1193"><span class="lineNum">    1193</span> <span class="tlaUNC tlaBgUNC">           0 :         break;</span></span>
 <span id="L1194"><span class="lineNum">    1194</span>              : </span>
