@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b08aab5fb9262b0538330a1f36ba76245a951b7b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssdpp.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c1d4768dfc56264ff6450099c21e7a489332f2b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/box_properties/mobilenetssdpp.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b08aab5fb9262b0538330a1f36ba76245a951b7b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c1d4768dfc56264ff6450099c21e7a489332f2b</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">71.6&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-02 05:37:15</td>
+            <td class="headerValue">2025-06-02 12:43:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">88.9&nbsp;%</td>
@@ -189,22 +189,22 @@
 <span id="L127"><span class="lineNum">     127</span>              : } mobilenet_ssd_pp_bbox_idx_t;</span>
 <span id="L128"><span class="lineNum">     128</span>              : </span>
 <span id="L129"><span class="lineNum">     129</span>              : /** @brief Constructor of MobilenetSSDPP */</span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC tlaBgGNC">          31 : MobilenetSSDPP::MobilenetSSDPP ()</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC tlaBgGNC">          33 : MobilenetSSDPP::MobilenetSSDPP ()</span></span>
 <span id="L131"><span class="lineNum">     131</span>              : {</span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">          31 :   max_detection = 0;</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          31 :   tensor_mapping[LOCATIONS_IDX] = LOCATIONS_DEFAULT;</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          31 :   tensor_mapping[CLASSES_IDX] = CLASSES_DEFAULT;</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          31 :   tensor_mapping[SCORES_IDX] = SCORES_DEFAULT;</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">          31 :   tensor_mapping[NUM_IDX] = NUM_DEFAULT;</span></span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          31 :   threshold = THRESHOLD_DEFAULT;</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          31 :   name = g_strdup_printf (&quot;mobilenet-ssd-postprocess&quot;);</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">          33 :   max_detection = 0;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          33 :   tensor_mapping[LOCATIONS_IDX] = LOCATIONS_DEFAULT;</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          33 :   tensor_mapping[CLASSES_IDX] = CLASSES_DEFAULT;</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          33 :   tensor_mapping[SCORES_IDX] = SCORES_DEFAULT;</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">          33 :   tensor_mapping[NUM_IDX] = NUM_DEFAULT;</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          33 :   threshold = THRESHOLD_DEFAULT;</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          33 :   name = g_strdup_printf (&quot;mobilenet-ssd-postprocess&quot;);</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          33 : }</span></span>
 <span id="L140"><span class="lineNum">     140</span>              : </span>
 <span id="L141"><span class="lineNum">     141</span>              : /** @brief Destructor of MobilenetSSDPP */</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          62 : MobilenetSSDPP::~MobilenetSSDPP ()</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          66 : MobilenetSSDPP::~MobilenetSSDPP ()</span></span>
 <span id="L143"><span class="lineNum">     143</span>              : {</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          31 :   g_free (name);</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          62 : }</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          33 :   g_free (name);</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          66 : }</span></span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
 <span id="L147"><span class="lineNum">     147</span>              : /** @brief Helper to retrieve tensor index by feature */</span>
 <span id="L148"><span class="lineNum">     148</span>              : int</span>
@@ -350,18 +350,18 @@
 <span id="L288"><span class="lineNum">     288</span>              : </span>
 <span id="L289"><span class="lineNum">     289</span>              : /** @brief Initialize this object for tensor decoder bounding box */</span>
 <span id="L290"><span class="lineNum">     290</span>              : void</span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          31 : init_properties_mobilenetssd_pp ()</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          33 : init_properties_mobilenetssd_pp ()</span></span>
 <span id="L292"><span class="lineNum">     292</span>              : {</span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          31 :   mobilenetpp = new MobilenetSSDPP ();</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          31 :   BoundingBox::addProperties (mobilenetpp);</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          33 :   mobilenetpp = new MobilenetSSDPP ();</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          33 :   BoundingBox::addProperties (mobilenetpp);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          33 : }</span></span>
 <span id="L296"><span class="lineNum">     296</span>              : </span>
 <span id="L297"><span class="lineNum">     297</span>              : /** @brief Destruct this object for tensor decoder bounding box */</span>
 <span id="L298"><span class="lineNum">     298</span>              : void</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          31 : fini_properties_mobilenetssd_pp ()</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          33 : fini_properties_mobilenetssd_pp ()</span></span>
 <span id="L300"><span class="lineNum">     300</span>              : {</span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          31 :   delete mobilenetpp;</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          33 :   delete mobilenetpp;</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          33 : }</span></span>
         </pre>
               </td>
             </tr>

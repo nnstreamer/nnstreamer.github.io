@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b08aab5fb9262b0538330a1f36ba76245a951b7b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.h</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c1d4768dfc56264ff6450099c21e7a489332f2b - nnstreamer-2.4.2/ext/nnstreamer/tensor_decoder/tensordec-boundingbox.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#b08aab5fb9262b0538330a1f36ba76245a951b7b</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#7c1d4768dfc56264ff6450099c21e7a489332f2b</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-02 05:37:15</td>
+            <td class="headerValue">2025-06-02 12:43:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
@@ -298,33 +298,33 @@
 <span id="L236"><span class="lineNum">     236</span>              : class BoxProperties</span>
 <span id="L237"><span class="lineNum">     237</span>              : {</span>
 <span id="L238"><span class="lineNum">     238</span>              :   public:</span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC tlaBgGNC">         248 :   virtual ~BoxProperties () = default;</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC tlaBgGNC">         264 :   virtual ~BoxProperties () = default;</span></span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
 <span id="L241"><span class="lineNum">     241</span>              :   /* mandatory methods */</span>
 <span id="L242"><span class="lineNum">     242</span>              :   virtual int setOptionInternal (const char *param) = 0;</span>
 <span id="L243"><span class="lineNum">     243</span>              :   virtual int checkCompatible (const GstTensorsConfig *config) = 0;</span>
 <span id="L244"><span class="lineNum">     244</span>              :   virtual GArray *decode (const GstTensorsConfig *config, const GstTensorMemory *input) = 0;</span>
 <span id="L245"><span class="lineNum">     245</span>              : </span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          30 :   void setInputWidth (guint width)</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          34 :   void setInputWidth (guint width)</span></span>
 <span id="L247"><span class="lineNum">     247</span>              :   {</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          30 :     i_width = width;</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          30 :   }</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          30 :   void setInputHeight (guint height)</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          34 :     i_width = width;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          34 :   }</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          34 :   void setInputHeight (guint height)</span></span>
 <span id="L251"><span class="lineNum">     251</span>              :   {</span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          30 :     i_height = height;</span></span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          30 :   }</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          13 :   void setTotalLabels (guint labels)</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          34 :     i_height = height;</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          34 :   }</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          15 :   void setTotalLabels (guint labels)</span></span>
 <span id="L255"><span class="lineNum">     255</span>              :   {</span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          13 :     total_labels = labels;</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          13 :   }</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          15 :     total_labels = labels;</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          15 :   }</span></span>
 <span id="L258"><span class="lineNum">     258</span>              : </span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          32 :   guint getInputWidth ()</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          33 :   guint getInputWidth ()</span></span>
 <span id="L260"><span class="lineNum">     260</span>              :   {</span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          32 :     return i_width;</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">          33 :     return i_width;</span></span>
 <span id="L262"><span class="lineNum">     262</span>              :   }</span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          32 :   guint getInputHeight ()</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">          33 :   guint getInputHeight ()</span></span>
 <span id="L264"><span class="lineNum">     264</span>              :   {</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          32 :     return i_height;</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          33 :     return i_height;</span></span>
 <span id="L266"><span class="lineNum">     266</span>              :   }</span>
 <span id="L267"><span class="lineNum">     267</span>              :   gchar *name;</span>
 <span id="L268"><span class="lineNum">     268</span>              : </span>
