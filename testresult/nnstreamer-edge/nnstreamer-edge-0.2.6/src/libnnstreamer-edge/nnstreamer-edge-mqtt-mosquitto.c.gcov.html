@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-03 05:24:20</td>
+            <td class="headerValue">2025-06-04 05:24:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -328,8 +328,8 @@
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          10 :     mosquitto_publish (handle, NULL, bh-&gt;topic, 0, NULL, 1, true);</span></span>
 <span id="L267"><span class="lineNum">     267</span>              : </span>
 <span id="L268"><span class="lineNum">     268</span>              :     /* Wait up to 10 seconds. */</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        3017 :     while (!bh-&gt;cleared &amp;&amp; ++wait &lt; 1000U)</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        3007 :       nns_edge_cond_wait_until (bh, 10);</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        3015 :     while (!bh-&gt;cleared &amp;&amp; ++wait &lt; 1000U)</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        3005 :       nns_edge_cond_wait_until (bh, 10);</span></span>
 <span id="L271"><span class="lineNum">     271</span>              : </span>
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          10 :     mosquitto_publish_callback_set (handle, NULL);</span></span>
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          10 :     bh-&gt;cleared = true;</span></span>
@@ -518,10 +518,10 @@
 <span id="L456"><span class="lineNum">     456</span>              :    * (Default: 0 for infinite timeout)</span>
 <span id="L457"><span class="lineNum">     457</span>              :    */</span>
 <span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">           4 :   ret = nns_edge_queue_wait_pop (bh-&gt;message_queue, timeout, msg, msg_len);</span></span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           3 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
-<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">           2 :     nns_edge_loge (&quot;Failed to get message from mqtt broker within timeout.&quot;);</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           4 :   if (NNS_EDGE_ERROR_NONE != ret)</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">           3 :     nns_edge_loge (&quot;Failed to get message from mqtt broker within timeout.&quot;);</span></span>
 <span id="L461"><span class="lineNum">     461</span>              : </span>
-<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">           3 :   return ret;</span></span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">           4 :   return ret;</span></span>
 <span id="L463"><span class="lineNum">     463</span>              : }</span>
 <span id="L464"><span class="lineNum">     464</span>              : </span>
 <span id="L465"><span class="lineNum">     465</span>              : /**</span>
