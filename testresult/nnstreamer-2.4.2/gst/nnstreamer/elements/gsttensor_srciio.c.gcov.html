@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-04 05:38:47</td>
+            <td class="headerValue">2025-06-05 05:35:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -2362,27 +2362,27 @@
 <span id="L2300"><span class="lineNum">    2300</span>              :  * @brief returns the time for the buffers</span>
 <span id="L2301"><span class="lineNum">    2301</span>              :  */</span>
 <span id="L2302"><span class="lineNum">    2302</span>              : static void</span>
-<span id="L2303"><span class="lineNum">    2303</span> <span class="tlaGNC">          25 : gst_tensor_src_iio_get_times (GstBaseSrc * basesrc, GstBuffer * buffer,</span></span>
+<span id="L2303"><span class="lineNum">    2303</span> <span class="tlaGNC">          24 : gst_tensor_src_iio_get_times (GstBaseSrc * basesrc, GstBuffer * buffer,</span></span>
 <span id="L2304"><span class="lineNum">    2304</span>              :     GstClockTime * start, GstClockTime * end)</span>
 <span id="L2305"><span class="lineNum">    2305</span>              : {</span>
 <span id="L2306"><span class="lineNum">    2306</span>              :   GstClockTime timestamp;</span>
 <span id="L2307"><span class="lineNum">    2307</span>              :   GstClockTime duration;</span>
 <span id="L2308"><span class="lineNum">    2308</span>              :   UNUSED (basesrc);</span>
 <span id="L2309"><span class="lineNum">    2309</span>              : </span>
-<span id="L2310"><span class="lineNum">    2310</span> <span class="tlaGNC">          25 :   timestamp = GST_BUFFER_DTS (buffer);</span></span>
-<span id="L2311"><span class="lineNum">    2311</span> <span class="tlaGNC">          25 :   duration = GST_BUFFER_DURATION (buffer);</span></span>
+<span id="L2310"><span class="lineNum">    2310</span> <span class="tlaGNC">          24 :   timestamp = GST_BUFFER_DTS (buffer);</span></span>
+<span id="L2311"><span class="lineNum">    2311</span> <span class="tlaGNC">          24 :   duration = GST_BUFFER_DURATION (buffer);</span></span>
 <span id="L2312"><span class="lineNum">    2312</span>              : </span>
 <span id="L2313"><span class="lineNum">    2313</span>              :   /** can't sync using DTS, use PTS */</span>
-<span id="L2314"><span class="lineNum">    2314</span> <span class="tlaGNC">          25 :   if (!GST_CLOCK_TIME_IS_VALID (timestamp))</span></span>
-<span id="L2315"><span class="lineNum">    2315</span> <span class="tlaGNC">          25 :     timestamp = GST_BUFFER_PTS (buffer);</span></span>
+<span id="L2314"><span class="lineNum">    2314</span> <span class="tlaGNC">          24 :   if (!GST_CLOCK_TIME_IS_VALID (timestamp))</span></span>
+<span id="L2315"><span class="lineNum">    2315</span> <span class="tlaGNC">          24 :     timestamp = GST_BUFFER_PTS (buffer);</span></span>
 <span id="L2316"><span class="lineNum">    2316</span>              : </span>
-<span id="L2317"><span class="lineNum">    2317</span> <span class="tlaGNC">          25 :   if (GST_CLOCK_TIME_IS_VALID (timestamp)) {</span></span>
+<span id="L2317"><span class="lineNum">    2317</span> <span class="tlaGNC">          24 :   if (GST_CLOCK_TIME_IS_VALID (timestamp)) {</span></span>
 <span id="L2318"><span class="lineNum">    2318</span> <span class="tlaUNC tlaBgUNC">           0 :     *start = timestamp;</span></span>
 <span id="L2319"><span class="lineNum">    2319</span> <span class="tlaUNC">           0 :     if (GST_CLOCK_TIME_IS_VALID (duration)) {</span></span>
 <span id="L2320"><span class="lineNum">    2320</span> <span class="tlaUNC">           0 :       *end = timestamp + duration;</span></span>
 <span id="L2321"><span class="lineNum">    2321</span>              :     }</span>
 <span id="L2322"><span class="lineNum">    2322</span>              :   }</span>
-<span id="L2323"><span class="lineNum">    2323</span> <span class="tlaGNC tlaBgGNC">          25 : }</span></span>
+<span id="L2323"><span class="lineNum">    2323</span> <span class="tlaGNC tlaBgGNC">          24 : }</span></span>
 <span id="L2324"><span class="lineNum">    2324</span>              : </span>
 <span id="L2325"><span class="lineNum">    2325</span>              : /**</span>
 <span id="L2326"><span class="lineNum">    2326</span>              :  * @brief create a buffer with requested size and offset</span>
@@ -2574,7 +2574,7 @@
 <span id="L2512"><span class="lineNum">    2512</span>              :   /** wait for the data to arrive */</span>
 <span id="L2513"><span class="lineNum">    2513</span> <span class="tlaGNC tlaBgGNC">          36 :   time_to_end = g_get_real_time () + self-&gt;poll_timeout * 1000;</span></span>
 <span id="L2514"><span class="lineNum">    2514</span>              :   while (TRUE) {</span>
-<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         275 :     if (self-&gt;trigger.name != NULL) {</span></span>
+<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         276 :     if (self-&gt;trigger.name != NULL) {</span></span>
 <span id="L2516"><span class="lineNum">    2516</span> <span class="tlaGNC">          15 :       status = poll (self-&gt;buffer_data_fp, 1, self-&gt;poll_timeout);</span></span>
 <span id="L2517"><span class="lineNum">    2517</span> <span class="tlaGNC">          15 :       if (status &lt; 0) {</span></span>
 <span id="L2518"><span class="lineNum">    2518</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Error %d while polling the buffer.&quot;, status);</span></span>
@@ -2590,9 +2590,9 @@
 <span id="L2528"><span class="lineNum">    2528</span> <span class="tlaGNC tlaBgGNC">          15 :       self-&gt;buffer_data_fp-&gt;revents = 0;</span></span>
 <span id="L2529"><span class="lineNum">    2529</span>              :     } else {</span>
 <span id="L2530"><span class="lineNum">    2530</span>              :       /** sleep for a device tick */</span>
-<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         260 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
+<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         261 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
 <span id="L2532"><span class="lineNum">    2532</span>              :               self-&gt;buffer_capacity)) {</span>
-<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         260 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
+<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         261 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
 <span id="L2534"><span class="lineNum">    2534</span>              :       } else {</span>
 <span id="L2535"><span class="lineNum">    2535</span> <span class="tlaUNC tlaBgUNC">           0 :         g_usleep (MAX (1,</span></span>
 <span id="L2536"><span class="lineNum">    2536</span>              :                 (self-&gt;buffer_capacity / self-&gt;sampling_frequency) *</span>
@@ -2601,13 +2601,13 @@
 <span id="L2539"><span class="lineNum">    2539</span>              :     }</span>
 <span id="L2540"><span class="lineNum">    2540</span>              : </span>
 <span id="L2541"><span class="lineNum">    2541</span>              :     /** using read for non-blocking access */</span>
-<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         275 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
-<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         275 :     if (status &lt; bytes_to_read) {</span></span>
-<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         239 :       if (errno == EAGAIN) {</span></span>
-<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         239 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
-<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         239 :         cur_time = g_get_real_time ();</span></span>
-<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         239 :         if (time_to_end &gt;= cur_time) {</span></span>
-<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         239 :           continue;</span></span>
+<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         276 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
+<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         276 :     if (status &lt; bytes_to_read) {</span></span>
+<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         240 :       if (errno == EAGAIN) {</span></span>
+<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         240 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
+<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         240 :         cur_time = g_get_real_time ();</span></span>
+<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         240 :         if (time_to_end &gt;= cur_time) {</span></span>
+<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         240 :           continue;</span></span>
 <span id="L2549"><span class="lineNum">    2549</span>              :         } else {</span>
 <span id="L2550"><span class="lineNum">    2550</span> <span class="tlaUNC tlaBgUNC">           0 :           GST_ERROR_OBJECT (self, &quot;EAGAIN timeout expired.&quot;);</span></span>
 <span id="L2551"><span class="lineNum">    2551</span> <span class="tlaUNC">           0 :           goto error_data_free;</span></span>
