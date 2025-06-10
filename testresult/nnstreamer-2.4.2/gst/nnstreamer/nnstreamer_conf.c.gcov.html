@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-10 05:39:46</td>
+            <td class="headerValue">2025-06-11 05:39:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryMed">83.3&nbsp;%</td>
@@ -258,9 +258,9 @@
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">        1299 :   prefix = strlen (subplugin_prefixes[type]);</span></span>
 <span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">        1299 :   extension = strlen (NNSTREAMER_SO_FILE_EXTENSION);</span></span>
 <span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       50222 :   while (NULL != (entry = g_dir_read_name (gdir))) {</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       50220 :   while (NULL != (entry = g_dir_read_name (gdir))) {</span></span>
 <span id="L200"><span class="lineNum">     200</span>              :     /* check file prefix for given type, currently handle .so and .dylib. */</span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">       47624 :     if (g_str_has_prefix (entry, subplugin_prefixes[type]) &amp;&amp;</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">       47622 :     if (g_str_has_prefix (entry, subplugin_prefixes[type]) &amp;&amp;</span></span>
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">       43206 :         g_str_has_suffix (entry, NNSTREAMER_SO_FILE_EXTENSION)) {</span></span>
 <span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">       12534 :       fullpath = g_build_filename (dir, entry, NULL);</span></span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
@@ -550,8 +550,8 @@
 <span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">         381 :   nnsconf_loadconf (FALSE);</span></span>
 <span id="L489"><span class="lineNum">     489</span>              : </span>
 <span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">         381 :   total = nnsconf_get_subplugin_info (type, &amp;info);</span></span>
-<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        3116 :   for (i = 0; i &lt; total; i++) {</span></span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">        2974 :     if (g_strcmp0 (info.names[i], subpluginname) == 0)</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        3069 :   for (i = 0; i &lt; total; i++) {</span></span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">        2927 :     if (g_strcmp0 (info.names[i], subpluginname) == 0)</span></span>
 <span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">         381 :       return info.paths[i];</span></span>
 <span id="L494"><span class="lineNum">     494</span>              :   }</span>
 <span id="L495"><span class="lineNum">     495</span>              : </span>
