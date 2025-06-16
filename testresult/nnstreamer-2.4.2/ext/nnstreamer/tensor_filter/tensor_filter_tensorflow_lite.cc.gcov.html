@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-16 05:38:58</td>
+            <td class="headerValue">2025-06-17 05:39:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.8&nbsp;%</td>
@@ -429,20 +429,20 @@
 <span id="L367"><span class="lineNum">     367</span>              :    * GStreamer buffers memory whose address changes at every round.</span>
 <span id="L368"><span class="lineNum">     368</span>              :    */</span>
 <span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">        1464 :   if (is_xnnpack_delegated) {</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">        2388 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        1194 :       tensor_ptr = inputTensorPtr[i];</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        1194 :       g_assert (tensor_ptr-&gt;bytes == input[i].size);</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">        1194 :       memcpy (tensor_ptr-&gt;data.raw, input[i].data, input[i].size);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">        2386 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        1193 :       tensor_ptr = inputTensorPtr[i];</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        1193 :       g_assert (tensor_ptr-&gt;bytes == input[i].size);</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">        1193 :       memcpy (tensor_ptr-&gt;data.raw, input[i].data, input[i].size);</span></span>
 <span id="L374"><span class="lineNum">     374</span>              :     }</span>
 <span id="L375"><span class="lineNum">     375</span>              :   } else {</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         917 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         647 :       tensor_ptr = inputTensorPtr[i];</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         647 :       tensor_ptr-&gt;data.raw = (char *) input[i].data;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         919 :     for (unsigned int i = 0; i &lt; inputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         648 :       tensor_ptr = inputTensorPtr[i];</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         648 :       tensor_ptr-&gt;data.raw = (char *) input[i].data;</span></span>
 <span id="L379"><span class="lineNum">     379</span>              :     }</span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         936 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         666 :       tensor_ptr = outputTensorPtr[i];</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         666 :       tensor_ptr-&gt;data.raw = (char *) output[i].data;</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         938 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         667 :       tensor_ptr = outputTensorPtr[i];</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         667 :       tensor_ptr-&gt;data.raw = (char *) output[i].data;</span></span>
 <span id="L384"><span class="lineNum">     384</span>              :     }</span>
 <span id="L385"><span class="lineNum">     385</span>              :   }</span>
 <span id="L386"><span class="lineNum">     386</span>              : </span>
@@ -458,10 +458,10 @@
 <span id="L396"><span class="lineNum">     396</span>              :    * To handle the case, memcpy the output buffer directly.</span>
 <span id="L397"><span class="lineNum">     397</span>              :    */</span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">        1464 :   if (is_xnnpack_delegated || !is_cached_after_first_invoke) {</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">        2644 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">        1356 :       tensor_ptr = outputTensorPtr[i];</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">        1356 :       g_assert (tensor_ptr-&gt;bytes == output[i].size);</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">        1356 :       memcpy (output[i].data, tensor_ptr-&gt;data.raw, output[i].size);</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">        2642 :     for (unsigned int i = 0; i &lt; outputTensorMeta.num_tensors; ++i) {</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">        1355 :       tensor_ptr = outputTensorPtr[i];</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">        1355 :       g_assert (tensor_ptr-&gt;bytes == output[i].size);</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">        1355 :       memcpy (output[i].data, tensor_ptr-&gt;data.raw, output[i].size);</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :     }</span>
 <span id="L404"><span class="lineNum">     404</span>              :   }</span>
 <span id="L405"><span class="lineNum">     405</span>              : </span>
