@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-06-26 05:41:41</td>
+            <td class="headerValue">2025-06-27 05:40:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.0&nbsp;%</td>
@@ -396,22 +396,22 @@
 <span id="L334"><span class="lineNum">     334</span>              : const accl_hw lua_subplugin::hw_list[] = { ACCL_CPU };</span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
 <span id="L336"><span class="lineNum">     336</span>              : /** @brief Class constructor */</span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          92 : lua_subplugin::lua_subplugin ()</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          92 :     : tensor_filter_subplugin (), L (NULL), input_lua_tensors{}, output_lua_tensors{}</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          99 : lua_subplugin::lua_subplugin ()</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          99 :     : tensor_filter_subplugin (), L (NULL), input_lua_tensors{}, output_lua_tensors{}</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : {</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          92 :   gst_tensors_info_init (std::addressof (inputInfo));</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          92 :   gst_tensors_info_init (std::addressof (outputInfo));</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          92 : }</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          99 :   gst_tensors_info_init (std::addressof (inputInfo));</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          99 :   gst_tensors_info_init (std::addressof (outputInfo));</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          99 : }</span></span>
 <span id="L343"><span class="lineNum">     343</span>              : </span>
 <span id="L344"><span class="lineNum">     344</span>              : /** @brief Class destructor */</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         130 : lua_subplugin::~lua_subplugin ()</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         144 : lua_subplugin::~lua_subplugin ()</span></span>
 <span id="L346"><span class="lineNum">     346</span>              : {</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          65 :   gst_tensors_info_free (std::addressof (inputInfo));</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          65 :   gst_tensors_info_free (std::addressof (outputInfo));</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          72 :   gst_tensors_info_free (std::addressof (inputInfo));</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          72 :   gst_tensors_info_free (std::addressof (outputInfo));</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          65 :   if (L != NULL)</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          72 :   if (L != NULL)</span></span>
 <span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          29 :     lua_close (L);</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         130 : }</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         144 : }</span></span>
 <span id="L353"><span class="lineNum">     353</span>              : </span>
 <span id="L354"><span class="lineNum">     354</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L355"><span class="lineNum">     355</span>              : tensor_filter_subplugin &amp;</span>
@@ -591,16 +591,16 @@
 <span id="L529"><span class="lineNum">     529</span>              : </span>
 <span id="L530"><span class="lineNum">     530</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L531"><span class="lineNum">     531</span>              : void</span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">         146 : lua_subplugin::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">         167 : lua_subplugin::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
 <span id="L533"><span class="lineNum">     533</span>              : {</span>
-<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">         146 :   info.name = name;</span></span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         146 :   info.allow_in_place = 0;</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         146 :   info.allocate_in_invoke = 0;</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         146 :   info.run_without_model = 0;</span></span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         146 :   info.verify_model_path = 0; /** We may run scripts expressed as property */</span></span>
-<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">         146 :   info.hw_list = hw_list;</span></span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         146 :   info.num_hw = num_hw;</span></span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         146 : }</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">         167 :   info.name = name;</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         167 :   info.allow_in_place = 0;</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         167 :   info.allocate_in_invoke = 0;</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         167 :   info.run_without_model = 0;</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         167 :   info.verify_model_path = 0; /** We may run scripts expressed as property */</span></span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">         167 :   info.hw_list = hw_list;</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         167 :   info.num_hw = num_hw;</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         167 : }</span></span>
 <span id="L542"><span class="lineNum">     542</span>              : </span>
 <span id="L543"><span class="lineNum">     543</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L544"><span class="lineNum">     544</span>              : int</span>
@@ -630,39 +630,39 @@
 <span id="L568"><span class="lineNum">     568</span>              :  * @brief Initialize the object for runtime register</span>
 <span id="L569"><span class="lineNum">     569</span>              :  */</span>
 <span id="L570"><span class="lineNum">     570</span>              : void</span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC tlaBgGNC">          36 : lua_subplugin::init_filter_lua (void)</span></span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC tlaBgGNC">          43 : lua_subplugin::init_filter_lua (void)</span></span>
 <span id="L572"><span class="lineNum">     572</span>              : {</span>
 <span id="L573"><span class="lineNum">     573</span>              :   registeredRepresentation</span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          36 :       = tensor_filter_subplugin::register_subplugin&lt;lua_subplugin&gt; ();</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          36 : }</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          43 :       = tensor_filter_subplugin::register_subplugin&lt;lua_subplugin&gt; ();</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          43 : }</span></span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
 <span id="L577"><span class="lineNum">     577</span>              : /**</span>
 <span id="L578"><span class="lineNum">     578</span>              :  * @brief Destruct the subplugin</span>
 <span id="L579"><span class="lineNum">     579</span>              :  */</span>
 <span id="L580"><span class="lineNum">     580</span>              : void</span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          36 : lua_subplugin::fini_filter_lua (void)</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          43 : lua_subplugin::fini_filter_lua (void)</span></span>
 <span id="L582"><span class="lineNum">     582</span>              : {</span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          36 :   assert (registeredRepresentation != nullptr);</span></span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          36 :   tensor_filter_subplugin::unregister_subplugin (registeredRepresentation);</span></span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          36 : }</span></span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          43 :   assert (registeredRepresentation != nullptr);</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          43 :   tensor_filter_subplugin::unregister_subplugin (registeredRepresentation);</span></span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          43 : }</span></span>
 <span id="L586"><span class="lineNum">     586</span>              : </span>
 <span id="L587"><span class="lineNum">     587</span>              : /**</span>
 <span id="L588"><span class="lineNum">     588</span>              :  * @brief initializer</span>
 <span id="L589"><span class="lineNum">     589</span>              :  */</span>
 <span id="L590"><span class="lineNum">     590</span>              : void</span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          36 : _init_filter_lua ()</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          43 : _init_filter_lua ()</span></span>
 <span id="L592"><span class="lineNum">     592</span>              : {</span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">          36 :   lua_subplugin::init_filter_lua ();</span></span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">          36 : }</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">          43 :   lua_subplugin::init_filter_lua ();</span></span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">          43 : }</span></span>
 <span id="L595"><span class="lineNum">     595</span>              : </span>
 <span id="L596"><span class="lineNum">     596</span>              : /**</span>
 <span id="L597"><span class="lineNum">     597</span>              :  * @brief finalizer</span>
 <span id="L598"><span class="lineNum">     598</span>              :  */</span>
 <span id="L599"><span class="lineNum">     599</span>              : void</span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          36 : _fini_filter_lua ()</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          43 : _fini_filter_lua ()</span></span>
 <span id="L601"><span class="lineNum">     601</span>              : {</span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          36 :   lua_subplugin::fini_filter_lua ();</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          36 : }</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          43 :   lua_subplugin::fini_filter_lua ();</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          43 : }</span></span>
 <span id="L604"><span class="lineNum">     604</span>              : </span>
 <span id="L605"><span class="lineNum">     605</span>              : } /* namespace tensorfilter_lua */</span>
 <span id="L606"><span class="lineNum">     606</span>              : } /* namespace nnstreamer */</span>
