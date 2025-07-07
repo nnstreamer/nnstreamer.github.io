@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#794ad8e5a6f4596fe39aecfda4643ba05330c614 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_trainer.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_trainer.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#794ad8e5a6f4596fe39aecfda4643ba05330c614</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">49.4&nbsp;%</td>
-            <td class="headerCovTableEntry">623</td>
+            <td class="headerCovTableEntryLo">49.3&nbsp;%</td>
+            <td class="headerCovTableEntry">625</td>
             <td class="headerCovTableEntry">308</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-07 05:38:42</td>
+            <td class="headerValue">2025-07-08 05:42:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">52.5&nbsp;%</td>
@@ -125,7 +125,7 @@
 <span id="L63"><span class="lineNum">      63</span>              : GST_DEBUG_CATEGORY_STATIC (gst_tensor_trainer_debug);</span>
 <span id="L64"><span class="lineNum">      64</span>              : #define GST_CAT_DEFAULT gst_tensor_trainer_debug</span>
 <span id="L65"><span class="lineNum">      65</span>              : #define gst_tensor_trainer_parent_class parent_class</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1051 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1049 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
 <span id="L67"><span class="lineNum">      67</span>              : </span>
 <span id="L68"><span class="lineNum">      68</span>              : /**</span>
 <span id="L69"><span class="lineNum">      69</span>              :  * @brief Statistical from the model being trained</span>
@@ -1435,83 +1435,85 @@
 <span id="L1373"><span class="lineNum">    1373</span>              : </span>
 <span id="L1374"><span class="lineNum">    1374</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (ttsp != NULL, 0);</span></span>
 <span id="L1375"><span class="lineNum">    1375</span>              : </span>
-<span id="L1376"><span class="lineNum">    1376</span> <span class="tlaUNC">           0 :   memset (&amp;prop, 0, sizeof (GstTensorTrainerProperties));</span></span>
-<span id="L1377"><span class="lineNum">    1377</span> <span class="tlaUNC">           0 :   gst_tensors_info_init (&amp;prop.input_meta);</span></span>
-<span id="L1378"><span class="lineNum">    1378</span>              : </span>
-<span id="L1379"><span class="lineNum">    1379</span> <span class="tlaUNC">           0 :   if (ret != ttsp-&gt;getFrameworkInfo (ttsp, &amp;prop, NULL, &amp;info)) {</span></span>
-<span id="L1380"><span class="lineNum">    1380</span> <span class="tlaUNC">           0 :     GST_ERROR (&quot;getFrameworkInfo() failed&quot;);</span></span>
-<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L1382"><span class="lineNum">    1382</span>              :   }</span>
-<span id="L1383"><span class="lineNum">    1383</span> <span class="tlaUNC">           0 :   name = info.name;</span></span>
-<span id="L1384"><span class="lineNum">    1384</span>              : </span>
-<span id="L1385"><span class="lineNum">    1385</span> <span class="tlaUNC">           0 :   return register_subplugin (NNS_SUBPLUGIN_TRAINER, name, ttsp);</span></span>
-<span id="L1386"><span class="lineNum">    1386</span>              : }</span>
-<span id="L1387"><span class="lineNum">    1387</span>              : </span>
-<span id="L1388"><span class="lineNum">    1388</span>              : /**</span>
-<span id="L1389"><span class="lineNum">    1389</span>              :  * @brief Trainer's sub-plugin may call this to unregister itself.</span>
-<span id="L1390"><span class="lineNum">    1390</span>              :  * @param[in] ttsp tensor_trainer sub-plugin to be unregistered.</span>
-<span id="L1391"><span class="lineNum">    1391</span>              :  * @return TRUE if unregistered. FALSE is failed.</span>
-<span id="L1392"><span class="lineNum">    1392</span>              :  */</span>
-<span id="L1393"><span class="lineNum">    1393</span>              : int</span>
-<span id="L1394"><span class="lineNum">    1394</span> <span class="tlaUNC">           0 : nnstreamer_trainer_exit (GstTensorTrainerFramework * ttsp)</span></span>
-<span id="L1395"><span class="lineNum">    1395</span>              : {</span>
-<span id="L1396"><span class="lineNum">    1396</span>              :   GstTensorTrainerFrameworkInfo info;</span>
-<span id="L1397"><span class="lineNum">    1397</span>              :   GstTensorTrainerProperties prop;</span>
-<span id="L1398"><span class="lineNum">    1398</span> <span class="tlaUNC">           0 :   const char *name = NULL;</span></span>
-<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaUNC">           0 :   int ret = 0;</span></span>
-<span id="L1400"><span class="lineNum">    1400</span>              : </span>
-<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (ttsp != NULL, 0);</span></span>
-<span id="L1402"><span class="lineNum">    1402</span>              : </span>
-<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaUNC">           0 :   memset (&amp;prop, 0, sizeof (GstTensorTrainerProperties));</span></span>
-<span id="L1404"><span class="lineNum">    1404</span> <span class="tlaUNC">           0 :   gst_tensors_info_init (&amp;prop.input_meta);</span></span>
-<span id="L1405"><span class="lineNum">    1405</span>              : </span>
-<span id="L1406"><span class="lineNum">    1406</span> <span class="tlaUNC">           0 :   if (ret != ttsp-&gt;getFrameworkInfo (ttsp, &amp;prop, NULL, &amp;info)) {</span></span>
-<span id="L1407"><span class="lineNum">    1407</span> <span class="tlaUNC">           0 :     GST_ERROR (&quot;getFrameworkInfo() failed&quot;);</span></span>
-<span id="L1408"><span class="lineNum">    1408</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
-<span id="L1409"><span class="lineNum">    1409</span>              :   }</span>
-<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaUNC">           0 :   name = info.name;</span></span>
-<span id="L1411"><span class="lineNum">    1411</span>              : </span>
-<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaUNC">           0 :   return unregister_subplugin (NNS_SUBPLUGIN_TRAINER, name);</span></span>
-<span id="L1413"><span class="lineNum">    1413</span>              : }</span>
-<span id="L1414"><span class="lineNum">    1414</span>              : </span>
-<span id="L1415"><span class="lineNum">    1415</span>              : /**</span>
-<span id="L1416"><span class="lineNum">    1416</span>              :  * @brief Trainer's sub-plugin may call this to send event.</span>
-<span id="L1417"><span class="lineNum">    1417</span>              :  * @param[in] notifier event notifier, sub-plugin must send events with this.</span>
-<span id="L1418"><span class="lineNum">    1418</span>              :  * @param[in] type event type</span>
-<span id="L1419"><span class="lineNum">    1419</span>              :  */</span>
-<span id="L1420"><span class="lineNum">    1420</span>              : void</span>
-<span id="L1421"><span class="lineNum">    1421</span> <span class="tlaUNC">           0 : nnstreamer_trainer_notify_event (GstTensorTrainerEventNotifier * notifier,</span></span>
-<span id="L1422"><span class="lineNum">    1422</span>              :     GstTensorTrainerEventType type, void *data)</span>
-<span id="L1423"><span class="lineNum">    1423</span>              : {</span>
-<span id="L1424"><span class="lineNum">    1424</span>              :   GstTensorTrainer *trainer;</span>
-<span id="L1425"><span class="lineNum">    1425</span> <span class="tlaUNC">           0 :   g_return_if_fail (notifier != NULL);</span></span>
-<span id="L1426"><span class="lineNum">    1426</span> <span class="tlaUNC">           0 :   g_return_if_fail (type &lt; TRAINER_EVENT_UNKNOWN || type &gt; 0);</span></span>
-<span id="L1427"><span class="lineNum">    1427</span>              :   UNUSED (data);</span>
-<span id="L1428"><span class="lineNum">    1428</span>              : </span>
-<span id="L1429"><span class="lineNum">    1429</span> <span class="tlaUNC">           0 :   trainer = (GstTensorTrainer *) notifier-&gt;notifier;</span></span>
-<span id="L1430"><span class="lineNum">    1430</span> <span class="tlaUNC">           0 :   g_return_if_fail (GST_IS_TENSOR_TRAINER (trainer));</span></span>
-<span id="L1431"><span class="lineNum">    1431</span>              : </span>
-<span id="L1432"><span class="lineNum">    1432</span> <span class="tlaUNC">           0 :   GST_DEBUG (&quot;Received GstTensorTrainerEvent(%d)&quot;, type);</span></span>
+<span id="L1376"><span class="lineNum">    1376</span> <span class="tlaUNC">           0 :   memset (&amp;info, 0, sizeof (GstTensorTrainerFrameworkInfo));</span></span>
+<span id="L1377"><span class="lineNum">    1377</span> <span class="tlaUNC">           0 :   memset (&amp;prop, 0, sizeof (GstTensorTrainerProperties));</span></span>
+<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaUNC">           0 :   gst_tensors_info_init (&amp;prop.input_meta);</span></span>
+<span id="L1379"><span class="lineNum">    1379</span>              : </span>
+<span id="L1380"><span class="lineNum">    1380</span> <span class="tlaUNC">           0 :   if (ret != ttsp-&gt;getFrameworkInfo (ttsp, &amp;prop, NULL, &amp;info)) {</span></span>
+<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaUNC">           0 :     GST_ERROR (&quot;getFrameworkInfo() failed&quot;);</span></span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L1383"><span class="lineNum">    1383</span>              :   }</span>
+<span id="L1384"><span class="lineNum">    1384</span> <span class="tlaUNC">           0 :   name = info.name;</span></span>
+<span id="L1385"><span class="lineNum">    1385</span>              : </span>
+<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaUNC">           0 :   return register_subplugin (NNS_SUBPLUGIN_TRAINER, name, ttsp);</span></span>
+<span id="L1387"><span class="lineNum">    1387</span>              : }</span>
+<span id="L1388"><span class="lineNum">    1388</span>              : </span>
+<span id="L1389"><span class="lineNum">    1389</span>              : /**</span>
+<span id="L1390"><span class="lineNum">    1390</span>              :  * @brief Trainer's sub-plugin may call this to unregister itself.</span>
+<span id="L1391"><span class="lineNum">    1391</span>              :  * @param[in] ttsp tensor_trainer sub-plugin to be unregistered.</span>
+<span id="L1392"><span class="lineNum">    1392</span>              :  * @return TRUE if unregistered. FALSE is failed.</span>
+<span id="L1393"><span class="lineNum">    1393</span>              :  */</span>
+<span id="L1394"><span class="lineNum">    1394</span>              : int</span>
+<span id="L1395"><span class="lineNum">    1395</span> <span class="tlaUNC">           0 : nnstreamer_trainer_exit (GstTensorTrainerFramework * ttsp)</span></span>
+<span id="L1396"><span class="lineNum">    1396</span>              : {</span>
+<span id="L1397"><span class="lineNum">    1397</span>              :   GstTensorTrainerFrameworkInfo info;</span>
+<span id="L1398"><span class="lineNum">    1398</span>              :   GstTensorTrainerProperties prop;</span>
+<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaUNC">           0 :   const char *name = NULL;</span></span>
+<span id="L1400"><span class="lineNum">    1400</span> <span class="tlaUNC">           0 :   int ret = 0;</span></span>
+<span id="L1401"><span class="lineNum">    1401</span>              : </span>
+<span id="L1402"><span class="lineNum">    1402</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (ttsp != NULL, 0);</span></span>
+<span id="L1403"><span class="lineNum">    1403</span>              : </span>
+<span id="L1404"><span class="lineNum">    1404</span> <span class="tlaUNC">           0 :   memset (&amp;info, 0, sizeof (GstTensorTrainerFrameworkInfo));</span></span>
+<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaUNC">           0 :   memset (&amp;prop, 0, sizeof (GstTensorTrainerProperties));</span></span>
+<span id="L1406"><span class="lineNum">    1406</span> <span class="tlaUNC">           0 :   gst_tensors_info_init (&amp;prop.input_meta);</span></span>
+<span id="L1407"><span class="lineNum">    1407</span>              : </span>
+<span id="L1408"><span class="lineNum">    1408</span> <span class="tlaUNC">           0 :   if (ret != ttsp-&gt;getFrameworkInfo (ttsp, &amp;prop, NULL, &amp;info)) {</span></span>
+<span id="L1409"><span class="lineNum">    1409</span> <span class="tlaUNC">           0 :     GST_ERROR (&quot;getFrameworkInfo() failed&quot;);</span></span>
+<span id="L1410"><span class="lineNum">    1410</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L1411"><span class="lineNum">    1411</span>              :   }</span>
+<span id="L1412"><span class="lineNum">    1412</span> <span class="tlaUNC">           0 :   name = info.name;</span></span>
+<span id="L1413"><span class="lineNum">    1413</span>              : </span>
+<span id="L1414"><span class="lineNum">    1414</span> <span class="tlaUNC">           0 :   return unregister_subplugin (NNS_SUBPLUGIN_TRAINER, name);</span></span>
+<span id="L1415"><span class="lineNum">    1415</span>              : }</span>
+<span id="L1416"><span class="lineNum">    1416</span>              : </span>
+<span id="L1417"><span class="lineNum">    1417</span>              : /**</span>
+<span id="L1418"><span class="lineNum">    1418</span>              :  * @brief Trainer's sub-plugin may call this to send event.</span>
+<span id="L1419"><span class="lineNum">    1419</span>              :  * @param[in] notifier event notifier, sub-plugin must send events with this.</span>
+<span id="L1420"><span class="lineNum">    1420</span>              :  * @param[in] type event type</span>
+<span id="L1421"><span class="lineNum">    1421</span>              :  */</span>
+<span id="L1422"><span class="lineNum">    1422</span>              : void</span>
+<span id="L1423"><span class="lineNum">    1423</span> <span class="tlaUNC">           0 : nnstreamer_trainer_notify_event (GstTensorTrainerEventNotifier * notifier,</span></span>
+<span id="L1424"><span class="lineNum">    1424</span>              :     GstTensorTrainerEventType type, void *data)</span>
+<span id="L1425"><span class="lineNum">    1425</span>              : {</span>
+<span id="L1426"><span class="lineNum">    1426</span>              :   GstTensorTrainer *trainer;</span>
+<span id="L1427"><span class="lineNum">    1427</span> <span class="tlaUNC">           0 :   g_return_if_fail (notifier != NULL);</span></span>
+<span id="L1428"><span class="lineNum">    1428</span> <span class="tlaUNC">           0 :   g_return_if_fail (type &lt; TRAINER_EVENT_UNKNOWN || type &gt; 0);</span></span>
+<span id="L1429"><span class="lineNum">    1429</span>              :   UNUSED (data);</span>
+<span id="L1430"><span class="lineNum">    1430</span>              : </span>
+<span id="L1431"><span class="lineNum">    1431</span> <span class="tlaUNC">           0 :   trainer = (GstTensorTrainer *) notifier-&gt;notifier;</span></span>
+<span id="L1432"><span class="lineNum">    1432</span> <span class="tlaUNC">           0 :   g_return_if_fail (GST_IS_TENSOR_TRAINER (trainer));</span></span>
 <span id="L1433"><span class="lineNum">    1433</span>              : </span>
-<span id="L1434"><span class="lineNum">    1434</span> <span class="tlaUNC">           0 :   switch (type) {</span></span>
-<span id="L1435"><span class="lineNum">    1435</span> <span class="tlaUNC">           0 :     case TRAINER_EVENT_EPOCH_COMPLETION:</span></span>
-<span id="L1436"><span class="lineNum">    1436</span> <span class="tlaUNC">           0 :       g_mutex_lock (&amp;trainer-&gt;epoch_completion_lock);</span></span>
-<span id="L1437"><span class="lineNum">    1437</span> <span class="tlaUNC">           0 :       trainer-&gt;is_epoch_complete = TRUE;</span></span>
-<span id="L1438"><span class="lineNum">    1438</span> <span class="tlaUNC">           0 :       GST_DEBUG (&quot;send epoch_completion_cond signal&quot;);</span></span>
-<span id="L1439"><span class="lineNum">    1439</span> <span class="tlaUNC">           0 :       g_cond_signal (&amp;trainer-&gt;epoch_completion_cond);</span></span>
-<span id="L1440"><span class="lineNum">    1440</span> <span class="tlaUNC">           0 :       g_mutex_unlock (&amp;trainer-&gt;epoch_completion_lock);</span></span>
-<span id="L1441"><span class="lineNum">    1441</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L1442"><span class="lineNum">    1442</span> <span class="tlaUNC">           0 :     case TRAINER_EVENT_TRAINING_COMPLETION:</span></span>
-<span id="L1443"><span class="lineNum">    1443</span> <span class="tlaUNC">           0 :       g_mutex_lock (&amp;trainer-&gt;training_completion_lock);</span></span>
-<span id="L1444"><span class="lineNum">    1444</span> <span class="tlaUNC">           0 :       trainer-&gt;is_training_complete = TRUE;</span></span>
-<span id="L1445"><span class="lineNum">    1445</span> <span class="tlaUNC">           0 :       GST_DEBUG (&quot;send training_completion_cond signal&quot;);</span></span>
-<span id="L1446"><span class="lineNum">    1446</span> <span class="tlaUNC">           0 :       g_cond_signal (&amp;trainer-&gt;training_completion_cond);</span></span>
-<span id="L1447"><span class="lineNum">    1447</span> <span class="tlaUNC">           0 :       g_mutex_unlock (&amp;trainer-&gt;training_completion_lock);</span></span>
-<span id="L1448"><span class="lineNum">    1448</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L1449"><span class="lineNum">    1449</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L1434"><span class="lineNum">    1434</span> <span class="tlaUNC">           0 :   GST_DEBUG (&quot;Received GstTensorTrainerEvent(%d)&quot;, type);</span></span>
+<span id="L1435"><span class="lineNum">    1435</span>              : </span>
+<span id="L1436"><span class="lineNum">    1436</span> <span class="tlaUNC">           0 :   switch (type) {</span></span>
+<span id="L1437"><span class="lineNum">    1437</span> <span class="tlaUNC">           0 :     case TRAINER_EVENT_EPOCH_COMPLETION:</span></span>
+<span id="L1438"><span class="lineNum">    1438</span> <span class="tlaUNC">           0 :       g_mutex_lock (&amp;trainer-&gt;epoch_completion_lock);</span></span>
+<span id="L1439"><span class="lineNum">    1439</span> <span class="tlaUNC">           0 :       trainer-&gt;is_epoch_complete = TRUE;</span></span>
+<span id="L1440"><span class="lineNum">    1440</span> <span class="tlaUNC">           0 :       GST_DEBUG (&quot;send epoch_completion_cond signal&quot;);</span></span>
+<span id="L1441"><span class="lineNum">    1441</span> <span class="tlaUNC">           0 :       g_cond_signal (&amp;trainer-&gt;epoch_completion_cond);</span></span>
+<span id="L1442"><span class="lineNum">    1442</span> <span class="tlaUNC">           0 :       g_mutex_unlock (&amp;trainer-&gt;epoch_completion_lock);</span></span>
+<span id="L1443"><span class="lineNum">    1443</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L1444"><span class="lineNum">    1444</span> <span class="tlaUNC">           0 :     case TRAINER_EVENT_TRAINING_COMPLETION:</span></span>
+<span id="L1445"><span class="lineNum">    1445</span> <span class="tlaUNC">           0 :       g_mutex_lock (&amp;trainer-&gt;training_completion_lock);</span></span>
+<span id="L1446"><span class="lineNum">    1446</span> <span class="tlaUNC">           0 :       trainer-&gt;is_training_complete = TRUE;</span></span>
+<span id="L1447"><span class="lineNum">    1447</span> <span class="tlaUNC">           0 :       GST_DEBUG (&quot;send training_completion_cond signal&quot;);</span></span>
+<span id="L1448"><span class="lineNum">    1448</span> <span class="tlaUNC">           0 :       g_cond_signal (&amp;trainer-&gt;training_completion_cond);</span></span>
+<span id="L1449"><span class="lineNum">    1449</span> <span class="tlaUNC">           0 :       g_mutex_unlock (&amp;trainer-&gt;training_completion_lock);</span></span>
 <span id="L1450"><span class="lineNum">    1450</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L1451"><span class="lineNum">    1451</span>              :   }</span>
-<span id="L1452"><span class="lineNum">    1452</span>              : }</span>
+<span id="L1451"><span class="lineNum">    1451</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L1452"><span class="lineNum">    1452</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L1453"><span class="lineNum">    1453</span>              :   }</span>
+<span id="L1454"><span class="lineNum">    1454</span>              : }</span>
         </pre>
               </td>
             </tr>
