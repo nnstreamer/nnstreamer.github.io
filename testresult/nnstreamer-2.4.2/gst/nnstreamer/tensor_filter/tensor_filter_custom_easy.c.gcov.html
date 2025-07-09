@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883 - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_custom_easy.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#21a429d7fe3efb6d31c41c1ff14ce2bc06f2ce98 - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_custom_easy.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#21a429d7fe3efb6d31c41c1ff14ce2bc06f2ce98</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">82.3&nbsp;%</td>
-            <td class="headerCovTableEntry">113</td>
-            <td class="headerCovTableEntry">93</td>
+            <td class="headerCovTableEntryMed">81.7&nbsp;%</td>
+            <td class="headerCovTableEntry">115</td>
+            <td class="headerCovTableEntry">94</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-09 05:41:27</td>
+            <td class="headerValue">2025-07-10 05:41:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -95,7 +95,7 @@
 <span id="L33"><span class="lineNum">      33</span>              : void init_filter_custom_easy (void) __attribute__((constructor));</span>
 <span id="L34"><span class="lineNum">      34</span>              : void fini_filter_custom_easy (void) __attribute__((destructor));</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span>              : const char *fw_name = &quot;custom-easy&quot;;</span>
+<span id="L36"><span class="lineNum">      36</span>              : static const char fw_name_custom_easy[] = &quot;custom-easy&quot;;</span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
 <span id="L38"><span class="lineNum">      38</span>              : /**</span>
 <span id="L39"><span class="lineNum">      39</span>              :  * @brief internal_data</span>
@@ -337,22 +337,22 @@
 <span id="L275"><span class="lineNum">     275</span>              :  * @brief V1 tensor-filter wrapper callback function, &quot;getFrameworkInfo&quot;</span>
 <span id="L276"><span class="lineNum">     276</span>              :  */</span>
 <span id="L277"><span class="lineNum">     277</span>              : static int</span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">        1145 : custom_getFrameworkInfo (const GstTensorFilterFramework * self,</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">        1141 : custom_getFrameworkInfo (const GstTensorFilterFramework * self,</span></span>
 <span id="L279"><span class="lineNum">     279</span>              :     const GstTensorFilterProperties * prop, void *private_data,</span>
 <span id="L280"><span class="lineNum">     280</span>              :     GstTensorFilterFrameworkInfo * fw_info)</span>
 <span id="L281"><span class="lineNum">     281</span>              : {</span>
 <span id="L282"><span class="lineNum">     282</span>              :   UNUSED (self);</span>
 <span id="L283"><span class="lineNum">     283</span>              :   UNUSED (prop);</span>
 <span id="L284"><span class="lineNum">     284</span>              :   UNUSED (private_data);</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        1145 :   fw_info-&gt;name = fw_name;</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1145 :   fw_info-&gt;allow_in_place = 0;</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1145 :   fw_info-&gt;allocate_in_invoke = 0;</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1145 :   fw_info-&gt;run_without_model = 1;</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1145 :   fw_info-&gt;verify_model_path = 0;</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1145 :   fw_info-&gt;hw_list = NULL;</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">        1145 :   fw_info-&gt;num_hw = 0;</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        1141 :   fw_info-&gt;name = fw_name_custom_easy;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1141 :   fw_info-&gt;allow_in_place = 0;</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1141 :   fw_info-&gt;allocate_in_invoke = 0;</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1141 :   fw_info-&gt;run_without_model = 1;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1141 :   fw_info-&gt;verify_model_path = 0;</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1141 :   fw_info-&gt;hw_list = NULL;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">        1141 :   fw_info-&gt;num_hw = 0;</span></span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1145 :   return 0;</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1141 :   return 0;</span></span>
 <span id="L294"><span class="lineNum">     294</span>              : }</span>
 <span id="L295"><span class="lineNum">     295</span>              : </span>
 <span id="L296"><span class="lineNum">     296</span>              : /**</span>
@@ -366,55 +366,57 @@
 <span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">           6 :   runtime_data *rd = private_data;</span></span>
 <span id="L305"><span class="lineNum">     305</span>              :   UNUSED (self);</span>
 <span id="L306"><span class="lineNum">     306</span>              :   UNUSED (prop);</span>
-<span id="L307"><span class="lineNum">     307</span>              :   UNUSED (ops);</span>
-<span id="L308"><span class="lineNum">     308</span>              : </span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           6 :   gst_tensors_info_copy (in_info, &amp;rd-&gt;model-&gt;in_info);</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           6 :   gst_tensors_info_copy (out_info, &amp;rd-&gt;model-&gt;out_info);</span></span>
-<span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           6 :   return 0;</span></span>
-<span id="L313"><span class="lineNum">     313</span>              : }</span>
-<span id="L314"><span class="lineNum">     314</span>              : </span>
-<span id="L315"><span class="lineNum">     315</span>              : /**</span>
-<span id="L316"><span class="lineNum">     316</span>              :  * @brief C V1 tensor-filter wrapper callback function, &quot;eventHandler&quot;</span>
-<span id="L317"><span class="lineNum">     317</span>              :  */</span>
-<span id="L318"><span class="lineNum">     318</span>              : static int</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">           7 : custom_eventHandler (const GstTensorFilterFramework * self,</span></span>
-<span id="L320"><span class="lineNum">     320</span>              :     const GstTensorFilterProperties * prop, void *private_data, event_ops ops,</span>
-<span id="L321"><span class="lineNum">     321</span>              :     GstTensorFilterFrameworkEventData * data)</span>
-<span id="L322"><span class="lineNum">     322</span>              : {</span>
-<span id="L323"><span class="lineNum">     323</span>              :   UNUSED (self);</span>
-<span id="L324"><span class="lineNum">     324</span>              :   UNUSED (private_data);</span>
-<span id="L325"><span class="lineNum">     325</span>              :   UNUSED (ops);</span>
-<span id="L326"><span class="lineNum">     326</span>              :   UNUSED (data);</span>
-<span id="L327"><span class="lineNum">     327</span>              :   UNUSED (prop);</span>
-<span id="L328"><span class="lineNum">     328</span>              : </span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           7 :   return 0;</span></span>
-<span id="L330"><span class="lineNum">     330</span>              : }</span>
-<span id="L331"><span class="lineNum">     331</span>              : </span>
-<span id="L332"><span class="lineNum">     332</span>              : static GstTensorFilterFramework NNS_support_custom_easy = {</span>
-<span id="L333"><span class="lineNum">     333</span>              :   .version = GST_TENSOR_FILTER_FRAMEWORK_V1,</span>
-<span id="L334"><span class="lineNum">     334</span>              :   .open = custom_open,</span>
-<span id="L335"><span class="lineNum">     335</span>              :   .close = custom_close,</span>
-<span id="L336"><span class="lineNum">     336</span>              :   .invoke = custom_invoke,</span>
-<span id="L337"><span class="lineNum">     337</span>              :   .getFrameworkInfo = custom_getFrameworkInfo,</span>
-<span id="L338"><span class="lineNum">     338</span>              :   .getModelInfo = custom_getModelInfo,</span>
-<span id="L339"><span class="lineNum">     339</span>              :   .eventHandler = custom_eventHandler,</span>
-<span id="L340"><span class="lineNum">     340</span>              :   .subplugin_data = NULL,</span>
-<span id="L341"><span class="lineNum">     341</span>              : };</span>
-<span id="L342"><span class="lineNum">     342</span>              : </span>
-<span id="L343"><span class="lineNum">     343</span>              : /** @brief Initialize this object for tensor_filter subplugin runtime register */</span>
-<span id="L344"><span class="lineNum">     344</span>              : void</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         566 : init_filter_custom_easy (void)</span></span>
-<span id="L346"><span class="lineNum">     346</span>              : {</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         566 :   nnstreamer_filter_probe (&amp;NNS_support_custom_easy);</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         566 : }</span></span>
-<span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span>              : /** @brief Destruct the subplugin */</span>
-<span id="L351"><span class="lineNum">     351</span>              : void</span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         566 : fini_filter_custom_easy (void)</span></span>
-<span id="L353"><span class="lineNum">     353</span>              : {</span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         566 :   nnstreamer_filter_exit (NNS_support_custom_easy.name);</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         566 : }</span></span>
+<span id="L307"><span class="lineNum">     307</span>              : </span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           6 :   if (ops == GET_IN_OUT_INFO) {</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           6 :     gst_tensors_info_copy (in_info, &amp;rd-&gt;model-&gt;in_info);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           6 :     gst_tensors_info_copy (out_info, &amp;rd-&gt;model-&gt;out_info);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           6 :     return 0;</span></span>
+<span id="L312"><span class="lineNum">     312</span>              :   }</span>
+<span id="L313"><span class="lineNum">     313</span>              : </span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC tlaBgUNC">           0 :   return -ENOENT;</span></span>
+<span id="L315"><span class="lineNum">     315</span>              : }</span>
+<span id="L316"><span class="lineNum">     316</span>              : </span>
+<span id="L317"><span class="lineNum">     317</span>              : /**</span>
+<span id="L318"><span class="lineNum">     318</span>              :  * @brief C V1 tensor-filter wrapper callback function, &quot;eventHandler&quot;</span>
+<span id="L319"><span class="lineNum">     319</span>              :  */</span>
+<span id="L320"><span class="lineNum">     320</span>              : static int</span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC tlaBgGNC">           7 : custom_eventHandler (const GstTensorFilterFramework * self,</span></span>
+<span id="L322"><span class="lineNum">     322</span>              :     const GstTensorFilterProperties * prop, void *private_data, event_ops ops,</span>
+<span id="L323"><span class="lineNum">     323</span>              :     GstTensorFilterFrameworkEventData * data)</span>
+<span id="L324"><span class="lineNum">     324</span>              : {</span>
+<span id="L325"><span class="lineNum">     325</span>              :   UNUSED (self);</span>
+<span id="L326"><span class="lineNum">     326</span>              :   UNUSED (private_data);</span>
+<span id="L327"><span class="lineNum">     327</span>              :   UNUSED (ops);</span>
+<span id="L328"><span class="lineNum">     328</span>              :   UNUSED (data);</span>
+<span id="L329"><span class="lineNum">     329</span>              :   UNUSED (prop);</span>
+<span id="L330"><span class="lineNum">     330</span>              : </span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           7 :   return -ENOENT;</span></span>
+<span id="L332"><span class="lineNum">     332</span>              : }</span>
+<span id="L333"><span class="lineNum">     333</span>              : </span>
+<span id="L334"><span class="lineNum">     334</span>              : static GstTensorFilterFramework NNS_support_custom_easy = {</span>
+<span id="L335"><span class="lineNum">     335</span>              :   .version = GST_TENSOR_FILTER_FRAMEWORK_V1,</span>
+<span id="L336"><span class="lineNum">     336</span>              :   .open = custom_open,</span>
+<span id="L337"><span class="lineNum">     337</span>              :   .close = custom_close,</span>
+<span id="L338"><span class="lineNum">     338</span>              :   .invoke = custom_invoke,</span>
+<span id="L339"><span class="lineNum">     339</span>              :   .getFrameworkInfo = custom_getFrameworkInfo,</span>
+<span id="L340"><span class="lineNum">     340</span>              :   .getModelInfo = custom_getModelInfo,</span>
+<span id="L341"><span class="lineNum">     341</span>              :   .eventHandler = custom_eventHandler,</span>
+<span id="L342"><span class="lineNum">     342</span>              :   .subplugin_data = NULL,</span>
+<span id="L343"><span class="lineNum">     343</span>              : };</span>
+<span id="L344"><span class="lineNum">     344</span>              : </span>
+<span id="L345"><span class="lineNum">     345</span>              : /** @brief Initialize this object for tensor_filter subplugin runtime register */</span>
+<span id="L346"><span class="lineNum">     346</span>              : void</span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         564 : init_filter_custom_easy (void)</span></span>
+<span id="L348"><span class="lineNum">     348</span>              : {</span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         564 :   nnstreamer_filter_probe (&amp;NNS_support_custom_easy);</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         564 : }</span></span>
+<span id="L351"><span class="lineNum">     351</span>              : </span>
+<span id="L352"><span class="lineNum">     352</span>              : /** @brief Destruct the subplugin */</span>
+<span id="L353"><span class="lineNum">     353</span>              : void</span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         564 : fini_filter_custom_easy (void)</span></span>
+<span id="L355"><span class="lineNum">     355</span>              : {</span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         564 :   nnstreamer_filter_exit (NNS_support_custom_easy.name);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">         564 : }</span></span>
         </pre>
               </td>
             </tr>

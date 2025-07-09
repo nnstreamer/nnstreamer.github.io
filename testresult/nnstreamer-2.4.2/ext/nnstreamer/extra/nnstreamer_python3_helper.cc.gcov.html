@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883 - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_python3_helper.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#21a429d7fe3efb6d31c41c1ff14ce2bc06f2ce98 - nnstreamer-2.4.2/ext/nnstreamer/extra/nnstreamer_python3_helper.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#87d36da78f7710dce62955da96d1bdfbe01fb883</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#21a429d7fe3efb6d31c41c1ff14ce2bc06f2ce98</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">66.5&nbsp;%</td>
+            <td class="headerCovTableEntryLo">66.1&nbsp;%</td>
             <td class="headerCovTableEntry">257</td>
-            <td class="headerCovTableEntry">171</td>
+            <td class="headerCovTableEntry">170</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-09 05:41:27</td>
+            <td class="headerValue">2025-07-10 05:41:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -223,12 +223,12 @@
 <span id="L161"><span class="lineNum">     161</span>              :  * @param self : Python type object</span>
 <span id="L162"><span class="lineNum">     162</span>              :  */</span>
 <span id="L163"><span class="lineNum">     163</span>              : static void</span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          78 : TensorShape_dealloc (TensorShapeObject *self)</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          82 : TensorShape_dealloc (TensorShapeObject *self)</span></span>
 <span id="L165"><span class="lineNum">     165</span>              : {</span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          78 :   Py_SAFEDECREF (self-&gt;dims);</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          78 :   Py_SAFEDECREF (self-&gt;type);</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          78 :   Py_TYPE (self)-&gt;tp_free ((PyObject *) self);</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          78 : }</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          82 :   Py_SAFEDECREF (self-&gt;dims);</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          82 :   Py_SAFEDECREF (self-&gt;type);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          82 :   Py_TYPE (self)-&gt;tp_free ((PyObject *) self);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L170"><span class="lineNum">     170</span>              : </span>
 <span id="L171"><span class="lineNum">     171</span>              : /** @brief members for custom type object */</span>
 <span id="L172"><span class="lineNum">     172</span>              : static PyMemberDef TensorShape_members[]</span>
@@ -457,14 +457,14 @@
 <span id="L395"><span class="lineNum">     395</span>              :  * @return 0 if no error, otherwise negative errno</span>
 <span id="L396"><span class="lineNum">     396</span>              :  */</span>
 <span id="L397"><span class="lineNum">     397</span>              : int</span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          64 : parseTensorsInfo (PyObject *result, GstTensorsInfo *info)</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          42 : parseTensorsInfo (PyObject *result, GstTensorsInfo *info)</span></span>
 <span id="L399"><span class="lineNum">     399</span>              : {</span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          64 :   Py_ssize_t i, j, num = PyList_Size (result);</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          42 :   Py_ssize_t i, j, num = PyList_Size (result);</span></span>
 <span id="L401"><span class="lineNum">     401</span>              : </span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          64 :   if (num &lt; 0 || num &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          22 :     return -1;</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          42 :   if (num &lt; 0 || num &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaUNC tlaBgUNC">           0 :     return -1;</span></span>
 <span id="L404"><span class="lineNum">     404</span>              : </span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          42 :   gst_tensors_info_init (info);</span></span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC tlaBgGNC">          42 :   gst_tensors_info_init (info);</span></span>
 <span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          42 :   info-&gt;num_tensors = (unsigned int) num;</span></span>
 <span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">         106 :   for (i = 0; i &lt; num; i++) {</span></span>
 <span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">          64 :     GstTensorInfo *_info = gst_tensors_info_get_nth_info (info, (guint) i);</span></span>
