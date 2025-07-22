@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-22 05:43:32</td>
+            <td class="headerValue">2025-07-23 05:41:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -140,7 +140,7 @@
 <span id="L78"><span class="lineNum">      78</span>              :     GST_STATIC_CAPS (GST_TENSORS_SPARSE_CAP_DEFAULT));</span>
 <span id="L79"><span class="lineNum">      79</span>              : </span>
 <span id="L80"><span class="lineNum">      80</span>              : #define gst_tensor_sparse_enc_parent_class parent_class</span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC tlaBgGNC">        1026 : G_DEFINE_TYPE (GstTensorSparseEnc, gst_tensor_sparse_enc, GST_TYPE_ELEMENT);</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC tlaBgGNC">        1025 : G_DEFINE_TYPE (GstTensorSparseEnc, gst_tensor_sparse_enc, GST_TYPE_ELEMENT);</span></span>
 <span id="L82"><span class="lineNum">      82</span>              : </span>
 <span id="L83"><span class="lineNum">      83</span>              : static void gst_tensor_sparse_enc_finalize (GObject * object);</span>
 <span id="L84"><span class="lineNum">      84</span>              : static void gst_tensor_sparse_enc_set_property (GObject * object, guint prop_id,</span>
@@ -287,15 +287,15 @@
 <span id="L225"><span class="lineNum">     225</span>              :  * @brief This function handles sink pad event.</span>
 <span id="L226"><span class="lineNum">     226</span>              :  */</span>
 <span id="L227"><span class="lineNum">     227</span>              : static gboolean</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          34 : gst_tensor_sparse_enc_sink_event (GstPad * pad, GstObject * parent,</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          33 : gst_tensor_sparse_enc_sink_event (GstPad * pad, GstObject * parent,</span></span>
 <span id="L229"><span class="lineNum">     229</span>              :     GstEvent * event)</span>
 <span id="L230"><span class="lineNum">     230</span>              : {</span>
 <span id="L231"><span class="lineNum">     231</span>              :   GstTensorSparseEnc *self;</span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          34 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          33 :   self = GST_TENSOR_SPARSE_ENC (parent);</span></span>
 <span id="L233"><span class="lineNum">     233</span>              : </span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          34 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          33 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
 <span id="L235"><span class="lineNum">     235</span>              : </span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          34 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          33 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           8 :     case GST_EVENT_CAPS:</span></span>
 <span id="L238"><span class="lineNum">     238</span>              :     {</span>
 <span id="L239"><span class="lineNum">     239</span>              :       GstCaps *caps;</span>
@@ -308,11 +308,11 @@
 <span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           8 :       gst_event_unref (event);</span></span>
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           8 :       return ret;</span></span>
 <span id="L248"><span class="lineNum">     248</span>              :     }</span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          26 :     default:</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          26 :       break;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          25 :     default:</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          25 :       break;</span></span>
 <span id="L251"><span class="lineNum">     251</span>              :   }</span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          26 :   return gst_pad_event_default (pad, parent, event);</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          25 :   return gst_pad_event_default (pad, parent, event);</span></span>
 <span id="L254"><span class="lineNum">     254</span>              : }</span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
 <span id="L256"><span class="lineNum">     256</span>              : /**</span>
