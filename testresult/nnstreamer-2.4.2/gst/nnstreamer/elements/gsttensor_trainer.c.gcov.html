@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a65d5067f286ab36e24196100d3f72e0138f8ef9 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_trainer.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a250ed23333876c3f9baf4b88ee6c0544570165f - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_trainer.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a65d5067f286ab36e24196100d3f72e0138f8ef9</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a250ed23333876c3f9baf4b88ee6c0544570165f</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">49.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-23 05:41:30</td>
+            <td class="headerValue">2025-07-24 05:40:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">52.5&nbsp;%</td>
@@ -125,7 +125,7 @@
 <span id="L63"><span class="lineNum">      63</span>              : GST_DEBUG_CATEGORY_STATIC (gst_tensor_trainer_debug);</span>
 <span id="L64"><span class="lineNum">      64</span>              : #define GST_CAT_DEFAULT gst_tensor_trainer_debug</span>
 <span id="L65"><span class="lineNum">      65</span>              : #define gst_tensor_trainer_parent_class parent_class</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1049 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1078 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
 <span id="L67"><span class="lineNum">      67</span>              : </span>
 <span id="L68"><span class="lineNum">      68</span>              : /**</span>
 <span id="L69"><span class="lineNum">      69</span>              :  * @brief Statistical from the model being trained</span>
@@ -214,36 +214,36 @@
 <span id="L152"><span class="lineNum">     152</span>              :  * @brief initialize the tensor_trainer's class</span>
 <span id="L153"><span class="lineNum">     153</span>              :  */</span>
 <span id="L154"><span class="lineNum">     154</span>              : static void</span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           1 : gst_tensor_trainer_class_init (GstTensorTrainerClass * klass)</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          10 : gst_tensor_trainer_class_init (GstTensorTrainerClass * klass)</span></span>
 <span id="L156"><span class="lineNum">     156</span>              : {</span>
 <span id="L157"><span class="lineNum">     157</span>              :   GObjectClass *gobject_class;</span>
 <span id="L158"><span class="lineNum">     158</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :   GST_DEBUG_CATEGORY_INIT (GST_CAT_DEFAULT, &quot;tensor_trainer&quot;, 0,</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">          10 :   GST_DEBUG_CATEGORY_INIT (GST_CAT_DEFAULT, &quot;tensor_trainer&quot;, 0,</span></span>
 <span id="L161"><span class="lineNum">     161</span>              :       &quot;Tensor trainer to train neural network model&quot;);</span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           1 :   gobject_class = G_OBJECT_CLASS (klass);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           1 :   gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          10 :   gobject_class = G_OBJECT_CLASS (klass);</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          10 :   gstelement_class = GST_ELEMENT_CLASS (klass);</span></span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :   gobject_class-&gt;set_property =</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           1 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_set_property);</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :   gobject_class-&gt;get_property =</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_get_property);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           1 :   gobject_class-&gt;finalize = GST_DEBUG_FUNCPTR (gst_tensor_trainer_finalize);</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          10 :   gobject_class-&gt;set_property =</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          10 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_set_property);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          10 :   gobject_class-&gt;get_property =</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          10 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_get_property);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          10 :   gobject_class-&gt;finalize = GST_DEBUG_FUNCPTR (gst_tensor_trainer_finalize);</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span>              :   /* Called when the element's state changes */</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :   gstelement_class-&gt;change_state =</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           1 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_change_state);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          10 :   gstelement_class-&gt;change_state =</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          10 :       GST_DEBUG_FUNCPTR (gst_tensor_trainer_change_state);</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
 <span id="L176"><span class="lineNum">     176</span>              :   /* Install properties for tensor_trainer */</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_FRAMEWORK,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_FRAMEWORK,</span></span>
 <span id="L178"><span class="lineNum">     178</span>              :       g_param_spec_string (&quot;framework&quot;, &quot;Framework&quot;,</span>
 <span id="L179"><span class="lineNum">     179</span>              :           &quot;(not nullable) Neural network framework to be used for model training, &quot;,</span>
 <span id="L180"><span class="lineNum">     180</span>              :           DEFAULT_STR_PROP_VALUE,</span>
 <span id="L181"><span class="lineNum">     181</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L182"><span class="lineNum">     182</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_MODEL_CONFIG,</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_MODEL_CONFIG,</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :       g_param_spec_string (&quot;model-config&quot;, &quot;Model configuration file path&quot;,</span>
 <span id="L186"><span class="lineNum">     186</span>              :           &quot;(not nullable) Model configuration file is used to configure the model &quot;</span>
 <span id="L187"><span class="lineNum">     187</span>              :           &quot;to be trained in neural network framework, set the file path&quot;,</span>
@@ -251,7 +251,7 @@
 <span id="L189"><span class="lineNum">     189</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L190"><span class="lineNum">     190</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_MODEL_SAVE_PATH,</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_MODEL_SAVE_PATH,</span></span>
 <span id="L193"><span class="lineNum">     193</span>              :       g_param_spec_string (&quot;model-save-path&quot;, &quot;Model save path&quot;,</span>
 <span id="L194"><span class="lineNum">     194</span>              :           &quot;(not nullable) Path to save the trained model in framework, if model-config &quot;</span>
 <span id="L195"><span class="lineNum">     195</span>              :           &quot;contains information about the save file, it is ignored&quot;,</span>
@@ -259,28 +259,28 @@
 <span id="L197"><span class="lineNum">     197</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L198"><span class="lineNum">     198</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L199"><span class="lineNum">     199</span>              : </span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_MODEL_LOAD_PATH,</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_MODEL_LOAD_PATH,</span></span>
 <span id="L201"><span class="lineNum">     201</span>              :       g_param_spec_string (&quot;model-load-path&quot;, &quot;Model load path&quot;,</span>
 <span id="L202"><span class="lineNum">     202</span>              :           &quot;(nullable) Path to a model file to be loaded for the given training session.&quot;,</span>
 <span id="L203"><span class="lineNum">     203</span>              :           DEFAULT_STR_PROP_VALUE,</span>
 <span id="L204"><span class="lineNum">     204</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L205"><span class="lineNum">     205</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L206"><span class="lineNum">     206</span>              : </span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_NUM_INPUTS,</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_NUM_INPUTS,</span></span>
 <span id="L208"><span class="lineNum">     208</span>              :       g_param_spec_uint (&quot;num-inputs&quot;, &quot;Number of inputs&quot;,</span>
 <span id="L209"><span class="lineNum">     209</span>              :           &quot;An input in a tensor can have one or more features data,&quot;</span>
 <span id="L210"><span class="lineNum">     210</span>              :           &quot;set how many inputs are received&quot;, 0, NNS_TENSOR_SIZE_LIMIT, 1,</span>
 <span id="L211"><span class="lineNum">     211</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L212"><span class="lineNum">     212</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_NUM_LABELS,</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_NUM_LABELS,</span></span>
 <span id="L215"><span class="lineNum">     215</span>              :       g_param_spec_uint (&quot;num-labels&quot;, &quot;Number of labels&quot;,</span>
 <span id="L216"><span class="lineNum">     216</span>              :           &quot;A label in a tensor can have one or more classes data,&quot;</span>
 <span id="L217"><span class="lineNum">     217</span>              :           &quot;set how many labels are received&quot;, 0, NNS_TENSOR_SIZE_LIMIT, 1,</span>
 <span id="L218"><span class="lineNum">     218</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L219"><span class="lineNum">     219</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L220"><span class="lineNum">     220</span>              : </span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_NUM_TRAINING_SAMPLES,</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_NUM_TRAINING_SAMPLES,</span></span>
 <span id="L222"><span class="lineNum">     222</span>              :       g_param_spec_uint (&quot;num-training-samples&quot;, &quot;Number of training samples&quot;,</span>
 <span id="L223"><span class="lineNum">     223</span>              :           &quot;A sample can consist of multiple inputs and labels in tensors of a gstbuffer&quot;</span>
 <span id="L224"><span class="lineNum">     224</span>              :           &quot;, set how many samples are taken for training model&quot;,</span>
@@ -288,7 +288,7 @@
 <span id="L226"><span class="lineNum">     226</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L227"><span class="lineNum">     227</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L228"><span class="lineNum">     228</span>              : </span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_NUM_VALIDATION_SAMPLES,</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_NUM_VALIDATION_SAMPLES,</span></span>
 <span id="L230"><span class="lineNum">     230</span>              :       g_param_spec_uint (&quot;num-validation-samples&quot;,</span>
 <span id="L231"><span class="lineNum">     231</span>              :           &quot;Number of validation samples&quot;,</span>
 <span id="L232"><span class="lineNum">     232</span>              :           &quot;A sample can consist of multiple inputs and labels in tensors of a gstbuffer&quot;</span>
@@ -297,7 +297,7 @@
 <span id="L235"><span class="lineNum">     235</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L236"><span class="lineNum">     236</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           1 :   g_object_class_install_property (gobject_class, PROP_EPOCHS,</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          10 :   g_object_class_install_property (gobject_class, PROP_EPOCHS,</span></span>
 <span id="L239"><span class="lineNum">     239</span>              :       g_param_spec_uint (&quot;epochs&quot;, &quot;Number of epoch&quot;,</span>
 <span id="L240"><span class="lineNum">     240</span>              :           &quot;Epochs are repetitions of training samples and validation samples, &quot;</span>
 <span id="L241"><span class="lineNum">     241</span>              :           &quot;number of samples received for model training is &quot;</span>
@@ -306,16 +306,16 @@
 <span id="L244"><span class="lineNum">     244</span>              :           G_PARAM_READWRITE | GST_PARAM_MUTABLE_READY |</span>
 <span id="L245"><span class="lineNum">     245</span>              :           G_PARAM_STATIC_STRINGS));</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           1 :   gst_element_class_set_details_simple (gstelement_class, &quot;TensorTrainer&quot;,</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          10 :   gst_element_class_set_details_simple (gstelement_class, &quot;TensorTrainer&quot;,</span></span>
 <span id="L248"><span class="lineNum">     248</span>              :       &quot;Trainer/Tensor&quot;, &quot;Train tensor data using NN Frameworks&quot;,</span>
 <span id="L249"><span class="lineNum">     249</span>              :       &quot;Samsung Electronics Co., Ltd.&quot;);</span>
 <span id="L250"><span class="lineNum">     250</span>              : </span>
 <span id="L251"><span class="lineNum">     251</span>              :   /* Add pad template */</span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           1 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          10 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L253"><span class="lineNum">     253</span>              :       gst_static_pad_template_get (&amp;src_template));</span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           1 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          10 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L255"><span class="lineNum">     255</span>              :       gst_static_pad_template_get (&amp;sink_template));</span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           1 : }</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          10 : }</span></span>
 <span id="L257"><span class="lineNum">     257</span>              : </span>
 <span id="L258"><span class="lineNum">     258</span>              : /**</span>
 <span id="L259"><span class="lineNum">     259</span>              :  * @brief Initialize tensor_trainer.</span>

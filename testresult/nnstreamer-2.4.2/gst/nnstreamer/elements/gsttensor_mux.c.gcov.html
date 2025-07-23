@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a65d5067f286ab36e24196100d3f72e0138f8ef9 - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_mux.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a250ed23333876c3f9baf4b88ee6c0544570165f - nnstreamer-2.4.2/gst/nnstreamer/elements/gsttensor_mux.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a65d5067f286ab36e24196100d3f72e0138f8ef9</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a250ed23333876c3f9baf4b88ee6c0544570165f</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">91.3&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-23 05:41:30</td>
+            <td class="headerValue">2025-07-24 05:40:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -192,58 +192,58 @@
 <span id="L130"><span class="lineNum">     130</span>              : static void gst_tensor_mux_finalize (GObject * object);</span>
 <span id="L131"><span class="lineNum">     131</span>              : </span>
 <span id="L132"><span class="lineNum">     132</span>              : #define gst_tensor_mux_parent_class parent_class</span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC tlaBgGNC">        2691 : G_DEFINE_TYPE (GstTensorMux, gst_tensor_mux, GST_TYPE_ELEMENT);</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC tlaBgGNC">        2720 : G_DEFINE_TYPE (GstTensorMux, gst_tensor_mux, GST_TYPE_ELEMENT);</span></span>
 <span id="L134"><span class="lineNum">     134</span>              : </span>
 <span id="L135"><span class="lineNum">     135</span>              : /**</span>
 <span id="L136"><span class="lineNum">     136</span>              :  * @brief initialize the tensor_mux's class</span>
 <span id="L137"><span class="lineNum">     137</span>              :  */</span>
 <span id="L138"><span class="lineNum">     138</span>              : static void</span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          76 : gst_tensor_mux_class_init (GstTensorMuxClass * klass)</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          85 : gst_tensor_mux_class_init (GstTensorMuxClass * klass)</span></span>
 <span id="L140"><span class="lineNum">     140</span>              : {</span>
 <span id="L141"><span class="lineNum">     141</span>              :   GObjectClass *gobject_class;</span>
 <span id="L142"><span class="lineNum">     142</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L143"><span class="lineNum">     143</span>              : </span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          76 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_mux_debug, &quot;tensor_mux&quot;, 0,</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          85 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_mux_debug, &quot;tensor_mux&quot;, 0,</span></span>
 <span id="L145"><span class="lineNum">     145</span>              :       &quot;Element to merge tensor stream to tensors stream&quot;);</span>
 <span id="L146"><span class="lineNum">     146</span>              : </span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          76 :   gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          76 :   gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          85 :   gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          85 :   gstelement_class = (GstElementClass *) klass;</span></span>
 <span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          76 :   parent_class = g_type_class_peek_parent (klass);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          85 :   parent_class = g_type_class_peek_parent (klass);</span></span>
 <span id="L151"><span class="lineNum">     151</span>              : </span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          76 :   gobject_class-&gt;finalize = gst_tensor_mux_finalize;</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          76 :   gobject_class-&gt;get_property = gst_tensor_mux_get_property;</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          76 :   gobject_class-&gt;set_property = gst_tensor_mux_set_property;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          85 :   gobject_class-&gt;finalize = gst_tensor_mux_finalize;</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          85 :   gobject_class-&gt;get_property = gst_tensor_mux_get_property;</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          85 :   gobject_class-&gt;set_property = gst_tensor_mux_set_property;</span></span>
 <span id="L155"><span class="lineNum">     155</span>              : </span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          76 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          85 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L157"><span class="lineNum">     157</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;, &quot;Produce verbose output ?&quot;,</span>
 <span id="L158"><span class="lineNum">     158</span>              :           TRUE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">          76 :   g_object_class_install_property (gobject_class, PROP_SYNC_MODE,</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">          85 :   g_object_class_install_property (gobject_class, PROP_SYNC_MODE,</span></span>
 <span id="L161"><span class="lineNum">     161</span>              :       g_param_spec_string (&quot;sync-mode&quot;, &quot;Sync Mode&quot;,</span>
 <span id="L162"><span class="lineNum">     162</span>              :           &quot;Time synchronization mode?&quot;, &quot;&quot;, G_PARAM_READWRITE));</span>
 <span id="L163"><span class="lineNum">     163</span>              : </span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          76 :   g_object_class_install_property (gobject_class, PROP_SYNC_OPTION,</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          85 :   g_object_class_install_property (gobject_class, PROP_SYNC_OPTION,</span></span>
 <span id="L165"><span class="lineNum">     165</span>              :       g_param_spec_string (&quot;sync-option&quot;, &quot;Sync Option&quot;,</span>
 <span id="L166"><span class="lineNum">     166</span>              :           &quot;Option for the time synchronization mode ?&quot;, &quot;&quot;, G_PARAM_READWRITE));</span>
 <span id="L167"><span class="lineNum">     167</span>              : </span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          76 :   gstelement_class-&gt;request_new_pad =</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          76 :       GST_DEBUG_FUNCPTR (gst_tensor_mux_request_new_pad);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          76 :   gstelement_class-&gt;change_state =</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">          76 :       GST_DEBUG_FUNCPTR (gst_tensor_mux_change_state);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          85 :   gstelement_class-&gt;request_new_pad =</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          85 :       GST_DEBUG_FUNCPTR (gst_tensor_mux_request_new_pad);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          85 :   gstelement_class-&gt;change_state =</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">          85 :       GST_DEBUG_FUNCPTR (gst_tensor_mux_change_state);</span></span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          76 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          85 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L174"><span class="lineNum">     174</span>              :       gst_static_pad_template_get (&amp;sink_templ));</span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          76 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          85 :   gst_element_class_add_pad_template (gstelement_class,</span></span>
 <span id="L176"><span class="lineNum">     176</span>              :       gst_static_pad_template_get (&amp;src_templ));</span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          76 :   gst_element_class_set_details_simple (gstelement_class,</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          85 :   gst_element_class_set_details_simple (gstelement_class,</span></span>
 <span id="L179"><span class="lineNum">     179</span>              :       &quot;TensorMux&quot;,</span>
 <span id="L180"><span class="lineNum">     180</span>              :       &quot;Muxer/Tensor&quot;,</span>
 <span id="L181"><span class="lineNum">     181</span>              :       &quot;Merge multiple tensor stream to tensors stream&quot;,</span>
 <span id="L182"><span class="lineNum">     182</span>              :       &quot;Jijoong Moon &lt;jijoong.moon@samsung.com&gt;&quot;);</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          76 : }</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          85 : }</span></span>
 <span id="L185"><span class="lineNum">     185</span>              : </span>
 <span id="L186"><span class="lineNum">     186</span>              : /**</span>
 <span id="L187"><span class="lineNum">     187</span>              :  * @brief initialize the new element</span>
@@ -362,61 +362,61 @@
 <span id="L300"><span class="lineNum">     300</span>              :  * @brief src event vmethod</span>
 <span id="L301"><span class="lineNum">     301</span>              :  */</span>
 <span id="L302"><span class="lineNum">     302</span>              : static gboolean</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">        6406 : gst_tensor_mux_src_event (GstPad * pad, GstObject * parent, GstEvent * event)</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">        6296 : gst_tensor_mux_src_event (GstPad * pad, GstObject * parent, GstEvent * event)</span></span>
 <span id="L304"><span class="lineNum">     304</span>              : {</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        6406 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        6296 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        6406 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        6296 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_EVENT_SEEK:</span></span>
 <span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :       gst_event_unref (event);</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC tlaBgGNC">        6406 :     default:</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">        6406 :       break;</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC tlaBgGNC">        6296 :     default:</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">        6296 :       break;</span></span>
 <span id="L313"><span class="lineNum">     313</span>              :   }</span>
 <span id="L314"><span class="lineNum">     314</span>              : </span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">        6406 :   return gst_pad_event_default (pad, parent, event);</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">        6296 :   return gst_pad_event_default (pad, parent, event);</span></span>
 <span id="L316"><span class="lineNum">     316</span>              : }</span>
 <span id="L317"><span class="lineNum">     317</span>              : </span>
 <span id="L318"><span class="lineNum">     318</span>              : /**</span>
 <span id="L319"><span class="lineNum">     319</span>              :  * @brief set pads waiting property</span>
 <span id="L320"><span class="lineNum">     320</span>              :  */</span>
 <span id="L321"><span class="lineNum">     321</span>              : static void</span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">       16311 : gst_tensor_mux_set_waiting (GstTensorMux * tensor_mux, gboolean waiting)</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">       16094 : gst_tensor_mux_set_waiting (GstTensorMux * tensor_mux, gboolean waiting)</span></span>
 <span id="L323"><span class="lineNum">     323</span>              : {</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">       16311 :   if (tensor_mux-&gt;sync.mode == SYNC_REFRESH) {</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">       11524 :     GstCollectPads *pads = tensor_mux-&gt;collect;</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">       11524 :     GSList *walk = pads-&gt;data;</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">       16094 :   if (tensor_mux-&gt;sync.mode == SYNC_REFRESH) {</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">       11300 :     GstCollectPads *pads = tensor_mux-&gt;collect;</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">       11300 :     GSList *walk = pads-&gt;data;</span></span>
 <span id="L327"><span class="lineNum">     327</span>              : </span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">       34572 :     while (walk) {</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">       23048 :       gst_collect_pads_set_waiting (pads, walk-&gt;data, waiting);</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">       23048 :       walk = g_slist_next (walk);</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">       33900 :     while (walk) {</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">       22600 :       gst_collect_pads_set_waiting (pads, walk-&gt;data, waiting);</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">       22600 :       walk = g_slist_next (walk);</span></span>
 <span id="L331"><span class="lineNum">     331</span>              :     }</span>
 <span id="L332"><span class="lineNum">     332</span>              :   }</span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">       16311 : }</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">       16094 : }</span></span>
 <span id="L334"><span class="lineNum">     334</span>              : </span>
 <span id="L335"><span class="lineNum">     335</span>              : /**</span>
 <span id="L336"><span class="lineNum">     336</span>              :  * @brief sink event vmethod</span>
 <span id="L337"><span class="lineNum">     337</span>              :  */</span>
 <span id="L338"><span class="lineNum">     338</span>              : static gboolean</span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1606 : gst_tensor_mux_sink_event (GstCollectPads * pads, GstCollectData * data,</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1609 : gst_tensor_mux_sink_event (GstCollectPads * pads, GstCollectData * data,</span></span>
 <span id="L340"><span class="lineNum">     340</span>              :     GstEvent * event, GstTensorMux * tensor_mux)</span>
 <span id="L341"><span class="lineNum">     341</span>              : {</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        1606 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        1609 :   g_return_val_if_fail (event != NULL, FALSE);</span></span>
 <span id="L343"><span class="lineNum">     343</span>              : </span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">        1606 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">        1609 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_EVENT_FLUSH_STOP:</span></span>
 <span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :       tensor_mux-&gt;need_segment = TRUE;</span></span>
 <span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :       tensor_mux-&gt;need_set_time = TRUE;</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :       gst_tensor_time_sync_flush (tensor_mux-&gt;collect);</span></span>
 <span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">         389 :     case GST_EVENT_EOS:</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         389 :       gst_tensor_mux_set_waiting (tensor_mux, FALSE);</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         389 :       break;</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">         392 :     case GST_EVENT_EOS:</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         392 :       gst_tensor_mux_set_waiting (tensor_mux, FALSE);</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         392 :       break;</span></span>
 <span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">        1217 :     default:</span></span>
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">        1217 :       break;</span></span>
 <span id="L355"><span class="lineNum">     355</span>              :   }</span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">        1606 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">        1609 :   return gst_collect_pads_event_default (pads, data, event, FALSE);</span></span>
 <span id="L358"><span class="lineNum">     358</span>              : }</span>
 <span id="L359"><span class="lineNum">     359</span>              : </span>
 <span id="L360"><span class="lineNum">     360</span>              : /**</span>
@@ -427,23 +427,23 @@
 <span id="L365"><span class="lineNum">     365</span>              :  * @return TRUE to push buffer to src pad</span>
 <span id="L366"><span class="lineNum">     366</span>              :  */</span>
 <span id="L367"><span class="lineNum">     367</span>              : static gboolean</span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">        7114 : gst_tensor_mux_collect_buffer (GstTensorMux * tensor_mux,</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">        7004 : gst_tensor_mux_collect_buffer (GstTensorMux * tensor_mux,</span></span>
 <span id="L369"><span class="lineNum">     369</span>              :     GstBuffer * tensors_buf, gboolean * is_eos)</span>
 <span id="L370"><span class="lineNum">     370</span>              : {</span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        7114 :   if (tensor_mux-&gt;need_set_time) {</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        6580 :     if (gst_tensor_time_sync_get_current_time (tensor_mux-&gt;collect,</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">        7004 :   if (tensor_mux-&gt;need_set_time) {</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">        6470 :     if (gst_tensor_time_sync_get_current_time (tensor_mux-&gt;collect,</span></span>
 <span id="L373"><span class="lineNum">     373</span>              :             &amp;tensor_mux-&gt;sync, &amp;tensor_mux-&gt;current_time, tensors_buf)) {</span>
 <span id="L374"><span class="lineNum">     374</span>              :       /* end-of-stream */</span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">         176 :       *is_eos = TRUE;</span></span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         176 :       return FALSE;</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">         178 :       *is_eos = TRUE;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         178 :       return FALSE;</span></span>
 <span id="L377"><span class="lineNum">     377</span>              :     }</span>
 <span id="L378"><span class="lineNum">     378</span>              : </span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">        6404 :     tensor_mux-&gt;need_set_time = FALSE;</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">        6404 :     silent_debug (tensor_mux, &quot;Current Time : %&quot; GST_TIME_FORMAT,</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">        6292 :     tensor_mux-&gt;need_set_time = FALSE;</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">        6292 :     silent_debug (tensor_mux, &quot;Current Time : %&quot; GST_TIME_FORMAT,</span></span>
 <span id="L381"><span class="lineNum">     381</span>              :         GST_TIME_ARGS (tensor_mux-&gt;current_time));</span>
 <span id="L382"><span class="lineNum">     382</span>              :   }</span>
 <span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">        6938 :   return gst_tensor_time_sync_buffer_from_collectpad (tensor_mux-&gt;collect,</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">        6826 :   return gst_tensor_time_sync_buffer_from_collectpad (tensor_mux-&gt;collect,</span></span>
 <span id="L385"><span class="lineNum">     385</span>              :       &amp;tensor_mux-&gt;sync, tensor_mux-&gt;current_time, tensors_buf,</span>
 <span id="L386"><span class="lineNum">     386</span>              :       &amp;tensor_mux-&gt;tensors_config, is_eos);</span>
 <span id="L387"><span class="lineNum">     387</span>              : }</span>
@@ -452,9 +452,9 @@
 <span id="L390"><span class="lineNum">     390</span>              :  * @brief Set src pad caps if src pad is not negotiated.</span>
 <span id="L391"><span class="lineNum">     391</span>              :  */</span>
 <span id="L392"><span class="lineNum">     392</span>              : static gboolean</span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">        6404 : gst_tensor_mux_set_src_caps (GstTensorMux * tensor_mux)</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">        6292 : gst_tensor_mux_set_src_caps (GstTensorMux * tensor_mux)</span></span>
 <span id="L394"><span class="lineNum">     394</span>              : {</span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">        6404 :   if (!tensor_mux-&gt;negotiated) {</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">        6292 :   if (!tensor_mux-&gt;negotiated) {</span></span>
 <span id="L396"><span class="lineNum">     396</span>              :     GstCaps *caps;</span>
 <span id="L397"><span class="lineNum">     397</span>              : </span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         124 :     if (gst_tensors_config_validate (&amp;tensor_mux-&gt;tensors_config)) {</span></span>
@@ -469,22 +469,22 @@
 <span id="L407"><span class="lineNum">     407</span>              :     }</span>
 <span id="L408"><span class="lineNum">     408</span>              :   }</span>
 <span id="L409"><span class="lineNum">     409</span>              : </span>
-<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">        6404 :   if (!tensor_mux-&gt;negotiated) {</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">        6292 :   if (!tensor_mux-&gt;negotiated) {</span></span>
 <span id="L411"><span class="lineNum">     411</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING_OBJECT (tensor_mux, &quot;failed to set caps&quot;);</span></span>
 <span id="L412"><span class="lineNum">     412</span> <span class="tlaUNC">           0 :     GST_ELEMENT_ERROR (tensor_mux, CORE, NEGOTIATION, (NULL), (NULL));</span></span>
 <span id="L413"><span class="lineNum">     413</span>              :   }</span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC tlaBgGNC">        6404 :   return tensor_mux-&gt;negotiated;</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC tlaBgGNC">        6292 :   return tensor_mux-&gt;negotiated;</span></span>
 <span id="L416"><span class="lineNum">     416</span>              : }</span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
 <span id="L418"><span class="lineNum">     418</span>              : /**</span>
 <span id="L419"><span class="lineNum">     419</span>              :  * @brief Create a new segment event if necessary.</span>
 <span id="L420"><span class="lineNum">     420</span>              :  */</span>
 <span id="L421"><span class="lineNum">     421</span>              : static void</span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">        6404 : gst_tensor_mux_send_segment_event (GstTensorMux * tensor_mux,</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">        6292 : gst_tensor_mux_send_segment_event (GstTensorMux * tensor_mux,</span></span>
 <span id="L423"><span class="lineNum">     423</span>              :     GstClockTime pts, GstClockTime dts)</span>
 <span id="L424"><span class="lineNum">     424</span>              : {</span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        6404 :   if (tensor_mux-&gt;need_segment) {</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        6292 :   if (tensor_mux-&gt;need_segment) {</span></span>
 <span id="L426"><span class="lineNum">     426</span>              :     GstSegment segment;</span>
 <span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">         124 :     GstClockTime time = 0;</span></span>
 <span id="L428"><span class="lineNum">     428</span>              : </span>
@@ -499,7 +499,7 @@
 <span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">         124 :     gst_pad_push_event (tensor_mux-&gt;srcpad, gst_event_new_segment (&amp;segment));</span></span>
 <span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">         124 :     tensor_mux-&gt;need_segment = FALSE;</span></span>
 <span id="L439"><span class="lineNum">     439</span>              :   }</span>
-<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">        6404 : }</span></span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC">        6292 : }</span></span>
 <span id="L441"><span class="lineNum">     441</span>              : </span>
 <span id="L442"><span class="lineNum">     442</span>              : /**</span>
 <span id="L443"><span class="lineNum">     443</span>              :  * @brief Process flex tensor.</span>
@@ -545,16 +545,16 @@
 <span id="L483"><span class="lineNum">     483</span>              :  * @return GstFlowReturn</span>
 <span id="L484"><span class="lineNum">     484</span>              :  */</span>
 <span id="L485"><span class="lineNum">     485</span>              : static GstFlowReturn</span>
-<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">        7114 : gst_tensor_mux_collected (GstCollectPads * pads, GstTensorMux * tensor_mux)</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">        7004 : gst_tensor_mux_collected (GstCollectPads * pads, GstTensorMux * tensor_mux)</span></span>
 <span id="L487"><span class="lineNum">     487</span>              : {</span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">        7114 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">        7004 :   GstFlowReturn ret = GST_FLOW_OK;</span></span>
 <span id="L489"><span class="lineNum">     489</span>              :   GstBuffer *tensors_buf;</span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">        7114 :   gboolean isEOS = FALSE;</span></span>
-<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        7114 :   gboolean buf_collected = FALSE;</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC">        7004 :   gboolean isEOS = FALSE;</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">        7004 :   gboolean buf_collected = FALSE;</span></span>
 <span id="L492"><span class="lineNum">     492</span>              : </span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">        7114 :   GST_DEBUG_OBJECT (tensor_mux, &quot; all pads are collected &quot;);</span></span>
+<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">        7004 :   GST_DEBUG_OBJECT (tensor_mux, &quot; all pads are collected &quot;);</span></span>
 <span id="L494"><span class="lineNum">     494</span>              : </span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">        7114 :   if (tensor_mux-&gt;need_stream_start) {</span></span>
+<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">        7004 :   if (tensor_mux-&gt;need_stream_start) {</span></span>
 <span id="L496"><span class="lineNum">     496</span>              :     /**</span>
 <span id="L497"><span class="lineNum">     497</span>              :      * Cannot use gst-pad util to get stream ID (multiple sink pads).</span>
 <span id="L498"><span class="lineNum">     498</span>              :      * Create stream ID using first sink pad.</span>
@@ -570,61 +570,61 @@
 <span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">         124 :     tensor_mux-&gt;need_stream_start = FALSE;</span></span>
 <span id="L509"><span class="lineNum">     509</span>              :   }</span>
 <span id="L510"><span class="lineNum">     510</span>              : </span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">        7114 :   if ((tensors_buf = gst_buffer_new ()) == NULL) {</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">        7004 :   if ((tensors_buf = gst_buffer_new ()) == NULL) {</span></span>
 <span id="L512"><span class="lineNum">     512</span> <span class="tlaUNC tlaBgUNC">           0 :     ml_logf (&quot;gst_buffer_new() returns NULL. Out of memory?\n&quot;);</span></span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC tlaBgGNC">        7114 :     return GST_FLOW_ERROR;</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC tlaBgGNC">        7004 :     return GST_FLOW_ERROR;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              :   }</span>
 <span id="L515"><span class="lineNum">     515</span>              : </span>
 <span id="L516"><span class="lineNum">     516</span>              :   buf_collected =</span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">        7114 :       gst_tensor_mux_collect_buffer (tensor_mux, tensors_buf, &amp;isEOS);</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">        7004 :       gst_tensor_mux_collect_buffer (tensor_mux, tensors_buf, &amp;isEOS);</span></span>
 <span id="L518"><span class="lineNum">     518</span>              : </span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">        7114 :   gst_tensor_mux_set_waiting (tensor_mux, TRUE);</span></span>
+<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">        7004 :   gst_tensor_mux_set_waiting (tensor_mux, TRUE);</span></span>
 <span id="L520"><span class="lineNum">     520</span>              : </span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">        7114 :   if (!buf_collected) {</span></span>
-<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">         710 :     if (isEOS) {</span></span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">         176 :       gst_pad_push_event (tensor_mux-&gt;srcpad, gst_event_new_eos ());</span></span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">         176 :       ret = GST_FLOW_EOS;</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">        7004 :   if (!buf_collected) {</span></span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">         712 :     if (isEOS) {</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">         178 :       gst_pad_push_event (tensor_mux-&gt;srcpad, gst_event_new_eos ());</span></span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaGNC">         178 :       ret = GST_FLOW_EOS;</span></span>
 <span id="L525"><span class="lineNum">     525</span>              :     }</span>
 <span id="L526"><span class="lineNum">     526</span>              : </span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">         710 :     gst_buffer_unref (tensors_buf);</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">         710 :     return ret;</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC">         712 :     gst_buffer_unref (tensors_buf);</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">         712 :     return ret;</span></span>
 <span id="L529"><span class="lineNum">     529</span>              :   }</span>
 <span id="L530"><span class="lineNum">     530</span>              : </span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">        6404 :   if (!gst_tensor_mux_set_src_caps (tensor_mux)) {</span></span>
+<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">        6292 :   if (!gst_tensor_mux_set_src_caps (tensor_mux)) {</span></span>
 <span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_unref (tensors_buf);</span></span>
 <span id="L533"><span class="lineNum">     533</span> <span class="tlaUNC">           0 :     return GST_FLOW_NOT_NEGOTIATED;</span></span>
 <span id="L534"><span class="lineNum">     534</span>              :   }</span>
 <span id="L535"><span class="lineNum">     535</span>              : </span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC tlaBgGNC">        6404 :   gst_tensor_mux_send_segment_event (tensor_mux, GST_BUFFER_PTS (tensors_buf),</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC tlaBgGNC">        6292 :   gst_tensor_mux_send_segment_event (tensor_mux, GST_BUFFER_PTS (tensors_buf),</span></span>
 <span id="L537"><span class="lineNum">     537</span>              :       GST_BUFFER_DTS (tensors_buf));</span>
 <span id="L538"><span class="lineNum">     538</span>              : </span>
 <span id="L539"><span class="lineNum">     539</span>              :   /* add header if output is flexible */</span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">        6404 :   if (gst_tensor_pad_caps_is_flexible (tensor_mux-&gt;srcpad))</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">        6292 :   if (gst_tensor_pad_caps_is_flexible (tensor_mux-&gt;srcpad))</span></span>
 <span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">          25 :     tensors_buf = gst_tensor_mux_chain_flex_tensor (tensor_mux, tensors_buf);</span></span>
 <span id="L542"><span class="lineNum">     542</span>              : </span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">        6404 :   ret = gst_pad_push (tensor_mux-&gt;srcpad, tensors_buf);</span></span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">        6404 :   tensor_mux-&gt;need_set_time = TRUE;</span></span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">        6292 :   ret = gst_pad_push (tensor_mux-&gt;srcpad, tensors_buf);</span></span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">        6292 :   tensor_mux-&gt;need_set_time = TRUE;</span></span>
 <span id="L545"><span class="lineNum">     545</span>              : </span>
-<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">        6404 :   if (ret != GST_FLOW_OK) {</span></span>
+<span id="L546"><span class="lineNum">     546</span> <span class="tlaGNC">        6292 :   if (ret != GST_FLOW_OK) {</span></span>
 <span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">          17 :     GST_WARNING_OBJECT (tensor_mux, &quot;pushed outbuf, result = %s&quot;,</span></span>
 <span id="L548"><span class="lineNum">     548</span>              :         gst_flow_get_name (ret));</span>
 <span id="L549"><span class="lineNum">     549</span>              :   }</span>
 <span id="L550"><span class="lineNum">     550</span>              : </span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">        6404 :   return ret;</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">        6292 :   return ret;</span></span>
 <span id="L552"><span class="lineNum">     552</span>              : }</span>
 <span id="L553"><span class="lineNum">     553</span>              : </span>
 <span id="L554"><span class="lineNum">     554</span>              : /**</span>
 <span id="L555"><span class="lineNum">     555</span>              :  * @brief Gst Clip Pads Function which is called right after a buffer is received for each pad.</span>
 <span id="L556"><span class="lineNum">     556</span>              :  */</span>
 <span id="L557"><span class="lineNum">     557</span>              : static GstFlowReturn</span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">        8808 : gst_tensor_mux_do_clip (GstCollectPads * pads, GstCollectData * data,</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">        8698 : gst_tensor_mux_do_clip (GstCollectPads * pads, GstCollectData * data,</span></span>
 <span id="L559"><span class="lineNum">     559</span>              :     GstBuffer * buffer, GstBuffer ** out, GstTensorMux * tensor_mux)</span>
 <span id="L560"><span class="lineNum">     560</span>              : {</span>
 <span id="L561"><span class="lineNum">     561</span>              :   UNUSED (pads);</span>
 <span id="L562"><span class="lineNum">     562</span>              :   UNUSED (data);</span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">        8808 :   gst_tensor_mux_set_waiting (tensor_mux, FALSE);</span></span>
-<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">        8808 :   *out = buffer;</span></span>
-<span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">        8808 :   return GST_FLOW_OK;</span></span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">        8698 :   gst_tensor_mux_set_waiting (tensor_mux, FALSE);</span></span>
+<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">        8698 :   *out = buffer;</span></span>
+<span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">        8698 :   return GST_FLOW_OK;</span></span>
 <span id="L566"><span class="lineNum">     566</span>              : }</span>
 <span id="L567"><span class="lineNum">     567</span>              : </span>
 <span id="L568"><span class="lineNum">     568</span>              : /**</span>
