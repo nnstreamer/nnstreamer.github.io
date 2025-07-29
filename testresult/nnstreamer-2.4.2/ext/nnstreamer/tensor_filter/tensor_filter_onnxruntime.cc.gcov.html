@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d0485163316fd556c765cfeb9390f36847fba933 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_onnxruntime.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#33f8a040b33adcdfcbb5c331bf727be211eaffb0 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_onnxruntime.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d0485163316fd556c765cfeb9390f36847fba933</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#33f8a040b33adcdfcbb5c331bf727be211eaffb0</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">73.1&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-29 05:41:35</td>
+            <td class="headerValue">2025-07-30 05:42:06</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.4&nbsp;%</td>
@@ -205,53 +205,53 @@
 <span id="L143"><span class="lineNum">     143</span>              :  * @brief Convert ONNX tensor information.</span>
 <span id="L144"><span class="lineNum">     144</span>              :  */</span>
 <span id="L145"><span class="lineNum">     145</span>              : void</span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          82 : onnxruntime_subplugin::convertTensorInfo (onnx_node_info_s &amp;node, GstTensorsInfo &amp;info)</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          90 : onnxruntime_subplugin::convertTensorInfo (onnx_node_info_s &amp;node, GstTensorsInfo &amp;info)</span></span>
 <span id="L147"><span class="lineNum">     147</span>              : {</span>
 <span id="L148"><span class="lineNum">     148</span>              :   GstTensorInfo *_info;</span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          82 :   gst_tensors_info_init (std::addressof (info));</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          82 :   info.num_tensors = (unsigned int) node.count;</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          90 :   gst_tensors_info_init (std::addressof (info));</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          90 :   info.num_tensors = (unsigned int) node.count;</span></span>
 <span id="L151"><span class="lineNum">     151</span>              : </span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         164 :   for (guint i = 0; i &lt; info.num_tensors; ++i) {</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          82 :     _info = gst_tensors_info_get_nth_info (std::addressof (info), i);</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         180 :   for (guint i = 0; i &lt; info.num_tensors; ++i) {</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          90 :     _info = gst_tensors_info_get_nth_info (std::addressof (info), i);</span></span>
 <span id="L154"><span class="lineNum">     154</span>              : </span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          82 :     if (convertTensorType (node.types[i], _info-&gt;type) != 0)</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          90 :     if (convertTensorType (node.types[i], _info-&gt;type) != 0)</span></span>
 <span id="L156"><span class="lineNum">     156</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::runtime_error (&quot;Failed to convert ONNX data type.&quot;);</span></span>
 <span id="L157"><span class="lineNum">     157</span>              : </span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC tlaBgGNC">          82 :     if (convertTensorDim (node.shapes[i], _info-&gt;dimension) != 0)</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC tlaBgGNC">          90 :     if (convertTensorDim (node.shapes[i], _info-&gt;dimension) != 0)</span></span>
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::runtime_error (&quot;Failed to convert ONNX shape.&quot;);</span></span>
 <span id="L160"><span class="lineNum">     160</span>              : </span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC tlaBgGNC">         164 :     _info-&gt;name = g_strdup (node.names[i]);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC tlaBgGNC">         180 :     _info-&gt;name = g_strdup (node.names[i]);</span></span>
 <span id="L162"><span class="lineNum">     162</span>              :   }</span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          82 : }</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          90 : }</span></span>
 <span id="L164"><span class="lineNum">     164</span>              : </span>
 <span id="L165"><span class="lineNum">     165</span>              : /**</span>
 <span id="L166"><span class="lineNum">     166</span>              :  * @brief Convert the shape of tensor.</span>
 <span id="L167"><span class="lineNum">     167</span>              :  * @return 0 if OK. non-zero if error.</span>
 <span id="L168"><span class="lineNum">     168</span>              :  */</span>
 <span id="L169"><span class="lineNum">     169</span>              : int</span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          82 : onnxruntime_subplugin::convertTensorDim (std::vector&lt;int64_t&gt; &amp;shapes, tensor_dim &amp;dim)</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          90 : onnxruntime_subplugin::convertTensorDim (std::vector&lt;int64_t&gt; &amp;shapes, tensor_dim &amp;dim)</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : {</span>
 <span id="L172"><span class="lineNum">     172</span>              :   size_t i, rank;</span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          82 :   rank = shapes.size ();</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          82 :   if (rank &lt;= 0 || rank &gt; NNS_TENSOR_RANK_LIMIT) {</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          90 :   rank = shapes.size ();</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          90 :   if (rank &lt;= 0 || rank &gt; NNS_TENSOR_RANK_LIMIT) {</span></span>
 <span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Invalid shape (rank %zu, max: %d)&quot;, rank, NNS_TENSOR_RANK_LIMIT);</span></span>
 <span id="L177"><span class="lineNum">     177</span> <span class="tlaUNC">           0 :     return -EINVAL;</span></span>
 <span id="L178"><span class="lineNum">     178</span>              :   }</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              :   /* the order of dimension is reversed at CAPS negotiation */</span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC tlaBgGNC">         328 :   for (i = 0; i &lt; rank; i++) {</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC tlaBgGNC">         360 :   for (i = 0; i &lt; rank; i++) {</span></span>
 <span id="L182"><span class="lineNum">     182</span>              :     /* free dimensions are treated as 1 if not overridden */</span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">         246 :     shapes[rank - i - 1] = (shapes[rank - i - 1] &gt; 0) ? shapes[rank - i - 1] : 1;</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">         246 :     dim[i] = shapes[rank - i - 1];</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">         270 :     shapes[rank - i - 1] = (shapes[rank - i - 1] &gt; 0) ? shapes[rank - i - 1] : 1;</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">         270 :     dim[i] = shapes[rank - i - 1];</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :   }</span>
 <span id="L186"><span class="lineNum">     186</span>              : </span>
 <span id="L187"><span class="lineNum">     187</span>              :   /* fill remaining entries with 0 */</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        1148 :   for (i = rank; i &lt; NNS_TENSOR_RANK_LIMIT; ++i) {</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        1066 :     dim[i] = 0;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        1260 :   for (i = rank; i &lt; NNS_TENSOR_RANK_LIMIT; ++i) {</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        1170 :     dim[i] = 0;</span></span>
 <span id="L190"><span class="lineNum">     190</span>              :   }</span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          82 :   return 0;</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          90 :   return 0;</span></span>
 <span id="L193"><span class="lineNum">     193</span>              : }</span>
 <span id="L194"><span class="lineNum">     194</span>              : </span>
 <span id="L195"><span class="lineNum">     195</span>              : /**</span>
@@ -259,9 +259,9 @@
 <span id="L197"><span class="lineNum">     197</span>              :  * @return 0 if OK. non-zero if error.</span>
 <span id="L198"><span class="lineNum">     198</span>              :  */</span>
 <span id="L199"><span class="lineNum">     199</span>              : int</span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          82 : onnxruntime_subplugin::convertTensorType (ONNXTensorElementDataType _type, tensor_type &amp;type)</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          90 : onnxruntime_subplugin::convertTensorType (ONNXTensorElementDataType _type, tensor_type &amp;type)</span></span>
 <span id="L201"><span class="lineNum">     201</span>              : {</span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          82 :   switch (_type) {</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          90 :   switch (_type) {</span></span>
 <span id="L203"><span class="lineNum">     203</span> <span class="tlaUNC tlaBgUNC">           0 :     case ONNX_TENSOR_ELEMENT_DATA_TYPE_INT8:</span></span>
 <span id="L204"><span class="lineNum">     204</span> <span class="tlaUNC">           0 :       type = _NNS_INT8;</span></span>
 <span id="L205"><span class="lineNum">     205</span> <span class="tlaUNC">           0 :       break;</span></span>
@@ -286,9 +286,9 @@
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaUNC">           0 :     case ONNX_TENSOR_ELEMENT_DATA_TYPE_UINT64:</span></span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaUNC">           0 :       type = _NNS_UINT64;</span></span>
 <span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC tlaBgGNC">          82 :     case ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT:</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          82 :       type = _NNS_FLOAT32;</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          82 :       break;</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC tlaBgGNC">          90 :     case ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT:</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          90 :       type = _NNS_FLOAT32;</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          90 :       break;</span></span>
 <span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC tlaBgUNC">           0 :     case ONNX_TENSOR_ELEMENT_DATA_TYPE_DOUBLE:</span></span>
 <span id="L231"><span class="lineNum">     231</span> <span class="tlaUNC">           0 :       type = _NNS_FLOAT64;</span></span>
 <span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC">           0 :       break;</span></span>
@@ -303,7 +303,7 @@
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
 <span id="L242"><span class="lineNum">     242</span>              :   }</span>
 <span id="L243"><span class="lineNum">     243</span>              : </span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC tlaBgGNC">          82 :   return 0;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC tlaBgGNC">          90 :   return 0;</span></span>
 <span id="L245"><span class="lineNum">     245</span>              : }</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
 <span id="L247"><span class="lineNum">     247</span>              : /**</span>
@@ -461,23 +461,23 @@
 <span id="L399"><span class="lineNum">     399</span>              :  * @brief Method to get the model information.</span>
 <span id="L400"><span class="lineNum">     400</span>              :  */</span>
 <span id="L401"><span class="lineNum">     401</span>              : int</span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          50 : onnxruntime_subplugin::getModelInfo (</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          56 : onnxruntime_subplugin::getModelInfo (</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :     model_info_ops ops, GstTensorsInfo &amp;in_info, GstTensorsInfo &amp;out_info)</span>
 <span id="L404"><span class="lineNum">     404</span>              : {</span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          50 :   if (ops == GET_IN_OUT_INFO) {</span></span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          41 :     convertTensorInfo (inputNode, in_info);</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          41 :     convertTensorInfo (outputNode, out_info);</span></span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          56 :   if (ops == GET_IN_OUT_INFO) {</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          45 :     convertTensorInfo (inputNode, in_info);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          45 :     convertTensorInfo (outputNode, out_info);</span></span>
 <span id="L408"><span class="lineNum">     408</span>              : </span>
 <span id="L409"><span class="lineNum">     409</span>              :     /* For debug, print input and output tensor information. */</span>
-<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          41 :     g_autofree gchar *instr = gst_tensors_info_to_string (std::addressof (in_info));</span></span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          41 :     g_autofree gchar *outstr = gst_tensors_info_to_string (std::addressof (out_info));</span></span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          41 :     nns_logd (&quot;Input info: %s&quot;, instr);</span></span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          41 :     nns_logd (&quot;Output info: %s&quot;, outstr);</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          45 :     g_autofree gchar *instr = gst_tensors_info_to_string (std::addressof (in_info));</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          45 :     g_autofree gchar *outstr = gst_tensors_info_to_string (std::addressof (out_info));</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          45 :     nns_logd (&quot;Input info: %s&quot;, instr);</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          45 :     nns_logd (&quot;Output info: %s&quot;, outstr);</span></span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          41 :     return 0;</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          41 :   }</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          45 :     return 0;</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          45 :   }</span></span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">           9 :   return -ENOENT;</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">          11 :   return -ENOENT;</span></span>
 <span id="L419"><span class="lineNum">     419</span>              : }</span>
 <span id="L420"><span class="lineNum">     420</span>              : </span>
 <span id="L421"><span class="lineNum">     421</span>              : /**</span>

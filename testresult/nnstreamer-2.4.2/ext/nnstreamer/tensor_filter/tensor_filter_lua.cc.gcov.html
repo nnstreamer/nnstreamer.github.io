@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d0485163316fd556c765cfeb9390f36847fba933 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_lua.cc</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#33f8a040b33adcdfcbb5c331bf727be211eaffb0 - nnstreamer-2.4.2/ext/nnstreamer/tensor_filter/tensor_filter_lua.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#d0485163316fd556c765cfeb9390f36847fba933</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#33f8a040b33adcdfcbb5c331bf727be211eaffb0</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.8&nbsp;%</td>
+            <td class="headerCovTableEntryMed">89.9&nbsp;%</td>
             <td class="headerCovTableEntry">267</td>
-            <td class="headerCovTableEntry">237</td>
+            <td class="headerCovTableEntry">240</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-29 05:41:35</td>
+            <td class="headerValue">2025-07-30 05:42:06</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.0&nbsp;%</td>
@@ -171,17 +171,17 @@
 <span id="L109"><span class="lineNum">     109</span>              : </span>
 <span id="L110"><span class="lineNum">     110</span>              : /** @brief For getting value in Lua */</span>
 <span id="L111"><span class="lineNum">     111</span>              : static int</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">     5071862 : tensor_index (lua_State *L)</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">     5071865 : tensor_index (lua_State *L)</span></span>
 <span id="L113"><span class="lineNum">     113</span>              : {</span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">     5071862 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">     5071862 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">     5071865 :   lua_tensor *lt = *((lua_tensor **) luaL_checkudata (L, 1, &quot;lua_tensor&quot;));</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">     5071865 :   int tidx = luaL_checkint (L, 2) - 1;</span></span>
 <span id="L116"><span class="lineNum">     116</span>              : </span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">     5071862 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">     5071862 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">     5071865 :   gsize element_size = gst_tensor_get_element_size (lt-&gt;type);</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">     5071865 :   if (tidx &lt; 0 || (size_t) tidx * element_size &gt;= lt-&gt;size)</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">           1 :     throw std::runtime_error (&quot;Invalid index for tensor&quot;);</span></span>
 <span id="L120"><span class="lineNum">     120</span>              : </span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">     5071861 :   double value = 0.0;</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">     5071861 :   switch (lt-&gt;type) {</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">     5071864 :   double value = 0.0;</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">     5071864 :   switch (lt-&gt;type) {</span></span>
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           4 :     case _NNS_INT32:</span></span>
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">           4 :       value = (double) ((int32_t *) lt-&gt;data)[tidx];</span></span>
 <span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">           4 :       break;</span></span>
@@ -206,15 +206,15 @@
 <span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">      268207 :     case _NNS_FLOAT32:</span></span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">      268207 :       value = (double) ((float *) lt-&gt;data)[tidx];</span></span>
 <span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">      268207 :       break;</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaUNC tlaBgUNC">           0 :     case _NNS_FLOAT16:</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           3 :     case _NNS_FLOAT16:</span></span>
 <span id="L148"><span class="lineNum">     148</span>              : #ifdef FLOAT16_SUPPORT</span>
 <span id="L149"><span class="lineNum">     149</span>              :       value = (double) ((float16 *) lt-&gt;data)[tidx];</span>
 <span id="L150"><span class="lineNum">     150</span>              : #else</span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC">           0 :       nns_loge (&quot;NNStreamer requires -DFLOAT16_SUPPORT as a build option to enable float16 type. This binary does not have float16 feature enabled; thus, float16 type is not supported in this instance.\n&quot;);</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaUNC">           0 :       throw std::runtime_error (&quot;Float16 not supported. Recompile with -DFLOAT16_SUPPORT.&quot;);</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           3 :       nns_loge (&quot;NNStreamer requires -DFLOAT16_SUPPORT as a build option to enable float16 type. This binary does not have float16 feature enabled; thus, float16 type is not supported in this instance.\n&quot;);</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           3 :       throw std::runtime_error (&quot;Float16 not supported. Recompile with -DFLOAT16_SUPPORT.&quot;);</span></span>
 <span id="L153"><span class="lineNum">     153</span>              : #endif</span>
 <span id="L154"><span class="lineNum">     154</span>              :       break;</span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC tlaBgGNC">           4 :     case _NNS_INT64:</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           4 :     case _NNS_INT64:</span></span>
 <span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           4 :       value = (double) ((int64_t *) lt-&gt;data)[tidx];</span></span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           4 :       break;</span></span>
 <span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           4 :     case _NNS_UINT64:</span></span>
@@ -303,60 +303,60 @@
 <span id="L241"><span class="lineNum">     241</span>              : </span>
 <span id="L242"><span class="lineNum">     242</span>              : /** @brief Expose C array to Lua */</span>
 <span id="L243"><span class="lineNum">     243</span>              : static int</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         116 : expose_tensor (lua_State *L, lua_tensor *tensor)</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         122 : expose_tensor (lua_State *L, lua_tensor *tensor)</span></span>
 <span id="L245"><span class="lineNum">     245</span>              : {</span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">         116 :   lua_tensor **ptensor = (lua_tensor **) lua_newuserdata (L, sizeof (lua_tensor *));</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         116 :   *ptensor = tensor;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         116 :   luaL_getmetatable (L, &quot;lua_tensor&quot;);</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         116 :   lua_setmetatable (L, -2);</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">         122 :   lua_tensor **ptensor = (lua_tensor **) lua_newuserdata (L, sizeof (lua_tensor *));</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         122 :   *ptensor = tensor;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         122 :   luaL_getmetatable (L, &quot;lua_tensor&quot;);</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         122 :   lua_setmetatable (L, -2);</span></span>
 <span id="L250"><span class="lineNum">     250</span>              : </span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         116 :   return 1;</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         122 :   return 1;</span></span>
 <span id="L252"><span class="lineNum">     252</span>              : }</span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
 <span id="L254"><span class="lineNum">     254</span>              : /** @brief Get input tensor in Lua */</span>
 <span id="L255"><span class="lineNum">     255</span>              : static int</span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          56 : getInputTensor (lua_State *L)</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          59 : getInputTensor (lua_State *L)</span></span>
 <span id="L257"><span class="lineNum">     257</span>              : {</span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          56 :   int tidx = lua_tointeger (L, 1);</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          56 :   if (tidx &lt;= 0 || tidx &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          59 :   int tidx = lua_tointeger (L, 1);</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          59 :   if (tidx &lt;= 0 || tidx &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
 <span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC tlaBgUNC">           0 :     throw std::runtime_error (&quot;Invalid idx for `input_tensor(idx)`&quot;);</span></span>
 <span id="L261"><span class="lineNum">     261</span>              :   }</span>
 <span id="L262"><span class="lineNum">     262</span>              : </span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC tlaBgGNC">          56 :   lua_pushstring (L, &quot;input_lua_tensors&quot;);</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">          56 :   lua_gettable (L, LUA_REGISTRYINDEX);</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          56 :   lua_tensor *lt = (lua_tensor *) lua_topointer (L, -1);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC tlaBgGNC">          59 :   lua_pushstring (L, &quot;input_lua_tensors&quot;);</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">          59 :   lua_gettable (L, LUA_REGISTRYINDEX);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          59 :   lua_tensor *lt = (lua_tensor *) lua_topointer (L, -1);</span></span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          56 :   return expose_tensor (L, &amp;(lt[tidx - 1]));</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          59 :   return expose_tensor (L, &amp;(lt[tidx - 1]));</span></span>
 <span id="L268"><span class="lineNum">     268</span>              : }</span>
 <span id="L269"><span class="lineNum">     269</span>              : </span>
 <span id="L270"><span class="lineNum">     270</span>              : /** @brief Get output tensor in Lua */</span>
 <span id="L271"><span class="lineNum">     271</span>              : static int</span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          60 : getOutputTensor (lua_State *L)</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          63 : getOutputTensor (lua_State *L)</span></span>
 <span id="L273"><span class="lineNum">     273</span>              : {</span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          60 :   int tidx = lua_tointeger (L, 1);</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          60 :   if (tidx &lt;= 0 || tidx &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          63 :   int tidx = lua_tointeger (L, 1);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          63 :   if (tidx &lt;= 0 || tidx &gt; NNS_TENSOR_SIZE_LIMIT) {</span></span>
 <span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC tlaBgUNC">           0 :     throw std::runtime_error (&quot;Invalid idx for `output_tensor(idx)`&quot;);</span></span>
 <span id="L277"><span class="lineNum">     277</span>              :   }</span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC tlaBgGNC">          60 :   lua_pushstring (L, &quot;output_lua_tensors&quot;);</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          60 :   lua_gettable (L, LUA_REGISTRYINDEX);</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          60 :   lua_tensor *lt = (lua_tensor *) lua_topointer (L, -1);</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC tlaBgGNC">          63 :   lua_pushstring (L, &quot;output_lua_tensors&quot;);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          63 :   lua_gettable (L, LUA_REGISTRYINDEX);</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          63 :   lua_tensor *lt = (lua_tensor *) lua_topointer (L, -1);</span></span>
 <span id="L282"><span class="lineNum">     282</span>              : </span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          60 :   return expose_tensor (L, &amp;(lt[tidx - 1]));</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          63 :   return expose_tensor (L, &amp;(lt[tidx - 1]));</span></span>
 <span id="L284"><span class="lineNum">     284</span>              : }</span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
 <span id="L286"><span class="lineNum">     286</span>              : /** @brief Register metatable for tensor in Lua */</span>
 <span id="L287"><span class="lineNum">     287</span>              : static void</span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          56 : create_tensor_type (lua_State *L)</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          54 : create_tensor_type (lua_State *L)</span></span>
 <span id="L289"><span class="lineNum">     289</span>              : {</span>
 <span id="L290"><span class="lineNum">     290</span>              :   static const struct luaL_reg tensor[] = { { &quot;__index&quot;, tensor_index },</span>
 <span id="L291"><span class="lineNum">     291</span>              :     { &quot;__newindex&quot;, tensor_newindex }, { NULL, NULL } };</span>
 <span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          56 :   luaL_newmetatable (L, &quot;lua_tensor&quot;);</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          56 :   luaL_openlib (L, NULL, tensor, 0);</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          56 :   lua_register (L, &quot;input_tensor&quot;, getInputTensor);</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          56 :   lua_register (L, &quot;output_tensor&quot;, getOutputTensor);</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          56 : }</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          54 :   luaL_newmetatable (L, &quot;lua_tensor&quot;);</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          54 :   luaL_openlib (L, NULL, tensor, 0);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          54 :   lua_register (L, &quot;input_tensor&quot;, getInputTensor);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          54 :   lua_register (L, &quot;output_tensor&quot;, getOutputTensor);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          54 : }</span></span>
 <span id="L298"><span class="lineNum">     298</span>              : </span>
 <span id="L299"><span class="lineNum">     299</span>              : /** @brief lua subplugin class */</span>
 <span id="L300"><span class="lineNum">     300</span>              : class lua_subplugin final : public tensor_filter_subplugin</span>
@@ -396,142 +396,142 @@
 <span id="L334"><span class="lineNum">     334</span>              : const accl_hw lua_subplugin::hw_list[] = { ACCL_CPU };</span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
 <span id="L336"><span class="lineNum">     336</span>              : /** @brief Class constructor */</span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         102 : lua_subplugin::lua_subplugin ()</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         102 :     : tensor_filter_subplugin (), L (NULL), input_lua_tensors{}, output_lua_tensors{}</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          98 : lua_subplugin::lua_subplugin ()</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          98 :     : tensor_filter_subplugin (), L (NULL), input_lua_tensors{}, output_lua_tensors{}</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : {</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         102 :   gst_tensors_info_init (std::addressof (inputInfo));</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         102 :   gst_tensors_info_init (std::addressof (outputInfo));</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">         102 : }</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          98 :   gst_tensors_info_init (std::addressof (inputInfo));</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">          98 :   gst_tensors_info_init (std::addressof (outputInfo));</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          98 : }</span></span>
 <span id="L343"><span class="lineNum">     343</span>              : </span>
 <span id="L344"><span class="lineNum">     344</span>              : /** @brief Class destructor */</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         150 : lua_subplugin::~lua_subplugin ()</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         142 : lua_subplugin::~lua_subplugin ()</span></span>
 <span id="L346"><span class="lineNum">     346</span>              : {</span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          75 :   gst_tensors_info_free (std::addressof (inputInfo));</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          75 :   gst_tensors_info_free (std::addressof (outputInfo));</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          71 :   gst_tensors_info_free (std::addressof (inputInfo));</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">          71 :   gst_tensors_info_free (std::addressof (outputInfo));</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          75 :   if (L != NULL)</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          29 :     lua_close (L);</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         150 : }</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          71 :   if (L != NULL)</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          27 :     lua_close (L);</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         142 : }</span></span>
 <span id="L353"><span class="lineNum">     353</span>              : </span>
 <span id="L354"><span class="lineNum">     354</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L355"><span class="lineNum">     355</span>              : tensor_filter_subplugin &amp;</span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          56 : lua_subplugin::getEmptyInstance ()</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">          54 : lua_subplugin::getEmptyInstance ()</span></span>
 <span id="L357"><span class="lineNum">     357</span>              : {</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          56 :   return *(new lua_subplugin ());</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">          54 :   return *(new lua_subplugin ());</span></span>
 <span id="L359"><span class="lineNum">     359</span>              : }</span>
 <span id="L360"><span class="lineNum">     360</span>              : </span>
 <span id="L361"><span class="lineNum">     361</span>              : /** @brief Parse TensorsInfo from the given Lua script */</span>
 <span id="L362"><span class="lineNum">     362</span>              : void</span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          89 : lua_subplugin::setTensorsInfo (GstTensorsInfo &amp;tensors_info)</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">          85 : lua_subplugin::setTensorsInfo (GstTensorsInfo &amp;tensors_info)</span></span>
 <span id="L364"><span class="lineNum">     364</span>              : {</span>
 <span id="L365"><span class="lineNum">     365</span>              :   GstTensorInfo *_info;</span>
 <span id="L366"><span class="lineNum">     366</span>              : </span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          89 :   if (lua_istable (L, -1)) {</span></span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          89 :     lua_pushstring (L, &quot;num&quot;);</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          89 :     lua_gettable (L, -2);</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          89 :     if (lua_isnumber (L, -1)) {</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          89 :       int num_tensors = lua_tointeger (L, -1);</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          89 :       if (num_tensors &lt;= 0 || num_tensors &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          85 :   if (lua_istable (L, -1)) {</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          85 :     lua_pushstring (L, &quot;num&quot;);</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          85 :     lua_gettable (L, -2);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          85 :     if (lua_isnumber (L, -1)) {</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          85 :       int num_tensors = lua_tointeger (L, -1);</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          85 :       if (num_tensors &lt;= 0 || num_tensors &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
 <span id="L373"><span class="lineNum">     373</span>              :         throw std::invalid_argument (</span>
 <span id="L374"><span class="lineNum">     374</span>              :             &quot;The number of tensors required by the given model exceeds the nnstreamer tensor limit (&quot; NNS_TENSOR_SIZE_LIMIT_STR</span>
 <span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC tlaBgUNC">           0 :             &quot; by default).&quot;);</span></span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC tlaBgGNC">          89 :       tensors_info.num_tensors = (uint) num_tensors;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC tlaBgGNC">          85 :       tensors_info.num_tensors = (uint) num_tensors;</span></span>
 <span id="L377"><span class="lineNum">     377</span>              :     } else {</span>
 <span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::invalid_argument (&quot;Failed to parse `num`. Please check the script&quot;);</span></span>
 <span id="L379"><span class="lineNum">     379</span>              :     }</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC tlaBgGNC">          89 :     lua_pop (L, 1);</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC tlaBgGNC">          85 :     lua_pop (L, 1);</span></span>
 <span id="L381"><span class="lineNum">     381</span>              : </span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">          89 :     lua_pushstring (L, &quot;type&quot;);</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          89 :     lua_gettable (L, -2);</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          89 :     if (lua_istable (L, -1)) {</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         179 :       for (uint j = 1; j &lt;= tensors_info.num_tensors; ++j) {</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          97 :         _info = gst_tensors_info_get_nth_info (std::addressof (tensors_info), (j - 1));</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          97 :         lua_pushinteger (L, j);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          97 :         lua_gettable (L, -2);</span></span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">          97 :         _info-&gt;type = gst_tensor_get_type (lua_tostring (L, -1));</span></span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          97 :         if (_info-&gt;type == _NNS_END)</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">          85 :     lua_pushstring (L, &quot;type&quot;);</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          85 :     lua_gettable (L, -2);</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          85 :     if (lua_istable (L, -1)) {</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         171 :       for (uint j = 1; j &lt;= tensors_info.num_tensors; ++j) {</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          93 :         _info = gst_tensors_info_get_nth_info (std::addressof (tensors_info), (j - 1));</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          93 :         lua_pushinteger (L, j);</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          93 :         lua_gettable (L, -2);</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">          93 :         _info-&gt;type = gst_tensor_get_type (lua_tostring (L, -1));</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">          93 :         if (_info-&gt;type == _NNS_END)</span></span>
 <span id="L391"><span class="lineNum">     391</span>              :           throw std::invalid_argument (</span>
 <span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">           7 :               &quot;Failed to parse `type`. Possible types are &quot; GST_TENSOR_TYPE_ALL);</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          90 :         lua_pop (L, 1);</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">          86 :         lua_pop (L, 1);</span></span>
 <span id="L394"><span class="lineNum">     394</span>              :       }</span>
 <span id="L395"><span class="lineNum">     395</span>              :     } else {</span>
 <span id="L396"><span class="lineNum">     396</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::invalid_argument (&quot;Failed to parse `type`. Please check the script&quot;);</span></span>
 <span id="L397"><span class="lineNum">     397</span>              :     }</span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC tlaBgGNC">          82 :     lua_pop (L, 1);</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC tlaBgGNC">          78 :     lua_pop (L, 1);</span></span>
 <span id="L399"><span class="lineNum">     399</span>              : </span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          82 :     lua_pushstring (L, &quot;dim&quot;);</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          82 :     lua_gettable (L, -2);</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          82 :     if (lua_istable (L, -1)) {</span></span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">         171 :       for (uint j = 1; j &lt;= tensors_info.num_tensors; ++j) {</span></span>
-<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          89 :         _info = gst_tensors_info_get_nth_info (std::addressof (tensors_info), (j - 1));</span></span>
-<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          89 :         lua_pushinteger (L, j);</span></span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          89 :         lua_gettable (L, -2);</span></span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          89 :         if (lua_istable (L, -1)) {</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">          78 :     lua_pushstring (L, &quot;dim&quot;);</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">          78 :     lua_gettable (L, -2);</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">          78 :     if (lua_istable (L, -1)) {</span></span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">         163 :       for (uint j = 1; j &lt;= tensors_info.num_tensors; ++j) {</span></span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">          85 :         _info = gst_tensors_info_get_nth_info (std::addressof (tensors_info), (j - 1));</span></span>
+<span id="L405"><span class="lineNum">     405</span> <span class="tlaGNC">          85 :         lua_pushinteger (L, j);</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">          85 :         lua_gettable (L, -2);</span></span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          85 :         if (lua_istable (L, -1)) {</span></span>
 <span id="L408"><span class="lineNum">     408</span>              :           int d;</span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          89 :           size_t i, len = lua_objlen (L, -1);</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          85 :           size_t i, len = lua_objlen (L, -1);</span></span>
 <span id="L410"><span class="lineNum">     410</span>              : </span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          89 :           if (len &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          85 :           if (len &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
 <span id="L412"><span class="lineNum">     412</span> <span class="tlaUNC tlaBgUNC">           0 :             throw std::invalid_argument (&quot;Failed to parse `dim`. Invalid dim length.&quot;);</span></span>
 <span id="L413"><span class="lineNum">     413</span>              : </span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC tlaBgGNC">         443 :           for (i = 1; i &lt;= len; ++i) {</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">         354 :             lua_pushinteger (L, i);</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">         354 :             lua_gettable (L, -2);</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">         354 :             if (lua_isnumber (L, -1) &amp;&amp; (d = lua_tointeger (L, -1)) &gt; 0) {</span></span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">         354 :               _info-&gt;dimension[i - 1] = (uint32_t) d;</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC tlaBgGNC">         423 :           for (i = 1; i &lt;= len; ++i) {</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">         338 :             lua_pushinteger (L, i);</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">         338 :             lua_gettable (L, -2);</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">         338 :             if (lua_isnumber (L, -1) &amp;&amp; (d = lua_tointeger (L, -1)) &gt; 0) {</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">         338 :               _info-&gt;dimension[i - 1] = (uint32_t) d;</span></span>
 <span id="L419"><span class="lineNum">     419</span>              :             } else {</span>
 <span id="L420"><span class="lineNum">     420</span> <span class="tlaUNC tlaBgUNC">           0 :               throw std::invalid_argument (&quot;Failed to parse `dim`. Please check the script&quot;);</span></span>
 <span id="L421"><span class="lineNum">     421</span>              :             }</span>
-<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC tlaBgGNC">         354 :             lua_pop (L, 1);</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC tlaBgGNC">         338 :             lua_pop (L, 1);</span></span>
 <span id="L423"><span class="lineNum">     423</span>              :           }</span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">        1159 :           for (i = len + 1; i &lt;= NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1070 :             _info-&gt;dimension[i - 1] = 0;</span></span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">        1107 :           for (i = len + 1; i &lt;= NNS_TENSOR_RANK_LIMIT; i++) {</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1022 :             _info-&gt;dimension[i - 1] = 0;</span></span>
 <span id="L426"><span class="lineNum">     426</span>              :           }</span>
 <span id="L427"><span class="lineNum">     427</span>              :         } else {</span>
 <span id="L428"><span class="lineNum">     428</span> <span class="tlaUNC tlaBgUNC">           0 :           throw std::invalid_argument (&quot;Failed to parse `dim`. Please check the script&quot;);</span></span>
 <span id="L429"><span class="lineNum">     429</span>              :         }</span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC tlaBgGNC">          89 :         lua_pop (L, 1);</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC tlaBgGNC">          85 :         lua_pop (L, 1);</span></span>
 <span id="L431"><span class="lineNum">     431</span>              :       }</span>
 <span id="L432"><span class="lineNum">     432</span>              :     } else {</span>
 <span id="L433"><span class="lineNum">     433</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::invalid_argument (&quot;Failed to parse `dim`. Please check the script&quot;);</span></span>
 <span id="L434"><span class="lineNum">     434</span>              :     }</span>
-<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC tlaBgGNC">          82 :     lua_pop (L, 1);</span></span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC tlaBgGNC">          78 :     lua_pop (L, 1);</span></span>
 <span id="L436"><span class="lineNum">     436</span>              :   } else {</span>
 <span id="L437"><span class="lineNum">     437</span>              :     throw std::invalid_argument (</span>
 <span id="L438"><span class="lineNum">     438</span> <span class="tlaUNC tlaBgUNC">           0 :         &quot;Failed to parse global variable `[input/output]TensorsInfo`. Please check the script&quot;);</span></span>
 <span id="L439"><span class="lineNum">     439</span>              :   }</span>
-<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC tlaBgGNC">          82 : }</span></span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaGNC tlaBgGNC">          78 : }</span></span>
 <span id="L441"><span class="lineNum">     441</span>              : </span>
 <span id="L442"><span class="lineNum">     442</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L443"><span class="lineNum">     443</span>              : void</span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          56 : lua_subplugin::configure_instance (const GstTensorFilterProperties *prop)</span></span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          54 : lua_subplugin::configure_instance (const GstTensorFilterProperties *prop)</span></span>
 <span id="L445"><span class="lineNum">     445</span>              : {</span>
-<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          56 :   if (L != NULL) {</span></span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          54 :   if (L != NULL) {</span></span>
 <span id="L447"><span class="lineNum">     447</span> <span class="tlaUNC tlaBgUNC">           0 :     lua_close (L);</span></span>
 <span id="L448"><span class="lineNum">     448</span>              :   }</span>
 <span id="L449"><span class="lineNum">     449</span>              : </span>
-<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC tlaBgGNC">          56 :   L = lua_open ();</span></span>
-<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">          56 :   luaL_openlibs (L);</span></span>
+<span id="L450"><span class="lineNum">     450</span> <span class="tlaGNC tlaBgGNC">          54 :   L = lua_open ();</span></span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">          54 :   luaL_openlibs (L);</span></span>
 <span id="L452"><span class="lineNum">     452</span>              : </span>
-<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          56 :   lua_pushstring (L, &quot;input_lua_tensors&quot;);</span></span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">          56 :   lua_pushlightuserdata (L, (void *) input_lua_tensors);</span></span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">          56 :   lua_settable (L, LUA_REGISTRYINDEX);</span></span>
+<span id="L453"><span class="lineNum">     453</span> <span class="tlaGNC">          54 :   lua_pushstring (L, &quot;input_lua_tensors&quot;);</span></span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC">          54 :   lua_pushlightuserdata (L, (void *) input_lua_tensors);</span></span>
+<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">          54 :   lua_settable (L, LUA_REGISTRYINDEX);</span></span>
 <span id="L456"><span class="lineNum">     456</span>              : </span>
-<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">          56 :   lua_pushstring (L, &quot;output_lua_tensors&quot;);</span></span>
-<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          56 :   lua_pushlightuserdata (L, (void *) output_lua_tensors);</span></span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">          56 :   lua_settable (L, LUA_REGISTRYINDEX);</span></span>
+<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">          54 :   lua_pushstring (L, &quot;output_lua_tensors&quot;);</span></span>
+<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          54 :   lua_pushlightuserdata (L, (void *) output_lua_tensors);</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">          54 :   lua_settable (L, LUA_REGISTRYINDEX);</span></span>
 <span id="L460"><span class="lineNum">     460</span>              : </span>
-<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">          56 :   create_tensor_type (L);</span></span>
+<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">          54 :   create_tensor_type (L);</span></span>
 <span id="L462"><span class="lineNum">     462</span>              : </span>
-<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          56 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_EXISTS)) {</span></span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          45 :     nns_logi (&quot;Given model file does not exist. Do script mode.&quot;);</span></span>
-<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          45 :     gchar *script = g_strjoinv (&quot;,&quot;, (gchar **) prop-&gt;model_files);</span></span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          45 :     std::unique_ptr&lt;gchar, decltype (&amp;g_free)&gt; script_ptr (script, g_free);</span></span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">          54 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_EXISTS)) {</span></span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">          43 :     nns_logi (&quot;Given model file does not exist. Do script mode.&quot;);</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          43 :     gchar *script = g_strjoinv (&quot;,&quot;, (gchar **) prop-&gt;model_files);</span></span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          43 :     std::unique_ptr&lt;gchar, decltype (&amp;g_free)&gt; script_ptr (script, g_free);</span></span>
 <span id="L467"><span class="lineNum">     467</span>              : </span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          45 :     if (luaL_dostring (L, script_ptr.get ()) != 0) {</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">          43 :     if (luaL_dostring (L, script_ptr.get ()) != 0) {</span></span>
 <span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">          16 :       throw std::invalid_argument (std::string (&quot;Failed to run given Lua script. Error message: &quot;)</span></span>
 <span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">          24 :                                    + lua_tostring (L, -1));</span></span>
 <span id="L471"><span class="lineNum">     471</span>              :     }</span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">          45 :   } else {</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">          43 :   } else {</span></span>
 <span id="L473"><span class="lineNum">     473</span>              :     /** Do File mode */</span>
 <span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">          11 :     if (luaL_dofile (L, prop-&gt;model_files[0]) != 0) {</span></span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::invalid_argument (std::string (&quot;Failed to run given Lua script file. Error message: &quot;)</span></span>
@@ -539,49 +539,49 @@
 <span id="L477"><span class="lineNum">     477</span>              :     }</span>
 <span id="L478"><span class="lineNum">     478</span>              :   }</span>
 <span id="L479"><span class="lineNum">     479</span>              : </span>
-<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC tlaBgGNC">          48 :   lua_getglobal (L, &quot;inputTensorsInfo&quot;);</span></span>
-<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">          48 :   setTensorsInfo (inputInfo);</span></span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">          41 :   lua_getglobal (L, &quot;outputTensorsInfo&quot;);</span></span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          41 :   setTensorsInfo (outputInfo);</span></span>
+<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC tlaBgGNC">          46 :   lua_getglobal (L, &quot;inputTensorsInfo&quot;);</span></span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">          46 :   setTensorsInfo (inputInfo);</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">          39 :   lua_getglobal (L, &quot;outputTensorsInfo&quot;);</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          39 :   setTensorsInfo (outputInfo);</span></span>
 <span id="L484"><span class="lineNum">     484</span>              : </span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">          41 :   lua_getglobal (L, &quot;nnstreamer_invoke&quot;);</span></span>
-<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">          41 :   if (!lua_isfunction (L, -1)) {</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">          39 :   lua_getglobal (L, &quot;nnstreamer_invoke&quot;);</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">          39 :   if (!lua_isfunction (L, -1)) {</span></span>
 <span id="L487"><span class="lineNum">     487</span> <span class="tlaUNC tlaBgUNC">           0 :     throw std::invalid_argument (&quot;Error while loading function `nnstreamer_invoke` in lua script&quot;);</span></span>
 <span id="L488"><span class="lineNum">     488</span>              :   }</span>
 <span id="L489"><span class="lineNum">     489</span>              : </span>
-<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC tlaBgGNC">          41 :   lua_settop (L, 0);</span></span>
-<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">          41 : }</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaGNC tlaBgGNC">          39 :   lua_settop (L, 0);</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaGNC">          39 : }</span></span>
 <span id="L492"><span class="lineNum">     492</span>              : </span>
 <span id="L493"><span class="lineNum">     493</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L494"><span class="lineNum">     494</span>              : void</span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">          30 : lua_subplugin::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
+<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">          33 : lua_subplugin::invoke (const GstTensorMemory *input, GstTensorMemory *output)</span></span>
 <span id="L496"><span class="lineNum">     496</span>              : {</span>
 <span id="L497"><span class="lineNum">     497</span>              :   GstTensorInfo *_info;</span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">          30 :   if (!input)</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">          33 :   if (!input)</span></span>
 <span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">           1 :     throw std::runtime_error (&quot;Invalid input buffer, it is NULL.&quot;);</span></span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          29 :   if (!output)</span></span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          32 :   if (!output)</span></span>
 <span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">           1 :     throw std::runtime_error (&quot;Invalid output buffer, it is NULL.&quot;);</span></span>
 <span id="L503"><span class="lineNum">     503</span>              : </span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">          57 :   for (uint i = 0; i &lt; inputInfo.num_tensors; ++i) {</span></span>
-<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">          29 :     _info = gst_tensors_info_get_nth_info (std::addressof (inputInfo), i);</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">          63 :   for (uint i = 0; i &lt; inputInfo.num_tensors; ++i) {</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaGNC">          32 :     _info = gst_tensors_info_get_nth_info (std::addressof (inputInfo), i);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              : </span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          29 :     input_lua_tensors[i].type = _info-&gt;type;</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          29 :     input_lua_tensors[i].data = input[i].data;</span></span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          29 :     input_lua_tensors[i].size = input[i].size;</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">          32 :     input_lua_tensors[i].type = _info-&gt;type;</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          32 :     input_lua_tensors[i].data = input[i].data;</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          32 :     input_lua_tensors[i].size = input[i].size;</span></span>
 <span id="L510"><span class="lineNum">     510</span>              :   }</span>
 <span id="L511"><span class="lineNum">     511</span>              : </span>
-<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">          58 :   for (uint i = 0; i &lt; outputInfo.num_tensors; ++i) {</span></span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          30 :     _info = gst_tensors_info_get_nth_info (std::addressof (outputInfo), i);</span></span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">          64 :   for (uint i = 0; i &lt; outputInfo.num_tensors; ++i) {</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          33 :     _info = gst_tensors_info_get_nth_info (std::addressof (outputInfo), i);</span></span>
 <span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          30 :     output_lua_tensors[i].type = _info-&gt;type;</span></span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          30 :     output_lua_tensors[i].data = output[i].data;</span></span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">          30 :     output_lua_tensors[i].size = output[i].size;</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          33 :     output_lua_tensors[i].type = _info-&gt;type;</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          33 :     output_lua_tensors[i].data = output[i].data;</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">          33 :     output_lua_tensors[i].size = output[i].size;</span></span>
 <span id="L518"><span class="lineNum">     518</span>              :   }</span>
 <span id="L519"><span class="lineNum">     519</span>              : </span>
-<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">          28 :   lua_getglobal (L, &quot;nnstreamer_invoke&quot;);</span></span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          28 :   if (lua_isfunction (L, -1)) {</span></span>
-<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">          28 :     if (lua_pcall (L, 0, 0, 0) != 0) {</span></span>
+<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">          31 :   lua_getglobal (L, &quot;nnstreamer_invoke&quot;);</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaGNC">          31 :   if (lua_isfunction (L, -1)) {</span></span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">          31 :     if (lua_pcall (L, 0, 0, 0) != 0) {</span></span>
 <span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC tlaBgUNC">           0 :       throw std::runtime_error (&quot;error while pcall nnstreamer_invoke&quot;);</span></span>
 <span id="L524"><span class="lineNum">     524</span>              :     }</span>
 <span id="L525"><span class="lineNum">     525</span>              :   } else {</span>
@@ -591,25 +591,25 @@
 <span id="L529"><span class="lineNum">     529</span>              : </span>
 <span id="L530"><span class="lineNum">     530</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L531"><span class="lineNum">     531</span>              : void</span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">         176 : lua_subplugin::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">         166 : lua_subplugin::getFrameworkInfo (GstTensorFilterFrameworkInfo &amp;info)</span></span>
 <span id="L533"><span class="lineNum">     533</span>              : {</span>
-<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">         176 :   info.name = name;</span></span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         176 :   info.allow_in_place = 0;</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         176 :   info.allocate_in_invoke = 0;</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         176 :   info.run_without_model = 0;</span></span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         176 :   info.verify_model_path = 0; /** We may run scripts expressed as property */</span></span>
-<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">         176 :   info.hw_list = hw_list;</span></span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         176 :   info.num_hw = num_hw;</span></span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         176 : }</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">         166 :   info.name = name;</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         166 :   info.allow_in_place = 0;</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         166 :   info.allocate_in_invoke = 0;</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         166 :   info.run_without_model = 0;</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">         166 :   info.verify_model_path = 0; /** We may run scripts expressed as property */</span></span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaGNC">         166 :   info.hw_list = hw_list;</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaGNC">         166 :   info.num_hw = num_hw;</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         166 : }</span></span>
 <span id="L542"><span class="lineNum">     542</span>              : </span>
 <span id="L543"><span class="lineNum">     543</span>              : /** @brief tensor-filter subplugin mandatory method */</span>
 <span id="L544"><span class="lineNum">     544</span>              : int</span>
-<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">          21 : lua_subplugin::getModelInfo (model_info_ops ops, GstTensorsInfo &amp;in_info, GstTensorsInfo &amp;out_info)</span></span>
+<span id="L545"><span class="lineNum">     545</span> <span class="tlaGNC">          19 : lua_subplugin::getModelInfo (model_info_ops ops, GstTensorsInfo &amp;in_info, GstTensorsInfo &amp;out_info)</span></span>
 <span id="L546"><span class="lineNum">     546</span>              : {</span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">          21 :   if (ops == GET_IN_OUT_INFO) {</span></span>
-<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">          21 :     gst_tensors_info_copy (std::addressof (in_info), std::addressof (inputInfo));</span></span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">          21 :     gst_tensors_info_copy (std::addressof (out_info), std::addressof (outputInfo));</span></span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">          21 :     return 0;</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">          19 :   if (ops == GET_IN_OUT_INFO) {</span></span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">          19 :     gst_tensors_info_copy (std::addressof (in_info), std::addressof (inputInfo));</span></span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">          19 :     gst_tensors_info_copy (std::addressof (out_info), std::addressof (outputInfo));</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">          19 :     return 0;</span></span>
 <span id="L551"><span class="lineNum">     551</span>              :   }</span>
 <span id="L552"><span class="lineNum">     552</span>              : </span>
 <span id="L553"><span class="lineNum">     553</span> <span class="tlaUNC tlaBgUNC">           0 :   return -ENOENT;</span></span>
@@ -630,39 +630,39 @@
 <span id="L568"><span class="lineNum">     568</span>              :  * @brief Initialize the object for runtime register</span>
 <span id="L569"><span class="lineNum">     569</span>              :  */</span>
 <span id="L570"><span class="lineNum">     570</span>              : void</span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC tlaBgGNC">          46 : lua_subplugin::init_filter_lua (void)</span></span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC tlaBgGNC">          44 : lua_subplugin::init_filter_lua (void)</span></span>
 <span id="L572"><span class="lineNum">     572</span>              : {</span>
 <span id="L573"><span class="lineNum">     573</span>              :   registeredRepresentation</span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          46 :       = tensor_filter_subplugin::register_subplugin&lt;lua_subplugin&gt; ();</span></span>
-<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          46 : }</span></span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">          44 :       = tensor_filter_subplugin::register_subplugin&lt;lua_subplugin&gt; ();</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
 <span id="L577"><span class="lineNum">     577</span>              : /**</span>
 <span id="L578"><span class="lineNum">     578</span>              :  * @brief Destruct the subplugin</span>
 <span id="L579"><span class="lineNum">     579</span>              :  */</span>
 <span id="L580"><span class="lineNum">     580</span>              : void</span>
-<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          46 : lua_subplugin::fini_filter_lua (void)</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">          44 : lua_subplugin::fini_filter_lua (void)</span></span>
 <span id="L582"><span class="lineNum">     582</span>              : {</span>
-<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          46 :   assert (registeredRepresentation != nullptr);</span></span>
-<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          46 :   tensor_filter_subplugin::unregister_subplugin (registeredRepresentation);</span></span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          46 : }</span></span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaGNC">          44 :   assert (registeredRepresentation != nullptr);</span></span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">          44 :   tensor_filter_subplugin::unregister_subplugin (registeredRepresentation);</span></span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L586"><span class="lineNum">     586</span>              : </span>
 <span id="L587"><span class="lineNum">     587</span>              : /**</span>
 <span id="L588"><span class="lineNum">     588</span>              :  * @brief initializer</span>
 <span id="L589"><span class="lineNum">     589</span>              :  */</span>
 <span id="L590"><span class="lineNum">     590</span>              : void</span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          46 : _init_filter_lua ()</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          44 : _init_filter_lua ()</span></span>
 <span id="L592"><span class="lineNum">     592</span>              : {</span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">          46 :   lua_subplugin::init_filter_lua ();</span></span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">          46 : }</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">          44 :   lua_subplugin::init_filter_lua ();</span></span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L595"><span class="lineNum">     595</span>              : </span>
 <span id="L596"><span class="lineNum">     596</span>              : /**</span>
 <span id="L597"><span class="lineNum">     597</span>              :  * @brief finalizer</span>
 <span id="L598"><span class="lineNum">     598</span>              :  */</span>
 <span id="L599"><span class="lineNum">     599</span>              : void</span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          46 : _fini_filter_lua ()</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">          44 : _fini_filter_lua ()</span></span>
 <span id="L601"><span class="lineNum">     601</span>              : {</span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          46 :   lua_subplugin::fini_filter_lua ();</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          46 : }</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">          44 :   lua_subplugin::fini_filter_lua ();</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L604"><span class="lineNum">     604</span>              : </span>
 <span id="L605"><span class="lineNum">     605</span>              : } /* namespace tensorfilter_lua */</span>
 <span id="L606"><span class="lineNum">     606</span>              : } /* namespace nnstreamer */</span>
