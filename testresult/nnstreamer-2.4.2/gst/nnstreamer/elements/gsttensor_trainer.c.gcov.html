@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-30 05:42:06</td>
+            <td class="headerValue">2025-07-31 05:39:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">52.5&nbsp;%</td>
@@ -978,36 +978,36 @@
 <span id="L916"><span class="lineNum">     916</span>              :  * @brief Get pad caps for caps negotiation.</span>
 <span id="L917"><span class="lineNum">     917</span>              :  */</span>
 <span id="L918"><span class="lineNum">     918</span>              : static GstCaps *</span>
-<span id="L919"><span class="lineNum">     919</span> <span class="tlaGNC tlaBgGNC">          48 : gst_tensor_trainer_query_caps (GstTensorTrainer * trainer,</span></span>
+<span id="L919"><span class="lineNum">     919</span> <span class="tlaGNC tlaBgGNC">          47 : gst_tensor_trainer_query_caps (GstTensorTrainer * trainer,</span></span>
 <span id="L920"><span class="lineNum">     920</span>              :     GstPad * pad, GstCaps * filter)</span>
 <span id="L921"><span class="lineNum">     921</span>              : {</span>
 <span id="L922"><span class="lineNum">     922</span>              :   GstCaps *caps;</span>
 <span id="L923"><span class="lineNum">     923</span>              :   GstTensorsConfig *config;</span>
 <span id="L924"><span class="lineNum">     924</span>              : </span>
-<span id="L925"><span class="lineNum">     925</span> <span class="tlaGNC">          48 :   g_return_val_if_fail (trainer != NULL, NULL);</span></span>
-<span id="L926"><span class="lineNum">     926</span> <span class="tlaGNC">          48 :   g_return_val_if_fail (pad != NULL, NULL);</span></span>
+<span id="L925"><span class="lineNum">     925</span> <span class="tlaGNC">          47 :   g_return_val_if_fail (trainer != NULL, NULL);</span></span>
+<span id="L926"><span class="lineNum">     926</span> <span class="tlaGNC">          47 :   g_return_val_if_fail (pad != NULL, NULL);</span></span>
 <span id="L927"><span class="lineNum">     927</span>              : </span>
 <span id="L928"><span class="lineNum">     928</span>              :   /* tensor config info for given pad */</span>
-<span id="L929"><span class="lineNum">     929</span> <span class="tlaGNC">          48 :   if (pad == trainer-&gt;sinkpad) {</span></span>
-<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">          26 :     config = &amp;trainer-&gt;in_config;</span></span>
+<span id="L929"><span class="lineNum">     929</span> <span class="tlaGNC">          47 :   if (pad == trainer-&gt;sinkpad) {</span></span>
+<span id="L930"><span class="lineNum">     930</span> <span class="tlaGNC">          25 :     config = &amp;trainer-&gt;in_config;</span></span>
 <span id="L931"><span class="lineNum">     931</span>              :   } else {</span>
 <span id="L932"><span class="lineNum">     932</span> <span class="tlaGNC">          22 :     config = &amp;trainer-&gt;out_config;</span></span>
 <span id="L933"><span class="lineNum">     933</span>              :   }</span>
 <span id="L934"><span class="lineNum">     934</span>              : </span>
-<span id="L935"><span class="lineNum">     935</span> <span class="tlaGNC">          48 :   caps = gst_tensor_pad_possible_caps_from_config (pad, config);</span></span>
-<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">          48 :   GST_DEBUG_OBJECT (trainer, &quot;caps %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L937"><span class="lineNum">     937</span> <span class="tlaGNC">          48 :   GST_DEBUG_OBJECT (trainer, &quot;filter %&quot; GST_PTR_FORMAT, filter);</span></span>
+<span id="L935"><span class="lineNum">     935</span> <span class="tlaGNC">          47 :   caps = gst_tensor_pad_possible_caps_from_config (pad, config);</span></span>
+<span id="L936"><span class="lineNum">     936</span> <span class="tlaGNC">          47 :   GST_DEBUG_OBJECT (trainer, &quot;caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L937"><span class="lineNum">     937</span> <span class="tlaGNC">          47 :   GST_DEBUG_OBJECT (trainer, &quot;filter %&quot; GST_PTR_FORMAT, filter);</span></span>
 <span id="L938"><span class="lineNum">     938</span>              : </span>
-<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">          48 :   if (caps &amp;&amp; filter) {</span></span>
+<span id="L939"><span class="lineNum">     939</span> <span class="tlaGNC">          47 :   if (caps &amp;&amp; filter) {</span></span>
 <span id="L940"><span class="lineNum">     940</span>              :     GstCaps *result;</span>
-<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">           4 :     result = gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
-<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">           4 :     gst_caps_unref (caps);</span></span>
-<span id="L943"><span class="lineNum">     943</span> <span class="tlaGNC">           4 :     caps = result;</span></span>
+<span id="L941"><span class="lineNum">     941</span> <span class="tlaGNC">           3 :     result = gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
+<span id="L942"><span class="lineNum">     942</span> <span class="tlaGNC">           3 :     gst_caps_unref (caps);</span></span>
+<span id="L943"><span class="lineNum">     943</span> <span class="tlaGNC">           3 :     caps = result;</span></span>
 <span id="L944"><span class="lineNum">     944</span>              :   }</span>
 <span id="L945"><span class="lineNum">     945</span>              : </span>
-<span id="L946"><span class="lineNum">     946</span> <span class="tlaGNC">          48 :   GST_DEBUG_OBJECT (trainer, &quot;result caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L946"><span class="lineNum">     946</span> <span class="tlaGNC">          47 :   GST_DEBUG_OBJECT (trainer, &quot;result caps %&quot; GST_PTR_FORMAT, caps);</span></span>
 <span id="L947"><span class="lineNum">     947</span>              : </span>
-<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">          48 :   return caps;</span></span>
+<span id="L948"><span class="lineNum">     948</span> <span class="tlaGNC">          47 :   return caps;</span></span>
 <span id="L949"><span class="lineNum">     949</span>              : }</span>
 <span id="L950"><span class="lineNum">     950</span>              : </span>
 <span id="L951"><span class="lineNum">     951</span>              : /**</span>
@@ -1036,16 +1036,16 @@
 <span id="L974"><span class="lineNum">     974</span>              :  * @brief Event handler for sink pad of tensor_trainer</span>
 <span id="L975"><span class="lineNum">     975</span>              :  */</span>
 <span id="L976"><span class="lineNum">     976</span>              : static gboolean</span>
-<span id="L977"><span class="lineNum">     977</span> <span class="tlaGNC tlaBgGNC">           7 : gst_tensor_trainer_sink_event (GstPad * sinkpad, GstObject * parent,</span></span>
+<span id="L977"><span class="lineNum">     977</span> <span class="tlaGNC tlaBgGNC">           6 : gst_tensor_trainer_sink_event (GstPad * sinkpad, GstObject * parent,</span></span>
 <span id="L978"><span class="lineNum">     978</span>              :     GstEvent * event)</span>
 <span id="L979"><span class="lineNum">     979</span>              : {</span>
 <span id="L980"><span class="lineNum">     980</span>              :   GstTensorTrainer *trainer;</span>
-<span id="L981"><span class="lineNum">     981</span> <span class="tlaGNC">           7 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
+<span id="L981"><span class="lineNum">     981</span> <span class="tlaGNC">           6 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
 <span id="L982"><span class="lineNum">     982</span>              : </span>
-<span id="L983"><span class="lineNum">     983</span> <span class="tlaGNC">           7 :   GST_DEBUG_OBJECT (trainer, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L983"><span class="lineNum">     983</span> <span class="tlaGNC">           6 :   GST_DEBUG_OBJECT (trainer, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L984"><span class="lineNum">     984</span>              :       GST_EVENT_TYPE_NAME (event), event);</span>
 <span id="L985"><span class="lineNum">     985</span>              : </span>
-<span id="L986"><span class="lineNum">     986</span> <span class="tlaGNC">           7 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L986"><span class="lineNum">     986</span> <span class="tlaGNC">           6 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L987"><span class="lineNum">     987</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_EVENT_EOS:</span></span>
 <span id="L988"><span class="lineNum">     988</span> <span class="tlaUNC">           0 :       if (!trainer-&gt;is_training_complete)</span></span>
 <span id="L989"><span class="lineNum">     989</span> <span class="tlaUNC">           0 :         gst_tensor_trainer_wait_for_training_completion (trainer);</span></span>
@@ -1091,42 +1091,42 @@
 <span id="L1029"><span class="lineNum">    1029</span> <span class="tlaGNC">           3 :       gst_caps_unref (out_caps);</span></span>
 <span id="L1030"><span class="lineNum">    1030</span> <span class="tlaGNC">           3 :       return ret;</span></span>
 <span id="L1031"><span class="lineNum">    1031</span>              :     }</span>
-<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">           4 :     default:</span></span>
-<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">           4 :       break;</span></span>
+<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">           3 :     default:</span></span>
+<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">           3 :       break;</span></span>
 <span id="L1034"><span class="lineNum">    1034</span>              :   }</span>
-<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">           4 :   return gst_pad_event_default (sinkpad, parent, event);</span></span>
+<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">           3 :   return gst_pad_event_default (sinkpad, parent, event);</span></span>
 <span id="L1036"><span class="lineNum">    1036</span>              : }</span>
 <span id="L1037"><span class="lineNum">    1037</span>              : </span>
 <span id="L1038"><span class="lineNum">    1038</span>              : /**</span>
 <span id="L1039"><span class="lineNum">    1039</span>              :  * @brief This function handles sink pad query.</span>
 <span id="L1040"><span class="lineNum">    1040</span>              :  */</span>
 <span id="L1041"><span class="lineNum">    1041</span>              : static gboolean</span>
-<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">          32 : gst_tensor_trainer_sink_query (GstPad * sinkpad, GstObject * parent,</span></span>
+<span id="L1042"><span class="lineNum">    1042</span> <span class="tlaGNC">          31 : gst_tensor_trainer_sink_query (GstPad * sinkpad, GstObject * parent,</span></span>
 <span id="L1043"><span class="lineNum">    1043</span>              :     GstQuery * query)</span>
 <span id="L1044"><span class="lineNum">    1044</span>              : {</span>
 <span id="L1045"><span class="lineNum">    1045</span>              :   GstTensorTrainer *trainer;</span>
-<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">          32 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
+<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaGNC">          31 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
 <span id="L1047"><span class="lineNum">    1047</span>              : </span>
-<span id="L1048"><span class="lineNum">    1048</span> <span class="tlaGNC">          32 :   GST_DEBUG_OBJECT (trainer, &quot;Received '%s' query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L1048"><span class="lineNum">    1048</span> <span class="tlaGNC">          31 :   GST_DEBUG_OBJECT (trainer, &quot;Received '%s' query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L1049"><span class="lineNum">    1049</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L1050"><span class="lineNum">    1050</span>              : </span>
-<span id="L1051"><span class="lineNum">    1051</span> <span class="tlaGNC">          32 :   switch (GST_QUERY_TYPE (query)) {</span></span>
-<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaGNC">          26 :     case GST_QUERY_CAPS:</span></span>
+<span id="L1051"><span class="lineNum">    1051</span> <span class="tlaGNC">          31 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaGNC">          25 :     case GST_QUERY_CAPS:</span></span>
 <span id="L1053"><span class="lineNum">    1053</span>              :     {</span>
 <span id="L1054"><span class="lineNum">    1054</span>              :       GstCaps *caps;</span>
 <span id="L1055"><span class="lineNum">    1055</span>              :       GstCaps *filter;</span>
 <span id="L1056"><span class="lineNum">    1056</span>              : </span>
-<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">          26 :       GST_DEBUG_OBJECT (trainer, &quot;[GST_QUERY_CAPS]&quot;);</span></span>
-<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaGNC">          26 :       gst_query_parse_caps (query, &amp;filter);</span></span>
-<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">          26 :       GST_DEBUG_OBJECT (trainer, &quot;Caps from query : %&quot; GST_PTR_FORMAT, filter);</span></span>
+<span id="L1057"><span class="lineNum">    1057</span> <span class="tlaGNC">          25 :       GST_DEBUG_OBJECT (trainer, &quot;[GST_QUERY_CAPS]&quot;);</span></span>
+<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaGNC">          25 :       gst_query_parse_caps (query, &amp;filter);</span></span>
+<span id="L1059"><span class="lineNum">    1059</span> <span class="tlaGNC">          25 :       GST_DEBUG_OBJECT (trainer, &quot;Caps from query : %&quot; GST_PTR_FORMAT, filter);</span></span>
 <span id="L1060"><span class="lineNum">    1060</span>              : </span>
-<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaGNC">          26 :       caps = gst_tensor_trainer_query_caps (trainer, sinkpad, filter);</span></span>
+<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaGNC">          25 :       caps = gst_tensor_trainer_query_caps (trainer, sinkpad, filter);</span></span>
 <span id="L1062"><span class="lineNum">    1062</span>              : </span>
-<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">          26 :       GST_INFO_OBJECT (trainer, &quot;[GST_QUERY_CAPS] : %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">          26 :       gst_query_set_caps_result (query, caps);</span></span>
-<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaGNC">          26 :       gst_caps_unref (caps);</span></span>
+<span id="L1063"><span class="lineNum">    1063</span> <span class="tlaGNC">          25 :       GST_INFO_OBJECT (trainer, &quot;[GST_QUERY_CAPS] : %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L1064"><span class="lineNum">    1064</span> <span class="tlaGNC">          25 :       gst_query_set_caps_result (query, caps);</span></span>
+<span id="L1065"><span class="lineNum">    1065</span> <span class="tlaGNC">          25 :       gst_caps_unref (caps);</span></span>
 <span id="L1066"><span class="lineNum">    1066</span>              : </span>
-<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">          26 :       return TRUE;</span></span>
+<span id="L1067"><span class="lineNum">    1067</span> <span class="tlaGNC">          25 :       return TRUE;</span></span>
 <span id="L1068"><span class="lineNum">    1068</span>              :     }</span>
 <span id="L1069"><span class="lineNum">    1069</span> <span class="tlaGNC">           3 :     case GST_QUERY_ACCEPT_CAPS:</span></span>
 <span id="L1070"><span class="lineNum">    1070</span>              :     {</span>
