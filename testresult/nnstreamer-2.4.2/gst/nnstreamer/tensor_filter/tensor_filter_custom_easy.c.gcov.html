@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-01 05:43:06</td>
+            <td class="headerValue">2025-08-04 05:41:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -224,20 +224,20 @@
 <span id="L162"><span class="lineNum">     162</span>              :  * @brief Callback required by tensor_filter subplugin</span>
 <span id="L163"><span class="lineNum">     163</span>              :  */</span>
 <span id="L164"><span class="lineNum">     164</span>              : static int</span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          39 : custom_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          35 : custom_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : {</span>
 <span id="L167"><span class="lineNum">     167</span>              :   runtime_data *rd;</span>
 <span id="L168"><span class="lineNum">     168</span>              : </span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          39 :   rd = g_new (runtime_data, 1);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          39 :   if (!rd)</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          35 :   rd = g_new (runtime_data, 1);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          35 :   if (!rd)</span></span>
 <span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC tlaBgUNC">           0 :     return -ENOMEM;</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">          39 :   rd-&gt;model = get_subplugin (NNS_EASY_CUSTOM_FILTER, prop-&gt;model_files[0]);</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">          35 :   rd-&gt;model = get_subplugin (NNS_EASY_CUSTOM_FILTER, prop-&gt;model_files[0]);</span></span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          39 :   if (NULL == rd-&gt;model) {</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          24 :     ml_loge</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          35 :   if (NULL == rd-&gt;model) {</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          20 :     ml_loge</span></span>
 <span id="L176"><span class="lineNum">     176</span>              :         (&quot;Cannot find the easy-custom model, \&quot;%s\&quot;. You should provide a valid model name of easy-custom.&quot;,</span>
 <span id="L177"><span class="lineNum">     177</span>              :         prop-&gt;model_files[0]);</span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          24 :     goto errorreturn;</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          20 :     goto errorreturn;</span></span>
 <span id="L179"><span class="lineNum">     179</span>              :   }</span>
 <span id="L180"><span class="lineNum">     180</span>              : </span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          15 :   if (NULL == rd-&gt;model-&gt;func &amp;&amp; NULL == rd-&gt;model-&gt;func_dynamic) {</span></span>
@@ -280,9 +280,9 @@
 <span id="L218"><span class="lineNum">     218</span>              : </span>
 <span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC tlaBgGNC">           6 :   *private_data = rd;</span></span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           6 :   return 0;</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          33 : errorreturn:</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          33 :   g_free (rd);</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          33 :   return -EINVAL;</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          29 : errorreturn:</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          29 :   g_free (rd);</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          29 :   return -EINVAL;</span></span>
 <span id="L224"><span class="lineNum">     224</span>              : }</span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
 <span id="L226"><span class="lineNum">     226</span>              : /**</span>
@@ -302,18 +302,18 @@
 <span id="L240"><span class="lineNum">     240</span>              :  * @brief Callback required by tensor_filter subplugin</span>
 <span id="L241"><span class="lineNum">     241</span>              :  */</span>
 <span id="L242"><span class="lineNum">     242</span>              : static int</span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          48 : custom_invoke (const GstTensorFilterFramework * self,</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          47 : custom_invoke (const GstTensorFilterFramework * self,</span></span>
 <span id="L244"><span class="lineNum">     244</span>              :     GstTensorFilterProperties * prop, void *private_data,</span>
 <span id="L245"><span class="lineNum">     245</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
 <span id="L246"><span class="lineNum">     246</span>              : {</span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          48 :   int ret = 0;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          48 :   runtime_data *rd = (runtime_data *) private_data;</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          47 :   int ret = 0;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          47 :   runtime_data *rd = (runtime_data *) private_data;</span></span>
 <span id="L249"><span class="lineNum">     249</span>              :   UNUSED (self);</span>
 <span id="L250"><span class="lineNum">     250</span>              : </span>
 <span id="L251"><span class="lineNum">     251</span>              :   /* Internal Logic Error */</span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          48 :   g_assert (rd &amp;&amp; rd-&gt;model);</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">          47 :   g_assert (rd &amp;&amp; rd-&gt;model);</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          48 :   if (!prop-&gt;invoke_dynamic) {</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          47 :   if (!prop-&gt;invoke_dynamic) {</span></span>
 <span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          30 :     if (!rd-&gt;model-&gt;func) {</span></span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_loge</span></span>
 <span id="L257"><span class="lineNum">     257</span>              :           (&quot;Custom filter function is not registered. Register the function using `NNS_custom_easy_register`.&quot;);</span>
@@ -321,12 +321,12 @@
 <span id="L259"><span class="lineNum">     259</span>              :     }</span>
 <span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC tlaBgGNC">          30 :     return rd-&gt;model-&gt;func (rd-&gt;model-&gt;data, prop, input, output);</span></span>
 <span id="L261"><span class="lineNum">     261</span>              :   } else {</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          18 :     if (!rd-&gt;model-&gt;func_dynamic) {</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          17 :     if (!rd-&gt;model-&gt;func_dynamic) {</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_loge</span></span>
 <span id="L264"><span class="lineNum">     264</span>              :           (&quot;Dynamic invoke is enabled but dynamic custom filter function is not registered. Register the function using `NNS_custom_easy_dynamic_register`.&quot;);</span>
 <span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :       return -1;</span></span>
 <span id="L266"><span class="lineNum">     266</span>              :     }</span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC tlaBgGNC">          18 :     return rd-&gt;model-&gt;func_dynamic (rd-&gt;model-&gt;data, &amp;prop-&gt;input_meta,</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC tlaBgGNC">          17 :     return rd-&gt;model-&gt;func_dynamic (rd-&gt;model-&gt;data, &amp;prop-&gt;input_meta,</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :         &amp;prop-&gt;output_meta, input, output);</span>
 <span id="L269"><span class="lineNum">     269</span>              :   }</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
