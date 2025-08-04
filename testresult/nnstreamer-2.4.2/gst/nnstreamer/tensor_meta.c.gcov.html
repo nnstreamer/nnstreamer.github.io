@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-04 05:41:49</td>
+            <td class="headerValue">2025-08-05 05:42:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -83,24 +83,24 @@
 <span id="L21"><span class="lineNum">      21</span>              :  * @brief Define meta_query type to register</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
 <span id="L23"><span class="lineNum">      23</span>              : GType</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">         294 : gst_meta_query_api_get_type (void)</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">         284 : gst_meta_query_api_get_type (void)</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : {</span>
 <span id="L26"><span class="lineNum">      26</span>              :   static GType type = 0;</span>
 <span id="L27"><span class="lineNum">      27</span>              :   static const gchar *tags[] = {</span>
 <span id="L28"><span class="lineNum">      28</span>              :     NULL</span>
 <span id="L29"><span class="lineNum">      29</span>              :   };</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         294 :   if (g_once_init_enter (&amp;type)) {</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         284 :   if (g_once_init_enter (&amp;type)) {</span></span>
 <span id="L32"><span class="lineNum">      32</span>              :     GType _type;</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          12 :     const GstMetaInfo *meta_info = gst_meta_get_info (&quot;GstMetaQuery&quot;);</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          12 :     if (meta_info) {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          11 :     const GstMetaInfo *meta_info = gst_meta_get_info (&quot;GstMetaQuery&quot;);</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          11 :     if (meta_info) {</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC tlaBgUNC">           0 :       _type = meta_info-&gt;api;</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :     } else {</span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC tlaBgGNC">          12 :       _type = gst_meta_api_type_register (&quot;GstMetaQueryAPI&quot;, tags);</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC tlaBgGNC">          11 :       _type = gst_meta_api_type_register (&quot;GstMetaQueryAPI&quot;, tags);</span></span>
 <span id="L38"><span class="lineNum">      38</span>              :     }</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          12 :     g_once_init_leave (&amp;type, _type);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          11 :     g_once_init_leave (&amp;type, _type);</span></span>
 <span id="L40"><span class="lineNum">      40</span>              :   }</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         294 :   return type;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         284 :   return type;</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : }</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
 <span id="L44"><span class="lineNum">      44</span>              : /**</span>
