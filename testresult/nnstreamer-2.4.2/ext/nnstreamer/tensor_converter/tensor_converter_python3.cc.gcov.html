@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-05 05:42:23</td>
+            <td class="headerValue">2025-08-06 05:39:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -372,10 +372,10 @@
 <span id="L310"><span class="lineNum">     310</span>              : </span>
 <span id="L311"><span class="lineNum">     311</span>              : /** @brief tensor converter plugin's NNStreamerExternalConverter callback */</span>
 <span id="L312"><span class="lineNum">     312</span>              : static GstCaps *</span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         469 : python_query_caps (const GstTensorsConfig *config)</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         471 : python_query_caps (const GstTensorsConfig *config)</span></span>
 <span id="L314"><span class="lineNum">     314</span>              : {</span>
 <span id="L315"><span class="lineNum">     315</span>              :   UNUSED (config);</span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         469 :   return gst_caps_from_string (&quot;application/octet-stream&quot;);</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         471 :   return gst_caps_from_string (&quot;application/octet-stream&quot;);</span></span>
 <span id="L317"><span class="lineNum">     317</span>              : }</span>
 <span id="L318"><span class="lineNum">     318</span>              : </span>
 <span id="L319"><span class="lineNum">     319</span>              : /**</span>
@@ -445,20 +445,20 @@
 <span id="L383"><span class="lineNum">     383</span>              : #endif /* __cplusplus */</span>
 <span id="L384"><span class="lineNum">     384</span>              : /** @brief Initialize this object for tensor converter sub-plugin */</span>
 <span id="L385"><span class="lineNum">     385</span>              : void</span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         459 : init_converter_py (void)</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         461 : init_converter_py (void)</span></span>
 <span id="L387"><span class="lineNum">     387</span>              : {</span>
 <span id="L388"><span class="lineNum">     388</span>              :   /** Python should be initialized and finalized only once */</span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         459 :   nnstreamer_python_init_refcnt ();</span></span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         459 :   registerExternalConverter (&amp;Python);</span></span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         459 : }</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         461 :   nnstreamer_python_init_refcnt ();</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         461 :   registerExternalConverter (&amp;Python);</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         461 : }</span></span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
 <span id="L393"><span class="lineNum">     393</span>              : /** @brief Destruct this object for tensor converter sub-plugin */</span>
 <span id="L394"><span class="lineNum">     394</span>              : void</span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         459 : fini_converter_py (void)</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         461 : fini_converter_py (void)</span></span>
 <span id="L396"><span class="lineNum">     396</span>              : {</span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         459 :   nnstreamer_python_status_check ();</span></span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         459 :   nnstreamer_python_fini_refcnt ();</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         459 :   unregisterExternalConverter (Python.name);</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         461 :   nnstreamer_python_status_check ();</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         461 :   nnstreamer_python_fini_refcnt ();</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         461 :   unregisterExternalConverter (Python.name);</span></span>
 <span id="L400"><span class="lineNum">     400</span>              : /**</span>
 <span id="L401"><span class="lineNum">     401</span>              :  * @todo Remove below lines after this issue is addressed.</span>
 <span id="L402"><span class="lineNum">     402</span>              :  * Tizen issues: After python version has been upgraded from 3.9.1 to 3.9.10,</span>
@@ -470,7 +470,7 @@
 <span id="L408"><span class="lineNum">     408</span>              :   if (Py_IsInitialized())</span>
 <span id="L409"><span class="lineNum">     409</span>              :     Py_Finalize ();</span>
 <span id="L410"><span class="lineNum">     410</span>              : #endif</span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">         459 : }</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">         461 : }</span></span>
 <span id="L412"><span class="lineNum">     412</span>              : #ifdef __cplusplus</span>
 <span id="L413"><span class="lineNum">     413</span>              : }</span>
 <span id="L414"><span class="lineNum">     414</span>              : #endif /* __cplusplus */</span>
