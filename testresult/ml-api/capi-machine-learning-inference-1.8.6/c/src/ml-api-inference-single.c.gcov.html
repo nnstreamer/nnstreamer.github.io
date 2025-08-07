@@ -31,13 +31,13 @@
             <td class="headerValue">ML API 1.8.6-0 nnstreamer/api#08032dc4be08ef10ccf87de16ea37f1eee596474</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">74.6&nbsp;%</td>
+            <td class="headerCovTableEntryLo">74.7&nbsp;%</td>
             <td class="headerCovTableEntry">870</td>
-            <td class="headerCovTableEntry">649</td>
+            <td class="headerCovTableEntry">650</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-07 05:28:11</td>
+            <td class="headerValue">2025-08-08 05:29:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">92.3&nbsp;%</td>
@@ -563,13 +563,13 @@
 <span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          82 :   g_mutex_lock (&amp;single_h-&gt;mutex);</span></span>
 <span id="L502"><span class="lineNum">     502</span>              : </span>
 <span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         101 :   while (single_h-&gt;state &lt;= RUNNING) {</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         101 :     int status = ML_ERROR_NONE;</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         100 :     int status = ML_ERROR_NONE;</span></span>
 <span id="L505"><span class="lineNum">     505</span>              : </span>
 <span id="L506"><span class="lineNum">     506</span>              :     /** wait for data */</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">         122 :     while (single_h-&gt;state != RUNNING) {</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          99 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          97 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          76 :         goto exit;</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">         121 :     while (single_h-&gt;state != RUNNING) {</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          98 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          96 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">          75 :         goto exit;</span></span>
 <span id="L511"><span class="lineNum">     511</span>              :     }</span>
 <span id="L512"><span class="lineNum">     512</span>              : </span>
 <span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          23 :     input = single_h-&gt;input;</span></span>
@@ -609,9 +609,9 @@
 <span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">          19 :     g_cond_broadcast (&amp;single_h-&gt;cond);</span></span>
 <span id="L548"><span class="lineNum">     548</span>              :   }</span>
 <span id="L549"><span class="lineNum">     549</span>              : </span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaUNC tlaBgUNC">           0 : exit:</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">           1 : exit:</span></span>
 <span id="L551"><span class="lineNum">     551</span>              :   /* Do not set IDLE if JOIN_REQUESTED */</span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC tlaBgGNC">          80 :   if (single_h-&gt;state == JOIN_REQUESTED) {</span></span>
+<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">          80 :   if (single_h-&gt;state == JOIN_REQUESTED) {</span></span>
 <span id="L553"><span class="lineNum">     553</span>              :     /* Release input and output data */</span>
 <span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">          80 :     if (single_h-&gt;input)</span></span>
 <span id="L555"><span class="lineNum">     555</span> <span class="tlaUNC tlaBgUNC">           0 :       ml_tensors_data_destroy (single_h-&gt;input);</span></span>
@@ -1329,10 +1329,10 @@
 <span id="L1267"><span class="lineNum">    1267</span> <span class="tlaGNC">          80 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
 <span id="L1268"><span class="lineNum">    1268</span>              : </span>
 <span id="L1269"><span class="lineNum">    1269</span>              :   /** Wait until invoke process is finished */</span>
-<span id="L1270"><span class="lineNum">    1270</span> <span class="tlaGNC">        1649 :   while (invoking) {</span></span>
-<span id="L1271"><span class="lineNum">    1271</span> <span class="tlaGNC">        1569 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
-<span id="L1272"><span class="lineNum">    1272</span> <span class="tlaGNC">        1569 :     g_usleep (1000);</span></span>
-<span id="L1273"><span class="lineNum">    1273</span> <span class="tlaGNC">        1569 :     invoking = single_h-&gt;invoking;</span></span>
+<span id="L1270"><span class="lineNum">    1270</span> <span class="tlaGNC">        1645 :   while (invoking) {</span></span>
+<span id="L1271"><span class="lineNum">    1271</span> <span class="tlaGNC">        1565 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
+<span id="L1272"><span class="lineNum">    1272</span> <span class="tlaGNC">        1565 :     g_usleep (1000);</span></span>
+<span id="L1273"><span class="lineNum">    1273</span> <span class="tlaGNC">        1565 :     invoking = single_h-&gt;invoking;</span></span>
 <span id="L1274"><span class="lineNum">    1274</span>              :     /**</span>
 <span id="L1275"><span class="lineNum">    1275</span>              :      * single_h-&gt;invoking is the only protected value here and we are</span>
 <span id="L1276"><span class="lineNum">    1276</span>              :      * doing a read-only operation and do not need to project its value</span>
