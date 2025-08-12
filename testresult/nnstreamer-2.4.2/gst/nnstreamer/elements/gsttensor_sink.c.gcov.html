@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-12 05:38:56</td>
+            <td class="headerValue">2025-08-13 05:42:06</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.2&nbsp;%</td>
@@ -200,7 +200,7 @@
 <span id="L138"><span class="lineNum">     138</span>              : static gboolean gst_tensor_sink_get_silent (GstTensorSink * self);</span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
 <span id="L140"><span class="lineNum">     140</span>              : #define gst_tensor_sink_parent_class parent_class</span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC tlaBgGNC">       43371 : G_DEFINE_TYPE (GstTensorSink, gst_tensor_sink, GST_TYPE_BASE_SINK);</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC tlaBgGNC">       43364 : G_DEFINE_TYPE (GstTensorSink, gst_tensor_sink, GST_TYPE_BASE_SINK);</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              : /**</span>
 <span id="L144"><span class="lineNum">     144</span>              :  * @brief Initialize tensor_sink class.</span>
@@ -436,21 +436,21 @@
 <span id="L374"><span class="lineNum">     374</span>              :       GST_EVENT_TYPE_NAME (event), event);</span>
 <span id="L375"><span class="lineNum">     375</span>              : </span>
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         654 :   switch (type) {</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         182 :     case GST_EVENT_STREAM_START:</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         182 :       if (gst_tensor_sink_get_emit_signal (self)) {</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         181 :         silent_debug (self, &quot;Emit signal for stream start&quot;);</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         181 :     case GST_EVENT_STREAM_START:</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         181 :       if (gst_tensor_sink_get_emit_signal (self)) {</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         180 :         silent_debug (self, &quot;Emit signal for stream start&quot;);</span></span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         181 :         g_signal_emit (self, _tensor_sink_signals[SIGNAL_STREAM_START], 0);</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         180 :         g_signal_emit (self, _tensor_sink_signals[SIGNAL_STREAM_START], 0);</span></span>
 <span id="L382"><span class="lineNum">     382</span>              :       }</span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         182 :       break;</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         181 :       break;</span></span>
 <span id="L384"><span class="lineNum">     384</span>              : </span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         138 :     case GST_EVENT_EOS:</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         138 :       if (gst_tensor_sink_get_emit_signal (self)) {</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         137 :         silent_debug (self, &quot;Emit signal for eos&quot;);</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         139 :     case GST_EVENT_EOS:</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         139 :       if (gst_tensor_sink_get_emit_signal (self)) {</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         138 :         silent_debug (self, &quot;Emit signal for eos&quot;);</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         137 :         g_signal_emit (self, _tensor_sink_signals[SIGNAL_EOS], 0);</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         138 :         g_signal_emit (self, _tensor_sink_signals[SIGNAL_EOS], 0);</span></span>
 <span id="L390"><span class="lineNum">     390</span>              :       }</span>
-<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         138 :       break;</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         139 :       break;</span></span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
 <span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         334 :     default:</span></span>
 <span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         334 :       break;</span></span>
@@ -465,30 +465,30 @@
 <span id="L403"><span class="lineNum">     403</span>              :  * GstBaseSink method implementation.</span>
 <span id="L404"><span class="lineNum">     404</span>              :  */</span>
 <span id="L405"><span class="lineNum">     405</span>              : static gboolean</span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1590 : gst_tensor_sink_query (GstBaseSink * sink, GstQuery * query)</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1583 : gst_tensor_sink_query (GstBaseSink * sink, GstQuery * query)</span></span>
 <span id="L407"><span class="lineNum">     407</span>              : {</span>
 <span id="L408"><span class="lineNum">     408</span>              :   GstTensorSink *self;</span>
 <span id="L409"><span class="lineNum">     409</span>              :   GstQueryType type;</span>
 <span id="L410"><span class="lineNum">     410</span>              :   GstFormat format;</span>
 <span id="L411"><span class="lineNum">     411</span>              : </span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        1590 :   self = GST_TENSOR_SINK (sink);</span></span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        1590 :   type = GST_QUERY_TYPE (query);</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        1583 :   self = GST_TENSOR_SINK (sink);</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        1583 :   type = GST_QUERY_TYPE (query);</span></span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        1590 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        1583 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L416"><span class="lineNum">     416</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        1590 :   switch (type) {</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        1583 :   switch (type) {</span></span>
 <span id="L419"><span class="lineNum">     419</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:</span></span>
 <span id="L420"><span class="lineNum">     420</span>              :       /** tensor sink does not support seeking */</span>
 <span id="L421"><span class="lineNum">     421</span> <span class="tlaUNC">           0 :       gst_query_parse_seeking (query, &amp;format, NULL, NULL, NULL);</span></span>
 <span id="L422"><span class="lineNum">     422</span> <span class="tlaUNC">           0 :       gst_query_set_seeking (query, format, FALSE, 0, -1);</span></span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC tlaBgGNC">        1590 :       return TRUE;</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC tlaBgGNC">        1583 :       return TRUE;</span></span>
 <span id="L424"><span class="lineNum">     424</span>              : </span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1590 :     default:</span></span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">        1590 :       break;</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1583 :     default:</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">        1583 :       break;</span></span>
 <span id="L427"><span class="lineNum">     427</span>              :   }</span>
 <span id="L428"><span class="lineNum">     428</span>              : </span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">        1590 :   return GST_BASE_SINK_CLASS (parent_class)-&gt;query (sink, query);</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">        1583 :   return GST_BASE_SINK_CLASS (parent_class)-&gt;query (sink, query);</span></span>
 <span id="L430"><span class="lineNum">     430</span>              : }</span>
 <span id="L431"><span class="lineNum">     431</span>              : </span>
 <span id="L432"><span class="lineNum">     432</span>              : /**</span>
