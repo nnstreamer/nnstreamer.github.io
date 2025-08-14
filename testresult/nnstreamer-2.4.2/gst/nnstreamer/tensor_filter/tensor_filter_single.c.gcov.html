@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#ce037f3516468cb1995e538b48546c9c2286dc22 - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_single.c</title>
+  <title>LCOV - nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a9069dff33ba9844d922a5d4ff8018e46f6417bf - nnstreamer-2.4.2/gst/nnstreamer/tensor_filter/tensor_filter_single.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#ce037f3516468cb1995e538b48546c9c2286dc22</td>
+            <td class="headerValue">nnstreamer 2.4.2-0 nnstreamer/nnstreamer#a9069dff33ba9844d922a5d4ff8018e46f6417bf</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">85.1&nbsp;%</td>
+            <td class="headerCovTableEntryMed">85.8&nbsp;%</td>
             <td class="headerCovTableEntry">141</td>
-            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntry">121</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-14 05:40:07</td>
+            <td class="headerValue">2025-08-15 05:41:40</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.1&nbsp;%</td>
@@ -145,7 +145,7 @@
 <span id="L83"><span class="lineNum">      83</span>              : static gboolean g_tensor_filter_single_stop (GTensorFilterSingle * self);</span>
 <span id="L84"><span class="lineNum">      84</span>              : static gboolean</span>
 <span id="L85"><span class="lineNum">      85</span>              : g_tensor_filter_single_set_invoke_async_callback (GTensorFilterSingle * self,</span>
-<span id="L86"><span class="lineNum">      86</span>              :     invoke_async_callback callback, void *handle);</span>
+<span id="L86"><span class="lineNum">      86</span>              :     GstTensorDataCallback callback, void *user_data);</span>
 <span id="L87"><span class="lineNum">      87</span>              : </span>
 <span id="L88"><span class="lineNum">      88</span>              : /**</span>
 <span id="L89"><span class="lineNum">      89</span>              :  * @brief initialize the tensor_filter's class</span>
@@ -308,221 +308,222 @@
 <span id="L246"><span class="lineNum">     246</span>              :  * @brief Set invoke async callback function for async invoke</span>
 <span id="L247"><span class="lineNum">     247</span>              :  * @param self &quot;this&quot; pointer</span>
 <span id="L248"><span class="lineNum">     248</span>              :  * @param callback callback function to be called when output is ready</span>
-<span id="L249"><span class="lineNum">     249</span>              :  * @param async_handle handle to be passed to the callback function</span>
+<span id="L249"><span class="lineNum">     249</span>              :  * @param user_data The private data to be passed to the callback function</span>
 <span id="L250"><span class="lineNum">     250</span>              :  */</span>
 <span id="L251"><span class="lineNum">     251</span>              : static gboolean</span>
 <span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC tlaBgUNC">           0 : g_tensor_filter_single_set_invoke_async_callback (GTensorFilterSingle * self,</span></span>
-<span id="L253"><span class="lineNum">     253</span>              :     invoke_async_callback callback, void *handle)</span>
+<span id="L253"><span class="lineNum">     253</span>              :     GstTensorDataCallback callback, void *user_data)</span>
 <span id="L254"><span class="lineNum">     254</span>              : {</span>
 <span id="L255"><span class="lineNum">     255</span>              :   GTensorFilterSinglePrivate *spriv;</span>
 <span id="L256"><span class="lineNum">     256</span>              :   GstTensorFilterPrivate *priv;</span>
 <span id="L257"><span class="lineNum">     257</span>              : </span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (self != NULL, FALSE);</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (callback != NULL, FALSE);</span></span>
-<span id="L260"><span class="lineNum">     260</span>              : </span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (spriv != NULL, FALSE);</span></span>
-<span id="L263"><span class="lineNum">     263</span>              : </span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC">           0 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :   gst_tensor_filter_enable_invoke_async (callback, &amp;priv-&gt;prop, handle);</span></span>
-<span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC">           0 :   return TRUE;</span></span>
-<span id="L268"><span class="lineNum">     268</span>              : }</span>
-<span id="L269"><span class="lineNum">     269</span>              : </span>
-<span id="L270"><span class="lineNum">     270</span>              : /**</span>
-<span id="L271"><span class="lineNum">     271</span>              :  * @brief Called when the element starts processing, if fw not loaded</span>
-<span id="L272"><span class="lineNum">     272</span>              :  * @param self &quot;this&quot; pointer</span>
-<span id="L273"><span class="lineNum">     273</span>              :  * @return TRUE if there is no error.</span>
-<span id="L274"><span class="lineNum">     274</span>              :  */</span>
-<span id="L275"><span class="lineNum">     275</span>              : static gboolean</span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC tlaBgGNC">          10 : g_tensor_filter_single_start (GTensorFilterSingle * self)</span></span>
-<span id="L277"><span class="lineNum">     277</span>              : {</span>
-<span id="L278"><span class="lineNum">     278</span>              :   GTensorFilterSinglePrivate *spriv;</span>
-<span id="L279"><span class="lineNum">     279</span>              :   GstTensorFilterPrivate *priv;</span>
-<span id="L280"><span class="lineNum">     280</span>              : </span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          10 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          10 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span>              :   /** open framework, load model */</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          10 :   if (G_UNLIKELY (priv-&gt;fw == NULL))</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :     return FALSE;</span></span>
-<span id="L287"><span class="lineNum">     287</span>              : </span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           8 :   if (!gst_tensor_filter_common_open_fw (priv))</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
-<span id="L290"><span class="lineNum">     290</span>              : </span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC tlaBgGNC">           8 :   gst_tensor_filter_load_tensor_info (priv);</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           8 :   spriv-&gt;allocate_in_invoke = gst_tensor_filter_allocate_in_invoke (priv);</span></span>
-<span id="L293"><span class="lineNum">     293</span>              : </span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           8 :   priv-&gt;configured = TRUE;</span></span>
-<span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
-<span id="L297"><span class="lineNum">     297</span>              : }</span>
-<span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span>              : /**</span>
-<span id="L300"><span class="lineNum">     300</span>              :  * @brief Called when the element stops processing, if fw loaded</span>
-<span id="L301"><span class="lineNum">     301</span>              :  * @param self &quot;this&quot; pointer</span>
-<span id="L302"><span class="lineNum">     302</span>              :  * @return TRUE if there is no error.</span>
-<span id="L303"><span class="lineNum">     303</span>              :  */</span>
-<span id="L304"><span class="lineNum">     304</span>              : static gboolean</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           8 : g_tensor_filter_single_stop (GTensorFilterSingle * self)</span></span>
-<span id="L306"><span class="lineNum">     306</span>              : {</span>
-<span id="L307"><span class="lineNum">     307</span>              :   GTensorFilterSinglePrivate *spriv;</span>
-<span id="L308"><span class="lineNum">     308</span>              :   GstTensorFilterPrivate *priv;</span>
-<span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           8 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           8 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L312"><span class="lineNum">     312</span>              : </span>
-<span id="L313"><span class="lineNum">     313</span>              :   /** close framework, unload model */</span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">           8 :   gst_tensor_filter_common_close_fw (priv);</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
-<span id="L316"><span class="lineNum">     316</span>              : }</span>
-<span id="L317"><span class="lineNum">     317</span>              : </span>
-<span id="L318"><span class="lineNum">     318</span>              : /**</span>
-<span id="L319"><span class="lineNum">     319</span>              :  * @brief Called to notify the framework to destroy the allocated memory</span>
-<span id="L320"><span class="lineNum">     320</span>              :  * @param self &quot;this&quot; pointer</span>
-<span id="L321"><span class="lineNum">     321</span>              :  * @param mem Memory wrapper for the allocated memory by the filter</span>
-<span id="L322"><span class="lineNum">     322</span>              :  */</span>
-<span id="L323"><span class="lineNum">     323</span>              : static void</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">           2 : g_tensor_filter_destroy_notify (GTensorFilterSingle * self,</span></span>
-<span id="L325"><span class="lineNum">     325</span>              :     GstTensorMemory * mem)</span>
-<span id="L326"><span class="lineNum">     326</span>              : {</span>
-<span id="L327"><span class="lineNum">     327</span>              :   guint i;</span>
-<span id="L328"><span class="lineNum">     328</span>              :   GTensorFilterSinglePrivate *spriv;</span>
-<span id="L329"><span class="lineNum">     329</span>              :   GstTensorFilterPrivate *priv;</span>
-<span id="L330"><span class="lineNum">     330</span>              : </span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">           2 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           2 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L333"><span class="lineNum">     333</span>              : </span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           2 :     gst_tensor_filter_destroy_notify_util (priv, mem[i].data);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 :     mem[i].data = NULL;</span></span>
-<span id="L337"><span class="lineNum">     337</span>              :   }</span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           2 : }</span></span>
-<span id="L339"><span class="lineNum">     339</span>              : </span>
-<span id="L340"><span class="lineNum">     340</span>              : /**</span>
-<span id="L341"><span class="lineNum">     341</span>              :  * @brief Called when an input supposed to be invoked</span>
-<span id="L342"><span class="lineNum">     342</span>              :  * @param self &quot;this&quot; pointer</span>
-<span id="L343"><span class="lineNum">     343</span>              :  * @param input memory containing input data to run processing on</span>
-<span id="L344"><span class="lineNum">     344</span>              :  * @param output memory to put output data into after processing</span>
-<span id="L345"><span class="lineNum">     345</span>              :  * @param allocate true to allocate output data (false means tensor data is already allocated)</span>
-<span id="L346"><span class="lineNum">     346</span>              :  * @return TRUE if there is no error.</span>
-<span id="L347"><span class="lineNum">     347</span>              :  */</span>
-<span id="L348"><span class="lineNum">     348</span>              : static gboolean</span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">           9 : g_tensor_filter_single_invoke (GTensorFilterSingle * self,</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :     const GstTensorMemory * input, GstTensorMemory * output, gboolean allocate)</span>
-<span id="L351"><span class="lineNum">     351</span>              : {</span>
-<span id="L352"><span class="lineNum">     352</span>              :   GTensorFilterSinglePrivate *spriv;</span>
-<span id="L353"><span class="lineNum">     353</span>              :   GstTensorFilterPrivate *priv;</span>
-<span id="L354"><span class="lineNum">     354</span>              :   GstTensorMemory *_out;</span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">           9 :   GstTensorMemory out_tensors[NNS_TENSOR_SIZE_LIMIT] = { {0} }; /** @todo refactor this local variable */</span></span>
-<span id="L356"><span class="lineNum">     356</span>              :   guint i;</span>
-<span id="L357"><span class="lineNum">     357</span>              :   gint status;</span>
-<span id="L358"><span class="lineNum">     358</span>              : </span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">           9 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           9 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L361"><span class="lineNum">     361</span>              : </span>
-<span id="L362"><span class="lineNum">     362</span>              :   /** start if not already started */</span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           9 :   if (!priv-&gt;configured) {</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           4 :     if (!g_tensor_filter_single_start (self)) {</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">           9 :       return FALSE;</span></span>
-<span id="L366"><span class="lineNum">     366</span>              :     }</span>
-<span id="L367"><span class="lineNum">     367</span>              :   }</span>
-<span id="L368"><span class="lineNum">     368</span>              : </span>
-<span id="L369"><span class="lineNum">     369</span>              :   /* set output tensors for given params */</span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           8 :   _out = output;</span></span>
-<span id="L371"><span class="lineNum">     371</span>              : </span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">           8 :   if (spriv-&gt;allocate_in_invoke) {</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC tlaBgUNC">           0 :     if (!allocate) {</span></span>
-<span id="L374"><span class="lineNum">     374</span>              :       /**</span>
-<span id="L375"><span class="lineNum">     375</span>              :        * @todo how can we remove memcpy if output data is already allocated</span>
-<span id="L376"><span class="lineNum">     376</span>              :        * single-shot should fill the output data, but sub-plugin allocates new memory.</span>
-<span id="L377"><span class="lineNum">     377</span>              :        */</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :       _out = out_tensors;</span></span>
-<span id="L379"><span class="lineNum">     379</span>              : </span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++)</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :         out_tensors[i].size = output[i].size;</span></span>
-<span id="L382"><span class="lineNum">     382</span>              :     }</span>
-<span id="L383"><span class="lineNum">     383</span>              :   } else {</span>
-<span id="L384"><span class="lineNum">     384</span>              :     /* allocate memory if allocate_in_invoke is FALSE */</span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC tlaBgGNC">           8 :     if (allocate) {</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          38 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          35 :         output[i].data = g_try_malloc (output[i].size);</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          35 :         if (!output[i].data) {</span></span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">           1 :           ml_loge (&quot;Failed to allocate the output tensor.&quot;);</span></span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">           1 :           goto error;</span></span>
-<span id="L391"><span class="lineNum">     391</span>              :         }</span>
-<span id="L392"><span class="lineNum">     392</span>              :       }</span>
-<span id="L393"><span class="lineNum">     393</span>              :     }</span>
-<span id="L394"><span class="lineNum">     394</span>              :   }</span>
-<span id="L395"><span class="lineNum">     395</span>              : </span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">           7 :   GST_TF_FW_INVOKE_COMPAT (priv, status, input, _out);</span></span>
-<span id="L397"><span class="lineNum">     397</span>              : </span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">           7 :   if (status == 0) {</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">           5 :     if (_out != output) {</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaUNC tlaBgUNC">           0 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++)</span></span>
-<span id="L401"><span class="lineNum">     401</span> <span class="tlaUNC">           0 :         memcpy (output[i].data, _out[i].data, output[i].size);</span></span>
-<span id="L402"><span class="lineNum">     402</span>              : </span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaUNC">           0 :       g_tensor_filter_destroy_notify (self, _out);</span></span>
-<span id="L404"><span class="lineNum">     404</span>              :     }</span>
-<span id="L405"><span class="lineNum">     405</span>              : </span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC tlaBgGNC">           5 :     return TRUE;</span></span>
-<span id="L407"><span class="lineNum">     407</span>              :   }</span>
-<span id="L408"><span class="lineNum">     408</span>              : </span>
-<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">           2 : error:</span></span>
-<span id="L410"><span class="lineNum">     410</span>              :   /* if failed to invoke the model, release allocated memory. */</span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">           3 :   if (!spriv-&gt;allocate_in_invoke &amp;&amp; allocate) {</span></span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">           2 :     for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">           1 :       g_free (output[i].data);</span></span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">           1 :       output[i].data = NULL;</span></span>
-<span id="L415"><span class="lineNum">     415</span>              :     }</span>
-<span id="L416"><span class="lineNum">     416</span>              :   }</span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">           3 :   return FALSE;</span></span>
-<span id="L418"><span class="lineNum">     418</span>              : }</span>
-<span id="L419"><span class="lineNum">     419</span>              : </span>
-<span id="L420"><span class="lineNum">     420</span>              : /**</span>
-<span id="L421"><span class="lineNum">     421</span>              :  * @brief Set input tensor information in the framework</span>
-<span id="L422"><span class="lineNum">     422</span>              :  * @param self &quot;this&quot; pointer</span>
-<span id="L423"><span class="lineNum">     423</span>              :  * @param in_info information on the input tensor</span>
-<span id="L424"><span class="lineNum">     424</span>              :  * @param out_info updated information on the output tensor</span>
-<span id="L425"><span class="lineNum">     425</span>              :  * @return 0 for success, -errno for failure.</span>
-<span id="L426"><span class="lineNum">     426</span>              :  */</span>
-<span id="L427"><span class="lineNum">     427</span>              : static gint</span>
-<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">           6 : g_tensor_filter_set_input_info (GTensorFilterSingle * self,</span></span>
-<span id="L429"><span class="lineNum">     429</span>              :     const GstTensorsInfo * in_info, GstTensorsInfo * out_info)</span>
-<span id="L430"><span class="lineNum">     430</span>              : {</span>
-<span id="L431"><span class="lineNum">     431</span>              :   GTensorFilterSinglePrivate *spriv;</span>
-<span id="L432"><span class="lineNum">     432</span>              :   GstTensorFilterPrivate *priv;</span>
-<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">           6 :   gint status = -EINVAL;</span></span>
-<span id="L434"><span class="lineNum">     434</span>              : </span>
-<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">           6 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
-<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">           6 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
-<span id="L437"><span class="lineNum">     437</span>              : </span>
-<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">           6 :   if (G_UNLIKELY (!priv-&gt;fw) || G_UNLIKELY (!priv-&gt;prop.fw_opened))</span></span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EINVAL;</span></span>
-<span id="L440"><span class="lineNum">     440</span>              : </span>
-<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC tlaBgGNC">           6 :   gst_tensors_info_init (out_info);</span></span>
-<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC">           6 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
-<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">           6 :     if (G_LIKELY (priv-&gt;fw-&gt;setInputDimension)) {</span></span>
-<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">           6 :       status = priv-&gt;fw-&gt;setInputDimension (&amp;priv-&gt;prop, &amp;priv-&gt;privateData,</span></span>
-<span id="L445"><span class="lineNum">     445</span>              :           in_info, out_info);</span>
-<span id="L446"><span class="lineNum">     446</span>              :     } else {</span>
-<span id="L447"><span class="lineNum">     447</span> <span class="tlaUNC tlaBgUNC">           0 :       status = -ENOENT;</span></span>
-<span id="L448"><span class="lineNum">     448</span>              :     }</span>
-<span id="L449"><span class="lineNum">     449</span>              :   } else {</span>
-<span id="L450"><span class="lineNum">     450</span> <span class="tlaUNC">           0 :     status = priv-&gt;fw-&gt;getModelInfo (priv-&gt;fw, &amp;priv-&gt;prop, &amp;priv-&gt;privateData,</span></span>
-<span id="L451"><span class="lineNum">     451</span>              :         SET_INPUT_INFO, (GstTensorsInfo *) in_info, out_info);</span>
-<span id="L452"><span class="lineNum">     452</span>              :   }</span>
-<span id="L453"><span class="lineNum">     453</span>              : </span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaGNC tlaBgGNC">           6 :   if (status == 0) {</span></span>
-<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">           3 :     gst_tensors_info_free (&amp;priv-&gt;prop.input_meta);</span></span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           3 :     gst_tensors_info_free (&amp;priv-&gt;prop.output_meta);</span></span>
-<span id="L457"><span class="lineNum">     457</span>              : </span>
-<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">           3 :     gst_tensors_info_copy (&amp;priv-&gt;prop.input_meta, in_info);</span></span>
-<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           3 :     gst_tensors_info_copy (&amp;priv-&gt;prop.output_meta, out_info);</span></span>
-<span id="L460"><span class="lineNum">     460</span>              :   }</span>
-<span id="L461"><span class="lineNum">     461</span>              : </span>
-<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">           6 :   return status;</span></span>
-<span id="L463"><span class="lineNum">     463</span>              : }</span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :   g_return_val_if_fail (callback != NULL, FALSE);</span></span>
+<span id="L259"><span class="lineNum">     259</span>              : </span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L261"><span class="lineNum">     261</span>              : </span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC">           0 :   gst_tensor_filter_enable_invoke_async (&amp;priv-&gt;prop, callback, user_data);</span></span>
+<span id="L264"><span class="lineNum">     264</span>              : </span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :   return TRUE;</span></span>
+<span id="L266"><span class="lineNum">     266</span>              : }</span>
+<span id="L267"><span class="lineNum">     267</span>              : </span>
+<span id="L268"><span class="lineNum">     268</span>              : /**</span>
+<span id="L269"><span class="lineNum">     269</span>              :  * @brief Called when the element starts processing, if fw not loaded</span>
+<span id="L270"><span class="lineNum">     270</span>              :  * @param self &quot;this&quot; pointer</span>
+<span id="L271"><span class="lineNum">     271</span>              :  * @return TRUE if there is no error.</span>
+<span id="L272"><span class="lineNum">     272</span>              :  */</span>
+<span id="L273"><span class="lineNum">     273</span>              : static gboolean</span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC tlaBgGNC">          10 : g_tensor_filter_single_start (GTensorFilterSingle * self)</span></span>
+<span id="L275"><span class="lineNum">     275</span>              : {</span>
+<span id="L276"><span class="lineNum">     276</span>              :   GTensorFilterSinglePrivate *spriv;</span>
+<span id="L277"><span class="lineNum">     277</span>              :   GstTensorFilterPrivate *priv;</span>
+<span id="L278"><span class="lineNum">     278</span>              : </span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          10 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          10 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L281"><span class="lineNum">     281</span>              : </span>
+<span id="L282"><span class="lineNum">     282</span>              :   /** open framework, load model */</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">          10 :   if (G_UNLIKELY (priv-&gt;fw == NULL))</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           2 :     return FALSE;</span></span>
+<span id="L285"><span class="lineNum">     285</span>              : </span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           8 :   if (priv-&gt;prop.invoke_async &amp;&amp; !priv-&gt;prop.async_callback)</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
+<span id="L288"><span class="lineNum">     288</span>              : </span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC tlaBgGNC">           8 :   if (!gst_tensor_filter_common_open_fw (priv))</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
+<span id="L291"><span class="lineNum">     291</span>              : </span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC tlaBgGNC">           8 :   gst_tensor_filter_load_tensor_info (priv);</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">           8 :   spriv-&gt;allocate_in_invoke = gst_tensor_filter_allocate_in_invoke (priv);</span></span>
+<span id="L294"><span class="lineNum">     294</span>              : </span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           8 :   priv-&gt;configured = TRUE;</span></span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
+<span id="L298"><span class="lineNum">     298</span>              : }</span>
+<span id="L299"><span class="lineNum">     299</span>              : </span>
+<span id="L300"><span class="lineNum">     300</span>              : /**</span>
+<span id="L301"><span class="lineNum">     301</span>              :  * @brief Called when the element stops processing, if fw loaded</span>
+<span id="L302"><span class="lineNum">     302</span>              :  * @param self &quot;this&quot; pointer</span>
+<span id="L303"><span class="lineNum">     303</span>              :  * @return TRUE if there is no error.</span>
+<span id="L304"><span class="lineNum">     304</span>              :  */</span>
+<span id="L305"><span class="lineNum">     305</span>              : static gboolean</span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           8 : g_tensor_filter_single_stop (GTensorFilterSingle * self)</span></span>
+<span id="L307"><span class="lineNum">     307</span>              : {</span>
+<span id="L308"><span class="lineNum">     308</span>              :   GTensorFilterSinglePrivate *spriv;</span>
+<span id="L309"><span class="lineNum">     309</span>              :   GstTensorFilterPrivate *priv;</span>
+<span id="L310"><span class="lineNum">     310</span>              : </span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           8 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">           8 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L313"><span class="lineNum">     313</span>              : </span>
+<span id="L314"><span class="lineNum">     314</span>              :   /** close framework, unload model */</span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">           8 :   gst_tensor_filter_common_close_fw (priv);</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
+<span id="L317"><span class="lineNum">     317</span>              : }</span>
+<span id="L318"><span class="lineNum">     318</span>              : </span>
+<span id="L319"><span class="lineNum">     319</span>              : /**</span>
+<span id="L320"><span class="lineNum">     320</span>              :  * @brief Called to notify the framework to destroy the allocated memory</span>
+<span id="L321"><span class="lineNum">     321</span>              :  * @param self &quot;this&quot; pointer</span>
+<span id="L322"><span class="lineNum">     322</span>              :  * @param mem Memory wrapper for the allocated memory by the filter</span>
+<span id="L323"><span class="lineNum">     323</span>              :  */</span>
+<span id="L324"><span class="lineNum">     324</span>              : static void</span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           2 : g_tensor_filter_destroy_notify (GTensorFilterSingle * self,</span></span>
+<span id="L326"><span class="lineNum">     326</span>              :     GstTensorMemory * mem)</span>
+<span id="L327"><span class="lineNum">     327</span>              : {</span>
+<span id="L328"><span class="lineNum">     328</span>              :   guint i;</span>
+<span id="L329"><span class="lineNum">     329</span>              :   GTensorFilterSinglePrivate *spriv;</span>
+<span id="L330"><span class="lineNum">     330</span>              :   GstTensorFilterPrivate *priv;</span>
+<span id="L331"><span class="lineNum">     331</span>              : </span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           2 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">           2 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L334"><span class="lineNum">     334</span>              : </span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           2 :     gst_tensor_filter_destroy_notify_util (priv, mem[i].data);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">           2 :     mem[i].data = NULL;</span></span>
+<span id="L338"><span class="lineNum">     338</span>              :   }</span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           2 : }</span></span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span>              : /**</span>
+<span id="L342"><span class="lineNum">     342</span>              :  * @brief Called when an input supposed to be invoked</span>
+<span id="L343"><span class="lineNum">     343</span>              :  * @param self &quot;this&quot; pointer</span>
+<span id="L344"><span class="lineNum">     344</span>              :  * @param input memory containing input data to run processing on</span>
+<span id="L345"><span class="lineNum">     345</span>              :  * @param output memory to put output data into after processing</span>
+<span id="L346"><span class="lineNum">     346</span>              :  * @param allocate true to allocate output data (false means tensor data is already allocated)</span>
+<span id="L347"><span class="lineNum">     347</span>              :  * @return TRUE if there is no error.</span>
+<span id="L348"><span class="lineNum">     348</span>              :  */</span>
+<span id="L349"><span class="lineNum">     349</span>              : static gboolean</span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           9 : g_tensor_filter_single_invoke (GTensorFilterSingle * self,</span></span>
+<span id="L351"><span class="lineNum">     351</span>              :     const GstTensorMemory * input, GstTensorMemory * output, gboolean allocate)</span>
+<span id="L352"><span class="lineNum">     352</span>              : {</span>
+<span id="L353"><span class="lineNum">     353</span>              :   GTensorFilterSinglePrivate *spriv;</span>
+<span id="L354"><span class="lineNum">     354</span>              :   GstTensorFilterPrivate *priv;</span>
+<span id="L355"><span class="lineNum">     355</span>              :   GstTensorMemory *_out;</span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">           9 :   GstTensorMemory out_tensors[NNS_TENSOR_SIZE_LIMIT] = { {0} }; /** @todo refactor this local variable */</span></span>
+<span id="L357"><span class="lineNum">     357</span>              :   guint i;</span>
+<span id="L358"><span class="lineNum">     358</span>              :   gint status;</span>
+<span id="L359"><span class="lineNum">     359</span>              : </span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           9 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           9 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L362"><span class="lineNum">     362</span>              : </span>
+<span id="L363"><span class="lineNum">     363</span>              :   /** start if not already started */</span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           9 :   if (!priv-&gt;configured) {</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">           4 :     if (!g_tensor_filter_single_start (self)) {</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">           9 :       return FALSE;</span></span>
+<span id="L367"><span class="lineNum">     367</span>              :     }</span>
+<span id="L368"><span class="lineNum">     368</span>              :   }</span>
+<span id="L369"><span class="lineNum">     369</span>              : </span>
+<span id="L370"><span class="lineNum">     370</span>              :   /* set output tensors for given params */</span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">           8 :   _out = output;</span></span>
+<span id="L372"><span class="lineNum">     372</span>              : </span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">           8 :   if (spriv-&gt;allocate_in_invoke) {</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC tlaBgUNC">           0 :     if (!allocate) {</span></span>
+<span id="L375"><span class="lineNum">     375</span>              :       /**</span>
+<span id="L376"><span class="lineNum">     376</span>              :        * @todo how can we remove memcpy if output data is already allocated</span>
+<span id="L377"><span class="lineNum">     377</span>              :        * single-shot should fill the output data, but sub-plugin allocates new memory.</span>
+<span id="L378"><span class="lineNum">     378</span>              :        */</span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :       _out = out_tensors;</span></span>
+<span id="L380"><span class="lineNum">     380</span>              : </span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++)</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :         out_tensors[i].size = output[i].size;</span></span>
+<span id="L383"><span class="lineNum">     383</span>              :     }</span>
+<span id="L384"><span class="lineNum">     384</span>              :   } else {</span>
+<span id="L385"><span class="lineNum">     385</span>              :     /* allocate memory if allocate_in_invoke is FALSE */</span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC tlaBgGNC">           8 :     if (allocate) {</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          38 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">          35 :         output[i].data = g_try_malloc (output[i].size);</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">          35 :         if (!output[i].data) {</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">           1 :           ml_loge (&quot;Failed to allocate the output tensor.&quot;);</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">           1 :           goto error;</span></span>
+<span id="L392"><span class="lineNum">     392</span>              :         }</span>
+<span id="L393"><span class="lineNum">     393</span>              :       }</span>
+<span id="L394"><span class="lineNum">     394</span>              :     }</span>
+<span id="L395"><span class="lineNum">     395</span>              :   }</span>
+<span id="L396"><span class="lineNum">     396</span>              : </span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">           7 :   GST_TF_FW_INVOKE_COMPAT (priv, status, input, _out);</span></span>
+<span id="L398"><span class="lineNum">     398</span>              : </span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">           7 :   if (status == 0) {</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">           5 :     if (_out != output) {</span></span>
+<span id="L401"><span class="lineNum">     401</span> <span class="tlaUNC tlaBgUNC">           0 :       for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++)</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaUNC">           0 :         memcpy (output[i].data, _out[i].data, output[i].size);</span></span>
+<span id="L403"><span class="lineNum">     403</span>              : </span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaUNC">           0 :       g_tensor_filter_destroy_notify (self, _out);</span></span>
+<span id="L405"><span class="lineNum">     405</span>              :     }</span>
+<span id="L406"><span class="lineNum">     406</span>              : </span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC tlaBgGNC">           5 :     return TRUE;</span></span>
+<span id="L408"><span class="lineNum">     408</span>              :   }</span>
+<span id="L409"><span class="lineNum">     409</span>              : </span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">           2 : error:</span></span>
+<span id="L411"><span class="lineNum">     411</span>              :   /* if failed to invoke the model, release allocated memory. */</span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">           3 :   if (!spriv-&gt;allocate_in_invoke &amp;&amp; allocate) {</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">           2 :     for (i = 0; i &lt; priv-&gt;prop.output_meta.num_tensors; i++) {</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">           1 :       g_free (output[i].data);</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">           1 :       output[i].data = NULL;</span></span>
+<span id="L416"><span class="lineNum">     416</span>              :     }</span>
+<span id="L417"><span class="lineNum">     417</span>              :   }</span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">           3 :   return FALSE;</span></span>
+<span id="L419"><span class="lineNum">     419</span>              : }</span>
+<span id="L420"><span class="lineNum">     420</span>              : </span>
+<span id="L421"><span class="lineNum">     421</span>              : /**</span>
+<span id="L422"><span class="lineNum">     422</span>              :  * @brief Set input tensor information in the framework</span>
+<span id="L423"><span class="lineNum">     423</span>              :  * @param self &quot;this&quot; pointer</span>
+<span id="L424"><span class="lineNum">     424</span>              :  * @param in_info information on the input tensor</span>
+<span id="L425"><span class="lineNum">     425</span>              :  * @param out_info updated information on the output tensor</span>
+<span id="L426"><span class="lineNum">     426</span>              :  * @return 0 for success, -errno for failure.</span>
+<span id="L427"><span class="lineNum">     427</span>              :  */</span>
+<span id="L428"><span class="lineNum">     428</span>              : static gint</span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">           6 : g_tensor_filter_set_input_info (GTensorFilterSingle * self,</span></span>
+<span id="L430"><span class="lineNum">     430</span>              :     const GstTensorsInfo * in_info, GstTensorsInfo * out_info)</span>
+<span id="L431"><span class="lineNum">     431</span>              : {</span>
+<span id="L432"><span class="lineNum">     432</span>              :   GTensorFilterSinglePrivate *spriv;</span>
+<span id="L433"><span class="lineNum">     433</span>              :   GstTensorFilterPrivate *priv;</span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">           6 :   gint status = -EINVAL;</span></span>
+<span id="L435"><span class="lineNum">     435</span>              : </span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">           6 :   spriv = G_TENSOR_FILTER_SINGLE_PRIV (self);</span></span>
+<span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">           6 :   priv = &amp;spriv-&gt;filter_priv;</span></span>
+<span id="L438"><span class="lineNum">     438</span>              : </span>
+<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">           6 :   if (G_UNLIKELY (!priv-&gt;fw) || G_UNLIKELY (!priv-&gt;prop.fw_opened))</span></span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EINVAL;</span></span>
+<span id="L441"><span class="lineNum">     441</span>              : </span>
+<span id="L442"><span class="lineNum">     442</span> <span class="tlaGNC tlaBgGNC">           6 :   gst_tensors_info_init (out_info);</span></span>
+<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">           6 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">           6 :     if (G_LIKELY (priv-&gt;fw-&gt;setInputDimension)) {</span></span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">           6 :       status = priv-&gt;fw-&gt;setInputDimension (&amp;priv-&gt;prop, &amp;priv-&gt;privateData,</span></span>
+<span id="L446"><span class="lineNum">     446</span>              :           in_info, out_info);</span>
+<span id="L447"><span class="lineNum">     447</span>              :     } else {</span>
+<span id="L448"><span class="lineNum">     448</span> <span class="tlaUNC tlaBgUNC">           0 :       status = -ENOENT;</span></span>
+<span id="L449"><span class="lineNum">     449</span>              :     }</span>
+<span id="L450"><span class="lineNum">     450</span>              :   } else {</span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaUNC">           0 :     status = priv-&gt;fw-&gt;getModelInfo (priv-&gt;fw, &amp;priv-&gt;prop, &amp;priv-&gt;privateData,</span></span>
+<span id="L452"><span class="lineNum">     452</span>              :         SET_INPUT_INFO, (GstTensorsInfo *) in_info, out_info);</span>
+<span id="L453"><span class="lineNum">     453</span>              :   }</span>
+<span id="L454"><span class="lineNum">     454</span>              : </span>
+<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC tlaBgGNC">           6 :   if (status == 0) {</span></span>
+<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           3 :     gst_tensors_info_free (&amp;priv-&gt;prop.input_meta);</span></span>
+<span id="L457"><span class="lineNum">     457</span> <span class="tlaGNC">           3 :     gst_tensors_info_free (&amp;priv-&gt;prop.output_meta);</span></span>
+<span id="L458"><span class="lineNum">     458</span>              : </span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">           3 :     gst_tensors_info_copy (&amp;priv-&gt;prop.input_meta, in_info);</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">           3 :     gst_tensors_info_copy (&amp;priv-&gt;prop.output_meta, out_info);</span></span>
+<span id="L461"><span class="lineNum">     461</span>              :   }</span>
+<span id="L462"><span class="lineNum">     462</span>              : </span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">           6 :   return status;</span></span>
+<span id="L464"><span class="lineNum">     464</span>              : }</span>
         </pre>
               </td>
             </tr>
