@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-21 05:41:42</td>
+            <td class="headerValue">2025-08-22 05:39:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -104,23 +104,23 @@
 <span id="L42"><span class="lineNum">      42</span>              :  * @brief   allocation wrapper that binds alignment parameter</span>
 <span id="L43"><span class="lineNum">      43</span>              :  */</span>
 <span id="L44"><span class="lineNum">      44</span>              : static GstMemory *</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           5 : _alloc (GstAllocator * allocator, gsize size, GstAllocationParams * params)</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           3 : _alloc (GstAllocator * allocator, gsize size, GstAllocationParams * params)</span></span>
 <span id="L46"><span class="lineNum">      46</span>              : {</span>
 <span id="L47"><span class="lineNum">      47</span>              :   GstAllocator *sysmem_alloc;</span>
 <span id="L48"><span class="lineNum">      48</span>              :   GstAllocatorClass *sysmem_aclass;</span>
 <span id="L49"><span class="lineNum">      49</span>              :   GstAllocationParams *_params;</span>
 <span id="L50"><span class="lineNum">      50</span>              :   GstMemory *mem;</span>
 <span id="L51"><span class="lineNum">      51</span>              : </span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           5 :   sysmem_alloc = gst_allocator_find (GST_ALLOCATOR_SYSMEM);</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           5 :   sysmem_aclass = GST_ALLOCATOR_GET_CLASS (sysmem_alloc);</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           5 :   _params = gst_allocation_params_copy (params);</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           5 :   _params-&gt;align = gst_tensor_allocator_alignment;</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           3 :   sysmem_alloc = gst_allocator_find (GST_ALLOCATOR_SYSMEM);</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           3 :   sysmem_aclass = GST_ALLOCATOR_GET_CLASS (sysmem_alloc);</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           3 :   _params = gst_allocation_params_copy (params);</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :   _params-&gt;align = gst_tensor_allocator_alignment;</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           5 :   mem = sysmem_aclass-&gt;alloc (allocator, size, _params);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           3 :   mem = sysmem_aclass-&gt;alloc (allocator, size, _params);</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : </span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           5 :   gst_allocation_params_free (_params);</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           5 :   gst_object_unref (sysmem_alloc);</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           5 :   return mem;</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           3 :   gst_allocation_params_free (_params);</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           3 :   gst_object_unref (sysmem_alloc);</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           3 :   return mem;</span></span>
 <span id="L62"><span class="lineNum">      62</span>              : }</span>
 <span id="L63"><span class="lineNum">      63</span>              : </span>
 <span id="L64"><span class="lineNum">      64</span>              : /**</span>
