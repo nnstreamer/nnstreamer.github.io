@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-27 05:38:49</td>
+            <td class="headerValue">2025-08-28 05:39:39</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -154,7 +154,7 @@
 <span id="L92"><span class="lineNum">      92</span>              : #define _do_init \</span>
 <span id="L93"><span class="lineNum">      93</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_sink_debug, &quot;datareposink&quot;, 0, &quot;datareposink element&quot;);</span>
 <span id="L94"><span class="lineNum">      94</span>              : #define gst_data_repo_sink_parent_class parent_class</span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         791 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         797 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
 <span id="L96"><span class="lineNum">      96</span>              :     GST_TYPE_BASE_SINK, _do_init);</span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
 <span id="L98"><span class="lineNum">      98</span>              : static void gst_data_repo_sink_set_property (GObject * object, guint prop_id,</span>
@@ -553,26 +553,26 @@
 <span id="L491"><span class="lineNum">     491</span>              :  * @brief Get caps of datareposink.</span>
 <span id="L492"><span class="lineNum">     492</span>              :  */</span>
 <span id="L493"><span class="lineNum">     493</span>              : static GstCaps *</span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         545 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         551 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
 <span id="L495"><span class="lineNum">     495</span>              : {</span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         545 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         545 :   GstCaps *caps = NULL;</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         551 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         551 :   GstCaps *caps = NULL;</span></span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         545 :   GST_OBJECT_LOCK (sink);</span></span>
-<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         545 :   caps = sink-&gt;fixed_caps;</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         551 :   GST_OBJECT_LOCK (sink);</span></span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         551 :   caps = sink-&gt;fixed_caps;</span></span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         545 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         545 :   if (caps) {</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         415 :     if (filter)</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         551 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         551 :   if (caps) {</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         410 :     if (filter)</span></span>
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC tlaBgUNC">           0 :       caps = gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              :     else</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         415 :       caps = gst_caps_ref (caps);</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         410 :       caps = gst_caps_ref (caps);</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :   }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         545 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         545 :   GST_OBJECT_UNLOCK (sink);</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         551 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         551 :   GST_OBJECT_UNLOCK (sink);</span></span>
 <span id="L512"><span class="lineNum">     512</span>              : </span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         545 :   return caps;</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         551 :   return caps;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              : }</span>
 <span id="L515"><span class="lineNum">     515</span>              : </span>
 <span id="L516"><span class="lineNum">     516</span>              : /**</span>
@@ -622,11 +622,11 @@
 <span id="L560"><span class="lineNum">     560</span>              :  * @brief Perform a GstQuery on datareposink.</span>
 <span id="L561"><span class="lineNum">     561</span>              :  */</span>
 <span id="L562"><span class="lineNum">     562</span>              : static gboolean</span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">         560 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">         566 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
 <span id="L564"><span class="lineNum">     564</span>              : {</span>
 <span id="L565"><span class="lineNum">     565</span>              :   gboolean ret;</span>
 <span id="L566"><span class="lineNum">     566</span>              : </span>
-<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         560 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         566 :   switch (GST_QUERY_TYPE (query)) {</span></span>
 <span id="L568"><span class="lineNum">     568</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:{</span></span>
 <span id="L569"><span class="lineNum">     569</span>              :       GstFormat fmt;</span>
 <span id="L570"><span class="lineNum">     570</span>              : </span>
@@ -636,12 +636,12 @@
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :       ret = TRUE;</span></span>
 <span id="L575"><span class="lineNum">     575</span> <span class="tlaUNC">           0 :       break;</span></span>
 <span id="L576"><span class="lineNum">     576</span>              :     }</span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC tlaBgGNC">         560 :     default:</span></span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         560 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         560 :       break;</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC tlaBgGNC">         566 :     default:</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         566 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         566 :       break;</span></span>
 <span id="L580"><span class="lineNum">     580</span>              :   }</span>
 <span id="L581"><span class="lineNum">     581</span>              : </span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         560 :   return ret;</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         566 :   return ret;</span></span>
 <span id="L583"><span class="lineNum">     583</span>              : }</span>
 <span id="L584"><span class="lineNum">     584</span>              : </span>
 <span id="L585"><span class="lineNum">     585</span>              : /**</span>
