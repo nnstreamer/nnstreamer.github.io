@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869 - nnstreamer-2.4.4/ext/nnstreamer/tensor_decoder/box_properties/mppalmdetection.cc</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">nnstreamer-2.4.4/ext/nnstreamer/tensor_decoder/box_properties</a> - mppalmdetection.cc<span style="font-size: 80%;"> (source / <a href="mppalmdetection.cc.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">86.3&nbsp;%</td>
+            <td class="headerCovTableEntry">146</td>
+            <td class="headerCovTableEntry">126</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-08-29 05:39:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
+          </tr>
+                  <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /* SPDX-License-Identifier: LGPL-2.1-only */</span>
+<span id="L2"><span class="lineNum">       2</span>              : /**</span>
+<span id="L3"><span class="lineNum">       3</span>              :  * GStreamer / NNStreamer tensor-decoder bounding box properties</span>
+<span id="L4"><span class="lineNum">       4</span>              :  * Copyright (C) 2024 Yelin Jeong &lt;yelini.jeong@samsung.com&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              :  */</span>
+<span id="L6"><span class="lineNum">       6</span>              : /**</span>
+<span id="L7"><span class="lineNum">       7</span>              :  * @file        mppalmdetection.cc</span>
+<span id="L8"><span class="lineNum">       8</span>              :  * @date        13 May 2024</span>
+<span id="L9"><span class="lineNum">       9</span>              :  * @brief       NNStreamer tensor-decoder bounding box properties</span>
+<span id="L10"><span class="lineNum">      10</span>              :  *</span>
+<span id="L11"><span class="lineNum">      11</span>              :  * @see         https://github.com/nnstreamer/nnstreamer</span>
+<span id="L12"><span class="lineNum">      12</span>              :  * @author      Yelin Jeong &lt;yelini.jeong@samsung.com&gt;</span>
+<span id="L13"><span class="lineNum">      13</span>              :  * @bug         No known bugs except for NYI items</span>
+<span id="L14"><span class="lineNum">      14</span>              :  *</span>
+<span id="L15"><span class="lineNum">      15</span>              :  */</span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span>              : #include &quot;../tensordec-boundingbox.h&quot;</span>
+<span id="L18"><span class="lineNum">      18</span>              : </span>
+<span id="L19"><span class="lineNum">      19</span>              : #define INFO_SIZE (18)</span>
+<span id="L20"><span class="lineNum">      20</span>              : #define MAX_TENSORS (2U)</span>
+<span id="L21"><span class="lineNum">      21</span>              : #define MAX_DETECTION (2016)</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span>              : #define NUM_LAYERS_DEFAULT (4)</span>
+<span id="L24"><span class="lineNum">      24</span>              : #define MIN_SCALE_DEFAULT (1.0)</span>
+<span id="L25"><span class="lineNum">      25</span>              : #define MAX_SCALE_DEFAULT (1.0)</span>
+<span id="L26"><span class="lineNum">      26</span>              : #define OFFSET_X_DEFAULT (0.5)</span>
+<span id="L27"><span class="lineNum">      27</span>              : #define OFFSET_Y_DEFAULT (0.5)</span>
+<span id="L28"><span class="lineNum">      28</span>              : #define STRIDE_0_DEFAULT (8)</span>
+<span id="L29"><span class="lineNum">      29</span>              : #define STRIDE_1_DEFAULT (16)</span>
+<span id="L30"><span class="lineNum">      30</span>              : #define STRIDE_2_DEFAULT (16)</span>
+<span id="L31"><span class="lineNum">      31</span>              : #define STRIDE_3_DEFAULT (16)</span>
+<span id="L32"><span class="lineNum">      32</span>              : #define MIN_SCORE_THRESHOLD_DEFAULT (0.5)</span>
+<span id="L33"><span class="lineNum">      33</span>              : </span>
+<span id="L34"><span class="lineNum">      34</span>              : #define PARAMS_STRIDE_SIZE (8)</span>
+<span id="L35"><span class="lineNum">      35</span>              : #define PARAMS_MAX (13)</span>
+<span id="L36"><span class="lineNum">      36</span>              : </span>
+<span id="L37"><span class="lineNum">      37</span>              : /**</span>
+<span id="L38"><span class="lineNum">      38</span>              :  * @brief Class for MpPalmDetection box properties</span>
+<span id="L39"><span class="lineNum">      39</span>              :  */</span>
+<span id="L40"><span class="lineNum">      40</span>              : class MpPalmDetection : public BoxProperties</span>
+<span id="L41"><span class="lineNum">      41</span>              : {</span>
+<span id="L42"><span class="lineNum">      42</span>              :   public:</span>
+<span id="L43"><span class="lineNum">      43</span>              :   MpPalmDetection ();</span>
+<span id="L44"><span class="lineNum">      44</span>              :   ~MpPalmDetection ();</span>
+<span id="L45"><span class="lineNum">      45</span>              :   void mp_palm_detection_generate_anchors ();</span>
+<span id="L46"><span class="lineNum">      46</span>              :   int setOptionInternal (const char *param);</span>
+<span id="L47"><span class="lineNum">      47</span>              :   int checkCompatible (const GstTensorsConfig *config);</span>
+<span id="L48"><span class="lineNum">      48</span>              : </span>
+<span id="L49"><span class="lineNum">      49</span>              :   GArray *decode (const GstTensorsConfig *config, const GstTensorMemory *input);</span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span>              :   private:</span>
+<span id="L52"><span class="lineNum">      52</span>              :   gint num_layers;</span>
+<span id="L53"><span class="lineNum">      53</span>              :   /** Number of stride layers */</span>
+<span id="L54"><span class="lineNum">      54</span>              :   gfloat min_scale; /** Minimum scale */</span>
+<span id="L55"><span class="lineNum">      55</span>              :   gfloat max_scale; /** Maximum scale */</span>
+<span id="L56"><span class="lineNum">      56</span>              :   gfloat offset_x; /** anchor X offset */</span>
+<span id="L57"><span class="lineNum">      57</span>              :   gfloat offset_y; /** anchor Y offset */</span>
+<span id="L58"><span class="lineNum">      58</span>              :   gint strides[PARAMS_MAX]; /** Stride data for each layers */</span>
+<span id="L59"><span class="lineNum">      59</span>              :   gfloat min_score_threshold; /** minimum threshold of score */</span>
+<span id="L60"><span class="lineNum">      60</span>              : </span>
+<span id="L61"><span class="lineNum">      61</span>              :   GArray *anchors;</span>
+<span id="L62"><span class="lineNum">      62</span>              : };</span>
+<span id="L63"><span class="lineNum">      63</span>              : </span>
+<span id="L64"><span class="lineNum">      64</span>              : /**</span>
+<span id="L65"><span class="lineNum">      65</span>              :  * @brief C++-Template-like box location calculation for Tensorflow model</span>
+<span id="L66"><span class="lineNum">      66</span>              :  * @param[in] type The tensor type of inputptr</span>
+<span id="L67"><span class="lineNum">      67</span>              :  * @param[in] typename nnstreamer enum corresponding to the type</span>
+<span id="L68"><span class="lineNum">      68</span>              :  * @param[in] scoreinput Input Tensor Data (Detection scores)</span>
+<span id="L69"><span class="lineNum">      69</span>              :  * @param[in] boxesinput Input Tensor Data (Boxes)</span>
+<span id="L70"><span class="lineNum">      70</span>              :  * @param[in] config Tensor configs of the input tensors</span>
+<span id="L71"><span class="lineNum">      71</span>              :  * @param[out] results The object returned. (GArray with detectedObject)</span>
+<span id="L72"><span class="lineNum">      72</span>              :  */</span>
+<span id="L73"><span class="lineNum">      73</span>              : #define _get_objects_mp_palm_detection(_type, typename, scoreinput, boxesinput, config) \</span>
+<span id="L74"><span class="lineNum">      74</span>              :   case typename:                                                                        \</span>
+<span id="L75"><span class="lineNum">      75</span>              :     {                                                                                   \</span>
+<span id="L76"><span class="lineNum">      76</span>              :       int d_;                                                                           \</span>
+<span id="L77"><span class="lineNum">      77</span>              :       _type *scores_ = (_type *) scoreinput;                                            \</span>
+<span id="L78"><span class="lineNum">      78</span>              :       _type *boxes_ = (_type *) boxesinput;                                             \</span>
+<span id="L79"><span class="lineNum">      79</span>              :       int num_ = max_detection;                                                         \</span>
+<span id="L80"><span class="lineNum">      80</span>              :       info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);       \</span>
+<span id="L81"><span class="lineNum">      81</span>              :       size_t boxbpi_ = info-&gt;dimension[0];                                              \</span>
+<span id="L82"><span class="lineNum">      82</span>              :       results = g_array_sized_new (FALSE, TRUE, sizeof (detectedObject), num_);         \</span>
+<span id="L83"><span class="lineNum">      83</span>              :       for (d_ = 0; d_ &lt; num_; d_++) {                                                   \</span>
+<span id="L84"><span class="lineNum">      84</span>              :         gfloat y_center, x_center, h, w;                                                \</span>
+<span id="L85"><span class="lineNum">      85</span>              :         gfloat ymin, xmin;                                                              \</span>
+<span id="L86"><span class="lineNum">      86</span>              :         int y, x, width, height;                                                        \</span>
+<span id="L87"><span class="lineNum">      87</span>              :         detectedObject object;                                                          \</span>
+<span id="L88"><span class="lineNum">      88</span>              :         gfloat score = (gfloat) scores_[d_];                                            \</span>
+<span id="L89"><span class="lineNum">      89</span>              :         _type *box = boxes_ + boxbpi_ * d_;                                             \</span>
+<span id="L90"><span class="lineNum">      90</span>              :         anchor *a = &amp;g_array_index (this-&gt;anchors, anchor, d_);                         \</span>
+<span id="L91"><span class="lineNum">      91</span>              :         score = MAX (score, -100.0f);                                                   \</span>
+<span id="L92"><span class="lineNum">      92</span>              :         score = MIN (score, 100.0f);                                                    \</span>
+<span id="L93"><span class="lineNum">      93</span>              :         score = 1.0f / (1.0f + exp (-score));                                           \</span>
+<span id="L94"><span class="lineNum">      94</span>              :         if (score &lt; min_score_threshold)                                                \</span>
+<span id="L95"><span class="lineNum">      95</span>              :           continue;                                                                     \</span>
+<span id="L96"><span class="lineNum">      96</span>              :         y_center = (box[0] * 1.f) / i_height * a-&gt;h + a-&gt;y_center;                      \</span>
+<span id="L97"><span class="lineNum">      97</span>              :         x_center = (box[1] * 1.f) / i_width * a-&gt;w + a-&gt;x_center;                       \</span>
+<span id="L98"><span class="lineNum">      98</span>              :         h = (box[2] * 1.f) / i_height * a-&gt;h;                                           \</span>
+<span id="L99"><span class="lineNum">      99</span>              :         w = (box[3] * 1.f) / i_width * a-&gt;w;                                            \</span>
+<span id="L100"><span class="lineNum">     100</span>              :         ymin = y_center - h / 2.f;                                                      \</span>
+<span id="L101"><span class="lineNum">     101</span>              :         xmin = x_center - w / 2.f;                                                      \</span>
+<span id="L102"><span class="lineNum">     102</span>              :         y = ymin * i_height;                                                            \</span>
+<span id="L103"><span class="lineNum">     103</span>              :         x = xmin * i_width;                                                             \</span>
+<span id="L104"><span class="lineNum">     104</span>              :         width = w * i_width;                                                            \</span>
+<span id="L105"><span class="lineNum">     105</span>              :         height = h * i_height;                                                          \</span>
+<span id="L106"><span class="lineNum">     106</span>              :         object.class_id = 0;                                                            \</span>
+<span id="L107"><span class="lineNum">     107</span>              :         object.x = MAX (0, x);                                                          \</span>
+<span id="L108"><span class="lineNum">     108</span>              :         object.y = MAX (0, y);                                                          \</span>
+<span id="L109"><span class="lineNum">     109</span>              :         object.width = width;                                                           \</span>
+<span id="L110"><span class="lineNum">     110</span>              :         object.height = height;                                                         \</span>
+<span id="L111"><span class="lineNum">     111</span>              :         object.prob = score;                                                            \</span>
+<span id="L112"><span class="lineNum">     112</span>              :         object.valid = TRUE;                                                            \</span>
+<span id="L113"><span class="lineNum">     113</span>              :         g_array_append_val (results, object);                                           \</span>
+<span id="L114"><span class="lineNum">     114</span>              :       }                                                                                 \</span>
+<span id="L115"><span class="lineNum">     115</span>              :     }                                                                                   \</span>
+<span id="L116"><span class="lineNum">     116</span>              :     break</span>
+<span id="L117"><span class="lineNum">     117</span>              : </span>
+<span id="L118"><span class="lineNum">     118</span>              : /** @brief Macro to simplify calling _get_objects_mp_palm_detection */</span>
+<span id="L119"><span class="lineNum">     119</span>              : #define _get_objects_mp_palm_detection_(type, typename) \</span>
+<span id="L120"><span class="lineNum">     120</span>              :   _get_objects_mp_palm_detection (type, typename, (detections-&gt;data), (boxes-&gt;data), config)</span>
+<span id="L121"><span class="lineNum">     121</span>              : </span>
+<span id="L122"><span class="lineNum">     122</span>              : #define mp_palm_detection_option(option, type, idx) \</span>
+<span id="L123"><span class="lineNum">     123</span>              :   if (noptions &gt; idx)                               \</span>
+<span id="L124"><span class="lineNum">     124</span>              :   option = (type) g_strtod (options[idx], NULL)</span>
+<span id="L125"><span class="lineNum">     125</span>              : </span>
+<span id="L126"><span class="lineNum">     126</span>              : /**</span>
+<span id="L127"><span class="lineNum">     127</span>              :  * @brief Calculate anchor scale</span>
+<span id="L128"><span class="lineNum">     128</span>              :  */</span>
+<span id="L129"><span class="lineNum">     129</span>              : static gfloat</span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC tlaBgGNC">          16 : _calculate_scale (float min_scale, float max_scale, int stride_index, int num_strides)</span></span>
+<span id="L131"><span class="lineNum">     131</span>              : {</span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">          16 :   if (num_strides == 1) {</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC tlaBgUNC">           0 :     return (min_scale + max_scale) * 0.5f;</span></span>
+<span id="L134"><span class="lineNum">     134</span>              :   } else {</span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC tlaBgGNC">          16 :     return min_scale + (max_scale - min_scale) * 1.0 * stride_index / (num_strides - 1.0f);</span></span>
+<span id="L136"><span class="lineNum">     136</span>              :   }</span>
+<span id="L137"><span class="lineNum">     137</span>              : }</span>
+<span id="L138"><span class="lineNum">     138</span>              : </span>
+<span id="L139"><span class="lineNum">     139</span>              : static BoxProperties *mp_palm_detection = nullptr;</span>
+<span id="L140"><span class="lineNum">     140</span>              : </span>
+<span id="L141"><span class="lineNum">     141</span>              : #ifdef __cplusplus</span>
+<span id="L142"><span class="lineNum">     142</span>              : extern &quot;C&quot; {</span>
+<span id="L143"><span class="lineNum">     143</span>              : #endif /* __cplusplus */</span>
+<span id="L144"><span class="lineNum">     144</span>              : void init_properties_mp_palm_detection (void) __attribute__ ((constructor));</span>
+<span id="L145"><span class="lineNum">     145</span>              : void fini_properties_mp_palm_detection (void) __attribute__ ((destructor));</span>
+<span id="L146"><span class="lineNum">     146</span>              : #ifdef __cplusplus</span>
+<span id="L147"><span class="lineNum">     147</span>              : }</span>
+<span id="L148"><span class="lineNum">     148</span>              : #endif /* __cplusplus */</span>
+<span id="L149"><span class="lineNum">     149</span>              : </span>
+<span id="L150"><span class="lineNum">     150</span>              : /**</span>
+<span id="L151"><span class="lineNum">     151</span>              :  * @brief Generate anchor information</span>
+<span id="L152"><span class="lineNum">     152</span>              :  */</span>
+<span id="L153"><span class="lineNum">     153</span>              : void</span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           2 : MpPalmDetection::mp_palm_detection_generate_anchors ()</span></span>
+<span id="L155"><span class="lineNum">     155</span>              : {</span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           2 :   int layer_id = 0;</span></span>
+<span id="L157"><span class="lineNum">     157</span>              :   guint i;</span>
+<span id="L158"><span class="lineNum">     158</span>              : </span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           6 :   while (layer_id &lt; num_layers) {</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           4 :     GArray *aspect_ratios = g_array_new (FALSE, TRUE, sizeof (gfloat));</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           4 :     GArray *scales = g_array_new (FALSE, TRUE, sizeof (gfloat));</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           4 :     GArray *anchor_height = g_array_new (FALSE, TRUE, sizeof (gfloat));</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           4 :     GArray *anchor_width = g_array_new (FALSE, TRUE, sizeof (gfloat));</span></span>
+<span id="L164"><span class="lineNum">     164</span>              : </span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           4 :     int last_same_stride_layer = layer_id;</span></span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           4 :     while (last_same_stride_layer &lt; num_layers</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          12 :            &amp;&amp; strides[last_same_stride_layer] == strides[layer_id]) {</span></span>
+<span id="L169"><span class="lineNum">     169</span>              :       gfloat scale;</span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           8 :       gfloat ratio = 1.0f;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           8 :       g_array_append_val (aspect_ratios, ratio);</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           8 :       g_array_append_val (aspect_ratios, ratio);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           8 :       scale = _calculate_scale (min_scale, max_scale, last_same_stride_layer, num_layers);</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           8 :       g_array_append_val (scales, scale);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           8 :       scale = _calculate_scale (min_scale, max_scale, last_same_stride_layer + 1, num_layers);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           8 :       g_array_append_val (scales, scale);</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           8 :       last_same_stride_layer++;</span></span>
+<span id="L178"><span class="lineNum">     178</span>              :     }</span>
+<span id="L179"><span class="lineNum">     179</span>              : </span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          20 :     for (i = 0; i &lt; aspect_ratios-&gt;len; ++i) {</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          16 :       const float ratio_sqrts = sqrt (g_array_index (aspect_ratios, gfloat, i));</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          16 :       const gfloat sc = g_array_index (scales, gfloat, i);</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          16 :       gfloat anchor_height_ = sc / ratio_sqrts;</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          16 :       gfloat anchor_width_ = sc * ratio_sqrts;</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          16 :       g_array_append_val (anchor_height, anchor_height_);</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          16 :       g_array_append_val (anchor_width, anchor_width_);</span></span>
+<span id="L187"><span class="lineNum">     187</span>              :     }</span>
+<span id="L188"><span class="lineNum">     188</span>              : </span>
+<span id="L189"><span class="lineNum">     189</span>              :     {</span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           4 :       int feature_map_height = 0;</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           4 :       int feature_map_width = 0;</span></span>
+<span id="L192"><span class="lineNum">     192</span>              :       int x, y;</span>
+<span id="L193"><span class="lineNum">     193</span>              :       int anchor_id;</span>
+<span id="L194"><span class="lineNum">     194</span>              : </span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           4 :       const int stride = strides[layer_id];</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           4 :       feature_map_height = ceil (1.0f * 192 / stride);</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           4 :       feature_map_width = ceil (1.0f * 192 / stride);</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          76 :       for (y = 0; y &lt; feature_map_height; ++y) {</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        1512 :         for (x = 0; x &lt; feature_map_width; ++x) {</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">        5472 :           for (anchor_id = 0; anchor_id &lt; (int) aspect_ratios-&gt;len; ++anchor_id) {</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">        4032 :             const float x_center = (x + offset_x) * 1.0f / feature_map_width;</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        4032 :             const float y_center = (y + offset_y) * 1.0f / feature_map_height;</span></span>
+<span id="L203"><span class="lineNum">     203</span>              : </span>
+<span id="L204"><span class="lineNum">     204</span>              :             const anchor a = { .x_center = x_center,</span>
+<span id="L205"><span class="lineNum">     205</span>              :               .y_center = y_center,</span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        4032 :               .w = g_array_index (anchor_width, gfloat, anchor_id),</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        4032 :               .h = g_array_index (anchor_height, gfloat, anchor_id) };</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">        4032 :             g_array_append_val (anchors, a);</span></span>
+<span id="L209"><span class="lineNum">     209</span>              :           }</span>
+<span id="L210"><span class="lineNum">     210</span>              :         }</span>
+<span id="L211"><span class="lineNum">     211</span>              :       }</span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           4 :       layer_id = last_same_stride_layer;</span></span>
+<span id="L213"><span class="lineNum">     213</span>              :     }</span>
+<span id="L214"><span class="lineNum">     214</span>              : </span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">           4 :     g_array_free (anchor_height, TRUE);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           4 :     g_array_free (anchor_width, TRUE);</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           4 :     g_array_free (aspect_ratios, TRUE);</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           4 :     g_array_free (scales, TRUE);</span></span>
+<span id="L219"><span class="lineNum">     219</span>              :   }</span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           2 : }</span></span>
+<span id="L221"><span class="lineNum">     221</span>              : </span>
+<span id="L222"><span class="lineNum">     222</span>              : /** @brief Constructor of MpPalmDetection */</span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          17 : MpPalmDetection::MpPalmDetection ()</span></span>
+<span id="L224"><span class="lineNum">     224</span>              : {</span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          17 :   max_detection = 0;</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          17 :   num_layers = NUM_LAYERS_DEFAULT;</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          17 :   min_scale = MIN_SCALE_DEFAULT;</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">          17 :   max_scale = MAX_SCALE_DEFAULT;</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          17 :   offset_x = OFFSET_X_DEFAULT;</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          17 :   offset_y = OFFSET_Y_DEFAULT;</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          17 :   strides[0] = STRIDE_0_DEFAULT;</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          17 :   strides[1] = STRIDE_1_DEFAULT;</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          17 :   strides[2] = STRIDE_2_DEFAULT;</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          17 :   strides[3] = STRIDE_3_DEFAULT;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">          17 :   min_score_threshold = MIN_SCORE_THRESHOLD_DEFAULT;</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          17 :   anchors = g_array_new (FALSE, TRUE, sizeof (anchor));</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          17 :   name = g_strdup_printf (&quot;mp-palm-detection&quot;);</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          17 : }</span></span>
+<span id="L239"><span class="lineNum">     239</span>              : </span>
+<span id="L240"><span class="lineNum">     240</span>              : /** @brief Destructor of MpPalmDetection */</span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          34 : MpPalmDetection::~MpPalmDetection ()</span></span>
+<span id="L242"><span class="lineNum">     242</span>              : {</span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          17 :   if (anchors)</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          17 :     g_array_free (anchors, TRUE);</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          17 :   anchors = NULL;</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          17 :   g_free (name);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          34 : }</span></span>
+<span id="L248"><span class="lineNum">     248</span>              : </span>
+<span id="L249"><span class="lineNum">     249</span>              : /** @brief Set internal option of MpPalmDetection</span>
+<span id="L250"><span class="lineNum">     250</span>              :  *  @param[in] param The option string.</span>
+<span id="L251"><span class="lineNum">     251</span>              :  */</span>
+<span id="L252"><span class="lineNum">     252</span>              : int</span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           2 : MpPalmDetection::setOptionInternal (const char *param)</span></span>
+<span id="L254"><span class="lineNum">     254</span>              : {</span>
+<span id="L255"><span class="lineNum">     255</span>              :   /* Load palm detection info from option3 */</span>
+<span id="L256"><span class="lineNum">     256</span>              :   gchar **options;</span>
+<span id="L257"><span class="lineNum">     257</span>              :   int noptions, idx;</span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           2 :   int ret = TRUE;</span></span>
+<span id="L259"><span class="lineNum">     259</span>              : </span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           2 :   options = g_strsplit (param, &quot;:&quot;, -1);</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           2 :   noptions = g_strv_length (options);</span></span>
+<span id="L262"><span class="lineNum">     262</span>              : </span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           2 :   if (noptions &gt; PARAMS_MAX) {</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Invalid MP PALM DETECTION PARAM length: %d&quot;, noptions);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :     ret = FALSE;</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC">           0 :     goto exit_mp_palm_detection;</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :   }</span>
+<span id="L268"><span class="lineNum">     268</span>              : </span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC tlaBgGNC">           2 :   mp_palm_detection_option (min_score_threshold, gfloat, 0);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">           2 :   mp_palm_detection_option (num_layers, gint, 1);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           2 :   mp_palm_detection_option (min_scale, gfloat, 2);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           2 :   mp_palm_detection_option (max_scale, gfloat, 3);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           2 :   mp_palm_detection_option (offset_x, gfloat, 4);</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           2 :   mp_palm_detection_option (offset_y, gfloat, 5);</span></span>
+<span id="L275"><span class="lineNum">     275</span>              : </span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          10 :   for (idx = 6; idx &lt; num_layers + 6; idx++) {</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           8 :     mp_palm_detection_option (strides[idx - 6], gint, idx);</span></span>
+<span id="L278"><span class="lineNum">     278</span>              :   }</span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           2 :   mp_palm_detection_generate_anchors ();</span></span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           2 : exit_mp_palm_detection:</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           2 :   g_strfreev (options);</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           2 :   return ret;</span></span>
+<span id="L284"><span class="lineNum">     284</span>              : }</span>
+<span id="L285"><span class="lineNum">     285</span>              : </span>
+<span id="L286"><span class="lineNum">     286</span>              : /** @brief Check compatibility of given tensors config */</span>
+<span id="L287"><span class="lineNum">     287</span>              : int</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           8 : MpPalmDetection::checkCompatible (const GstTensorsConfig *config)</span></span>
+<span id="L289"><span class="lineNum">     289</span>              : {</span>
+<span id="L290"><span class="lineNum">     290</span>              :   const uint32_t *dim1, *dim2;</span>
+<span id="L291"><span class="lineNum">     291</span>              :   int i;</span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           8 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           8 :   if (!check_tensors (config, MAX_TENSORS))</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span>              :   /* Check if the first tensor is compatible */</span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC tlaBgGNC">           8 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           8 :   dim1 = info-&gt;dimension;</span></span>
+<span id="L300"><span class="lineNum">     300</span>              : </span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim1[0] == INFO_SIZE, FALSE);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim1[1] &gt; 0, FALSE);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim1[2] == 1, FALSE);</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         112 :   for (i = 3; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         104 :     g_return_val_if_fail (dim1[i] == 0 || dim1[i] == 1, FALSE);</span></span>
+<span id="L306"><span class="lineNum">     306</span>              : </span>
+<span id="L307"><span class="lineNum">     307</span>              :   /* Check if the second tensor is compatible */</span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           8 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 1);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           8 :   dim2 = info-&gt;dimension;</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim2[0] == 1, FALSE);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim1[1] == dim2[1], FALSE);</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         120 :   for (i = 2; i &lt; NNS_TENSOR_RANK_LIMIT; i++)</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         112 :     g_return_val_if_fail (dim2[i] == 0 || dim2[i] == 1, FALSE);</span></span>
+<span id="L314"><span class="lineNum">     314</span>              : </span>
+<span id="L315"><span class="lineNum">     315</span>              :   /* Check consistency with max_detection */</span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">           8 :   if (max_detection != 0 &amp;&amp; max_detection != dim1[1]) {</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to check consistency with max_detection&quot;);</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L319"><span class="lineNum">     319</span>              :   } else {</span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC tlaBgGNC">           8 :     max_detection = dim1[1];</span></span>
+<span id="L321"><span class="lineNum">     321</span>              :   }</span>
+<span id="L322"><span class="lineNum">     322</span>              : </span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           8 :   if (max_detection &gt; MAX_DETECTION) {</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Incoming tensor has too large detection-max : %u&quot;, max_detection);</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L326"><span class="lineNum">     326</span>              :   }</span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC tlaBgGNC">           8 :   return TRUE;</span></span>
+<span id="L328"><span class="lineNum">     328</span>              : }</span>
+<span id="L329"><span class="lineNum">     329</span>              : </span>
+<span id="L330"><span class="lineNum">     330</span>              : /**</span>
+<span id="L331"><span class="lineNum">     331</span>              :  * @brief Decode input memory to out buffer</span>
+<span id="L332"><span class="lineNum">     332</span>              :  * @param[in] config The structure of input tensor info.</span>
+<span id="L333"><span class="lineNum">     333</span>              :  * @param[in] input The array of input tensor data. The maximum array size of input data is NNS_TENSOR_SIZE_LIMIT.</span>
+<span id="L334"><span class="lineNum">     334</span>              :  */</span>
+<span id="L335"><span class="lineNum">     335</span>              : GArray *</span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">           4 : MpPalmDetection::decode (const GstTensorsConfig *config, const GstTensorMemory *input)</span></span>
+<span id="L337"><span class="lineNum">     337</span>              : {</span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">           4 :   GArray *results = NULL;</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           4 :   const GstTensorMemory *boxes = NULL;</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">           4 :   const GstTensorMemory *detections = NULL;</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">           4 :   const guint num_tensors = config-&gt;info.num_tensors;</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">           4 :   GstTensorInfo *info = nullptr;</span></span>
+<span id="L343"><span class="lineNum">     343</span>              : </span>
+<span id="L344"><span class="lineNum">     344</span>              :   /* Already checked with getOutCaps. Thus, this is an internal bug */</span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           4 :   g_assert (num_tensors &gt;= MAX_TENSORS);</span></span>
+<span id="L346"><span class="lineNum">     346</span>              : </span>
+<span id="L347"><span class="lineNum">     347</span>              :   /* results will be allocated by _get_objects_mp_palm_detection_ */</span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           4 :   boxes = &amp;input[0];</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">           4 :   detections = &amp;input[1];</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           4 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) &amp;config-&gt;info, 0);</span></span>
+<span id="L351"><span class="lineNum">     351</span>              : </span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           4 :   switch (info-&gt;type) {</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mp_palm_detection_ (uint8_t, _NNS_UINT8);</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (int8_t, _NNS_INT8);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (uint16_t, _NNS_UINT16);</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (int16_t, _NNS_INT16);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (uint32_t, _NNS_UINT32);</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (int32_t, _NNS_INT32);</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (uint64_t, _NNS_UINT64);</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :     _get_objects_mp_palm_detection_ (int64_t, _NNS_INT64);</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC tlaBgGNC">        8068 :     _get_objects_mp_palm_detection_ (float, _NNS_FLOAT32);</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC tlaBgUNC">           0 :     _get_objects_mp_palm_detection_ (double, _NNS_FLOAT64);</span></span>
+<span id="L363"><span class="lineNum">     363</span>              : </span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :       g_assert (0);</span></span>
+<span id="L366"><span class="lineNum">     366</span>              :   }</span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC tlaBgGNC">           4 :   nms (results, 0.05f, MP_PALM_DETECTION_BOUNDING_BOX);</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           4 :   return results;</span></span>
+<span id="L369"><span class="lineNum">     369</span>              : }</span>
+<span id="L370"><span class="lineNum">     370</span>              : </span>
+<span id="L371"><span class="lineNum">     371</span>              : /** @brief Initialize this object for tensor decoder bounding box */</span>
+<span id="L372"><span class="lineNum">     372</span>              : void</span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          17 : init_properties_mp_palm_detection ()</span></span>
+<span id="L374"><span class="lineNum">     374</span>              : {</span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">          17 :   mp_palm_detection = new MpPalmDetection ();</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">          17 :   BoundingBox::addProperties (mp_palm_detection);</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">          17 : }</span></span>
+<span id="L378"><span class="lineNum">     378</span>              : </span>
+<span id="L379"><span class="lineNum">     379</span>              : /** @brief Destruct this object for tensor decoder bounding box */</span>
+<span id="L380"><span class="lineNum">     380</span>              : void</span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">          17 : fini_properties_mp_palm_detection ()</span></span>
+<span id="L382"><span class="lineNum">     382</span>              : {</span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          17 :   delete mp_palm_detection;</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          17 : }</span></span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

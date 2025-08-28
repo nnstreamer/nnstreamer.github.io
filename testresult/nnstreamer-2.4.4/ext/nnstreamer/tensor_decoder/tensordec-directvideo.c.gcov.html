@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869 - nnstreamer-2.4.4/ext/nnstreamer/tensor_decoder/tensordec-directvideo.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">nnstreamer-2.4.4/ext/nnstreamer/tensor_decoder</a> - tensordec-directvideo.c<span style="font-size: 80%;"> (source / <a href="tensordec-directvideo.c.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">89.8&nbsp;%</td>
+            <td class="headerCovTableEntry">157</td>
+            <td class="headerCovTableEntry">141</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-08-29 05:39:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+          </tr>
+                  <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /**</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * GStreamer / NNStreamer tensor_decoder subplugin, &quot;direct video&quot;</span>
+<span id="L3"><span class="lineNum">       3</span>              :  * Copyright (C) 2018 Jijoong Moon &lt;jijoong.moon@samsung.com&gt;</span>
+<span id="L4"><span class="lineNum">       4</span>              :  * Copyright (C) 2018 MyungJoo Ham &lt;myungjoo.ham@samsung.com&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              :  *</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * This library is free software; you can redistribute it and/or</span>
+<span id="L7"><span class="lineNum">       7</span>              :  * modify it under the terms of the GNU Library General Public</span>
+<span id="L8"><span class="lineNum">       8</span>              :  * License as published by the Free Software Foundation;</span>
+<span id="L9"><span class="lineNum">       9</span>              :  * version 2.1 of the License.</span>
+<span id="L10"><span class="lineNum">      10</span>              :  *</span>
+<span id="L11"><span class="lineNum">      11</span>              :  * This library is distributed in the hope that it will be useful,</span>
+<span id="L12"><span class="lineNum">      12</span>              :  * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span id="L13"><span class="lineNum">      13</span>              :  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span id="L14"><span class="lineNum">      14</span>              :  * Library General Public License for more details.</span>
+<span id="L15"><span class="lineNum">      15</span>              :  *</span>
+<span id="L16"><span class="lineNum">      16</span>              :  */</span>
+<span id="L17"><span class="lineNum">      17</span>              : /**</span>
+<span id="L18"><span class="lineNum">      18</span>              :  * @file        tensordec-directvideo.c</span>
+<span id="L19"><span class="lineNum">      19</span>              :  * @date        04 Nov 2018</span>
+<span id="L20"><span class="lineNum">      20</span>              :  * @brief       NNStreamer tensor-decoder subplugin, &quot;direct video&quot;,</span>
+<span id="L21"><span class="lineNum">      21</span>              :  *              which converts tensors to video directly.</span>
+<span id="L22"><span class="lineNum">      22</span>              :  *</span>
+<span id="L23"><span class="lineNum">      23</span>              :  * @see         https://github.com/nnstreamer/nnstreamer</span>
+<span id="L24"><span class="lineNum">      24</span>              :  * @author      Jijoong Moon &lt;jijoong.moon@samsung.com&gt;</span>
+<span id="L25"><span class="lineNum">      25</span>              :  * @bug         If the element size is 2 or larger, padding won't work.</span>
+<span id="L26"><span class="lineNum">      26</span>              :  *              GRAY16 types has size of 2 and if you have padding, it won't work.</span>
+<span id="L27"><span class="lineNum">      27</span>              :  *              To correct this, dv_decode() should be fixed.</span>
+<span id="L28"><span class="lineNum">      28</span>              :  */</span>
+<span id="L29"><span class="lineNum">      29</span>              : </span>
+<span id="L30"><span class="lineNum">      30</span>              : #include &lt;string.h&gt;</span>
+<span id="L31"><span class="lineNum">      31</span>              : #include &lt;glib.h&gt;</span>
+<span id="L32"><span class="lineNum">      32</span>              : #include &lt;gst/video/video-format.h&gt;</span>
+<span id="L33"><span class="lineNum">      33</span>              : #include &lt;nnstreamer_plugin_api_decoder.h&gt;</span>
+<span id="L34"><span class="lineNum">      34</span>              : #include &lt;nnstreamer_plugin_api.h&gt;</span>
+<span id="L35"><span class="lineNum">      35</span>              : #include &lt;nnstreamer_log.h&gt;</span>
+<span id="L36"><span class="lineNum">      36</span>              : #include &lt;nnstreamer_util.h&gt;</span>
+<span id="L37"><span class="lineNum">      37</span>              : #include &quot;tensordecutil.h&quot;</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span>              : void init_dv (void) __attribute__ ((constructor));</span>
+<span id="L40"><span class="lineNum">      40</span>              : void fini_dv (void) __attribute__ ((destructor));</span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span>              : #define DECODER_DV_FORMATS &quot;{ GRAY8, RGB, BGR, RGBx, BGRx, xRGB, xBGR, RGBA, BGRA, ARGB, ABGR, GRAY16_BE, GRAY16_LE }&quot;</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span>              : #define DECODER_DV_VIDEO_CAPS_STR \</span>
+<span id="L45"><span class="lineNum">      45</span>              :     GST_VIDEO_CAPS_MAKE (DECODER_DV_FORMATS) \</span>
+<span id="L46"><span class="lineNum">      46</span>              :     &quot;, views = (int) 1, interlace-mode = (string) progressive&quot;</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              : /**</span>
+<span id="L49"><span class="lineNum">      49</span>              :  * @brief The supported video formats</span>
+<span id="L50"><span class="lineNum">      50</span>              :  */</span>
+<span id="L51"><span class="lineNum">      51</span>              : typedef enum</span>
+<span id="L52"><span class="lineNum">      52</span>              : {</span>
+<span id="L53"><span class="lineNum">      53</span>              :   DIRECT_VIDEO_FORMAT_UNKNOWN = 0,</span>
+<span id="L54"><span class="lineNum">      54</span>              : </span>
+<span id="L55"><span class="lineNum">      55</span>              :   /* Single Channel, Default: GRAY8 */</span>
+<span id="L56"><span class="lineNum">      56</span>              :   DIRECT_VIDEO_FORMAT_GRAY8 = 1,</span>
+<span id="L57"><span class="lineNum">      57</span>              : </span>
+<span id="L58"><span class="lineNum">      58</span>              :   /* 3 Channels, Default: RGB */</span>
+<span id="L59"><span class="lineNum">      59</span>              :   DIRECT_VIDEO_FORMAT_RGB = 2,</span>
+<span id="L60"><span class="lineNum">      60</span>              :   DIRECT_VIDEO_FORMAT_BGR = 3,</span>
+<span id="L61"><span class="lineNum">      61</span>              : </span>
+<span id="L62"><span class="lineNum">      62</span>              :   /* 4 Channels, Default: BGRx */</span>
+<span id="L63"><span class="lineNum">      63</span>              :   DIRECT_VIDEO_FORMAT_RGBx = 4,</span>
+<span id="L64"><span class="lineNum">      64</span>              :   DIRECT_VIDEO_FORMAT_BGRx = 5,</span>
+<span id="L65"><span class="lineNum">      65</span>              :   DIRECT_VIDEO_FORMAT_xRGB = 6,</span>
+<span id="L66"><span class="lineNum">      66</span>              :   DIRECT_VIDEO_FORMAT_xBGR = 7,</span>
+<span id="L67"><span class="lineNum">      67</span>              :   DIRECT_VIDEO_FORMAT_RGBA = 8,</span>
+<span id="L68"><span class="lineNum">      68</span>              :   DIRECT_VIDEO_FORMAT_BGRA = 9,</span>
+<span id="L69"><span class="lineNum">      69</span>              :   DIRECT_VIDEO_FORMAT_ARGB = 10,</span>
+<span id="L70"><span class="lineNum">      70</span>              :   DIRECT_VIDEO_FORMAT_ABGR = 11,</span>
+<span id="L71"><span class="lineNum">      71</span>              :   DIRECT_VIDEO_FORMAT_GRAY16_BE = 12,</span>
+<span id="L72"><span class="lineNum">      72</span>              :   DIRECT_VIDEO_FORMAT_GRAY16_LE = 13,</span>
+<span id="L73"><span class="lineNum">      73</span>              : } direct_video_formats;</span>
+<span id="L74"><span class="lineNum">      74</span>              : </span>
+<span id="L75"><span class="lineNum">      75</span>              : /**</span>
+<span id="L76"><span class="lineNum">      76</span>              :  * @brief Data structure for direct video options.</span>
+<span id="L77"><span class="lineNum">      77</span>              :  */</span>
+<span id="L78"><span class="lineNum">      78</span>              : typedef struct</span>
+<span id="L79"><span class="lineNum">      79</span>              : {</span>
+<span id="L80"><span class="lineNum">      80</span>              :   /* From option1 */</span>
+<span id="L81"><span class="lineNum">      81</span>              :   direct_video_formats format;</span>
+<span id="L82"><span class="lineNum">      82</span>              : } direct_video_ops;</span>
+<span id="L83"><span class="lineNum">      83</span>              : </span>
+<span id="L84"><span class="lineNum">      84</span>              : /**</span>
+<span id="L85"><span class="lineNum">      85</span>              :  * @brief List of the formats of direct video</span>
+<span id="L86"><span class="lineNum">      86</span>              :  */</span>
+<span id="L87"><span class="lineNum">      87</span>              : static const char *dv_formats[] = {</span>
+<span id="L88"><span class="lineNum">      88</span>              :   [DIRECT_VIDEO_FORMAT_UNKNOWN] = &quot;UNKNOWN&quot;,</span>
+<span id="L89"><span class="lineNum">      89</span>              :   [DIRECT_VIDEO_FORMAT_GRAY8] = &quot;GRAY8&quot;,</span>
+<span id="L90"><span class="lineNum">      90</span>              :   [DIRECT_VIDEO_FORMAT_RGB] = &quot;RGB&quot;,</span>
+<span id="L91"><span class="lineNum">      91</span>              :   [DIRECT_VIDEO_FORMAT_BGR] = &quot;BGR&quot;,</span>
+<span id="L92"><span class="lineNum">      92</span>              :   [DIRECT_VIDEO_FORMAT_RGBx] = &quot;RGBx&quot;,</span>
+<span id="L93"><span class="lineNum">      93</span>              :   [DIRECT_VIDEO_FORMAT_BGRx] = &quot;BGRx&quot;,</span>
+<span id="L94"><span class="lineNum">      94</span>              :   [DIRECT_VIDEO_FORMAT_xRGB] = &quot;xRGB&quot;,</span>
+<span id="L95"><span class="lineNum">      95</span>              :   [DIRECT_VIDEO_FORMAT_xBGR] = &quot;xBGR&quot;,</span>
+<span id="L96"><span class="lineNum">      96</span>              :   [DIRECT_VIDEO_FORMAT_RGBA] = &quot;RGBA&quot;,</span>
+<span id="L97"><span class="lineNum">      97</span>              :   [DIRECT_VIDEO_FORMAT_BGRA] = &quot;BGRA&quot;,</span>
+<span id="L98"><span class="lineNum">      98</span>              :   [DIRECT_VIDEO_FORMAT_ARGB] = &quot;ARGB&quot;,</span>
+<span id="L99"><span class="lineNum">      99</span>              :   [DIRECT_VIDEO_FORMAT_ABGR] = &quot;ABGR&quot;,</span>
+<span id="L100"><span class="lineNum">     100</span>              :   [DIRECT_VIDEO_FORMAT_GRAY16_BE] = &quot;GRAY16_BE&quot;,</span>
+<span id="L101"><span class="lineNum">     101</span>              :   [DIRECT_VIDEO_FORMAT_GRAY16_LE] = &quot;GRAY16_LE&quot;,</span>
+<span id="L102"><span class="lineNum">     102</span>              :   NULL,</span>
+<span id="L103"><span class="lineNum">     103</span>              : };</span>
+<span id="L104"><span class="lineNum">     104</span>              : </span>
+<span id="L105"><span class="lineNum">     105</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L106"><span class="lineNum">     106</span>              : static int</span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC tlaBgGNC">          32 : dv_init (void **pdata)</span></span>
+<span id="L108"><span class="lineNum">     108</span>              : {</span>
+<span id="L109"><span class="lineNum">     109</span>              :   direct_video_ops *ddata;</span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">          32 :   ddata = *pdata = g_try_new0 (direct_video_ops, 1);</span></span>
+<span id="L111"><span class="lineNum">     111</span>              : </span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">          32 :   if (ddata == NULL) {</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Failed to allocate memory for decoder subplugin.&quot;);</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L115"><span class="lineNum">     115</span>              :   }</span>
+<span id="L116"><span class="lineNum">     116</span>              : </span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC tlaBgGNC">          32 :   ddata-&gt;format = DIRECT_VIDEO_FORMAT_UNKNOWN;</span></span>
+<span id="L118"><span class="lineNum">     118</span>              : </span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          32 :   return TRUE;</span></span>
+<span id="L120"><span class="lineNum">     120</span>              : }</span>
+<span id="L121"><span class="lineNum">     121</span>              : </span>
+<span id="L122"><span class="lineNum">     122</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L123"><span class="lineNum">     123</span>              : static void</span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">          31 : dv_exit (void **pdata)</span></span>
+<span id="L125"><span class="lineNum">     125</span>              : {</span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">          31 :   if (pdata)</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          31 :     g_free (*pdata);</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">          31 :   return;</span></span>
+<span id="L129"><span class="lineNum">     129</span>              : }</span>
+<span id="L130"><span class="lineNum">     130</span>              : </span>
+<span id="L131"><span class="lineNum">     131</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L132"><span class="lineNum">     132</span>              : static int</span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          42 : dv_setOption (void **pdata, int opNum, const char *param)</span></span>
+<span id="L134"><span class="lineNum">     134</span>              : {</span>
+<span id="L135"><span class="lineNum">     135</span>              :   direct_video_ops *ddata;</span>
+<span id="L136"><span class="lineNum">     136</span>              : </span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          42 :   if (!pdata || !*pdata) {</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;There is no plugin data.&quot;);</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L140"><span class="lineNum">     140</span>              :   }</span>
+<span id="L141"><span class="lineNum">     141</span>              : </span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC tlaBgGNC">          42 :   if (NULL == param || *param == '\0') {</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;Please set the valid value at option.&quot;);</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L145"><span class="lineNum">     145</span>              :   }</span>
+<span id="L146"><span class="lineNum">     146</span>              : </span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC tlaBgGNC">          42 :   ddata = *pdata;</span></span>
+<span id="L148"><span class="lineNum">     148</span>              : </span>
+<span id="L149"><span class="lineNum">     149</span>              :   /* When the dimension[0] is 4, the video format will be decided by option1. */</span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          42 :   switch (opNum) {</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          18 :     case 0:</span></span>
+<span id="L152"><span class="lineNum">     152</span>              :     {</span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          18 :       int f = find_key_strv (dv_formats, param);</span></span>
+<span id="L154"><span class="lineNum">     154</span>              : </span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          18 :       ddata-&gt;format = (f &lt; 0) ? DIRECT_VIDEO_FORMAT_UNKNOWN : f;</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">          18 :       if (ddata-&gt;format == DIRECT_VIDEO_FORMAT_UNKNOWN) {</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           3 :         return FALSE;</span></span>
+<span id="L158"><span class="lineNum">     158</span>              :       }</span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          15 :       break;</span></span>
+<span id="L160"><span class="lineNum">     160</span>              :     }</span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">          24 :     default:</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          24 :       break;</span></span>
+<span id="L163"><span class="lineNum">     163</span>              :   }</span>
+<span id="L164"><span class="lineNum">     164</span>              : </span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          39 :   return TRUE;</span></span>
+<span id="L166"><span class="lineNum">     166</span>              : }</span>
+<span id="L167"><span class="lineNum">     167</span>              : </span>
+<span id="L168"><span class="lineNum">     168</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L169"><span class="lineNum">     169</span>              : static GstCaps *</span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         138 : dv_getOutCaps (void **pdata, const GstTensorsConfig * config)</span></span>
+<span id="L171"><span class="lineNum">     171</span>              : {</span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">         138 :   direct_video_ops *ddata = *pdata;</span></span>
+<span id="L173"><span class="lineNum">     173</span>              :   /* Old gst_tensordec_video_caps_from_config () had this */</span>
+<span id="L174"><span class="lineNum">     174</span>              :   GstVideoFormat format;</span>
+<span id="L175"><span class="lineNum">     175</span>              :   gint width, height, channel;</span>
+<span id="L176"><span class="lineNum">     176</span>              :   GstCaps *caps;</span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">         138 :   guint element_size_from_cap = 1; /** Assume 1 byte per element */</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">         138 :   tensor_type input_tensor_type = config-&gt;info.info[0].type;</span></span>
+<span id="L179"><span class="lineNum">     179</span>              : </span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">         138 :   g_return_val_if_fail (config != NULL, NULL);</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">         138 :   GST_INFO (&quot;Num Tensors = %d&quot;, config-&gt;info.num_tensors);</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">         138 :   g_return_val_if_fail (config-&gt;info.num_tensors &gt;= 1, NULL);</span></span>
+<span id="L183"><span class="lineNum">     183</span>              : </span>
+<span id="L184"><span class="lineNum">     184</span>              :   /* Direct video uses the first tensor only even if it's multi-tensor */</span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">         138 :   channel = config-&gt;info.info[0].dimension[0];</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         138 :   if (channel == 1) {</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          32 :     switch (ddata-&gt;format) {</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_GRAY8:</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_GRAY8;</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           8 :       case DIRECT_VIDEO_FORMAT_GRAY16_BE:</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           8 :         format = GST_VIDEO_FORMAT_GRAY16_BE;</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           8 :         element_size_from_cap = 2;</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           8 :         break;</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           8 :       case DIRECT_VIDEO_FORMAT_GRAY16_LE:</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           8 :         format = GST_VIDEO_FORMAT_GRAY16_LE;</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           8 :         element_size_from_cap = 2;</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">           8 :         break;</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          12 :       case DIRECT_VIDEO_FORMAT_UNKNOWN:</span></span>
+<span id="L200"><span class="lineNum">     200</span>              :       default:</span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          12 :         GST_WARNING (&quot;Default format has been applied: GRAY8&quot;);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          12 :         format = GST_VIDEO_FORMAT_GRAY8;</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          12 :         break;</span></span>
+<span id="L204"><span class="lineNum">     204</span>              :     }</span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         106 :   } else if (channel == 3) {</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          47 :     switch (ddata-&gt;format) {</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_RGB:</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_RGB;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_BGR:</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_BGR;</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          39 :       case DIRECT_VIDEO_FORMAT_UNKNOWN:</span></span>
+<span id="L214"><span class="lineNum">     214</span>              :       default:</span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          39 :         GST_WARNING (&quot;Default format has been applied: RGB&quot;);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          39 :         format = GST_VIDEO_FORMAT_RGB;</span></span>
+<span id="L217"><span class="lineNum">     217</span>              :     }</span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          59 :   } else if (channel == 4) {</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">          59 :     switch (ddata-&gt;format) {</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_RGBx:</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_RGBx;</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_BGRx:</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_BGRx;</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_xRGB:</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_xRGB;</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_xBGR:</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_xBGR;</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_RGBA:</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_RGBA;</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_BGRA:</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_BGRA;</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_ARGB:</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_ARGB;</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           4 :       case DIRECT_VIDEO_FORMAT_ABGR:</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           4 :         format = GST_VIDEO_FORMAT_ABGR;</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           4 :         break;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          27 :       case DIRECT_VIDEO_FORMAT_UNKNOWN:</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :       default:</span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          27 :         GST_WARNING (&quot;Default format has been applied: BGRx&quot;);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          27 :         format = GST_VIDEO_FORMAT_BGRx;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          27 :         break;</span></span>
+<span id="L249"><span class="lineNum">     249</span>              :     }</span>
+<span id="L250"><span class="lineNum">     250</span>              :   } else {</span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;%d channel is not supported&quot;, channel);</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :     return NULL;</span></span>
+<span id="L253"><span class="lineNum">     253</span>              :   }</span>
+<span id="L254"><span class="lineNum">     254</span>              : </span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC tlaBgGNC">         138 :   if (gst_tensor_get_element_size (input_tensor_type) != element_size_from_cap) {</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_ERROR (&quot;The element size of input tensor (%&quot; G_GSIZE_FORMAT</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :         &quot; byte / %s) for tensor_decoder::direct_video must be same as the element size of output (%u byte / %s). Note that except for GrayScale-16 format, it should be 1 byte / element, normally; i.e., RGB, RGBA, and BGRx. It is recommended to convert to UINT8 tensor stream or UINT16 tensor stream (GreyScale-16) before tensor_decoder::direct_video.&quot;,</span>
+<span id="L258"><span class="lineNum">     258</span>              :         gst_tensor_get_element_size (input_tensor_type),</span>
+<span id="L259"><span class="lineNum">     259</span>              :         gst_tensor_get_type_string (input_tensor_type),</span>
+<span id="L260"><span class="lineNum">     260</span>              :         element_size_from_cap,</span>
+<span id="L261"><span class="lineNum">     261</span>              :         ((element_size_from_cap == 2) ? &quot;uint16&quot; : &quot;uint8&quot;));</span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :     return NULL;</span></span>
+<span id="L263"><span class="lineNum">     263</span>              :   }</span>
+<span id="L264"><span class="lineNum">     264</span>              : </span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC tlaBgGNC">         138 :   if (input_tensor_type != _NNS_UINT8 &amp;&amp; input_tensor_type != _NNS_UINT16) {</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC tlaBgUNC">           0 :     GST_WARNING</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :         (&quot;The input tensor type for tensor_decoder::direct_video is recommended to be either UINT8 or UINT16. The current type, %s, does not incur buffer size mismatch, but the actual behavior might be inconsistent. Try UINT8/UINT16, which is meant to be the video/x-raw element type.&quot;,</span>
+<span id="L268"><span class="lineNum">     268</span>              :         gst_tensor_get_type_string (input_tensor_type));</span>
+<span id="L269"><span class="lineNum">     269</span>              :   }</span>
+<span id="L270"><span class="lineNum">     270</span>              : </span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC tlaBgGNC">         138 :   width = config-&gt;info.info[0].dimension[1];</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         138 :   height = config-&gt;info.info[0].dimension[2];</span></span>
+<span id="L273"><span class="lineNum">     273</span>              : </span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         138 :   caps = gst_caps_from_string (DECODER_DV_VIDEO_CAPS_STR);</span></span>
+<span id="L275"><span class="lineNum">     275</span>              : </span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         138 :   if (format != GST_VIDEO_FORMAT_UNKNOWN) {</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">         138 :     const char *format_string = gst_video_format_to_string (format);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         138 :     gst_caps_set_simple (caps, &quot;format&quot;, G_TYPE_STRING, format_string, NULL);</span></span>
+<span id="L279"><span class="lineNum">     279</span>              :   }</span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         138 :   if (width &gt; 0) {</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         134 :     gst_caps_set_simple (caps, &quot;width&quot;, G_TYPE_INT, width, NULL);</span></span>
+<span id="L283"><span class="lineNum">     283</span>              :   }</span>
+<span id="L284"><span class="lineNum">     284</span>              : </span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         138 :   if (height &gt; 0) {</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         134 :     gst_caps_set_simple (caps, &quot;height&quot;, G_TYPE_INT, height, NULL);</span></span>
+<span id="L287"><span class="lineNum">     287</span>              :   }</span>
+<span id="L288"><span class="lineNum">     288</span>              : </span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         138 :   setFramerateFromConfig (caps, config);</span></span>
+<span id="L290"><span class="lineNum">     290</span>              : </span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         138 :   return gst_caps_simplify (caps);</span></span>
+<span id="L292"><span class="lineNum">     292</span>              : }</span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span>              : /** @brief get video output buffer size */</span>
+<span id="L295"><span class="lineNum">     295</span>              : static size_t</span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         103 : _get_video_xraw_bufsize (const tensor_dim dim, gsize data_size)</span></span>
+<span id="L297"><span class="lineNum">     297</span>              : {</span>
+<span id="L298"><span class="lineNum">     298</span>              :   /* dim[0] is bpp and there is zeropadding only when dim[0]%4 &gt; 0 */</span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">         103 :   return (size_t) ((dim[0] * dim[1] - 1) / 4 + 1) * 4 * dim[2] * data_size;</span></span>
+<span id="L300"><span class="lineNum">     300</span>              : }</span>
+<span id="L301"><span class="lineNum">     301</span>              : </span>
+<span id="L302"><span class="lineNum">     302</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L303"><span class="lineNum">     303</span>              : static size_t</span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          51 : dv_getTransformSize (void **pdata, const GstTensorsConfig * config,</span></span>
+<span id="L305"><span class="lineNum">     305</span>              :     GstCaps * caps, size_t size, GstCaps * othercaps, GstPadDirection direction)</span>
+<span id="L306"><span class="lineNum">     306</span>              : {</span>
+<span id="L307"><span class="lineNum">     307</span>              :   /* Direct video uses the first tensor only even if it's multi-tensor */</span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          51 :   const uint32_t *dim = &amp;(config-&gt;info.info[0].dimension[0]);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          51 :   gsize data_size = gst_tensor_get_element_size (config-&gt;info.info[0].type);</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          51 :   gsize transform_size = 0;</span></span>
+<span id="L311"><span class="lineNum">     311</span>              :   UNUSED (pdata);</span>
+<span id="L312"><span class="lineNum">     312</span>              :   UNUSED (caps);</span>
+<span id="L313"><span class="lineNum">     313</span>              :   UNUSED (size);</span>
+<span id="L314"><span class="lineNum">     314</span>              :   UNUSED (othercaps);</span>
+<span id="L315"><span class="lineNum">     315</span>              : </span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          51 :   if (direction == GST_PAD_SINK)</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">          51 :     transform_size = _get_video_xraw_bufsize (dim, data_size);</span></span>
+<span id="L318"><span class="lineNum">     318</span>              : </span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">          51 :   return transform_size;</span></span>
+<span id="L320"><span class="lineNum">     320</span>              : }</span>
+<span id="L321"><span class="lineNum">     321</span>              : </span>
+<span id="L322"><span class="lineNum">     322</span>              : /** @brief tensordec-plugin's GstTensorDecoderDef callback */</span>
+<span id="L323"><span class="lineNum">     323</span>              : static GstFlowReturn</span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          52 : dv_decode (void **pdata, const GstTensorsConfig * config,</span></span>
+<span id="L325"><span class="lineNum">     325</span>              :     const GstTensorMemory * input, GstBuffer * outbuf)</span>
+<span id="L326"><span class="lineNum">     326</span>              : {</span>
+<span id="L327"><span class="lineNum">     327</span>              :   GstMapInfo out_info;</span>
+<span id="L328"><span class="lineNum">     328</span>              :   GstMemory *out_mem;</span>
+<span id="L329"><span class="lineNum">     329</span>              :   /* Direct video uses the first tensor only even if it's multi-tensor */</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          52 :   const uint32_t *dim = &amp;(config-&gt;info.info[0].dimension[0]);</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          52 :   gsize data_size = gst_tensor_get_element_size (config-&gt;info.info[0].type);</span></span>
+<span id="L332"><span class="lineNum">     332</span>              : </span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          52 :   size_t size = _get_video_xraw_bufsize (dim, data_size);</span></span>
+<span id="L334"><span class="lineNum">     334</span>              :   UNUSED (pdata);</span>
+<span id="L335"><span class="lineNum">     335</span>              : </span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          52 :   g_assert (outbuf);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          52 :   if (gst_buffer_get_size (outbuf) &gt; 0 &amp;&amp; gst_buffer_get_size (outbuf) != size) {</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_set_size (outbuf, size);</span></span>
+<span id="L339"><span class="lineNum">     339</span>              :   }</span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC tlaBgGNC">          52 :   if (gst_buffer_get_size (outbuf) == 0) {</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC tlaBgUNC">           0 :     out_mem = gst_allocator_alloc (NULL, size, NULL);</span></span>
+<span id="L343"><span class="lineNum">     343</span>              :   } else {</span>
+<span id="L344"><span class="lineNum">     344</span>              :     /* Don't reallocate. Reuse what's already given */</span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC tlaBgGNC">          52 :     out_mem = gst_buffer_get_all_memory (outbuf);</span></span>
+<span id="L346"><span class="lineNum">     346</span>              :   }</span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          52 :   if (!gst_memory_map (out_mem, &amp;out_info, GST_MAP_WRITE)) {</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_memory_unref (out_mem);</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :     ml_loge (&quot;Cannot map output memory / tensordec-directvideo.\n&quot;);</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">          52 :     return GST_FLOW_ERROR;</span></span>
+<span id="L351"><span class="lineNum">     351</span>              :   }</span>
+<span id="L352"><span class="lineNum">     352</span>              : </span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC">          52 :   if (0 == ((dim[0] * dim[1]) % 4)) {</span></span>
+<span id="L354"><span class="lineNum">     354</span>              :     /* No Padding Required */</span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          50 :     memcpy (out_info.data, input-&gt;data, input-&gt;size);</span></span>
+<span id="L356"><span class="lineNum">     356</span>              :   } else {</span>
+<span id="L357"><span class="lineNum">     357</span>              :     /* Do Padding */</span>
+<span id="L358"><span class="lineNum">     358</span>              :     unsigned int h;</span>
+<span id="L359"><span class="lineNum">     359</span>              :     uint8_t *ptr, *inp;</span>
+<span id="L360"><span class="lineNum">     360</span>              : </span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           2 :     ptr = (uint8_t *) out_info.data;</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           2 :     inp = (uint8_t *) input-&gt;data;</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         693 :     for (h = 0; h &lt; dim[2]; h++) {</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">         691 :       memcpy (ptr, inp, (size_t) dim[0] * dim[1]);</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         691 :       inp += (dim[0] * dim[1]);</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">         691 :       ptr += ((dim[0] * dim[1] - 1) / 4 + 1) * 4;</span></span>
+<span id="L367"><span class="lineNum">     367</span>              :     }</span>
+<span id="L368"><span class="lineNum">     368</span>              :   }</span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          52 :   gst_memory_unmap (out_mem, &amp;out_info);</span></span>
+<span id="L370"><span class="lineNum">     370</span>              : </span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          52 :   if (gst_buffer_get_size (outbuf) == 0)</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_buffer_append_memory (outbuf, out_mem);</span></span>
+<span id="L373"><span class="lineNum">     373</span>              :   else</span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC tlaBgGNC">          52 :     gst_buffer_replace_all_memory (outbuf, out_mem);</span></span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span>              :   /** @todo Caller of dv_decode in tensordec.c should call gst_memory_unmap to inbuf */</span>
+<span id="L377"><span class="lineNum">     377</span>              : </span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          52 :   return GST_FLOW_OK;</span></span>
+<span id="L379"><span class="lineNum">     379</span>              : }</span>
+<span id="L380"><span class="lineNum">     380</span>              : </span>
+<span id="L381"><span class="lineNum">     381</span>              : static gchar decoder_subplugin_direct_video[] = &quot;direct_video&quot;;</span>
+<span id="L382"><span class="lineNum">     382</span>              : </span>
+<span id="L383"><span class="lineNum">     383</span>              : /** @brief Direct-Video tensordec-plugin GstTensorDecoderDef instance */</span>
+<span id="L384"><span class="lineNum">     384</span>              : static GstTensorDecoderDef directVideo = {</span>
+<span id="L385"><span class="lineNum">     385</span>              :   .modename = decoder_subplugin_direct_video,</span>
+<span id="L386"><span class="lineNum">     386</span>              :   .init = dv_init,</span>
+<span id="L387"><span class="lineNum">     387</span>              :   .exit = dv_exit,</span>
+<span id="L388"><span class="lineNum">     388</span>              :   .setOption = dv_setOption,</span>
+<span id="L389"><span class="lineNum">     389</span>              :   .getOutCaps = dv_getOutCaps,</span>
+<span id="L390"><span class="lineNum">     390</span>              :   .getTransformSize = dv_getTransformSize,</span>
+<span id="L391"><span class="lineNum">     391</span>              :   .decode = dv_decode</span>
+<span id="L392"><span class="lineNum">     392</span>              : };</span>
+<span id="L393"><span class="lineNum">     393</span>              : </span>
+<span id="L394"><span class="lineNum">     394</span>              : /** @brief Initialize this object for tensordec-plugin */</span>
+<span id="L395"><span class="lineNum">     395</span>              : void</span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">          52 : init_dv (void)</span></span>
+<span id="L397"><span class="lineNum">     397</span>              : {</span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          52 :   nnstreamer_decoder_probe (&amp;directVideo);</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">          52 :   nnstreamer_decoder_set_custom_property_desc (decoder_subplugin_direct_video,</span></span>
+<span id="L400"><span class="lineNum">     400</span>              :       &quot;option1&quot;,</span>
+<span id="L401"><span class="lineNum">     401</span>              :       &quot;The output video format. If this is unspecified, it is 'GRAY8' (dim[0]/channel == 1), 'RGB' (dim[0]/channel == 3), or 'BGRx' (dim[0]/channel == 4). Available options are: &quot;</span>
+<span id="L402"><span class="lineNum">     402</span>              :       DECODER_DV_FORMATS, NULL);</span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L404"><span class="lineNum">     404</span>              : </span>
+<span id="L405"><span class="lineNum">     405</span>              : /** @brief Destruct this object for tensordec-plugin */</span>
+<span id="L406"><span class="lineNum">     406</span>              : void</span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          52 : fini_dv (void)</span></span>
+<span id="L408"><span class="lineNum">     408</span>              : {</span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          52 :   nnstreamer_decoder_exit (directVideo.modename);</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          52 : }</span></span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869 - nnstreamer-2.4.4/gst/nnstreamer/tensor_data.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">nnstreamer-2.4.4/gst/nnstreamer</a> - tensor_data.c<span style="font-size: 80%;"> (source / <a href="tensor_data.c.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#3b32573bc104b4708af44837466b8b6c73f94869</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">88.6&nbsp;%</td>
+            <td class="headerCovTableEntry">228</td>
+            <td class="headerCovTableEntry">202</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-08-29 05:39:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+          </tr>
+                  <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /* SPDX-License-Identifier: LGPL-2.1-only */</span>
+<span id="L2"><span class="lineNum">       2</span>              : /**</span>
+<span id="L3"><span class="lineNum">       3</span>              :  * Copyright (c) 2021 Samsung Electronics Co., Ltd. All Rights Reserved.</span>
+<span id="L4"><span class="lineNum">       4</span>              :  *</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * @file        tensor_data.c</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * @date        10 Mar 2021</span>
+<span id="L7"><span class="lineNum">       7</span>              :  * @brief       Internal functions to handle various tensor type and value.</span>
+<span id="L8"><span class="lineNum">       8</span>              :  * @see http://github.com/nnstreamer/nnstreamer</span>
+<span id="L9"><span class="lineNum">       9</span>              :  * @author      Jaeyun Jung &lt;jy1210.jung@samsung.com&gt;</span>
+<span id="L10"><span class="lineNum">      10</span>              :  * @bug No known bugs except for NYI items</span>
+<span id="L11"><span class="lineNum">      11</span>              :  */</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : #include &lt;math.h&gt;</span>
+<span id="L14"><span class="lineNum">      14</span>              : #include &quot;tensor_data.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>              : #include &quot;nnstreamer_log.h&quot;</span>
+<span id="L16"><span class="lineNum">      16</span>              : #include &quot;nnstreamer_plugin_api.h&quot;</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : /**</span>
+<span id="L19"><span class="lineNum">      19</span>              :  * @brief Macro to set data in struct.</span>
+<span id="L20"><span class="lineNum">      20</span>              :  */</span>
+<span id="L21"><span class="lineNum">      21</span>              : #define td_set_data(td,v,dtype) do { \</span>
+<span id="L22"><span class="lineNum">      22</span>              :     (td)-&gt;data._##dtype = *((dtype *) v); \</span>
+<span id="L23"><span class="lineNum">      23</span>              :   } while (0)</span>
+<span id="L24"><span class="lineNum">      24</span>              : </span>
+<span id="L25"><span class="lineNum">      25</span>              : /**</span>
+<span id="L26"><span class="lineNum">      26</span>              :  * @brief Macro to get data from struct.</span>
+<span id="L27"><span class="lineNum">      27</span>              :  */</span>
+<span id="L28"><span class="lineNum">      28</span>              : #define td_get_data(td,v,dtype) do { \</span>
+<span id="L29"><span class="lineNum">      29</span>              :     *((dtype *) v) = (td)-&gt;data._##dtype; \</span>
+<span id="L30"><span class="lineNum">      30</span>              :   } while (0)</span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span>              : /**</span>
+<span id="L33"><span class="lineNum">      33</span>              :  * @brief Macro for typecast.</span>
+<span id="L34"><span class="lineNum">      34</span>              :  */</span>
+<span id="L35"><span class="lineNum">      35</span>              : #define td_typecast_to(td,itype,otype) do { \</span>
+<span id="L36"><span class="lineNum">      36</span>              :     itype in_val = (td)-&gt;data._##itype; \</span>
+<span id="L37"><span class="lineNum">      37</span>              :     otype out_val = (otype) in_val; \</span>
+<span id="L38"><span class="lineNum">      38</span>              :     (td)-&gt;data._##otype = out_val; \</span>
+<span id="L39"><span class="lineNum">      39</span>              :   } while (0)</span>
+<span id="L40"><span class="lineNum">      40</span>              : </span>
+<span id="L41"><span class="lineNum">      41</span>              : #ifdef FLOAT16_SUPPORT</span>
+<span id="L42"><span class="lineNum">      42</span>              : #define td_typecast_to_fromf16(td,otype) do { \</span>
+<span id="L43"><span class="lineNum">      43</span>              :     float16 in_val = (td)-&gt;data._float16; \</span>
+<span id="L44"><span class="lineNum">      44</span>              :     otype out_val = (otype) in_val; \</span>
+<span id="L45"><span class="lineNum">      45</span>              :     (td)-&gt;data._##otype = out_val; \</span>
+<span id="L46"><span class="lineNum">      46</span>              :   } while (0)</span>
+<span id="L47"><span class="lineNum">      47</span>              : #else /* FLOAT16_SUPPORT */</span>
+<span id="L48"><span class="lineNum">      48</span>              : #define td_typecast_to_fromf16(td,itype) do { \</span>
+<span id="L49"><span class="lineNum">      49</span>              :     nns_loge (&quot;Your nnstreamer binary is built without -DFLOAT16_SUPPORT option; thus float16 is not supported.\n&quot;); \</span>
+<span id="L50"><span class="lineNum">      50</span>              :     g_assert (0); \</span>
+<span id="L51"><span class="lineNum">      51</span>              :   } while (0)</span>
+<span id="L52"><span class="lineNum">      52</span>              : #endif</span>
+<span id="L53"><span class="lineNum">      53</span>              : </span>
+<span id="L54"><span class="lineNum">      54</span>              : #define td_typecast(td,otype) do { \</span>
+<span id="L55"><span class="lineNum">      55</span>              :     switch ((td)-&gt;type) { \</span>
+<span id="L56"><span class="lineNum">      56</span>              :       case _NNS_INT32: td_typecast_to (td, int32_t, otype); break; \</span>
+<span id="L57"><span class="lineNum">      57</span>              :       case _NNS_UINT32: td_typecast_to (td, uint32_t, otype); break; \</span>
+<span id="L58"><span class="lineNum">      58</span>              :       case _NNS_INT16: td_typecast_to (td, int16_t, otype); break; \</span>
+<span id="L59"><span class="lineNum">      59</span>              :       case _NNS_UINT16:  td_typecast_to (td, uint16_t, otype); break; \</span>
+<span id="L60"><span class="lineNum">      60</span>              :       case _NNS_INT8: td_typecast_to (td, int8_t, otype); break; \</span>
+<span id="L61"><span class="lineNum">      61</span>              :       case _NNS_UINT8: td_typecast_to (td, uint8_t, otype); break; \</span>
+<span id="L62"><span class="lineNum">      62</span>              :       case _NNS_FLOAT64: td_typecast_to (td, double, otype); break; \</span>
+<span id="L63"><span class="lineNum">      63</span>              :       case _NNS_FLOAT32: td_typecast_to (td, float, otype); break; \</span>
+<span id="L64"><span class="lineNum">      64</span>              :       case _NNS_FLOAT16: td_typecast_to_fromf16 (td, otype); break; \</span>
+<span id="L65"><span class="lineNum">      65</span>              :       case _NNS_INT64: td_typecast_to (td, int64_t, otype); break; \</span>
+<span id="L66"><span class="lineNum">      66</span>              :       case _NNS_UINT64: td_typecast_to (td, uint64_t, otype); break; \</span>
+<span id="L67"><span class="lineNum">      67</span>              :       default: g_assert (0); break; \</span>
+<span id="L68"><span class="lineNum">      68</span>              :     } \</span>
+<span id="L69"><span class="lineNum">      69</span>              :   } while (0)</span>
+<span id="L70"><span class="lineNum">      70</span>              : </span>
+<span id="L71"><span class="lineNum">      71</span>              : /**</span>
+<span id="L72"><span class="lineNum">      72</span>              :  * @brief Set tensor element data with given type.</span>
+<span id="L73"><span class="lineNum">      73</span>              :  * @param td struct for tensor data</span>
+<span id="L74"><span class="lineNum">      74</span>              :  * @param type tensor type</span>
+<span id="L75"><span class="lineNum">      75</span>              :  * @param value pointer of tensor element value</span>
+<span id="L76"><span class="lineNum">      76</span>              :  * @return TRUE if no error</span>
+<span id="L77"><span class="lineNum">      77</span>              :  */</span>
+<span id="L78"><span class="lineNum">      78</span>              : gboolean</span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC tlaBgGNC">     3785081 : gst_tensor_data_set (tensor_data_s * td, tensor_type type, gpointer value)</span></span>
+<span id="L80"><span class="lineNum">      80</span>              : {</span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">     3785081 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">     3785081 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
+<span id="L83"><span class="lineNum">      83</span>              : </span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">     3785081 :   td-&gt;data._int64_t = 0;</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">     3785081 :   td-&gt;type = _NNS_END;</span></span>
+<span id="L86"><span class="lineNum">      86</span>              : </span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">     3785081 :   switch (type) {</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         114 :     case _NNS_INT32:</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         114 :       td_set_data (td, value, int32_t);</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         114 :       break;</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        5051 :     case _NNS_UINT32:</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        5051 :       td_set_data (td, value, uint32_t);</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        5051 :       break;</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">          16 :     case _NNS_INT16:</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">          16 :       td_set_data (td, value, int16_t);</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          16 :       break;</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">          24 :     case _NNS_UINT16:</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">          24 :       td_set_data (td, value, uint16_t);</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">          24 :       break;</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">        5016 :     case _NNS_INT8:</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        5016 :       td_set_data (td, value, int8_t);</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">        5016 :       break;</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">     2868606 :     case _NNS_UINT8:</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">     2868606 :       td_set_data (td, value, uint8_t);</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">     2868606 :       break;</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">      686145 :     case _NNS_FLOAT64:</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">      686145 :       td_set_data (td, value, double);</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">      686145 :       break;</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">      220056 :     case _NNS_FLOAT32:</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">      220056 :       td_set_data (td, value, float);</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">      220056 :       break;</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaUNC tlaBgUNC">           0 :     case _NNS_FLOAT16:</span></span>
+<span id="L113"><span class="lineNum">     113</span>              : #ifdef FLOAT16_SUPPORT</span>
+<span id="L114"><span class="lineNum">     114</span>              :       td_set_data (td, value, float16);</span>
+<span id="L115"><span class="lineNum">     115</span>              :       break;</span>
+<span id="L116"><span class="lineNum">     116</span>              : #else</span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC">           0 :       nns_loge</span></span>
+<span id="L118"><span class="lineNum">     118</span>              :           (&quot;NNStreamer requires -DFLOAT16_SUPPORT as a build option to enable float16 type. This binary does not have float16 feature enabled; thus, float16 type is not supported in this instance.\n&quot;);</span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
+<span id="L120"><span class="lineNum">     120</span>              : #endif</span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">          37 :     case _NNS_INT64:</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">          37 :       td_set_data (td, value, int64_t);</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">          37 :       break;</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">          16 :     case _NNS_UINT64:</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">          16 :       td_set_data (td, value, uint64_t);</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">          16 :       break;</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaUNC">           0 :       nns_logw (&quot;Unknown tensor type %d&quot;, type);</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
+<span id="L130"><span class="lineNum">     130</span>              :   }</span>
+<span id="L131"><span class="lineNum">     131</span>              : </span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC tlaBgGNC">     3785081 :   td-&gt;type = type;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">     3785081 :   return TRUE;</span></span>
+<span id="L134"><span class="lineNum">     134</span>              : }</span>
+<span id="L135"><span class="lineNum">     135</span>              : </span>
+<span id="L136"><span class="lineNum">     136</span>              : /**</span>
+<span id="L137"><span class="lineNum">     137</span>              :  * @brief Get tensor element value.</span>
+<span id="L138"><span class="lineNum">     138</span>              :  * @param td struct for tensor data</span>
+<span id="L139"><span class="lineNum">     139</span>              :  * @param value pointer of tensor element value</span>
+<span id="L140"><span class="lineNum">     140</span>              :  * @return TRUE if no error</span>
+<span id="L141"><span class="lineNum">     141</span>              :  */</span>
+<span id="L142"><span class="lineNum">     142</span>              : gboolean</span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">     3784930 : gst_tensor_data_get (tensor_data_s * td, gpointer value)</span></span>
+<span id="L144"><span class="lineNum">     144</span>              : {</span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">     3784930 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">     3784930 :   g_return_val_if_fail (value != NULL, FALSE);</span></span>
+<span id="L147"><span class="lineNum">     147</span>              : </span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">     3784930 :   switch (td-&gt;type) {</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">       15390 :     case _NNS_INT32:</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       15390 :       td_get_data (td, value, int32_t);</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">       15390 :       break;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">       20434 :     case _NNS_UINT32:</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">       20434 :       td_get_data (td, value, uint32_t);</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">       20434 :       break;</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">       15375 :     case _NNS_INT16:</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">       15375 :       td_get_data (td, value, int16_t);</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">       15375 :       break;</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">       15375 :     case _NNS_UINT16:</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">       15375 :       td_get_data (td, value, uint16_t);</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">       15375 :       break;</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">       20375 :     case _NNS_INT8:</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">       20375 :       td_get_data (td, value, int8_t);</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">       20375 :       break;</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">      591375 :     case _NNS_UINT8:</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">      591375 :       td_get_data (td, value, uint8_t);</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">      591375 :       break;</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">     2975741 :     case _NNS_FLOAT64:</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">     2975741 :       td_get_data (td, value, double);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">     2975741 :       break;</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">      100115 :     case _NNS_FLOAT32:</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">      100115 :       td_get_data (td, value, float);</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">      100115 :       break;</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC tlaBgUNC">           0 :     case _NNS_FLOAT16:</span></span>
+<span id="L174"><span class="lineNum">     174</span>              : #ifdef FLOAT16_SUPPORT</span>
+<span id="L175"><span class="lineNum">     175</span>              :       td_get_data (td, value, float16);</span>
+<span id="L176"><span class="lineNum">     176</span>              :       break;</span>
+<span id="L177"><span class="lineNum">     177</span>              : #else</span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :       nns_loge</span></span>
+<span id="L179"><span class="lineNum">     179</span>              :           (&quot;NNStreamer requires -DFLOAT16_SUPPORT as a build option to enable float16 type. This binary does not have float16 feature enabled; thus, float16 type is not supported in this instance.\n&quot;);</span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
+<span id="L181"><span class="lineNum">     181</span>              : #endif</span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC tlaBgGNC">       15375 :     case _NNS_INT64:</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">       15375 :       td_get_data (td, value, int64_t);</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">       15375 :       break;</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">       15375 :     case _NNS_UINT64:</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">       15375 :       td_get_data (td, value, uint64_t);</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">       15375 :       break;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC">           0 :       nns_logw (&quot;Unknown tensor type %d&quot;, td-&gt;type);</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :       return FALSE;</span></span>
+<span id="L191"><span class="lineNum">     191</span>              :   }</span>
+<span id="L192"><span class="lineNum">     192</span>              : </span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC tlaBgGNC">     3784930 :   return TRUE;</span></span>
+<span id="L194"><span class="lineNum">     194</span>              : }</span>
+<span id="L195"><span class="lineNum">     195</span>              : </span>
+<span id="L196"><span class="lineNum">     196</span>              : /**</span>
+<span id="L197"><span class="lineNum">     197</span>              :  * @brief Typecast tensor element data.</span>
+<span id="L198"><span class="lineNum">     198</span>              :  * @param td struct for tensor data</span>
+<span id="L199"><span class="lineNum">     199</span>              :  * @param type tensor type to be transformed</span>
+<span id="L200"><span class="lineNum">     200</span>              :  * @return TRUE if no error</span>
+<span id="L201"><span class="lineNum">     201</span>              :  */</span>
+<span id="L202"><span class="lineNum">     202</span>              : gboolean</span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">     3869150 : gst_tensor_data_typecast (tensor_data_s * td, tensor_type type)</span></span>
+<span id="L204"><span class="lineNum">     204</span>              : {</span>
+<span id="L205"><span class="lineNum">     205</span>              :   gboolean is_float;</span>
+<span id="L206"><span class="lineNum">     206</span>              : </span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">     3869150 :   g_return_val_if_fail (td != NULL, FALSE);</span></span>
+<span id="L208"><span class="lineNum">     208</span>              : </span>
+<span id="L209"><span class="lineNum">     209</span>              :   /* do nothing when transform to same type */</span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">     3869150 :   if (td-&gt;type != type) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">     3549647 :     is_float = (td-&gt;type == _NNS_FLOAT32 || td-&gt;type == _NNS_FLOAT64</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">     7319324 :         || td-&gt;type == _NNS_FLOAT16);</span></span>
+<span id="L213"><span class="lineNum">     213</span>              : </span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">     3769677 :     switch (type) {</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">       15419 :       case _NNS_INT32:</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">       15419 :         td_typecast (td, int32_t);</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">       15419 :         break;</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">       20418 :       case _NNS_UINT32:</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">       20418 :         if (is_float) {</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">        5015 :           td_typecast (td, int32_t);</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        5015 :           td-&gt;type = _NNS_INT32;</span></span>
+<span id="L222"><span class="lineNum">     222</span>              :         }</span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">       20418 :         td_typecast (td, uint32_t);</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">       20418 :         break;</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">       15378 :       case _NNS_INT16:</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">       15378 :         td_typecast (td, int16_t);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">       15378 :         break;</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">       15378 :       case _NNS_UINT16:</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">       15378 :         if (is_float) {</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">          15 :           td_typecast (td, int16_t);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          15 :           td-&gt;type = _NNS_INT16;</span></span>
+<span id="L232"><span class="lineNum">     232</span>              :         }</span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">       15378 :         td_typecast (td, uint16_t);</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">       15378 :         break;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">       20378 :       case _NNS_INT8:</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">       20378 :         td_typecast (td, int8_t);</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">       20378 :         break;</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">      576078 :       case _NNS_UINT8:</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">      576078 :         if (is_float) {</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">      576031 :           td_typecast (td, int8_t);</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">      576031 :           td-&gt;type = _NNS_INT8;</span></span>
+<span id="L242"><span class="lineNum">     242</span>              :         }</span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">      576078 :         td_typecast (td, uint8_t);</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">      576078 :         break;</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">     2975728 :       case _NNS_FLOAT64:</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">     2975728 :         td_typecast (td, double);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">     2975728 :         break;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">      100147 :       case _NNS_FLOAT32:</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">      100147 :         td_typecast (td, float);</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">      100147 :         break;</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC tlaBgUNC">           0 :       case _NNS_FLOAT16:</span></span>
+<span id="L252"><span class="lineNum">     252</span>              : #ifdef FLOAT16_SUPPORT</span>
+<span id="L253"><span class="lineNum">     253</span>              :         td_typecast (td, float16);</span>
+<span id="L254"><span class="lineNum">     254</span>              : #else</span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :         nns_loge</span></span>
+<span id="L256"><span class="lineNum">     256</span>              :             (&quot;NNStreamer requires -DFLOAT16_SUPPORT as a build option to enable float16 type. This binary does not have float16 feature enabled; thus, float16 type is not supported in this instance.\n&quot;);</span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC">           0 :         return FALSE;</span></span>
+<span id="L258"><span class="lineNum">     258</span>              : #endif</span>
+<span id="L259"><span class="lineNum">     259</span>              :         break;</span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC tlaBgGNC">       15375 :       case _NNS_INT64:</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">       15375 :         td_typecast (td, int64_t);</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">       15375 :         break;</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">       15378 :       case _NNS_UINT64:</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">       15378 :         if (is_float) {</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          15 :           td_typecast (td, int64_t);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">          15 :           td-&gt;type = _NNS_INT64;</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :         }</span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       15378 :         td_typecast (td, uint64_t);</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">       15378 :         break;</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC tlaBgUNC">           0 :       default:</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :         nns_logw (&quot;Unknown tensor type %d&quot;, type);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaUNC">           0 :         return FALSE;</span></span>
+<span id="L273"><span class="lineNum">     273</span>              :     }</span>
+<span id="L274"><span class="lineNum">     274</span>              : </span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC tlaBgGNC">     3769677 :     td-&gt;type = type;</span></span>
+<span id="L276"><span class="lineNum">     276</span>              :   }</span>
+<span id="L277"><span class="lineNum">     277</span>              : </span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">     3869150 :   return TRUE;</span></span>
+<span id="L279"><span class="lineNum">     279</span>              : }</span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span>              : /**</span>
+<span id="L282"><span class="lineNum">     282</span>              :  * @brief Typecast tensor element value.</span>
+<span id="L283"><span class="lineNum">     283</span>              :  * @param input pointer of input tensor data</span>
+<span id="L284"><span class="lineNum">     284</span>              :  * @param in_type input tensor type</span>
+<span id="L285"><span class="lineNum">     285</span>              :  * @param output pointer of output tensor data</span>
+<span id="L286"><span class="lineNum">     286</span>              :  * @param out_type output tensor type</span>
+<span id="L287"><span class="lineNum">     287</span>              :  * @return TRUE if no error</span>
+<span id="L288"><span class="lineNum">     288</span>              :  */</span>
+<span id="L289"><span class="lineNum">     289</span>              : gboolean</span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">     3723390 : gst_tensor_data_raw_typecast (gpointer input, tensor_type in_type,</span></span>
+<span id="L291"><span class="lineNum">     291</span>              :     gpointer output, tensor_type out_type)</span>
+<span id="L292"><span class="lineNum">     292</span>              : {</span>
+<span id="L293"><span class="lineNum">     293</span>              :   tensor_data_s td;</span>
+<span id="L294"><span class="lineNum">     294</span>              : </span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">     7446780 :   g_return_val_if_fail (input != NULL, FALSE);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">     3723390 :   g_return_val_if_fail (output != NULL, FALSE);</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">     3723390 :   g_return_val_if_fail (in_type != _NNS_END, FALSE);</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">     3723390 :   g_return_val_if_fail (out_type != _NNS_END, FALSE);</span></span>
+<span id="L299"><span class="lineNum">     299</span>              : </span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">     3723390 :   gst_tensor_data_set (&amp;td, in_type, input);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">     3723390 :   gst_tensor_data_typecast (&amp;td, out_type);</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">     3723390 :   gst_tensor_data_get (&amp;td, output);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">     3723390 :   return TRUE;</span></span>
+<span id="L304"><span class="lineNum">     304</span>              : }</span>
+<span id="L305"><span class="lineNum">     305</span>              : </span>
+<span id="L306"><span class="lineNum">     306</span>              : /**</span>
+<span id="L307"><span class="lineNum">     307</span>              :  * @brief Calculate average value of the tensor.</span>
+<span id="L308"><span class="lineNum">     308</span>              :  * @param raw pointer of raw tensor data</span>
+<span id="L309"><span class="lineNum">     309</span>              :  * @param length byte size of raw tensor data</span>
+<span id="L310"><span class="lineNum">     310</span>              :  * @param type tensor type</span>
+<span id="L311"><span class="lineNum">     311</span>              :  * @param result double pointer for average value of given tensor. Caller should release allocated memory.</span>
+<span id="L312"><span class="lineNum">     312</span>              :  * @return TRUE if no error</span>
+<span id="L313"><span class="lineNum">     313</span>              :  */</span>
+<span id="L314"><span class="lineNum">     314</span>              : gboolean</span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">          26 : gst_tensor_data_raw_average (gpointer raw, gsize length, tensor_type type,</span></span>
+<span id="L316"><span class="lineNum">     316</span>              :     gdouble ** result)</span>
+<span id="L317"><span class="lineNum">     317</span>              : {</span>
+<span id="L318"><span class="lineNum">     318</span>              :   gdouble value, average;</span>
+<span id="L319"><span class="lineNum">     319</span>              :   gulong i, num;</span>
+<span id="L320"><span class="lineNum">     320</span>              :   gsize element_size;</span>
+<span id="L321"><span class="lineNum">     321</span>              :   guint8 *data;</span>
+<span id="L322"><span class="lineNum">     322</span>              : </span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">          52 :   g_return_val_if_fail (raw != NULL, FALSE);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          26 :   g_return_val_if_fail (length &gt; 0, FALSE);</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">          26 :   g_return_val_if_fail (type != _NNS_END, FALSE);</span></span>
+<span id="L326"><span class="lineNum">     326</span>              : </span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          26 :   element_size = gst_tensor_get_element_size (type);</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          26 :   num = length / element_size;</span></span>
+<span id="L329"><span class="lineNum">     329</span>              : </span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">          26 :   average = 0.0;</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">          26 :   *result = (gdouble *) g_try_malloc0 (sizeof (gdouble));</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          26 :   if (*result == NULL) {</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for calculating average&quot;);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L335"><span class="lineNum">     335</span>              :   }</span>
+<span id="L336"><span class="lineNum">     336</span>              : </span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC tlaBgGNC">     2209722 :   for (i = 0; i &lt; num; ++i) {</span></span>
+<span id="L338"><span class="lineNum">     338</span>              :     /* extract value and typecast to double */</span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">     2209696 :     data = (guint8 *) raw + element_size * i;</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">     2209696 :     gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
+<span id="L341"><span class="lineNum">     341</span>              : </span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">     2209696 :     average = (value - average) / (i + 1) + average;</span></span>
+<span id="L343"><span class="lineNum">     343</span>              :   }</span>
+<span id="L344"><span class="lineNum">     344</span>              : </span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          26 :   **result = average;</span></span>
+<span id="L346"><span class="lineNum">     346</span>              : </span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">          26 :   return TRUE;</span></span>
+<span id="L348"><span class="lineNum">     348</span>              : }</span>
+<span id="L349"><span class="lineNum">     349</span>              : </span>
+<span id="L350"><span class="lineNum">     350</span>              : /**</span>
+<span id="L351"><span class="lineNum">     351</span>              :  * @brief Calculate average value of the tensor per channel (the first dim).</span>
+<span id="L352"><span class="lineNum">     352</span>              :  * @param raw pointer of raw tensor data</span>
+<span id="L353"><span class="lineNum">     353</span>              :  * @param length byte size of raw tensor data</span>
+<span id="L354"><span class="lineNum">     354</span>              :  * @param type tensor type</span>
+<span id="L355"><span class="lineNum">     355</span>              :  * @param tensor_dim tensor dimension</span>
+<span id="L356"><span class="lineNum">     356</span>              :  * @param results double array contains average values of each channel. Caller should release allocated array.</span>
+<span id="L357"><span class="lineNum">     357</span>              :  * @return TRUE if no error</span>
+<span id="L358"><span class="lineNum">     358</span>              :  */</span>
+<span id="L359"><span class="lineNum">     359</span>              : gboolean</span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">           8 : gst_tensor_data_raw_average_per_channel (gpointer raw, gsize length,</span></span>
+<span id="L361"><span class="lineNum">     361</span>              :     tensor_type type, tensor_dim dim, gdouble ** results)</span>
+<span id="L362"><span class="lineNum">     362</span>              : {</span>
+<span id="L363"><span class="lineNum">     363</span>              :   gdouble value, average;</span>
+<span id="L364"><span class="lineNum">     364</span>              :   gulong ch, i, num, offset;</span>
+<span id="L365"><span class="lineNum">     365</span>              :   gsize element_size;</span>
+<span id="L366"><span class="lineNum">     366</span>              :   guint8 *data;</span>
+<span id="L367"><span class="lineNum">     367</span>              : </span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          16 :   g_return_val_if_fail (raw != NULL, FALSE);</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (length &gt; 0, FALSE);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (dim[0] &gt; 0, FALSE);</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (type != _NNS_END, FALSE);</span></span>
+<span id="L372"><span class="lineNum">     372</span>              : </span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">           8 :   element_size = gst_tensor_get_element_size (type);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">           8 :   num = length / element_size;</span></span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">           8 :   offset = dim[0];</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">           8 :   num = num / offset;</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">           8 :   *results = (gdouble *) g_try_malloc0 (sizeof (gdouble) * offset);</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">           8 :   if (*results == NULL) {</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for calculating average&quot;);</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L382"><span class="lineNum">     382</span>              :   }</span>
+<span id="L383"><span class="lineNum">     383</span>              : </span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC tlaBgGNC">         408 :   for (ch = 0; ch &lt; offset; ++ch) {</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         400 :     average = 0.0;</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">       40400 :     for (i = 0; i &lt; num; ++i) {</span></span>
+<span id="L387"><span class="lineNum">     387</span>              :       /* extract value and typecast to double */</span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">       40000 :       data = (guint8 *) raw + element_size * ((i * offset) + ch);</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">       40000 :       gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">       40000 :       average = (value - average) / (i + 1) + average;</span></span>
+<span id="L391"><span class="lineNum">     391</span>              :     }</span>
+<span id="L392"><span class="lineNum">     392</span>              : </span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         400 :     (*results)[ch] = average;</span></span>
+<span id="L394"><span class="lineNum">     394</span>              :   }</span>
+<span id="L395"><span class="lineNum">     395</span>              : </span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">           8 :   return TRUE;</span></span>
+<span id="L397"><span class="lineNum">     397</span>              : }</span>
+<span id="L398"><span class="lineNum">     398</span>              : </span>
+<span id="L399"><span class="lineNum">     399</span>              : /**</span>
+<span id="L400"><span class="lineNum">     400</span>              :  * @brief Calculate standard deviation of the tensor.</span>
+<span id="L401"><span class="lineNum">     401</span>              :  * @param raw pointer of raw tensor data</span>
+<span id="L402"><span class="lineNum">     402</span>              :  * @param length byte size of raw tensor data</span>
+<span id="L403"><span class="lineNum">     403</span>              :  * @param type tensor type</span>
+<span id="L404"><span class="lineNum">     404</span>              :  * @param average average value of given tensor</span>
+<span id="L405"><span class="lineNum">     405</span>              :  * @param result double pointer for standard deviation of given tensor. Caller should release allocated memory.</span>
+<span id="L406"><span class="lineNum">     406</span>              :  * @return TRUE if no error</span>
+<span id="L407"><span class="lineNum">     407</span>              :  */</span>
+<span id="L408"><span class="lineNum">     408</span>              : gboolean</span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">           4 : gst_tensor_data_raw_std (gpointer raw, gsize length, tensor_type type,</span></span>
+<span id="L410"><span class="lineNum">     410</span>              :     gdouble * average, gdouble ** result)</span>
+<span id="L411"><span class="lineNum">     411</span>              : {</span>
+<span id="L412"><span class="lineNum">     412</span>              :   gdouble value, std;</span>
+<span id="L413"><span class="lineNum">     413</span>              :   gulong i, num;</span>
+<span id="L414"><span class="lineNum">     414</span>              :   gsize element_size;</span>
+<span id="L415"><span class="lineNum">     415</span>              :   guint8 *data;</span>
+<span id="L416"><span class="lineNum">     416</span>              : </span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (raw != NULL, FALSE);</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (length &gt; 0, FALSE);</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (type != _NNS_END, FALSE);</span></span>
+<span id="L420"><span class="lineNum">     420</span>              : </span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">           4 :   element_size = gst_tensor_get_element_size (type);</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">           4 :   num = length / element_size;</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">           4 :   *result = (gdouble *) g_try_malloc0 (sizeof (gdouble));</span></span>
+<span id="L424"><span class="lineNum">     424</span> <span class="tlaGNC">           4 :   if (*result == NULL) {</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for calculating standard deviation&quot;);</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L427"><span class="lineNum">     427</span>              :   }</span>
+<span id="L428"><span class="lineNum">     428</span>              : </span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC tlaBgGNC">           4 :   std = 0.0;</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">       20004 :   for (i = 0; i &lt; num; ++i) {</span></span>
+<span id="L431"><span class="lineNum">     431</span>              :     /* extract value and typecast to double */</span>
+<span id="L432"><span class="lineNum">     432</span> <span class="tlaGNC">       20000 :     data = (guint8 *) raw + element_size * i;</span></span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">       20000 :     gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
+<span id="L434"><span class="lineNum">     434</span>              : </span>
+<span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">       20000 :     std += pow (value - *average, 2) / num;</span></span>
+<span id="L436"><span class="lineNum">     436</span>              :   }</span>
+<span id="L437"><span class="lineNum">     437</span>              : </span>
+<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">           4 :   std = (std != 0.0) ? sqrt (std) : (1e-10);</span></span>
+<span id="L439"><span class="lineNum">     439</span> <span class="tlaGNC">           4 :   **result = std;</span></span>
+<span id="L440"><span class="lineNum">     440</span>              : </span>
+<span id="L441"><span class="lineNum">     441</span> <span class="tlaGNC">           4 :   return TRUE;</span></span>
+<span id="L442"><span class="lineNum">     442</span>              : }</span>
+<span id="L443"><span class="lineNum">     443</span>              : </span>
+<span id="L444"><span class="lineNum">     444</span>              : /**</span>
+<span id="L445"><span class="lineNum">     445</span>              :  * @brief Calculate standard deviation of the tensor per channel (the first dim).</span>
+<span id="L446"><span class="lineNum">     446</span>              :  * @param raw pointer of raw tensor data</span>
+<span id="L447"><span class="lineNum">     447</span>              :  * @param length byte size of raw tensor data</span>
+<span id="L448"><span class="lineNum">     448</span>              :  * @param type tensor type</span>
+<span id="L449"><span class="lineNum">     449</span>              :  * @param tensor_dim tensor dimension</span>
+<span id="L450"><span class="lineNum">     450</span>              :  * @param averages average values of given tensor per-channel</span>
+<span id="L451"><span class="lineNum">     451</span>              :  * @param results double array contains standard deviation of each channel. Caller should release allocated array.</span>
+<span id="L452"><span class="lineNum">     452</span>              :  * @return TRUE if no error</span>
+<span id="L453"><span class="lineNum">     453</span>              :  */</span>
+<span id="L454"><span class="lineNum">     454</span>              : gboolean</span>
+<span id="L455"><span class="lineNum">     455</span> <span class="tlaGNC">           4 : gst_tensor_data_raw_std_per_channel (gpointer raw, gsize length,</span></span>
+<span id="L456"><span class="lineNum">     456</span>              :     tensor_type type, tensor_dim dim, gdouble * averages, gdouble ** results)</span>
+<span id="L457"><span class="lineNum">     457</span>              : {</span>
+<span id="L458"><span class="lineNum">     458</span>              :   gdouble value, std;</span>
+<span id="L459"><span class="lineNum">     459</span>              :   gulong ch, i, num, offset;</span>
+<span id="L460"><span class="lineNum">     460</span>              :   gsize element_size;</span>
+<span id="L461"><span class="lineNum">     461</span>              :   guint8 *data;</span>
+<span id="L462"><span class="lineNum">     462</span>              : </span>
+<span id="L463"><span class="lineNum">     463</span> <span class="tlaGNC">           8 :   g_return_val_if_fail (raw != NULL, FALSE);</span></span>
+<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (length &gt; 0, FALSE);</span></span>
+<span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (dim[0] &gt; 0, FALSE);</span></span>
+<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (type != _NNS_END, FALSE);</span></span>
+<span id="L467"><span class="lineNum">     467</span>              : </span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">           4 :   element_size = gst_tensor_get_element_size (type);</span></span>
+<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">           4 :   num = length / element_size;</span></span>
+<span id="L470"><span class="lineNum">     470</span>              : </span>
+<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">           4 :   offset = dim[0];</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           4 :   num = num / offset;</span></span>
+<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">           4 :   *results = (gdouble *) g_try_malloc0 (sizeof (gdouble) * offset);</span></span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">           4 :   if (*results == NULL) {</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for calculating standard deviation&quot;);</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaUNC">           0 :     return FALSE;</span></span>
+<span id="L477"><span class="lineNum">     477</span>              :   }</span>
+<span id="L478"><span class="lineNum">     478</span>              : </span>
+<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC tlaBgGNC">         204 :   for (ch = 0; ch &lt; offset; ++ch) {</span></span>
+<span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">         200 :     std = 0.0;</span></span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">       20200 :     for (i = 0; i &lt; num; ++i) {</span></span>
+<span id="L482"><span class="lineNum">     482</span>              :       /* extract value and typecast to double */</span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">       20000 :       data = (guint8 *) raw + element_size * ((i * offset) + ch);</span></span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">       20000 :       gst_tensor_data_raw_typecast (data, type, &amp;value, _NNS_FLOAT64);</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">       20000 :       std += pow (value - averages[ch], 2) / num;</span></span>
+<span id="L486"><span class="lineNum">     486</span>              :     }</span>
+<span id="L487"><span class="lineNum">     487</span>              : </span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">         200 :     std = (std != 0.0) ? sqrt (std) : (1e-10);</span></span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">         200 :     (*results)[ch] = std;</span></span>
+<span id="L490"><span class="lineNum">     490</span>              :   }</span>
+<span id="L491"><span class="lineNum">     491</span>              : </span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC">           4 :   return TRUE;</span></span>
+<span id="L493"><span class="lineNum">     493</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
