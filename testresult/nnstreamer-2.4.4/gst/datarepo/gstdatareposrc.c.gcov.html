@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-08 05:36:29</td>
+            <td class="headerValue">2025-09-09 05:38:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -171,7 +171,7 @@
 <span id="L109"><span class="lineNum">     109</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_src_debug, &quot;datareposrc&quot;, 0, &quot;datareposrc element&quot;);</span>
 <span id="L110"><span class="lineNum">     110</span>              : </span>
 <span id="L111"><span class="lineNum">     111</span>              : #define gst_data_repo_src_parent_class parent_class</span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         866 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC tlaBgGNC">         868 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSrc, gst_data_repo_src, GST_TYPE_PUSH_SRC,</span></span>
 <span id="L113"><span class="lineNum">     113</span>              :     _do_init);</span>
 <span id="L114"><span class="lineNum">     114</span>              : </span>
 <span id="L115"><span class="lineNum">     115</span>              : /**</span>
@@ -1428,24 +1428,24 @@
 <span id="L1366"><span class="lineNum">    1366</span>              :  * @brief Get caps for caps negotiation</span>
 <span id="L1367"><span class="lineNum">    1367</span>              :  */</span>
 <span id="L1368"><span class="lineNum">    1368</span>              : static GstCaps *</span>
-<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaGNC">         112 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
+<span id="L1369"><span class="lineNum">    1369</span> <span class="tlaGNC">         113 : gst_data_repo_src_get_caps (GstBaseSrc * basesrc, GstCaps * filter)</span></span>
 <span id="L1370"><span class="lineNum">    1370</span>              : {</span>
-<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         112 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1371"><span class="lineNum">    1371</span> <span class="tlaGNC">         113 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1372"><span class="lineNum">    1372</span>              : </span>
-<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         112 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
+<span id="L1373"><span class="lineNum">    1373</span> <span class="tlaGNC">         113 :   if (src-&gt;data_type == GST_DATA_REPO_DATA_TENSOR &amp;&amp; src-&gt;need_changed_caps) {</span></span>
 <span id="L1374"><span class="lineNum">    1374</span> <span class="tlaGNC">          17 :     gst_data_repo_get_caps_by_tensors_sequence (src);</span></span>
 <span id="L1375"><span class="lineNum">    1375</span> <span class="tlaGNC">          17 :     src-&gt;need_changed_caps = FALSE;</span></span>
 <span id="L1376"><span class="lineNum">    1376</span>              :   }</span>
 <span id="L1377"><span class="lineNum">    1377</span>              : </span>
-<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC">         112 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L1378"><span class="lineNum">    1378</span> <span class="tlaGNC">         113 :   GST_DEBUG_OBJECT (src, &quot;Current datareposrc caps %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L1379"><span class="lineNum">    1379</span>              :       src-&gt;caps);</span>
 <span id="L1380"><span class="lineNum">    1380</span>              : </span>
-<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaGNC">         112 :   if (src-&gt;caps) {</span></span>
-<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaGNC">          98 :     if (filter)</span></span>
+<span id="L1381"><span class="lineNum">    1381</span> <span class="tlaGNC">         113 :   if (src-&gt;caps) {</span></span>
+<span id="L1382"><span class="lineNum">    1382</span> <span class="tlaGNC">          99 :     if (filter)</span></span>
 <span id="L1383"><span class="lineNum">    1383</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_intersect_full (filter, src-&gt;caps,</span></span>
 <span id="L1384"><span class="lineNum">    1384</span>              :           GST_CAPS_INTERSECT_FIRST);</span>
 <span id="L1385"><span class="lineNum">    1385</span>              :     else</span>
-<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC tlaBgGNC">          98 :       return gst_caps_ref (src-&gt;caps);</span></span>
+<span id="L1386"><span class="lineNum">    1386</span> <span class="tlaGNC tlaBgGNC">          99 :       return gst_caps_ref (src-&gt;caps);</span></span>
 <span id="L1387"><span class="lineNum">    1387</span>              :   } else {</span>
 <span id="L1388"><span class="lineNum">    1388</span> <span class="tlaGNC">          14 :     if (filter)</span></span>
 <span id="L1389"><span class="lineNum">    1389</span> <span class="tlaUNC tlaBgUNC">           0 :       return gst_caps_ref (filter);</span></span>
@@ -1458,13 +1458,13 @@
 <span id="L1396"><span class="lineNum">    1396</span>              :  * @brief caps after caps negotiation</span>
 <span id="L1397"><span class="lineNum">    1397</span>              :  */</span>
 <span id="L1398"><span class="lineNum">    1398</span>              : static gboolean</span>
-<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaGNC">          18 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
+<span id="L1399"><span class="lineNum">    1399</span> <span class="tlaGNC">          19 : gst_data_repo_src_set_caps (GstBaseSrc * basesrc, GstCaps * caps)</span></span>
 <span id="L1400"><span class="lineNum">    1400</span>              : {</span>
-<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          18 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
+<span id="L1401"><span class="lineNum">    1401</span> <span class="tlaGNC">          19 :   GstDataRepoSrc *src = GST_DATA_REPO_SRC (basesrc);</span></span>
 <span id="L1402"><span class="lineNum">    1402</span>              : </span>
-<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          18 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L1403"><span class="lineNum">    1403</span> <span class="tlaGNC">          19 :   GST_INFO_OBJECT (src, &quot;set caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
 <span id="L1404"><span class="lineNum">    1404</span>              : </span>
-<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          18 :   return TRUE;</span></span>
+<span id="L1405"><span class="lineNum">    1405</span> <span class="tlaGNC">          19 :   return TRUE;</span></span>
 <span id="L1406"><span class="lineNum">    1406</span>              : }</span>
 <span id="L1407"><span class="lineNum">    1407</span>              : </span>
 <span id="L1408"><span class="lineNum">    1408</span>              : /**</span>
