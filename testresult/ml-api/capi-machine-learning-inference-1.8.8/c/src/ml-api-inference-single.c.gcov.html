@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-09 05:27:42</td>
+            <td class="headerValue">2025-09-10 05:25:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">90.0&nbsp;%</td>
@@ -569,9 +569,9 @@
 <span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC">         101 :     int status = ML_ERROR_NONE;</span></span>
 <span id="L508"><span class="lineNum">     508</span>              : </span>
 <span id="L509"><span class="lineNum">     509</span>              :     /** wait for data */</span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         124 :     while (single_h-&gt;state != RUNNING) {</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         101 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
-<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">          99 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         123 :     while (single_h-&gt;state != RUNNING) {</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         100 :       g_cond_wait (&amp;single_h-&gt;cond, &amp;single_h-&gt;mutex);</span></span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">          98 :       if (single_h-&gt;state == JOIN_REQUESTED)</span></span>
 <span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          76 :         goto exit;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              :     }</span>
 <span id="L515"><span class="lineNum">     515</span>              : </span>
@@ -1416,10 +1416,10 @@
 <span id="L1354"><span class="lineNum">    1354</span> <span class="tlaGNC">          80 :   ML_SINGLE_HANDLE_UNLOCK (single_h);</span></span>
 <span id="L1355"><span class="lineNum">    1355</span>              : </span>
 <span id="L1356"><span class="lineNum">    1356</span>              :   /** Wait until invoke process is finished */</span>
-<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaGNC">        1687 :   while (invoking) {</span></span>
-<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaGNC">        1607 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
-<span id="L1359"><span class="lineNum">    1359</span> <span class="tlaGNC">        1607 :     g_usleep (1000);</span></span>
-<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaGNC">        1607 :     invoking = single_h-&gt;invoking;</span></span>
+<span id="L1357"><span class="lineNum">    1357</span> <span class="tlaGNC">        1582 :   while (invoking) {</span></span>
+<span id="L1358"><span class="lineNum">    1358</span> <span class="tlaGNC">        1502 :     _ml_logd (&quot;Wait 1 ms until invoke is finished and close the handle.&quot;);</span></span>
+<span id="L1359"><span class="lineNum">    1359</span> <span class="tlaGNC">        1502 :     g_usleep (1000);</span></span>
+<span id="L1360"><span class="lineNum">    1360</span> <span class="tlaGNC">        1502 :     invoking = single_h-&gt;invoking;</span></span>
 <span id="L1361"><span class="lineNum">    1361</span>              :     /**</span>
 <span id="L1362"><span class="lineNum">    1362</span>              :      * single_h-&gt;invoking is the only protected value here and we are</span>
 <span id="L1363"><span class="lineNum">    1363</span>              :      * doing a read-only operation and do not need to project its value</span>
