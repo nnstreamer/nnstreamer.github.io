@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-10 05:38:26</td>
+            <td class="headerValue">2025-09-11 05:37:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
@@ -139,7 +139,7 @@
 <span id="L77"><span class="lineNum">      77</span>              :     GST_STATIC_CAPS_ANY);</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
 <span id="L79"><span class="lineNum">      79</span>              : #define gst_tensor_query_client_parent_class parent_class</span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1231 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC tlaBgGNC">        1235 : G_DEFINE_TYPE (GstTensorQueryClient, gst_tensor_query_client, GST_TYPE_ELEMENT);</span></span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              : static void gst_tensor_query_client_finalize (GObject * object);</span>
 <span id="L83"><span class="lineNum">      83</span>              : static void gst_tensor_query_client_set_property (GObject * object,</span>
@@ -286,8 +286,8 @@
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          11 :   g_free (self-&gt;in_caps_str);</span></span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          11 :   self-&gt;in_caps_str = NULL;</span></span>
 <span id="L226"><span class="lineNum">     226</span>              : </span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          17 :   while ((data_h = g_async_queue_try_pop (self-&gt;msg_queue))) {</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           6 :     nns_edge_data_destroy (data_h);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          18 :   while ((data_h = g_async_queue_try_pop (self-&gt;msg_queue))) {</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           7 :     nns_edge_data_destroy (data_h);</span></span>
 <span id="L229"><span class="lineNum">     229</span>              :   }</span>
 <span id="L230"><span class="lineNum">     230</span>              : </span>
 <span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          11 :   if (self-&gt;msg_queue) {</span></span>
@@ -622,23 +622,23 @@
 <span id="L560"><span class="lineNum">     560</span> <span class="tlaGNC">          16 :   nns_edge_set_info (self-&gt;edge_h, &quot;CAPS&quot;, self-&gt;in_caps_str);</span></span>
 <span id="L561"><span class="lineNum">     561</span>              : </span>
 <span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">          16 :   ret = nns_edge_start (self-&gt;edge_h);</span></span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
 <span id="L564"><span class="lineNum">     564</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge</span></span>
 <span id="L565"><span class="lineNum">     565</span>              :         (&quot;Failed to start NNStreamer-edge. Please check server IP and port.&quot;);</span>
 <span id="L566"><span class="lineNum">     566</span> <span class="tlaUNC">           0 :     goto done;</span></span>
 <span id="L567"><span class="lineNum">     567</span>              :   }</span>
 <span id="L568"><span class="lineNum">     568</span>              : </span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC tlaBgGNC">          15 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
-<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC">          15 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">           4 :     nns_loge (&quot;Failed to connect to edge server!&quot;);</span></span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">           4 :     goto done;</span></span>
+<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC tlaBgGNC">          16 :   ret = nns_edge_connect (self-&gt;edge_h, self-&gt;dest_host, self-&gt;dest_port);</span></span>
+<span id="L570"><span class="lineNum">     570</span> <span class="tlaGNC">          16 :   if (ret != NNS_EDGE_ERROR_NONE) {</span></span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">           5 :     nns_loge (&quot;Failed to connect to edge server!&quot;);</span></span>
+<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">           5 :     goto done;</span></span>
 <span id="L573"><span class="lineNum">     573</span>              :   }</span>
 <span id="L574"><span class="lineNum">     574</span>              : </span>
 <span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">          11 :   started = TRUE;</span></span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          15 : done:</span></span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          15 :   if (!started) {</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           4 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">          16 : done:</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">          16 :   if (!started) {</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">           5 :     nns_edge_release_handle (self-&gt;edge_h);</span></span>
 <span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           4 :     self-&gt;edge_h = NULL;</span></span>
 <span id="L581"><span class="lineNum">     581</span>              :   }</span>
 <span id="L582"><span class="lineNum">     582</span>              : </span>
