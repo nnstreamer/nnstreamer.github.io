@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-12 05:36:18</td>
+            <td class="headerValue">2025-09-15 05:35:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -154,7 +154,7 @@
 <span id="L92"><span class="lineNum">      92</span>              : #define _do_init \</span>
 <span id="L93"><span class="lineNum">      93</span>              :   GST_DEBUG_CATEGORY_INIT (gst_data_repo_sink_debug, &quot;datareposink&quot;, 0, &quot;datareposink element&quot;);</span>
 <span id="L94"><span class="lineNum">      94</span>              : #define gst_data_repo_sink_parent_class parent_class</span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         787 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">         798 : G_DEFINE_TYPE_WITH_CODE (GstDataRepoSink, gst_data_repo_sink,</span></span>
 <span id="L96"><span class="lineNum">      96</span>              :     GST_TYPE_BASE_SINK, _do_init);</span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
 <span id="L98"><span class="lineNum">      98</span>              : static void gst_data_repo_sink_set_property (GObject * object, guint prop_id,</span>
@@ -376,75 +376,75 @@
 <span id="L314"><span class="lineNum">     314</span>              :  * @brief Function to write flexible tensors or sparse tensors</span>
 <span id="L315"><span class="lineNum">     315</span>              :  */</span>
 <span id="L316"><span class="lineNum">     316</span>              : static GstFlowReturn</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         161 : gst_data_repo_sink_write_flexible_or_sparse_tensors (GstDataRepoSink * sink,</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         160 : gst_data_repo_sink_write_flexible_or_sparse_tensors (GstDataRepoSink * sink,</span></span>
 <span id="L318"><span class="lineNum">     318</span>              :     GstBuffer * buffer)</span>
 <span id="L319"><span class="lineNum">     319</span>              : {</span>
 <span id="L320"><span class="lineNum">     320</span>              :   guint num_tensors, i;</span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         161 :   gsize total_write = 0, tensor_size;</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         161 :   ssize_t write_size = 0;</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         160 :   gsize total_write = 0, tensor_size;</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         160 :   ssize_t write_size = 0;</span></span>
 <span id="L323"><span class="lineNum">     323</span>              :   GstMapInfo info;</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         161 :   GstMemory *mem = NULL;</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         160 :   GstMemory *mem = NULL;</span></span>
 <span id="L325"><span class="lineNum">     325</span>              :   GstTensorMetaInfo meta;</span>
 <span id="L326"><span class="lineNum">     326</span>              : </span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         322 :   g_return_val_if_fail (sink != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (buffer != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (sink-&gt;fd != 0, GST_FLOW_ERROR);</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (sink-&gt;json_object != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (sink-&gt;sample_offset_array != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (sink-&gt;tensor_size_array != NULL, GST_FLOW_ERROR);</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         161 :   g_return_val_if_fail (sink-&gt;tensor_count_array != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         320 :   g_return_val_if_fail (sink != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (buffer != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (sink-&gt;fd != 0, GST_FLOW_ERROR);</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (sink-&gt;json_object != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (sink-&gt;sample_offset_array != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (sink-&gt;tensor_size_array != NULL, GST_FLOW_ERROR);</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">         160 :   g_return_val_if_fail (sink-&gt;tensor_count_array != NULL, GST_FLOW_ERROR);</span></span>
 <span id="L334"><span class="lineNum">     334</span>              : </span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         161 :   GST_OBJECT_LOCK (sink);</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">         160 :   GST_OBJECT_LOCK (sink);</span></span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         161 :   num_tensors = gst_tensor_buffer_get_count (buffer);</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         161 :   GST_INFO_OBJECT (sink, &quot;num_tensors: %u&quot;, num_tensors);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         160 :   num_tensors = gst_tensor_buffer_get_count (buffer);</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">         160 :   GST_INFO_OBJECT (sink, &quot;num_tensors: %u&quot;, num_tensors);</span></span>
 <span id="L339"><span class="lineNum">     339</span>              : </span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         350 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         191 :     mem = gst_tensor_buffer_get_nth_memory (buffer, i);</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">         191 :     if (!gst_memory_map (mem, &amp;info, GST_MAP_READ)) {</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         348 :   for (i = 0; i &lt; num_tensors; i++) {</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         190 :     mem = gst_tensor_buffer_get_nth_memory (buffer, i);</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">         190 :     if (!gst_memory_map (mem, &amp;info, GST_MAP_READ)) {</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_ERROR_OBJECT (sink, &quot;Failed to map memory&quot;);</span></span>
 <span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :       goto mem_map_error;</span></span>
 <span id="L345"><span class="lineNum">     345</span>              :     }</span>
 <span id="L346"><span class="lineNum">     346</span>              : </span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC tlaBgGNC">         191 :     if (!gst_tensor_meta_info_parse_header (&amp;meta, info.data)) {</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC tlaBgGNC">         190 :     if (!gst_tensor_meta_info_parse_header (&amp;meta, info.data)) {</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           2 :       GST_ERROR_OBJECT (sink,</span></span>
 <span id="L349"><span class="lineNum">     349</span>              :           &quot;Invalid format of tensors, the format is static.&quot;);</span>
 <span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">           2 :       goto error;</span></span>
 <span id="L351"><span class="lineNum">     351</span>              :     }</span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         189 :     tensor_size = info.size;</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         188 :     tensor_size = info.size;</span></span>
 <span id="L353"><span class="lineNum">     353</span>              : </span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         189 :     GST_LOG_OBJECT (sink, &quot;tensor[%u] size: %zd&quot;, i, tensor_size);</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         189 :     GST_LOG_OBJECT (sink,</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaGNC">         188 :     GST_LOG_OBJECT (sink, &quot;tensor[%u] size: %zd&quot;, i, tensor_size);</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         188 :     GST_LOG_OBJECT (sink,</span></span>
 <span id="L356"><span class="lineNum">     356</span>              :         &quot;Writing %lld bytes at offset 0x%&quot; G_GINT64_MODIFIER &quot;x (%lld size)&quot;,</span>
 <span id="L357"><span class="lineNum">     357</span>              :         (long long) tensor_size, sink-&gt;fd_offset + total_write,</span>
 <span id="L358"><span class="lineNum">     358</span>              :         (long long) sink-&gt;fd_offset + total_write);</span>
 <span id="L359"><span class="lineNum">     359</span>              : </span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         189 :     write_size = write (sink-&gt;fd, info.data, tensor_size);</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         189 :     if ((write_size == -1) || (write_size != (ssize_t) tensor_size)) {</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         188 :     write_size = write (sink-&gt;fd, info.data, tensor_size);</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         188 :     if ((write_size == -1) || (write_size != (ssize_t) tensor_size)) {</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC tlaBgUNC">           0 :       GST_ERROR_OBJECT (sink, &quot;Error writing data to file&quot;);</span></span>
 <span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :       goto error;</span></span>
 <span id="L364"><span class="lineNum">     364</span>              :     }</span>
 <span id="L365"><span class="lineNum">     365</span>              : </span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC tlaBgGNC">         189 :     json_array_add_int_element (sink-&gt;tensor_size_array, tensor_size);</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">         189 :     total_write += (gsize) write_size;</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC tlaBgGNC">         188 :     json_array_add_int_element (sink-&gt;tensor_size_array, tensor_size);</span></span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">         188 :     total_write += (gsize) write_size;</span></span>
 <span id="L368"><span class="lineNum">     368</span>              : </span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">         189 :     gst_memory_unmap (mem, &amp;info);</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         189 :     gst_memory_unref (mem);</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">         188 :     gst_memory_unmap (mem, &amp;info);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         188 :     gst_memory_unref (mem);</span></span>
 <span id="L371"><span class="lineNum">     371</span>              :   }</span>
 <span id="L372"><span class="lineNum">     372</span>              : </span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         159 :   json_array_add_int_element (sink-&gt;sample_offset_array, sink-&gt;fd_offset);</span></span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         159 :   sink-&gt;fd_offset += total_write;</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         158 :   json_array_add_int_element (sink-&gt;sample_offset_array, sink-&gt;fd_offset);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         158 :   sink-&gt;fd_offset += total_write;</span></span>
 <span id="L375"><span class="lineNum">     375</span>              : </span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         159 :   GST_LOG_OBJECT (sink, &quot;cumulative_tensors: %u&quot;, sink-&gt;cumulative_tensors);</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         159 :   json_array_add_int_element (sink-&gt;tensor_count_array,</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         159 :       sink-&gt;cumulative_tensors);</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         159 :   sink-&gt;cumulative_tensors += num_tensors;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         158 :   GST_LOG_OBJECT (sink, &quot;cumulative_tensors: %u&quot;, sink-&gt;cumulative_tensors);</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         158 :   json_array_add_int_element (sink-&gt;tensor_count_array,</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         158 :       sink-&gt;cumulative_tensors);</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         158 :   sink-&gt;cumulative_tensors += num_tensors;</span></span>
 <span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         159 :   sink-&gt;total_samples++;</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         158 :   sink-&gt;total_samples++;</span></span>
 <span id="L382"><span class="lineNum">     382</span>              : </span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         159 :   GST_OBJECT_UNLOCK (sink);</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         158 :   GST_OBJECT_UNLOCK (sink);</span></span>
 <span id="L384"><span class="lineNum">     384</span>              : </span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         159 :   return GST_FLOW_OK;</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         158 :   return GST_FLOW_OK;</span></span>
 <span id="L386"><span class="lineNum">     386</span>              : </span>
 <span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">           2 : error:</span></span>
 <span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">           2 :   gst_memory_unmap (mem, &amp;info);</span></span>
@@ -526,21 +526,21 @@
 <span id="L464"><span class="lineNum">     464</span>              :  * @brief Called when a buffer should be presented or output.</span>
 <span id="L465"><span class="lineNum">     465</span>              :  */</span>
 <span id="L466"><span class="lineNum">     466</span>              : static GstFlowReturn</span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         215 : gst_data_repo_sink_render (GstBaseSink * bsink, GstBuffer * buffer)</span></span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         214 : gst_data_repo_sink_render (GstBaseSink * bsink, GstBuffer * buffer)</span></span>
 <span id="L468"><span class="lineNum">     468</span>              : {</span>
-<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">         215 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK_CAST (bsink);</span></span>
+<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">         214 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK_CAST (bsink);</span></span>
 <span id="L470"><span class="lineNum">     470</span>              : </span>
-<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">         215 :   switch (sink-&gt;data_type) {</span></span>
+<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">         214 :   switch (sink-&gt;data_type) {</span></span>
 <span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">          24 :     case GST_DATA_REPO_DATA_VIDEO:</span></span>
 <span id="L473"><span class="lineNum">     473</span>              :     case GST_DATA_REPO_DATA_AUDIO:</span>
 <span id="L474"><span class="lineNum">     474</span>              :     case GST_DATA_REPO_DATA_TEXT:</span>
 <span id="L475"><span class="lineNum">     475</span>              :     case GST_DATA_REPO_DATA_OCTET:</span>
 <span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">          24 :       return gst_data_repo_sink_write_others (sink, buffer);</span></span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">         171 :     case GST_DATA_REPO_DATA_TENSOR:</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">         170 :     case GST_DATA_REPO_DATA_TENSOR:</span></span>
 <span id="L478"><span class="lineNum">     478</span>              :     {</span>
-<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">         171 :       if (sink-&gt;is_static_tensors)</span></span>
+<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">         170 :       if (sink-&gt;is_static_tensors)</span></span>
 <span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">          10 :         return gst_data_repo_sink_write_others (sink, buffer);</span></span>
-<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">         161 :       return gst_data_repo_sink_write_flexible_or_sparse_tensors (sink, buffer);</span></span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">         160 :       return gst_data_repo_sink_write_flexible_or_sparse_tensors (sink, buffer);</span></span>
 <span id="L482"><span class="lineNum">     482</span>              :     }</span>
 <span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">          20 :     case GST_DATA_REPO_DATA_IMAGE:</span></span>
 <span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">          20 :       return gst_data_repo_sink_write_multi_images (sink, buffer);</span></span>
@@ -553,26 +553,26 @@
 <span id="L491"><span class="lineNum">     491</span>              :  * @brief Get caps of datareposink.</span>
 <span id="L492"><span class="lineNum">     492</span>              :  */</span>
 <span id="L493"><span class="lineNum">     493</span>              : static GstCaps *</span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         541 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaGNC tlaBgGNC">         552 : gst_data_repo_sink_get_caps (GstBaseSink * bsink, GstCaps * filter)</span></span>
 <span id="L495"><span class="lineNum">     495</span>              : {</span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         541 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
-<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         541 :   GstCaps *caps = NULL;</span></span>
+<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">         552 :   GstDataRepoSink *sink = GST_DATA_REPO_SINK (bsink);</span></span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaGNC">         552 :   GstCaps *caps = NULL;</span></span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
-<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         541 :   GST_OBJECT_LOCK (sink);</span></span>
-<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         541 :   caps = sink-&gt;fixed_caps;</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">         552 :   GST_OBJECT_LOCK (sink);</span></span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaGNC">         552 :   caps = sink-&gt;fixed_caps;</span></span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         541 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         541 :   if (caps) {</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         405 :     if (filter)</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">         552 :   GST_INFO_OBJECT (sink, &quot;Got caps %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaGNC">         552 :   if (caps) {</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">         418 :     if (filter)</span></span>
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC tlaBgUNC">           0 :       caps = gst_caps_intersect_full (filter, caps, GST_CAPS_INTERSECT_FIRST);</span></span>
 <span id="L506"><span class="lineNum">     506</span>              :     else</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         405 :       caps = gst_caps_ref (caps);</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaGNC tlaBgGNC">         418 :       caps = gst_caps_ref (caps);</span></span>
 <span id="L508"><span class="lineNum">     508</span>              :   }</span>
 <span id="L509"><span class="lineNum">     509</span>              : </span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         541 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         541 :   GST_OBJECT_UNLOCK (sink);</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaGNC">         552 :   GST_DEBUG_OBJECT (sink, &quot;result get caps: %&quot; GST_PTR_FORMAT, caps);</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">         552 :   GST_OBJECT_UNLOCK (sink);</span></span>
 <span id="L512"><span class="lineNum">     512</span>              : </span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         541 :   return caps;</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">         552 :   return caps;</span></span>
 <span id="L514"><span class="lineNum">     514</span>              : }</span>
 <span id="L515"><span class="lineNum">     515</span>              : </span>
 <span id="L516"><span class="lineNum">     516</span>              : /**</span>
@@ -622,11 +622,11 @@
 <span id="L560"><span class="lineNum">     560</span>              :  * @brief Perform a GstQuery on datareposink.</span>
 <span id="L561"><span class="lineNum">     561</span>              :  */</span>
 <span id="L562"><span class="lineNum">     562</span>              : static gboolean</span>
-<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">         556 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
+<span id="L563"><span class="lineNum">     563</span> <span class="tlaGNC">         567 : gst_data_repo_sink_query (GstBaseSink * bsink, GstQuery * query)</span></span>
 <span id="L564"><span class="lineNum">     564</span>              : {</span>
 <span id="L565"><span class="lineNum">     565</span>              :   gboolean ret;</span>
 <span id="L566"><span class="lineNum">     566</span>              : </span>
-<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         556 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">         567 :   switch (GST_QUERY_TYPE (query)) {</span></span>
 <span id="L568"><span class="lineNum">     568</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:{</span></span>
 <span id="L569"><span class="lineNum">     569</span>              :       GstFormat fmt;</span>
 <span id="L570"><span class="lineNum">     570</span>              : </span>
@@ -636,12 +636,12 @@
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :       ret = TRUE;</span></span>
 <span id="L575"><span class="lineNum">     575</span> <span class="tlaUNC">           0 :       break;</span></span>
 <span id="L576"><span class="lineNum">     576</span>              :     }</span>
-<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC tlaBgGNC">         556 :     default:</span></span>
-<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         556 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         556 :       break;</span></span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC tlaBgGNC">         567 :     default:</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         567 :       ret = GST_BASE_SINK_CLASS (parent_class)-&gt;query (bsink, query);</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         567 :       break;</span></span>
 <span id="L580"><span class="lineNum">     580</span>              :   }</span>
 <span id="L581"><span class="lineNum">     581</span>              : </span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         556 :   return ret;</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         567 :   return ret;</span></span>
 <span id="L583"><span class="lineNum">     583</span>              : }</span>
 <span id="L584"><span class="lineNum">     584</span>              : </span>
 <span id="L585"><span class="lineNum">     585</span>              : /**</span>

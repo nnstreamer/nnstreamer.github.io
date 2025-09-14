@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-12 05:36:18</td>
+            <td class="headerValue">2025-09-15 05:35:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">95.2&nbsp;%</td>
@@ -200,7 +200,7 @@
 <span id="L138"><span class="lineNum">     138</span>              : static gboolean gst_tensor_sink_get_silent (GstTensorSink * self);</span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
 <span id="L140"><span class="lineNum">     140</span>              : #define gst_tensor_sink_parent_class parent_class</span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC tlaBgGNC">       43033 : G_DEFINE_TYPE (GstTensorSink, gst_tensor_sink, GST_TYPE_BASE_SINK);</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC tlaBgGNC">       43037 : G_DEFINE_TYPE (GstTensorSink, gst_tensor_sink, GST_TYPE_BASE_SINK);</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              : /**</span>
 <span id="L144"><span class="lineNum">     144</span>              :  * @brief Initialize tensor_sink class.</span>
@@ -465,30 +465,30 @@
 <span id="L403"><span class="lineNum">     403</span>              :  * GstBaseSink method implementation.</span>
 <span id="L404"><span class="lineNum">     404</span>              :  */</span>
 <span id="L405"><span class="lineNum">     405</span>              : static gboolean</span>
-<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1590 : gst_tensor_sink_query (GstBaseSink * sink, GstQuery * query)</span></span>
+<span id="L406"><span class="lineNum">     406</span> <span class="tlaGNC">        1594 : gst_tensor_sink_query (GstBaseSink * sink, GstQuery * query)</span></span>
 <span id="L407"><span class="lineNum">     407</span>              : {</span>
 <span id="L408"><span class="lineNum">     408</span>              :   GstTensorSink *self;</span>
 <span id="L409"><span class="lineNum">     409</span>              :   GstQueryType type;</span>
 <span id="L410"><span class="lineNum">     410</span>              :   GstFormat format;</span>
 <span id="L411"><span class="lineNum">     411</span>              : </span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        1590 :   self = GST_TENSOR_SINK (sink);</span></span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        1590 :   type = GST_QUERY_TYPE (query);</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        1594 :   self = GST_TENSOR_SINK (sink);</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        1594 :   type = GST_QUERY_TYPE (query);</span></span>
 <span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        1590 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        1594 :   GST_DEBUG_OBJECT (self, &quot;Received %s query: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L416"><span class="lineNum">     416</span>              :       GST_QUERY_TYPE_NAME (query), query);</span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        1590 :   switch (type) {</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        1594 :   switch (type) {</span></span>
 <span id="L419"><span class="lineNum">     419</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_QUERY_SEEKING:</span></span>
 <span id="L420"><span class="lineNum">     420</span>              :       /** tensor sink does not support seeking */</span>
 <span id="L421"><span class="lineNum">     421</span> <span class="tlaUNC">           0 :       gst_query_parse_seeking (query, &amp;format, NULL, NULL, NULL);</span></span>
 <span id="L422"><span class="lineNum">     422</span> <span class="tlaUNC">           0 :       gst_query_set_seeking (query, format, FALSE, 0, -1);</span></span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC tlaBgGNC">        1590 :       return TRUE;</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC tlaBgGNC">        1594 :       return TRUE;</span></span>
 <span id="L424"><span class="lineNum">     424</span>              : </span>
-<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1590 :     default:</span></span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">        1590 :       break;</span></span>
+<span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">        1594 :     default:</span></span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">        1594 :       break;</span></span>
 <span id="L427"><span class="lineNum">     427</span>              :   }</span>
 <span id="L428"><span class="lineNum">     428</span>              : </span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">        1590 :   return GST_BASE_SINK_CLASS (parent_class)-&gt;query (sink, query);</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">        1594 :   return GST_BASE_SINK_CLASS (parent_class)-&gt;query (sink, query);</span></span>
 <span id="L430"><span class="lineNum">     430</span>              : }</span>
 <span id="L431"><span class="lineNum">     431</span>              : </span>
 <span id="L432"><span class="lineNum">     432</span>              : /**</span>
