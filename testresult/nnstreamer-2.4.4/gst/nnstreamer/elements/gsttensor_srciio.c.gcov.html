@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-15 05:35:27</td>
+            <td class="headerValue">2025-09-16 05:36:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -2574,7 +2574,7 @@
 <span id="L2512"><span class="lineNum">    2512</span>              :   /** wait for the data to arrive */</span>
 <span id="L2513"><span class="lineNum">    2513</span> <span class="tlaGNC tlaBgGNC">          37 :   time_to_end = g_get_real_time () + self-&gt;poll_timeout * 1000;</span></span>
 <span id="L2514"><span class="lineNum">    2514</span>              :   while (TRUE) {</span>
-<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         209 :     if (self-&gt;trigger.name != NULL) {</span></span>
+<span id="L2515"><span class="lineNum">    2515</span> <span class="tlaGNC">         190 :     if (self-&gt;trigger.name != NULL) {</span></span>
 <span id="L2516"><span class="lineNum">    2516</span> <span class="tlaGNC">          16 :       status = poll (self-&gt;buffer_data_fp, 1, self-&gt;poll_timeout);</span></span>
 <span id="L2517"><span class="lineNum">    2517</span> <span class="tlaGNC">          16 :       if (status &lt; 0) {</span></span>
 <span id="L2518"><span class="lineNum">    2518</span> <span class="tlaUNC tlaBgUNC">           0 :         GST_ERROR_OBJECT (self, &quot;Error %d while polling the buffer.&quot;, status);</span></span>
@@ -2590,9 +2590,9 @@
 <span id="L2528"><span class="lineNum">    2528</span> <span class="tlaGNC tlaBgGNC">          15 :       self-&gt;buffer_data_fp-&gt;revents = 0;</span></span>
 <span id="L2529"><span class="lineNum">    2529</span>              :     } else {</span>
 <span id="L2530"><span class="lineNum">    2530</span>              :       /** sleep for a device tick */</span>
-<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         193 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
+<span id="L2531"><span class="lineNum">    2531</span> <span class="tlaGNC">         174 :       if (g_uint64_checked_mul (&amp;safe_multiply, G_USEC_PER_SEC,</span></span>
 <span id="L2532"><span class="lineNum">    2532</span>              :               self-&gt;buffer_capacity)) {</span>
-<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         193 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
+<span id="L2533"><span class="lineNum">    2533</span> <span class="tlaGNC">         174 :         g_usleep (MAX (1, safe_multiply / self-&gt;sampling_frequency));</span></span>
 <span id="L2534"><span class="lineNum">    2534</span>              :       } else {</span>
 <span id="L2535"><span class="lineNum">    2535</span> <span class="tlaUNC tlaBgUNC">           0 :         g_usleep (MAX (1,</span></span>
 <span id="L2536"><span class="lineNum">    2536</span>              :                 (self-&gt;buffer_capacity / self-&gt;sampling_frequency) *</span>
@@ -2601,13 +2601,13 @@
 <span id="L2539"><span class="lineNum">    2539</span>              :     }</span>
 <span id="L2540"><span class="lineNum">    2540</span>              : </span>
 <span id="L2541"><span class="lineNum">    2541</span>              :     /** using read for non-blocking access */</span>
-<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         208 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
-<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         208 :     if (status &lt; bytes_to_read) {</span></span>
-<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         172 :       if (errno == EAGAIN) {</span></span>
-<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         172 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
-<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         172 :         cur_time = g_get_real_time ();</span></span>
-<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         172 :         if (time_to_end &gt;= cur_time) {</span></span>
-<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         172 :           continue;</span></span>
+<span id="L2542"><span class="lineNum">    2542</span> <span class="tlaGNC tlaBgGNC">         189 :     status = read (self-&gt;buffer_data_fp-&gt;fd, raw_data_base, bytes_to_read);</span></span>
+<span id="L2543"><span class="lineNum">    2543</span> <span class="tlaGNC">         189 :     if (status &lt; bytes_to_read) {</span></span>
+<span id="L2544"><span class="lineNum">    2544</span> <span class="tlaGNC">         153 :       if (errno == EAGAIN) {</span></span>
+<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC">         153 :         GST_WARNING_OBJECT (self, &quot;EAGAIN error, try again.&quot;);</span></span>
+<span id="L2546"><span class="lineNum">    2546</span> <span class="tlaGNC">         153 :         cur_time = g_get_real_time ();</span></span>
+<span id="L2547"><span class="lineNum">    2547</span> <span class="tlaGNC">         153 :         if (time_to_end &gt;= cur_time) {</span></span>
+<span id="L2548"><span class="lineNum">    2548</span> <span class="tlaGNC">         153 :           continue;</span></span>
 <span id="L2549"><span class="lineNum">    2549</span>              :         } else {</span>
 <span id="L2550"><span class="lineNum">    2550</span> <span class="tlaUNC tlaBgUNC">           0 :           GST_ERROR_OBJECT (self, &quot;EAGAIN timeout expired.&quot;);</span></span>
 <span id="L2551"><span class="lineNum">    2551</span> <span class="tlaUNC">           0 :           goto error_data_free;</span></span>
