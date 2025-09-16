@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-16 05:36:49</td>
+            <td class="headerValue">2025-09-17 05:37:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -366,14 +366,14 @@
 <span id="L304"><span class="lineNum">     304</span>              : </span>
 <span id="L305"><span class="lineNum">     305</span>              : /** @brief Return pose metadata by id */</span>
 <span id="L306"><span class="lineNum">     306</span>              : static inline pose_metadata_t *</span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1296 : pose_get_metadata_by_id (pose_data * data, guint id)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1260 : pose_get_metadata_by_id (pose_data * data, guint id)</span></span>
 <span id="L308"><span class="lineNum">     308</span>              : {</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">        1296 :   pose_metadata_t *md = data-&gt;metadata;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">        1260 :   pose_metadata_t *md = data-&gt;metadata;</span></span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">        1296 :   if (id &gt; data-&gt;total_labels)</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">        1260 :   if (id &gt; data-&gt;total_labels)</span></span>
 <span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC tlaBgUNC">           0 :     return NULL;</span></span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">        1296 :   return &amp;md[id];</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">        1260 :   return &amp;md[id];</span></span>
 <span id="L315"><span class="lineNum">     315</span>              : }</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
 <span id="L317"><span class="lineNum">     317</span>              : /** @brief tensordec-plugin's TensorDecDef callback */</span>
@@ -588,14 +588,14 @@
 <span id="L526"><span class="lineNum">     526</span>              :  * @return TRUE if the value is within the bounds, otherwise FALSE</span>
 <span id="L527"><span class="lineNum">     527</span>              :  */</span>
 <span id="L528"><span class="lineNum">     528</span>              : static gboolean</span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">       11644 : is_value_within(int value, int lower_b, int upper_b)</span></span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">        9764 : is_value_within(int value, int lower_b, int upper_b)</span></span>
 <span id="L530"><span class="lineNum">     530</span>              : {</span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">       11644 :     if (value &lt; lower_b) {</span></span>
+<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">        9764 :     if (value &lt; lower_b) {</span></span>
 <span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC tlaBgUNC">           0 :         return FALSE;</span></span>
-<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC tlaBgGNC">       11644 :     } else if (value &gt;= upper_b) {</span></span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC tlaBgGNC">        9764 :     } else if (value &gt;= upper_b) {</span></span>
 <span id="L534"><span class="lineNum">     534</span> <span class="tlaUNC tlaBgUNC">           0 :         return FALSE;</span></span>
 <span id="L535"><span class="lineNum">     535</span>              :     } else {</span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC tlaBgGNC">       11644 :         return TRUE;</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC tlaBgGNC">        9764 :         return TRUE;</span></span>
 <span id="L537"><span class="lineNum">     537</span>              :     }</span>
 <span id="L538"><span class="lineNum">     538</span>              : }</span>
 <span id="L539"><span class="lineNum">     539</span>              : </span>
@@ -606,22 +606,22 @@
 <span id="L544"><span class="lineNum">     544</span>              :  * @param[in] coordinate of pixel</span>
 <span id="L545"><span class="lineNum">     545</span>              :  */</span>
 <span id="L546"><span class="lineNum">     546</span>              : static void</span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">        5822 : setpixel (uint32_t * frame, pose_data * data, int x, int y)</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">        4882 : setpixel (uint32_t * frame, pose_data * data, int x, int y)</span></span>
 <span id="L548"><span class="lineNum">     548</span>              : {</span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">        5822 :     if (is_value_within(x, 0, data-&gt;width) &amp;&amp; is_value_within(y, 0, data-&gt;height)) {</span></span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">        5822 :         uint32_t *pos = &amp;frame[y * data-&gt;width + x];</span></span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">        5822 :         *pos = PIXEL_VALUE;</span></span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">        4882 :     if (is_value_within(x, 0, data-&gt;width) &amp;&amp; is_value_within(y, 0, data-&gt;height)) {</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">        4882 :         uint32_t *pos = &amp;frame[y * data-&gt;width + x];</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">        4882 :         *pos = PIXEL_VALUE;</span></span>
 <span id="L552"><span class="lineNum">     552</span>              : </span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">        5822 :         if (x + 1 &lt; (int) data-&gt;width) {</span></span>
-<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">        5822 :             pos = &amp;frame[y * data-&gt;width + x + 1];</span></span>
-<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">        5822 :             *pos = PIXEL_VALUE;</span></span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">        4882 :         if (x + 1 &lt; (int) data-&gt;width) {</span></span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">        4882 :             pos = &amp;frame[y * data-&gt;width + x + 1];</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">        4882 :             *pos = PIXEL_VALUE;</span></span>
 <span id="L556"><span class="lineNum">     556</span>              :         }</span>
-<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">        5822 :         if (y + 1 &lt; (int) data-&gt;height) {</span></span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">        5822 :             pos = &amp;frame[(y + 1) * data-&gt;width + x];</span></span>
-<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">        5822 :             *pos = PIXEL_VALUE;</span></span>
+<span id="L557"><span class="lineNum">     557</span> <span class="tlaGNC">        4882 :         if (y + 1 &lt; (int) data-&gt;height) {</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">        4882 :             pos = &amp;frame[(y + 1) * data-&gt;width + x];</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">        4882 :             *pos = PIXEL_VALUE;</span></span>
 <span id="L560"><span class="lineNum">     560</span>              :         }</span>
 <span id="L561"><span class="lineNum">     561</span>              :     }</span>
-<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">        5822 : }</span></span>
+<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">        4882 : }</span></span>
 <span id="L563"><span class="lineNum">     563</span>              : </span>
 <span id="L564"><span class="lineNum">     564</span>              : /**</span>
 <span id="L565"><span class="lineNum">     565</span>              :  * @brief Draw line with dot at the end of line</span>
@@ -630,67 +630,67 @@
 <span id="L568"><span class="lineNum">     568</span>              :  * @param[in] coordinate of two end point of line</span>
 <span id="L569"><span class="lineNum">     569</span>              :  */</span>
 <span id="L570"><span class="lineNum">     570</span>              : static void</span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">         666 : draw_line_with_dot (uint32_t * frame, pose_data * data, int x1, int y1, int x2,</span></span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">         644 : draw_line_with_dot (uint32_t * frame, pose_data * data, int x1, int y1, int x2,</span></span>
 <span id="L572"><span class="lineNum">     572</span>              :     int y2)</span>
 <span id="L573"><span class="lineNum">     573</span>              : {</span>
 <span id="L574"><span class="lineNum">     574</span>              :   int i, dx, sx, dy, sy, err;</span>
 <span id="L575"><span class="lineNum">     575</span>              :   uint32_t *pos;</span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">         666 :   int xx[40] =</span></span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">         644 :   int xx[40] =</span></span>
 <span id="L577"><span class="lineNum">     577</span>              :       { -4, 0, 4, 0, -3, -3, -3, -2, -2, -2, -2, -2, -1, -1, -1, -1, -1, -1, -1,</span>
 <span id="L578"><span class="lineNum">     578</span>              :     0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3</span>
 <span id="L579"><span class="lineNum">     579</span>              :   };</span>
-<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">         666 :   int yy[40] =</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">         644 :   int yy[40] =</span></span>
 <span id="L581"><span class="lineNum">     581</span>              :       { 0, -4, 0, 4, -1, 0, 1, -2, -1, 0, 1, 2, -3, -2, -1, 0, 1, 2, 3, -3, -2,</span>
 <span id="L582"><span class="lineNum">     582</span>              :     -1, 1, 2, 3, -3, -2, -1, 0, 1, 2, 3, -2, -1, 0, 1, 2, -1, 0, 1</span>
 <span id="L583"><span class="lineNum">     583</span>              :   };</span>
 <span id="L584"><span class="lineNum">     584</span>              : </span>
 <span id="L585"><span class="lineNum">     585</span>              :   int xs, ys, xe, ye;</span>
 <span id="L586"><span class="lineNum">     586</span>              : </span>
-<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">         666 :   if (x1 &gt; x2) {</span></span>
-<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">          88 :     xs = x2;</span></span>
-<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">          88 :     ys = y2;</span></span>
-<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          88 :     xe = x1;</span></span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          88 :     ye = y1;</span></span>
+<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">         644 :   if (x1 &gt; x2) {</span></span>
+<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">          80 :     xs = x2;</span></span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">          80 :     ys = y2;</span></span>
+<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          80 :     xe = x1;</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">          80 :     ye = y1;</span></span>
 <span id="L592"><span class="lineNum">     592</span>              :   } else {</span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">         578 :     xs = x1;</span></span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">         578 :     ys = y1;</span></span>
-<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">         578 :     xe = x2;</span></span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">         578 :     ye = y2;</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">         564 :     xs = x1;</span></span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">         564 :     ys = y1;</span></span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">         564 :     xe = x2;</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">         564 :     ye = y2;</span></span>
 <span id="L597"><span class="lineNum">     597</span>              :   }</span>
 <span id="L598"><span class="lineNum">     598</span>              : </span>
 <span id="L599"><span class="lineNum">     599</span>              : </span>
-<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">       27306 :   for (i = 0; i &lt; 40; i++) {</span></span>
-<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">       26640 :     if ((ys + yy[i] &gt;= 0) &amp;&amp; (ys + yy[i] &lt; (int) data-&gt;height) &amp;&amp;</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">       15984 :         (xs + xx[i] &gt;= 0) &amp;&amp; (xs + xx[i] &lt; (int) data-&gt;width)) {</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">        9584 :       pos = &amp;frame[(ys + yy[i]) * data-&gt;width + xs + xx[i]];</span></span>
-<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">        9584 :       *pos = PIXEL_VALUE;</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">       26404 :   for (i = 0; i &lt; 40; i++) {</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">       25760 :     if ((ys + yy[i] &gt;= 0) &amp;&amp; (ys + yy[i] &lt; (int) data-&gt;height) &amp;&amp;</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">       15456 :         (xs + xx[i] &gt;= 0) &amp;&amp; (xs + xx[i] &lt; (int) data-&gt;width)) {</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">        9056 :       pos = &amp;frame[(ys + yy[i]) * data-&gt;width + xs + xx[i]];</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">        9056 :       *pos = PIXEL_VALUE;</span></span>
 <span id="L605"><span class="lineNum">     605</span>              :     }</span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">       26640 :     if ((ye + yy[i] &gt;= 0) &amp;&amp; (ye + yy[i] &lt; (int) data-&gt;height) &amp;&amp;</span></span>
-<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">       15984 :         (xe + xx[i] &gt;= 0) &amp;&amp; (xe + xx[i] &lt; (int) data-&gt;width)) {</span></span>
-<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">       11584 :       pos = &amp;frame[(ye + yy[i]) * data-&gt;width + xe + xx[i]];</span></span>
-<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">       11584 :       *pos = PIXEL_VALUE;</span></span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">       25760 :     if ((ye + yy[i] &gt;= 0) &amp;&amp; (ye + yy[i] &lt; (int) data-&gt;height) &amp;&amp;</span></span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">       15456 :         (xe + xx[i] &gt;= 0) &amp;&amp; (xe + xx[i] &lt; (int) data-&gt;width)) {</span></span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC">       11056 :       pos = &amp;frame[(ye + yy[i]) * data-&gt;width + xe + xx[i]];</span></span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">       11056 :       *pos = PIXEL_VALUE;</span></span>
 <span id="L610"><span class="lineNum">     610</span>              :     }</span>
 <span id="L611"><span class="lineNum">     611</span>              :   }</span>
 <span id="L612"><span class="lineNum">     612</span>              : </span>
 <span id="L613"><span class="lineNum">     613</span>              : </span>
-<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">         666 :   dx = abs (xe - xs);</span></span>
-<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">         666 :   sx = xs &lt; xe ? 1 : -1;</span></span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">         666 :   dy = abs (ye - ys);</span></span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">         666 :   sy = ys &lt; ye ? 1 : -1;</span></span>
-<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">         666 :   err = (dx &gt; dy ? dx : -dy) / 2;</span></span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">         644 :   dx = abs (xe - xs);</span></span>
+<span id="L615"><span class="lineNum">     615</span> <span class="tlaGNC">         644 :   sx = xs &lt; xe ? 1 : -1;</span></span>
+<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">         644 :   dy = abs (ye - ys);</span></span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">         644 :   sy = ys &lt; ye ? 1 : -1;</span></span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">         644 :   err = (dx &gt; dy ? dx : -dy) / 2;</span></span>
 <span id="L619"><span class="lineNum">     619</span>              : </span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">        5822 :   while (setpixel (frame, data, xs, ys), xs != xe || ys != ye) {</span></span>
-<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">        5156 :     int e2 = err;</span></span>
-<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">        5156 :     if (e2 &gt; -dx) {</span></span>
-<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">        5156 :       err -= dy;</span></span>
-<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">        5156 :       xs += sx;</span></span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">        4882 :   while (setpixel (frame, data, xs, ys), xs != xe || ys != ye) {</span></span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">        4238 :     int e2 = err;</span></span>
+<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">        4238 :     if (e2 &gt; -dx) {</span></span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">        4238 :       err -= dy;</span></span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">        4238 :       xs += sx;</span></span>
 <span id="L625"><span class="lineNum">     625</span>              :     }</span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">        5156 :     if (e2 &lt; dy) {</span></span>
+<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">        4238 :     if (e2 &lt; dy) {</span></span>
 <span id="L627"><span class="lineNum">     627</span> <span class="tlaUNC tlaBgUNC">           0 :       err += dx;</span></span>
 <span id="L628"><span class="lineNum">     628</span> <span class="tlaUNC">           0 :       ys += sy;</span></span>
 <span id="L629"><span class="lineNum">     629</span>              :     }</span>
 <span id="L630"><span class="lineNum">     630</span>              :   }</span>
-<span id="L631"><span class="lineNum">     631</span> <span class="tlaGNC tlaBgGNC">         666 : }</span></span>
+<span id="L631"><span class="lineNum">     631</span> <span class="tlaGNC tlaBgGNC">         644 : }</span></span>
 <span id="L632"><span class="lineNum">     632</span>              : </span>
 <span id="L633"><span class="lineNum">     633</span>              : /**</span>
 <span id="L634"><span class="lineNum">     634</span>              :  * @brief Draw label with the given results (pose) to the output buffer</span>
@@ -709,30 +709,30 @@
 <span id="L647"><span class="lineNum">     647</span>              :   char *label;</span>
 <span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L649"><span class="lineNum">     649</span> <span class="tlaGNC">         676 :     if (xydata[i].valid) {</span></span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         648 :       pose_metadata_t *md = pose_get_metadata_by_id (data, i);</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         630 :       pose_metadata_t *md = pose_get_metadata_by_id (data, i);</span></span>
 <span id="L651"><span class="lineNum">     651</span>              :       gsize j, label_len;</span>
 <span id="L652"><span class="lineNum">     652</span>              : </span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">         648 :       x1 = xydata[i].x;</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">         648 :       y1 = xydata[i].y;</span></span>
-<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">         648 :       if (md == NULL)</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">         630 :       x1 = xydata[i].x;</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">         630 :       y1 = xydata[i].y;</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">         630 :       if (md == NULL)</span></span>
 <span id="L656"><span class="lineNum">     656</span> <span class="tlaUNC tlaBgUNC">           0 :         continue;</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC tlaBgGNC">         648 :       label = md-&gt;label;</span></span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">         648 :       label_len = label ? strlen (label) : 0;</span></span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">         648 :       y1 = MAX (0, (y1 - 14));</span></span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         648 :       pos1 = &amp;frame[y1 * data-&gt;width + x1];</span></span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">        5604 :       for (j = 0; j &lt; label_len; j++) {</span></span>
-<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">        4958 :         unsigned int char_index = label[j];</span></span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        4958 :         if ((x1 + 8) &gt; (int) data-&gt;width)</span></span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">           2 :           break;</span></span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">        4956 :         pos2 = pos1;</span></span>
-<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">       69384 :         for (y2 = 0; y2 &lt; 13; y2++) {</span></span>
-<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">      579852 :           for (x2 = 0; x2 &lt; 8; x2++) {</span></span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">      515424 :             *(pos2 + x2) = singleLineSprite[char_index][y2][x2];</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC tlaBgGNC">         630 :       label = md-&gt;label;</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">         630 :       label_len = label ? strlen (label) : 0;</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">         630 :       y1 = MAX (0, (y1 - 14));</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         630 :       pos1 = &amp;frame[y1 * data-&gt;width + x1];</span></span>
+<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">        5474 :       for (j = 0; j &lt; label_len; j++) {</span></span>
+<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">        4844 :         unsigned int char_index = label[j];</span></span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        4844 :         if ((x1 + 8) &gt; (int) data-&gt;width)</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaUNC tlaBgUNC">           0 :           break;</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC tlaBgGNC">        4844 :         pos2 = pos1;</span></span>
+<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">       67816 :         for (y2 = 0; y2 &lt; 13; y2++) {</span></span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">      566748 :           for (x2 = 0; x2 &lt; 8; x2++) {</span></span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">      503776 :             *(pos2 + x2) = singleLineSprite[char_index][y2][x2];</span></span>
 <span id="L669"><span class="lineNum">     669</span>              :           }</span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       64428 :           pos2 += data-&gt;width;</span></span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       62972 :           pos2 += data-&gt;width;</span></span>
 <span id="L671"><span class="lineNum">     671</span>              :         }</span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4956 :         x1 += 9;</span></span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4956 :         pos1 += 9;</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4844 :         x1 += 9;</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4844 :         pos1 += 9;</span></span>
 <span id="L674"><span class="lineNum">     674</span>              :       }</span>
 <span id="L675"><span class="lineNum">     675</span>              :     }</span>
 <span id="L676"><span class="lineNum">     676</span>              :   }</span>
@@ -761,27 +761,27 @@
 <span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC tlaBgGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">         676 :     XYdata[i] = &amp;g_array_index (results, pose, i);</span></span>
 <span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">         676 :     if (XYdata[i]-&gt;prob &lt; 0.5) {</span></span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          28 :       XYdata[i]-&gt;valid = FALSE;</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          46 :       XYdata[i]-&gt;valid = FALSE;</span></span>
 <span id="L703"><span class="lineNum">     703</span>              :     }</span>
 <span id="L704"><span class="lineNum">     704</span>              :   }</span>
 <span id="L705"><span class="lineNum">     705</span>              : </span>
 <span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L707"><span class="lineNum">     707</span>              :     pose_metadata_t *smd;</span>
 <span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">         676 :     if (XYdata[i]-&gt;valid == FALSE)</span></span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">          28 :       continue;</span></span>
-<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">         648 :     smd = pose_get_metadata_by_id (data, i);</span></span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         648 :     if (smd == NULL)</span></span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">          46 :       continue;</span></span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">         630 :     smd = pose_get_metadata_by_id (data, i);</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         630 :     if (smd == NULL)</span></span>
 <span id="L712"><span class="lineNum">     712</span> <span class="tlaUNC tlaBgUNC">           0 :       continue;</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC tlaBgGNC">        1980 :     for (j = 0; j &lt; smd-&gt;num_connections; j++) {</span></span>
-<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">        1332 :       guint k = smd-&gt;connections[j];</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC tlaBgGNC">        1934 :     for (j = 0; j &lt; smd-&gt;num_connections; j++) {</span></span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">        1304 :       guint k = smd-&gt;connections[j];</span></span>
 <span id="L715"><span class="lineNum">     715</span>              :       /* Have we already drawn the connection ? */</span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        1332 :       if ((k &gt; data-&gt;total_labels) || (k &lt; i))</span></span>
-<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">         666 :         continue;</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        1304 :       if ((k &gt; data-&gt;total_labels) || (k &lt; i))</span></span>
+<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">         650 :         continue;</span></span>
 <span id="L718"><span class="lineNum">     718</span>              :       /* Is the body point valid ? */</span>
-<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">         666 :       if (XYdata[k]-&gt;valid == FALSE)</span></span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaUNC tlaBgUNC">           0 :         continue;</span></span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC tlaBgGNC">         666 :       draw_line_with_dot (frame, data,</span></span>
-<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">         666 :           XYdata[i]-&gt;x, XYdata[i]-&gt;y, XYdata[k]-&gt;x, XYdata[k]-&gt;y);</span></span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">         654 :       if (XYdata[k]-&gt;valid == FALSE)</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">          10 :         continue;</span></span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">         644 :       draw_line_with_dot (frame, data,</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">         644 :           XYdata[i]-&gt;x, XYdata[i]-&gt;y, XYdata[k]-&gt;x, XYdata[k]-&gt;y);</span></span>
 <span id="L723"><span class="lineNum">     723</span>              :     }</span>
 <span id="L724"><span class="lineNum">     724</span>              :   }</span>
 <span id="L725"><span class="lineNum">     725</span>              : </span>
@@ -844,9 +844,9 @@
 <span id="L782"><span class="lineNum">     782</span> <span class="tlaUNC tlaBgUNC">           0 :           cen = _sigmoid (cen);</span></span>
 <span id="L783"><span class="lineNum">     783</span>              :         }</span>
 <span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC tlaBgGNC">       10484 :         if (cen &gt; max) {</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">         815 :           max = cen;</span></span>
-<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">         815 :           maxX = i;</span></span>
-<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">         815 :           maxY = j;</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">         812 :           max = cen;</span></span>
+<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">         812 :           maxX = i;</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">         812 :           maxY = j;</span></span>
 <span id="L788"><span class="lineNum">     788</span>              :         }</span>
 <span id="L789"><span class="lineNum">     789</span>              :       }</span>
 <span id="L790"><span class="lineNum">     790</span>              :     }</span>
