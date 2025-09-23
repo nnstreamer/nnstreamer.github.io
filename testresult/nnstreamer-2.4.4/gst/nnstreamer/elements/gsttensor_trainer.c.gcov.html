@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-23 05:37:17</td>
+            <td class="headerValue">2025-09-24 05:39:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">52.5&nbsp;%</td>
@@ -125,7 +125,7 @@
 <span id="L63"><span class="lineNum">      63</span>              : GST_DEBUG_CATEGORY_STATIC (gst_tensor_trainer_debug);</span>
 <span id="L64"><span class="lineNum">      64</span>              : #define GST_CAT_DEFAULT gst_tensor_trainer_debug</span>
 <span id="L65"><span class="lineNum">      65</span>              : #define gst_tensor_trainer_parent_class parent_class</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1057 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">        1054 : G_DEFINE_TYPE (GstTensorTrainer, gst_tensor_trainer, GST_TYPE_ELEMENT);</span></span>
 <span id="L67"><span class="lineNum">      67</span>              : </span>
 <span id="L68"><span class="lineNum">      68</span>              : /**</span>
 <span id="L69"><span class="lineNum">      69</span>              :  * @brief Statistical from the model being trained</span>
@@ -1036,16 +1036,16 @@
 <span id="L974"><span class="lineNum">     974</span>              :  * @brief Event handler for sink pad of tensor_trainer</span>
 <span id="L975"><span class="lineNum">     975</span>              :  */</span>
 <span id="L976"><span class="lineNum">     976</span>              : static gboolean</span>
-<span id="L977"><span class="lineNum">     977</span> <span class="tlaGNC tlaBgGNC">           7 : gst_tensor_trainer_sink_event (GstPad * sinkpad, GstObject * parent,</span></span>
+<span id="L977"><span class="lineNum">     977</span> <span class="tlaGNC tlaBgGNC">           6 : gst_tensor_trainer_sink_event (GstPad * sinkpad, GstObject * parent,</span></span>
 <span id="L978"><span class="lineNum">     978</span>              :     GstEvent * event)</span>
 <span id="L979"><span class="lineNum">     979</span>              : {</span>
 <span id="L980"><span class="lineNum">     980</span>              :   GstTensorTrainer *trainer;</span>
-<span id="L981"><span class="lineNum">     981</span> <span class="tlaGNC">           7 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
+<span id="L981"><span class="lineNum">     981</span> <span class="tlaGNC">           6 :   trainer = GST_TENSOR_TRAINER (parent);</span></span>
 <span id="L982"><span class="lineNum">     982</span>              : </span>
-<span id="L983"><span class="lineNum">     983</span> <span class="tlaGNC">           7 :   GST_DEBUG_OBJECT (trainer, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L983"><span class="lineNum">     983</span> <span class="tlaGNC">           6 :   GST_DEBUG_OBJECT (trainer, &quot;Received %s event: %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L984"><span class="lineNum">     984</span>              :       GST_EVENT_TYPE_NAME (event), event);</span>
 <span id="L985"><span class="lineNum">     985</span>              : </span>
-<span id="L986"><span class="lineNum">     986</span> <span class="tlaGNC">           7 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L986"><span class="lineNum">     986</span> <span class="tlaGNC">           6 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L987"><span class="lineNum">     987</span> <span class="tlaUNC tlaBgUNC">           0 :     case GST_EVENT_EOS:</span></span>
 <span id="L988"><span class="lineNum">     988</span> <span class="tlaUNC">           0 :       if (!trainer-&gt;is_training_complete)</span></span>
 <span id="L989"><span class="lineNum">     989</span> <span class="tlaUNC">           0 :         gst_tensor_trainer_wait_for_training_completion (trainer);</span></span>
@@ -1091,10 +1091,10 @@
 <span id="L1029"><span class="lineNum">    1029</span> <span class="tlaGNC">           3 :       gst_caps_unref (out_caps);</span></span>
 <span id="L1030"><span class="lineNum">    1030</span> <span class="tlaGNC">           3 :       return ret;</span></span>
 <span id="L1031"><span class="lineNum">    1031</span>              :     }</span>
-<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">           4 :     default:</span></span>
-<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">           4 :       break;</span></span>
+<span id="L1032"><span class="lineNum">    1032</span> <span class="tlaGNC">           3 :     default:</span></span>
+<span id="L1033"><span class="lineNum">    1033</span> <span class="tlaGNC">           3 :       break;</span></span>
 <span id="L1034"><span class="lineNum">    1034</span>              :   }</span>
-<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">           4 :   return gst_pad_event_default (sinkpad, parent, event);</span></span>
+<span id="L1035"><span class="lineNum">    1035</span> <span class="tlaGNC">           3 :   return gst_pad_event_default (sinkpad, parent, event);</span></span>
 <span id="L1036"><span class="lineNum">    1036</span>              : }</span>
 <span id="L1037"><span class="lineNum">    1037</span>              : </span>
 <span id="L1038"><span class="lineNum">    1038</span>              : /**</span>

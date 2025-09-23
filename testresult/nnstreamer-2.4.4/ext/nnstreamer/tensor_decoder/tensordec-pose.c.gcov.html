@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-23 05:37:17</td>
+            <td class="headerValue">2025-09-24 05:39:21</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -366,14 +366,14 @@
 <span id="L304"><span class="lineNum">     304</span>              : </span>
 <span id="L305"><span class="lineNum">     305</span>              : /** @brief Return pose metadata by id */</span>
 <span id="L306"><span class="lineNum">     306</span>              : static inline pose_metadata_t *</span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1268 : pose_get_metadata_by_id (pose_data * data, guint id)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1244 : pose_get_metadata_by_id (pose_data * data, guint id)</span></span>
 <span id="L308"><span class="lineNum">     308</span>              : {</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">        1268 :   pose_metadata_t *md = data-&gt;metadata;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">        1244 :   pose_metadata_t *md = data-&gt;metadata;</span></span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">        1268 :   if (id &gt; data-&gt;total_labels)</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">        1244 :   if (id &gt; data-&gt;total_labels)</span></span>
 <span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC tlaBgUNC">           0 :     return NULL;</span></span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">        1268 :   return &amp;md[id];</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">        1244 :   return &amp;md[id];</span></span>
 <span id="L315"><span class="lineNum">     315</span>              : }</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
 <span id="L317"><span class="lineNum">     317</span>              : /** @brief tensordec-plugin's TensorDecDef callback */</span>
@@ -709,30 +709,30 @@
 <span id="L647"><span class="lineNum">     647</span>              :   char *label;</span>
 <span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L649"><span class="lineNum">     649</span> <span class="tlaGNC">         676 :     if (xydata[i].valid) {</span></span>
-<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         634 :       pose_metadata_t *md = pose_get_metadata_by_id (data, i);</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         622 :       pose_metadata_t *md = pose_get_metadata_by_id (data, i);</span></span>
 <span id="L651"><span class="lineNum">     651</span>              :       gsize j, label_len;</span>
 <span id="L652"><span class="lineNum">     652</span>              : </span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">         634 :       x1 = xydata[i].x;</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">         634 :       y1 = xydata[i].y;</span></span>
-<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">         634 :       if (md == NULL)</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">         622 :       x1 = xydata[i].x;</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">         622 :       y1 = xydata[i].y;</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">         622 :       if (md == NULL)</span></span>
 <span id="L656"><span class="lineNum">     656</span> <span class="tlaUNC tlaBgUNC">           0 :         continue;</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC tlaBgGNC">         634 :       label = md-&gt;label;</span></span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">         634 :       label_len = label ? strlen (label) : 0;</span></span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">         634 :       y1 = MAX (0, (y1 - 14));</span></span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         634 :       pos1 = &amp;frame[y1 * data-&gt;width + x1];</span></span>
-<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">        5510 :       for (j = 0; j &lt; label_len; j++) {</span></span>
-<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">        4876 :         unsigned int char_index = label[j];</span></span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        4876 :         if ((x1 + 8) &gt; (int) data-&gt;width)</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC tlaBgGNC">         622 :       label = md-&gt;label;</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">         622 :       label_len = label ? strlen (label) : 0;</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaGNC">         622 :       y1 = MAX (0, (y1 - 14));</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         622 :       pos1 = &amp;frame[y1 * data-&gt;width + x1];</span></span>
+<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">        5410 :       for (j = 0; j &lt; label_len; j++) {</span></span>
+<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">        4788 :         unsigned int char_index = label[j];</span></span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaGNC">        4788 :         if ((x1 + 8) &gt; (int) data-&gt;width)</span></span>
 <span id="L664"><span class="lineNum">     664</span> <span class="tlaUNC tlaBgUNC">           0 :           break;</span></span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC tlaBgGNC">        4876 :         pos2 = pos1;</span></span>
-<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">       68264 :         for (y2 = 0; y2 &lt; 13; y2++) {</span></span>
-<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">      570492 :           for (x2 = 0; x2 &lt; 8; x2++) {</span></span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">      507104 :             *(pos2 + x2) = singleLineSprite[char_index][y2][x2];</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC tlaBgGNC">        4788 :         pos2 = pos1;</span></span>
+<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">       67032 :         for (y2 = 0; y2 &lt; 13; y2++) {</span></span>
+<span id="L667"><span class="lineNum">     667</span> <span class="tlaGNC">      560196 :           for (x2 = 0; x2 &lt; 8; x2++) {</span></span>
+<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">      497952 :             *(pos2 + x2) = singleLineSprite[char_index][y2][x2];</span></span>
 <span id="L669"><span class="lineNum">     669</span>              :           }</span>
-<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       63388 :           pos2 += data-&gt;width;</span></span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">       62244 :           pos2 += data-&gt;width;</span></span>
 <span id="L671"><span class="lineNum">     671</span>              :         }</span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4876 :         x1 += 9;</span></span>
-<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4876 :         pos1 += 9;</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">        4788 :         x1 += 9;</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">        4788 :         pos1 += 9;</span></span>
 <span id="L674"><span class="lineNum">     674</span>              :       }</span>
 <span id="L675"><span class="lineNum">     675</span>              :     }</span>
 <span id="L676"><span class="lineNum">     676</span>              :   }</span>
@@ -761,25 +761,25 @@
 <span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC tlaBgGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">         676 :     XYdata[i] = &amp;g_array_index (results, pose, i);</span></span>
 <span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">         676 :     if (XYdata[i]-&gt;prob &lt; 0.5) {</span></span>
-<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          42 :       XYdata[i]-&gt;valid = FALSE;</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">          54 :       XYdata[i]-&gt;valid = FALSE;</span></span>
 <span id="L703"><span class="lineNum">     703</span>              :     }</span>
 <span id="L704"><span class="lineNum">     704</span>              :   }</span>
 <span id="L705"><span class="lineNum">     705</span>              : </span>
 <span id="L706"><span class="lineNum">     706</span> <span class="tlaGNC">         720 :   for (i = 0; i &lt; pose_size; i++) {</span></span>
 <span id="L707"><span class="lineNum">     707</span>              :     pose_metadata_t *smd;</span>
 <span id="L708"><span class="lineNum">     708</span> <span class="tlaGNC">         676 :     if (XYdata[i]-&gt;valid == FALSE)</span></span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">          42 :       continue;</span></span>
-<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">         634 :     smd = pose_get_metadata_by_id (data, i);</span></span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         634 :     if (smd == NULL)</span></span>
+<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC">          54 :       continue;</span></span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC">         622 :     smd = pose_get_metadata_by_id (data, i);</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         622 :     if (smd == NULL)</span></span>
 <span id="L712"><span class="lineNum">     712</span> <span class="tlaUNC tlaBgUNC">           0 :       continue;</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC tlaBgGNC">        1938 :     for (j = 0; j &lt; smd-&gt;num_connections; j++) {</span></span>
-<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">        1304 :       guint k = smd-&gt;connections[j];</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC tlaBgGNC">        1912 :     for (j = 0; j &lt; smd-&gt;num_connections; j++) {</span></span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">        1290 :       guint k = smd-&gt;connections[j];</span></span>
 <span id="L715"><span class="lineNum">     715</span>              :       /* Have we already drawn the connection ? */</span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        1304 :       if ((k &gt; data-&gt;total_labels) || (k &lt; i))</span></span>
-<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">         654 :         continue;</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">        1290 :       if ((k &gt; data-&gt;total_labels) || (k &lt; i))</span></span>
+<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">         642 :         continue;</span></span>
 <span id="L718"><span class="lineNum">     718</span>              :       /* Is the body point valid ? */</span>
-<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">         650 :       if (XYdata[k]-&gt;valid == FALSE)</span></span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">          10 :         continue;</span></span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">         648 :       if (XYdata[k]-&gt;valid == FALSE)</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">           8 :         continue;</span></span>
 <span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">         640 :       draw_line_with_dot (frame, data,</span></span>
 <span id="L722"><span class="lineNum">     722</span> <span class="tlaGNC">         640 :           XYdata[i]-&gt;x, XYdata[i]-&gt;y, XYdata[k]-&gt;x, XYdata[k]-&gt;y);</span></span>
 <span id="L723"><span class="lineNum">     723</span>              :     }</span>
@@ -844,9 +844,9 @@
 <span id="L782"><span class="lineNum">     782</span> <span class="tlaUNC tlaBgUNC">           0 :           cen = _sigmoid (cen);</span></span>
 <span id="L783"><span class="lineNum">     783</span>              :         }</span>
 <span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC tlaBgGNC">       10484 :         if (cen &gt; max) {</span></span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">         802 :           max = cen;</span></span>
-<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">         802 :           maxX = i;</span></span>
-<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">         802 :           maxY = j;</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">         776 :           max = cen;</span></span>
+<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">         776 :           maxX = i;</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">         776 :           maxY = j;</span></span>
 <span id="L788"><span class="lineNum">     788</span>              :         }</span>
 <span id="L789"><span class="lineNum">     789</span>              :       }</span>
 <span id="L790"><span class="lineNum">     790</span>              :     }</span>
