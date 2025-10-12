@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-10 05:43:03</td>
+            <td class="headerValue">2025-10-13 05:37:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">96.3&nbsp;%</td>
@@ -182,7 +182,7 @@
 <span id="L120"><span class="lineNum">     120</span>              : static GstFlowReturn gst_join_pad_chain (GstPad * pad, GstObject * parent,</span>
 <span id="L121"><span class="lineNum">     121</span>              :     GstBuffer * buf);</span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC tlaBgGNC">         304 : G_DEFINE_TYPE (GstJoinPad, gst_join_pad, GST_TYPE_PAD);</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC tlaBgGNC">         298 : G_DEFINE_TYPE (GstJoinPad, gst_join_pad, GST_TYPE_PAD);</span></span>
 <span id="L124"><span class="lineNum">     124</span>              : </span>
 <span id="L125"><span class="lineNum">     125</span>              : /**</span>
 <span id="L126"><span class="lineNum">     126</span>              :  * @brief initialize the join's pad class</span>
@@ -257,22 +257,22 @@
 <span id="L195"><span class="lineNum">     195</span>              :  * @brief forward sticky event</span>
 <span id="L196"><span class="lineNum">     196</span>              :  */</span>
 <span id="L197"><span class="lineNum">     197</span>              : static gboolean</span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         372 : forward_sticky_events (GstPad * sinkpad, GstEvent ** event, gpointer user_data)</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         363 : forward_sticky_events (GstPad * sinkpad, GstEvent ** event, gpointer user_data)</span></span>
 <span id="L199"><span class="lineNum">     199</span>              : {</span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         372 :   GstJoin *sel = GST_JOIN (user_data);</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         363 :   GstJoin *sel = GST_JOIN (user_data);</span></span>
 <span id="L201"><span class="lineNum">     201</span>              : </span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         372 :   GST_DEBUG_OBJECT (sinkpad, &quot;forward sticky event %&quot; GST_PTR_FORMAT, *event);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         363 :   GST_DEBUG_OBJECT (sinkpad, &quot;forward sticky event %&quot; GST_PTR_FORMAT, *event);</span></span>
 <span id="L203"><span class="lineNum">     203</span>              : </span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         372 :   if (GST_EVENT_TYPE (*event) == GST_EVENT_SEGMENT) {</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         126 :     GstSegment *seg = &amp;GST_JOIN_PAD (sinkpad)-&gt;segment;</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         363 :   if (GST_EVENT_TYPE (*event) == GST_EVENT_SEGMENT) {</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         123 :     GstSegment *seg = &amp;GST_JOIN_PAD (sinkpad)-&gt;segment;</span></span>
 <span id="L206"><span class="lineNum">     206</span>              :     GstEvent *e;</span>
 <span id="L207"><span class="lineNum">     207</span>              : </span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         126 :     e = gst_event_new_segment (seg);</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         126 :     gst_event_set_seqnum (e, GST_JOIN_PAD_CAST (sinkpad)-&gt;segment_seqnum);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         123 :     e = gst_event_new_segment (seg);</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         123 :     gst_event_set_seqnum (e, GST_JOIN_PAD_CAST (sinkpad)-&gt;segment_seqnum);</span></span>
 <span id="L210"><span class="lineNum">     210</span>              : </span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         126 :     gst_pad_push_event (sel-&gt;srcpad, e);</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         246 :   } else if (GST_EVENT_TYPE (*event) == GST_EVENT_STREAM_START</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         120 :       &amp;&amp; !sel-&gt;have_group_id) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         123 :     gst_pad_push_event (sel-&gt;srcpad, e);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         240 :   } else if (GST_EVENT_TYPE (*event) == GST_EVENT_STREAM_START</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         117 :       &amp;&amp; !sel-&gt;have_group_id) {</span></span>
 <span id="L214"><span class="lineNum">     214</span>              :     GstEvent *tmp =</span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC tlaBgUNC">           0 :         gst_pad_get_sticky_event (sel-&gt;srcpad, GST_EVENT_STREAM_START, 0);</span></span>
 <span id="L216"><span class="lineNum">     216</span>              : </span>
@@ -283,35 +283,35 @@
 <span id="L221"><span class="lineNum">     221</span> <span class="tlaUNC">           0 :       gst_event_unref (tmp);</span></span>
 <span id="L222"><span class="lineNum">     222</span>              :     }</span>
 <span id="L223"><span class="lineNum">     223</span>              :   } else {</span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC tlaBgGNC">         246 :     gst_pad_push_event (sel-&gt;srcpad, gst_event_ref (*event));</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC tlaBgGNC">         240 :     gst_pad_push_event (sel-&gt;srcpad, gst_event_ref (*event));</span></span>
 <span id="L225"><span class="lineNum">     225</span>              :   }</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         370 :   return TRUE;</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         361 :   return TRUE;</span></span>
 <span id="L227"><span class="lineNum">     227</span>              : }</span>
 <span id="L228"><span class="lineNum">     228</span>              : </span>
 <span id="L229"><span class="lineNum">     229</span>              : /**</span>
 <span id="L230"><span class="lineNum">     230</span>              :  * @brief event function for sink pad</span>
 <span id="L231"><span class="lineNum">     231</span>              :  */</span>
 <span id="L232"><span class="lineNum">     232</span>              : static gboolean</span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         114 : gst_join_pad_event (GstPad * pad, GstObject * parent, GstEvent * event)</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         113 : gst_join_pad_event (GstPad * pad, GstObject * parent, GstEvent * event)</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : {</span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">         114 :   gboolean res = TRUE;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">         113 :   gboolean res = TRUE;</span></span>
 <span id="L236"><span class="lineNum">     236</span>              :   gboolean forward;</span>
 <span id="L237"><span class="lineNum">     237</span>              :   GstJoin *sel;</span>
 <span id="L238"><span class="lineNum">     238</span>              :   GstJoinPad *selpad;</span>
 <span id="L239"><span class="lineNum">     239</span>              :   GstPad *active_sinkpad;</span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         114 :   sel = GST_JOIN (parent);</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">         114 :   selpad = GST_JOIN_PAD_CAST (pad);</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         114 :   GST_DEBUG_OBJECT (selpad, &quot;received event %&quot; GST_PTR_FORMAT, event);</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         113 :   sel = GST_JOIN (parent);</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">         113 :   selpad = GST_JOIN_PAD_CAST (pad);</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         113 :   GST_DEBUG_OBJECT (selpad, &quot;received event %&quot; GST_PTR_FORMAT, event);</span></span>
 <span id="L244"><span class="lineNum">     244</span>              : </span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         114 :   GST_JOIN_LOCK (sel);</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         113 :   GST_JOIN_LOCK (sel);</span></span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         114 :   active_sinkpad = gst_join_get_active_sinkpad (sel);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         113 :   active_sinkpad = gst_join_get_active_sinkpad (sel);</span></span>
 <span id="L248"><span class="lineNum">     248</span>              : </span>
 <span id="L249"><span class="lineNum">     249</span>              :   /* only forward if we are dealing with the active sinkpad */</span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         114 :   forward = (pad == active_sinkpad);</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         113 :   forward = (pad == active_sinkpad);</span></span>
 <span id="L251"><span class="lineNum">     251</span>              : </span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         114 :   switch (GST_EVENT_TYPE (event)) {</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         113 :   switch (GST_EVENT_TYPE (event)) {</span></span>
 <span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">          34 :     case GST_EVENT_CAPS:</span></span>
 <span id="L254"><span class="lineNum">     254</span>              :     {</span>
 <span id="L255"><span class="lineNum">     255</span>              :       GstCaps *prev_caps, *new_caps;</span>
@@ -319,16 +319,16 @@
 <span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          34 :       if (!(prev_caps = gst_pad_get_current_caps (active_sinkpad)))</span></span>
 <span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          34 :         break;</span></span>
 <span id="L259"><span class="lineNum">     259</span>              : </span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">          18 :       gst_event_parse_caps (event, &amp;new_caps);</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">          17 :       gst_event_parse_caps (event, &amp;new_caps);</span></span>
 <span id="L261"><span class="lineNum">     261</span>              : </span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          18 :       if (!gst_caps_is_equal (prev_caps, new_caps)) {</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          17 :       if (!gst_caps_is_equal (prev_caps, new_caps)) {</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           3 :         GST_ERROR_OBJECT (sel, &quot;Capabilities of the sinks should be the same.&quot;);</span></span>
 <span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           3 :         res = FALSE;</span></span>
 <span id="L265"><span class="lineNum">     265</span>              :       }</span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          18 :       gst_caps_unref (prev_caps);</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          17 :       gst_caps_unref (prev_caps);</span></span>
 <span id="L268"><span class="lineNum">     268</span>              : </span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">          18 :       break;</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">          17 :       break;</span></span>
 <span id="L270"><span class="lineNum">     270</span>              :     }</span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          26 :     case GST_EVENT_STREAM_START:{</span></span>
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          26 :       if (!gst_event_parse_group_id (event, &amp;selpad-&gt;group_id)) {</span></span>
@@ -346,19 +346,19 @@
 <span id="L284"><span class="lineNum">     284</span>              :           &amp;selpad-&gt;segment);</span>
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          31 :       break;</span></span>
 <span id="L286"><span class="lineNum">     286</span>              :     }</span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          23 :     default:</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          23 :       break;</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          22 :     default:</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          22 :       break;</span></span>
 <span id="L289"><span class="lineNum">     289</span>              :   }</span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         114 :   GST_JOIN_UNLOCK (sel);</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         113 :   GST_JOIN_UNLOCK (sel);</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         114 :   if (forward) {</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          36 :     GST_DEBUG_OBJECT (pad, &quot;forwarding event&quot;);</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          36 :     res = gst_pad_push_event (sel-&gt;srcpad, event);</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         113 :   if (forward) {</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          37 :     GST_DEBUG_OBJECT (pad, &quot;forwarding event&quot;);</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          37 :     res = gst_pad_push_event (sel-&gt;srcpad, event);</span></span>
 <span id="L295"><span class="lineNum">     295</span>              :   } else {</span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          78 :     gst_event_unref (event);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          76 :     gst_event_unref (event);</span></span>
 <span id="L297"><span class="lineNum">     297</span>              :   }</span>
 <span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">         113 :   return res;</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">         112 :   return res;</span></span>
 <span id="L300"><span class="lineNum">     300</span>              : }</span>
 <span id="L301"><span class="lineNum">     301</span>              : </span>
 <span id="L302"><span class="lineNum">     302</span>              : /**</span>
@@ -366,13 +366,13 @@
 <span id="L304"><span class="lineNum">     304</span>              :  * @return TRUE if the query was performed successfully.</span>
 <span id="L305"><span class="lineNum">     305</span>              :  */</span>
 <span id="L306"><span class="lineNum">     306</span>              : static gboolean</span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         569 : gst_join_pad_query (GstPad * pad, GstObject * parent, GstQuery * query)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         571 : gst_join_pad_query (GstPad * pad, GstObject * parent, GstQuery * query)</span></span>
 <span id="L308"><span class="lineNum">     308</span>              : {</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         569 :   gboolean res = FALSE;</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         569 :   GstJoin *self = (GstJoin *) parent;</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         571 :   gboolean res = FALSE;</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         571 :   GstJoin *self = (GstJoin *) parent;</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         569 :   switch (GST_QUERY_TYPE (query)) {</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         511 :     case GST_QUERY_CAPS:</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         571 :   switch (GST_QUERY_TYPE (query)) {</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">         512 :     case GST_QUERY_CAPS:</span></span>
 <span id="L314"><span class="lineNum">     314</span>              :     case GST_QUERY_POSITION:</span>
 <span id="L315"><span class="lineNum">     315</span>              :     case GST_QUERY_DURATION:</span>
 <span id="L316"><span class="lineNum">     316</span>              :     case GST_QUERY_CONTEXT:</span>
@@ -380,8 +380,8 @@
 <span id="L318"><span class="lineNum">     318</span>              :        * always proxy caps/position/duration/context queries, regardless of active pad or not</span>
 <span id="L319"><span class="lineNum">     319</span>              :        * See https://bugzilla.gnome.org/show_bug.cgi?id=775445</span>
 <span id="L320"><span class="lineNum">     320</span>              :        */</span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         511 :       res = gst_pad_peer_query (self-&gt;srcpad, query);</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         511 :       break;</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         512 :       res = gst_pad_peer_query (self-&gt;srcpad, query);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         512 :       break;</span></span>
 <span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           4 :     case GST_QUERY_ALLOCATION:{</span></span>
 <span id="L324"><span class="lineNum">     324</span>              :       GstPad *active_sinkpad;</span>
 <span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           4 :       GstJoin *sel = GST_JOIN (parent);</span></span>
@@ -404,12 +404,12 @@
 <span id="L342"><span class="lineNum">     342</span>              :     }</span>
 <span id="L343"><span class="lineNum">     343</span>              :       /* fall through */</span>
 <span id="L344"><span class="lineNum">     344</span>              :     default:</span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          57 :       res = gst_pad_query_default (pad, parent, query);</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          57 :       break;</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          58 :       res = gst_pad_query_default (pad, parent, query);</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">          58 :       break;</span></span>
 <span id="L347"><span class="lineNum">     347</span>              :   }</span>
 <span id="L348"><span class="lineNum">     348</span>              : </span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         569 : done:</span></span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         569 :   return res;</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         571 : done:</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         571 :   return res;</span></span>
 <span id="L351"><span class="lineNum">     351</span>              : }</span>
 <span id="L352"><span class="lineNum">     352</span>              : </span>
 <span id="L353"><span class="lineNum">     353</span>              : /**</span>
@@ -438,7 +438,7 @@
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         139 :       sel-&gt;active_sinkpad ? gst_object_ref (sel-&gt;active_sinkpad) : NULL;</span></span>
 <span id="L377"><span class="lineNum">     377</span>              : </span>
 <span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         139 :   if (sel-&gt;active_sinkpad != pad) {</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         128 :     gst_join_set_active_pad (sel, pad);</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         125 :     gst_join_set_active_pad (sel, pad);</span></span>
 <span id="L380"><span class="lineNum">     380</span>              :   }</span>
 <span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         139 :   active_sinkpad = pad;</span></span>
 <span id="L382"><span class="lineNum">     382</span>              : </span>
@@ -449,7 +449,7 @@
 <span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         137 :     GST_LOG_OBJECT (pad, &quot;received start time %&quot; GST_TIME_FORMAT,</span></span>
 <span id="L388"><span class="lineNum">     388</span>              :         GST_TIME_ARGS (start_time));</span>
 <span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">         137 :     if (GST_BUFFER_DURATION_IS_VALID (buf))</span></span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         124 :       GST_LOG_OBJECT (pad, &quot;received end time %&quot; GST_TIME_FORMAT,</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaGNC">         125 :       GST_LOG_OBJECT (pad, &quot;received end time %&quot; GST_TIME_FORMAT,</span></span>
 <span id="L391"><span class="lineNum">     391</span>              :           GST_TIME_ARGS (start_time + GST_BUFFER_DURATION (buf)));</span>
 <span id="L392"><span class="lineNum">     392</span>              : </span>
 <span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         137 :     GST_OBJECT_LOCK (pad);</span></span>
@@ -461,7 +461,7 @@
 <span id="L399"><span class="lineNum">     399</span>              : </span>
 <span id="L400"><span class="lineNum">     400</span>              :   /* if we have a pending events, push them now */</span>
 <span id="L401"><span class="lineNum">     401</span> <span class="tlaGNC">         139 :   if (G_UNLIKELY (prev_active_sinkpad != active_sinkpad)) {</span></span>
-<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">         128 :     gst_pad_sticky_events_foreach (GST_PAD_CAST (selpad), forward_sticky_events,</span></span>
+<span id="L402"><span class="lineNum">     402</span> <span class="tlaGNC">         125 :     gst_pad_sticky_events_foreach (GST_PAD_CAST (selpad), forward_sticky_events,</span></span>
 <span id="L403"><span class="lineNum">     403</span>              :         sel);</span>
 <span id="L404"><span class="lineNum">     404</span>              :   }</span>
 <span id="L405"><span class="lineNum">     405</span>              : </span>
@@ -488,7 +488,7 @@
 <span id="L426"><span class="lineNum">     426</span>              :     GstPadTemplate * templ, const gchar * unused, const GstCaps * caps);</span>
 <span id="L427"><span class="lineNum">     427</span>              : </span>
 <span id="L428"><span class="lineNum">     428</span>              : #define gst_join_parent_class parent_class</span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">         849 : G_DEFINE_TYPE_WITH_CODE (GstJoin, gst_join, GST_TYPE_ELEMENT,</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">         839 : G_DEFINE_TYPE_WITH_CODE (GstJoin, gst_join, GST_TYPE_ELEMENT,</span></span>
 <span id="L430"><span class="lineNum">     430</span>              :     GST_DEBUG_CATEGORY_INIT (join_debug,</span>
 <span id="L431"><span class="lineNum">     431</span>              :         &quot;join&quot;, 0, &quot;An input stream join element&quot;));</span>
 <span id="L432"><span class="lineNum">     432</span>              : </span>
@@ -584,40 +584,40 @@
 <span id="L522"><span class="lineNum">     522</span>              :  * @note this function must be called with the JOIN_LOCK.</span>
 <span id="L523"><span class="lineNum">     523</span>              :  */</span>
 <span id="L524"><span class="lineNum">     524</span>              : static gboolean</span>
-<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">         128 : gst_join_set_active_pad (GstJoin * self, GstPad * pad)</span></span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">         125 : gst_join_set_active_pad (GstJoin * self, GstPad * pad)</span></span>
 <span id="L526"><span class="lineNum">     526</span>              : {</span>
 <span id="L527"><span class="lineNum">     527</span>              :   GstJoinPad *old, *new;</span>
 <span id="L528"><span class="lineNum">     528</span>              :   GstPad **active_pad_p;</span>
 <span id="L529"><span class="lineNum">     529</span>              : </span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">         128 :   if (pad == self-&gt;active_sinkpad)</span></span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">         125 :   if (pad == self-&gt;active_sinkpad)</span></span>
 <span id="L531"><span class="lineNum">     531</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L532"><span class="lineNum">     532</span>              : </span>
 <span id="L533"><span class="lineNum">     533</span>              :   /* guard against users setting a src pad or foreign pad as active pad */</span>
-<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC tlaBgGNC">         128 :   if (pad != NULL) {</span></span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         128 :     g_return_val_if_fail (GST_PAD_IS_SINK (pad), FALSE);</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         128 :     g_return_val_if_fail (GST_IS_JOIN_PAD (pad), FALSE);</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         128 :     g_return_val_if_fail (GST_PAD_PARENT (pad) == GST_ELEMENT_CAST (self),</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC tlaBgGNC">         125 :   if (pad != NULL) {</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">         125 :     g_return_val_if_fail (GST_PAD_IS_SINK (pad), FALSE);</span></span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC">         125 :     g_return_val_if_fail (GST_IS_JOIN_PAD (pad), FALSE);</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">         125 :     g_return_val_if_fail (GST_PAD_PARENT (pad) == GST_ELEMENT_CAST (self),</span></span>
 <span id="L538"><span class="lineNum">     538</span>              :         FALSE);</span>
 <span id="L539"><span class="lineNum">     539</span>              :   }</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         128 :   old = GST_JOIN_PAD_CAST (self-&gt;active_sinkpad);</span></span>
-<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">         128 :   new = GST_JOIN_PAD_CAST (pad);</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaGNC">         125 :   old = GST_JOIN_PAD_CAST (self-&gt;active_sinkpad);</span></span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC">         125 :   new = GST_JOIN_PAD_CAST (pad);</span></span>
 <span id="L543"><span class="lineNum">     543</span>              : </span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">         128 :   GST_DEBUG_OBJECT (self, &quot;setting active pad to %s:%s&quot;,</span></span>
+<span id="L544"><span class="lineNum">     544</span> <span class="tlaGNC">         125 :   GST_DEBUG_OBJECT (self, &quot;setting active pad to %s:%s&quot;,</span></span>
 <span id="L545"><span class="lineNum">     545</span>              :       GST_DEBUG_PAD_NAME (new));</span>
 <span id="L546"><span class="lineNum">     546</span>              : </span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">         128 :   active_pad_p = &amp;self-&gt;active_sinkpad;</span></span>
-<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">         128 :   gst_object_replace ((GstObject **) active_pad_p, GST_OBJECT_CAST (pad));</span></span>
+<span id="L547"><span class="lineNum">     547</span> <span class="tlaGNC">         125 :   active_pad_p = &amp;self-&gt;active_sinkpad;</span></span>
+<span id="L548"><span class="lineNum">     548</span> <span class="tlaGNC">         125 :   gst_object_replace ((GstObject **) active_pad_p, GST_OBJECT_CAST (pad));</span></span>
 <span id="L549"><span class="lineNum">     549</span>              : </span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         128 :   if (old &amp;&amp; old != new)</span></span>
-<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">         128 :     gst_pad_push_event (GST_PAD_CAST (old), gst_event_new_reconfigure ());</span></span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">         128 :   if (new)</span></span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">         128 :     gst_pad_push_event (GST_PAD_CAST (new), gst_event_new_reconfigure ());</span></span>
+<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">         125 :   if (old &amp;&amp; old != new)</span></span>
+<span id="L551"><span class="lineNum">     551</span> <span class="tlaGNC">         125 :     gst_pad_push_event (GST_PAD_CAST (old), gst_event_new_reconfigure ());</span></span>
+<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">         125 :   if (new)</span></span>
+<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">         125 :     gst_pad_push_event (GST_PAD_CAST (new), gst_event_new_reconfigure ());</span></span>
 <span id="L554"><span class="lineNum">     554</span>              : </span>
-<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">         128 :   GST_DEBUG_OBJECT (self, &quot;New active pad is %&quot; GST_PTR_FORMAT,</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">         125 :   GST_DEBUG_OBJECT (self, &quot;New active pad is %&quot; GST_PTR_FORMAT,</span></span>
 <span id="L556"><span class="lineNum">     556</span>              :       self-&gt;active_sinkpad);</span>
 <span id="L557"><span class="lineNum">     557</span>              : </span>
-<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">         128 :   return TRUE;</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">         125 :   return TRUE;</span></span>
 <span id="L559"><span class="lineNum">     559</span>              : }</span>
 <span id="L560"><span class="lineNum">     560</span>              : </span>
 <span id="L561"><span class="lineNum">     561</span>              : /**</span>
@@ -656,9 +656,9 @@
 <span id="L594"><span class="lineNum">     594</span>              : </span>
 <span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">         140 :   GST_JOIN_LOCK (sel);</span></span>
 <span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">         140 :   if (pad == sel-&gt;srcpad)</span></span>
-<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">          83 :     otherpad = sel-&gt;active_sinkpad;</span></span>
-<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">          57 :   else if (pad == sel-&gt;active_sinkpad || !strict)</span></span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          12 :     otherpad = sel-&gt;srcpad;</span></span>
+<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">          82 :     otherpad = sel-&gt;active_sinkpad;</span></span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">          58 :   else if (pad == sel-&gt;active_sinkpad || !strict)</span></span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">          13 :     otherpad = sel-&gt;srcpad;</span></span>
 <span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">         140 :   if (otherpad)</span></span>
 <span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">          36 :     gst_object_ref (otherpad);</span></span>
 <span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">         140 :   GST_JOIN_UNLOCK (sel);</span></span>
@@ -671,12 +671,12 @@
 <span id="L609"><span class="lineNum">     609</span>              :  * @note  must be called with JOIN_LOCK.</span>
 <span id="L610"><span class="lineNum">     610</span>              :  */</span>
 <span id="L611"><span class="lineNum">     611</span>              : static GstPad *</span>
-<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">         118 : gst_join_get_active_sinkpad (GstJoin * sel)</span></span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">         117 : gst_join_get_active_sinkpad (GstJoin * sel)</span></span>
 <span id="L613"><span class="lineNum">     613</span>              : {</span>
 <span id="L614"><span class="lineNum">     614</span>              :   GstPad *active_sinkpad;</span>
 <span id="L615"><span class="lineNum">     615</span>              : </span>
-<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">         118 :   active_sinkpad = sel-&gt;active_sinkpad;</span></span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">         118 :   if (active_sinkpad == NULL) {</span></span>
+<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">         117 :   active_sinkpad = sel-&gt;active_sinkpad;</span></span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">         117 :   if (active_sinkpad == NULL) {</span></span>
 <span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">          12 :     GValue item = G_VALUE_INIT;</span></span>
 <span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">          12 :     GstIterator *iter = gst_element_iterate_sink_pads (GST_ELEMENT_CAST (sel));</span></span>
 <span id="L620"><span class="lineNum">     620</span>              :     GstIteratorResult ires;</span>
@@ -698,7 +698,7 @@
 <span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC tlaBgGNC">          12 :     gst_iterator_free (iter);</span></span>
 <span id="L637"><span class="lineNum">     637</span>              :   }</span>
 <span id="L638"><span class="lineNum">     638</span>              : </span>
-<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">         118 :   return active_sinkpad;</span></span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">         117 :   return active_sinkpad;</span></span>
 <span id="L640"><span class="lineNum">     640</span>              : }</span>
 <span id="L641"><span class="lineNum">     641</span>              : </span>
 <span id="L642"><span class="lineNum">     642</span>              : /**</span>
