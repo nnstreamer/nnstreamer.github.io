@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-13 05:37:51</td>
+            <td class="headerValue">2025-10-14 05:39:43</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -532,19 +532,19 @@
 <span id="L470"><span class="lineNum">     470</span>              :     bool ok;</span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
 <span id="L472"><span class="lineNum">     472</span>              :     /* 10 msec deadline to wait the next event */</span>
-<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">         568 :     gpr_timespec deadline = gpr_time_add (</span></span>
+<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">         566 :     gpr_timespec deadline = gpr_time_add (</span></span>
 <span id="L474"><span class="lineNum">     474</span>              :         gpr_now (GPR_CLOCK_MONOTONIC), gpr_time_from_millis (10, GPR_TIMESPAN));</span>
 <span id="L475"><span class="lineNum">     475</span>              : </span>
-<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         568 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         566 :     switch (completion_queue_-&gt;AsyncNext (&amp;tag, &amp;ok, deadline)) {</span></span>
 <span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">          23 :       case CompletionQueue::GOT_EVENT:</span></span>
 <span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">          23 :         static_cast&lt;AsyncCallDataServer *&gt; (tag)-&gt;RunState (ok);</span></span>
 <span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">          23 :         break;</span></span>
 <span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">           2 :       case CompletionQueue::SHUTDOWN:</span></span>
 <span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">           2 :         return;</span></span>
-<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">         543 :       default:</span></span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">         543 :         break;</span></span>
+<span id="L482"><span class="lineNum">     482</span> <span class="tlaGNC">         541 :       default:</span></span>
+<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC">         541 :         break;</span></span>
 <span id="L484"><span class="lineNum">     484</span>              :     }</span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">         566 :   }</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">         564 :   }</span></span>
 <span id="L486"><span class="lineNum">     486</span>              : }</span>
 <span id="L487"><span class="lineNum">     487</span>              : </span>
 <span id="L488"><span class="lineNum">     488</span>              : /** @brief gRPC client thread */</span>
