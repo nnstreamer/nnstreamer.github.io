@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0b95275417737beaa0fed792e42d3d6e5d09fb81 - nnstreamer-2.4.4/gst/nnstreamer/tensor_filter/tensor_filter_custom.c</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0087a734c1e95099ce95ffe018745c14c26e21e7 - nnstreamer-2.4.4/gst/nnstreamer/tensor_filter/tensor_filter_custom.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0b95275417737beaa0fed792e42d3d6e5d09fb81</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0087a734c1e95099ce95ffe018745c14c26e21e7</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">79.2&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-16 05:40:21</td>
+            <td class="headerValue">2025-10-17 05:39:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -226,19 +226,19 @@
 <span id="L164"><span class="lineNum">     164</span>              :  * @return 0 if OK. non-zero if error.</span>
 <span id="L165"><span class="lineNum">     165</span>              :  */</span>
 <span id="L166"><span class="lineNum">     166</span>              : static int</span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC tlaBgGNC">         928 : custom_invoke (const GstTensorFilterProperties * prop, void **private_data,</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC tlaBgGNC">         929 : custom_invoke (const GstTensorFilterProperties * prop, void **private_data,</span></span>
 <span id="L168"><span class="lineNum">     168</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
 <span id="L169"><span class="lineNum">     169</span>              : {</span>
 <span id="L170"><span class="lineNum">     170</span>              :   internal_data *ptr;</span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span>              :   /* Actually, tensor_filter must have called getInput/OutputDim first. */</span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         928 :   g_return_val_if_fail (*private_data != NULL, -EINVAL);</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">         926 :   g_return_val_if_fail (input != NULL, -EINVAL);</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">         922 :   g_return_val_if_fail (output != NULL, -EINVAL);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">         929 :   g_return_val_if_fail (*private_data != NULL, -EINVAL);</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">         927 :   g_return_val_if_fail (input != NULL, -EINVAL);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">         923 :   g_return_val_if_fail (output != NULL, -EINVAL);</span></span>
 <span id="L176"><span class="lineNum">     176</span>              : </span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">         920 :   ptr = *private_data;</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">         920 :   if (ptr-&gt;methods-&gt;invoke) {</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">         896 :     return ptr-&gt;methods-&gt;invoke (ptr-&gt;customFW_private_data, prop,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">         921 :   ptr = *private_data;</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">         921 :   if (ptr-&gt;methods-&gt;invoke) {</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">         897 :     return ptr-&gt;methods-&gt;invoke (ptr-&gt;customFW_private_data, prop,</span></span>
 <span id="L180"><span class="lineNum">     180</span>              :         input, output);</span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          24 :   } else if (ptr-&gt;methods-&gt;allocate_invoke) {</span></span>
 <span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          24 :     return ptr-&gt;methods-&gt;allocate_invoke (ptr-&gt;customFW_private_data,</span></span>
@@ -342,15 +342,15 @@
 <span id="L280"><span class="lineNum">     280</span>              :  * @brief The optional callback for GstTensorFilterFramework</span>
 <span id="L281"><span class="lineNum">     281</span>              :  */</span>
 <span id="L282"><span class="lineNum">     282</span>              : static int</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         922 : custom_allocateInInvoke (void **private_data)</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         923 : custom_allocateInInvoke (void **private_data)</span></span>
 <span id="L284"><span class="lineNum">     284</span>              : {</span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         922 :   internal_data *ptr = *private_data;</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         923 :   internal_data *ptr = *private_data;</span></span>
 <span id="L286"><span class="lineNum">     286</span>              : </span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">         922 :   if (ptr &amp;&amp; ptr-&gt;methods-&gt;allocate_invoke) {</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">         923 :   if (ptr &amp;&amp; ptr-&gt;methods-&gt;allocate_invoke) {</span></span>
 <span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          24 :     return 0;</span></span>
 <span id="L289"><span class="lineNum">     289</span>              :   }</span>
 <span id="L290"><span class="lineNum">     290</span>              : </span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         898 :   return -EINVAL;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         899 :   return -EINVAL;</span></span>
 <span id="L292"><span class="lineNum">     292</span>              : }</span>
 <span id="L293"><span class="lineNum">     293</span>              : </span>
 <span id="L294"><span class="lineNum">     294</span>              : /**</span>
