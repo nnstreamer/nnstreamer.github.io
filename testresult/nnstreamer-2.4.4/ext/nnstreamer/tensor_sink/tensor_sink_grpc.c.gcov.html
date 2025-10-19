@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0087a734c1e95099ce95ffe018745c14c26e21e7 - nnstreamer-2.4.4/ext/nnstreamer/tensor_sink/tensor_sink_grpc.c</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#8fbf8333083d7397b798334fed8f97f85a681350 - nnstreamer-2.4.4/ext/nnstreamer/tensor_sink/tensor_sink_grpc.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#0087a734c1e95099ce95ffe018745c14c26e21e7</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#8fbf8333083d7397b798334fed8f97f85a681350</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-17 05:39:23</td>
+            <td class="headerValue">2025-10-20 05:36:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -180,81 +180,81 @@
 <span id="L118"><span class="lineNum">     118</span>              : </span>
 <span id="L119"><span class="lineNum">     119</span>              : /** internal functions */</span>
 <span id="L120"><span class="lineNum">     120</span>              : #define gst_tensor_sink_grpc_parent_class parent_class</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">         455 : G_DEFINE_TYPE (GstTensorSinkGRPC, gst_tensor_sink_grpc, GST_TYPE_BASE_SINK);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC tlaBgGNC">         410 : G_DEFINE_TYPE (GstTensorSinkGRPC, gst_tensor_sink_grpc, GST_TYPE_BASE_SINK);</span></span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
 <span id="L123"><span class="lineNum">     123</span>              : /**</span>
 <span id="L124"><span class="lineNum">     124</span>              :  * @brief initialize the tensor_sink_grpc class.</span>
 <span id="L125"><span class="lineNum">     125</span>              :  */</span>
 <span id="L126"><span class="lineNum">     126</span>              : static void</span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          37 : gst_tensor_sink_grpc_class_init (GstTensorSinkGRPCClass * klass)</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          22 : gst_tensor_sink_grpc_class_init (GstTensorSinkGRPCClass * klass)</span></span>
 <span id="L128"><span class="lineNum">     128</span>              : {</span>
 <span id="L129"><span class="lineNum">     129</span>              :   GObjectClass *gobject_class;</span>
 <span id="L130"><span class="lineNum">     130</span>              :   GstElementClass *gstelement_class;</span>
 <span id="L131"><span class="lineNum">     131</span>              :   GstBaseSinkClass *gstbasesink_class;</span>
 <span id="L132"><span class="lineNum">     132</span>              : </span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          37 :   gobject_class = (GObjectClass *) klass;</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          37 :   gstelement_class = (GstElementClass *) klass;</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          37 :   gstbasesink_class = (GstBaseSinkClass *) klass;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          22 :   gobject_class = (GObjectClass *) klass;</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          22 :   gstelement_class = (GstElementClass *) klass;</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          22 :   gstbasesink_class = (GstBaseSinkClass *) klass;</span></span>
 <span id="L136"><span class="lineNum">     136</span>              : </span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          37 :   parent_class = g_type_class_peek_parent (klass);</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          22 :   parent_class = g_type_class_peek_parent (klass);</span></span>
 <span id="L138"><span class="lineNum">     138</span>              : </span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          37 :   gobject_class-&gt;set_property = gst_tensor_sink_grpc_set_property;</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          37 :   gobject_class-&gt;get_property = gst_tensor_sink_grpc_get_property;</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          37 :   gobject_class-&gt;finalize = gst_tensor_sink_grpc_finalize;</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          22 :   gobject_class-&gt;set_property = gst_tensor_sink_grpc_set_property;</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          22 :   gobject_class-&gt;get_property = gst_tensor_sink_grpc_get_property;</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          22 :   gobject_class-&gt;finalize = gst_tensor_sink_grpc_finalize;</span></span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              :   /* install properties */</span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SILENT,</span></span>
 <span id="L145"><span class="lineNum">     145</span>              :       g_param_spec_boolean (&quot;silent&quot;, &quot;Silent&quot;,</span>
 <span id="L146"><span class="lineNum">     146</span>              :           &quot;Dont' produce verbose output&quot;,</span>
 <span id="L147"><span class="lineNum">     147</span>              :           DEFAULT_PROP_SILENT, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L148"><span class="lineNum">     148</span>              : </span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_SERVER,</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_SERVER,</span></span>
 <span id="L150"><span class="lineNum">     150</span>              :       g_param_spec_boolean (&quot;server&quot;, &quot;Server&quot;,</span>
 <span id="L151"><span class="lineNum">     151</span>              :           &quot;Specify its working mode either server or client&quot;,</span>
 <span id="L152"><span class="lineNum">     152</span>              :           DEFAULT_PROP_SERVER, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L153"><span class="lineNum">     153</span>              : </span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_BLOCKING,</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_BLOCKING,</span></span>
 <span id="L155"><span class="lineNum">     155</span>              :       g_param_spec_boolean (&quot;blocking&quot;, &quot;Blocking&quot;,</span>
 <span id="L156"><span class="lineNum">     156</span>              :           &quot;Specify its working mode either blocking or non-blocking&quot;,</span>
 <span id="L157"><span class="lineNum">     157</span>              :           DEFAULT_PROP_BLOCKING, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_IDL,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_IDL,</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :       g_param_spec_string (&quot;idl&quot;, &quot;IDL&quot;,</span>
 <span id="L161"><span class="lineNum">     161</span>              :           &quot;Specify Interface Description Language (IDL) for communication&quot;,</span>
 <span id="L162"><span class="lineNum">     162</span>              :           DEFAULT_PROP_IDL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L163"><span class="lineNum">     163</span>              : </span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_HOST,</span></span>
 <span id="L165"><span class="lineNum">     165</span>              :       g_param_spec_string (&quot;host&quot;, &quot;Host&quot;, &quot;The host/IP to send the packets to&quot;,</span>
 <span id="L166"><span class="lineNum">     166</span>              :           DEFAULT_PROP_HOST, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L167"><span class="lineNum">     167</span>              : </span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_PORT,</span></span>
 <span id="L169"><span class="lineNum">     169</span>              :       g_param_spec_int (&quot;port&quot;, &quot;Port&quot;, &quot;The port to send the packets to&quot;,</span>
 <span id="L170"><span class="lineNum">     170</span>              :           0, G_MAXUSHORT, DEFAULT_PROP_PORT,</span>
 <span id="L171"><span class="lineNum">     171</span>              :           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          37 :   g_object_class_install_property (gobject_class, PROP_OUT,</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          22 :   g_object_class_install_property (gobject_class, PROP_OUT,</span></span>
 <span id="L174"><span class="lineNum">     174</span>              :       g_param_spec_uint (&quot;out&quot;, &quot;Out&quot;,</span>
 <span id="L175"><span class="lineNum">     175</span>              :           &quot;The number of output messages generated&quot;,</span>
 <span id="L176"><span class="lineNum">     176</span>              :           0, G_MAXUINT, 0, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));</span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          37 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;sinktemplate);</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          22 :   gst_element_class_add_static_pad_template (gstelement_class, &amp;sinktemplate);</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          37 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          22 :   gst_element_class_set_static_metadata (gstelement_class,</span></span>
 <span id="L181"><span class="lineNum">     181</span>              :       &quot;TensorSinkGRPC&quot;, &quot;Sink/Network&quot;,</span>
 <span id="L182"><span class="lineNum">     182</span>              :       &quot;Send nnstreamer protocol buffers as gRPC server/client&quot;,</span>
 <span id="L183"><span class="lineNum">     183</span>              :       &quot;Dongju Chae &lt;dongju.chae@samsung.com&gt;&quot;);</span>
 <span id="L184"><span class="lineNum">     184</span>              : </span>
 <span id="L185"><span class="lineNum">     185</span>              :   /* GstBaseSinkClass */</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          37 :   gstbasesink_class-&gt;start = gst_tensor_sink_grpc_start;</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          37 :   gstbasesink_class-&gt;stop = gst_tensor_sink_grpc_stop;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          37 :   gstbasesink_class-&gt;set_caps = gst_tensor_sink_grpc_setcaps;</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          37 :   gstbasesink_class-&gt;render = gst_tensor_sink_grpc_render;</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          37 :   gstbasesink_class-&gt;unlock = gst_tensor_sink_grpc_unlock;</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;start = gst_tensor_sink_grpc_start;</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;stop = gst_tensor_sink_grpc_stop;</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;set_caps = gst_tensor_sink_grpc_setcaps;</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;render = gst_tensor_sink_grpc_render;</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          22 :   gstbasesink_class-&gt;unlock = gst_tensor_sink_grpc_unlock;</span></span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          37 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_sink_grpc_debug,</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          22 :   GST_DEBUG_CATEGORY_INIT (gst_tensor_sink_grpc_debug,</span></span>
 <span id="L193"><span class="lineNum">     193</span>              :       &quot;tensor_sink_grpc&quot;, 0,</span>
 <span id="L194"><span class="lineNum">     194</span>              :       &quot;sink element to support protocol buffers as a gRPC server/client&quot;);</span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          37 : }</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          22 : }</span></span>
 <span id="L196"><span class="lineNum">     196</span>              : </span>
 <span id="L197"><span class="lineNum">     197</span>              : /**</span>
 <span id="L198"><span class="lineNum">     198</span>              :  * @brief initialize grpc config.</span>
