@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#8fbf8333083d7397b798334fed8f97f85a681350 - nnstreamer-2.4.4/ext/nnstreamer/tensor_filter/tensor_filter_python3.cc</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239 - nnstreamer-2.4.4/ext/nnstreamer/tensor_filter/tensor_filter_python3.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#8fbf8333083d7397b798334fed8f97f85a681350</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">76.7&nbsp;%</td>
+            <td class="headerCovTableEntryMed">77.0&nbsp;%</td>
             <td class="headerCovTableEntry">331</td>
-            <td class="headerCovTableEntry">254</td>
+            <td class="headerCovTableEntry">255</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-27 05:37:34</td>
+            <td class="headerValue">2025-10-28 05:39:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">96.4&nbsp;%</td>
@@ -861,9 +861,9 @@
 <span id="L799"><span class="lineNum">     799</span>              :  * @brief Method to handle the event</span>
 <span id="L800"><span class="lineNum">     800</span>              :  */</span>
 <span id="L801"><span class="lineNum">     801</span>              : int</span>
-<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">           3 : TensorFilterPython::eventHandler (event_ops ops, GstTensorFilterFrameworkEventData &amp;data)</span></span>
+<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">           6 : TensorFilterPython::eventHandler (event_ops ops, GstTensorFilterFrameworkEventData &amp;data)</span></span>
 <span id="L803"><span class="lineNum">     803</span>              : {</span>
-<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">           3 :   if (ops == DESTROY_NOTIFY) {</span></span>
+<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">           6 :   if (ops == DESTROY_NOTIFY) {</span></span>
 <span id="L805"><span class="lineNum">     805</span> <span class="tlaGNC">           3 :     if (core) {</span></span>
 <span id="L806"><span class="lineNum">     806</span> <span class="tlaGNC">           3 :       PyGILState_STATE gstate = PyGILState_Ensure ();</span></span>
 <span id="L807"><span class="lineNum">     807</span> <span class="tlaGNC">           3 :       core-&gt;freeOutputTensors (data.data);</span></span>
@@ -873,12 +873,12 @@
 <span id="L811"><span class="lineNum">     811</span> <span class="tlaGNC">           3 :     return 0;</span></span>
 <span id="L812"><span class="lineNum">     812</span>              :   }</span>
 <span id="L813"><span class="lineNum">     813</span>              : </span>
-<span id="L814"><span class="lineNum">     814</span> <span class="tlaUNC tlaBgUNC">           0 :   return -ENOENT;</span></span>
+<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">           3 :   return -ENOENT;</span></span>
 <span id="L815"><span class="lineNum">     815</span>              : }</span>
 <span id="L816"><span class="lineNum">     816</span>              : </span>
 <span id="L817"><span class="lineNum">     817</span>              : /** @brief Initialize this object for tensor_filter subplugin runtime register */</span>
 <span id="L818"><span class="lineNum">     818</span>              : void</span>
-<span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC tlaBgGNC">          34 : TensorFilterPython::init_filter_py ()</span></span>
+<span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC">          34 : TensorFilterPython::init_filter_py ()</span></span>
 <span id="L820"><span class="lineNum">     820</span>              : {</span>
 <span id="L821"><span class="lineNum">     821</span>              :   /** Python should be initialized and finalized only once */</span>
 <span id="L822"><span class="lineNum">     822</span> <span class="tlaGNC">          34 :   nnstreamer_python_init_refcnt ();</span></span>
