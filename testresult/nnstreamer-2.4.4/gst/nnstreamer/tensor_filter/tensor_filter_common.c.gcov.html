@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-11-03 05:35:57</td>
+            <td class="headerValue">2025-11-04 05:44:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">92.5&nbsp;%</td>
@@ -526,18 +526,18 @@
 <span id="L464"><span class="lineNum">     464</span>              :  * @return TRUE if there is no error</span>
 <span id="L465"><span class="lineNum">     465</span>              :  */</span>
 <span id="L466"><span class="lineNum">     466</span>              : static inline gboolean</span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         872 : verify_model_path (const GstTensorFilterPrivate * priv)</span></span>
+<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         876 : verify_model_path (const GstTensorFilterPrivate * priv)</span></span>
 <span id="L468"><span class="lineNum">     468</span>              : {</span>
 <span id="L469"><span class="lineNum">     469</span>              :   const GstTensorFilterProperties *prop;</span>
 <span id="L470"><span class="lineNum">     470</span>              :   int run_without_model, verify_model_path, i;</span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">         872 :   if (priv == NULL)</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">         876 :   if (priv == NULL)</span></span>
 <span id="L473"><span class="lineNum">     473</span> <span class="tlaUNC tlaBgUNC">           0 :     return FALSE;</span></span>
 <span id="L474"><span class="lineNum">     474</span>              : </span>
-<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC tlaBgGNC">         872 :   prop = &amp;(priv-&gt;prop);</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC tlaBgGNC">         876 :   prop = &amp;(priv-&gt;prop);</span></span>
 <span id="L476"><span class="lineNum">     476</span>              : </span>
-<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">         872 :   if (g_strcmp0 (prop-&gt;fwname, &quot;custom-easy&quot;) == 0)</span></span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">          35 :     return TRUE;</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">         876 :   if (g_strcmp0 (prop-&gt;fwname, &quot;custom-easy&quot;) == 0)</span></span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC">          39 :     return TRUE;</span></span>
 <span id="L479"><span class="lineNum">     479</span>              : </span>
 <span id="L480"><span class="lineNum">     480</span> <span class="tlaGNC">         837 :   run_without_model = verify_model_path = 0;</span></span>
 <span id="L481"><span class="lineNum">     481</span>              : </span>
@@ -830,16 +830,16 @@
 <span id="L768"><span class="lineNum">     768</span>              :  * @return TRUE if valid, FALSE on error</span>
 <span id="L769"><span class="lineNum">     769</span>              :  */</span>
 <span id="L770"><span class="lineNum">     770</span>              : gboolean</span>
-<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC tlaBgGNC">       22411 : gst_tensor_filter_allocate_in_invoke (GstTensorFilterPrivate * priv)</span></span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaGNC tlaBgGNC">       22512 : gst_tensor_filter_allocate_in_invoke (GstTensorFilterPrivate * priv)</span></span>
 <span id="L772"><span class="lineNum">     772</span>              : {</span>
-<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC">       22411 :   int allocate_in_invoke = 0;</span></span>
+<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC">       22512 :   int allocate_in_invoke = 0;</span></span>
 <span id="L774"><span class="lineNum">     774</span>              : </span>
-<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">       22411 :   if (priv-&gt;prop.invoke_dynamic)</span></span>
+<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">       22512 :   if (priv-&gt;prop.invoke_dynamic)</span></span>
 <span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">          18 :     return TRUE;</span></span>
 <span id="L777"><span class="lineNum">     777</span>              : </span>
-<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">       22393 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
-<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">       22328 :     allocate_in_invoke = priv-&gt;fw-&gt;allocate_in_invoke;</span></span>
-<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">       22328 :     if (allocate_in_invoke == TRUE &amp;&amp; priv-&gt;fw-&gt;allocateInInvoke) {</span></span>
+<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">       22494 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
+<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">       22429 :     allocate_in_invoke = priv-&gt;fw-&gt;allocate_in_invoke;</span></span>
+<span id="L780"><span class="lineNum">     780</span> <span class="tlaGNC">       22429 :     if (allocate_in_invoke == TRUE &amp;&amp; priv-&gt;fw-&gt;allocateInInvoke) {</span></span>
 <span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">         919 :       if (priv-&gt;fw-&gt;allocateInInvoke (&amp;priv-&gt;privateData) == 0) {</span></span>
 <span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          24 :         allocate_in_invoke = TRUE;</span></span>
 <span id="L783"><span class="lineNum">     783</span>              :       } else {</span>
@@ -850,7 +850,7 @@
 <span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">          65 :     allocate_in_invoke = priv-&gt;info.allocate_in_invoke;</span></span>
 <span id="L789"><span class="lineNum">     789</span>              :   }</span>
 <span id="L790"><span class="lineNum">     790</span>              : </span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">       22393 :   return allocate_in_invoke;</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">       22494 :   return allocate_in_invoke;</span></span>
 <span id="L792"><span class="lineNum">     792</span>              : }</span>
 <span id="L793"><span class="lineNum">     793</span>              : </span>
 <span id="L794"><span class="lineNum">     794</span>              : /**</span>
@@ -2337,20 +2337,20 @@
 <span id="L2275"><span class="lineNum">    2275</span>              :  * @brief Configure output tensor info with combi option.</span>
 <span id="L2276"><span class="lineNum">    2276</span>              :  */</span>
 <span id="L2277"><span class="lineNum">    2277</span>              : gboolean</span>
-<span id="L2278"><span class="lineNum">    2278</span> <span class="tlaGNC tlaBgGNC">        1255 : gst_tensor_filter_common_get_combined_out_info (GstTensorFilterPrivate * priv,</span></span>
+<span id="L2278"><span class="lineNum">    2278</span> <span class="tlaGNC tlaBgGNC">        1251 : gst_tensor_filter_common_get_combined_out_info (GstTensorFilterPrivate * priv,</span></span>
 <span id="L2279"><span class="lineNum">    2279</span>              :     const GstTensorsInfo * in, const GstTensorsInfo * out,</span>
 <span id="L2280"><span class="lineNum">    2280</span>              :     GstTensorsInfo * combined)</span>
 <span id="L2281"><span class="lineNum">    2281</span>              : {</span>
 <span id="L2282"><span class="lineNum">    2282</span>              :   GList *list;</span>
-<span id="L2283"><span class="lineNum">    2283</span> <span class="tlaGNC">        1255 :   guint i, idx = 0;</span></span>
+<span id="L2283"><span class="lineNum">    2283</span> <span class="tlaGNC">        1251 :   guint i, idx = 0;</span></span>
 <span id="L2284"><span class="lineNum">    2284</span>              : </span>
-<span id="L2285"><span class="lineNum">    2285</span> <span class="tlaGNC">        1255 :   g_return_val_if_fail (in != NULL, FALSE);</span></span>
-<span id="L2286"><span class="lineNum">    2286</span> <span class="tlaGNC">        1255 :   g_return_val_if_fail (out != NULL, FALSE);</span></span>
-<span id="L2287"><span class="lineNum">    2287</span> <span class="tlaGNC">        1255 :   g_return_val_if_fail (combined != NULL, FALSE);</span></span>
+<span id="L2285"><span class="lineNum">    2285</span> <span class="tlaGNC">        1251 :   g_return_val_if_fail (in != NULL, FALSE);</span></span>
+<span id="L2286"><span class="lineNum">    2286</span> <span class="tlaGNC">        1251 :   g_return_val_if_fail (out != NULL, FALSE);</span></span>
+<span id="L2287"><span class="lineNum">    2287</span> <span class="tlaGNC">        1251 :   g_return_val_if_fail (combined != NULL, FALSE);</span></span>
 <span id="L2288"><span class="lineNum">    2288</span>              : </span>
-<span id="L2289"><span class="lineNum">    2289</span> <span class="tlaGNC">        1255 :   gst_tensors_info_init (combined);</span></span>
+<span id="L2289"><span class="lineNum">    2289</span> <span class="tlaGNC">        1251 :   gst_tensors_info_init (combined);</span></span>
 <span id="L2290"><span class="lineNum">    2290</span>              : </span>
-<span id="L2291"><span class="lineNum">    2291</span> <span class="tlaGNC">        1255 :   if (priv-&gt;combi.out_combi_i_defined || priv-&gt;combi.out_combi_o_defined) {</span></span>
+<span id="L2291"><span class="lineNum">    2291</span> <span class="tlaGNC">        1251 :   if (priv-&gt;combi.out_combi_i_defined || priv-&gt;combi.out_combi_o_defined) {</span></span>
 <span id="L2292"><span class="lineNum">    2292</span> <span class="tlaGNC">           6 :     if (priv-&gt;combi.out_combi_i_defined) {</span></span>
 <span id="L2293"><span class="lineNum">    2293</span> <span class="tlaGNC">          10 :       for (list = priv-&gt;combi.out_combi_i; list != NULL; list = list-&gt;next) {</span></span>
 <span id="L2294"><span class="lineNum">    2294</span> <span class="tlaGNC">           6 :         i = GPOINTER_TO_UINT (list-&gt;data);</span></span>
@@ -2382,10 +2382,10 @@
 <span id="L2320"><span class="lineNum">    2320</span> <span class="tlaGNC">           4 :     combined-&gt;num_tensors = idx;</span></span>
 <span id="L2321"><span class="lineNum">    2321</span> <span class="tlaGNC">           4 :     combined-&gt;format = out-&gt;format;</span></span>
 <span id="L2322"><span class="lineNum">    2322</span>              :   } else {</span>
-<span id="L2323"><span class="lineNum">    2323</span> <span class="tlaGNC">        1249 :     gst_tensors_info_copy (combined, out);</span></span>
+<span id="L2323"><span class="lineNum">    2323</span> <span class="tlaGNC">        1245 :     gst_tensors_info_copy (combined, out);</span></span>
 <span id="L2324"><span class="lineNum">    2324</span>              :   }</span>
 <span id="L2325"><span class="lineNum">    2325</span>              : </span>
-<span id="L2326"><span class="lineNum">    2326</span> <span class="tlaGNC">        1253 :   return TRUE;</span></span>
+<span id="L2326"><span class="lineNum">    2326</span> <span class="tlaGNC">        1249 :   return TRUE;</span></span>
 <span id="L2327"><span class="lineNum">    2327</span>              : </span>
 <span id="L2328"><span class="lineNum">    2328</span> <span class="tlaGNC">           2 : error:</span></span>
 <span id="L2329"><span class="lineNum">    2329</span> <span class="tlaGNC">           2 :   gst_tensors_info_free (combined);</span></span>
@@ -2396,31 +2396,31 @@
 <span id="L2334"><span class="lineNum">    2334</span>              :  * @brief Get output tensor info from NN model with given input info.</span>
 <span id="L2335"><span class="lineNum">    2335</span>              :  */</span>
 <span id="L2336"><span class="lineNum">    2336</span>              : gboolean</span>
-<span id="L2337"><span class="lineNum">    2337</span> <span class="tlaGNC">         600 : gst_tensor_filter_common_get_out_info (GstTensorFilterPrivate * priv,</span></span>
+<span id="L2337"><span class="lineNum">    2337</span> <span class="tlaGNC">         601 : gst_tensor_filter_common_get_out_info (GstTensorFilterPrivate * priv,</span></span>
 <span id="L2338"><span class="lineNum">    2338</span>              :     GstTensorsInfo * in, GstTensorsInfo * out)</span>
 <span id="L2339"><span class="lineNum">    2339</span>              : {</span>
-<span id="L2340"><span class="lineNum">    2340</span> <span class="tlaGNC">         600 :   int r = -1;</span></span>
+<span id="L2340"><span class="lineNum">    2340</span> <span class="tlaGNC">         601 :   int r = -1;</span></span>
 <span id="L2341"><span class="lineNum">    2341</span>              : </span>
-<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">         600 :   g_return_val_if_fail (in != NULL, FALSE);</span></span>
-<span id="L2343"><span class="lineNum">    2343</span> <span class="tlaGNC">         600 :   g_return_val_if_fail (out != NULL, FALSE);</span></span>
+<span id="L2342"><span class="lineNum">    2342</span> <span class="tlaGNC">         601 :   g_return_val_if_fail (in != NULL, FALSE);</span></span>
+<span id="L2343"><span class="lineNum">    2343</span> <span class="tlaGNC">         601 :   g_return_val_if_fail (out != NULL, FALSE);</span></span>
 <span id="L2344"><span class="lineNum">    2344</span>              : </span>
-<span id="L2345"><span class="lineNum">    2345</span> <span class="tlaGNC">         600 :   gst_tensors_info_init (out);</span></span>
+<span id="L2345"><span class="lineNum">    2345</span> <span class="tlaGNC">         601 :   gst_tensors_info_init (out);</span></span>
 <span id="L2346"><span class="lineNum">    2346</span>              : </span>
-<span id="L2347"><span class="lineNum">    2347</span> <span class="tlaGNC">         600 :   if (!gst_tensors_info_validate (in)) {</span></span>
+<span id="L2347"><span class="lineNum">    2347</span> <span class="tlaGNC">         601 :   if (!gst_tensors_info_validate (in)) {</span></span>
 <span id="L2348"><span class="lineNum">    2348</span> <span class="tlaGNC">         270 :     nns_logw (&quot;Given input info is invalid, cannot get output info.&quot;);</span></span>
 <span id="L2349"><span class="lineNum">    2349</span> <span class="tlaGNC">         270 :     return FALSE;</span></span>
 <span id="L2350"><span class="lineNum">    2350</span>              :   }</span>
 <span id="L2351"><span class="lineNum">    2351</span>              : </span>
 <span id="L2352"><span class="lineNum">    2352</span>              :   /* call setInputDimension with given input tensor */</span>
-<span id="L2353"><span class="lineNum">    2353</span> <span class="tlaGNC">         330 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
+<span id="L2353"><span class="lineNum">    2353</span> <span class="tlaGNC">         331 :   if (GST_TF_FW_V0 (priv-&gt;fw)) {</span></span>
 <span id="L2354"><span class="lineNum">    2354</span> <span class="tlaGNC">         297 :     gst_tensor_filter_v0_call (priv, r, setInputDimension, in, out);</span></span>
 <span id="L2355"><span class="lineNum">    2355</span>              :   } else {</span>
-<span id="L2356"><span class="lineNum">    2356</span> <span class="tlaGNC">          33 :     gst_tensor_filter_v1_call (priv, r, getModelInfo, SET_INPUT_INFO, in, out);</span></span>
+<span id="L2356"><span class="lineNum">    2356</span> <span class="tlaGNC">          34 :     gst_tensor_filter_v1_call (priv, r, getModelInfo, SET_INPUT_INFO, in, out);</span></span>
 <span id="L2357"><span class="lineNum">    2357</span>              :   }</span>
 <span id="L2358"><span class="lineNum">    2358</span>              : </span>
-<span id="L2359"><span class="lineNum">    2359</span> <span class="tlaGNC">         330 :   if (r != 0) {</span></span>
-<span id="L2360"><span class="lineNum">    2360</span> <span class="tlaGNC">          41 :     nns_loge (&quot;Failed to get output info from NN model.&quot;);</span></span>
-<span id="L2361"><span class="lineNum">    2361</span> <span class="tlaGNC">          41 :     return FALSE;</span></span>
+<span id="L2359"><span class="lineNum">    2359</span> <span class="tlaGNC">         331 :   if (r != 0) {</span></span>
+<span id="L2360"><span class="lineNum">    2360</span> <span class="tlaGNC">          42 :     nns_loge (&quot;Failed to get output info from NN model.&quot;);</span></span>
+<span id="L2361"><span class="lineNum">    2361</span> <span class="tlaGNC">          42 :     return FALSE;</span></span>
 <span id="L2362"><span class="lineNum">    2362</span>              :   }</span>
 <span id="L2363"><span class="lineNum">    2363</span>              : </span>
 <span id="L2364"><span class="lineNum">    2364</span> <span class="tlaGNC">         289 :   return TRUE;</span></span>
@@ -2452,22 +2452,22 @@
 <span id="L2390"><span class="lineNum">    2390</span>              :  * @brief Load tensor info from NN model (both input and output tensor).</span>
 <span id="L2391"><span class="lineNum">    2391</span>              :  */</span>
 <span id="L2392"><span class="lineNum">    2392</span>              : void</span>
-<span id="L2393"><span class="lineNum">    2393</span> <span class="tlaGNC">        2967 : gst_tensor_filter_load_tensor_info (GstTensorFilterPrivate * priv)</span></span>
+<span id="L2393"><span class="lineNum">    2393</span> <span class="tlaGNC">        2960 : gst_tensor_filter_load_tensor_info (GstTensorFilterPrivate * priv)</span></span>
 <span id="L2394"><span class="lineNum">    2394</span>              : {</span>
 <span id="L2395"><span class="lineNum">    2395</span>              :   GstTensorFilterProperties *prop;</span>
 <span id="L2396"><span class="lineNum">    2396</span>              :   GstTensorsInfo in_info, out_info;</span>
-<span id="L2397"><span class="lineNum">    2397</span> <span class="tlaGNC">        2967 :   int res_in = -1, res_out = -1;</span></span>
+<span id="L2397"><span class="lineNum">    2397</span> <span class="tlaGNC">        2960 :   int res_in = -1, res_out = -1;</span></span>
 <span id="L2398"><span class="lineNum">    2398</span>              : </span>
-<span id="L2399"><span class="lineNum">    2399</span> <span class="tlaGNC">        2967 :   prop = &amp;priv-&gt;prop;</span></span>
+<span id="L2399"><span class="lineNum">    2399</span> <span class="tlaGNC">        2960 :   prop = &amp;priv-&gt;prop;</span></span>
 <span id="L2400"><span class="lineNum">    2400</span>              : </span>
-<span id="L2401"><span class="lineNum">    2401</span> <span class="tlaGNC">        2967 :   gst_tensors_info_init (&amp;in_info);</span></span>
-<span id="L2402"><span class="lineNum">    2402</span> <span class="tlaGNC">        2967 :   gst_tensors_info_init (&amp;out_info);</span></span>
+<span id="L2401"><span class="lineNum">    2401</span> <span class="tlaGNC">        2960 :   gst_tensors_info_init (&amp;in_info);</span></span>
+<span id="L2402"><span class="lineNum">    2402</span> <span class="tlaGNC">        2960 :   gst_tensors_info_init (&amp;out_info);</span></span>
 <span id="L2403"><span class="lineNum">    2403</span>              : </span>
-<span id="L2404"><span class="lineNum">    2404</span> <span class="tlaGNC">        2967 :   if (GST_TF_FW_V1 (priv-&gt;fw)) {</span></span>
-<span id="L2405"><span class="lineNum">    2405</span> <span class="tlaGNC">         697 :     if (!prop-&gt;input_configured || !prop-&gt;output_configured) {</span></span>
-<span id="L2406"><span class="lineNum">    2406</span> <span class="tlaGNC">         184 :       gst_tensor_filter_v1_call (priv, res_in, getModelInfo, GET_IN_OUT_INFO,</span></span>
+<span id="L2404"><span class="lineNum">    2404</span> <span class="tlaGNC">        2960 :   if (GST_TF_FW_V1 (priv-&gt;fw)) {</span></span>
+<span id="L2405"><span class="lineNum">    2405</span> <span class="tlaGNC">         690 :     if (!prop-&gt;input_configured || !prop-&gt;output_configured) {</span></span>
+<span id="L2406"><span class="lineNum">    2406</span> <span class="tlaGNC">         187 :       gst_tensor_filter_v1_call (priv, res_in, getModelInfo, GET_IN_OUT_INFO,</span></span>
 <span id="L2407"><span class="lineNum">    2407</span>              :           &amp;in_info, &amp;out_info);</span>
-<span id="L2408"><span class="lineNum">    2408</span> <span class="tlaGNC">         184 :       res_out = res_in;</span></span>
+<span id="L2408"><span class="lineNum">    2408</span> <span class="tlaGNC">         187 :       res_out = res_in;</span></span>
 <span id="L2409"><span class="lineNum">    2409</span>              :     }</span>
 <span id="L2410"><span class="lineNum">    2410</span>              :   } else {</span>
 <span id="L2411"><span class="lineNum">    2411</span> <span class="tlaGNC">        2270 :     if (!prop-&gt;input_configured)</span></span>
@@ -2477,7 +2477,7 @@
 <span id="L2415"><span class="lineNum">    2415</span>              :   }</span>
 <span id="L2416"><span class="lineNum">    2416</span>              : </span>
 <span id="L2417"><span class="lineNum">    2417</span>              :   /* supposed fixed in-tensor info if getInputDimension was success. */</span>
-<span id="L2418"><span class="lineNum">    2418</span> <span class="tlaGNC">        2967 :   if (!prop-&gt;input_configured &amp;&amp; res_in == 0) {</span></span>
+<span id="L2418"><span class="lineNum">    2418</span> <span class="tlaGNC">        2960 :   if (!prop-&gt;input_configured &amp;&amp; res_in == 0) {</span></span>
 <span id="L2419"><span class="lineNum">    2419</span> <span class="tlaGNC">         282 :     g_assert (in_info.num_tensors &gt; 0);</span></span>
 <span id="L2420"><span class="lineNum">    2420</span>              : </span>
 <span id="L2421"><span class="lineNum">    2421</span>              :     /** if set-property called and already has info, verify it! */</span>
@@ -2500,9 +2500,9 @@
 <span id="L2438"><span class="lineNum">    2438</span>              :   }</span>
 <span id="L2439"><span class="lineNum">    2439</span>              : </span>
 <span id="L2440"><span class="lineNum">    2440</span>              :   /** In case of dynamic invoke, output tensors info is determined after invoke. */</span>
-<span id="L2441"><span class="lineNum">    2441</span> <span class="tlaGNC">        2830 :   if (prop-&gt;invoke_dynamic) {</span></span>
-<span id="L2442"><span class="lineNum">    2442</span> <span class="tlaGNC">         124 :     prop-&gt;output_configured = TRUE;</span></span>
-<span id="L2443"><span class="lineNum">    2443</span> <span class="tlaGNC">        2706 :   } else if (!prop-&gt;output_configured &amp;&amp; res_out == 0) {</span></span>
+<span id="L2441"><span class="lineNum">    2441</span> <span class="tlaGNC">        2823 :   if (prop-&gt;invoke_dynamic) {</span></span>
+<span id="L2442"><span class="lineNum">    2442</span> <span class="tlaGNC">         114 :     prop-&gt;output_configured = TRUE;</span></span>
+<span id="L2443"><span class="lineNum">    2443</span> <span class="tlaGNC">        2709 :   } else if (!prop-&gt;output_configured &amp;&amp; res_out == 0) {</span></span>
 <span id="L2444"><span class="lineNum">    2444</span>              :     /* supposed fixed out-tensor info if getOutputDimension was success. */</span>
 <span id="L2445"><span class="lineNum">    2445</span> <span class="tlaGNC">         197 :     g_assert (out_info.num_tensors &gt; 0);</span></span>
 <span id="L2446"><span class="lineNum">    2446</span>              : </span>
@@ -2525,10 +2525,10 @@
 <span id="L2463"><span class="lineNum">    2463</span> <span class="tlaGNC">         138 :     silent_debug_info (&amp;out_info, &quot;output tensor&quot;);</span></span>
 <span id="L2464"><span class="lineNum">    2464</span>              :   }</span>
 <span id="L2465"><span class="lineNum">    2465</span>              : </span>
-<span id="L2466"><span class="lineNum">    2466</span> <span class="tlaGNC">        2647 : done:</span></span>
-<span id="L2467"><span class="lineNum">    2467</span> <span class="tlaGNC">        2967 :   gst_tensors_info_free (&amp;in_info);</span></span>
-<span id="L2468"><span class="lineNum">    2468</span> <span class="tlaGNC">        2967 :   gst_tensors_info_free (&amp;out_info);</span></span>
-<span id="L2469"><span class="lineNum">    2469</span> <span class="tlaGNC">        2967 : }</span></span>
+<span id="L2466"><span class="lineNum">    2466</span> <span class="tlaGNC">        2650 : done:</span></span>
+<span id="L2467"><span class="lineNum">    2467</span> <span class="tlaGNC">        2960 :   gst_tensors_info_free (&amp;in_info);</span></span>
+<span id="L2468"><span class="lineNum">    2468</span> <span class="tlaGNC">        2960 :   gst_tensors_info_free (&amp;out_info);</span></span>
+<span id="L2469"><span class="lineNum">    2469</span> <span class="tlaGNC">        2960 : }</span></span>
 <span id="L2470"><span class="lineNum">    2470</span>              : </span>
 <span id="L2471"><span class="lineNum">    2471</span>              : /**</span>
 <span id="L2472"><span class="lineNum">    2472</span>              :  * @brief Send an event to NN framework.</span>
@@ -2604,27 +2604,27 @@
 <span id="L2542"><span class="lineNum">    2542</span>              :  * @brief Open NN framework.</span>
 <span id="L2543"><span class="lineNum">    2543</span>              :  */</span>
 <span id="L2544"><span class="lineNum">    2544</span>              : gboolean</span>
-<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC tlaBgGNC">        2967 : gst_tensor_filter_common_open_fw (GstTensorFilterPrivate * priv)</span></span>
+<span id="L2545"><span class="lineNum">    2545</span> <span class="tlaGNC tlaBgGNC">        2971 : gst_tensor_filter_common_open_fw (GstTensorFilterPrivate * priv)</span></span>
 <span id="L2546"><span class="lineNum">    2546</span>              : {</span>
 <span id="L2547"><span class="lineNum">    2547</span>              :   int ret;</span>
 <span id="L2548"><span class="lineNum">    2548</span>              : </span>
-<span id="L2549"><span class="lineNum">    2549</span> <span class="tlaGNC">        2967 :   g_return_val_if_fail (priv-&gt;fw != NULL, FALSE);</span></span>
+<span id="L2549"><span class="lineNum">    2549</span> <span class="tlaGNC">        2971 :   g_return_val_if_fail (priv-&gt;fw != NULL, FALSE);</span></span>
 <span id="L2550"><span class="lineNum">    2550</span>              : </span>
-<span id="L2551"><span class="lineNum">    2551</span> <span class="tlaGNC">        2941 :   if (!priv-&gt;prop.fw_opened) {</span></span>
+<span id="L2551"><span class="lineNum">    2551</span> <span class="tlaGNC">        2945 :   if (!priv-&gt;prop.fw_opened) {</span></span>
 <span id="L2552"><span class="lineNum">    2552</span>              :     gint64 start_time, end_time;</span>
 <span id="L2553"><span class="lineNum">    2553</span>              : </span>
-<span id="L2554"><span class="lineNum">    2554</span> <span class="tlaGNC">         874 :     start_time = g_get_monotonic_time ();</span></span>
-<span id="L2555"><span class="lineNum">    2555</span> <span class="tlaGNC">         874 :     if (priv-&gt;fw-&gt;open) {</span></span>
+<span id="L2554"><span class="lineNum">    2554</span> <span class="tlaGNC">         878 :     start_time = g_get_monotonic_time ();</span></span>
+<span id="L2555"><span class="lineNum">    2555</span> <span class="tlaGNC">         878 :     if (priv-&gt;fw-&gt;open) {</span></span>
 <span id="L2556"><span class="lineNum">    2556</span>              :       /* 0 if successfully loaded. 1 if skipped (already loaded). */</span>
-<span id="L2557"><span class="lineNum">    2557</span> <span class="tlaGNC">         872 :       if (verify_model_path (priv)) {</span></span>
-<span id="L2558"><span class="lineNum">    2558</span> <span class="tlaGNC">         830 :         ret = priv-&gt;fw-&gt;open (&amp;priv-&gt;prop, &amp;priv-&gt;privateData);</span></span>
-<span id="L2559"><span class="lineNum">    2559</span> <span class="tlaGNC">         830 :         priv-&gt;prop.fw_opened = (ret &gt;= 0);</span></span>
+<span id="L2557"><span class="lineNum">    2557</span> <span class="tlaGNC">         876 :       if (verify_model_path (priv)) {</span></span>
+<span id="L2558"><span class="lineNum">    2558</span> <span class="tlaGNC">         834 :         ret = priv-&gt;fw-&gt;open (&amp;priv-&gt;prop, &amp;priv-&gt;privateData);</span></span>
+<span id="L2559"><span class="lineNum">    2559</span> <span class="tlaGNC">         834 :         priv-&gt;prop.fw_opened = (ret &gt;= 0);</span></span>
 <span id="L2560"><span class="lineNum">    2560</span>              :       }</span>
 <span id="L2561"><span class="lineNum">    2561</span>              :     } else {</span>
 <span id="L2562"><span class="lineNum">    2562</span> <span class="tlaGNC">           2 :       priv-&gt;prop.fw_opened = TRUE;</span></span>
 <span id="L2563"><span class="lineNum">    2563</span>              :     }</span>
 <span id="L2564"><span class="lineNum">    2564</span>              : </span>
-<span id="L2565"><span class="lineNum">    2565</span> <span class="tlaGNC">         874 :     if (priv-&gt;prop.fw_opened) {</span></span>
+<span id="L2565"><span class="lineNum">    2565</span> <span class="tlaGNC">         878 :     if (priv-&gt;prop.fw_opened) {</span></span>
 <span id="L2566"><span class="lineNum">    2566</span> <span class="tlaGNC">         214 :       if (GST_TF_FW_V1 (priv-&gt;fw)) {</span></span>
 <span id="L2567"><span class="lineNum">    2567</span>              :         /* Update the framework info once it has been opened. */</span>
 <span id="L2568"><span class="lineNum">    2568</span> <span class="tlaGNC">          38 :         ret = priv-&gt;fw-&gt;getFrameworkInfo (priv-&gt;fw, &amp;priv-&gt;prop,</span></span>
@@ -2635,8 +2635,8 @@
 <span id="L2573"><span class="lineNum">    2573</span>              :       }</span>
 <span id="L2574"><span class="lineNum">    2574</span>              :     }</span>
 <span id="L2575"><span class="lineNum">    2575</span>              : </span>
-<span id="L2576"><span class="lineNum">    2576</span> <span class="tlaGNC tlaBgGNC">         874 :     end_time = g_get_monotonic_time ();</span></span>
-<span id="L2577"><span class="lineNum">    2577</span> <span class="tlaGNC">         874 :     if (priv-&gt;prop.fw_opened) {</span></span>
+<span id="L2576"><span class="lineNum">    2576</span> <span class="tlaGNC tlaBgGNC">         878 :     end_time = g_get_monotonic_time ();</span></span>
+<span id="L2577"><span class="lineNum">    2577</span> <span class="tlaGNC">         878 :     if (priv-&gt;prop.fw_opened) {</span></span>
 <span id="L2578"><span class="lineNum">    2578</span> <span class="tlaGNC">         214 :       ml_logi (&quot;Filter %s with model file %s is opened. It took %&quot;</span></span>
 <span id="L2579"><span class="lineNum">    2579</span>              :           G_GINT64_FORMAT &quot; us&quot;, priv-&gt;prop.fwname, TF_MODELNAME (&amp;priv-&gt;prop),</span>
 <span id="L2580"><span class="lineNum">    2580</span>              :           end_time - start_time);</span>
@@ -2645,7 +2645,7 @@
 <span id="L2583"><span class="lineNum">    2583</span> <span class="tlaUNC tlaBgUNC">           0 :     gst_tensor_filter_resume (priv);</span></span>
 <span id="L2584"><span class="lineNum">    2584</span>              :   }</span>
 <span id="L2585"><span class="lineNum">    2585</span>              : </span>
-<span id="L2586"><span class="lineNum">    2586</span> <span class="tlaGNC tlaBgGNC">        2941 :   return priv-&gt;prop.fw_opened &amp;&amp; !priv-&gt;is_suspended;</span></span>
+<span id="L2586"><span class="lineNum">    2586</span> <span class="tlaGNC tlaBgGNC">        2945 :   return priv-&gt;prop.fw_opened &amp;&amp; !priv-&gt;is_suspended;</span></span>
 <span id="L2587"><span class="lineNum">    2587</span>              : }</span>
 <span id="L2588"><span class="lineNum">    2588</span>              : </span>
 <span id="L2589"><span class="lineNum">    2589</span>              : /**</span>
