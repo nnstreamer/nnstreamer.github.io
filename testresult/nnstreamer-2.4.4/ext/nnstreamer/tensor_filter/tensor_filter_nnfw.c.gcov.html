@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239 - nnstreamer-2.4.4/ext/nnstreamer/tensor_filter/tensor_filter_nnfw.c</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76 - nnstreamer-2.4.4/ext/nnstreamer/tensor_filter/tensor_filter_nnfw.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">67.0&nbsp;%</td>
-            <td class="headerCovTableEntry">348</td>
+            <td class="headerCovTableEntryLo">66.4&nbsp;%</td>
+            <td class="headerCovTableEntry">351</td>
             <td class="headerCovTableEntry">233</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-11-07 05:40:34</td>
+            <td class="headerValue">2025-11-10 05:36:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -223,726 +223,732 @@
 <span id="L161"><span class="lineNum">     161</span>              :          * Update description in init_filter_nnfw() when adding new custom option for nnfw.</span>
 <span id="L162"><span class="lineNum">     162</span>              :          */</span>
 <span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :         if (g_ascii_strcasecmp (option[0], &quot;Runtime&quot;) == 0) {</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :           pdata-&gt;accelerator = g_strdup (option[1]);</span></span>
-<span id="L165"><span class="lineNum">     165</span>              :         } else {</span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :           nns_logw (&quot;Unknown option (%s).&quot;, options[i]);</span></span>
-<span id="L167"><span class="lineNum">     167</span>              :         }</span>
-<span id="L168"><span class="lineNum">     168</span>              :       }</span>
-<span id="L169"><span class="lineNum">     169</span>              : </span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :       g_strfreev (option);</span></span>
-<span id="L171"><span class="lineNum">     171</span>              :     }</span>
-<span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC">           0 :     g_strfreev (options);</span></span>
-<span id="L174"><span class="lineNum">     174</span>              :   }</span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :           if (pdata-&gt;accelerator != NULL) {</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :             nns_logw</span></span>
+<span id="L166"><span class="lineNum">     166</span>              :                 (&quot;Trying to set new runtime '%s', previous runtime '%s' is ignored.&quot;,</span>
+<span id="L167"><span class="lineNum">     167</span>              :                 option[1], pdata-&gt;accelerator);</span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC">           0 :             g_free (pdata-&gt;accelerator);</span></span>
+<span id="L169"><span class="lineNum">     169</span>              :           }</span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :           pdata-&gt;accelerator = g_strdup (option[1]);</span></span>
+<span id="L171"><span class="lineNum">     171</span>              :         } else {</span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :           nns_logw (&quot;Unknown option (%s).&quot;, options[i]);</span></span>
+<span id="L173"><span class="lineNum">     173</span>              :         }</span>
+<span id="L174"><span class="lineNum">     174</span>              :       }</span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span>              :   /* set accelerator if custom option does not include accelerator */</span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC tlaBgGNC">          11 :   if (pdata-&gt;accelerator == NULL) {</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          11 :     const char *accel = nnfw_get_accelerator (pdata, prop-&gt;accl_str);</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          11 :     pdata-&gt;accelerator = g_strdup (accel);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :       g_strfreev (option);</span></span>
+<span id="L177"><span class="lineNum">     177</span>              :     }</span>
+<span id="L178"><span class="lineNum">     178</span>              : </span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaUNC">           0 :     g_strfreev (options);</span></span>
 <span id="L180"><span class="lineNum">     180</span>              :   }</span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          11 : }</span></span>
-<span id="L182"><span class="lineNum">     182</span>              : </span>
-<span id="L183"><span class="lineNum">     183</span>              : /**</span>
-<span id="L184"><span class="lineNum">     184</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L185"><span class="lineNum">     185</span>              :  */</span>
-<span id="L186"><span class="lineNum">     186</span>              : static int</span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          12 : nnfw_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
-<span id="L188"><span class="lineNum">     188</span>              : {</span>
-<span id="L189"><span class="lineNum">     189</span>              :   NNFW_STATUS status;</span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          12 :   int err = 0;</span></span>
-<span id="L191"><span class="lineNum">     191</span>              :   nnfw_pdata *pdata;</span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          12 :   char *model_path = NULL;</span></span>
-<span id="L193"><span class="lineNum">     193</span>              : </span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          12 :   if (*private_data != NULL) {</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaUNC tlaBgUNC">           0 :     pdata = *private_data;</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC">           0 :     if (g_strcmp0 (prop-&gt;model_files[0], pdata-&gt;model_file) != 0) {</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :       nnfw_close (prop, private_data);  /* &quot;reopen&quot; */</span></span>
-<span id="L198"><span class="lineNum">     198</span>              :     } else {</span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC">           0 :       return 1;</span></span>
-<span id="L200"><span class="lineNum">     200</span>              :     }</span>
-<span id="L201"><span class="lineNum">     201</span>              :   }</span>
-<span id="L202"><span class="lineNum">     202</span>              : </span>
-<span id="L203"><span class="lineNum">     203</span>              :   /* validate model file first */</span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC tlaBgGNC">          12 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_EXISTS)) {</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           1 :     nns_loge (&quot;Cannot find model file %s.&quot;, prop-&gt;model_files[0]);</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           1 :     return -EINVAL;</span></span>
+<span id="L181"><span class="lineNum">     181</span>              : </span>
+<span id="L182"><span class="lineNum">     182</span>              :   /* set accelerator if custom option does not include accelerator */</span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC tlaBgGNC">          11 :   if (pdata-&gt;accelerator == NULL) {</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          11 :     const char *accel = nnfw_get_accelerator (pdata, prop-&gt;accl_str);</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          11 :     pdata-&gt;accelerator = g_strdup (accel);</span></span>
+<span id="L186"><span class="lineNum">     186</span>              :   }</span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          11 : }</span></span>
+<span id="L188"><span class="lineNum">     188</span>              : </span>
+<span id="L189"><span class="lineNum">     189</span>              : /**</span>
+<span id="L190"><span class="lineNum">     190</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L191"><span class="lineNum">     191</span>              :  */</span>
+<span id="L192"><span class="lineNum">     192</span>              : static int</span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          12 : nnfw_open (const GstTensorFilterProperties * prop, void **private_data)</span></span>
+<span id="L194"><span class="lineNum">     194</span>              : {</span>
+<span id="L195"><span class="lineNum">     195</span>              :   NNFW_STATUS status;</span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          12 :   int err = 0;</span></span>
+<span id="L197"><span class="lineNum">     197</span>              :   nnfw_pdata *pdata;</span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          12 :   char *model_path = NULL;</span></span>
+<span id="L199"><span class="lineNum">     199</span>              : </span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          12 :   if (*private_data != NULL) {</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaUNC tlaBgUNC">           0 :     pdata = *private_data;</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaUNC">           0 :     if (g_strcmp0 (prop-&gt;model_files[0], pdata-&gt;model_file) != 0) {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaUNC">           0 :       nnfw_close (prop, private_data);  /* &quot;reopen&quot; */</span></span>
+<span id="L204"><span class="lineNum">     204</span>              :     } else {</span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaUNC">           0 :       return 1;</span></span>
+<span id="L206"><span class="lineNum">     206</span>              :     }</span>
 <span id="L207"><span class="lineNum">     207</span>              :   }</span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          11 :   pdata = *private_data = g_new0 (nnfw_pdata, 1);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          11 :   if (pdata == NULL) {</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for filter subplugin.&quot;);</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaUNC">           0 :     return -ENOMEM;</span></span>
+<span id="L209"><span class="lineNum">     209</span>              :   /* validate model file first */</span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC tlaBgGNC">          12 :   if (!g_file_test (prop-&gt;model_files[0], G_FILE_TEST_EXISTS)) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           1 :     nns_loge (&quot;Cannot find model file %s.&quot;, prop-&gt;model_files[0]);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           1 :     return -EINVAL;</span></span>
 <span id="L213"><span class="lineNum">     213</span>              :   }</span>
 <span id="L214"><span class="lineNum">     214</span>              : </span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC tlaBgGNC">          11 :   nnfw_parse_custom_option (prop, pdata);</span></span>
-<span id="L216"><span class="lineNum">     216</span>              : </span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          11 :   status = nnfw_create_session (&amp;pdata-&gt;session);</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot create nnfw-runtime session.&quot;);</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L222"><span class="lineNum">     222</span>              :   }</span>
-<span id="L223"><span class="lineNum">     223</span>              : </span>
-<span id="L224"><span class="lineNum">     224</span>              :   /** @todo NNFW now uses package path. Fix when file path is available to open NNFW. */</span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC tlaBgGNC">          11 :   if (g_file_test (prop-&gt;model_files[0], G_FILE_TEST_IS_DIR)) {</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC tlaBgUNC">           0 :     model_path = g_strdup (prop-&gt;model_files[0]);</span></span>
-<span id="L227"><span class="lineNum">     227</span>              :   } else {</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC tlaBgGNC">          11 :     model_path = g_path_get_dirname (prop-&gt;model_files[0]);</span></span>
-<span id="L229"><span class="lineNum">     229</span>              :   }</span>
-<span id="L230"><span class="lineNum">     230</span>              : </span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">          11 :   status = nnfw_load_model_from_file (pdata-&gt;session, model_path);</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">          11 :   g_free (model_path);</span></span>
-<span id="L233"><span class="lineNum">     233</span>              : </span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot load the model file '%s'.&quot;, prop-&gt;model_files[0]);</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L238"><span class="lineNum">     238</span>              :   }</span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          11 :   pdata = *private_data = g_new0 (nnfw_pdata, 1);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          11 :   if (pdata == NULL) {</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to allocate memory for filter subplugin.&quot;);</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC">           0 :     return -ENOMEM;</span></span>
+<span id="L219"><span class="lineNum">     219</span>              :   }</span>
+<span id="L220"><span class="lineNum">     220</span>              : </span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC tlaBgGNC">          11 :   nnfw_parse_custom_option (prop, pdata);</span></span>
+<span id="L222"><span class="lineNum">     222</span>              : </span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          11 :   status = nnfw_create_session (&amp;pdata-&gt;session);</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot create nnfw-runtime session.&quot;);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L228"><span class="lineNum">     228</span>              :   }</span>
+<span id="L229"><span class="lineNum">     229</span>              : </span>
+<span id="L230"><span class="lineNum">     230</span>              :   /** @todo NNFW now uses package path. Fix when file path is available to open NNFW. */</span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC tlaBgGNC">          11 :   if (g_file_test (prop-&gt;model_files[0], G_FILE_TEST_IS_DIR)) {</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC tlaBgUNC">           0 :     model_path = g_strdup (prop-&gt;model_files[0]);</span></span>
+<span id="L233"><span class="lineNum">     233</span>              :   } else {</span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC tlaBgGNC">          11 :     model_path = g_path_get_dirname (prop-&gt;model_files[0]);</span></span>
+<span id="L235"><span class="lineNum">     235</span>              :   }</span>
+<span id="L236"><span class="lineNum">     236</span>              : </span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          11 :   status = nnfw_load_model_from_file (pdata-&gt;session, model_path);</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          11 :   g_free (model_path);</span></span>
 <span id="L239"><span class="lineNum">     239</span>              : </span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC tlaBgGNC">          11 :   status = nnfw_set_available_backends (pdata-&gt;session, pdata-&gt;accelerator);</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot set nnfw-runtime backend to '%s'.&quot;, pdata-&gt;accelerator);</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L245"><span class="lineNum">     245</span>              :   }</span>
-<span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC tlaBgGNC">          11 :   status = nnfw_prepare (pdata-&gt;session);</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot prepare the session for model '%s'.&quot;,</span></span>
-<span id="L251"><span class="lineNum">     251</span>              :         prop-&gt;model_files[0]);</span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
-<span id="L253"><span class="lineNum">     253</span>              :   }</span>
-<span id="L254"><span class="lineNum">     254</span>              : </span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC tlaBgGNC">          11 :   err = nnfw_tensors_info_get (pdata, TRUE, &amp;pdata-&gt;in_info);</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">          11 :   if (err) {</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Error retrieving input info from nnfw-runtime.&quot;);</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot load the model file '%s'.&quot;, prop-&gt;model_files[0]);</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L244"><span class="lineNum">     244</span>              :   }</span>
+<span id="L245"><span class="lineNum">     245</span>              : </span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC tlaBgGNC">          11 :   status = nnfw_set_available_backends (pdata-&gt;session, pdata-&gt;accelerator);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot set nnfw-runtime backend to '%s'.&quot;, pdata-&gt;accelerator);</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L251"><span class="lineNum">     251</span>              :   }</span>
+<span id="L252"><span class="lineNum">     252</span>              : </span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC tlaBgGNC">          11 :   status = nnfw_prepare (pdata-&gt;session);</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          11 :   if (status != NNFW_STATUS_NO_ERROR) {</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC tlaBgUNC">           0 :     err = -EINVAL;</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :     nns_loge (&quot;Cannot prepare the session for model '%s'.&quot;,</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :         prop-&gt;model_files[0]);</span>
 <span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
 <span id="L259"><span class="lineNum">     259</span>              :   }</span>
 <span id="L260"><span class="lineNum">     260</span>              : </span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC tlaBgGNC">          11 :   err = nnfw_tensors_info_get (pdata, FALSE, &amp;pdata-&gt;out_info);</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC tlaBgGNC">          11 :   err = nnfw_tensors_info_get (pdata, TRUE, &amp;pdata-&gt;in_info);</span></span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          11 :   if (err) {</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Error retrieving output info from nnfw-runtime.&quot;);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Error retrieving input info from nnfw-runtime.&quot;);</span></span>
 <span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
 <span id="L265"><span class="lineNum">     265</span>              :   }</span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC tlaBgGNC">          11 :   pdata-&gt;model_file = g_strdup (prop-&gt;model_files[0]);</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          11 :   return 0;</span></span>
-<span id="L269"><span class="lineNum">     269</span>              : </span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC tlaBgUNC">           0 : error_exit:</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :   nnfw_close (prop, private_data);</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaUNC">           0 :   return err;</span></span>
-<span id="L273"><span class="lineNum">     273</span>              : }</span>
-<span id="L274"><span class="lineNum">     274</span>              : </span>
-<span id="L275"><span class="lineNum">     275</span>              : /**</span>
-<span id="L276"><span class="lineNum">     276</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L277"><span class="lineNum">     277</span>              :  * @todo Determine if we need to do &quot;assert&quot; for close-failure.</span>
-<span id="L278"><span class="lineNum">     278</span>              :  */</span>
-<span id="L279"><span class="lineNum">     279</span>              : static void</span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC tlaBgGNC">          13 : nnfw_close (const GstTensorFilterProperties * prop, void **private_data)</span></span>
-<span id="L281"><span class="lineNum">     281</span>              : {</span>
-<span id="L282"><span class="lineNum">     282</span>              :   nnfw_pdata *pdata;</span>
-<span id="L283"><span class="lineNum">     283</span>              :   UNUSED (prop);</span>
-<span id="L284"><span class="lineNum">     284</span>              : </span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">          13 :   if (private_data == NULL || *private_data == NULL)</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :     return;</span></span>
-<span id="L287"><span class="lineNum">     287</span>              : </span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">          11 :   pdata = *private_data;</span></span>
-<span id="L289"><span class="lineNum">     289</span>              : </span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">          11 :   if (pdata-&gt;session) {</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          11 :     NNFW_STATUS status = nnfw_close_session (pdata-&gt;session);</span></span>
-<span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          11 :     if (status != NNFW_STATUS_NO_ERROR) {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;cannot close nnfw-runtime session for model '%s'.&quot;,</span></span>
-<span id="L295"><span class="lineNum">     295</span>              :           pdata-&gt;model_file);</span>
-<span id="L296"><span class="lineNum">     296</span>              :     }</span>
-<span id="L297"><span class="lineNum">     297</span>              : </span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC tlaBgGNC">          11 :     pdata-&gt;session = NULL;</span></span>
-<span id="L299"><span class="lineNum">     299</span>              :   }</span>
-<span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          11 :   g_free (pdata-&gt;model_file);</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          11 :   pdata-&gt;model_file = NULL;</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC tlaBgGNC">          11 :   err = nnfw_tensors_info_get (pdata, FALSE, &amp;pdata-&gt;out_info);</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          11 :   if (err) {</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Error retrieving output info from nnfw-runtime.&quot;);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC">           0 :     goto error_exit;</span></span>
+<span id="L271"><span class="lineNum">     271</span>              :   }</span>
+<span id="L272"><span class="lineNum">     272</span>              : </span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC tlaBgGNC">          11 :   pdata-&gt;model_file = g_strdup (prop-&gt;model_files[0]);</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          11 :   return 0;</span></span>
+<span id="L275"><span class="lineNum">     275</span>              : </span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC tlaBgUNC">           0 : error_exit:</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :   nnfw_close (prop, private_data);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaUNC">           0 :   return err;</span></span>
+<span id="L279"><span class="lineNum">     279</span>              : }</span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span>              : /**</span>
+<span id="L282"><span class="lineNum">     282</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L283"><span class="lineNum">     283</span>              :  * @todo Determine if we need to do &quot;assert&quot; for close-failure.</span>
+<span id="L284"><span class="lineNum">     284</span>              :  */</span>
+<span id="L285"><span class="lineNum">     285</span>              : static void</span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC tlaBgGNC">          13 : nnfw_close (const GstTensorFilterProperties * prop, void **private_data)</span></span>
+<span id="L287"><span class="lineNum">     287</span>              : {</span>
+<span id="L288"><span class="lineNum">     288</span>              :   nnfw_pdata *pdata;</span>
+<span id="L289"><span class="lineNum">     289</span>              :   UNUSED (prop);</span>
+<span id="L290"><span class="lineNum">     290</span>              : </span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          13 :   if (private_data == NULL || *private_data == NULL)</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           2 :     return;</span></span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          11 :   pdata = *private_data;</span></span>
+<span id="L295"><span class="lineNum">     295</span>              : </span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          11 :   if (pdata-&gt;session) {</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          11 :     NNFW_STATUS status = nnfw_close_session (pdata-&gt;session);</span></span>
+<span id="L298"><span class="lineNum">     298</span>              : </span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          11 :     if (status != NNFW_STATUS_NO_ERROR) {</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;cannot close nnfw-runtime session for model '%s'.&quot;,</span></span>
+<span id="L301"><span class="lineNum">     301</span>              :           pdata-&gt;model_file);</span>
+<span id="L302"><span class="lineNum">     302</span>              :     }</span>
 <span id="L303"><span class="lineNum">     303</span>              : </span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          11 :   g_free (pdata-&gt;accelerator);</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          11 :   pdata-&gt;accelerator = NULL;</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC tlaBgGNC">          11 :     pdata-&gt;session = NULL;</span></span>
+<span id="L305"><span class="lineNum">     305</span>              :   }</span>
 <span id="L306"><span class="lineNum">     306</span>              : </span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          11 :   g_free (pdata);</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          11 :   *private_data = NULL;</span></span>
-<span id="L309"><span class="lineNum">     309</span>              : }</span>
-<span id="L310"><span class="lineNum">     310</span>              : </span>
-<span id="L311"><span class="lineNum">     311</span>              : /**</span>
-<span id="L312"><span class="lineNum">     312</span>              :  * @brief Convert from nnfw type to gst tensor type</span>
-<span id="L313"><span class="lineNum">     313</span>              :  * @param[in] nnfw_type type given in nnfw format</span>
-<span id="L314"><span class="lineNum">     314</span>              :  * @param[out] type container to receive type in gst tensor format</span>
-<span id="L315"><span class="lineNum">     315</span>              :  * @return 0 on success, negative errno on error</span>
-<span id="L316"><span class="lineNum">     316</span>              :  */</span>
-<span id="L317"><span class="lineNum">     317</span>              : static int</span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">          21 : nnfw_tensor_type_to_gst (const NNFW_TYPE nnfw_type, tensor_type * type)</span></span>
-<span id="L319"><span class="lineNum">     319</span>              : {</span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">          21 :   switch (nnfw_type) {</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">          19 :     case NNFW_TYPE_TENSOR_FLOAT32:</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          19 :       *type = _NNS_FLOAT32;</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">          19 :       break;</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNFW_TYPE_TENSOR_INT32:</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :       *type = _NNS_INT32;</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :     case NNFW_TYPE_TENSOR_INT64:</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :       *type = _NNS_INT64;</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC tlaBgGNC">           2 :     case NNFW_TYPE_TENSOR_QUANT8_ASYMM:</span></span>
-<span id="L331"><span class="lineNum">     331</span>              :     case NNFW_TYPE_TENSOR_BOOL:</span>
-<span id="L332"><span class="lineNum">     332</span>              :     case NNFW_TYPE_TENSOR_UINT8:</span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">           2 :       *type = _NNS_UINT8;</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">           2 :       break;</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNFW_TYPE_TENSOR_QUANT8_ASYMM_SIGNED:</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaUNC">           0 :       *type = _NNS_INT8;</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC">           0 :     case NNFW_TYPE_TENSOR_QUANT16_SYMM_SIGNED:</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :       *type = _NNS_INT16;</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     default:</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :       *type = _NNS_END;</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :       nns_loge (&quot;Cannot convert nnfw type '%d' to gst format.&quot;, nnfw_type);</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
-<span id="L345"><span class="lineNum">     345</span>              :   }</span>
-<span id="L346"><span class="lineNum">     346</span>              : </span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC tlaBgGNC">          21 :   return 0;</span></span>
-<span id="L348"><span class="lineNum">     348</span>              : }</span>
-<span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span>              : /**</span>
-<span id="L351"><span class="lineNum">     351</span>              :  * @brief Convert from gst tensor type to NNFW type</span>
-<span id="L352"><span class="lineNum">     352</span>              :  * @param[in] type type given in gst format</span>
-<span id="L353"><span class="lineNum">     353</span>              :  * @param[in] cur_type current nnfw_type after loading a model</span>
-<span id="L354"><span class="lineNum">     354</span>              :  * @param[out] nnfw_type container to receive type in nnfw tensor format</span>
-<span id="L355"><span class="lineNum">     355</span>              :  * @return 0 on success, negative errno on error</span>
-<span id="L356"><span class="lineNum">     356</span>              :  */</span>
-<span id="L357"><span class="lineNum">     357</span>              : static int</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">           2 : nnfw_tensor_type_from_gst (const tensor_type type, const NNFW_TYPE cur_type,</span></span>
-<span id="L359"><span class="lineNum">     359</span>              :     NNFW_TYPE * nnfw_type)</span>
-<span id="L360"><span class="lineNum">     360</span>              : {</span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">           2 :   switch (type) {</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           2 :     case _NNS_FLOAT32:</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">           2 :       *nnfw_type = NNFW_TYPE_TENSOR_FLOAT32;</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           2 :       break;</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC tlaBgUNC">           0 :     case _NNS_INT32:</span></span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_INT32;</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaUNC">           0 :     case _NNS_INT64:</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_INT64;</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L371"><span class="lineNum">     371</span> <span class="tlaUNC">           0 :     case _NNS_UINT8:</span></span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC">           0 :       if (cur_type == NNFW_TYPE_TENSOR_QUANT8_ASYMM ||</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC">           0 :           cur_type == NNFW_TYPE_TENSOR_BOOL ||</span></span>
-<span id="L374"><span class="lineNum">     374</span>              :           cur_type == NNFW_TYPE_TENSOR_UINT8) {</span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :         *nnfw_type = cur_type;</span></span>
-<span id="L376"><span class="lineNum">     376</span>              :       } else {</span>
-<span id="L377"><span class="lineNum">     377</span>              :         /* Set default value, we cannot assure the data type of nnfw here. */</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :         *nnfw_type = NNFW_TYPE_TENSOR_QUANT8_ASYMM;</span></span>
-<span id="L379"><span class="lineNum">     379</span>              :       }</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     case _NNS_INT8:</span></span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_QUANT8_ASYMM_SIGNED;</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC">           0 :     case _NNS_INT16:</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_QUANT16_SYMM_SIGNED;</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          11 :   g_free (pdata-&gt;model_file);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          11 :   pdata-&gt;model_file = NULL;</span></span>
+<span id="L309"><span class="lineNum">     309</span>              : </span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          11 :   g_free (pdata-&gt;accelerator);</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          11 :   pdata-&gt;accelerator = NULL;</span></span>
+<span id="L312"><span class="lineNum">     312</span>              : </span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          11 :   g_free (pdata);</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">          11 :   *private_data = NULL;</span></span>
+<span id="L315"><span class="lineNum">     315</span>              : }</span>
+<span id="L316"><span class="lineNum">     316</span>              : </span>
+<span id="L317"><span class="lineNum">     317</span>              : /**</span>
+<span id="L318"><span class="lineNum">     318</span>              :  * @brief Convert from nnfw type to gst tensor type</span>
+<span id="L319"><span class="lineNum">     319</span>              :  * @param[in] nnfw_type type given in nnfw format</span>
+<span id="L320"><span class="lineNum">     320</span>              :  * @param[out] type container to receive type in gst tensor format</span>
+<span id="L321"><span class="lineNum">     321</span>              :  * @return 0 on success, negative errno on error</span>
+<span id="L322"><span class="lineNum">     322</span>              :  */</span>
+<span id="L323"><span class="lineNum">     323</span>              : static int</span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">          21 : nnfw_tensor_type_to_gst (const NNFW_TYPE nnfw_type, tensor_type * type)</span></span>
+<span id="L325"><span class="lineNum">     325</span>              : {</span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          21 :   switch (nnfw_type) {</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">          19 :     case NNFW_TYPE_TENSOR_FLOAT32:</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">          19 :       *type = _NNS_FLOAT32;</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">          19 :       break;</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNFW_TYPE_TENSOR_INT32:</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :       *type = _NNS_INT32;</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC">           0 :     case NNFW_TYPE_TENSOR_INT64:</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :       *type = _NNS_INT64;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC tlaBgGNC">           2 :     case NNFW_TYPE_TENSOR_QUANT8_ASYMM:</span></span>
+<span id="L337"><span class="lineNum">     337</span>              :     case NNFW_TYPE_TENSOR_BOOL:</span>
+<span id="L338"><span class="lineNum">     338</span>              :     case NNFW_TYPE_TENSOR_UINT8:</span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">           2 :       *type = _NNS_UINT8;</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">           2 :       break;</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC tlaBgUNC">           0 :     case NNFW_TYPE_TENSOR_QUANT8_ASYMM_SIGNED:</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :       *type = _NNS_INT8;</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :     case NNFW_TYPE_TENSOR_QUANT16_SYMM_SIGNED:</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :       *type = _NNS_INT16;</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :       *type = _NNS_END;</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :       nns_loge (&quot;Cannot convert nnfw type '%d' to gst format.&quot;, nnfw_type);</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
+<span id="L351"><span class="lineNum">     351</span>              :   }</span>
+<span id="L352"><span class="lineNum">     352</span>              : </span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaGNC tlaBgGNC">          21 :   return 0;</span></span>
+<span id="L354"><span class="lineNum">     354</span>              : }</span>
+<span id="L355"><span class="lineNum">     355</span>              : </span>
+<span id="L356"><span class="lineNum">     356</span>              : /**</span>
+<span id="L357"><span class="lineNum">     357</span>              :  * @brief Convert from gst tensor type to NNFW type</span>
+<span id="L358"><span class="lineNum">     358</span>              :  * @param[in] type type given in gst format</span>
+<span id="L359"><span class="lineNum">     359</span>              :  * @param[in] cur_type current nnfw_type after loading a model</span>
+<span id="L360"><span class="lineNum">     360</span>              :  * @param[out] nnfw_type container to receive type in nnfw tensor format</span>
+<span id="L361"><span class="lineNum">     361</span>              :  * @return 0 on success, negative errno on error</span>
+<span id="L362"><span class="lineNum">     362</span>              :  */</span>
+<span id="L363"><span class="lineNum">     363</span>              : static int</span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">           2 : nnfw_tensor_type_from_gst (const tensor_type type, const NNFW_TYPE cur_type,</span></span>
+<span id="L365"><span class="lineNum">     365</span>              :     NNFW_TYPE * nnfw_type)</span>
+<span id="L366"><span class="lineNum">     366</span>              : {</span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">           2 :   switch (type) {</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">           2 :     case _NNS_FLOAT32:</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">           2 :       *nnfw_type = NNFW_TYPE_TENSOR_FLOAT32;</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">           2 :       break;</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaUNC tlaBgUNC">           0 :     case _NNS_INT32:</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_INT32;</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC">           0 :     case _NNS_INT64:</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_INT64;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC">           0 :     case _NNS_UINT8:</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :       if (cur_type == NNFW_TYPE_TENSOR_QUANT8_ASYMM ||</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :           cur_type == NNFW_TYPE_TENSOR_BOOL ||</span></span>
+<span id="L380"><span class="lineNum">     380</span>              :           cur_type == NNFW_TYPE_TENSOR_UINT8) {</span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :         *nnfw_type = cur_type;</span></span>
+<span id="L382"><span class="lineNum">     382</span>              :       } else {</span>
+<span id="L383"><span class="lineNum">     383</span>              :         /* Set default value, we cannot assure the data type of nnfw here. */</span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC">           0 :         *nnfw_type = NNFW_TYPE_TENSOR_QUANT8_ASYMM;</span></span>
+<span id="L385"><span class="lineNum">     385</span>              :       }</span>
 <span id="L386"><span class="lineNum">     386</span> <span class="tlaUNC">           0 :       break;</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaUNC">           0 :     default:</span></span>
-<span id="L388"><span class="lineNum">     388</span> <span class="tlaUNC">           0 :       nns_loge (&quot;Cannot convert gst format '%s' to nnfw type.&quot;,</span></span>
-<span id="L389"><span class="lineNum">     389</span>              :           gst_tensor_get_type_string (type));</span>
-<span id="L390"><span class="lineNum">     390</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
-<span id="L391"><span class="lineNum">     391</span>              :   }</span>
-<span id="L392"><span class="lineNum">     392</span>              : </span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC tlaBgGNC">           2 :   if (*nnfw_type != cur_type) {</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_logw (&quot;Tried to convert different data type.&quot;);</span></span>
-<span id="L395"><span class="lineNum">     395</span>              :   }</span>
-<span id="L396"><span class="lineNum">     396</span>              : </span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC tlaBgGNC">           2 :   return 0;</span></span>
-<span id="L398"><span class="lineNum">     398</span>              : }</span>
-<span id="L399"><span class="lineNum">     399</span>              : </span>
-<span id="L400"><span class="lineNum">     400</span>              : /**</span>
-<span id="L401"><span class="lineNum">     401</span>              :  * @brief Convert nnfw format info of tensors to gst format info</span>
-<span id="L402"><span class="lineNum">     402</span>              :  * @param[in] nnfw_info info given in nnfw format</span>
-<span id="L403"><span class="lineNum">     403</span>              :  * @param[out] gst_info info container to receive tensor info in gst format</span>
-<span id="L404"><span class="lineNum">     404</span>              :  * @return 0 on success, errno on failure</span>
-<span id="L405"><span class="lineNum">     405</span>              :  */</span>
-<span id="L406"><span class="lineNum">     406</span>              : static int</span>
-<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">          21 : nnfw_convert_to_gst_info (const nnfw_tinfo_s * nnfw_info,</span></span>
-<span id="L408"><span class="lineNum">     408</span>              :     GstTensorsInfo * gst_info)</span>
-<span id="L409"><span class="lineNum">     409</span>              : {</span>
-<span id="L410"><span class="lineNum">     410</span>              :   guint i;</span>
-<span id="L411"><span class="lineNum">     411</span>              :   int status;</span>
-<span id="L412"><span class="lineNum">     412</span>              : </span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          21 :   gst_tensors_info_init (gst_info);</span></span>
-<span id="L414"><span class="lineNum">     414</span>              : </span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">          42 :   for (i = 0; i &lt; nnfw_info-&gt;num_tensors; i++) {</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          21 :     const nnfw_tensorinfo *ninfo = &amp;nnfw_info-&gt;info[i];</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">          21 :     GstTensorInfo *ginfo = gst_tensors_info_get_nth_info (gst_info, i);</span></span>
-<span id="L418"><span class="lineNum">     418</span>              :     gint idx;</span>
-<span id="L419"><span class="lineNum">     419</span>              : </span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">          21 :     if (ninfo-&gt;rank &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaUNC tlaBgUNC">           0 :       return -ERANGE;</span></span>
-<span id="L422"><span class="lineNum">     422</span>              : </span>
-<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC tlaBgGNC">          21 :     if ((status = nnfw_tensor_type_to_gst (ninfo-&gt;dtype, &amp;ginfo-&gt;type)) != 0)</span></span>
-<span id="L424"><span class="lineNum">     424</span> <span class="tlaUNC tlaBgUNC">           0 :       return status;</span></span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaUNC">           0 :     case _NNS_INT8:</span></span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_QUANT8_ASYMM_SIGNED;</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaUNC">           0 :     case _NNS_INT16:</span></span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaUNC">           0 :       *nnfw_type = NNFW_TYPE_TENSOR_QUANT16_SYMM_SIGNED;</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaUNC">           0 :       break;</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaUNC">           0 :       nns_loge (&quot;Cannot convert gst format '%s' to nnfw type.&quot;,</span></span>
+<span id="L395"><span class="lineNum">     395</span>              :           gst_tensor_get_type_string (type));</span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
+<span id="L397"><span class="lineNum">     397</span>              :   }</span>
+<span id="L398"><span class="lineNum">     398</span>              : </span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC tlaBgGNC">           2 :   if (*nnfw_type != cur_type) {</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_logw (&quot;Tried to convert different data type.&quot;);</span></span>
+<span id="L401"><span class="lineNum">     401</span>              :   }</span>
+<span id="L402"><span class="lineNum">     402</span>              : </span>
+<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC tlaBgGNC">           2 :   return 0;</span></span>
+<span id="L404"><span class="lineNum">     404</span>              : }</span>
+<span id="L405"><span class="lineNum">     405</span>              : </span>
+<span id="L406"><span class="lineNum">     406</span>              : /**</span>
+<span id="L407"><span class="lineNum">     407</span>              :  * @brief Convert nnfw format info of tensors to gst format info</span>
+<span id="L408"><span class="lineNum">     408</span>              :  * @param[in] nnfw_info info given in nnfw format</span>
+<span id="L409"><span class="lineNum">     409</span>              :  * @param[out] gst_info info container to receive tensor info in gst format</span>
+<span id="L410"><span class="lineNum">     410</span>              :  * @return 0 on success, errno on failure</span>
+<span id="L411"><span class="lineNum">     411</span>              :  */</span>
+<span id="L412"><span class="lineNum">     412</span>              : static int</span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          21 : nnfw_convert_to_gst_info (const nnfw_tinfo_s * nnfw_info,</span></span>
+<span id="L414"><span class="lineNum">     414</span>              :     GstTensorsInfo * gst_info)</span>
+<span id="L415"><span class="lineNum">     415</span>              : {</span>
+<span id="L416"><span class="lineNum">     416</span>              :   guint i;</span>
+<span id="L417"><span class="lineNum">     417</span>              :   int status;</span>
+<span id="L418"><span class="lineNum">     418</span>              : </span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          21 :   gst_tensors_info_init (gst_info);</span></span>
+<span id="L420"><span class="lineNum">     420</span>              : </span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">          42 :   for (i = 0; i &lt; nnfw_info-&gt;num_tensors; i++) {</span></span>
+<span id="L422"><span class="lineNum">     422</span> <span class="tlaGNC">          21 :     const nnfw_tensorinfo *ninfo = &amp;nnfw_info-&gt;info[i];</span></span>
+<span id="L423"><span class="lineNum">     423</span> <span class="tlaGNC">          21 :     GstTensorInfo *ginfo = gst_tensors_info_get_nth_info (gst_info, i);</span></span>
+<span id="L424"><span class="lineNum">     424</span>              :     gint idx;</span>
 <span id="L425"><span class="lineNum">     425</span>              : </span>
-<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC tlaBgGNC">          46 :     for (idx = ninfo-&gt;rank - 1; idx &gt;= 0; idx--)</span></span>
-<span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">          25 :       ginfo-&gt;dimension[idx] = ninfo-&gt;dims[ninfo-&gt;rank - idx - 1];</span></span>
-<span id="L428"><span class="lineNum">     428</span>              :   }</span>
-<span id="L429"><span class="lineNum">     429</span>              : </span>
-<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          21 :   gst_info-&gt;num_tensors = nnfw_info-&gt;num_tensors;</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          21 :   return 0;</span></span>
-<span id="L432"><span class="lineNum">     432</span>              : }</span>
-<span id="L433"><span class="lineNum">     433</span>              : </span>
-<span id="L434"><span class="lineNum">     434</span>              : /**</span>
-<span id="L435"><span class="lineNum">     435</span>              :  * @brief Internal function to set input tensor info.</span>
-<span id="L436"><span class="lineNum">     436</span>              :  */</span>
-<span id="L437"><span class="lineNum">     437</span>              : static int</span>
-<span id="L438"><span class="lineNum">     438</span> <span class="tlaGNC">           2 : nnfw_set_input_info (const nnfw_pdata * pdata, guint idx,</span></span>
-<span id="L439"><span class="lineNum">     439</span>              :     nnfw_tensorinfo * info)</span>
-<span id="L440"><span class="lineNum">     440</span>              : {</span>
-<span id="L441"><span class="lineNum">     441</span>              :   NNFW_STATUS status;</span>
-<span id="L442"><span class="lineNum">     442</span>              : </span>
-<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">           2 :   status = nnfw_set_input_tensorinfo (pdata-&gt;session, idx, info);</span></span>
-<span id="L444"><span class="lineNum">     444</span>              : </span>
-<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">           2 :   return (status != NNFW_STATUS_NO_ERROR) ? -EPERM : 0;</span></span>
-<span id="L446"><span class="lineNum">     446</span>              : }</span>
-<span id="L447"><span class="lineNum">     447</span>              : </span>
-<span id="L448"><span class="lineNum">     448</span>              : /**</span>
-<span id="L449"><span class="lineNum">     449</span>              :  * @brief register/set input tensor info with nnfw</span>
-<span id="L450"><span class="lineNum">     450</span>              :  * @param[in] pdata private data for nnfw opened instance</span>
-<span id="L451"><span class="lineNum">     451</span>              :  * @param[in] tensors_info info of tensors to be registered</span>
-<span id="L452"><span class="lineNum">     452</span>              :  * @param[in] tensor_idx idx of the tensor to be registered</span>
-<span id="L453"><span class="lineNum">     453</span>              :  * @return 0 on success, errno on failure</span>
-<span id="L454"><span class="lineNum">     454</span>              :  */</span>
-<span id="L455"><span class="lineNum">     455</span>              : static int</span>
-<span id="L456"><span class="lineNum">     456</span> <span class="tlaGNC">           2 : nnfw_tensor_info_set (const nnfw_pdata * pdata,</span></span>
-<span id="L457"><span class="lineNum">     457</span>              :     const GstTensorsInfo * tensors_info, guint tensor_idx)</span>
-<span id="L458"><span class="lineNum">     458</span>              : {</span>
-<span id="L459"><span class="lineNum">     459</span>              :   nnfw_tensorinfo nnfw_info;</span>
-<span id="L460"><span class="lineNum">     460</span>              :   gint err;</span>
-<span id="L461"><span class="lineNum">     461</span>              :   gint idx;</span>
-<span id="L462"><span class="lineNum">     462</span>              :   GstTensorInfo *info;</span>
-<span id="L463"><span class="lineNum">     463</span>              : </span>
-<span id="L464"><span class="lineNum">     464</span> <span class="tlaGNC">           2 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) tensors_info,</span></span>
-<span id="L465"><span class="lineNum">     465</span>              :       tensor_idx);</span>
-<span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">           2 :   if (!info)</span></span>
-<span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">           2 :     return -EINVAL;</span></span>
-<span id="L468"><span class="lineNum">     468</span>              : </span>
-<span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">           4 :   err = nnfw_tensor_type_from_gst (info-&gt;type,</span></span>
-<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">           2 :       pdata-&gt;in_info.info[tensor_idx].dtype, &amp;nnfw_info.dtype);</span></span>
-<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">           2 :   if (err)</span></span>
-<span id="L472"><span class="lineNum">     472</span> <span class="tlaUNC tlaBgUNC">           0 :     return err;</span></span>
-<span id="L473"><span class="lineNum">     473</span>              : </span>
-<span id="L474"><span class="lineNum">     474</span>              :   /**</span>
-<span id="L475"><span class="lineNum">     475</span>              :    * We should handle proper rank value.</span>
-<span id="L476"><span class="lineNum">     476</span>              :    * The rank returned from gst may be invalid, e.g. the case if batch is 1.</span>
-<span id="L477"><span class="lineNum">     477</span>              :    */</span>
-<span id="L478"><span class="lineNum">     478</span> <span class="tlaGNC tlaBgGNC">           2 :   nnfw_info.rank = gst_tensor_info_get_rank (info);</span></span>
-<span id="L479"><span class="lineNum">     479</span> <span class="tlaGNC">           2 :   if (nnfw_info.rank &lt; pdata-&gt;in_info.info[tensor_idx].rank)</span></span>
-<span id="L480"><span class="lineNum">     480</span> <span class="tlaUNC tlaBgUNC">           0 :     nnfw_info.rank = pdata-&gt;in_info.info[tensor_idx].rank;</span></span>
-<span id="L481"><span class="lineNum">     481</span>              : </span>
-<span id="L482"><span class="lineNum">     482</span>              :   /** @note Maximum rank expressible with nnfw is 6 (NNFW_MAX_RANK) */</span>
-<span id="L483"><span class="lineNum">     483</span> <span class="tlaGNC tlaBgGNC">           2 :   if (nnfw_info.rank &gt; NNFW_MAX_RANK) {</span></span>
-<span id="L484"><span class="lineNum">     484</span> <span class="tlaUNC tlaBgUNC">           0 :     guint min_rank = gst_tensor_dimension_get_min_rank (info-&gt;dimension);</span></span>
-<span id="L485"><span class="lineNum">     485</span> <span class="tlaUNC">           0 :     if (min_rank &lt; NNFW_MAX_RANK)</span></span>
-<span id="L486"><span class="lineNum">     486</span> <span class="tlaUNC">           0 :       nnfw_info.rank = NNFW_MAX_RANK;</span></span>
-<span id="L487"><span class="lineNum">     487</span>              :     else</span>
-<span id="L488"><span class="lineNum">     488</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
-<span id="L489"><span class="lineNum">     489</span>              :   }</span>
-<span id="L490"><span class="lineNum">     490</span>              : </span>
-<span id="L491"><span class="lineNum">     491</span>              :   /** reverse the order of dimension */</span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaGNC tlaBgGNC">           4 :   for (idx = nnfw_info.rank - 1; idx &gt;= 0; idx--)</span></span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaGNC">           2 :     nnfw_info.dims[nnfw_info.rank - idx - 1] = info-&gt;dimension[idx];</span></span>
-<span id="L494"><span class="lineNum">     494</span>              : </span>
-<span id="L495"><span class="lineNum">     495</span> <span class="tlaGNC">          12 :   for (idx = NNFW_MAX_RANK - 1; idx &gt;= nnfw_info.rank; idx--)</span></span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaGNC">          10 :     nnfw_info.dims[idx] = 0;</span></span>
-<span id="L497"><span class="lineNum">     497</span>              : </span>
-<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC">           2 :   return nnfw_set_input_info (pdata, tensor_idx, &amp;nnfw_info);</span></span>
-<span id="L499"><span class="lineNum">     499</span>              : }</span>
+<span id="L426"><span class="lineNum">     426</span> <span class="tlaGNC">          21 :     if (ninfo-&gt;rank &gt; NNS_TENSOR_RANK_LIMIT)</span></span>
+<span id="L427"><span class="lineNum">     427</span> <span class="tlaUNC tlaBgUNC">           0 :       return -ERANGE;</span></span>
+<span id="L428"><span class="lineNum">     428</span>              : </span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC tlaBgGNC">          21 :     if ((status = nnfw_tensor_type_to_gst (ninfo-&gt;dtype, &amp;ginfo-&gt;type)) != 0)</span></span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaUNC tlaBgUNC">           0 :       return status;</span></span>
+<span id="L431"><span class="lineNum">     431</span>              : </span>
+<span id="L432"><span class="lineNum">     432</span> <span class="tlaGNC tlaBgGNC">          46 :     for (idx = ninfo-&gt;rank - 1; idx &gt;= 0; idx--)</span></span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">          25 :       ginfo-&gt;dimension[idx] = ninfo-&gt;dims[ninfo-&gt;rank - idx - 1];</span></span>
+<span id="L434"><span class="lineNum">     434</span>              :   }</span>
+<span id="L435"><span class="lineNum">     435</span>              : </span>
+<span id="L436"><span class="lineNum">     436</span> <span class="tlaGNC">          21 :   gst_info-&gt;num_tensors = nnfw_info-&gt;num_tensors;</span></span>
+<span id="L437"><span class="lineNum">     437</span> <span class="tlaGNC">          21 :   return 0;</span></span>
+<span id="L438"><span class="lineNum">     438</span>              : }</span>
+<span id="L439"><span class="lineNum">     439</span>              : </span>
+<span id="L440"><span class="lineNum">     440</span>              : /**</span>
+<span id="L441"><span class="lineNum">     441</span>              :  * @brief Internal function to set input tensor info.</span>
+<span id="L442"><span class="lineNum">     442</span>              :  */</span>
+<span id="L443"><span class="lineNum">     443</span>              : static int</span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">           2 : nnfw_set_input_info (const nnfw_pdata * pdata, guint idx,</span></span>
+<span id="L445"><span class="lineNum">     445</span>              :     nnfw_tensorinfo * info)</span>
+<span id="L446"><span class="lineNum">     446</span>              : {</span>
+<span id="L447"><span class="lineNum">     447</span>              :   NNFW_STATUS status;</span>
+<span id="L448"><span class="lineNum">     448</span>              : </span>
+<span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC">           2 :   status = nnfw_set_input_tensorinfo (pdata-&gt;session, idx, info);</span></span>
+<span id="L450"><span class="lineNum">     450</span>              : </span>
+<span id="L451"><span class="lineNum">     451</span> <span class="tlaGNC">           2 :   return (status != NNFW_STATUS_NO_ERROR) ? -EPERM : 0;</span></span>
+<span id="L452"><span class="lineNum">     452</span>              : }</span>
+<span id="L453"><span class="lineNum">     453</span>              : </span>
+<span id="L454"><span class="lineNum">     454</span>              : /**</span>
+<span id="L455"><span class="lineNum">     455</span>              :  * @brief register/set input tensor info with nnfw</span>
+<span id="L456"><span class="lineNum">     456</span>              :  * @param[in] pdata private data for nnfw opened instance</span>
+<span id="L457"><span class="lineNum">     457</span>              :  * @param[in] tensors_info info of tensors to be registered</span>
+<span id="L458"><span class="lineNum">     458</span>              :  * @param[in] tensor_idx idx of the tensor to be registered</span>
+<span id="L459"><span class="lineNum">     459</span>              :  * @return 0 on success, errno on failure</span>
+<span id="L460"><span class="lineNum">     460</span>              :  */</span>
+<span id="L461"><span class="lineNum">     461</span>              : static int</span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">           2 : nnfw_tensor_info_set (const nnfw_pdata * pdata,</span></span>
+<span id="L463"><span class="lineNum">     463</span>              :     const GstTensorsInfo * tensors_info, guint tensor_idx)</span>
+<span id="L464"><span class="lineNum">     464</span>              : {</span>
+<span id="L465"><span class="lineNum">     465</span>              :   nnfw_tensorinfo nnfw_info;</span>
+<span id="L466"><span class="lineNum">     466</span>              :   gint err;</span>
+<span id="L467"><span class="lineNum">     467</span>              :   gint idx;</span>
+<span id="L468"><span class="lineNum">     468</span>              :   GstTensorInfo *info;</span>
+<span id="L469"><span class="lineNum">     469</span>              : </span>
+<span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">           2 :   info = gst_tensors_info_get_nth_info ((GstTensorsInfo *) tensors_info,</span></span>
+<span id="L471"><span class="lineNum">     471</span>              :       tensor_idx);</span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">           2 :   if (!info)</span></span>
+<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">           2 :     return -EINVAL;</span></span>
+<span id="L474"><span class="lineNum">     474</span>              : </span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">           4 :   err = nnfw_tensor_type_from_gst (info-&gt;type,</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">           2 :       pdata-&gt;in_info.info[tensor_idx].dtype, &amp;nnfw_info.dtype);</span></span>
+<span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">           2 :   if (err)</span></span>
+<span id="L478"><span class="lineNum">     478</span> <span class="tlaUNC tlaBgUNC">           0 :     return err;</span></span>
+<span id="L479"><span class="lineNum">     479</span>              : </span>
+<span id="L480"><span class="lineNum">     480</span>              :   /**</span>
+<span id="L481"><span class="lineNum">     481</span>              :    * We should handle proper rank value.</span>
+<span id="L482"><span class="lineNum">     482</span>              :    * The rank returned from gst may be invalid, e.g. the case if batch is 1.</span>
+<span id="L483"><span class="lineNum">     483</span>              :    */</span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC tlaBgGNC">           2 :   nnfw_info.rank = gst_tensor_info_get_rank (info);</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">           2 :   if (nnfw_info.rank &lt; pdata-&gt;in_info.info[tensor_idx].rank)</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaUNC tlaBgUNC">           0 :     nnfw_info.rank = pdata-&gt;in_info.info[tensor_idx].rank;</span></span>
+<span id="L487"><span class="lineNum">     487</span>              : </span>
+<span id="L488"><span class="lineNum">     488</span>              :   /** @note Maximum rank expressible with nnfw is 6 (NNFW_MAX_RANK) */</span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC tlaBgGNC">           2 :   if (nnfw_info.rank &gt; NNFW_MAX_RANK) {</span></span>
+<span id="L490"><span class="lineNum">     490</span> <span class="tlaUNC tlaBgUNC">           0 :     guint min_rank = gst_tensor_dimension_get_min_rank (info-&gt;dimension);</span></span>
+<span id="L491"><span class="lineNum">     491</span> <span class="tlaUNC">           0 :     if (min_rank &lt; NNFW_MAX_RANK)</span></span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaUNC">           0 :       nnfw_info.rank = NNFW_MAX_RANK;</span></span>
+<span id="L493"><span class="lineNum">     493</span>              :     else</span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaUNC">           0 :       return -EINVAL;</span></span>
+<span id="L495"><span class="lineNum">     495</span>              :   }</span>
+<span id="L496"><span class="lineNum">     496</span>              : </span>
+<span id="L497"><span class="lineNum">     497</span>              :   /** reverse the order of dimension */</span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaGNC tlaBgGNC">           4 :   for (idx = nnfw_info.rank - 1; idx &gt;= 0; idx--)</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaGNC">           2 :     nnfw_info.dims[nnfw_info.rank - idx - 1] = info-&gt;dimension[idx];</span></span>
 <span id="L500"><span class="lineNum">     500</span>              : </span>
-<span id="L501"><span class="lineNum">     501</span>              : /**</span>
-<span id="L502"><span class="lineNum">     502</span>              :  * @brief get nnfw tensor info in gst format info format from private data</span>
-<span id="L503"><span class="lineNum">     503</span>              :  * @param[in] pdata private data for nnfw opened instance</span>
-<span id="L504"><span class="lineNum">     504</span>              :  * @param[in] is_input to get info about input/output</span>
-<span id="L505"><span class="lineNum">     505</span>              :  * @param[out] info info of tensors given in nnfw format</span>
-<span id="L506"><span class="lineNum">     506</span>              :  * @return 0 on success, errno on failure</span>
-<span id="L507"><span class="lineNum">     507</span>              :  */</span>
-<span id="L508"><span class="lineNum">     508</span>              : static int</span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaGNC">          26 : nnfw_tensors_info_get (const nnfw_pdata * pdata, const gboolean is_input,</span></span>
-<span id="L510"><span class="lineNum">     510</span>              :     nnfw_tinfo_s * info)</span>
-<span id="L511"><span class="lineNum">     511</span>              : {</span>
-<span id="L512"><span class="lineNum">     512</span>              :   NNFW_STATUS status;</span>
-<span id="L513"><span class="lineNum">     513</span>              :   guint idx;</span>
-<span id="L514"><span class="lineNum">     514</span>              : </span>
-<span id="L515"><span class="lineNum">     515</span>              :   /** First get number of outputs */</span>
-<span id="L516"><span class="lineNum">     516</span> <span class="tlaGNC">          26 :   if (is_input)</span></span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaGNC">          13 :     status = nnfw_input_size (pdata-&gt;session, &amp;info-&gt;num_tensors);</span></span>
-<span id="L518"><span class="lineNum">     518</span>              :   else</span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaGNC">          13 :     status = nnfw_output_size (pdata-&gt;session, &amp;info-&gt;num_tensors);</span></span>
-<span id="L520"><span class="lineNum">     520</span> <span class="tlaGNC">          26 :   if (status != NNFW_STATUS_NO_ERROR)</span></span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EPERM;</span></span>
-<span id="L522"><span class="lineNum">     522</span>              : </span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC tlaBgGNC">          26 :   if (info-&gt;num_tensors &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaUNC tlaBgUNC">           0 :     return -ERANGE;</span></span>
-<span id="L525"><span class="lineNum">     525</span>              : </span>
-<span id="L526"><span class="lineNum">     526</span>              :   /** Now fill each outputs */</span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaGNC tlaBgGNC">          52 :   for (idx = 0; idx &lt; info-&gt;num_tensors; idx++) {</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">          26 :     if (is_input)</span></span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC">          13 :       status = nnfw_input_tensorinfo (pdata-&gt;session, idx, &amp;info-&gt;info[idx]);</span></span>
-<span id="L530"><span class="lineNum">     530</span>              :     else</span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaGNC">          13 :       status = nnfw_output_tensorinfo (pdata-&gt;session, idx, &amp;info-&gt;info[idx]);</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaGNC">          26 :     if (status != NNFW_STATUS_NO_ERROR)</span></span>
-<span id="L533"><span class="lineNum">     533</span> <span class="tlaUNC tlaBgUNC">           0 :       return -EINVAL;</span></span>
-<span id="L534"><span class="lineNum">     534</span>              :   }</span>
-<span id="L535"><span class="lineNum">     535</span>              : </span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaGNC tlaBgGNC">          26 :   return 0;</span></span>
-<span id="L537"><span class="lineNum">     537</span>              : }</span>
-<span id="L538"><span class="lineNum">     538</span>              : </span>
-<span id="L539"><span class="lineNum">     539</span>              : /**</span>
-<span id="L540"><span class="lineNum">     540</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L541"><span class="lineNum">     541</span>              :  */</span>
-<span id="L542"><span class="lineNum">     542</span>              : static int</span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaGNC">          10 : nnfw_getInputDim (const GstTensorFilterProperties * prop,</span></span>
-<span id="L544"><span class="lineNum">     544</span>              :     void **private_data, GstTensorsInfo * info)</span>
-<span id="L545"><span class="lineNum">     545</span>              : {</span>
-<span id="L546"><span class="lineNum">     546</span>              :   nnfw_pdata *pdata;</span>
-<span id="L547"><span class="lineNum">     547</span>              :   UNUSED (prop);</span>
-<span id="L548"><span class="lineNum">     548</span>              : </span>
-<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">          10 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
-<span id="L550"><span class="lineNum">     550</span> <span class="tlaGNC">          10 :   pdata = (nnfw_pdata *) * private_data;</span></span>
-<span id="L551"><span class="lineNum">     551</span>              : </span>
-<span id="L552"><span class="lineNum">     552</span> <span class="tlaGNC">          10 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
-<span id="L553"><span class="lineNum">     553</span> <span class="tlaGNC">           9 :   g_return_val_if_fail (info != NULL, -EINVAL);</span></span>
+<span id="L501"><span class="lineNum">     501</span> <span class="tlaGNC">          12 :   for (idx = NNFW_MAX_RANK - 1; idx &gt;= nnfw_info.rank; idx--)</span></span>
+<span id="L502"><span class="lineNum">     502</span> <span class="tlaGNC">          10 :     nnfw_info.dims[idx] = 0;</span></span>
+<span id="L503"><span class="lineNum">     503</span>              : </span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaGNC">           2 :   return nnfw_set_input_info (pdata, tensor_idx, &amp;nnfw_info);</span></span>
+<span id="L505"><span class="lineNum">     505</span>              : }</span>
+<span id="L506"><span class="lineNum">     506</span>              : </span>
+<span id="L507"><span class="lineNum">     507</span>              : /**</span>
+<span id="L508"><span class="lineNum">     508</span>              :  * @brief get nnfw tensor info in gst format info format from private data</span>
+<span id="L509"><span class="lineNum">     509</span>              :  * @param[in] pdata private data for nnfw opened instance</span>
+<span id="L510"><span class="lineNum">     510</span>              :  * @param[in] is_input to get info about input/output</span>
+<span id="L511"><span class="lineNum">     511</span>              :  * @param[out] info info of tensors given in nnfw format</span>
+<span id="L512"><span class="lineNum">     512</span>              :  * @return 0 on success, errno on failure</span>
+<span id="L513"><span class="lineNum">     513</span>              :  */</span>
+<span id="L514"><span class="lineNum">     514</span>              : static int</span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaGNC">          26 : nnfw_tensors_info_get (const nnfw_pdata * pdata, const gboolean is_input,</span></span>
+<span id="L516"><span class="lineNum">     516</span>              :     nnfw_tinfo_s * info)</span>
+<span id="L517"><span class="lineNum">     517</span>              : {</span>
+<span id="L518"><span class="lineNum">     518</span>              :   NNFW_STATUS status;</span>
+<span id="L519"><span class="lineNum">     519</span>              :   guint idx;</span>
+<span id="L520"><span class="lineNum">     520</span>              : </span>
+<span id="L521"><span class="lineNum">     521</span>              :   /** First get number of outputs */</span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaGNC">          26 :   if (is_input)</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaGNC">          13 :     status = nnfw_input_size (pdata-&gt;session, &amp;info-&gt;num_tensors);</span></span>
+<span id="L524"><span class="lineNum">     524</span>              :   else</span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">          13 :     status = nnfw_output_size (pdata-&gt;session, &amp;info-&gt;num_tensors);</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">          26 :   if (status != NNFW_STATUS_NO_ERROR)</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EPERM;</span></span>
+<span id="L528"><span class="lineNum">     528</span>              : </span>
+<span id="L529"><span class="lineNum">     529</span> <span class="tlaGNC tlaBgGNC">          26 :   if (info-&gt;num_tensors &gt; NNS_TENSOR_SIZE_LIMIT)</span></span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaUNC tlaBgUNC">           0 :     return -ERANGE;</span></span>
+<span id="L531"><span class="lineNum">     531</span>              : </span>
+<span id="L532"><span class="lineNum">     532</span>              :   /** Now fill each outputs */</span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaGNC tlaBgGNC">          52 :   for (idx = 0; idx &lt; info-&gt;num_tensors; idx++) {</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaGNC">          26 :     if (is_input)</span></span>
+<span id="L535"><span class="lineNum">     535</span> <span class="tlaGNC">          13 :       status = nnfw_input_tensorinfo (pdata-&gt;session, idx, &amp;info-&gt;info[idx]);</span></span>
+<span id="L536"><span class="lineNum">     536</span>              :     else</span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaGNC">          13 :       status = nnfw_output_tensorinfo (pdata-&gt;session, idx, &amp;info-&gt;info[idx]);</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaGNC">          26 :     if (status != NNFW_STATUS_NO_ERROR)</span></span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaUNC tlaBgUNC">           0 :       return -EINVAL;</span></span>
+<span id="L540"><span class="lineNum">     540</span>              :   }</span>
+<span id="L541"><span class="lineNum">     541</span>              : </span>
+<span id="L542"><span class="lineNum">     542</span> <span class="tlaGNC tlaBgGNC">          26 :   return 0;</span></span>
+<span id="L543"><span class="lineNum">     543</span>              : }</span>
+<span id="L544"><span class="lineNum">     544</span>              : </span>
+<span id="L545"><span class="lineNum">     545</span>              : /**</span>
+<span id="L546"><span class="lineNum">     546</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L547"><span class="lineNum">     547</span>              :  */</span>
+<span id="L548"><span class="lineNum">     548</span>              : static int</span>
+<span id="L549"><span class="lineNum">     549</span> <span class="tlaGNC">          10 : nnfw_getInputDim (const GstTensorFilterProperties * prop,</span></span>
+<span id="L550"><span class="lineNum">     550</span>              :     void **private_data, GstTensorsInfo * info)</span>
+<span id="L551"><span class="lineNum">     551</span>              : {</span>
+<span id="L552"><span class="lineNum">     552</span>              :   nnfw_pdata *pdata;</span>
+<span id="L553"><span class="lineNum">     553</span>              :   UNUSED (prop);</span>
 <span id="L554"><span class="lineNum">     554</span>              : </span>
-<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">           8 :   return nnfw_convert_to_gst_info (&amp;pdata-&gt;in_info, info);</span></span>
-<span id="L556"><span class="lineNum">     556</span>              : }</span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">          10 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">          10 :   pdata = (nnfw_pdata *) * private_data;</span></span>
 <span id="L557"><span class="lineNum">     557</span>              : </span>
-<span id="L558"><span class="lineNum">     558</span>              : /**</span>
-<span id="L559"><span class="lineNum">     559</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L560"><span class="lineNum">     560</span>              :  */</span>
-<span id="L561"><span class="lineNum">     561</span>              : static int</span>
-<span id="L562"><span class="lineNum">     562</span> <span class="tlaGNC">           7 : nnfw_getOutputDim (const GstTensorFilterProperties * prop,</span></span>
-<span id="L563"><span class="lineNum">     563</span>              :     void **private_data, GstTensorsInfo * info)</span>
-<span id="L564"><span class="lineNum">     564</span>              : {</span>
-<span id="L565"><span class="lineNum">     565</span>              :   nnfw_pdata *pdata;</span>
-<span id="L566"><span class="lineNum">     566</span>              :   UNUSED (prop);</span>
-<span id="L567"><span class="lineNum">     567</span>              : </span>
-<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
-<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">           7 :   pdata = (nnfw_pdata *) * private_data;</span></span>
-<span id="L570"><span class="lineNum">     570</span>              : </span>
-<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
-<span id="L572"><span class="lineNum">     572</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (info != NULL, -EINVAL);</span></span>
+<span id="L558"><span class="lineNum">     558</span> <span class="tlaGNC">          10 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
+<span id="L559"><span class="lineNum">     559</span> <span class="tlaGNC">           9 :   g_return_val_if_fail (info != NULL, -EINVAL);</span></span>
+<span id="L560"><span class="lineNum">     560</span>              : </span>
+<span id="L561"><span class="lineNum">     561</span> <span class="tlaGNC">           8 :   return nnfw_convert_to_gst_info (&amp;pdata-&gt;in_info, info);</span></span>
+<span id="L562"><span class="lineNum">     562</span>              : }</span>
+<span id="L563"><span class="lineNum">     563</span>              : </span>
+<span id="L564"><span class="lineNum">     564</span>              : /**</span>
+<span id="L565"><span class="lineNum">     565</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L566"><span class="lineNum">     566</span>              :  */</span>
+<span id="L567"><span class="lineNum">     567</span>              : static int</span>
+<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">           7 : nnfw_getOutputDim (const GstTensorFilterProperties * prop,</span></span>
+<span id="L569"><span class="lineNum">     569</span>              :     void **private_data, GstTensorsInfo * info)</span>
+<span id="L570"><span class="lineNum">     570</span>              : {</span>
+<span id="L571"><span class="lineNum">     571</span>              :   nnfw_pdata *pdata;</span>
+<span id="L572"><span class="lineNum">     572</span>              :   UNUSED (prop);</span>
 <span id="L573"><span class="lineNum">     573</span>              : </span>
-<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">           5 :   return nnfw_convert_to_gst_info (&amp;pdata-&gt;out_info, info);</span></span>
-<span id="L575"><span class="lineNum">     575</span>              : }</span>
+<span id="L574"><span class="lineNum">     574</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
+<span id="L575"><span class="lineNum">     575</span> <span class="tlaGNC">           7 :   pdata = (nnfw_pdata *) * private_data;</span></span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
-<span id="L577"><span class="lineNum">     577</span>              : /**</span>
-<span id="L578"><span class="lineNum">     578</span>              :  * @brief Internal function to invoke with dummy data.</span>
-<span id="L579"><span class="lineNum">     579</span>              :  * When changing the input shape, NNFW will update the output shape after the invoke process is done.</span>
-<span id="L580"><span class="lineNum">     580</span>              :  */</span>
-<span id="L581"><span class="lineNum">     581</span>              : static gboolean</span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">           2 : nnfw_invoke_dummy (const nnfw_pdata * pdata, const nnfw_tinfo_s * in_info,</span></span>
-<span id="L583"><span class="lineNum">     583</span>              :     const nnfw_tinfo_s * out_info)</span>
-<span id="L584"><span class="lineNum">     584</span>              : {</span>
-<span id="L585"><span class="lineNum">     585</span>              :   GstTensorsInfo gst_in_info, gst_out_info;</span>
-<span id="L586"><span class="lineNum">     586</span>              :   GstTensorInfo *_info;</span>
-<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">           2 :   GstTensorMemory input[NNS_TENSOR_SIZE_LIMIT] = { {0} };</span></span>
-<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">           2 :   GstTensorMemory output[NNS_TENSOR_SIZE_LIMIT] = { {0} };</span></span>
-<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">           2 :   gboolean invoked = FALSE;</span></span>
-<span id="L590"><span class="lineNum">     590</span>              :   guint i, retry;</span>
-<span id="L591"><span class="lineNum">     591</span>              :   int err;</span>
-<span id="L592"><span class="lineNum">     592</span>              : </span>
-<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">           2 :   gst_tensors_info_init (&amp;gst_in_info);</span></span>
-<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">           2 :   gst_tensors_info_init (&amp;gst_out_info);</span></span>
-<span id="L595"><span class="lineNum">     595</span>              : </span>
-<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">           2 :   if (nnfw_convert_to_gst_info (in_info, &amp;gst_in_info) != 0 ||</span></span>
-<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">           2 :       nnfw_convert_to_gst_info (out_info, &amp;gst_out_info) != 0) {</span></span>
-<span id="L598"><span class="lineNum">     598</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to convert nnfw info.&quot;);</span></span>
-<span id="L599"><span class="lineNum">     599</span> <span class="tlaUNC">           0 :     goto done;</span></span>
-<span id="L600"><span class="lineNum">     600</span>              :   }</span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaGNC">           7 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (info != NULL, -EINVAL);</span></span>
+<span id="L579"><span class="lineNum">     579</span>              : </span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">           5 :   return nnfw_convert_to_gst_info (&amp;pdata-&gt;out_info, info);</span></span>
+<span id="L581"><span class="lineNum">     581</span>              : }</span>
+<span id="L582"><span class="lineNum">     582</span>              : </span>
+<span id="L583"><span class="lineNum">     583</span>              : /**</span>
+<span id="L584"><span class="lineNum">     584</span>              :  * @brief Internal function to invoke with dummy data.</span>
+<span id="L585"><span class="lineNum">     585</span>              :  * When changing the input shape, NNFW will update the output shape after the invoke process is done.</span>
+<span id="L586"><span class="lineNum">     586</span>              :  */</span>
+<span id="L587"><span class="lineNum">     587</span>              : static gboolean</span>
+<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">           2 : nnfw_invoke_dummy (const nnfw_pdata * pdata, const nnfw_tinfo_s * in_info,</span></span>
+<span id="L589"><span class="lineNum">     589</span>              :     const nnfw_tinfo_s * out_info)</span>
+<span id="L590"><span class="lineNum">     590</span>              : {</span>
+<span id="L591"><span class="lineNum">     591</span>              :   GstTensorsInfo gst_in_info, gst_out_info;</span>
+<span id="L592"><span class="lineNum">     592</span>              :   GstTensorInfo *_info;</span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">           2 :   GstTensorMemory input[NNS_TENSOR_SIZE_LIMIT] = { {0} };</span></span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">           2 :   GstTensorMemory output[NNS_TENSOR_SIZE_LIMIT] = { {0} };</span></span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">           2 :   gboolean invoked = FALSE;</span></span>
+<span id="L596"><span class="lineNum">     596</span>              :   guint i, retry;</span>
+<span id="L597"><span class="lineNum">     597</span>              :   int err;</span>
+<span id="L598"><span class="lineNum">     598</span>              : </span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">           2 :   gst_tensors_info_init (&amp;gst_in_info);</span></span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">           2 :   gst_tensors_info_init (&amp;gst_out_info);</span></span>
 <span id="L601"><span class="lineNum">     601</span>              : </span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC tlaBgGNC">           4 :   for (i = 0; i &lt; gst_in_info.num_tensors; ++i) {</span></span>
-<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           2 :     _info = gst_tensors_info_get_nth_info (&amp;gst_in_info, i);</span></span>
-<span id="L604"><span class="lineNum">     604</span>              : </span>
-<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">           2 :     input[i].size = gst_tensor_info_get_size (_info);</span></span>
-<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">           2 :     input[i].data = g_malloc0 (input[i].size);</span></span>
-<span id="L607"><span class="lineNum">     607</span>              :   }</span>
-<span id="L608"><span class="lineNum">     608</span>              : </span>
-<span id="L609"><span class="lineNum">     609</span>              :   /* The output shape would be changed, set enough size for output buffer. */</span>
-<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
-<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">           2 :     _info = gst_tensors_info_get_nth_info (&amp;gst_out_info, i);</span></span>
-<span id="L612"><span class="lineNum">     612</span>              : </span>
-<span id="L613"><span class="lineNum">     613</span> <span class="tlaGNC">           2 :     output[i].size = gst_tensor_info_get_size (_info) * 2;</span></span>
-<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">           2 :     output[i].data = g_malloc0 (output[i].size);</span></span>
-<span id="L615"><span class="lineNum">     615</span>              :   }</span>
-<span id="L616"><span class="lineNum">     616</span>              : </span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           2 :   retry = 0;</span></span>
-<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">           4 :   while ((err = nnfw_invoke_internal (pdata, in_info, out_info, input, output)) != 0) {</span></span>
-<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           2 :     if (err != -EAGAIN) {</span></span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Invoke failed, cannot update input info.&quot;);</span></span>
-<span id="L621"><span class="lineNum">     621</span> <span class="tlaUNC">           0 :       goto done;</span></span>
-<span id="L622"><span class="lineNum">     622</span>              :     }</span>
-<span id="L623"><span class="lineNum">     623</span>              : </span>
-<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC tlaBgGNC">           2 :     nns_logw (&quot;Invoke failed, reallocate output tensors and retry (%u).&quot;, ++retry);</span></span>
-<span id="L625"><span class="lineNum">     625</span>              : </span>
-<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">           4 :     for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
-<span id="L627"><span class="lineNum">     627</span> <span class="tlaGNC">           2 :       output[i].size *= 2;</span></span>
-<span id="L628"><span class="lineNum">     628</span> <span class="tlaGNC">           2 :       g_free (output[i].data);</span></span>
-<span id="L629"><span class="lineNum">     629</span> <span class="tlaGNC">           2 :       output[i].data = g_malloc0 (output[i].size);</span></span>
-<span id="L630"><span class="lineNum">     630</span>              :     }</span>
-<span id="L631"><span class="lineNum">     631</span>              :   }</span>
-<span id="L632"><span class="lineNum">     632</span>              : </span>
-<span id="L633"><span class="lineNum">     633</span> <span class="tlaGNC">           2 :   invoked = TRUE;</span></span>
-<span id="L634"><span class="lineNum">     634</span>              : </span>
-<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           2 : done:</span></span>
-<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_in_info.num_tensors; ++i) {</span></span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">           2 :     g_free (input[i].data);</span></span>
-<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">           2 :     input[i].data = NULL;</span></span>
-<span id="L639"><span class="lineNum">     639</span>              :   }</span>
-<span id="L640"><span class="lineNum">     640</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
-<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">           2 :     g_free (output[i].data);</span></span>
-<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">           2 :     output[i].data = NULL;</span></span>
-<span id="L643"><span class="lineNum">     643</span>              :   }</span>
-<span id="L644"><span class="lineNum">     644</span>              : </span>
-<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">           2 :   gst_tensors_info_free (&amp;gst_in_info);</span></span>
-<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">           2 :   gst_tensors_info_free (&amp;gst_out_info);</span></span>
-<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           2 :   return invoked;</span></span>
-<span id="L648"><span class="lineNum">     648</span>              : }</span>
-<span id="L649"><span class="lineNum">     649</span>              : </span>
-<span id="L650"><span class="lineNum">     650</span>              : /**</span>
-<span id="L651"><span class="lineNum">     651</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L652"><span class="lineNum">     652</span>              :  */</span>
-<span id="L653"><span class="lineNum">     653</span>              : static int</span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">           6 : nnfw_setInputDim (const GstTensorFilterProperties * prop, void **private_data,</span></span>
-<span id="L655"><span class="lineNum">     655</span>              :     const GstTensorsInfo * in_info, GstTensorsInfo * out_info)</span>
-<span id="L656"><span class="lineNum">     656</span>              : {</span>
-<span id="L657"><span class="lineNum">     657</span>              :   nnfw_pdata *pdata;</span>
-<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">           6 :   int err = 0;</span></span>
-<span id="L659"><span class="lineNum">     659</span>              :   guint idx;</span>
-<span id="L660"><span class="lineNum">     660</span>              :   nnfw_tinfo_s *nnfw_in_info, *nnfw_out_info;</span>
-<span id="L661"><span class="lineNum">     661</span>              :   GstTensorsInfo gst_in_info;</span>
-<span id="L662"><span class="lineNum">     662</span>              :   UNUSED (prop);</span>
-<span id="L663"><span class="lineNum">     663</span>              : </span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">          12 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
-<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (in_info != NULL, -EINVAL);</span></span>
-<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">           5 :   g_return_val_if_fail (out_info != NULL, -EINVAL);</span></span>
-<span id="L667"><span class="lineNum">     667</span>              : </span>
-<span id="L668"><span class="lineNum">     668</span> <span class="tlaGNC">           4 :   pdata = (nnfw_pdata *) * private_data;</span></span>
-<span id="L669"><span class="lineNum">     669</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
-<span id="L670"><span class="lineNum">     670</span>              : </span>
-<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC">           2 :   if (in_info-&gt;num_tensors != pdata-&gt;in_info.num_tensors)</span></span>
-<span id="L672"><span class="lineNum">     672</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EPERM;</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">           2 :   if (nnfw_convert_to_gst_info (in_info, &amp;gst_in_info) != 0 ||</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">           2 :       nnfw_convert_to_gst_info (out_info, &amp;gst_out_info) != 0) {</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to convert nnfw info.&quot;);</span></span>
+<span id="L605"><span class="lineNum">     605</span> <span class="tlaUNC">           0 :     goto done;</span></span>
+<span id="L606"><span class="lineNum">     606</span>              :   }</span>
+<span id="L607"><span class="lineNum">     607</span>              : </span>
+<span id="L608"><span class="lineNum">     608</span> <span class="tlaGNC tlaBgGNC">           4 :   for (i = 0; i &lt; gst_in_info.num_tensors; ++i) {</span></span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">           2 :     _info = gst_tensors_info_get_nth_info (&amp;gst_in_info, i);</span></span>
+<span id="L610"><span class="lineNum">     610</span>              : </span>
+<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">           2 :     input[i].size = gst_tensor_info_get_size (_info);</span></span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaGNC">           2 :     input[i].data = g_malloc0 (input[i].size);</span></span>
+<span id="L613"><span class="lineNum">     613</span>              :   }</span>
+<span id="L614"><span class="lineNum">     614</span>              : </span>
+<span id="L615"><span class="lineNum">     615</span>              :   /* The output shape would be changed, set enough size for output buffer. */</span>
+<span id="L616"><span class="lineNum">     616</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">           2 :     _info = gst_tensors_info_get_nth_info (&amp;gst_out_info, i);</span></span>
+<span id="L618"><span class="lineNum">     618</span>              : </span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">           2 :     output[i].size = gst_tensor_info_get_size (_info) * 2;</span></span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">           2 :     output[i].data = g_malloc0 (output[i].size);</span></span>
+<span id="L621"><span class="lineNum">     621</span>              :   }</span>
+<span id="L622"><span class="lineNum">     622</span>              : </span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">           2 :   retry = 0;</span></span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">           4 :   while ((err = nnfw_invoke_internal (pdata, in_info, out_info, input, output)) != 0) {</span></span>
+<span id="L625"><span class="lineNum">     625</span> <span class="tlaGNC">           2 :     if (err != -EAGAIN) {</span></span>
+<span id="L626"><span class="lineNum">     626</span> <span class="tlaUNC tlaBgUNC">           0 :       nns_loge (&quot;Invoke failed, cannot update input info.&quot;);</span></span>
+<span id="L627"><span class="lineNum">     627</span> <span class="tlaUNC">           0 :       goto done;</span></span>
+<span id="L628"><span class="lineNum">     628</span>              :     }</span>
+<span id="L629"><span class="lineNum">     629</span>              : </span>
+<span id="L630"><span class="lineNum">     630</span> <span class="tlaGNC tlaBgGNC">           2 :     nns_logw (&quot;Invoke failed, reallocate output tensors and retry (%u).&quot;, ++retry);</span></span>
+<span id="L631"><span class="lineNum">     631</span>              : </span>
+<span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">           4 :     for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
+<span id="L633"><span class="lineNum">     633</span> <span class="tlaGNC">           2 :       output[i].size *= 2;</span></span>
+<span id="L634"><span class="lineNum">     634</span> <span class="tlaGNC">           2 :       g_free (output[i].data);</span></span>
+<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">           2 :       output[i].data = g_malloc0 (output[i].size);</span></span>
+<span id="L636"><span class="lineNum">     636</span>              :     }</span>
+<span id="L637"><span class="lineNum">     637</span>              :   }</span>
+<span id="L638"><span class="lineNum">     638</span>              : </span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">           2 :   invoked = TRUE;</span></span>
+<span id="L640"><span class="lineNum">     640</span>              : </span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">           2 : done:</span></span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_in_info.num_tensors; ++i) {</span></span>
+<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC">           2 :     g_free (input[i].data);</span></span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">           2 :     input[i].data = NULL;</span></span>
+<span id="L645"><span class="lineNum">     645</span>              :   }</span>
+<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">           4 :   for (i = 0; i &lt; gst_out_info.num_tensors; ++i) {</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">           2 :     g_free (output[i].data);</span></span>
+<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">           2 :     output[i].data = NULL;</span></span>
+<span id="L649"><span class="lineNum">     649</span>              :   }</span>
+<span id="L650"><span class="lineNum">     650</span>              : </span>
+<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">           2 :   gst_tensors_info_free (&amp;gst_in_info);</span></span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">           2 :   gst_tensors_info_free (&amp;gst_out_info);</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaGNC">           2 :   return invoked;</span></span>
+<span id="L654"><span class="lineNum">     654</span>              : }</span>
+<span id="L655"><span class="lineNum">     655</span>              : </span>
+<span id="L656"><span class="lineNum">     656</span>              : /**</span>
+<span id="L657"><span class="lineNum">     657</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L658"><span class="lineNum">     658</span>              :  */</span>
+<span id="L659"><span class="lineNum">     659</span>              : static int</span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">           6 : nnfw_setInputDim (const GstTensorFilterProperties * prop, void **private_data,</span></span>
+<span id="L661"><span class="lineNum">     661</span>              :     const GstTensorsInfo * in_info, GstTensorsInfo * out_info)</span>
+<span id="L662"><span class="lineNum">     662</span>              : {</span>
+<span id="L663"><span class="lineNum">     663</span>              :   nnfw_pdata *pdata;</span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">           6 :   int err = 0;</span></span>
+<span id="L665"><span class="lineNum">     665</span>              :   guint idx;</span>
+<span id="L666"><span class="lineNum">     666</span>              :   nnfw_tinfo_s *nnfw_in_info, *nnfw_out_info;</span>
+<span id="L667"><span class="lineNum">     667</span>              :   GstTensorsInfo gst_in_info;</span>
+<span id="L668"><span class="lineNum">     668</span>              :   UNUSED (prop);</span>
+<span id="L669"><span class="lineNum">     669</span>              : </span>
+<span id="L670"><span class="lineNum">     670</span> <span class="tlaGNC">          12 :   g_return_val_if_fail (private_data != NULL, -EINVAL);</span></span>
+<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC">           6 :   g_return_val_if_fail (in_info != NULL, -EINVAL);</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">           5 :   g_return_val_if_fail (out_info != NULL, -EINVAL);</span></span>
 <span id="L673"><span class="lineNum">     673</span>              : </span>
-<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC tlaBgGNC">           2 :   nnfw_in_info = g_new0 (nnfw_tinfo_s, 1);</span></span>
-<span id="L675"><span class="lineNum">     675</span> <span class="tlaGNC">           2 :   nnfw_out_info = g_new0 (nnfw_tinfo_s, 1);</span></span>
+<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">           4 :   pdata = (nnfw_pdata *) * private_data;</span></span>
+<span id="L675"><span class="lineNum">     675</span> <span class="tlaGNC">           4 :   g_return_val_if_fail (pdata != NULL, -EINVAL);</span></span>
 <span id="L676"><span class="lineNum">     676</span>              : </span>
-<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">           4 :   for (idx = 0; idx &lt; pdata-&gt;in_info.num_tensors; idx++) {</span></span>
-<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">           2 :     err = nnfw_tensor_info_set (pdata, in_info, idx);</span></span>
-<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">           2 :     if (err)</span></span>
-<span id="L680"><span class="lineNum">     680</span> <span class="tlaUNC tlaBgUNC">           0 :       goto error;</span></span>
-<span id="L681"><span class="lineNum">     681</span>              :   }</span>
+<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">           2 :   if (in_info-&gt;num_tensors != pdata-&gt;in_info.num_tensors)</span></span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaUNC tlaBgUNC">           0 :     return -EPERM;</span></span>
+<span id="L679"><span class="lineNum">     679</span>              : </span>
+<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC tlaBgGNC">           2 :   nnfw_in_info = g_new0 (nnfw_tinfo_s, 1);</span></span>
+<span id="L681"><span class="lineNum">     681</span> <span class="tlaGNC">           2 :   nnfw_out_info = g_new0 (nnfw_tinfo_s, 1);</span></span>
 <span id="L682"><span class="lineNum">     682</span>              : </span>
-<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_tensors_info_get (pdata, TRUE, nnfw_in_info);</span></span>
-<span id="L684"><span class="lineNum">     684</span> <span class="tlaGNC">           2 :   if (err)</span></span>
-<span id="L685"><span class="lineNum">     685</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
-<span id="L686"><span class="lineNum">     686</span>              : </span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_convert_to_gst_info (nnfw_in_info, &amp;gst_in_info);</span></span>
-<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">           2 :   if (err == 0) {</span></span>
-<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">           2 :     if (!gst_tensors_info_is_equal (in_info, &amp;gst_in_info)) {</span></span>
-<span id="L690"><span class="lineNum">     690</span> <span class="tlaUNC tlaBgUNC">           0 :       err = -EINVAL;</span></span>
-<span id="L691"><span class="lineNum">     691</span>              :     }</span>
-<span id="L692"><span class="lineNum">     692</span>              :   }</span>
-<span id="L693"><span class="lineNum">     693</span>              : </span>
-<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC tlaBgGNC">           2 :   gst_tensors_info_free (&amp;gst_in_info);</span></span>
-<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">           2 :   if (err)</span></span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
-<span id="L697"><span class="lineNum">     697</span>              : </span>
-<span id="L698"><span class="lineNum">     698</span>              :   /* Invoke with dummy. NNFW updates output info after the invoke is done. */</span>
-<span id="L699"><span class="lineNum">     699</span> <span class="tlaGNC tlaBgGNC">           2 :   if (!nnfw_invoke_dummy (pdata, nnfw_in_info, &amp;pdata-&gt;out_info)) {</span></span>
-<span id="L700"><span class="lineNum">     700</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to invoke the model with changed input info.&quot;);</span></span>
-<span id="L701"><span class="lineNum">     701</span> <span class="tlaUNC">           0 :     goto error;</span></span>
-<span id="L702"><span class="lineNum">     702</span>              :   }</span>
+<span id="L683"><span class="lineNum">     683</span> <span class="tlaGNC">           4 :   for (idx = 0; idx &lt; pdata-&gt;in_info.num_tensors; idx++) {</span></span>
+<span id="L684"><span class="lineNum">     684</span> <span class="tlaGNC">           2 :     err = nnfw_tensor_info_set (pdata, in_info, idx);</span></span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">           2 :     if (err)</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaUNC tlaBgUNC">           0 :       goto error;</span></span>
+<span id="L687"><span class="lineNum">     687</span>              :   }</span>
+<span id="L688"><span class="lineNum">     688</span>              : </span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_tensors_info_get (pdata, TRUE, nnfw_in_info);</span></span>
+<span id="L690"><span class="lineNum">     690</span> <span class="tlaGNC">           2 :   if (err)</span></span>
+<span id="L691"><span class="lineNum">     691</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
+<span id="L692"><span class="lineNum">     692</span>              : </span>
+<span id="L693"><span class="lineNum">     693</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_convert_to_gst_info (nnfw_in_info, &amp;gst_in_info);</span></span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaGNC">           2 :   if (err == 0) {</span></span>
+<span id="L695"><span class="lineNum">     695</span> <span class="tlaGNC">           2 :     if (!gst_tensors_info_is_equal (in_info, &amp;gst_in_info)) {</span></span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaUNC tlaBgUNC">           0 :       err = -EINVAL;</span></span>
+<span id="L697"><span class="lineNum">     697</span>              :     }</span>
+<span id="L698"><span class="lineNum">     698</span>              :   }</span>
+<span id="L699"><span class="lineNum">     699</span>              : </span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC tlaBgGNC">           2 :   gst_tensors_info_free (&amp;gst_in_info);</span></span>
+<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">           2 :   if (err)</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
 <span id="L703"><span class="lineNum">     703</span>              : </span>
-<span id="L704"><span class="lineNum">     704</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_tensors_info_get (pdata, FALSE, nnfw_out_info);</span></span>
-<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC">           2 :   if (err)</span></span>
-<span id="L706"><span class="lineNum">     706</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
-<span id="L707"><span class="lineNum">     707</span>              : </span>
-<span id="L708"><span class="lineNum">     708</span>              :   /* Fill output info and update it in pdata. */</span>
-<span id="L709"><span class="lineNum">     709</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_convert_to_gst_info (nnfw_out_info, out_info);</span></span>
-<span id="L710"><span class="lineNum">     710</span>              : </span>
-<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           2 : error:</span></span>
-<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">           2 :   if (err) {</span></span>
-<span id="L713"><span class="lineNum">     713</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Unable to set the provided input tensor info.&quot;);</span></span>
-<span id="L714"><span class="lineNum">     714</span>              :     /* Reset input dimensions */</span>
-<span id="L715"><span class="lineNum">     715</span> <span class="tlaUNC">           0 :     for (idx = 0; idx &lt; pdata-&gt;in_info.num_tensors; idx++)</span></span>
-<span id="L716"><span class="lineNum">     716</span> <span class="tlaUNC">           0 :       nnfw_set_input_info (pdata, idx, &amp;pdata-&gt;in_info.info[idx]);</span></span>
-<span id="L717"><span class="lineNum">     717</span>              : </span>
-<span id="L718"><span class="lineNum">     718</span> <span class="tlaUNC">           0 :     nnfw_invoke_dummy (pdata, &amp;pdata-&gt;in_info, &amp;pdata-&gt;out_info);</span></span>
-<span id="L719"><span class="lineNum">     719</span>              :   } else {</span>
-<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC tlaBgGNC">           2 :     memcpy (&amp;pdata-&gt;in_info, nnfw_in_info, sizeof (nnfw_tinfo_s));</span></span>
-<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">           2 :     memcpy (&amp;pdata-&gt;out_info, nnfw_out_info, sizeof (nnfw_tinfo_s));</span></span>
-<span id="L722"><span class="lineNum">     722</span>              :   }</span>
+<span id="L704"><span class="lineNum">     704</span>              :   /* Invoke with dummy. NNFW updates output info after the invoke is done. */</span>
+<span id="L705"><span class="lineNum">     705</span> <span class="tlaGNC tlaBgGNC">           2 :   if (!nnfw_invoke_dummy (pdata, nnfw_in_info, &amp;pdata-&gt;out_info)) {</span></span>
+<span id="L706"><span class="lineNum">     706</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Failed to invoke the model with changed input info.&quot;);</span></span>
+<span id="L707"><span class="lineNum">     707</span> <span class="tlaUNC">           0 :     goto error;</span></span>
+<span id="L708"><span class="lineNum">     708</span>              :   }</span>
+<span id="L709"><span class="lineNum">     709</span>              : </span>
+<span id="L710"><span class="lineNum">     710</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_tensors_info_get (pdata, FALSE, nnfw_out_info);</span></span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">           2 :   if (err)</span></span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaUNC tlaBgUNC">           0 :     goto error;</span></span>
+<span id="L713"><span class="lineNum">     713</span>              : </span>
+<span id="L714"><span class="lineNum">     714</span>              :   /* Fill output info and update it in pdata. */</span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC tlaBgGNC">           2 :   err = nnfw_convert_to_gst_info (nnfw_out_info, out_info);</span></span>
+<span id="L716"><span class="lineNum">     716</span>              : </span>
+<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">           2 : error:</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">           2 :   if (err) {</span></span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaUNC tlaBgUNC">           0 :     nns_loge (&quot;Unable to set the provided input tensor info.&quot;);</span></span>
+<span id="L720"><span class="lineNum">     720</span>              :     /* Reset input dimensions */</span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaUNC">           0 :     for (idx = 0; idx &lt; pdata-&gt;in_info.num_tensors; idx++)</span></span>
+<span id="L722"><span class="lineNum">     722</span> <span class="tlaUNC">           0 :       nnfw_set_input_info (pdata, idx, &amp;pdata-&gt;in_info.info[idx]);</span></span>
 <span id="L723"><span class="lineNum">     723</span>              : </span>
-<span id="L724"><span class="lineNum">     724</span> <span class="tlaGNC">           2 :   g_free (nnfw_in_info);</span></span>
-<span id="L725"><span class="lineNum">     725</span> <span class="tlaGNC">           2 :   g_free (nnfw_out_info);</span></span>
-<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC">           2 :   return err;</span></span>
-<span id="L727"><span class="lineNum">     727</span>              : }</span>
-<span id="L728"><span class="lineNum">     728</span>              : </span>
-<span id="L729"><span class="lineNum">     729</span>              : /**</span>
-<span id="L730"><span class="lineNum">     730</span>              :  * @brief Set tensor memory information in nnfw for input/output</span>
-<span id="L731"><span class="lineNum">     731</span>              :  * @param[in] pdata nnfw private data</span>
-<span id="L732"><span class="lineNum">     732</span>              :  * @param[in] mem Tensor memory containing input/output information</span>
-<span id="L733"><span class="lineNum">     733</span>              :  * @param[in] info Tensor information in nnfw format</span>
-<span id="L734"><span class="lineNum">     734</span>              :  * @param[in] is_input given memory is for input or output</span>
-<span id="L735"><span class="lineNum">     735</span>              :  * @return 0 on success, negative errno on error</span>
-<span id="L736"><span class="lineNum">     736</span>              :  */</span>
-<span id="L737"><span class="lineNum">     737</span>              : static int</span>
-<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          23 : nnfw_tensor_memory_set (const nnfw_pdata * pdata, const GstTensorMemory * mem,</span></span>
-<span id="L739"><span class="lineNum">     739</span>              :     const nnfw_tinfo_s * info, const gboolean is_input)</span>
-<span id="L740"><span class="lineNum">     740</span>              : {</span>
-<span id="L741"><span class="lineNum">     741</span>              :   NNFW_STATUS nnfw_status;</span>
-<span id="L742"><span class="lineNum">     742</span>              :   guint idx;</span>
-<span id="L743"><span class="lineNum">     743</span>              : </span>
-<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">          23 :   g_return_val_if_fail (G_UNLIKELY (pdata != NULL), -EINVAL);</span></span>
-<span id="L745"><span class="lineNum">     745</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (G_UNLIKELY (mem != NULL &amp;&amp; info != NULL), -EINVAL);</span></span>
-<span id="L746"><span class="lineNum">     746</span> <span class="tlaGNC">          19 :   g_return_val_if_fail (G_UNLIKELY (pdata-&gt;session != NULL), -EPERM);</span></span>
-<span id="L747"><span class="lineNum">     747</span>              : </span>
-<span id="L748"><span class="lineNum">     748</span> <span class="tlaGNC">          38 :   for (idx = 0; idx &lt; info-&gt;num_tensors; idx++) {</span></span>
-<span id="L749"><span class="lineNum">     749</span> <span class="tlaGNC">          19 :     if (is_input) {</span></span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">          10 :       nnfw_status = nnfw_set_input (pdata-&gt;session, idx,</span></span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          10 :           info-&gt;info[idx].dtype, mem[idx].data, mem[idx].size);</span></span>
-<span id="L752"><span class="lineNum">     752</span>              :     } else {</span>
-<span id="L753"><span class="lineNum">     753</span> <span class="tlaGNC">           9 :       nnfw_status = nnfw_set_output (pdata-&gt;session, idx,</span></span>
-<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">           9 :           info-&gt;info[idx].dtype, mem[idx].data, mem[idx].size);</span></span>
-<span id="L755"><span class="lineNum">     755</span>              :     }</span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          19 :     if (nnfw_status != NNFW_STATUS_NO_ERROR)</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaUNC tlaBgUNC">           0 :       return -EINVAL;</span></span>
-<span id="L758"><span class="lineNum">     758</span>              :   }</span>
-<span id="L759"><span class="lineNum">     759</span>              : </span>
-<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC tlaBgGNC">          19 :   return 0;</span></span>
-<span id="L761"><span class="lineNum">     761</span>              : }</span>
-<span id="L762"><span class="lineNum">     762</span>              : </span>
-<span id="L763"><span class="lineNum">     763</span>              : /**</span>
-<span id="L764"><span class="lineNum">     764</span>              :  * @brief Internal function to run nnfw session.</span>
-<span id="L765"><span class="lineNum">     765</span>              :  */</span>
-<span id="L766"><span class="lineNum">     766</span>              : static int</span>
-<span id="L767"><span class="lineNum">     767</span> <span class="tlaGNC">          13 : nnfw_invoke_internal (const nnfw_pdata * pdata,</span></span>
-<span id="L768"><span class="lineNum">     768</span>              :     const nnfw_tinfo_s * in_info, const nnfw_tinfo_s * out_info,</span>
-<span id="L769"><span class="lineNum">     769</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
-<span id="L770"><span class="lineNum">     770</span>              : {</span>
-<span id="L771"><span class="lineNum">     771</span>              :   int64_t start_time, stop_time;</span>
-<span id="L772"><span class="lineNum">     772</span>              :   int err;</span>
-<span id="L773"><span class="lineNum">     773</span>              :   NNFW_STATUS status;</span>
-<span id="L774"><span class="lineNum">     774</span>              : </span>
-<span id="L775"><span class="lineNum">     775</span> <span class="tlaGNC">          13 :   start_time = g_get_monotonic_time ();</span></span>
-<span id="L776"><span class="lineNum">     776</span>              : </span>
-<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">          13 :   err = nnfw_tensor_memory_set (pdata, input, in_info, TRUE);</span></span>
-<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">          13 :   if (G_UNLIKELY (err &lt; 0))</span></span>
-<span id="L779"><span class="lineNum">     779</span> <span class="tlaGNC">           3 :     return err;</span></span>
+<span id="L724"><span class="lineNum">     724</span> <span class="tlaUNC">           0 :     nnfw_invoke_dummy (pdata, &amp;pdata-&gt;in_info, &amp;pdata-&gt;out_info);</span></span>
+<span id="L725"><span class="lineNum">     725</span>              :   } else {</span>
+<span id="L726"><span class="lineNum">     726</span> <span class="tlaGNC tlaBgGNC">           2 :     memcpy (&amp;pdata-&gt;in_info, nnfw_in_info, sizeof (nnfw_tinfo_s));</span></span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">           2 :     memcpy (&amp;pdata-&gt;out_info, nnfw_out_info, sizeof (nnfw_tinfo_s));</span></span>
+<span id="L728"><span class="lineNum">     728</span>              :   }</span>
+<span id="L729"><span class="lineNum">     729</span>              : </span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">           2 :   g_free (nnfw_in_info);</span></span>
+<span id="L731"><span class="lineNum">     731</span> <span class="tlaGNC">           2 :   g_free (nnfw_out_info);</span></span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">           2 :   return err;</span></span>
+<span id="L733"><span class="lineNum">     733</span>              : }</span>
+<span id="L734"><span class="lineNum">     734</span>              : </span>
+<span id="L735"><span class="lineNum">     735</span>              : /**</span>
+<span id="L736"><span class="lineNum">     736</span>              :  * @brief Set tensor memory information in nnfw for input/output</span>
+<span id="L737"><span class="lineNum">     737</span>              :  * @param[in] pdata nnfw private data</span>
+<span id="L738"><span class="lineNum">     738</span>              :  * @param[in] mem Tensor memory containing input/output information</span>
+<span id="L739"><span class="lineNum">     739</span>              :  * @param[in] info Tensor information in nnfw format</span>
+<span id="L740"><span class="lineNum">     740</span>              :  * @param[in] is_input given memory is for input or output</span>
+<span id="L741"><span class="lineNum">     741</span>              :  * @return 0 on success, negative errno on error</span>
+<span id="L742"><span class="lineNum">     742</span>              :  */</span>
+<span id="L743"><span class="lineNum">     743</span>              : static int</span>
+<span id="L744"><span class="lineNum">     744</span> <span class="tlaGNC">          23 : nnfw_tensor_memory_set (const nnfw_pdata * pdata, const GstTensorMemory * mem,</span></span>
+<span id="L745"><span class="lineNum">     745</span>              :     const nnfw_tinfo_s * info, const gboolean is_input)</span>
+<span id="L746"><span class="lineNum">     746</span>              : {</span>
+<span id="L747"><span class="lineNum">     747</span>              :   NNFW_STATUS nnfw_status;</span>
+<span id="L748"><span class="lineNum">     748</span>              :   guint idx;</span>
+<span id="L749"><span class="lineNum">     749</span>              : </span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">          23 :   g_return_val_if_fail (G_UNLIKELY (pdata != NULL), -EINVAL);</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaGNC">          22 :   g_return_val_if_fail (G_UNLIKELY (mem != NULL &amp;&amp; info != NULL), -EINVAL);</span></span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaGNC">          19 :   g_return_val_if_fail (G_UNLIKELY (pdata-&gt;session != NULL), -EPERM);</span></span>
+<span id="L753"><span class="lineNum">     753</span>              : </span>
+<span id="L754"><span class="lineNum">     754</span> <span class="tlaGNC">          38 :   for (idx = 0; idx &lt; info-&gt;num_tensors; idx++) {</span></span>
+<span id="L755"><span class="lineNum">     755</span> <span class="tlaGNC">          19 :     if (is_input) {</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          10 :       nnfw_status = nnfw_set_input (pdata-&gt;session, idx,</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaGNC">          10 :           info-&gt;info[idx].dtype, mem[idx].data, mem[idx].size);</span></span>
+<span id="L758"><span class="lineNum">     758</span>              :     } else {</span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaGNC">           9 :       nnfw_status = nnfw_set_output (pdata-&gt;session, idx,</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaGNC">           9 :           info-&gt;info[idx].dtype, mem[idx].data, mem[idx].size);</span></span>
+<span id="L761"><span class="lineNum">     761</span>              :     }</span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaGNC">          19 :     if (nnfw_status != NNFW_STATUS_NO_ERROR)</span></span>
+<span id="L763"><span class="lineNum">     763</span> <span class="tlaUNC tlaBgUNC">           0 :       return -EINVAL;</span></span>
+<span id="L764"><span class="lineNum">     764</span>              :   }</span>
+<span id="L765"><span class="lineNum">     765</span>              : </span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC tlaBgGNC">          19 :   return 0;</span></span>
+<span id="L767"><span class="lineNum">     767</span>              : }</span>
+<span id="L768"><span class="lineNum">     768</span>              : </span>
+<span id="L769"><span class="lineNum">     769</span>              : /**</span>
+<span id="L770"><span class="lineNum">     770</span>              :  * @brief Internal function to run nnfw session.</span>
+<span id="L771"><span class="lineNum">     771</span>              :  */</span>
+<span id="L772"><span class="lineNum">     772</span>              : static int</span>
+<span id="L773"><span class="lineNum">     773</span> <span class="tlaGNC">          13 : nnfw_invoke_internal (const nnfw_pdata * pdata,</span></span>
+<span id="L774"><span class="lineNum">     774</span>              :     const nnfw_tinfo_s * in_info, const nnfw_tinfo_s * out_info,</span>
+<span id="L775"><span class="lineNum">     775</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
+<span id="L776"><span class="lineNum">     776</span>              : {</span>
+<span id="L777"><span class="lineNum">     777</span>              :   int64_t start_time, stop_time;</span>
+<span id="L778"><span class="lineNum">     778</span>              :   int err;</span>
+<span id="L779"><span class="lineNum">     779</span>              :   NNFW_STATUS status;</span>
 <span id="L780"><span class="lineNum">     780</span>              : </span>
-<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          10 :   err = nnfw_tensor_memory_set (pdata, output, out_info, FALSE);</span></span>
-<span id="L782"><span class="lineNum">     782</span> <span class="tlaGNC">          10 :   if (G_UNLIKELY (err &lt; 0))</span></span>
-<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">           1 :     return err;</span></span>
-<span id="L784"><span class="lineNum">     784</span>              : </span>
-<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">           9 :   stop_time = g_get_monotonic_time ();</span></span>
-<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_overhead_latency += stop_time - start_time;</span></span>
-<span id="L787"><span class="lineNum">     787</span>              : </span>
-<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">           9 :   start_time = g_get_monotonic_time ();</span></span>
-<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">           9 :   status = nnfw_run (pdata-&gt;session);</span></span>
-<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">           9 :   stop_time = g_get_monotonic_time ();</span></span>
-<span id="L791"><span class="lineNum">     791</span>              : </span>
-<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">           9 :   if (G_UNLIKELY (status != NNFW_STATUS_NO_ERROR)) {</span></span>
-<span id="L793"><span class="lineNum">     793</span> <span class="tlaGNC">           2 :     nns_loge (&quot;Failed to invoke the model in nnfw (%d).&quot;, status);</span></span>
-<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">           2 :     err = (status == NNFW_STATUS_INSUFFICIENT_OUTPUT_SIZE) ? -EAGAIN : -EINVAL;</span></span>
-<span id="L795"><span class="lineNum">     795</span>              :   }</span>
-<span id="L796"><span class="lineNum">     796</span>              : </span>
-<span id="L797"><span class="lineNum">     797</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_invoke_latency += stop_time - start_time;</span></span>
-<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_invoke_num += 1;</span></span>
-<span id="L799"><span class="lineNum">     799</span>              : </span>
-<span id="L800"><span class="lineNum">     800</span>              : #if (DBG)</span>
-<span id="L801"><span class="lineNum">     801</span>              :   g_message (&quot;Invoke() is finished: %&quot; G_GINT64_FORMAT &quot;ms, model path: %s&quot;, (stop_time - start_time) / 1000, pdata-&gt;model_file);</span>
-<span id="L802"><span class="lineNum">     802</span>              :   g_message (&quot;%&quot; G_GINT64_FORMAT &quot; invoke average %&quot; G_GINT64_FORMAT &quot;, total overhead %&quot; G_GINT64_FORMAT,</span>
-<span id="L803"><span class="lineNum">     803</span>              :       nnfw_internal_stats.total_invoke_num,</span>
-<span id="L804"><span class="lineNum">     804</span>              :       (nnfw_internal_stats.total_invoke_latency / nnfw_internal_stats.total_invoke_num),</span>
-<span id="L805"><span class="lineNum">     805</span>              :       nnfw_internal_stats.total_overhead_latency);</span>
-<span id="L806"><span class="lineNum">     806</span>              : #endif</span>
-<span id="L807"><span class="lineNum">     807</span>              : </span>
-<span id="L808"><span class="lineNum">     808</span> <span class="tlaGNC">           9 :   return err;</span></span>
-<span id="L809"><span class="lineNum">     809</span>              : }</span>
-<span id="L810"><span class="lineNum">     810</span>              : </span>
-<span id="L811"><span class="lineNum">     811</span>              : /**</span>
-<span id="L812"><span class="lineNum">     812</span>              :  * @brief The standard tensor_filter callback</span>
-<span id="L813"><span class="lineNum">     813</span>              :  */</span>
-<span id="L814"><span class="lineNum">     814</span>              : static int</span>
-<span id="L815"><span class="lineNum">     815</span> <span class="tlaGNC">           9 : nnfw_invoke (const GstTensorFilterProperties * prop, void **private_data,</span></span>
-<span id="L816"><span class="lineNum">     816</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
-<span id="L817"><span class="lineNum">     817</span>              : {</span>
-<span id="L818"><span class="lineNum">     818</span>              :   nnfw_pdata *pdata;</span>
-<span id="L819"><span class="lineNum">     819</span>              :   UNUSED (prop);</span>
-<span id="L820"><span class="lineNum">     820</span>              : </span>
-<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">           9 :   g_return_val_if_fail (G_UNLIKELY (private_data != NULL), -EINVAL);</span></span>
-<span id="L822"><span class="lineNum">     822</span> <span class="tlaGNC">           9 :   pdata = (nnfw_pdata *) (*private_data);</span></span>
-<span id="L823"><span class="lineNum">     823</span>              : </span>
-<span id="L824"><span class="lineNum">     824</span> <span class="tlaGNC">           9 :   return nnfw_invoke_internal (pdata, &amp;pdata-&gt;in_info, &amp;pdata-&gt;out_info, input,</span></span>
-<span id="L825"><span class="lineNum">     825</span>              :       output);</span>
-<span id="L826"><span class="lineNum">     826</span>              : }</span>
-<span id="L827"><span class="lineNum">     827</span>              : </span>
-<span id="L828"><span class="lineNum">     828</span>              : /**</span>
-<span id="L829"><span class="lineNum">     829</span>              :  * @brief Check support of the backend</span>
-<span id="L830"><span class="lineNum">     830</span>              :  * @param hw: backend to check support of</span>
-<span id="L831"><span class="lineNum">     831</span>              :  */</span>
-<span id="L832"><span class="lineNum">     832</span>              : static int</span>
-<span id="L833"><span class="lineNum">     833</span> <span class="tlaGNC">           1 : nnfw_checkAvailability (accl_hw hw)</span></span>
-<span id="L834"><span class="lineNum">     834</span>              : {</span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaGNC">           1 :   if (g_strv_contains (nnfw_accl_support, get_accl_hw_str (hw)))</span></span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
-<span id="L837"><span class="lineNum">     837</span>              : </span>
-<span id="L838"><span class="lineNum">     838</span> <span class="tlaGNC tlaBgGNC">           1 :   return -ENOENT;</span></span>
-<span id="L839"><span class="lineNum">     839</span>              : }</span>
-<span id="L840"><span class="lineNum">     840</span>              : </span>
-<span id="L841"><span class="lineNum">     841</span>              : static gchar filter_subplugin_nnfw[] = &quot;nnfw&quot;;</span>
-<span id="L842"><span class="lineNum">     842</span>              : </span>
-<span id="L843"><span class="lineNum">     843</span>              : static GstTensorFilterFramework NNS_support_nnfw = {</span>
-<span id="L844"><span class="lineNum">     844</span>              :   .version = GST_TENSOR_FILTER_FRAMEWORK_V0,</span>
-<span id="L845"><span class="lineNum">     845</span>              :   .open = nnfw_open,</span>
-<span id="L846"><span class="lineNum">     846</span>              :   .close = nnfw_close,</span>
-<span id="L847"><span class="lineNum">     847</span>              :   {</span>
-<span id="L848"><span class="lineNum">     848</span>              :     .v0 = {</span>
-<span id="L849"><span class="lineNum">     849</span>              :       .name = filter_subplugin_nnfw,</span>
-<span id="L850"><span class="lineNum">     850</span>              :       .allow_in_place = FALSE,</span>
-<span id="L851"><span class="lineNum">     851</span>              :       .allocate_in_invoke = FALSE,</span>
-<span id="L852"><span class="lineNum">     852</span>              :       .run_without_model = FALSE,</span>
-<span id="L853"><span class="lineNum">     853</span>              :       .verify_model_path = FALSE,</span>
-<span id="L854"><span class="lineNum">     854</span>              :       .statistics = &amp;nnfw_internal_stats,</span>
-<span id="L855"><span class="lineNum">     855</span>              :       .invoke_NN = nnfw_invoke,</span>
-<span id="L856"><span class="lineNum">     856</span>              :       .getInputDimension = nnfw_getInputDim,</span>
-<span id="L857"><span class="lineNum">     857</span>              :       .getOutputDimension = nnfw_getOutputDim,</span>
-<span id="L858"><span class="lineNum">     858</span>              :       .setInputDimension = nnfw_setInputDim,</span>
-<span id="L859"><span class="lineNum">     859</span>              :       .destroyNotify = NULL,</span>
-<span id="L860"><span class="lineNum">     860</span>              :       .reloadModel = NULL,</span>
-<span id="L861"><span class="lineNum">     861</span>              :       .handleEvent = NULL,</span>
-<span id="L862"><span class="lineNum">     862</span>              :       .checkAvailability = nnfw_checkAvailability,</span>
-<span id="L863"><span class="lineNum">     863</span>              :       .allocateInInvoke = NULL,</span>
-<span id="L864"><span class="lineNum">     864</span>              :     }</span>
-<span id="L865"><span class="lineNum">     865</span>              :   }</span>
-<span id="L866"><span class="lineNum">     866</span>              : };</span>
-<span id="L867"><span class="lineNum">     867</span>              : </span>
-<span id="L868"><span class="lineNum">     868</span>              : /**@brief Initialize this object for tensor_filter subplugin runtime register */</span>
-<span id="L869"><span class="lineNum">     869</span>              : void</span>
-<span id="L870"><span class="lineNum">     870</span> <span class="tlaGNC">          31 : init_filter_nnfw (void)</span></span>
-<span id="L871"><span class="lineNum">     871</span>              : {</span>
-<span id="L872"><span class="lineNum">     872</span> <span class="tlaGNC">          31 :   nnstreamer_filter_probe (&amp;NNS_support_nnfw);</span></span>
+<span id="L781"><span class="lineNum">     781</span> <span class="tlaGNC">          13 :   start_time = g_get_monotonic_time ();</span></span>
+<span id="L782"><span class="lineNum">     782</span>              : </span>
+<span id="L783"><span class="lineNum">     783</span> <span class="tlaGNC">          13 :   err = nnfw_tensor_memory_set (pdata, input, in_info, TRUE);</span></span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          13 :   if (G_UNLIKELY (err &lt; 0))</span></span>
+<span id="L785"><span class="lineNum">     785</span> <span class="tlaGNC">           3 :     return err;</span></span>
+<span id="L786"><span class="lineNum">     786</span>              : </span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">          10 :   err = nnfw_tensor_memory_set (pdata, output, out_info, FALSE);</span></span>
+<span id="L788"><span class="lineNum">     788</span> <span class="tlaGNC">          10 :   if (G_UNLIKELY (err &lt; 0))</span></span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">           1 :     return err;</span></span>
+<span id="L790"><span class="lineNum">     790</span>              : </span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaGNC">           9 :   stop_time = g_get_monotonic_time ();</span></span>
+<span id="L792"><span class="lineNum">     792</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_overhead_latency += stop_time - start_time;</span></span>
+<span id="L793"><span class="lineNum">     793</span>              : </span>
+<span id="L794"><span class="lineNum">     794</span> <span class="tlaGNC">           9 :   start_time = g_get_monotonic_time ();</span></span>
+<span id="L795"><span class="lineNum">     795</span> <span class="tlaGNC">           9 :   status = nnfw_run (pdata-&gt;session);</span></span>
+<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">           9 :   stop_time = g_get_monotonic_time ();</span></span>
+<span id="L797"><span class="lineNum">     797</span>              : </span>
+<span id="L798"><span class="lineNum">     798</span> <span class="tlaGNC">           9 :   if (G_UNLIKELY (status != NNFW_STATUS_NO_ERROR)) {</span></span>
+<span id="L799"><span class="lineNum">     799</span> <span class="tlaGNC">           2 :     nns_loge (&quot;Failed to invoke the model in nnfw (%d).&quot;, status);</span></span>
+<span id="L800"><span class="lineNum">     800</span> <span class="tlaGNC">           2 :     err = (status == NNFW_STATUS_INSUFFICIENT_OUTPUT_SIZE) ? -EAGAIN : -EINVAL;</span></span>
+<span id="L801"><span class="lineNum">     801</span>              :   }</span>
+<span id="L802"><span class="lineNum">     802</span>              : </span>
+<span id="L803"><span class="lineNum">     803</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_invoke_latency += stop_time - start_time;</span></span>
+<span id="L804"><span class="lineNum">     804</span> <span class="tlaGNC">           9 :   nnfw_internal_stats.total_invoke_num += 1;</span></span>
+<span id="L805"><span class="lineNum">     805</span>              : </span>
+<span id="L806"><span class="lineNum">     806</span>              : #if (DBG)</span>
+<span id="L807"><span class="lineNum">     807</span>              :   g_message (&quot;Invoke() is finished: %&quot; G_GINT64_FORMAT &quot;ms, model path: %s&quot;, (stop_time - start_time) / 1000, pdata-&gt;model_file);</span>
+<span id="L808"><span class="lineNum">     808</span>              :   g_message (&quot;%&quot; G_GINT64_FORMAT &quot; invoke average %&quot; G_GINT64_FORMAT &quot;, total overhead %&quot; G_GINT64_FORMAT,</span>
+<span id="L809"><span class="lineNum">     809</span>              :       nnfw_internal_stats.total_invoke_num,</span>
+<span id="L810"><span class="lineNum">     810</span>              :       (nnfw_internal_stats.total_invoke_latency / nnfw_internal_stats.total_invoke_num),</span>
+<span id="L811"><span class="lineNum">     811</span>              :       nnfw_internal_stats.total_overhead_latency);</span>
+<span id="L812"><span class="lineNum">     812</span>              : #endif</span>
+<span id="L813"><span class="lineNum">     813</span>              : </span>
+<span id="L814"><span class="lineNum">     814</span> <span class="tlaGNC">           9 :   return err;</span></span>
+<span id="L815"><span class="lineNum">     815</span>              : }</span>
+<span id="L816"><span class="lineNum">     816</span>              : </span>
+<span id="L817"><span class="lineNum">     817</span>              : /**</span>
+<span id="L818"><span class="lineNum">     818</span>              :  * @brief The standard tensor_filter callback</span>
+<span id="L819"><span class="lineNum">     819</span>              :  */</span>
+<span id="L820"><span class="lineNum">     820</span>              : static int</span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaGNC">           9 : nnfw_invoke (const GstTensorFilterProperties * prop, void **private_data,</span></span>
+<span id="L822"><span class="lineNum">     822</span>              :     const GstTensorMemory * input, GstTensorMemory * output)</span>
+<span id="L823"><span class="lineNum">     823</span>              : {</span>
+<span id="L824"><span class="lineNum">     824</span>              :   nnfw_pdata *pdata;</span>
+<span id="L825"><span class="lineNum">     825</span>              :   UNUSED (prop);</span>
+<span id="L826"><span class="lineNum">     826</span>              : </span>
+<span id="L827"><span class="lineNum">     827</span> <span class="tlaGNC">           9 :   g_return_val_if_fail (G_UNLIKELY (private_data != NULL), -EINVAL);</span></span>
+<span id="L828"><span class="lineNum">     828</span> <span class="tlaGNC">           9 :   pdata = (nnfw_pdata *) (*private_data);</span></span>
+<span id="L829"><span class="lineNum">     829</span>              : </span>
+<span id="L830"><span class="lineNum">     830</span> <span class="tlaGNC">           9 :   return nnfw_invoke_internal (pdata, &amp;pdata-&gt;in_info, &amp;pdata-&gt;out_info, input,</span></span>
+<span id="L831"><span class="lineNum">     831</span>              :       output);</span>
+<span id="L832"><span class="lineNum">     832</span>              : }</span>
+<span id="L833"><span class="lineNum">     833</span>              : </span>
+<span id="L834"><span class="lineNum">     834</span>              : /**</span>
+<span id="L835"><span class="lineNum">     835</span>              :  * @brief Check support of the backend</span>
+<span id="L836"><span class="lineNum">     836</span>              :  * @param hw: backend to check support of</span>
+<span id="L837"><span class="lineNum">     837</span>              :  */</span>
+<span id="L838"><span class="lineNum">     838</span>              : static int</span>
+<span id="L839"><span class="lineNum">     839</span> <span class="tlaGNC">           1 : nnfw_checkAvailability (accl_hw hw)</span></span>
+<span id="L840"><span class="lineNum">     840</span>              : {</span>
+<span id="L841"><span class="lineNum">     841</span> <span class="tlaGNC">           1 :   if (g_strv_contains (nnfw_accl_support, get_accl_hw_str (hw)))</span></span>
+<span id="L842"><span class="lineNum">     842</span> <span class="tlaUNC tlaBgUNC">           0 :     return 0;</span></span>
+<span id="L843"><span class="lineNum">     843</span>              : </span>
+<span id="L844"><span class="lineNum">     844</span> <span class="tlaGNC tlaBgGNC">           1 :   return -ENOENT;</span></span>
+<span id="L845"><span class="lineNum">     845</span>              : }</span>
+<span id="L846"><span class="lineNum">     846</span>              : </span>
+<span id="L847"><span class="lineNum">     847</span>              : static gchar filter_subplugin_nnfw[] = &quot;nnfw&quot;;</span>
+<span id="L848"><span class="lineNum">     848</span>              : </span>
+<span id="L849"><span class="lineNum">     849</span>              : static GstTensorFilterFramework NNS_support_nnfw = {</span>
+<span id="L850"><span class="lineNum">     850</span>              :   .version = GST_TENSOR_FILTER_FRAMEWORK_V0,</span>
+<span id="L851"><span class="lineNum">     851</span>              :   .open = nnfw_open,</span>
+<span id="L852"><span class="lineNum">     852</span>              :   .close = nnfw_close,</span>
+<span id="L853"><span class="lineNum">     853</span>              :   {</span>
+<span id="L854"><span class="lineNum">     854</span>              :     .v0 = {</span>
+<span id="L855"><span class="lineNum">     855</span>              :       .name = filter_subplugin_nnfw,</span>
+<span id="L856"><span class="lineNum">     856</span>              :       .allow_in_place = FALSE,</span>
+<span id="L857"><span class="lineNum">     857</span>              :       .allocate_in_invoke = FALSE,</span>
+<span id="L858"><span class="lineNum">     858</span>              :       .run_without_model = FALSE,</span>
+<span id="L859"><span class="lineNum">     859</span>              :       .verify_model_path = FALSE,</span>
+<span id="L860"><span class="lineNum">     860</span>              :       .statistics = &amp;nnfw_internal_stats,</span>
+<span id="L861"><span class="lineNum">     861</span>              :       .invoke_NN = nnfw_invoke,</span>
+<span id="L862"><span class="lineNum">     862</span>              :       .getInputDimension = nnfw_getInputDim,</span>
+<span id="L863"><span class="lineNum">     863</span>              :       .getOutputDimension = nnfw_getOutputDim,</span>
+<span id="L864"><span class="lineNum">     864</span>              :       .setInputDimension = nnfw_setInputDim,</span>
+<span id="L865"><span class="lineNum">     865</span>              :       .destroyNotify = NULL,</span>
+<span id="L866"><span class="lineNum">     866</span>              :       .reloadModel = NULL,</span>
+<span id="L867"><span class="lineNum">     867</span>              :       .handleEvent = NULL,</span>
+<span id="L868"><span class="lineNum">     868</span>              :       .checkAvailability = nnfw_checkAvailability,</span>
+<span id="L869"><span class="lineNum">     869</span>              :       .allocateInInvoke = NULL,</span>
+<span id="L870"><span class="lineNum">     870</span>              :     }</span>
+<span id="L871"><span class="lineNum">     871</span>              :   }</span>
+<span id="L872"><span class="lineNum">     872</span>              : };</span>
 <span id="L873"><span class="lineNum">     873</span>              : </span>
-<span id="L874"><span class="lineNum">     874</span> <span class="tlaGNC">          31 :   nnstreamer_filter_set_custom_property_desc (filter_subplugin_nnfw,</span></span>
-<span id="L875"><span class="lineNum">     875</span>              :       &quot;Runtime&quot;, &quot;Backends on which NNFW uses&quot;, NULL);</span>
-<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          31 : }</span></span>
-<span id="L877"><span class="lineNum">     877</span>              : </span>
-<span id="L878"><span class="lineNum">     878</span>              : /** @brief Destruct the subplugin */</span>
-<span id="L879"><span class="lineNum">     879</span>              : void</span>
-<span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">          31 : fini_filter_nnfw (void)</span></span>
-<span id="L881"><span class="lineNum">     881</span>              : {</span>
-<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">          31 :   nnstreamer_filter_exit (NNS_support_nnfw.v0.name);</span></span>
-<span id="L883"><span class="lineNum">     883</span> <span class="tlaGNC">          31 : }</span></span>
+<span id="L874"><span class="lineNum">     874</span>              : /**@brief Initialize this object for tensor_filter subplugin runtime register */</span>
+<span id="L875"><span class="lineNum">     875</span>              : void</span>
+<span id="L876"><span class="lineNum">     876</span> <span class="tlaGNC">          28 : init_filter_nnfw (void)</span></span>
+<span id="L877"><span class="lineNum">     877</span>              : {</span>
+<span id="L878"><span class="lineNum">     878</span> <span class="tlaGNC">          28 :   nnstreamer_filter_probe (&amp;NNS_support_nnfw);</span></span>
+<span id="L879"><span class="lineNum">     879</span>              : </span>
+<span id="L880"><span class="lineNum">     880</span> <span class="tlaGNC">          28 :   nnstreamer_filter_set_custom_property_desc (filter_subplugin_nnfw,</span></span>
+<span id="L881"><span class="lineNum">     881</span>              :       &quot;Runtime&quot;, &quot;Backends on which NNFW uses&quot;, NULL);</span>
+<span id="L882"><span class="lineNum">     882</span> <span class="tlaGNC">          28 : }</span></span>
+<span id="L883"><span class="lineNum">     883</span>              : </span>
+<span id="L884"><span class="lineNum">     884</span>              : /** @brief Destruct the subplugin */</span>
+<span id="L885"><span class="lineNum">     885</span>              : void</span>
+<span id="L886"><span class="lineNum">     886</span> <span class="tlaGNC">          28 : fini_filter_nnfw (void)</span></span>
+<span id="L887"><span class="lineNum">     887</span>              : {</span>
+<span id="L888"><span class="lineNum">     888</span> <span class="tlaGNC">          28 :   nnstreamer_filter_exit (NNS_support_nnfw.v0.name);</span></span>
+<span id="L889"><span class="lineNum">     889</span> <span class="tlaGNC">          28 : }</span></span>
         </pre>
               </td>
             </tr>

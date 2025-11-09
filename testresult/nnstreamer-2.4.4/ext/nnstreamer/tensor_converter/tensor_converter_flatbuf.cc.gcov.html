@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239 - nnstreamer-2.4.4/ext/nnstreamer/tensor_converter/tensor_converter_flatbuf.cc</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76 - nnstreamer-2.4.4/ext/nnstreamer/tensor_converter/tensor_converter_flatbuf.cc</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryMed">89.8&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-11-07 05:40:34</td>
+            <td class="headerValue">2025-11-10 05:36:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -115,10 +115,10 @@
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span>              : /** @brief tensor converter plugin's NNStreamerExternalConverter callback */</span>
 <span id="L55"><span class="lineNum">      55</span>              : static GstCaps *</span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC tlaBgGNC">         499 : fbc_query_caps (const GstTensorsConfig *config)</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC tlaBgGNC">         507 : fbc_query_caps (const GstTensorsConfig *config)</span></span>
 <span id="L57"><span class="lineNum">      57</span>              : {</span>
 <span id="L58"><span class="lineNum">      58</span>              :   UNUSED (config);</span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         499 :   return gst_caps_from_string (GST_FLATBUF_TENSOR_CAP_DEFAULT);</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         507 :   return gst_caps_from_string (GST_FLATBUF_TENSOR_CAP_DEFAULT);</span></span>
 <span id="L60"><span class="lineNum">      60</span>              : }</span>
 <span id="L61"><span class="lineNum">      61</span>              : </span>
 <span id="L62"><span class="lineNum">      62</span>              : /** @brief tensor converter plugin's NNStreamerExternalConverter callback</span>
@@ -217,17 +217,17 @@
 <span id="L155"><span class="lineNum">     155</span>              : #endif /* __cplusplus */</span>
 <span id="L156"><span class="lineNum">     156</span>              : /** @brief Initialize this object for tensor converter sub-plugin */</span>
 <span id="L157"><span class="lineNum">     157</span>              : void</span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         434 : init_fbc (void)</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         432 : init_fbc (void)</span></span>
 <span id="L159"><span class="lineNum">     159</span>              : {</span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         434 :   registerExternalConverter (&amp;flatBuf);</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         434 : }</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         432 :   registerExternalConverter (&amp;flatBuf);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         432 : }</span></span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
 <span id="L163"><span class="lineNum">     163</span>              : /** @brief Destruct this object for tensor converter sub-plugin */</span>
 <span id="L164"><span class="lineNum">     164</span>              : void</span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         434 : fini_fbc (void)</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         432 : fini_fbc (void)</span></span>
 <span id="L166"><span class="lineNum">     166</span>              : {</span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         434 :   unregisterExternalConverter (flatBuf.name);</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         434 : }</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         432 :   unregisterExternalConverter (flatBuf.name);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         432 : }</span></span>
 <span id="L169"><span class="lineNum">     169</span>              : #ifdef __cplusplus</span>
 <span id="L170"><span class="lineNum">     170</span>              : }</span>
 <span id="L171"><span class="lineNum">     171</span>              : #endif /* __cplusplus */</span>

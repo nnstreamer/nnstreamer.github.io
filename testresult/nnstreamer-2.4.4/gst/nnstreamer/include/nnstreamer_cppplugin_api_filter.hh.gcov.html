@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239 - nnstreamer-2.4.4/gst/nnstreamer/include/nnstreamer_cppplugin_api_filter.hh</title>
+  <title>LCOV - nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76 - nnstreamer-2.4.4/gst/nnstreamer/include/nnstreamer_cppplugin_api_filter.hh</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#f6bf138a438fde734fac610a13c61b1c9cd4d239</td>
+            <td class="headerValue">nnstreamer 2.4.4-0 nnstreamer/nnstreamer#60800f2eec4fa4014c55a736c8274a57b4e27f76</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">73.7&nbsp;%</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-11-07 05:40:34</td>
+            <td class="headerValue">2025-11-10 05:36:30</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">93.3&nbsp;%</td>
@@ -169,7 +169,7 @@
 <span id="L107"><span class="lineNum">     107</span>              :    * @retval Returns an &quot;emptyInstance&quot; of the derived class. It is recommended</span>
 <span id="L108"><span class="lineNum">     108</span>              :    *         to keep the object and feed to the unregister function.</span>
 <span id="L109"><span class="lineNum">     109</span>              :    */</span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC tlaBgGNC">         171 :   template &lt;typename T&gt; static T *register_subplugin ()</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC tlaBgGNC">         156 :   template &lt;typename T&gt; static T *register_subplugin ()</span></span>
 <span id="L111"><span class="lineNum">     111</span>              :   {</span>
 <span id="L112"><span class="lineNum">     112</span>              : #if __cplusplus &lt; 201103L</span>
 <span id="L113"><span class="lineNum">     113</span>              : #warn C++ 11 is required for safe execution</span>
@@ -177,14 +177,14 @@
 <span id="L115"><span class="lineNum">     115</span>              :     /** The given class T should be derived from tensor_filter_subplugin */</span>
 <span id="L116"><span class="lineNum">     116</span>              :     assert ((std::is_base_of&lt;tensor_filter_subplugin, T&gt;::value));</span>
 <span id="L117"><span class="lineNum">     117</span>              : #endif</span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         171 :     T *emptyInstance = new T ();</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         156 :     T *emptyInstance = new T ();</span></span>
 <span id="L119"><span class="lineNum">     119</span>              : </span>
-<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">         171 :     assert (emptyInstance);</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         171 :     memcpy (&amp;emptyInstance-&gt;fwdesc, &amp;fwdesc_template, sizeof (fwdesc_template));</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         171 :     emptyInstance-&gt;fwdesc.subplugin_data = emptyInstance;</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">         171 :     nnstreamer_filter_probe (&amp;emptyInstance-&gt;fwdesc);</span></span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">         156 :     assert (emptyInstance);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         156 :     memcpy (&amp;emptyInstance-&gt;fwdesc, &amp;fwdesc_template, sizeof (fwdesc_template));</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         156 :     emptyInstance-&gt;fwdesc.subplugin_data = emptyInstance;</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">         156 :     nnstreamer_filter_probe (&amp;emptyInstance-&gt;fwdesc);</span></span>
 <span id="L124"><span class="lineNum">     124</span>              : </span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         171 :     return emptyInstance;</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         156 :     return emptyInstance;</span></span>
 <span id="L126"><span class="lineNum">     126</span>              :   }</span>
 <span id="L127"><span class="lineNum">     127</span>              : </span>
 <span id="L128"><span class="lineNum">     128</span>              :   /**</span>
@@ -198,7 +198,7 @@
 <span id="L136"><span class="lineNum">     136</span>              :    *             the object created by register_subplugin() and feed it to</span>
 <span id="L137"><span class="lineNum">     137</span>              :    *             unregister_subplugin().</span>
 <span id="L138"><span class="lineNum">     138</span>              :    */</span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         171 :   template &lt;typename T&gt; static void unregister_subplugin (T *emptyInstance)</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         156 :   template &lt;typename T&gt; static void unregister_subplugin (T *emptyInstance)</span></span>
 <span id="L140"><span class="lineNum">     140</span>              :   {</span>
 <span id="L141"><span class="lineNum">     141</span>              :     GstTensorFilterFrameworkInfo info;</span>
 <span id="L142"><span class="lineNum">     142</span>              : #if __cplusplus &lt; 201103L</span>
@@ -207,14 +207,14 @@
 <span id="L145"><span class="lineNum">     145</span>              :     /** The given class T should be derived from tensor_filter_subplugin */</span>
 <span id="L146"><span class="lineNum">     146</span>              :     assert ((std::is_base_of&lt;tensor_filter_subplugin, T&gt;::value));</span>
 <span id="L147"><span class="lineNum">     147</span>              : #endif</span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         171 :     assert (emptyInstance);</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         156 :     assert (emptyInstance);</span></span>
 <span id="L149"><span class="lineNum">     149</span>              : </span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         171 :     memset (&amp;info, 0, sizeof (GstTensorFilterFrameworkInfo));</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         171 :     emptyInstance-&gt;getFrameworkInfo (info);</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         171 :     nnstreamer_filter_exit (info.name);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         156 :     memset (&amp;info, 0, sizeof (GstTensorFilterFrameworkInfo));</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         156 :     emptyInstance-&gt;getFrameworkInfo (info);</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         156 :     nnstreamer_filter_exit (info.name);</span></span>
 <span id="L153"><span class="lineNum">     153</span>              : </span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         171 :     delete emptyInstance;</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         171 :   }</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         156 :     delete emptyInstance;</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         156 :   }</span></span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
 <span id="L157"><span class="lineNum">     157</span>              :   public:</span>
 <span id="L158"><span class="lineNum">     158</span>              :   /*************************************************************</span>
